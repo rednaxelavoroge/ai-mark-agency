@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getCopy } from "@/content/copy";
@@ -94,7 +95,7 @@ export default async function ProductsHubPage({ params }: Props) {
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-3">
-        {products.map((product) => {
+        {products.map((product, index) => {
           const item = t.products.items[product.id];
           const page = t.productPages[product.id];
           const mock = PRODUCT_MOCK[product.id] ?? "saas";
@@ -102,18 +103,24 @@ export default async function ProductsHubPage({ params }: Props) {
           return (
             <section
               key={product.id}
-              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-lg"
+              data-reveal
+              style={{ "--reveal-delay": `${index * 110}ms` } as CSSProperties}
+              className="catalog-card peek-host group flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-line-strong hover:shadow-xl sm:p-7"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-warm font-semibold uppercase tracking-wider">
+                  <span className="font-mono text-[10px] font-semibold tracking-wider text-warm uppercase">
                     {page.eyebrow}
                   </span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-mark" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-mark opacity-40 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
 
-                <div className="mt-4" data-reveal="scale">
-                  <ProductUI variant={mock} ratio="aspect-[16/11]" />
+                <div
+                  className="mt-4 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.015]"
+                  data-reveal="scale"
+                  style={{ "--reveal-delay": `${index * 110 + 90}ms` } as CSSProperties}
+                >
+                  <ProductUI variant={mock} ratio="aspect-[16/11]" peek />
                 </div>
 
                 <h2 className="mt-5 font-display text-xl font-semibold text-paper">
@@ -122,14 +129,14 @@ export default async function ProductsHubPage({ params }: Props) {
                 <p className="mt-2 text-xs leading-relaxed text-muted">{item.value}</p>
 
                 <div className="mt-5 border-t border-line/60 pt-3">
-                  <span className="font-mono text-[10px] text-mark font-semibold uppercase tracking-wider block">
+                  <span className="block font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">
                     {t.products.whoLabel}
                   </span>
                   <p className="mt-1 text-xs text-paper/85">{item.who}</p>
                 </div>
 
                 <div className="mt-3">
-                  <span className="font-mono text-[10px] text-muted uppercase tracking-wider block">
+                  <span className="block font-mono text-[10px] tracking-wider text-muted uppercase">
                     {t.products.extraLabel}
                   </span>
                   <p className="mt-1 text-xs text-muted">{item.extra}</p>
@@ -141,13 +148,16 @@ export default async function ProductsHubPage({ params }: Props) {
                 <div className="mt-4 flex items-center gap-2">
                   <Link
                     href={productPagePath(locale, product.id)}
-                    className="flex-1 text-center rounded-full bg-mark px-4 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
+                    className="flex-1 rounded-full bg-mark px-4 py-2.5 text-center text-xs font-semibold text-mark-ink shadow transition-all hover:bg-mark-light"
                   >
-                    {t.products.detailCta} →
+                    {t.products.detailCta}{" "}
+                    <span className="catalog-cta-arrow" aria-hidden>
+                      →
+                    </span>
                   </Link>
                   <Link
                     href={navHref(locale, "#contact")}
-                    className="rounded-full border border-line bg-ink-3/40 px-3.5 py-2.5 text-xs font-medium text-paper hover:bg-ink-3 transition-colors"
+                    className="rounded-full border border-line bg-ink-3/40 px-3.5 py-2.5 text-xs font-medium text-paper transition-colors hover:border-line-strong hover:bg-ink-3"
                   >
                     {t.products.installCta}
                   </Link>

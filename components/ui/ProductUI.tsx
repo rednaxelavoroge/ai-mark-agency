@@ -32,11 +32,18 @@ export function UIFrame({
   url = "app.ai-mark.agency",
   className = "",
   ratio = "aspect-[16/10]",
+  peek = false,
 }: {
   children: ReactNode;
   url?: string;
   className?: string;
   ratio?: string;
+  /**
+   * Catalog mode: several mocks are taller than the frame, so instead of a
+   * hard crop we fade the lower edge and let the surface scroll up on hover.
+   * The host element drives it — add `peek-host` to the surrounding card.
+   */
+  peek?: boolean;
 }) {
   return (
     <div
@@ -57,7 +64,13 @@ export function UIFrame({
           aria-hidden
           className="scanline pointer-events-none absolute inset-x-0 top-0 z-20 h-16 bg-gradient-to-b from-transparent via-mark/10 to-transparent"
         />
-        {children}
+        {peek ? (
+          <div className="peek-frame absolute inset-0">
+            <div className="peek-body h-full">{children}</div>
+          </div>
+        ) : (
+          children
+        )}
       </div>
     </div>
   );
@@ -74,7 +87,7 @@ function Bar({
 }) {
   return (
     <span
-      className={`ui-bar block w-full rounded-t-[3px] bg-gradient-to-t from-mark/60 to-mark ${className}`}
+      className={`ui-bar block w-full max-w-[16px] rounded-t-[3px] bg-gradient-to-t from-mark/60 to-mark ${className}`}
       style={{ height: `${h}%`, "--h": h / 100, "--bar-delay": `${delay}ms` } as CSSProperties}
     />
   );
@@ -91,13 +104,93 @@ function Dot({ tone = "mark" }: { tone?: "mark" | "warm" | "emerald" }) {
 
 function Line({ label, value, tone = "mark" }: { label: string; value: ReactNode; tone?: "mark" | "warm" | "emerald" }) {
   return (
-    <div className="flex items-center justify-between rounded-md border border-line/70 bg-ink-2 px-2.5 py-1.5">
+    <div className="flex items-center justify-between rounded-md border border-line/70 bg-ink-2 px-2.5 py-1">
       <span className="flex items-center gap-1.5 font-mono text-[9px] text-muted">
         <Dot tone={tone} />
         {label}
       </span>
       <span className="font-mono text-[9px] font-semibold text-paper">{value}</span>
     </div>
+  );
+}
+
+function Chip({
+  children,
+  active = false,
+  className = "",
+}: {
+  children: ReactNode;
+  active?: boolean;
+  className?: string;
+}) {
+  return (
+    <span
+      className={`rounded-full px-2 py-[3px] font-mono text-[8px] whitespace-nowrap ${
+        active
+          ? "bg-mark font-semibold text-mark-ink shadow-sm"
+          : "border border-line/70 text-muted"
+      } ${className}`}
+    >
+      {children}
+    </span>
+  );
+}
+
+/** Tiny status chip used in tables — smaller than `Line`, denser than a chip. */
+function Pill({
+  children,
+  tone = "mark",
+}: {
+  children: ReactNode;
+  tone?: "mark" | "warm" | "emerald";
+}) {
+  const map = {
+    mark: "border-mark/25 bg-mark/5 text-mark",
+    warm: "border-warm/30 bg-warm/10 text-warm",
+    emerald: "border-emerald-500/25 bg-emerald-500/10 text-emerald-700",
+  } as const;
+  return (
+    <span
+      className={`inline-flex items-center justify-center rounded-full border px-1.5 py-[1px] font-mono text-[7px] font-semibold whitespace-nowrap ${map[tone]}`}
+    >
+      {children}
+    </span>
+  );
+}
+
+/** Micro sparkline. Draws itself when an ancestor reveal fires. */
+function Spark({ points, className = "" }: { points: number[]; className?: string }) {
+  const max = Math.max(...points);
+  const min = Math.min(...points);
+  const span = max - min || 1;
+  const d = points
+    .map(
+      (p, i) =>
+        `${i === 0 ? "M" : "L"}${((i / (points.length - 1)) * 100).toFixed(1)} ${(
+          26 -
+          ((p - min) / span) * 22
+        ).toFixed(1)}`,
+    )
+    .join(" ");
+  return (
+    <svg
+      viewBox="0 0 100 30"
+      preserveAspectRatio="none"
+      className={className}
+      fill="none"
+      aria-hidden
+    >
+      <path
+        className="flow-line"
+        style={{ "--len": 220, "--reveal-delay": "260ms" } as CSSProperties}
+        d={d}
+        stroke="var(--mark)"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
   );
 }
 
@@ -168,7 +261,7 @@ function AimeMock() {
         <div className="grid grid-cols-[1.4fr_1fr] gap-2">
           <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
             <p className="mb-1.5 font-mono text-[8px] text-muted">ENGAGEMENT · 30d</p>
-            <div className="flex h-14 items-end gap-1">
+            <div className="flex h-14 items-end justify-between gap-1">
               {[38, 52, 44, 68, 60, 82, 74, 91].map((h, i) => (
                 <Bar key={i} h={h} delay={i * 70} />
               ))}
@@ -406,101 +499,379 @@ function ShowroomMock() {
 /* ------------------------------------------------ DIGITAL PRODUCTION SET */
 
 function SaasMock() {
+  const tenants = [
+    { n: "Nordwind GmbH", plan: "Scale", seats: "240", mrr: "$6.4k", state: "live", tone: "emerald" as const },
+    { n: "Kavo Retail", plan: "Growth", seats: "118", mrr: "$2.9k", state: "live", tone: "emerald" as const },
+    { n: "Atelier 9", plan: "Starter", seats: "34", mrr: "$890", state: "trial", tone: "warm" as const },
+    { n: "Mira Logistics", plan: "Scale", seats: "186", mrr: "$4.2k", state: "live", tone: "emerald" as const },
+  ];
   return (
-    <div className="h-full bg-ink-3/30 p-3 text-paper">
-      <div className="flex items-center justify-between">
-        <span className="font-display text-[11px] font-semibold">Operational console</span>
-        <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[8px] text-muted">
-          multi-tenant
+    <div className="flex h-full flex-col gap-2 overflow-hidden bg-ink-3/30 p-3 text-paper">
+      {/* Toolbar: console identity + section tabs */}
+      <div className="flex items-center gap-2">
+        <span className="font-display text-[11px] font-semibold whitespace-nowrap">
+          Operational console
+        </span>
+        <span className="ml-auto flex items-center gap-0.5 rounded-full border border-line/70 bg-ink-2 p-0.5">
+          {["overview", "tenants", "billing", "audit"].map((tab, i) => (
+            <span
+              key={tab}
+              className={`rounded-full px-2 py-[3px] font-mono text-[8px] whitespace-nowrap ${
+                i === 0 ? "bg-mark font-semibold text-mark-ink" : "text-muted"
+              }`}
+            >
+              {tab}
+            </span>
+          ))}
         </span>
       </div>
-      <div className="mt-2 grid grid-cols-3 gap-2">
+
+      {/* KPI strip: value, delta chip and a micro trend line */}
+      <div className="grid grid-cols-4 gap-1.5">
         {[
-          { k: "MRR", v: <LiveNumber value={24.8} decimals={1} prefix="$" suffix="k" /> },
-          { k: "Active seats", v: <LiveNumber value={1284} /> },
-          { k: "Uptime", v: <LiveNumber value={99.98} decimals={2} suffix="%" /> },
-        ].map(({ k, v }) => (
-          <div key={k} className="rounded-lg border border-line/70 bg-ink-2 p-2">
-            <p className="font-mono text-[8px] text-muted">{k}</p>
-            <p className="font-display text-sm font-semibold">{v}</p>
+          {
+            k: "MRR",
+            v: <LiveNumber value={24.8} decimals={1} prefix="$" suffix="k" />,
+            d: "+8.2%",
+            tone: "emerald" as const,
+            spark: [18, 22, 20, 27, 25, 32, 30, 38],
+          },
+          {
+            k: "Active seats",
+            v: <LiveNumber value={1284} />,
+            d: "+64",
+            tone: "emerald" as const,
+            spark: [12, 15, 14, 19, 23, 21, 27, 31],
+          },
+          {
+            k: "Uptime",
+            v: <LiveNumber value={99.98} decimals={2} suffix="%" />,
+            d: "SLA",
+            tone: "mark" as const,
+            spark: [30, 29, 30, 28, 30, 30, 29, 30],
+          },
+          {
+            k: "Churn",
+            v: <LiveNumber value={0.8} decimals={1} suffix="%" />,
+            d: "−0.2",
+            tone: "warm" as const,
+            spark: [27, 25, 26, 22, 19, 20, 16, 13],
+          },
+        ].map(({ k, v, d, tone, spark }, i) => (
+          <div
+            key={k}
+            className="rounded-lg border border-line/70 bg-ink-2 px-2 py-1 transition-colors hover:border-line-strong"
+            style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
+          >
+            <p className="font-mono text-[7px] tracking-wide text-muted">{k}</p>
+            <p className="font-display text-[12px] leading-tight font-semibold">{v}</p>
+            <div className="mt-0.5 flex items-center justify-between gap-1">
+              <Pill tone={tone}>{d}</Pill>
+              <Spark points={spark} className="h-3.5 w-8 shrink-0" />
+            </div>
           </div>
         ))}
       </div>
-      <div className="mt-2 grid grid-cols-[1.6fr_1fr] gap-2">
-        <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
-          <p className="mb-1.5 font-mono text-[8px] text-muted">USAGE · 12w</p>
-          <div className="flex h-20 items-end gap-1.5">
-            {[30, 42, 38, 55, 62, 58, 74, 70, 84, 79, 92, 88].map((h, i) => (
-              <Bar key={i} h={h} delay={i * 55} />
+
+      {/* Body: usage + tenants on the left, platform health rail on the right */}
+      <div className="grid min-h-0 flex-1 grid-cols-[1.6fr_1fr] gap-2">
+        <div className="flex min-h-0 flex-col gap-2">
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border border-line/70 bg-ink-2 p-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[7px] tracking-wide text-muted">
+                USAGE · API CALLS / WEEK
+              </span>
+              <span className="flex items-center gap-1 font-mono text-[7px] text-mark">
+                <Dot tone="emerald" /> live
+              </span>
+            </div>
+            <div className="mt-1.5 flex min-h-0 flex-1 items-end justify-between gap-1 overflow-hidden">
+              {[30, 42, 38, 55, 62, 58, 74, 70, 84, 79, 92, 88].map((h, i) => (
+                <Bar key={i} h={h} delay={i * 55} />
+              ))}
+            </div>
+            <div className="mt-1 flex justify-between font-mono text-[7px] text-muted">
+              <span>W1</span>
+              <span>W6</span>
+              <span>W12</span>
+            </div>
+          </div>
+
+          <div className="shrink-0 overflow-hidden rounded-lg border border-line/70 bg-ink-2">
+            <div className="grid grid-cols-[1.6fr_0.8fr_0.55fr_0.7fr_0.6fr] items-center gap-1 border-b border-line/70 px-2.5 py-1 font-mono text-[7px] tracking-wide text-muted">
+              <span>WORKSPACE</span>
+              <span>PLAN</span>
+              <span className="text-right">SEATS</span>
+              <span className="text-right">MRR</span>
+              <span className="text-right">STATE</span>
+            </div>
+            {tenants.map((t, i) => (
+              <div
+                key={t.n}
+                className="group/row grid grid-cols-[1.6fr_0.8fr_0.55fr_0.7fr_0.6fr] items-center gap-1 border-b border-line/40 px-2.5 py-1.5 text-[9px] transition-colors last:border-b-0 hover:bg-ink-3/60"
+                style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
+              >
+                <span className="flex min-w-0 items-center gap-1.5">
+                  <Dot tone={t.tone === "emerald" ? "emerald" : "warm"} />
+                  <span className="truncate transition-colors group-hover/row:text-mark">
+                    {t.n}
+                  </span>
+                </span>
+                <span className="font-mono text-[8px] text-muted">{t.plan}</span>
+                <span className="text-right font-mono text-[8px]">{t.seats}</span>
+                <span className="text-right font-mono text-[8px]">{t.mrr}</span>
+                <span className="flex justify-end">
+                  <Pill tone={t.tone}>{t.state}</Pill>
+                </span>
+              </div>
             ))}
           </div>
         </div>
-        <div className="space-y-1">
+
+        <div className="flex min-h-0 flex-col gap-1">
           <Line label="API latency" value="112ms" />
           <Line label="Error rate" value="0.02%" tone="emerald" />
-          <Line label="Deploys / d" value="6" tone="warm" />
-          <div className="rounded-md border border-line/70 bg-ink-2 p-2">
-            <p className="font-mono text-[8px] text-muted">ROLES</p>
-            <div className="mt-1 flex gap-1">
-              {["admin", "ops", "client"].map((r) => (
-                <span key={r} className="rounded bg-ink-3 px-1.5 py-0.5 font-mono text-[8px] text-muted">
+          <Line label="Deploys / day" value="6" tone="warm" />
+          <div className="shrink-0 rounded-md border border-line/70 bg-ink-2 px-2 py-1.5">
+            <p className="font-mono text-[7px] tracking-wide text-muted">ROLES</p>
+            <div className="mt-1 flex flex-wrap gap-1">
+              {["owner", "admin", "ops", "client"].map((r) => (
+                <span
+                  key={r}
+                  className="rounded bg-ink-3 px-1.5 py-0.5 font-mono text-[7px] text-muted"
+                >
                   {r}
                 </span>
               ))}
             </div>
           </div>
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-md border border-line/70 bg-ink-2 px-2 py-1.5">
+            <p className="font-mono text-[7px] tracking-wide text-muted">RECENT DEPLOYS</p>
+            <div className="mt-1 space-y-1">
+              {[
+                ["v2.4.1", "12m", "emerald"],
+                ["v2.4.0", "2h", "emerald"],
+                ["v2.3.9", "1d", "warm"],
+              ].map(([tag, ago, tone]) => (
+                <div key={tag} className="flex items-center gap-1.5 font-mono text-[7px]">
+                  <Dot tone={tone === "emerald" ? "emerald" : "warm"} />
+                  <span className="text-paper/85">{tag}</span>
+                  <span className="ml-auto text-muted">{ago}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Compliance footer */}
+      <div className="flex items-center justify-between gap-2 rounded-lg border border-line/70 bg-ink-2 px-2.5 py-1.5">
+        <span className="truncate font-mono text-[7px] text-muted">
+          SSO · SCIM · audit log · webhooks
+        </span>
+        <span className="flex shrink-0 items-center gap-2 font-mono text-[7px]">
+          <span className="text-muted">region eu-central</span>
+          <span className="flex items-center gap-1 font-semibold text-emerald-700">
+            <Dot tone="emerald" /> SOC 2 ready
+          </span>
+        </span>
       </div>
     </div>
   );
 }
 
 function PortalMock() {
-  const rows = [
-    ["#1042", "In production", "$12,480"],
-    ["#1041", "Quote sent", "$3,920"],
-    ["#1038", "Approved", "$8,140"],
-    ["#1035", "Delivered", "$1,260"],
+  const orders = [
+    {
+      id: "#1042",
+      stage: "In production",
+      progress: 0.72,
+      eta: "12 Mar",
+      value: "$12,480",
+      state: "on track",
+      tone: "emerald" as const,
+    },
+    {
+      id: "#1041",
+      stage: "Quote sent",
+      progress: 0.34,
+      eta: "awaiting",
+      value: "$3,920",
+      state: "approval",
+      tone: "warm" as const,
+    },
+    {
+      id: "#1038",
+      stage: "Approved",
+      progress: 0.55,
+      eta: "18 Mar",
+      value: "$8,140",
+      state: "scheduled",
+      tone: "mark" as const,
+    },
+    {
+      id: "#1035",
+      stage: "Delivered",
+      progress: 1,
+      eta: "done",
+      value: "$1,260",
+      state: "closed",
+      tone: "emerald" as const,
+    },
   ];
   return (
-    <div className="h-full bg-ink-3/30 p-3 text-paper">
-      <div className="flex items-center justify-between">
-        <span className="font-display text-[11px] font-semibold">Client workspace</span>
-        <span className="font-mono text-[8px] text-muted">orders & quotes</span>
+    <div className="flex h-full flex-col gap-2 overflow-hidden bg-ink-3/30 p-3 text-paper">
+      {/* Toolbar: workspace + account switcher */}
+      <div className="flex items-center gap-2">
+        <span className="font-display text-[11px] font-semibold whitespace-nowrap">
+          Client workspace
+        </span>
+        <span className="ml-auto flex items-center gap-1 rounded-full border border-line/70 bg-ink-2 px-2 py-[3px] font-mono text-[8px] text-paper">
+          <span className="h-3.5 w-3.5 place-items-center rounded-full bg-mark text-center text-[7px] leading-[14px] text-mark-ink">
+            A
+          </span>
+          Atelier Nord
+          <span className="text-muted">▾</span>
+        </span>
       </div>
-      <div className="mt-2 overflow-hidden rounded-lg border border-line/70 bg-ink-2">
-        <div className="grid grid-cols-[1fr_1.4fr_1fr] border-b border-line/70 px-3 py-1.5 font-mono text-[8px] text-muted">
-          <span>ORDER</span>
-          <span>STATUS</span>
-          <span className="text-right">VALUE</span>
-        </div>
-        {rows.map((r, i) => (
+
+      {/* KPI strip */}
+      <div className="grid grid-cols-4 gap-1.5">
+        {[
+          {
+            k: "Open orders",
+            v: <LiveNumber value={12} />,
+            d: "3 due",
+            tone: "warm" as const,
+            spark: [14, 18, 16, 22, 20, 25, 23, 28],
+          },
+          {
+            k: "Awaiting approval",
+            v: <LiveNumber value={3} />,
+            d: "action",
+            tone: "warm" as const,
+            spark: [24, 22, 26, 20, 22, 17, 19, 15],
+          },
+          {
+            k: "Avg. cycle",
+            v: <LiveNumber value={4.2} decimals={1} suffix=" d" />,
+            d: "−0.6",
+            tone: "emerald" as const,
+            spark: [28, 26, 27, 23, 21, 20, 17, 14],
+          },
+          {
+            k: "On-time",
+            v: <LiveNumber value={96} suffix="%" />,
+            d: "+2.1",
+            tone: "emerald" as const,
+            spark: [16, 19, 18, 23, 25, 24, 28, 30],
+          },
+        ].map(({ k, v, d, tone, spark }, i) => (
           <div
-            key={r[0]}
-            className="grid grid-cols-[1fr_1.4fr_1fr] items-center border-b border-line/40 px-3 py-2 text-[10px]"
-            style={{ "--reveal-delay": `${i * 80}ms` } as CSSProperties}
+            key={k}
+            className="rounded-lg border border-line/70 bg-ink-2 px-2 py-1 transition-colors hover:border-line-strong"
+            style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
           >
-            <span className="font-mono text-muted">{r[0]}</span>
-            <span className="flex items-center gap-1.5">
-              <Dot tone={i < 2 ? "warm" : "emerald"} />
-              {r[1]}
-            </span>
-            <span className="text-right font-mono">{r[2]}</span>
+            <p className="truncate font-mono text-[7px] tracking-wide text-muted">{k}</p>
+            <p className="font-display text-[12px] leading-tight font-semibold">{v}</p>
+            <div className="mt-0.5 flex items-center justify-between gap-1">
+              <Pill tone={tone}>{d}</Pill>
+              <Spark points={spark} className="h-3.5 w-8 shrink-0" />
+            </div>
           </div>
         ))}
       </div>
-      <div className="mt-2 grid grid-cols-3 gap-2">
-        <div className="col-span-2 rounded-lg border border-line/70 bg-ink-2 p-2">
-          <p className="mb-1 font-mono text-[8px] text-muted">QUOTE VOLUME</p>
-          <div className="flex h-12 items-end gap-1">
-            {[40, 52, 48, 66, 72, 90].map((h, i) => (
+
+      {/* Orders: stage progress + value, mirrors the shop card grid */}
+      <div className="overflow-hidden rounded-lg border border-line/70 bg-ink-2">
+        <div className="grid grid-cols-[0.6fr_1.5fr_0.6fr_0.7fr_0.7fr] items-center gap-1 border-b border-line/70 px-2.5 py-1 font-mono text-[7px] tracking-wide text-muted">
+          <span>ORDER</span>
+          <span>STAGE</span>
+          <span className="text-right">ETA</span>
+          <span className="text-right">VALUE</span>
+          <span className="text-right">STATE</span>
+        </div>
+        {orders.map((o, i) => (
+          <div
+            key={o.id}
+            className="group/row grid grid-cols-[0.6fr_1.5fr_0.6fr_0.7fr_0.7fr] items-center gap-1 border-b border-line/40 px-2.5 py-1.5 text-[9px] transition-colors last:border-b-0 hover:bg-ink-3/60"
+            style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
+          >
+            <span className="font-mono text-[8px] text-muted transition-colors group-hover/row:text-mark">
+              {o.id}
+            </span>
+            <span className="min-w-0">
+              <span className="flex items-center gap-1.5">
+                <Dot tone={o.tone === "emerald" ? "emerald" : "warm"} />
+                <span className="truncate">{o.stage}</span>
+              </span>
+              <span className="mt-1 block h-[3px] overflow-hidden rounded-full bg-ink-3">
+                <span
+                  className="ui-grow block h-full rounded-full bg-gradient-to-r from-mark/70 to-mark"
+                  style={
+                    {
+                      width: `${o.progress * 100}%`,
+                      "--bar-delay": `${i * 90}ms`,
+                    } as CSSProperties
+                  }
+                />
+              </span>
+            </span>
+            <span className="text-right font-mono text-[8px] text-muted">{o.eta}</span>
+            <span className="text-right font-mono text-[8px] font-semibold">{o.value}</span>
+            <span className="flex justify-end">
+              <Pill tone={o.tone}>{o.state}</Pill>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Quote volume + document pack + integration sync */}
+      <div className="grid min-h-0 flex-1 grid-cols-[1fr_1fr_0.85fr] gap-2">
+        <div className="flex min-h-0 flex-col overflow-hidden rounded-lg border border-line/70 bg-ink-2 p-2">
+          <span className="font-mono text-[7px] tracking-wide text-muted">QUOTE VOLUME</span>
+          <div className="mt-1.5 flex min-h-0 flex-1 items-end justify-between gap-1 overflow-hidden">
+            {[40, 52, 48, 66, 72, 90, 78, 84].map((h, i) => (
               <Bar key={i} h={h} delay={i * 80} />
             ))}
           </div>
         </div>
         <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
-          <p className="font-mono text-[8px] text-muted">1C / CRM</p>
-          <p className="mt-1 font-mono text-[9px] text-mark">synced</p>
+          <span className="font-mono text-[7px] tracking-wide text-muted">DOCUMENTS</span>
+          <div className="mt-1 space-y-1">
+            {[
+              ["Spec sheet", "PDF", true],
+              ["Commercial offer", "PDF", true],
+              ["Invoice #1042", "1C", false],
+            ].map(([label, tag, done]) => (
+              <div key={label as string} className="flex items-center justify-between gap-1">
+                <span className="flex min-w-0 items-center gap-1 font-mono text-[7px] text-paper/85">
+                  <span className={done ? "text-mark" : "text-muted"}>{done ? "✓" : "○"}</span>
+                  <span className="truncate">{label as string}</span>
+                </span>
+                <span className="shrink-0 rounded bg-ink-3 px-1 font-mono text-[7px] text-muted">
+                  {tag as string}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
+            <p className="font-mono text-[7px] tracking-wide text-muted">SYNC</p>
+            <div className="mt-1 space-y-1">
+              {["1C:Enterprise", "CRM pipeline", "Payments"].map((s, i) => (
+                <div key={s} className="flex items-center gap-1 font-mono text-[7px] text-muted">
+                  <Dot tone={i === 1 ? "warm" : "emerald"} />
+                  <span className="truncate">{s}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col justify-center rounded-lg border border-mark/25 bg-mark/5 px-2 py-1.5">
+            <p className="font-mono text-[7px] text-mark">NEXT MILESTONE</p>
+            <p className="font-mono text-[8px] text-paper">Delivery · 12 Mar</p>
+          </div>
         </div>
       </div>
     </div>
@@ -608,14 +979,9 @@ function EcommerceMock() {
 
       <div className="mt-2 flex gap-1.5">
         {["Все", "Мебель", "Свет", "Аксессуары"].map((t, i) => (
-          <span
-            key={t}
-            className={`rounded-full px-2 py-0.5 font-mono text-[8px] ${
-              i === 0 ? "bg-mark text-mark-ink" : "border border-line/70 text-muted"
-            }`}
-          >
+          <Chip key={t} active={i === 0}>
             {t}
-          </span>
+          </Chip>
         ))}
       </div>
 
@@ -669,7 +1035,7 @@ function AiEngineMock() {
       <div className="mt-2 grid grid-cols-[1.3fr_1fr] gap-2">
         <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
           <p className="font-mono text-[8px] text-muted">TOKENS / MIN</p>
-          <div className="mt-1 flex h-16 items-end gap-1">
+          <div className="mt-1 flex h-16 items-end justify-between gap-1">
             {[35, 48, 60, 44, 72, 88, 66, 94].map((h, i) => (
               <Bar key={i} h={h} delay={i * 70} />
             ))}
@@ -720,14 +1086,16 @@ export function ProductUI({
   variant,
   className = "",
   ratio,
+  peek,
 }: {
   variant: ProductVariant;
   className?: string;
   ratio?: string;
+  peek?: boolean;
 }) {
   const Body = MAP[variant];
   return (
-    <UIFrame url={URL_MAP[variant]} className={className} ratio={ratio}>
+    <UIFrame url={URL_MAP[variant]} className={className} ratio={ratio} peek={peek}>
       <Body />
     </UIFrame>
   );

@@ -402,6 +402,149 @@ main {
 .marquee-track { animation: am-marquee 34s linear infinite; }
 .marquee-track.reverse { animation-direction: reverse; }
 
+/* Full-bleed capability band: large display type, pauses on hover */
+.marquee-host:hover .marquee-track { animation-play-state: paused; }
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--paper) 42%, transparent);
+}
+
+/* ============================================================
+   ROUTE CURTAIN
+   A separate fixed layer (never a wrapper) so its transform cannot
+   become a containing block for sticky sections inside the page.
+   ============================================================ */
+
+.route-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  visibility: hidden;
+  background: var(--paper);
+  transform: translate3d(0, -101%, 0);
+}
+
+.route-curtain::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mark), var(--mark-light), var(--warm));
+}
+
+.route-curtain-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.route-curtain.is-wiping {
+  visibility: visible;
+  animation: am-curtain 720ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.route-curtain.is-wiping .route-curtain-mark {
+  animation: am-curtain-mark 720ms ease both;
+}
+
+@keyframes am-curtain {
+  0% { transform: translate3d(0, -101%, 0); }
+  42% { transform: translate3d(0, 0, 0); }
+  54% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, 101%, 0); }
+}
+
+@keyframes am-curtain-mark {
+  0%, 26% { opacity: 0; }
+  42%, 52% { opacity: 0.5; }
+  68%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   CATALOG PREVIEW — "peek" viewport
+   Product mocks are authored taller than a catalog card, so the
+   crop is made deliberate: the lower edge dissolves into the card
+   and the surface eases up when the host card is hovered.
+   ============================================================ */
+
+.peek-frame {
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 5%, #000 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 5%,
+    #000 72%,
+    transparent 100%
+  );
+  transition: mask-image 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.peek-body {
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.peek-host:hover .peek-frame,
+.peek-host:focus-within .peek-frame {
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 72%,
+    transparent 100%
+  );
+}
+
+.peek-host:hover .peek-body,
+.peek-host:focus-within .peek-body {
+  transform: translate3d(0, -19%, 0);
+}
+
+/* Card chrome shared by catalog cards: accent rail + arrow nudge */
+.catalog-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.catalog-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(90deg, var(--mark), var(--warm));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-card:hover::before,
+.catalog-card:focus-within::before {
+  transform: scaleX(1);
+}
+
+.catalog-card .catalog-cta-arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-card:hover .catalog-cta-arrow {
+  transform: translateX(4px);
+}
+
 @media print {
   [data-reveal] {
     opacity: 1 !important;
@@ -438,7 +581,25 @@ main {
   .pulse-ring::after {
     animation: none !important;
   }
+  .marquee-host:hover .marquee-track { animation-play-state: running; }
+  .route-curtain.is-wiping { animation: none !important; visibility: hidden; }
+  .route-curtain.is-wiping .route-curtain-mark { animation: none !important; }
   .ui-bar { transform: scaleY(var(--h, 0.6)); }
   .ui-grow { transform: scaleX(1); }
   .flow-line { stroke-dashoffset: 0; }
+  .peek-body { transition: none !important; }
+  .peek-host:hover .peek-body,
+  .peek-host:focus-within .peek-body { transform: none; }
+  .peek-frame,
+  .peek-host:hover .peek-frame {
+    transition: none !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 5%, #000 72%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 5%,
+      #000 72%,
+      transparent 100%
+    );
+  }
 }

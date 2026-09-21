@@ -172,7 +172,10 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
 
           {/* Proprietary UI preview */}
           <div data-reveal="scale">
-            <ProductUI variant={current.mock} ratio="aspect-[16/11]" />
+            <ProductUI
+              variant={current.mock}
+              ratio="h-[380px] sm:h-[390px] lg:h-[400px]"
+            />
           </div>
         </div>
       </div>

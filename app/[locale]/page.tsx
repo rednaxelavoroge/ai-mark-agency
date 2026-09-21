@@ -9,6 +9,7 @@ import { HeroSystem } from "@/components/HeroSystem";
 import { IdeaToBusiness } from "@/components/IdeaToBusiness";
 import { BusinessCreationVisual } from "@/components/BusinessCreationVisual";
 import { DigitalProductionShowcase } from "@/components/DigitalProductionShowcase";
+import { CapabilityBand } from "@/components/CapabilityBand";
 import { AIProductsShowcase } from "@/components/AIProductsShowcase";
 import { OperatingModelSection } from "@/components/OperatingModelSection";
 import { Manifesto } from "@/components/Manifesto";
@@ -75,8 +76,11 @@ export default async function HomePage({ params }: Props) {
       {/* 2. PINNED NARRATIVE: IDEA → WORKING BUSINESS */}
       <IdeaToBusiness locale={locale} />
 
+      {/* 2b. FULL-BLEED CAPABILITY BAND */}
+      <CapabilityBand locale={locale} />
+
       {/* 3. WHAT WE DO: 5-PART CONNECTED OPERATING CONTOUR */}
-      <Section id="what-we-do" eyebrow={t.pillars.eyebrow} title={t.pillars.title}>
+      <Section id="what-we-do" index="01" eyebrow={t.pillars.eyebrow} title={t.pillars.title}>
         <div className="space-y-6">
           <p className="max-w-2xl text-muted text-sm sm:text-base">
             {isRu
@@ -114,6 +118,7 @@ export default async function HomePage({ params }: Props) {
       {/* 3. BUSINESS CREATION */}
       <Section
         id="business-creation"
+        index="02"
         eyebrow={t.creation.eyebrow}
         title={t.creation.title}
         lead={t.creation.lead}
@@ -122,7 +127,7 @@ export default async function HomePage({ params }: Props) {
       </Section>
 
       {/* 4. END-TO-END BUSINESS PATH (PIPELINE) */}
-      <Section id="pipeline" eyebrow={t.pipeline.eyebrow} title={t.pipeline.title}>
+      <Section id="pipeline" index="03" eyebrow={t.pipeline.eyebrow} title={t.pipeline.title}>
         <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 shadow-sm">
           <p className="text-xs font-mono text-warm uppercase tracking-widest mb-4">
             {isRu ? "Сквозная операционная цепочка" : "End-to-End Operational Pipeline"}
@@ -134,15 +139,23 @@ export default async function HomePage({ params }: Props) {
       {/* 5. DIGITAL PRODUCTION */}
       <Section
         id="production"
+        index="04"
         eyebrow={t.production.eyebrow}
         title={t.production.title}
         lead={t.production.lead}
+        width="wide"
       >
         <DigitalProductionShowcase locale={locale} />
       </Section>
 
       {/* 6. AI PRODUCTS */}
-      <Section id="products" eyebrow={t.tech.eyebrow} title={t.tech.title} lead={t.tech.lead}>
+      <Section
+        id="products"
+        index="05"
+        eyebrow={t.tech.eyebrow}
+        title={t.tech.title}
+        lead={t.tech.lead}
+      >
         <AIProductsShowcase locale={locale} />
       </Section>
 
@@ -203,6 +216,7 @@ export default async function HomePage({ params }: Props) {
       {/* 8. COMMERCIAL MODEL */}
       <Section
         id="commercial"
+        index="06"
         eyebrow={t.commercial.eyebrow}
         title={t.commercial.title}
         lead={t.commercial.lead}
@@ -304,6 +318,7 @@ export default async function HomePage({ params }: Props) {
       {/* 9. PARTNER NETWORK */}
       <Section
         id="partners"
+        index="07"
         eyebrow={t.partners.eyebrow}
         title={t.partners.title}
         lead={t.partners.lead}
@@ -312,7 +327,7 @@ export default async function HomePage({ params }: Props) {
       </Section>
 
       {/* 10. WHY NOW */}
-      <Section id="why-now" eyebrow={t.why.eyebrow} title={t.why.title} lead={t.why.lead}>
+      <Section id="why-now" index="08" eyebrow={t.why.eyebrow} title={t.why.title} lead={t.why.lead}>
         <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
           <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal>
             <span className="font-mono text-xs font-semibold tracking-wider text-muted uppercase">
@@ -356,6 +371,7 @@ export default async function HomePage({ params }: Props) {
       {/* 11. INVESTORS SECTION */}
       <Section
         id="investors"
+        index="09"
         eyebrow={t.investors.eyebrow}
         title={t.investors.title}
         lead={t.investors.lead}
@@ -364,7 +380,7 @@ export default async function HomePage({ params }: Props) {
       </Section>
 
       {/* 12. DIRECT CONTACT / CTA */}
-      <Section id="contact" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
+      <Section id="contact" index="10" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <ContactForm t={t.contact} />
           <aside className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 text-sm text-muted space-y-6">

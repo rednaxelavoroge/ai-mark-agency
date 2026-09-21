@@ -6,6 +6,7 @@ import { HtmlLang } from "@/components/HtmlLang";
 import { JsonLd } from "@/components/JsonLd";
 import { MotionRoot, ScrollProgress } from "@/components/Motion";
 import { PageTransition } from "@/components/PageTransition";
+import { RouteCurtain } from "@/components/RouteCurtain";
 import { AssistantWidget } from "@/components/AssistantWidget";
 import { isLocale, site, type Locale } from "@/lib/site";
 
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
       <div className="grain-overlay" aria-hidden />
       <MotionRoot />
       <ScrollProgress />
+      <RouteCurtain />
       <Header locale={locale} t={t} />
       <main className="flex-1">
         <PageTransition>{children}</PageTransition>
