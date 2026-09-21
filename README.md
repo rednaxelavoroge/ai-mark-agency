@@ -42,6 +42,8 @@ Packages:
 
 Tools mentioned as agency delivery (not a cloned product hub): AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Soft USD list prices and full SKUs live on [alex-dev.pro/{locale}/products](https://www.alex-dev.pro/en/products). The landing shows three equal cards plus a B2B strip for agencies that want AIME Agency/License themselves.
 
+**Channels & growth** is a service block (not extra SKUs): Ads → Landing/CRO → Content (AIME) → Inbox (BA) → Offer (Showroom) → Analytics, plus honest channel readiness (Meta live; ads/YouTube/PR/email as retainer lines; reputation later).
+
 ## Vercel
 
 1. Import this GitHub repo.

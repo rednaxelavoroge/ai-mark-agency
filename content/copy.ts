@@ -45,6 +45,21 @@ export type Copy = {
     body: string;
     cta: string;
   };
+  channels: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    loopTitle: string;
+    loop: { title: string; note: string }[];
+    linesTitle: string;
+    status: { live: string; service: string; later: string };
+    footnote: string;
+    lines: {
+      status: "live" | "service" | "later";
+      name: string;
+      body: string;
+    }[];
+  };
   model: {
     eyebrow: string;
     title: string;
@@ -156,9 +171,9 @@ export const copy: Record<Locale, Copy> = {
     nav: {
       items: [
         { href: "#tools", label: "Tools" },
+        { href: "#channels", label: "Channels" },
         { href: "#how", label: "How it works" },
         { href: "#packages", label: "Packages" },
-        { href: "#compare", label: "Compare" },
         { href: "#partners", label: "Partners" },
       ],
       cta: "Start a brief",
@@ -218,6 +233,60 @@ export const copy: Record<Locale, Copy> = {
       title: "Autonomous toolkit for agencies",
       body: "Already a marketing shop and want the stack yourselves — AIME multi-client (Agency setup + per-client MRR) or a License buy-in? That path lives on AlexDev. AI Mark Agency stays the service company.",
       cta: "Agency / License on AlexDev",
+    },
+    channels: {
+      eyebrow: "Channels & growth",
+      title: "One growth loop. Extra channels are retainer lines — not new products.",
+      lead: "Ads → landing → content → inbox → offer → analytics. AIME, AI Business Assistant, and Showroom sit in that loop. Other channels can be included in a retainer by scope. We do not sell a PR-Agent or a YouTube-Agent SKU.",
+      loopTitle: "Full growth loop",
+      loop: [
+        { title: "Ads", note: "Traffic in" },
+        { title: "Landing / CRO", note: "The page that must convert" },
+        { title: "Content (AIME)", note: "Research → publish" },
+        { title: "Inbox (BA)", note: "Qualify + handoff" },
+        { title: "Offer (Showroom)", note: "Quote / spec / PDF" },
+        { title: "Analytics", note: "Back into the loop" },
+      ],
+      linesTitle: "Channel lines — honest readiness",
+      status: {
+        live: "Phase 1 · live",
+        service: "Service line",
+        later: "Later / optional",
+      },
+      footnote:
+        "Retainers can include these lines when the offer needs them. Soft claims only — no promised CAC, ROAS, or rankings.",
+      lines: [
+        {
+          status: "live",
+          name: "Meta / Instagram / Facebook",
+          body: "Primary. Phase 1 is live. Organic path with human approval. Starter is Instagram-first; Growth is full Meta.",
+        },
+        {
+          status: "service",
+          name: "Ads / performance",
+          body: "Strategy and creatives with AI support. Campaigns sit in the client’s ad account. A human launches. Media spend is yours.",
+        },
+        {
+          status: "service",
+          name: "YouTube / short video",
+          body: "Scripts, covers, and subtitles with AI. Edit and voice are semi-auto. Not a one-click publisher and not a YouTube product SKU.",
+        },
+        {
+          status: "service",
+          name: "PR / articles / SEO-GEO",
+          body: "Brief → draft → edit → publish, same HITL as content. A retainer line when needed — not a separate PR-Agent.",
+        },
+        {
+          status: "service",
+          name: "Email / reactivation",
+          body: "Sequences for people already in the loop. Added by scope, not a default second inbox product.",
+        },
+        {
+          status: "later",
+          name: "Reputation / reviews",
+          body: "Later / optional. We do not pretend review-ops is Phase 1.",
+        },
+      ],
     },
     model: {
       eyebrow: "How the company is built",
@@ -469,9 +538,9 @@ export const copy: Record<Locale, Copy> = {
     nav: {
       items: [
         { href: "#tools", label: "Инструменты" },
+        { href: "#channels", label: "Каналы" },
         { href: "#how", label: "Как работаем" },
         { href: "#packages", label: "Пакеты" },
-        { href: "#compare", label: "Сравнение" },
         { href: "#partners", label: "Партнёры" },
       ],
       cta: "Оставить бриф",
@@ -532,6 +601,60 @@ export const copy: Record<Locale, Copy> = {
       title: "Autonomous toolkit for agencies",
       body: "Уже маркетинговое агентство и хотите стек себе — AIME multi-client (Agency setup + MRR за клиента) или License? Этот путь на AlexDev. AI Mark Agency остаётся сервисной компанией.",
       cta: "Agency / License на AlexDev",
+    },
+    channels: {
+      eyebrow: "Каналы и рост",
+      title: "Один цикл роста. Доп. каналы — линии ретейнера, не новые продукты.",
+      lead: "Реклама → лендинг → контент → inbox → оффер → аналитика. В цикле сидят AIME, AI Business Assistant и Showroom. Остальные каналы можно включить в ретейнер по скоупу. Отдельных SKU «PR-Agent» или «YouTube-Agent» мы не продаём.",
+      loopTitle: "Полный цикл роста",
+      loop: [
+        { title: "Реклама", note: "Трафик в систему" },
+        { title: "Лендинг / CRO", note: "Страница, которая должна конвертить" },
+        { title: "Контент (AIME)", note: "Исследование → публикация" },
+        { title: "Inbox (BA)", note: "Квалификация + handoff" },
+        { title: "Оффер (Showroom)", note: "Котировка / спецификация / PDF" },
+        { title: "Аналитика", note: "Обратно в цикл" },
+      ],
+      linesTitle: "Линии каналов — честная готовность",
+      status: {
+        live: "Фаза 1 · live",
+        service: "Линия услуги",
+        later: "Позже / опционально",
+      },
+      footnote:
+        "Эти линии можно включить в ретейнер, если офферу это нужно. Только мягкие формулировки — без обещанного CAC, ROAS или позиций.",
+      lines: [
+        {
+          status: "live",
+          name: "Meta / Instagram / Facebook",
+          body: "Основной канал. Фаза 1 в работе. Органика с апрувом человека. Starter — Instagram-first; Growth — полная Meta.",
+        },
+        {
+          status: "service",
+          name: "Реклама / performance",
+          body: "Стратегия и креативы с поддержкой AI. Кабинеты клиента. Запуск — человек. Медиабюджет — ваш.",
+        },
+        {
+          status: "service",
+          name: "YouTube / короткий видео",
+          body: "Сценарии, обложки, субтитры с AI. Монтаж и голос — полуавтомат. Не кнопка «опубликовать» и не отдельный YouTube-продукт.",
+        },
+        {
+          status: "service",
+          name: "PR / статьи / SEO-GEO",
+          body: "Бриф → черновик → редактура → публикация, тот же HITL. Линия ретейнера по задаче — не отдельный PR-Agent.",
+        },
+        {
+          status: "service",
+          name: "Email / реактивация",
+          body: "Цепочки для тех, кто уже в контуре. Подключается скоупом, не вторым inbox-продуктом.",
+        },
+        {
+          status: "later",
+          name: "Репутация / отзывы",
+          body: "Позже / опционально. Не делаем вид, что review-ops — это фаза 1.",
+        },
+      ],
     },
     model: {
       eyebrow: "Как устроена компания",

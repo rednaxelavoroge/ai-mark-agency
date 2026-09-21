@@ -173,6 +173,58 @@ export default async function HomePage({ params }: Props) {
         </div>
       </aside>
 
+      <Section
+        id="channels"
+        eyebrow={t.channels.eyebrow}
+        title={t.channels.title}
+        lead={t.channels.lead}
+      >
+        <h3 className="font-display text-lg">{t.channels.loopTitle}</h3>
+        <ol className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-6">
+          {t.channels.loop.map((step, i) => (
+            <li
+              key={step.title}
+              className="relative rounded-xl border border-line bg-ink-2 p-4"
+            >
+              <p className="font-mono text-xs text-mark">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="mt-2 font-display text-base leading-snug">{step.title}</p>
+              <p className="mt-1 text-xs text-muted">{step.note}</p>
+              {i < t.channels.loop.length - 1 ? (
+                <span className="pointer-events-none absolute top-1/2 -right-2 hidden text-mark lg:block">
+                  →
+                </span>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+        <h3 className="mt-12 font-display text-lg">{t.channels.linesTitle}</h3>
+        <ul className="mt-4 grid gap-3 md:grid-cols-2">
+          {t.channels.lines.map((line) => (
+            <li
+              key={line.name}
+              className="rounded-xl border border-line bg-ink-2 p-5"
+            >
+              <p
+                className={`inline-block rounded-full border px-2 py-0.5 text-xs ${
+                  line.status === "live"
+                    ? "border-mark text-mark"
+                    : line.status === "later"
+                      ? "border-line text-muted"
+                      : "border-line text-paper/80"
+                }`}
+              >
+                {t.channels.status[line.status]}
+              </p>
+              <h4 className="mt-3 font-display text-lg">{line.name}</h4>
+              <p className="mt-2 text-sm text-muted">{line.body}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm text-muted">{t.channels.footnote}</p>
+      </Section>
+
       <Section id="model" eyebrow={t.model.eyebrow} title={t.model.title} lead={t.model.lead}>
         <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
           {t.model.chain.map((step, i) => (
