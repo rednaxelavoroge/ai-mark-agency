@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 230" role="img" aria-label="AI MARK — AI-NATIVE VENTURE &amp; MARKETING">
+  <defs>
+  <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FFB347"/>
+    <stop offset="100%" stop-color="#E87916"/>
+  </linearGradient>
+  <linearGradient id="graphite" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#27313F"/>
+    <stop offset="100%" stop-color="#111827"/>
+  </linearGradient>
+</defs>
+  <rect width="1120" height="230" rx="18" fill="#111827"/>
+  <g transform="translate(12 35) scale(.72)">
+    <g aria-label="AI MARK AM Loop">
+  <path d="M18 104 C18 104 30 42 55 20 C67 9 82 12 92 27 L151 115
+           C157 124 169 123 176 114 L222 54 C231 42 246 44 253 57
+           L292 125"
+        fill="none" stroke="url(#amber)" stroke-width="28"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M92 27 L151 115 C157 124 169 123 176 114 L205 76"
+        fill="none" stroke="url(#graphite)" stroke-width="28"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 104 C18 104 30 42 55 20 C67 9 82 12 92 27"
+        fill="none" stroke="url(#amber)" stroke-width="28"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+  </g>
+  <text x="265" y="126" font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="92" font-weight="800" letter-spacing="-4" fill="#FFFFFF">AI</text>
+  <text x="395" y="126" font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="92" font-weight="800" letter-spacing="-4" fill="#FFFFFF">MARK</text>
+  <text x="397" y="171" font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="21" font-weight="500" letter-spacing="5.2" fill="#D1D5DB">
+    AI-NATIVE VENTURE &amp; MARKETING
+  </text>
+</svg>

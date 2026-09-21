@@ -60,6 +60,19 @@
   --font-editorial: var(--font-serif);
 }
 
+/* Brand lockup ink. The same artwork twice; the active theme picks which ink is
+   painted. `display: none` also drops the inactive copy out of the a11y tree,
+   so the home link keeps a single accessible name. */
+.brand-logo[data-ink="dark"] {
+  display: none;
+}
+[data-theme="dark"] .brand-logo[data-ink="light"] {
+  display: none;
+}
+[data-theme="dark"] .brand-logo[data-ink="dark"] {
+  display: block;
+}
+
 /* Editorial serif: used for large numerals and pull-statements */
 .font-editorial {
   font-family: var(--font-editorial), Georgia, "Times New Roman", serif;

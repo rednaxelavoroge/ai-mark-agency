@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
+import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
 import { productPagePath, productsHubPath } from "@/lib/products";
@@ -14,14 +15,9 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           {/* Col 1: Brand Info */}
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-mark font-display text-xs font-bold text-mark-ink">
-                AM
-              </span>
-              <span className="font-display text-base font-semibold tracking-tight text-paper">
-                AI Mark
-              </span>
-            </div>
+            <Link href={navHref(locale, "/")} className="inline-flex items-center">
+              <BrandLogo className="h-8 w-auto" />
+            </Link>
             <p className="mt-3 text-xs font-mono tracking-widest text-mark uppercase">
               AI-Native Venture &amp; Marketing Company
             </p>

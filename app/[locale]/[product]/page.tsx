@@ -12,6 +12,7 @@ import {
   resolvePublicProductSlug,
 } from "@/lib/products";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
+import { socialImages } from "@/lib/social";
 
 type Props = { params: Promise<{ locale: string; product: string }> };
 
@@ -60,6 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: site.name,
+      images: socialImages(locale),
     },
   };
 }

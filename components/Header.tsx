@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Copy } from "@/content/copy";
+import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { counterpartLocaleHref, navHref, type Locale } from "@/lib/site";
@@ -39,18 +40,11 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <Link href={navHref(locale, "/")} className="flex min-w-0 items-center gap-2.5 group">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-mark font-display text-xs font-bold text-mark-ink transition-transform group-hover:scale-105">
-            AM
-          </span>
-          <div className="flex items-baseline gap-2">
-            <span className="font-display text-sm font-semibold tracking-tight text-paper">
-              AI Mark
-            </span>
-            <span className="hidden sm:inline font-mono text-[9px] tracking-wider text-warm uppercase">
-              Venture &amp; Marketing
-            </span>
-          </div>
+        <Link
+          href={navHref(locale, "/")}
+          className="group flex min-w-0 shrink items-center"
+        >
+          <BrandLogo className="h-6 w-auto transition-transform duration-300 group-hover:scale-[1.03] sm:h-7 lg:h-8" />
         </Link>
         <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
           {t.nav.items.map((item) =>

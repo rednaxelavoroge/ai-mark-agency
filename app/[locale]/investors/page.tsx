@@ -6,6 +6,7 @@ import { getInvestorsCopy } from "@/content/investors";
 import { INVESTOR_PAGE_PATH } from "@/lib/investors";
 import { Flow } from "@/lib/markdown";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
+import { socialImages } from "@/lib/social";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -30,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t.subtitle,
       url: absoluteUrl(locale, INVESTOR_PAGE_PATH),
       type: "article",
+      images: socialImages(locale),
     },
   };
 }
