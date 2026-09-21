@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getCopy } from "@/content/copy";
-import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
+import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -32,7 +32,7 @@ export default async function PrivacyPage({ params }: Props) {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <Link href={localePath(locale)} className="text-sm text-mark hover:underline">
+      <Link href={navHref(locale, "/")} className="text-sm text-mark hover:underline">
         ← {site.name}
       </Link>
       <h1 className="mt-6 font-display text-4xl">{t.privacy.title}</h1>

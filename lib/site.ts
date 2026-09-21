@@ -3,6 +3,8 @@ export const site = {
   domain: "ai-mark.agency",
   url: "https://ai-mark.agency",
   email: "hello@ai-mark.agency",
+  taglineEn: "From idea to a working business.",
+  taglineRu: "От идеи до работающего бизнеса.",
   locales: ["en", "ru"] as const,
   defaultLocale: "en" as const,
   partner: {
@@ -28,4 +30,11 @@ export function localePath(locale: Locale, path = "") {
 export function absoluteUrl(locale: Locale, path = "") {
   const p = localePath(locale, path);
   return p === "/" ? site.url : `${site.url}${p}`;
+}
+
+/** Join a locale home with a hash (#how) or an in-app path (/products). */
+export function navHref(locale: Locale, href: string) {
+  if (!href || href === "/") return localePath(locale);
+  if (href.startsWith("#")) return `${localePath(locale)}${href}`;
+  return localePath(locale, href);
 }

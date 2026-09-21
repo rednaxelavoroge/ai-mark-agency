@@ -13,6 +13,8 @@ export type Copy = {
   nav: {
     items: NavItem[];
     cta: string;
+    menu: string;
+    close: string;
     langEn: string;
     langRu: string;
     themeLight: string;
@@ -20,12 +22,35 @@ export type Copy = {
   };
   hero: {
     eyebrow: string;
-    tagline: string;
     title: string;
     lead: string;
+    extra: string;
+    soft: string;
     primaryCta: string;
     secondaryCta: string;
-    notes: string[];
+    investorCta: string;
+  };
+  pillars: {
+    eyebrow: string;
+    title: string;
+    items: { n: string; title: string; body: string }[];
+  };
+  creation: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    withoutIdea: string;
+    steps: { title: string; body: string }[];
+  };
+  pipeline: {
+    eyebrow: string;
+    title: string;
+    steps: string[];
+  };
+  tech: {
+    eyebrow: string;
+    title: string;
+    lead: string;
   };
   products: {
     eyebrow: string;
@@ -36,40 +61,25 @@ export type Copy = {
     detailCta: string;
     installCta: string;
     hubCta: string;
+    hubTitle: string;
+    hubLead: string;
     items: Record<
       ProductId,
       { value: string; who: string; extra: string; price: string }
     >;
   };
-  agencyStrip: {
-    eyebrow: string;
-    title: string;
-    body: string;
-    cta: string;
-  };
-  channels: {
+  production: {
     eyebrow: string;
     title: string;
     lead: string;
-    loopTitle: string;
-    loop: { title: string; note: string }[];
-    linesTitle: string;
-    status: { live: string; service: string; later: string };
-    footnote: string;
-    lines: {
-      status: "live" | "service" | "later";
-      name: string;
-      body: string;
-    }[];
+    note: string;
+    items: string[];
   };
-  model: {
+  cycle: {
     eyebrow: string;
     title: string;
     lead: string;
-    chain: string[];
-    shift: string;
-    scaleTitle: string;
-    scaleBody: string;
+    steps: string[];
   };
   how: {
     eyebrow: string;
@@ -78,48 +88,63 @@ export type Copy = {
     hitl: string;
     steps: { title: string; body: string }[];
   };
-  packages: {
+  commercial: {
     eyebrow: string;
     title: string;
     lead: string;
+    skuNote: string;
     perMonth: string;
     featured: string;
-    cta: string;
+    retainerCta: string;
+    custom: string;
+    tiers: {
+      name: string;
+      price: string;
+      body: string;
+    }[];
+    footnote: string;
+  };
+  packages: {
     items: Record<
       PackageId,
       { name: string; summary: string; points: string[] }
     >;
-    footnote: string;
-  };
-  stack: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    readyTitle: string;
-    ready: { title: string; body: string }[];
-    laterTitle: string;
-    later: { title: string; body: string }[];
-  };
-  compare: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    usLabel: string;
-    rows: { name: string; body: string }[];
-  };
-  fit: {
-    eyebrow: string;
-    title: string;
-    forTitle: string;
-    forItems: string[];
-    notTitle: string;
-    notItems: string[];
   };
   partners: {
     eyebrow: string;
     title: string;
-    body: string;
+    lead: string;
+    model: string;
+    earn: string;
     cta: string;
+    types: { title: string; body: string }[];
+    can: string[];
+  };
+  why: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    oldLabel: string;
+    newLabel: string;
+    old: string[];
+    next: string[];
+    close: string;
+  };
+  investors: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    usesTitle: string;
+    uses: string[];
+    not: string;
+    scale: string;
+    cta: string;
+  };
+  network: {
+    eyebrow: string;
+    title: string;
+    result: string;
+    nodes: string[];
   };
   contact: {
     eyebrow: string;
@@ -130,14 +155,25 @@ export type Copy = {
     messenger: string;
     messengerHint: string;
     company: string;
-    budget: string;
-    budgetOptions: { value: string; label: string }[];
+    scenario: string;
+    scenarioOptions: { value: string; label: string; hint: string }[];
     submit: string;
     sending: string;
     success: string;
     error: string;
     privacy: string;
   };
+  productPages: Record<
+    ProductId,
+    {
+      eyebrow: string;
+      title: string;
+      lead: string;
+      metaphor: string;
+      sections: { title: string; body: string }[];
+      flow: string[];
+    }
+  >;
   footer: {
     blurb: string;
     privacy: string;
@@ -157,212 +193,261 @@ export type Copy = {
 export const copy: Record<Locale, Copy> = {
   en: {
     meta: {
-      title: "AI Mark Agency — marketing as a continuously running AI system",
+      title: "AI Mark Agency — from idea to a working business",
       description:
-        "AI-native marketing company. Most ops run through an AI system and specialized agents; humans own strategy, clients, and key decisions. Retainers $1,200–3,500/mo. The stack is live — not a concept deck.",
-      ogTitle: "Marketing as a continuously running AI system",
+        "AI-native venture and marketing company. We research the market, form a model, build the digital product, then run marketing, sales, and growth on our own AI infrastructure. No profit guarantees.",
+      ogTitle: "From idea to a working business",
       keywords: [
-        "AI marketing agency",
-        "AI-native marketing",
-        "Meta marketing",
+        "AI-native company",
+        "business creation",
+        "AI marketing",
+        "digital production",
         "AIME",
-        "human in the loop",
+        "Showroom AI",
         "ai-mark.agency",
       ],
     },
     nav: {
       items: [
-        { href: "#tools", label: "Tools" },
-        { href: "#channels", label: "Channels" },
+        { href: "/", label: "Home" },
+        { href: "#what-we-do", label: "What we do" },
+        { href: "#business-creation", label: "Business Creation" },
+        { href: "/products", label: "AI Products" },
         { href: "#how", label: "How it works" },
-        { href: "#packages", label: "Packages" },
         { href: "#partners", label: "Partners" },
+        { href: "#investors", label: "Investors" },
+        { href: "#contact", label: "Contact" },
       ],
-      cta: "Start a brief",
+      cta: "Discuss a project",
+      menu: "Menu",
+      close: "Close",
       langEn: "EN",
       langRu: "RU",
       themeLight: "Switch to light theme",
       themeDark: "Switch to dark theme",
     },
     hero: {
-      eyebrow: "AI-native marketing company",
-      tagline: "Marketing as a continuously running AI system.",
-      title: "Most of the ops run in the system. Humans own the decisions.",
-      lead: "AI Mark Agency is not a concept deck. The AI stack already exists and is used commercially. Specialized agents handle repeatable work. People own strategy, client relations, and key calls — including every publish until you say otherwise.",
-      primaryCta: "See retainers",
-      secondaryCta: "See the stack",
-      notes: [
-        "We run the same system for end clients. We do not only sell seats to agencies.",
-        "HITL: AI drafts → we check → you approve → publish. Never uncontrolled posting.",
-        "Retainers $1,200–3,500 / month by scope.",
+      eyebrow: "AI-Native Venture & Marketing Company",
+      title: "From idea to a working business.",
+      lead: "We research the market, form the model, build the digital product, then run marketing and sales — and scale the operation with AI.",
+      extra: "We create and scale digital businesses using our own AI infrastructure.",
+      soft: "We can help you move from an idea or a research brief to something built, launched, and operated. We do not guarantee profit.",
+      primaryCta: "Discuss a project",
+      secondaryCta: "How it works",
+      investorCta: "For investors",
+    },
+    pillars: {
+      eyebrow: "What we can do",
+      title: "Five parts of the same loop.",
+      items: [
+        {
+          n: "01",
+          title: "Business creation",
+          body: "From an idea, an existing company, or capital — we form a model the market can actually hold.",
+        },
+        {
+          n: "02",
+          title: "Digital Production",
+          body: "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on.",
+        },
+        {
+          n: "03",
+          title: "AI Marketing",
+          body: "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump.",
+        },
+        {
+          n: "04",
+          title: "AI Sales",
+          body: "Business Assistant inbox: qualify, answer from a knowledge base, hand off to a human.",
+        },
+        {
+          n: "05",
+          title: "Growth",
+          body: "Analytics, optimization, automation, and scale on the same infrastructure.",
+        },
       ],
     },
+    creation: {
+      eyebrow: "Business Creation",
+      title: "Don't know which business to build? Start with the market.",
+      lead: "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
+      withoutIdea:
+        "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
+      steps: [
+        { title: "Market research", body: "Demand, competitors, constraints, and where a real offer can sit." },
+        { title: "Opportunities", body: "A short list of spaces worth building in — with reasons, not slogans." },
+        { title: "Several concepts", body: "More than one model, so you choose with comparison, not with hope." },
+        { title: "Choose the model", body: "Offer, economics sketch, and what must be true for it to operate." },
+        { title: "Build the product", body: "The site, platform, or AI system the business actually runs on." },
+        { title: "Launch", body: "Go live with tracking, offers, and a path for the first conversations." },
+        { title: "Marketing & sales", body: "Content, ads, inbox, and quotes on the same loop." },
+        { title: "Scale", body: "Optimize what already runs. Automate the repeatable parts. Keep humans on decisions." },
+      ],
+    },
+    pipeline: {
+      eyebrow: "The path",
+      title: "One sequence. Join at any step.",
+      steps: [
+        "Idea / capital",
+        "Market research",
+        "Business model",
+        "Brand",
+        "Product / platform",
+        "AI infrastructure",
+        "Marketing",
+        "Sales",
+        "Growth",
+      ],
+    },
+    tech: {
+      eyebrow: "Tech base",
+      title: "Core AI infrastructure already built and used commercially.",
+      lead: "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run.",
+    },
     products: {
-      eyebrow: "Tools we run / can install for you",
-      title: "The stack we operate — and can provision on your accounts",
-      lead: "Three products. We use them as the delivery OS for clients, and we can install them for you. Full detail for each lives on this site.",
+      eyebrow: "AI Products",
+      title: "Three systems we operate — and can provision for you.",
+      lead: "Product subscriptions are not the same as a retained marketing department. Detail for each lives on this domain.",
       whoLabel: "Who it's for",
       extraLabel: "In the loop",
       detailCta: "Full detail",
-      installCta: "Install with us",
-      hubCta: "All three product pages",
+      installCta: "Talk installation",
+      hubCta: "All product pages",
+      hubTitle: "AI products",
+      hubLead:
+        "AIME, AI Business Assistant, and Showroom AI. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
       items: {
         aime: {
           value:
-            "AI Marketing Employee: research → strategy → content → creatives → approval → publish → analytics → optimization.",
-          who: "Brands and shops that need a weekly marketing cycle, not a monthly content dump.",
-          extra: "Human approval before publish. Optional auto-publish after several good cycles.",
-          price:
-            "Lite ~$199/mo · Pro ~$349/mo. Agency: setup + per-client MRR. License path for self-host.",
+            "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
+          who: "Brands that need a weekly marketing cycle, not a monthly pile of posts.",
+          extra: "Human approval before publish. Optional auto-publish after several clean cycles.",
+          price: "Lite ~$199/mo · Pro ~$349/mo. Agency: setup + per-client MRR. License path for self-host.",
         },
         assistant: {
           value:
-            "Sales inbox + knowledge base + lead qualify + human handoff.",
-          who: "Teams that need an AI sales inbox, not a chatbot funnel builder.",
-          extra:
-            "Channels: Messenger · Instagram Direct · WhatsApp · site chat · Telegram optional.",
+            "Sales AI inbox — WhatsApp, Instagram Direct, Messenger, website chat, Telegram. Knowledge base, replies, qualify, human handoff.",
+          who: "Teams that need a sales inbox, not a chatbot funnel builder.",
+          extra: "A person takes over when the conversation needs a human.",
           price: "Entry $149/mo · Standard $249/mo",
         },
         showroom: {
-          value: "Quotes, specs, and PDF automation from your pricing rules.",
-          who: "Teams selling configurable offers who need CPQ, not a generic chatbot quote.",
-          extra: "Verticals: furniture · auto · real estate · retail · services.",
+          value:
+            "Industry-neutral CPQ: complex commercial requests, specs, calculations, and quotes by your business rules.",
+          who: "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
+          extra:
+            "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
           price:
             "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota.",
         },
       },
     },
-    agencyStrip: {
-      eyebrow: "Parallel B2B line",
-      title: "Autonomous toolkit for agencies",
-      body: "Already a marketing shop and want the stack yourselves — AIME multi-client (Agency setup + per-client MRR) or a License buy-in? Those tracks are on the product pages. AI Mark Agency stays the service company.",
-      cta: "Agency / License details",
-    },
-    channels: {
-      eyebrow: "Channels & growth",
-      title: "One growth loop. Extra channels are retainer lines — not new products.",
-      lead: "Ads → landing → content → inbox → offer → analytics. AIME, AI Business Assistant, and Showroom sit in that loop. Other channels can be included in a retainer by scope. We do not sell a PR-Agent or a YouTube-Agent SKU.",
-      loopTitle: "Full growth loop",
-      loop: [
-        { title: "Ads", note: "Traffic in" },
-        { title: "Landing / CRO", note: "The page that must convert" },
-        { title: "Content (AIME)", note: "Research → publish" },
-        { title: "Inbox (BA)", note: "Qualify + handoff" },
-        { title: "Offer (Showroom)", note: "Quote / spec / PDF" },
-        { title: "Analytics", note: "Back into the loop" },
-      ],
-      linesTitle: "Channel lines — honest readiness",
-      status: {
-        live: "Phase 1 · live",
-        service: "Service line",
-        later: "Later / optional",
-      },
-      footnote:
-        "Retainers can include these lines when the offer needs them. Soft claims only — no promised CAC, ROAS, or rankings.",
-      lines: [
-        {
-          status: "live",
-          name: "Meta / Instagram / Facebook",
-          body: "Primary. Phase 1 is live. Organic path with human approval. Starter is Instagram-first; Growth is full Meta.",
-        },
-        {
-          status: "service",
-          name: "Ads / performance",
-          body: "Strategy and creatives with AI support. Campaigns sit in the client’s ad account. A human launches. Media spend is yours.",
-        },
-        {
-          status: "service",
-          name: "YouTube / short video",
-          body: "Scripts, covers, and subtitles with AI. Edit and voice are semi-auto. Not a one-click publisher and not a YouTube product SKU.",
-        },
-        {
-          status: "service",
-          name: "PR / articles / SEO-GEO",
-          body: "Brief → draft → edit → publish, same HITL as content. A retainer line when needed — not a separate PR-Agent.",
-        },
-        {
-          status: "service",
-          name: "Email / reactivation",
-          body: "Sequences for people already in the loop. Added by scope, not a default second inbox product.",
-        },
-        {
-          status: "later",
-          name: "Reputation / reviews",
-          body: "Later / optional. We do not pretend review-ops is Phase 1.",
-        },
+    production: {
+      eyebrow: "Digital Production",
+      title: "We build the digital infrastructure of the business.",
+      lead: "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
+      note: "Part of the same company that will market and sell what we build — when you want that loop.",
+      items: [
+        "Sites and landings",
+        "Web apps and platforms",
+        "Shops and client cabinets",
+        "Internal systems",
+        "Integrations",
+        "AI features and automation",
       ],
     },
-    model: {
-      eyebrow: "How the company is built",
-      title: "Internal OS. Delivery tool. Product. Platform later.",
-      lead: "The same system is how we work, how we deliver, and what we can install. Not a slide about a future app.",
-      chain: [
-        "Working AI system",
-        "Clients",
-        "Proven unit economics",
-        "Scale sales",
-        "Deepen the platform",
+    cycle: {
+      eyebrow: "Full cycle",
+      title: "We can join at any stage, or walk the whole path together.",
+      lead: "Research is not a slide. Build is not a handoff to a stranger. Marketing is not a separate agency story.",
+      steps: [
+        "Research",
+        "Concept",
+        "Build",
+        "Marketing",
+        "Sales",
+        "Analytics",
+        "Optimization",
+        "Scale",
       ],
-      shift:
-        "We do not only sell tech to agencies. We run the same system as an AI-native marketing company for end clients.",
-      scaleTitle: "Why it scales without a headcount factory",
-      scaleBody:
-        "A classic agency grows people as it grows clients. Here repeatable work is AI: more clients → more automated workflows → ops growth stays controlled. Soft claim: one strong operator can run about 8–12 clients, depending on package and automation — not a guarantee.",
     },
     how: {
-      eyebrow: "Operating loop",
-      title: "How the work actually moves",
-      lead: "One loop, not a content dump. Creative sits in the cycle. Analytics and optimization feed the next research pass.",
-      hitl: "HITL: AI drafts → a human checks → the client approves → we publish. After several good cycles, optional auto-publish. Never uncontrolled AI posting.",
+      eyebrow: "How it works",
+      title: "AI-native operations. Humans on strategy and key decisions.",
+      lead: "Work moves inside the AI system. People set direction, check the output, and own the call that goes live.",
+      hitl: "AI prepares → a human checks → the client approves → we publish or act. After several clean cycles, auto-publish can be optional. We do not run uncontrolled automation.",
       steps: [
         {
-          title: "Research",
-          body: "Audience, offer, competitors, what already earns attention — before a line of copy.",
+          title: "Prepare",
+          body: "Agents draft research, copy, creatives, replies, or specs against the brief and the knowledge you give us.",
         },
         {
-          title: "Strategy",
-          body: "Who we talk to, what we say, which surfaces we actually use this month.",
+          title: "Check",
+          body: "An operator reads the work before it reaches you. Volume does not skip review.",
         },
         {
-          title: "Content",
-          body: "Drafts from the agents, steered by the operator. Volume without generic sludge.",
+          title: "Approve",
+          body: "You (or a named owner) sign off. If it is not approved, it does not go live.",
         },
         {
-          title: "Creative",
-          body: "Creatives in the same loop — not a separate “design dump” after the calendar is already late.",
-        },
-        {
-          title: "Approval",
-          body: "Named human path. If it is not approved, it does not go live.",
-        },
-        {
-          title: "Publish",
-          body: "Shipped on the agreed channels with naming and tracking we can learn from.",
-        },
-        {
-          title: "Analytics",
-          body: "What ran, what stalled. Numbers as operating data — not invented lift.",
-        },
-        {
-          title: "Optimization",
-          body: "Cut, keep, change. The next research cycle starts from evidence.",
+          title: "Act",
+          body: "Publish, send, quote, or hand off — with a trail we can learn from.",
         },
       ],
     },
-    packages: {
-      eyebrow: "Service pricing",
-      title: "Retainers $1,200–3,500 / month, by scope.",
-      lead: "All packages keep a human in the loop. USD monthly. Paid media spend is yours and is not in the retainer.",
+    commercial: {
+      eyebrow: "Commercial model",
+      title: "Several ways to work together. Retainers are one of them.",
+      lead: "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
+      skuNote:
+        "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
       perMonth: "/mo",
       featured: "Most teams start here",
-      cta: "Request this package",
+      retainerCta: "Request this department",
+      custom: "Custom",
+      tiers: [
+        {
+          name: "AI Products",
+          price: "$149–349+",
+          body: "AIME, Business Assistant, Showroom AI as product SKUs — install and operate on your side, or with us.",
+        },
+        {
+          name: "AI Marketing Services",
+          price: "from $500+",
+          body: "Scoped marketing work without a full retained department. Defined by brief, not by a fake package name.",
+        },
+        {
+          name: "AI Marketing Department",
+          price: "$1,500–3,500+",
+          body: "Ongoing HITL marketing as a department: Starter, Growth, Scale. Media spend is yours and sits outside the retainer.",
+        },
+        {
+          name: "Digital Production",
+          price: "Custom",
+          body: "Sites, apps, platforms, cabinets, integrations. Scoped after we see the operating need.",
+        },
+        {
+          name: "Business Creation",
+          price: "Custom",
+          body: "Research through model, build, launch, and the commercial loop. Individual scope.",
+        },
+        {
+          name: "Enterprise",
+          price: "Custom",
+          body: "Multi-brand, multi-market, or heavier production and department work under one agreement.",
+        },
+      ],
+      footnote:
+        "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS.",
+    },
+    packages: {
       items: {
         starter: {
           name: "Starter",
           summary: "Instagram plus an approval path. One brand.",
           points: [
             "One brand, Instagram as the working channel",
-            "Content + creative drafts in the loop",
+            "Content and creative drafts in the loop",
             "Named approval path before publish",
             "Operator-led QA on every asset",
           ],
@@ -372,7 +457,7 @@ export const copy: Record<Locale, Copy> = {
           summary: "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
           points: [
             "Instagram and Facebook as a paired Meta system",
-            "Inbox and Showroom niches when the offer needs them",
+            "Inbox and Showroom when the offer needs them",
             "Human-in-the-loop on every publish",
             "Analytics feeding the next cycle",
           ],
@@ -388,123 +473,182 @@ export const copy: Record<Locale, Copy> = {
           ],
         },
       },
-      footnote:
-        "Range is $1,200–3,500 / month by scope. One strong operator can run about 8–12 clients depending on package and automation. Media buying, if needed, is a separate scope.",
-    },
-    stack: {
-      eyebrow: "Go-to-market — honest",
-      title: "Phase 1 is Meta. Other channels earn a seat.",
-      lead: "We do not sell a ten-platform OS on day one. First we run the system where it is already live, and we measure the work.",
-      readyTitle: "Phase 1 — now",
-      ready: [
-        {
-          title: "Meta / Instagram / Facebook",
-          body: "Service delivery on the surfaces we actually operate. Starter is Instagram-first. Growth is full Meta.",
-        },
-        {
-          title: "Service + inbox + Showroom niches",
-          body: "Retainers plus the sales inbox and quoting where the offer needs it — not bundled theatre.",
-        },
-        {
-          title: "What we measure",
-          body: "CAC, conversion, MRR, retention, ops cost, operator load, AI share of work. Operating metrics — not promised lift.",
-        },
-      ],
-      laterTitle: "Phase 2 — after unit economics",
-      later: [
-        {
-          title: "Google, YouTube, SEO, more social",
-          body: "Added when Phase 1 unit economics are real for that motion — not as a kickoff checklist.",
-        },
-        {
-          title: "Partners and international",
-          body: "Referral and regional partners can run alongside our own sales. New markets follow the same HITL system.",
-        },
-        {
-          title: "A login instead of an operator",
-          body: "If you want the products without the retainer, that is the toolkit line — not a silent rebrand of this site.",
-        },
-      ],
-    },
-    compare: {
-      eyebrow: "Landscape",
-      title: "Same job? Not the same system.",
-      lead: "We use the system to deliver services. We do not only sell seat access.",
-      usLabel: "AI Mark Agency",
-      rows: [
-        {
-          name: "AI content tools",
-          body: "Generate and schedule posts. A calendar helper, not an operating company.",
-        },
-        {
-          name: "Predis-like",
-          body: "Social content plus publish. Useful layer. Not research → approve → optimize as a retained service.",
-        },
-        {
-          name: "ManyChat-like",
-          body: "Chat funnels and broadcasts. Different job than a sales inbox with KB and human handoff.",
-        },
-        {
-          name: "Classic agencies",
-          body: "People plus a retainer. Headcount grows with clients. Repeatable work stays manual.",
-        },
-        {
-          name: "AI Mark Agency",
-          body: "AI system + service + continuous automation. HITL by default. The stack is how we deliver.",
-        },
-      ],
-    },
-    fit: {
-      eyebrow: "Fit",
-      title: "Who this is for — and who should walk away",
-      forTitle: "Good fit",
-      forItems: [
-        "You want marketing as a running system, not a monthly dump of posts",
-        "You will approve work on a cadence (or name someone who will)",
-        "Meta is a sensible first surface — Instagram, then Facebook when it has a job",
-        "You want an operator plus agents, not a 12-person pitch deck",
-      ],
-      notTitle: "Not a fit",
-      notItems: [
-        "Uncontrolled AI posting. We will not run that.",
-        "Guaranteed ROI, guaranteed viral, or any invented percentage",
-        "Ten channels from week one with no one to approve",
-        "The cheapest scheduler seat, with no service attached",
-      ],
     },
     partners: {
       eyebrow: "Partners",
-      title: "Referral and regional partners",
-      body: "Bring a client → we onboard → commission as agreed. Our own sales, digital acquisition, and partners can coexist.",
+      title: "An international partner network is how we scale presence.",
+      lead: "We do not need a full office in every region to work a market. Partners bring clients, represent the solutions, and grow a territory.",
+      model:
+        "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
+      earn: "A partner can:",
       cta: "Talk partnership",
+      types: [
+        {
+          title: "Regional",
+          body: "Represent the company in a geography. Local relationships, same operating system.",
+        },
+        {
+          title: "Industry",
+          body: "Bring a vertical you already understand — construction, auto, retail, and similar.",
+        },
+        {
+          title: "Referral",
+          body: "Introduce a client. We onboard. Commission as agreed.",
+        },
+        {
+          title: "Agency",
+          body: "Run the products for your book of clients, or resell delivery with our stack.",
+        },
+      ],
+      can: [
+        "Bring clients",
+        "Represent the solutions",
+        "Grow a market",
+        "Earn commission on agreed terms",
+      ],
+    },
+    why: {
+      eyebrow: "Why now",
+      title: "Companies are moving from isolated AI tools to AI-native operations.",
+      lead: "The shift is operational, not theatrical. Manual-heavy work hits a ceiling on speed, cost, and scale. There is a window for teams that already run on AI infrastructure.",
+      oldLabel: "Familiar",
+      newLabel: "AI-native",
+      old: ["People", "Processes", "Manual work", "Many vendors"],
+      next: ["AI infrastructure", "Agents", "Automation", "Human decisions"],
+      close:
+        "That does not mean every company that still works by hand will disappear. It does mean the builders who already have the loop can move faster.",
+    },
+    investors: {
+      eyebrow: "Investors",
+      title: "Capital would fund growth — not a stack we still have to invent.",
+      lead: "The AI infrastructure is already in commercial use. Early financing, if we take it, is for scaling what exists: clients, sales, international marketing, partners, automation, digital production, and expansion.",
+      usesTitle: "Where capital goes",
+      uses: [
+        "Clients and sales",
+        "International marketing",
+        "Partner network",
+        "AI infrastructure and automation",
+        "Digital production capacity",
+        "Geographic expansion",
+      ],
+      not: "We are not raising to build the technology from scratch. We do not publish a required cheque size, a valuation, or an investor return.",
+      scale:
+        "Open to early financing at commercial scale-up. Size and structure are individual. Later, larger rounds can follow if clients, revenue, and presence support them — not as a promise.",
+      cta: "Discuss investment participation",
+    },
+    network: {
+      eyebrow: "Compounding",
+      title: "How the pieces reinforce each other.",
+      result: "A global AI-native company",
+      nodes: [
+        "AI products",
+        "Direct sales",
+        "Partner network",
+        "Business creation",
+        "International expansion",
+      ],
     },
     contact: {
-      eyebrow: "Brief",
-      title: "Tell us the brand — or the partnership.",
-      lead: "Short form. If the fit is wrong, we will say so. Telegram or WhatsApp is enough if you live in messengers.",
+      eyebrow: "Contact",
+      title: "Tell us which door you are walking through.",
+      lead: "One form. Pick the scenario that fits. If the fit is wrong, we will say so. Telegram or WhatsApp is enough if you live in messengers.",
       name: "Name",
       email: "Email",
       messenger: "Telegram or WhatsApp",
       messengerHint: "Handle or number",
-      company: "Company / brand",
-      budget: "What you need",
-      budgetOptions: [
-        { value: "starter", label: "Starter · ~$1,200/mo" },
-        { value: "growth", label: "Growth · ~$2,200/mo" },
-        { value: "scale", label: "Scale · ~$3,500/mo" },
-        { value: "tools", label: "Tools / install only" },
-        { value: "partner", label: "Referral / regional partnership" },
-        { value: "unsure", label: "Not sure yet" },
+      company: "Company / project",
+      scenario: "I am here because",
+      scenarioOptions: [
+        { value: "idea", label: "I have an idea", hint: "Concept, not yet a company — or barely one." },
+        { value: "business", label: "I have a business", hint: "Something already operates. You want the loop." },
+        { value: "capital", label: "I have capital", hint: "You want to build from the market, not from a leftover idea." },
+        { value: "marketing", label: "I need AI marketing", hint: "Department, services, or product install." },
+        { value: "partner", label: "I want to partner", hint: "Regional, industry, referral, or agency." },
+        { value: "investment", label: "I'm considering investment", hint: "Conversation about participation — not a pitch deck promise." },
       ],
-      submit: "Send brief",
+      submit: "Send",
       sending: "Sending…",
       success: "Received. We will reply to the email or messenger you left.",
       error: "Could not send. Email hello@ai-mark.agency or try again.",
-      privacy: "By sending, you agree we may contact you about this brief. See Privacy.",
+      privacy: "By sending, you agree we may contact you about this request. See Privacy.",
+    },
+    productPages: {
+      aime: {
+        eyebrow: "AIME",
+        title: "AI Marketing Employee",
+        lead: "A marketing system, not a calendar. Research through optimization stays in one loop, with a human on publish.",
+        metaphor: "Marketing agents that draft the cycle. People still own the decision to go live.",
+        sections: [
+          {
+            title: "What it does",
+            body: "Research, strategy, content, creatives, approval, publish, analytics, optimize. That sequence is the product.",
+          },
+          {
+            title: "HITL",
+            body: "Nothing publishes until a named person approves — unless you later opt into auto-publish after several clean cycles.",
+          },
+          {
+            title: "How we sell it",
+            body: "As a product SKU, and as the operating system inside an AI Marketing Department retainer. Those are different commercial formats.",
+          },
+        ],
+        flow: [
+          "Research",
+          "Strategy",
+          "Content",
+          "Creatives",
+          "Approval",
+          "Publish",
+          "Analytics",
+          "Optimize",
+        ],
+      },
+      assistant: {
+        eyebrow: "BA",
+        title: "AI Business Assistant",
+        lead: "A sales inbox that answers, qualifies, and hands off. Not a funnel-builder with a chatbot skin.",
+        metaphor: "One inbox across the channels your buyers already use.",
+        sections: [
+          {
+            title: "Channels",
+            body: "WhatsApp, Instagram Direct, Messenger, website chat, Telegram.",
+          },
+          {
+            title: "What it holds",
+            body: "Knowledge base, replies, lead qualification, and a path to a human when the conversation needs one.",
+          },
+          {
+            title: "Where it sits",
+            body: "In the sales step of the company loop — after marketing, before a quote or a call.",
+          },
+        ],
+        flow: ["Inbound", "Knowledge base", "Reply", "Qualify", "Human handoff"],
+      },
+      showroom: {
+        eyebrow: "CPQ",
+        title: "Showroom AI",
+        lead: "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
+        metaphor: "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
+        sections: [
+          {
+            title: "Industry-neutral",
+            body: "Built for configurable offers. Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar trades.",
+          },
+          {
+            title: "What you get",
+            body: "Specs, calculations, and quotes that follow the business rules you define — not a generic estimate.",
+          },
+          {
+            title: "Where it sits",
+            body: "After a qualified conversation. The inbox can collect intent; Showroom turns intent into a document.",
+          },
+        ],
+        flow: ["Catalog", "Business rules", "Client parameters", "Calculation", "Spec", "Quote / PDF"],
+      },
     },
     footer: {
       blurb:
-        "Marketing as a continuously running AI system. AI-native marketing company — humans on strategy, clients, and key decisions.",
+        "AI-native venture and marketing company. From idea to a working business — on our own AI infrastructure.",
       privacy: "Privacy",
       rights: "AI Mark Agency. All rights reserved.",
       poweredBy: "Tech by AlexDev",
@@ -513,219 +657,267 @@ export const copy: Record<Locale, Copy> = {
       title: "Privacy",
       updated: "Last updated: 21 September 2026",
       paragraphs: [
-        "AI Mark Agency (ai-mark.agency) collects the information you submit through the contact form: name, email, messenger handle, company, and what you need. We use it only to reply and to decide whether we can take the work or a referral partnership.",
+        "AI Mark Agency (ai-mark.agency) collects the information you submit through the contact form: name, email, messenger handle, company or project, and the scenario you selected. We use it only to reply and to decide whether we can take the work, a partnership, or an investment conversation.",
         "We do not sell your data. We do not run a public analytics product on this site beyond what the hosting platform needs to keep the site up. Form submissions are emailed to our operator inbox.",
-        "You can ask us to delete a brief by writing to hello@ai-mark.agency. This page is a stub and will be expanded if we add more processing (newsletters, ads pixels, hiring).",
+        "You can ask us to delete a request by writing to hello@ai-mark.agency. This page is a stub and will be expanded if we add more processing (newsletters, ads pixels, hiring).",
         "Hosting may be provided by Vercel. Email delivery may be provided by a transactional email vendor. Those processors see only what is required to deliver the service.",
       ],
     },
     jsonLd: {
       description:
-        "AI-native marketing company. An AI system and specialized agents run most ops; humans own strategy, client relations, and key decisions. Retainers $1,200–3,500 per month.",
+        "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure.",
     },
   },
   ru: {
     meta: {
-      title: "AI Mark Agency — маркетинг как постоянно работающая AI-система",
+      title: "AI Mark Agency — от идеи до работающего бизнеса",
       description:
-        "AI-native маркетинговая компания. Большая часть операций идёт через AI-систему и специализированных агентов; люди держат стратегию, клиентов и ключевые решения. Ретейнеры $1,200–3,500/мес. Стек уже в работе — не концепт-дек.",
-      ogTitle: "Маркетинг как постоянно работающая AI-система",
+        "AI-native венчурная и маркетинговая компания. Исследуем рынок, собираем модель, строим цифровой продукт, затем ведём маркетинг, продажи и рост на собственной AI-инфраструктуре. Прибыль не обещаем.",
+      ogTitle: "От идеи до работающего бизнеса",
       keywords: [
-        "AI маркетинговое агентство",
-        "AI-native маркетинг",
-        "Meta маркетинг",
+        "AI-native компания",
+        "создание бизнеса",
+        "AI маркетинг",
+        "цифровое производство",
         "AIME",
-        "human in the loop",
+        "Showroom AI",
         "ai-mark.agency",
       ],
     },
     nav: {
       items: [
-        { href: "#tools", label: "Инструменты" },
-        { href: "#channels", label: "Каналы" },
-        { href: "#how", label: "Как работаем" },
-        { href: "#packages", label: "Пакеты" },
+        { href: "/", label: "Главная" },
+        { href: "#what-we-do", label: "Что делаем" },
+        { href: "#business-creation", label: "Создание бизнеса" },
+        { href: "/products", label: "AI-продукты" },
+        { href: "#how", label: "Как устроено" },
         { href: "#partners", label: "Партнёры" },
+        { href: "#investors", label: "Инвесторам" },
+        { href: "#contact", label: "Контакт" },
       ],
-      cta: "Оставить бриф",
+      cta: "Обсудить проект",
+      menu: "Меню",
+      close: "Закрыть",
       langEn: "EN",
       langRu: "RU",
       themeLight: "Светлая тема",
       themeDark: "Тёмная тема",
     },
     hero: {
-      eyebrow: "AI-native маркетинговая компания",
-      tagline: "Маркетинг как постоянно работающая AI-система.",
-      title: "Операционка — в системе. Решения — за людьми.",
-      lead: "AI Mark Agency — не концепт-дек. AI-стек уже существует и используется коммерчески. Специализированные агенты закрывают повторяемую работу. Люди держат стратегию, отношения с клиентом и ключевые решения — включая каждую публикацию, пока вы не скажете иначе.",
-      primaryCta: "Смотреть ретейнеры",
-      secondaryCta: "Смотреть стек",
-      notes: [
-        "Ту же систему ведём для конечных клиентов. Мы не только продаём доступ агентствам.",
-        "HITL: AI готовит → мы проверяем → вы апрувите → публикация. Без бесконтрольного постинга.",
-        "Ретейнеры $1,200–3,500 / месяц в зависимости от скоупа.",
+      eyebrow: "AI-NATIVE VENTURE & MARKETING COMPANY",
+      title: "От идеи до работающего бизнеса.",
+      lead: "Исследуем рынок, собираем модель, строим цифровой продукт, запускаем маркетинг и продажи — и масштабируем операционку с AI.",
+      extra: "Создаём и масштабируем цифровые бизнесы на собственной AI-инфраструктуре.",
+      soft: "Можем провести от идеи или исследования до сборки, запуска и операционной работы. Прибыль не гарантируем.",
+      primaryCta: "Обсудить проект",
+      secondaryCta: "Как устроено",
+      investorCta: "Инвесторам",
+    },
+    pillars: {
+      eyebrow: "Что умеем",
+      title: "Пять частей одного контура.",
+      items: [
+        {
+          n: "01",
+          title: "Создание бизнеса",
+          body: "Идея, действующая компания или капитал — собираем модель, которую рынок в состоянии держать.",
+        },
+        {
+          n: "02",
+          title: "Digital Production",
+          body: "Сайты, приложения, платформы, кабинеты, интеграции и AI-системы, на которых бизнес живёт.",
+        },
+        {
+          n: "03",
+          title: "AI-маркетинг",
+          body: "Стратегия, контент, креативы, реклама и аналитика как непрерывный цикл — не месячная свалка постов.",
+        },
+        {
+          n: "04",
+          title: "AI-продажи",
+          body: "Inbox Business Assistant: квалификация, ответы из базы знаний, передача человеку.",
+        },
+        {
+          n: "05",
+          title: "Рост",
+          body: "Аналитика, оптимизация, автоматизация и масштаб на той же инфраструктуре.",
+        },
       ],
     },
+    creation: {
+      eyebrow: "Создание бизнеса",
+      title: "Не знаете, какой бизнес собирать? Начните с рынка.",
+      lead: "Приходите с идеей, с действующим бизнесом, с капиталом — или без конкретной идеи. Начинаем со спроса, не со слогана.",
+      withoutIdea:
+        "Если идеи ещё нет, можем предложить несколько концепций из рынка, капитала, интересов и ресурсов. Это короткий список для выбора — не «гарантированно прибыльный бизнес».",
+      steps: [
+        { title: "Исследование рынка", body: "Спрос, конкуренты, ограничения и место, где оффер может стоять." },
+        { title: "Возможности", body: "Короткий список ниш, в которых есть смысл строить — с причинами, не с лозунгами." },
+        { title: "Несколько концепций", body: "Больше одной модели, чтобы выбирать сравнением, а не надеждой." },
+        { title: "Выбор модели", body: "Оффер, набросок экономики и условия, без которых это не работает." },
+        { title: "Сборка продукта", body: "Сайт, платформа или AI-система, на которой бизнес реально живёт." },
+        { title: "Запуск", body: "Выход в эфир с метками, оффером и путём для первых разговоров." },
+        { title: "Маркетинг и продажи", body: "Контент, реклама, inbox и котировки в одном цикле." },
+        { title: "Масштаб", body: "Усиливаем то, что уже едет. Автоматизируем повторяемое. Решения оставляем людям." },
+      ],
+    },
+    pipeline: {
+      eyebrow: "Путь",
+      title: "Одна последовательность. Можно войти на любом шаге.",
+      steps: [
+        "Идея / капитал",
+        "Исследование рынка",
+        "Бизнес-модель",
+        "Бренд",
+        "Продукт / платформа",
+        "AI-инфраструктура",
+        "Маркетинг",
+        "Продажи",
+        "Рост",
+      ],
+    },
+    tech: {
+      eyebrow: "Технологическая база",
+      title: "Ядро AI-инфраструктуры уже собрано и используется коммерчески.",
+      lead: "Мы не продаём стек, который «когда-нибудь соберём». Три продукта уже стоят в контуре — и как операционная система поставки, и как SKU, которые можно поставить вам.",
+    },
     products: {
-      eyebrow: "Инструменты, которые ведём / можем поставить вам",
-      title: "Стек, который мы ведём — и можем поставить на ваши аккаунты",
-      lead: "Три продукта. Это и операционная система поставки, и то, что можно установить вам. Полные страницы каждого продукта — на этом сайте.",
+      eyebrow: "AI-продукты",
+      title: "Три системы, которые ведём — и можем поставить вам.",
+      lead: "Продуктовая подписка — это не ретейнер маркетингового отдела. Полные страницы каждого продукта — на этом домене.",
       whoLabel: "Кому",
       extraLabel: "В цикле",
       detailCta: "Подробности",
-      installCta: "Поставить через нас",
-      hubCta: "Все три страницы продуктов",
+      installCta: "Обсудить установку",
+      hubCta: "Все страницы продуктов",
+      hubTitle: "AI-продукты",
+      hubLead:
+        "AIME, AI Business Assistant и Showroom AI. Ведём их для клиентов и можем поставить на ваши аккаунты. Ниже — только то, что продукты реально делают.",
       items: {
         aime: {
           value:
-            "AI Marketing Employee: исследование → стратегия → контент → креативы → апрув → публикация → аналитика → оптимизация.",
-          who: "Брендам и командам с еженедельным циклом, а не с месячной свалкой постов.",
-          extra:
-            "Апрув человека до публикации. После нескольких удачных циклов — опциональный автопаблиш.",
-          price:
-            "Lite ~$199/мес · Pro ~$349/мес. Agency: setup + MRR за клиента. License — если хостите сами.",
+            "AI-маркетинговая система: исследование → стратегия → контент → креативы → апрув → публикация → аналитика → оптимизация. Не планировщик постов.",
+          who: "Брендам с еженедельным циклом, а не с месячной пачкой материалов.",
+          extra: "Апрув человека до публикации. После нескольких чистых циклов — опциональный автопаблиш.",
+          price: "Lite ~$199/мес · Pro ~$349/мес. Agency: setup + MRR за клиента. License — если хостите сами.",
         },
         assistant: {
           value:
-            "Продажный inbox + база знаний + квалификация лида + handoff человеку.",
-          who: "Командам, которым нужен AI-inbox продаж, а не конструктор чат-воронок.",
-          extra:
-            "Каналы: Messenger · Instagram Direct · WhatsApp · чат на сайте · Telegram опционально.",
+            "Продажный AI-inbox — WhatsApp, Instagram Direct, Messenger, чат на сайте, Telegram. База знаний, ответы, квалификация, передача человеку.",
+          who: "Командам, которым нужен inbox продаж, а не конструктор чат-воронок.",
+          extra: "Человек подхватывает диалог, когда без него нельзя.",
           price: "Entry $149/мес · Standard $249/мес",
         },
         showroom: {
-          value: "Котировки, спецификации и PDF по вашим правилам цены.",
-          who: "Командам с конфигурируемым оффером, которым нужен CPQ, а не чат с «ценой».",
-          extra: "Вертикали: мебель · авто · недвижимость · ритейл · услуги.",
+          value:
+            "Отрасле-нейтральный CPQ: сложные коммерческие запросы, спецификации, расчёты и котировки по правилам бизнеса.",
+          who: "Командам с конфигурируемым оффером, которым нужны спецификация и КП, а не «цена из чата».",
+          extra:
+            "Вертикали: строительство, недвижимость, авто, мебель, ритейл, производство, услуги и соседние конфигурируемые ниши.",
           price:
             "Self-serve setup $0 или ~$300 done-for-you. Дальше ~$199 / $299/мес по квоте котировок.",
         },
       },
     },
-    agencyStrip: {
-      eyebrow: "Параллельная B2B-линия",
-      title: "Autonomous toolkit for agencies",
-      body: "Уже маркетинговое агентство и хотите стек себе — AIME multi-client (Agency setup + MRR за клиента) или License? Эти треки — на страницах продуктов. AI Mark Agency остаётся сервисной компанией.",
-      cta: "Agency / License подробно",
-    },
-    channels: {
-      eyebrow: "Каналы и рост",
-      title: "Один цикл роста. Доп. каналы — линии ретейнера, не новые продукты.",
-      lead: "Реклама → лендинг → контент → inbox → оффер → аналитика. В цикле сидят AIME, AI Business Assistant и Showroom. Остальные каналы можно включить в ретейнер по скоупу. Отдельных SKU «PR-Agent» или «YouTube-Agent» мы не продаём.",
-      loopTitle: "Полный цикл роста",
-      loop: [
-        { title: "Реклама", note: "Трафик в систему" },
-        { title: "Лендинг / CRO", note: "Страница, которая должна конвертить" },
-        { title: "Контент (AIME)", note: "Исследование → публикация" },
-        { title: "Inbox (BA)", note: "Квалификация + handoff" },
-        { title: "Оффер (Showroom)", note: "Котировка / спецификация / PDF" },
-        { title: "Аналитика", note: "Обратно в цикл" },
-      ],
-      linesTitle: "Линии каналов — честная готовность",
-      status: {
-        live: "Фаза 1 · live",
-        service: "Линия услуги",
-        later: "Позже / опционально",
-      },
-      footnote:
-        "Эти линии можно включить в ретейнер, если офферу это нужно. Только мягкие формулировки — без обещанного CAC, ROAS или позиций.",
-      lines: [
-        {
-          status: "live",
-          name: "Meta / Instagram / Facebook",
-          body: "Основной канал. Фаза 1 в работе. Органика с апрувом человека. Starter — Instagram-first; Growth — полная Meta.",
-        },
-        {
-          status: "service",
-          name: "Реклама / performance",
-          body: "Стратегия и креативы с поддержкой AI. Кабинеты клиента. Запуск — человек. Медиабюджет — ваш.",
-        },
-        {
-          status: "service",
-          name: "YouTube / короткий видео",
-          body: "Сценарии, обложки, субтитры с AI. Монтаж и голос — полуавтомат. Не кнопка «опубликовать» и не отдельный YouTube-продукт.",
-        },
-        {
-          status: "service",
-          name: "PR / статьи / SEO-GEO",
-          body: "Бриф → черновик → редактура → публикация, тот же HITL. Линия ретейнера по задаче — не отдельный PR-Agent.",
-        },
-        {
-          status: "service",
-          name: "Email / реактивация",
-          body: "Цепочки для тех, кто уже в контуре. Подключается скоупом, не вторым inbox-продуктом.",
-        },
-        {
-          status: "later",
-          name: "Репутация / отзывы",
-          body: "Позже / опционально. Не делаем вид, что review-ops — это фаза 1.",
-        },
+    production: {
+      eyebrow: "Digital Production",
+      title: "Строим цифровую инфраструктуру бизнеса.",
+      lead: "Продакшн — это то, чем создание бизнеса становится на деле. Мы не веб-студия в поисках чужих визиток.",
+      note: "Та же компания, которая при необходимости будет продвигать и продавать то, что собрала.",
+      items: [
+        "Сайты и лендинги",
+        "Веб-приложения и платформы",
+        "Магазины и клиентские кабинеты",
+        "Внутренние системы",
+        "Интеграции",
+        "AI-функции и автоматизация",
       ],
     },
-    model: {
-      eyebrow: "Как устроена компания",
-      title: "Внутренняя OS. Инструмент поставки. Продукт. Платформа — позже.",
-      lead: "Одна система: так мы работаем, так поставляем услугу и то, что можем поставить вам. Это не слайд про будущее приложение.",
-      chain: [
-        "Рабочая AI-система",
-        "Клиенты",
-        "Понятная юнит-экономика",
-        "Масштаб продаж",
-        "Углубление платформы",
+    cycle: {
+      eyebrow: "Полный цикл",
+      title: "Можем войти на любом этапе — или пройти путь целиком.",
+      lead: "Исследование — не слайд. Сборка — не передача незнакомцу. Маркетинг — не отдельная агентская история.",
+      steps: [
+        "Исследование",
+        "Концепция",
+        "Сборка",
+        "Маркетинг",
+        "Продажи",
+        "Аналитика",
+        "Оптимизация",
+        "Масштаб",
       ],
-      shift:
-        "Мы не только продаём технологии агентствам. Ту же систему ведём как AI-native маркетинговая компания для конечных клиентов.",
-      scaleTitle: "Почему это масштабируется без фабрики голов",
-      scaleBody:
-        "Классическое агентство растёт людьми вместе с клиентами. Здесь повторяемая работа — AI: больше клиентов → больше автоматизированных циклов → рост ops под контролем. Мягкая оценка: один сильный оператор тянет около 8–12 клиентов — зависит от пакета и автоматизации, это не гарантия.",
     },
     how: {
-      eyebrow: "Операционный цикл",
-      title: "Как работа реально движется",
-      lead: "Один цикл, а не свалка постов. Креатив внутри цикла. Аналитика и оптимизация кормят следующее исследование.",
-      hitl: "HITL: AI готовит → человек проверяет → клиент апрувит → публикация. После нескольких удачных циклов — опциональный автопаблиш. Бесконтрольного AI-постинга нет.",
+      eyebrow: "Как устроено",
+      title: "AI-native операционка. Стратегия и ключевые решения — за людьми.",
+      lead: "Работа идёт внутри AI-системы. Люди задают направление, проверяют результат и принимают решение, которое выходит в эфир.",
+      hitl: "AI готовит → человек проверяет → клиент апрувит → публикация или действие. После нескольких чистых циклов автопаблиш может быть опцией. Бесконтрольной автоматизации нет.",
       steps: [
         {
-          title: "Исследование",
-          body: "Аудитория, оффер, конкуренты, что уже собирает внимание — до первой строки.",
+          title: "Подготовка",
+          body: "Агенты собирают исследование, тексты, креативы, ответы или спецификации по брифу и базе, которую вы даёте.",
         },
         {
-          title: "Стратегия",
-          body: "С кем говорим, что говорим, какие поверхности реально используем в этом месяце.",
-        },
-        {
-          title: "Контент",
-          body: "Черновики агентов под управлением оператора. Объём без серой каши.",
-        },
-        {
-          title: "Креатив",
-          body: "Креативы в том же цикле — не отдельная «свалка дизайна», когда календарь уже опаздывает.",
+          title: "Проверка",
+          body: "Оператор читает работу до вас. Объём не отменяет ревью.",
         },
         {
           title: "Апрув",
-          body: "Именной человеческий путь. Нет апрува — нет эфира.",
+          body: "Вы (или названный владелец) подписываете. Нет апрува — нет эфира.",
         },
         {
-          title: "Публикация",
-          body: "В согласованные каналы, с неймингом и метками, по которым можно учиться.",
-        },
-        {
-          title: "Аналитика",
-          body: "Что вышло, что встало. Цифры как операционные данные — не выдуманный lift.",
-        },
-        {
-          title: "Оптимизация",
-          body: "Режем, оставляем, меняем. Следующее исследование начинается с фактов.",
+          title: "Действие",
+          body: "Публикация, отправка, котировка или handoff — с следом, по которому можно учиться.",
         },
       ],
     },
-    packages: {
-      eyebrow: "Сервисный прайс",
-      title: "Ретейнеры $1,200–3,500 / месяц, по скоупу.",
-      lead: "Во всех пакетах человек в контуре. USD в месяц. Медиабюджет — ваш и в ретейнер не входит.",
+    commercial: {
+      eyebrow: "Коммерческая модель",
+      title: "Несколько форматов работы. Ретейнер — один из них.",
+      lead: "Продуктовый SKU, сервисный спринт, штатный отдел или кастомная сборка. Ниже — ценовые коридоры, не обещание результата.",
+      skuNote:
+        "Подписка на AI-продукты (примерно $149–349+/мес) — это не ретейнер AI-маркетингового отдела ($1,500–3,500+/мес).",
       perMonth: "/мес",
       featured: "Чаще начинают отсюда",
-      cta: "Запросить пакет",
+      retainerCta: "Запросить отдел",
+      custom: "Индивидуально",
+      tiers: [
+        {
+          name: "AI-продукты",
+          price: "$149–349+",
+          body: "AIME, Business Assistant, Showroom AI как продуктовые SKU — у себя или с нашей поставкой.",
+        },
+        {
+          name: "AI-маркетинговые услуги",
+          price: "от $500+",
+          body: "Маркетинг по скоупу без полного штатного отдела. Определяется брифом, не выдуманным пакетом.",
+        },
+        {
+          name: "AI-маркетинговый отдел",
+          price: "$1,500–3,500+",
+          body: "Постоянный HITL-маркетинг как отдел: Starter, Growth, Scale. Медиабюджет — ваш, в ретейнер не входит.",
+        },
+        {
+          name: "Digital Production",
+          price: "Индивидуально",
+          body: "Сайты, приложения, платформы, кабинеты, интеграции. Скоуп — после понимания операционной задачи.",
+        },
+        {
+          name: "Создание бизнеса",
+          price: "Индивидуально",
+          body: "От исследования до модели, сборки, запуска и коммерческого контура. Индивидуальный скоуп.",
+        },
+        {
+          name: "Enterprise",
+          price: "Индивидуально",
+          body: "Несколько брендов, рынков или тяжёлый продакшн и отдел в одном договоре.",
+        },
+      ],
+      footnote:
+        "USD. Продуктовые цены — в опубликованных коридорах на страницах продуктов. Ретейнеры отдела: Starter $1,200 / Growth $2,200 / Scale $3,500 в месяц по скоупу. ROI, CAC и ROAS не гарантируем.",
+    },
+    packages: {
       items: {
         starter: {
           name: "Starter",
@@ -742,7 +934,7 @@ export const copy: Record<Locale, Copy> = {
           summary: "Полная Meta (Instagram + Facebook), HITL, еженедельное исследование.",
           points: [
             "Instagram и Facebook как одна Meta-система",
-            "Inbox и Showroom-ниши, если офферу это нужно",
+            "Inbox и Showroom, если офферу это нужно",
             "Человек в контуре на каждой публикации",
             "Аналитика кормит следующий цикл",
           ],
@@ -758,123 +950,182 @@ export const copy: Record<Locale, Copy> = {
           ],
         },
       },
-      footnote:
-        "Диапазон $1,200–3,500 / месяц по скоупу. Один сильный оператор тянет около 8–12 клиентов — зависит от пакета и автоматизации. Байинг, если нужен, — отдельный скоуп.",
-    },
-    stack: {
-      eyebrow: "Выход на рынок — честно",
-      title: "Фаза 1 — Meta. Остальные каналы зарабатывают место.",
-      lead: "Мы не продаём OS на десять площадок в первый день. Сначала ведём систему там, где она уже живая, и мерим работу.",
-      readyTitle: "Фаза 1 — сейчас",
-      ready: [
-        {
-          title: "Meta / Instagram / Facebook",
-          body: "Поставка на поверхностях, которые реально ведём. Starter — Instagram-first. Growth — полная Meta.",
-        },
-        {
-          title: "Сервис + inbox + ниши Showroom",
-          body: "Ретейнер плюс продажный inbox и котировки, если офферу это нужно — не «для галочки».",
-        },
-        {
-          title: "Что мерим",
-          body: "CAC, конверсия, MRR, удержание, ops-себестоимость, нагрузка оператора, доля AI в работе. Операционные метрики — не обещанный lift.",
-        },
-      ],
-      laterTitle: "Фаза 2 — после юнит-экономики",
-      later: [
-        {
-          title: "Google, YouTube, SEO, другие соцсети",
-          body: "Подключаем, когда юнит-экономика фазы 1 по этому движению реальна — не чеклистом на кикоффе.",
-        },
-        {
-          title: "Партнёры и международка",
-          body: "Реферальные и региональные партнёры могут идти рядом с собственными продажами. Новые рынки — та же HITL-система.",
-        },
-        {
-          title: "Логин вместо оператора",
-          body: "Если продукты нужны без ретейнера, это линия toolkit — не тихий ребренд этого сайта.",
-        },
-      ],
-    },
-    compare: {
-      eyebrow: "Поле",
-      title: "Та же задача? Не та же система.",
-      lead: "Систему используем, чтобы поставлять услугу. Мы не только продаём доступ к местам.",
-      usLabel: "AI Mark Agency",
-      rows: [
-        {
-          name: "AI-инструменты контента",
-          body: "Генерация и расписание постов. Помощник календаря, не операционная компания.",
-        },
-        {
-          name: "Класс Predis",
-          body: "Соцконтент плюс публикация. Полезный слой. Это не исследование → апрув → оптимизация как ретейнер.",
-        },
-        {
-          name: "Класс ManyChat",
-          body: "Чат-воронки и рассылки. Другая задача, чем продажный inbox с базой знаний и handoff.",
-        },
-        {
-          name: "Классические агентства",
-          body: "Люди плюс ретейнер. Штат растёт с клиентами. Повторяемая работа остаётся ручной.",
-        },
-        {
-          name: "AI Mark Agency",
-          body: "AI-система + услуга + непрерывная автоматизация. HITL по умолчанию. Стек — способ поставки.",
-        },
-      ],
-    },
-    fit: {
-      eyebrow: "Совпадение",
-      title: "Кому это нужно — и кому лучше уйти",
-      forTitle: "Хороший фит",
-      forItems: [
-        "Нужен маркетинг как работающая система, а не месячная свалка постов",
-        "Будете апрувить по ритму (или назовёте того, кто будет)",
-        "Meta — разумная первая поверхность: Instagram, затем Facebook по задаче",
-        "Нужен оператор плюс агенты, а не колода из двенадцати человек",
-      ],
-      notTitle: "Не фит",
-      notItems: [
-        "Бесконтрольный AI-постинг. Так мы не работаем.",
-        "Гарантия ROI, виральности или любой выдуманный процент",
-        "Десять каналов с первой недели без того, кто апрувит",
-        "Самый дешёвый scheduler без услуги",
-      ],
     },
     partners: {
       eyebrow: "Партнёры",
-      title: "Реферальные и региональные партнёры",
-      body: "Привели клиента → мы онбордим → комиссия по договорённости. Собственные продажи, цифра и партнёры могут жить рядом.",
+      title: "Международная партнёрская сеть — способ масштабировать присутствие.",
+      lead: "Не нужен полный офис в каждом регионе, чтобы работать рынок. Партнёры приводят клиентов, представляют решения и развивают территорию.",
+      model:
+        "Международное присутствие без собственной инфраструктуры в каждой стране. Комиссия — всегда по договорённости; обещанный доход мы не называем.",
+      earn: "Партнёр может:",
       cta: "Обсудить партнёрство",
+      types: [
+        {
+          title: "Региональный",
+          body: "Представлять компанию в географии. Локальные связи, та же операционная система.",
+        },
+        {
+          title: "Отраслевой",
+          body: "Привести вертикаль, которую уже понимаете — строительство, авто, ритейл и соседние.",
+        },
+        {
+          title: "Реферальный",
+          body: "Привели клиента. Мы онбордим. Комиссия по договорённости.",
+        },
+        {
+          title: "Агентский",
+          body: "Вести продукты для своей базы клиентов или перепродавать поставку на нашем стеке.",
+        },
+      ],
+      can: [
+        "Приводить клиентов",
+        "Представлять решения",
+        "Растить рынок",
+        "Получать комиссию на согласованных условиях",
+      ],
+    },
+    why: {
+      eyebrow: "Почему сейчас",
+      title: "Компании уходят от разрозненных AI-инструментов к AI-native операционке.",
+      lead: "Сдвиг операционный, не театральный. Ручная тяжёлая работа упирается в скорость, себестоимость и масштаб. Есть окно для тех, у кого инфраструктура уже в контуре.",
+      oldLabel: "Привычное",
+      newLabel: "AI-native",
+      old: ["Люди", "Процессы", "Ручная работа", "Много подрядчиков"],
+      next: ["AI-инфраструктура", "Агенты", "Автоматизация", "Решения людей"],
+      close:
+        "Это не значит, что компании с ручными процессами исчезнут. Это значит, что те, у кого контур уже собран, могут двигаться быстрее.",
+    },
+    investors: {
+      eyebrow: "Инвесторам",
+      title: "Капитал — в рост, а не в стек, который ещё предстоит придумать.",
+      lead: "AI-инфраструктура уже в коммерческом использовании. Раннее финансирование, если берём, — на масштабирование существующего: клиенты, продажи, международный маркетинг, партнёры, автоматизация, продакшн и экспансия.",
+      usesTitle: "Куда идут деньги",
+      uses: [
+        "Клиенты и продажи",
+        "Международный маркетинг",
+        "Партнёрская сеть",
+        "AI-инфраструктура и автоматизация",
+        "Мощность Digital Production",
+        "Географическая экспансия",
+      ],
+      not: "Мы не привлекаем деньги, чтобы собрать технологию с нуля. Не публикуем обязательный чек, оценку компании и доход инвестора.",
+      scale:
+        "Открыты к раннему финансированию на этапе коммерческого масштабирования. Размер и структура — индивидуально. Более крупные раунды позже возможны, если их поддержат клиенты, выручка и присутствие — это не обещание.",
+      cta: "Обсудить участие в инвестициях",
+    },
+    network: {
+      eyebrow: "Связка",
+      title: "Как части усиливают друг друга.",
+      result: "Глобальная AI-native компания",
+      nodes: [
+        "AI-продукты",
+        "Прямые продажи",
+        "Партнёрская сеть",
+        "Создание бизнеса",
+        "Международная экспансия",
+      ],
     },
     contact: {
-      eyebrow: "Бриф",
-      title: "Назовите бренд — или партнёрство.",
-      lead: "Короткая форма. Если фит плохой — так и напишем. Telegram или WhatsApp достаточно, если вы живёте в мессенджерах.",
+      eyebrow: "Контакт",
+      title: "Напишите, с какой стороны вы заходите.",
+      lead: "Одна форма. Выберите сценарий. Если фит плохой — так и скажем. Telegram или WhatsApp достаточно, если вы живёте в мессенджерах.",
       name: "Имя",
       email: "Email",
       messenger: "Telegram или WhatsApp",
       messengerHint: "Ник или номер",
-      company: "Компания / бренд",
-      budget: "Что нужно",
-      budgetOptions: [
-        { value: "starter", label: "Starter · ~$1,200/мес" },
-        { value: "growth", label: "Growth · ~$2,200/мес" },
-        { value: "scale", label: "Scale · ~$3,500/мес" },
-        { value: "tools", label: "Только инструменты / установка" },
-        { value: "partner", label: "Реферальное / региональное партнёрство" },
-        { value: "unsure", label: "Пока не уверен(а)" },
+      company: "Компания / проект",
+      scenario: "Я здесь потому что",
+      scenarioOptions: [
+        { value: "idea", label: "У меня есть идея", hint: "Концепция, компании ещё нет — или почти нет." },
+        { value: "business", label: "У меня есть бизнес", hint: "Уже работает. Нужен контур." },
+        { value: "capital", label: "У меня есть капитал", hint: "Хотите собирать от рынка, а не от случайной идеи." },
+        { value: "marketing", label: "Нужен AI-маркетинг", hint: "Отдел, услуги или установка продукта." },
+        { value: "partner", label: "Хочу партнёрство", hint: "Регион, отрасль, реферал или агентство." },
+        { value: "investment", label: "Рассматриваю инвестиции", hint: "Разговор об участии — не обещание из колоды." },
       ],
-      submit: "Отправить бриф",
+      submit: "Отправить",
       sending: "Отправляем…",
       success: "Получили. Ответим на email или в мессенджер, который вы оставили.",
       error: "Не отправилось. Напишите hello@ai-mark.agency или попробуйте ещё раз.",
-      privacy: "Отправляя, вы соглашаетесь, что мы свяжемся по этому брифу. См. Privacy.",
+      privacy: "Отправляя, вы соглашаетесь, что мы свяжемся по этому запросу. См. Privacy.",
+    },
+    productPages: {
+      aime: {
+        eyebrow: "AIME",
+        title: "AI Marketing Employee",
+        lead: "Маркетинговая система, не календарь. От исследования до оптимизации — один цикл, публикация с человеком.",
+        metaphor: "Маркетинговые агенты готовят цикл. Решение выйти в эфир остаётся за людьми.",
+        sections: [
+          {
+            title: "Что делает",
+            body: "Исследование, стратегия, контент, креативы, апрув, публикация, аналитика, оптимизация. Эта последовательность и есть продукт.",
+          },
+          {
+            title: "HITL",
+            body: "В эфир не уходит ничего без апрува названного человека — пока вы сами не включите автопаблиш после нескольких чистых циклов.",
+          },
+          {
+            title: "Как продаём",
+            body: "Как продуктовый SKU и как операционная система внутри ретейнера AI-маркетингового отдела. Это разные коммерческие форматы.",
+          },
+        ],
+        flow: [
+          "Исследование",
+          "Стратегия",
+          "Контент",
+          "Креативы",
+          "Апрув",
+          "Публикация",
+          "Аналитика",
+          "Оптимизация",
+        ],
+      },
+      assistant: {
+        eyebrow: "BA",
+        title: "AI Business Assistant",
+        lead: "Продажный inbox: отвечает, квалифицирует, передаёт человеку. Не конструктор воронок в шкуре чат-бота.",
+        metaphor: "Один inbox на каналах, где покупатели уже пишут.",
+        sections: [
+          {
+            title: "Каналы",
+            body: "WhatsApp, Instagram Direct, Messenger, чат на сайте, Telegram.",
+          },
+          {
+            title: "Что внутри",
+            body: "База знаний, ответы, квалификация лида и путь к человеку, когда без него нельзя.",
+          },
+          {
+            title: "Где стоит",
+            body: "На шаге продаж в контуре компании — после маркетинга, до котировки или звонка.",
+          },
+        ],
+        flow: ["Вход", "База знаний", "Ответ", "Квалификация", "Handoff человеку"],
+      },
+      showroom: {
+        eyebrow: "CPQ",
+        title: "Showroom AI",
+        lead: "Сложный коммерческий запрос становится расчётом, спецификацией и котировкой — по вашим правилам. Не «только мебель» и не чат, который выдумывает цену.",
+        metaphor: "Каталог + правила + параметры клиента → расчёт → спецификация → КП / PDF.",
+        sections: [
+          {
+            title: "Отрасле-нейтральный",
+            body: "Для конфигурируемых офферов. Вертикали: строительство, недвижимость, авто, мебель, ритейл, производство, услуги и соседние ниши.",
+          },
+          {
+            title: "Что получаете",
+            body: "Спецификации, расчёты и котировки по правилам бизнеса, которые вы задаёте — не «оценка из воздуха».",
+          },
+          {
+            title: "Где стоит",
+            body: "После квалифицированного разговора. Inbox собирает намерение; Showroom превращает его в документ.",
+          },
+        ],
+        flow: ["Каталог", "Правила", "Параметры клиента", "Расчёт", "Спецификация", "КП / PDF"],
+      },
     },
     footer: {
       blurb:
-        "Маркетинг как постоянно работающая AI-система. AI-native маркетинговая компания — люди на стратегии, клиентах и ключевых решениях.",
+        "AI-native венчурная и маркетинговая компания. От идеи до работающего бизнеса — на собственной AI-инфраструктуре.",
       privacy: "Конфиденциальность",
       rights: "AI Mark Agency. Все права защищены.",
       poweredBy: "Технологии: AlexDev",
@@ -883,15 +1134,15 @@ export const copy: Record<Locale, Copy> = {
       title: "Конфиденциальность",
       updated: "Обновлено: 21 сентября 2026",
       paragraphs: [
-        "AI Mark Agency (ai-mark.agency) собирает данные формы: имя, email, мессенджер, компанию и запрос. Используем их только чтобы ответить и решить, берём ли работу или реферальное партнёрство.",
+        "AI Mark Agency (ai-mark.agency) собирает данные формы: имя, email, мессенджер, компанию или проект и выбранный сценарий. Используем их только чтобы ответить и решить, берём ли работу, партнёрство или инвестиционный разговор.",
         "Мы не продаём данные. На сайте нет отдельного аналитического продукта сверх того, что нужно хостингу. Заявки уходят на почту оператора.",
-        "Попросить удалить бриф можно на hello@ai-mark.agency. Это заглушка политики; расширим, если появится рассылка, пиксели или найм.",
+        "Попросить удалить запрос можно на hello@ai-mark.agency. Это заглушка политики; расширим, если появится рассылка, пиксели или найм.",
         "Хостинг может быть на Vercel. Доставка писем — через транзакционного провайдера. Они видят только то, что нужно для доставки сервиса.",
       ],
     },
     jsonLd: {
       description:
-        "AI-native маркетинговая компания. AI-система и специализированные агенты ведут большую часть операций; люди держат стратегию, клиентов и ключевые решения. Ретейнеры $1,200–3,500 в месяц.",
+        "AI-native венчурная и маркетинговая компания. От идеи до работающего бизнеса: исследование, модель, цифровой продукт, маркетинг, продажи и рост на существующей AI-инфраструктуре.",
     },
   },
 };

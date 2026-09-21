@@ -22,7 +22,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
         name: site.name,
         url: site.url,
         areaServed: "Worldwide",
-        priceRange: "$$",
+        priceRange: "$$–$$$",
         parentOrganization: { "@id": `${site.url}/#org` },
         description: t.jsonLd.description,
         offers: packages.map((pkg) => ({
@@ -35,7 +35,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
       },
       {
         "@type": "ItemList",
-        name: "Agency tools",
+        name: t.products.hubTitle,
         itemListElement: products.map((tool, i) => ({
           "@type": "ListItem",
           position: i + 1,

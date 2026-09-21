@@ -3,26 +3,28 @@
 :root,
 [data-theme="light"] {
   color-scheme: light;
-  --ink: #f4f1e6;
-  --ink-2: #ebe6d4;
-  --ink-3: #e0d9c2;
-  --paper: #16170f;
-  --muted: #5e5c52;
-  --line: rgba(22, 23, 15, 0.14);
-  --mark: #4a5c00;
-  --mark-ink: #f4f1e6;
+  --ink: #f7f5f0;
+  --ink-2: #ffffff;
+  --ink-3: #efece4;
+  --paper: #171614;
+  --muted: #5f5c55;
+  --line: rgba(23, 22, 20, 0.1);
+  --mark: #3a4318;
+  --mark-ink: #f7f5f0;
+  --warm: #8a7348;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --ink: #0b0c0a;
-  --ink-2: #14160f;
-  --ink-3: #1c2014;
+  --ink: #121310;
+  --ink-2: #1a1c16;
+  --ink-3: #22251c;
   --paper: #f3f0e6;
-  --muted: #9a9788;
+  --muted: #9b978c;
   --line: rgba(243, 240, 230, 0.12);
-  --mark: #d6ff3f;
-  --mark-ink: #14180a;
+  --mark: #c9d48a;
+  --mark-ink: #14160f;
+  --warm: #d4c09a;
 }
 
 @theme inline {
@@ -34,6 +36,7 @@
   --color-line: var(--line);
   --color-mark: var(--mark);
   --color-mark-ink: var(--mark-ink);
+  --color-warm: var(--warm);
   --font-sans: var(--font-manrope);
   --font-display: var(--font-unbounded);
 }

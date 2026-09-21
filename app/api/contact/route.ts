@@ -3,13 +3,21 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const BUDGETS = new Set(["starter", "growth", "scale", "tools", "partner", "unsure"]);
+const SCENARIOS = new Set([
+  "idea",
+  "business",
+  "capital",
+  "marketing",
+  "partner",
+  "investment",
+]);
 
 type Payload = {
   name?: unknown;
   email?: unknown;
   messenger?: unknown;
   company?: unknown;
+  scenario?: unknown;
   budget?: unknown;
   website?: unknown;
 };
@@ -76,19 +84,19 @@ export async function POST(request: Request) {
   const email = str(body.email, 200);
   const messenger = str(body.messenger, 120);
   const company = str(body.company, 160);
-  const budget = str(body.budget, 40);
+  const scenario = str(body.scenario, 40) || str(body.budget, 40);
 
-  if (!name || !EMAIL_RE.test(email) || !messenger || !company || !BUDGETS.has(budget)) {
+  if (!name || !EMAIL_RE.test(email) || !messenger || !company || !SCENARIOS.has(scenario)) {
     return NextResponse.json({ ok: false, error: "invalid_fields" }, { status: 400 });
   }
 
-  const subject = `[ai-mark.agency] ${company} · ${budget}`;
+  const subject = `[ai-mark.agency] ${company} · ${scenario}`;
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
     `Telegram/WhatsApp: ${messenger}`,
     `Company: ${company}`,
-    `Budget: ${budget}`,
+    `Scenario: ${scenario}`,
   ].join("\n");
 
   try {
