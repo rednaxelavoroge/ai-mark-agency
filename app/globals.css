@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0b0c0a;
+  --ink-2: #14160f;
+  --ink-3: #1c2014;
+  --paper: #f3f0e6;
+  --muted: #9a9788;
+  --line: rgba(243, 240, 230, 0.12);
+  --mark: #d6ff3f;
+  --mark-ink: #14180a;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-mark: var(--mark);
+  --color-mark-ink: var(--mark-ink);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-unbounded);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--mark);
+  color: var(--mark-ink);
+}
