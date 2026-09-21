@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
-import { ContactForm } from "@/components/ContactForm";
+import { listPublicMessengers } from "@/lib/contact";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
@@ -378,14 +378,26 @@ export default async function HomePage({ params }: Props) {
       {/* 12. DIRECT CONTACT / CTA */}
       <Section id="contact" index="10" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div>
-            <ContactCta className="mb-6 inline-flex items-center rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light">
-              {isRu ? "Сначала чат" : "Start with chat"} →
+          <div className="space-y-6">
+            <p className="text-sm leading-relaxed text-muted">{t.contact.lead}</p>
+            <ContactCta className="inline-flex items-center rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light">
+              {isRu ? "Открыть чат" : "Open chat"} →
             </ContactCta>
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-muted">
-              {isRu ? "Email-путь" : "Email path"}
-            </p>
-            <ContactForm t={t.contact} />
+            <ul className="space-y-3 pt-2">
+              {listPublicMessengers().map((row) => (
+                <li key={row.key}>
+                  <a
+                    href={row.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-paper hover:text-mark transition-colors"
+                  >
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted">{row.label}</span>
+                    <span aria-hidden>→</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
           <aside className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 text-sm text-muted space-y-6">
             <div>
@@ -404,13 +416,7 @@ export default async function HomePage({ params }: Props) {
               {t.footer.blurb}
             </p>
 
-            <div className="border-t border-line pt-4 space-y-2">
-              <p className="text-xs text-paper font-mono">
-                Email:{" "}
-                <a className="text-mark font-medium hover:underline" href={`mailto:${site.email}`}>
-                  {site.email}
-                </a>
-              </p>
+            <div className="border-t border-line pt-4">
               <p className="text-xs text-paper font-mono">
                 Domain: <span className="text-muted">{site.domain}</span>
               </p>

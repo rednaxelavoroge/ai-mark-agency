@@ -22,9 +22,9 @@ export const site = {
    * inventing handles or copying another brand's numbers.
    */
   messengers: {
-    telegram: undefined as string | undefined,
-    whatsapp: undefined as string | undefined,
-    messenger: undefined as string | undefined,
+    telegram: "https://t.me/AlexDevCompany",
+    whatsapp: "https://wa.me/37281952565",
+    messenger: "https://m.me/61586410776411",
     instagram: undefined as string | undefined,
   },
 };

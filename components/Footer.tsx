@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
 import { ContactCta } from "@/components/ContactCta";
-import { navHref, site, type Locale } from "@/lib/site";
+import { navHref, type Locale } from "@/lib/site";
 import { productPagePath, productsHubPath } from "@/lib/products";
 
 export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
@@ -30,14 +30,6 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 ? "От идеи до работающего бизнеса. Исследуем рынки, строим цифровые продукты, разворачиваем AI-инфраструктуру, запускаем маркетинг и продажи."
                 : "From Idea to Business. Researching markets, building digital products, deploying proprietary AI infrastructure, and scaling marketing and sales operations."}
             </p>
-            <div className="mt-4">
-              <a
-                href={`mailto:${site.email}`}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-paper hover:text-mark transition-colors"
-              >
-                <span>✉</span> {site.email}
-              </a>
-            </div>
           </div>
 
           {/* Col 2: Core Platform Contours */}

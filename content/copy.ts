@@ -551,7 +551,7 @@ export const copy: Record<Locale, Copy> = {
     contact: {
       eyebrow: "Contact",
       title: "Tell us which door you are walking through.",
-      lead: "Start with the site chat. Email is last: the form below is only the email path.",
+      lead: "Open the site chat or message us on Telegram, WhatsApp, or Messenger — we usually reply within a few hours.",
       name: "Name",
       email: "Email",
       messenger: "Telegram or WhatsApp",
@@ -1028,7 +1028,7 @@ export const copy: Record<Locale, Copy> = {
     contact: {
       eyebrow: "Контакт",
       title: "Напишите, с какой стороны вы заходите.",
-      lead: "Сначала чат на сайте. Email — в конце: форма ниже только для почтового пути.",
+      lead: "Откройте чат на сайте или напишите в Telegram, WhatsApp или Messenger — обычно отвечаем в течение нескольких часов.",
       name: "Имя",
       email: "Email",
       messenger: "Telegram или WhatsApp",
