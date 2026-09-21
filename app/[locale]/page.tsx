@@ -65,6 +65,7 @@ export default async function HomePage({ params }: Props) {
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
               {t.hero.eyebrow}
             </p>
+            <p className="mt-3 text-sm text-mark">{t.hero.tagline}</p>
             <h1 className="mt-4 font-display text-4xl leading-[1.05] font-medium tracking-tight sm:text-5xl lg:text-6xl">
               {t.hero.title}
             </h1>
@@ -77,7 +78,7 @@ export default async function HomePage({ params }: Props) {
                 {t.hero.primaryCta}
               </Link>
               <Link
-                href={`${home}#contact`}
+                href={`${home}#tools`}
                 className="rounded-full border border-line px-5 py-3 text-sm hover:border-paper/40"
               >
                 {t.hero.secondaryCta}
@@ -115,6 +116,10 @@ export default async function HomePage({ params }: Props) {
                   {t.products.whoLabel}
                 </p>
                 <p className="mt-1 text-sm text-muted">{item.who}</p>
+                <p className="mt-3 text-xs font-semibold tracking-wide text-muted uppercase">
+                  {t.products.extraLabel}
+                </p>
+                <p className="mt-1 text-sm text-muted">{item.extra}</p>
                 <p className="mt-4 flex-1 text-sm text-paper/80">{item.price}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   <a
@@ -168,8 +173,31 @@ export default async function HomePage({ params }: Props) {
         </div>
       </aside>
 
+      <Section id="model" eyebrow={t.model.eyebrow} title={t.model.title} lead={t.model.lead}>
+        <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+          {t.model.chain.map((step, i) => (
+            <li key={step} className="flex items-center gap-2 text-sm">
+              <span className="rounded-full border border-line bg-ink-2 px-3 py-1.5">
+                {step}
+              </span>
+              {i < t.model.chain.length - 1 ? (
+                <span className="hidden text-mark sm:inline">→</span>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+        <p className="mt-6 max-w-3xl text-sm text-paper/90">{t.model.shift}</p>
+        <div className="mt-8 rounded-xl border border-line bg-ink-2 p-6">
+          <h3 className="font-display text-xl">{t.model.scaleTitle}</h3>
+          <p className="mt-2 text-sm text-muted">{t.model.scaleBody}</p>
+        </div>
+      </Section>
+
       <Section id="how" eyebrow={t.how.eyebrow} title={t.how.title} lead={t.how.lead}>
-        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <p className="mb-8 max-w-3xl rounded-xl border border-mark/40 bg-ink-3 p-4 text-sm">
+          {t.how.hitl}
+        </p>
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.how.steps.map((step, i) => (
             <li
               key={step.title}
@@ -271,6 +299,39 @@ export default async function HomePage({ params }: Props) {
         </div>
       </Section>
 
+      <Section
+        id="compare"
+        eyebrow={t.compare.eyebrow}
+        title={t.compare.title}
+        lead={t.compare.lead}
+      >
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
+            <tbody>
+              {t.compare.rows.map((row) => {
+                const isUs = row.name === t.compare.usLabel;
+                return (
+                  <tr
+                    key={row.name}
+                    className={isUs ? "bg-ink-3" : "border-b border-line"}
+                  >
+                    <th
+                      scope="row"
+                      className={`w-[38%] px-4 py-3 font-display font-medium ${
+                        isUs ? "text-mark" : ""
+                      }`}
+                    >
+                      {row.name}
+                    </th>
+                    <td className="px-4 py-3 text-muted">{row.body}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
       <Section id="fit" eyebrow={t.fit.eyebrow} title={t.fit.title}>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-xl border border-line bg-ink-2 p-6">
@@ -291,6 +352,24 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </Section>
+
+      <aside id="partners" className="scroll-mt-24 border-t border-line bg-ink-3">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
+              {t.partners.eyebrow}
+            </p>
+            <p className="mt-2 font-display text-2xl">{t.partners.title}</p>
+            <p className="mt-2 text-sm text-muted">{t.partners.body}</p>
+          </div>
+          <Link
+            href={`${home}#contact`}
+            className="shrink-0 rounded-full bg-mark px-5 py-3 text-center text-sm font-semibold text-mark-ink"
+          >
+            {t.partners.cta}
+          </Link>
+        </div>
+      </aside>
 
       <Section
         id="contact"

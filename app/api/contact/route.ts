@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const BUDGETS = new Set(["starter", "growth", "scale", "tools", "unsure"]);
+const BUDGETS = new Set(["starter", "growth", "scale", "tools", "partner", "unsure"]);
 
 type Payload = {
   name?: unknown;

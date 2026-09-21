@@ -46,7 +46,7 @@ export default function OgImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ fontSize: 64, lineHeight: 1.05, maxWidth: 980 }}>
-            AI-native marketing. Human approval on every publish.
+            AI-native marketing. A continuously running system.
           </div>
           <div style={{ fontSize: 28, color: "#9a9788" }}>{site.domain}</div>
         </div>

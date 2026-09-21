@@ -1,6 +1,6 @@
 # AI Mark Agency
 
-Production landing for **[ai-mark.agency](https://ai-mark.agency)** — an AI-native marketing agency (one senior operator + AI stack), not a SaaS storefront.
+Production landing for **[ai-mark.agency](https://ai-mark.agency)** — an AI-native marketing company. Most ops run through an AI system and specialized agents; humans own strategy, clients, and key decisions. Not a SaaS storefront and not an investment page.
 
 Source of truth: this GitHub repo. Built for Vercel.
 
