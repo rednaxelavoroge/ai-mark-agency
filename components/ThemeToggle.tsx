@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export type Theme = "light" | "dark";
 
@@ -20,6 +20,16 @@ function persistTheme(theme: Theme) {
     /* ignore */
   }
   document.cookie = `${COOKIE}=${theme}; path=/; max-age=31536000; samesite=lax`;
+  window.dispatchEvent(new Event("theme-change"));
+}
+
+function subscribe(onStoreChange: () => void) {
+  window.addEventListener("theme-change", onStoreChange);
+  window.addEventListener("storage", onStoreChange);
+  return () => {
+    window.removeEventListener("theme-change", onStoreChange);
+    window.removeEventListener("storage", onStoreChange);
+  };
 }
 
 export function ThemeToggle({
@@ -29,19 +39,12 @@ export function ThemeToggle({
   lightLabel: string;
   darkLabel: string;
 }) {
-  const [theme, setTheme] = useState<Theme>("light");
-
-  useEffect(() => {
-    setTheme(readTheme());
-  }, []);
+  const theme = useSyncExternalStore(subscribe, readTheme, () => "light" as const);
+  const isDark = theme === "dark";
 
   function toggle() {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    persistTheme(next);
-    setTheme(next);
+    persistTheme(isDark ? "light" : "dark");
   }
-
-  const isDark = theme === "dark";
 
   return (
     <button

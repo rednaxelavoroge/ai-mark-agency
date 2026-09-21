@@ -43,7 +43,7 @@ function rewritePartnerProductHrefs(html: string): string {
       (loc) => productPagePath(loc as Locale, "showroom"),
     ],
     [
-      /https?:\/\/(?:www\.)?alex-dev\.pro\/(en|ru)\/products\/?/g,
+      /https?:\/\/(?:www\.)?alex-dev\.pro\/(en|ru)\/products\/?(?=["'?#]|$)/g,
       (loc) => productsHubPath(loc as Locale),
     ],
     [
@@ -72,9 +72,8 @@ function rewritePartnerProductHrefs(html: string): string {
       `${q}${productPagePath(loc as Locale, "showroom")}${suffix}`,
   );
   html = html.replace(
-    /(["'])\/(en|ru)\/products\/?([?#][^"']*)?/g,
-    (_m, q: string, loc: string, suffix = "") =>
-      `${q}${productsHubPath(loc as Locale)}${suffix}`,
+    /(["'])\/(en|ru)\/products\/?(?=["'?#])/g,
+    (_m, q: string, loc: string) => `${q}${productsHubPath(loc as Locale)}`,
   );
 
   return html;
@@ -110,6 +109,23 @@ function prefixRootRelative(
     (_m, before: string, sep: string) => `${before}${sep}${origin}/`,
   );
 
+  return html;
+}
+
+function freezeMarketingHtml(html: string, origin: string): string {
+  html = html.replace(/(["'\s(,=])\/_next\//g, `$1${origin}/_next/`);
+  html = html.replace(
+    /<script\b(?![^>]*type=["']application\/ld\+json["'])[\s\S]*?<\/script>/gi,
+    "",
+  );
+  html = html.replace(
+    /<link\b[^>]*rel=["'](?:modulepreload|preload)["'][^>]*as=["']script["'][^>]*>/gi,
+    "",
+  );
+  html = html.replace(
+    /<link\b[^>]*as=["']script["'][^>]*rel=["'](?:modulepreload|preload)["'][^>]*>/gi,
+    "",
+  );
   return html;
 }
 
@@ -179,6 +195,7 @@ export async function proxyPartnerHtml(opts: {
 
   html = rewritePartnerProductHrefs(html);
   html = prefixRootRelative(html, origin, localKeepPrefixes());
+  html = freezeMarketingHtml(html, origin);
   html = retargetSeo(html, opts.canonical, opts.locale);
 
   return new Response(html, {
