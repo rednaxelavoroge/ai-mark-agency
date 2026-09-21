@@ -138,13 +138,13 @@ export const aimeRu: AimeContent = {
       id: "direct",
       badge: "Прямой бизнес · Без setup",
       name: "Бизнес и бренды",
-      pricePrimary: "Лайт $199 · Про $359 /мес",
+      pricePrimary: "Лайт $199 · Про $349 /мес",
       priceSecondary: "Без платы за подключение",
       summary:
         "Стратегия, контент-план, посты, визуалы и согласование в Telegram. В тарифе Про — три сети, Reels, 30 публикаций и самообучение на метриках.",
       benefits: [
         "Лайт $199/мес: лента Instagram, базовый план, до 12 постов/мес",
-        "Про $359/мес: IG + FB + Threads, раскадровки Reels, до 30 постов, глубокая аналитика",
+        "Про $349/мес: IG + FB + Threads, раскадровки Reels, до 30 постов, глубокая аналитика",
         "Генерация текстов и визуалов в фирменном стиле",
         "Согласование публикаций в Telegram в один клик",
         "Подключение до 5 рабочих дней",
@@ -154,12 +154,12 @@ export const aimeRu: AimeContent = {
       id: "agency",
       badge: "Маркетинговые агентства",
       name: "Агентская инфраструктура",
-      pricePrimary: "Setup $800 разово",
+      pricePrimary: "Setup $799 разово",
       priceSecondary: "далее $199 / клиент / мес",
       summary:
         "Отдельный AI-сотрудник на каждого клиента, панель у оператора агентства, изолированные Telegram-чаты согласования. Агентство сохраняет клиентов и повышает маржу.",
       benefits: [
-        "Разовый сетап инфраструктуры $800",
+        "Разовый сетап инфраструктуры $799",
         "Масштабирование: $199/мес за каждого активного клиента",
         "Изолированные чаты согласования под каждого клиента",
         "Публикация в Instagram, Facebook и Threads",
@@ -269,7 +269,7 @@ export const aimeRu: AimeContent = {
     {
       id: "pro",
       name: "Про",
-      price: "$359",
+      price: "$349",
       period: "/ месяц",
       featured: true,
       note: "Без платы за подключение · Рекомендуем",
@@ -290,13 +290,13 @@ export const aimeRu: AimeContent = {
     name: "Агентство",
     price: "$199",
     period: "/ клиент / месяц",
-    setupPrice: "$800",
+    setupPrice: "$799",
     setupLabel: "разово",
-    note: "Сетап $800 один раз, далее $199/мес за активного клиента",
+    note: "Сетап $799 один раз, далее $199/мес за активного клиента",
     desc: "Для маркетинговых агентств: изолированный AI-сотрудник на каждого клиента и общая панель у оператора.",
     channels: ["Instagram", "Facebook", "Threads"],
     features: [
-      "Разовый сетап контура $800",
+      "Разовый сетап контура $799",
       "Далее $199/мес за каждого клиента",
       "Изолированные чаты согласования под каждого клиента",
       "Панель оператора агентства",
@@ -317,7 +317,7 @@ export const aimeRu: AimeContent = {
     },
     {
       q: "Нужна ли плата за подключение?",
-      a: "Для прямого бизнеса платы за подключение нет — вы оплачиваете только ежемесячную подписку ($199 или $359). Для агентств разовый сетап агентского контура составляет $800, далее $199/мес за клиента.",
+      a: "Для прямого бизнеса платы за подключение нет — вы оплачиваете только ежемесячную подписку ($199 или $349). Для агентств разовый сетап агентского контура составляет $799, далее $199/мес за клиента.",
     },
     {
       q: "Как устроено согласование через Telegram?",
@@ -394,13 +394,13 @@ export const aimeEn: AimeContent = {
       id: "direct",
       badge: "Direct Business · Zero Setup Fee",
       name: "Brands & Companies",
-      pricePrimary: "Lite $199 · Pro $359 /mo",
+      pricePrimary: "Lite $199 · Pro $349 /mo",
       priceSecondary: "Zero setup fee",
       summary:
         "Full marketing pipeline with Telegram review. Pro plan includes 3 Meta networks, Reels scripts, 30 posts per month, and conversion analytics.",
       benefits: [
         "Lite $199/mo: Instagram feed, foundational calendar, up to 12 posts/mo",
-        "Pro $359/mo: IG + Facebook + Threads, Reels storyboards, 30 posts, deep telemetry",
+        "Pro $349/mo: IG + Facebook + Threads, Reels storyboards, 30 posts, deep telemetry",
         "Copywriting and on-brand visual synthesis included",
         "1-click Telegram approval workflow",
         "Deployment within 5 business days",
@@ -410,12 +410,12 @@ export const aimeEn: AimeContent = {
       id: "agency",
       badge: "Agency Infrastructure",
       name: "Marketing Agencies",
-      pricePrimary: "Setup $800 once",
+      pricePrimary: "Setup $799 once",
       priceSecondary: "then $199 / client / mo",
       summary:
         "Dedicated AI employee per client, centralized operator dashboard, and isolated Telegram approval channels. Grow client retention and margins.",
       benefits: [
-        "One-time infrastructure setup fee of $800",
+        "One-time infrastructure setup fee of $799",
         "Predictable scale: $199/mo per active client account",
         "Isolated Telegram review channels per brand",
         "Publishing to Instagram, Facebook, and Threads",
@@ -525,7 +525,7 @@ export const aimeEn: AimeContent = {
     {
       id: "pro",
       name: "Pro",
-      price: "$359",
+      price: "$349",
       period: "/ month",
       featured: true,
       note: "No setup fee · Recommended",
@@ -546,13 +546,13 @@ export const aimeEn: AimeContent = {
     name: "Agency",
     price: "$199",
     period: "/ client / month",
-    setupPrice: "$800",
+    setupPrice: "$799",
     setupLabel: "one-time",
-    note: "Setup $800 once, then $199/mo per active client",
+    note: "Setup $799 once, then $199/mo per active client",
     desc: "For marketing agencies: dedicated AI employee per client and a centralized operator command center.",
     channels: ["Instagram", "Facebook", "Threads"],
     features: [
-      "One-time setup fee $800",
+      "One-time setup fee $799",
       "Scale at $199/mo per client account",
       "Isolated Telegram channels per client",
       "Centralized agency operator dashboard",
@@ -573,7 +573,7 @@ export const aimeEn: AimeContent = {
     },
     {
       q: "Is there an onboarding setup fee?",
-      a: "For direct businesses, there is zero setup fee — you only pay the monthly subscription ($199 or $359). For agencies, a one-time infrastructure setup fee of $800 applies, followed by $199/mo per client.",
+      a: "For direct businesses, there is zero setup fee — you only pay the monthly subscription ($199 or $349). For agencies, a one-time infrastructure setup fee of $799 applies, followed by $199/mo per client.",
     },
     {
       q: "How does Telegram approval work?",
