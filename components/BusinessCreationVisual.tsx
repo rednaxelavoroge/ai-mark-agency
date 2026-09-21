@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, type CSSProperties } from "react";
-import Link from "next/link";
-import { navHref, type Locale } from "@/lib/site";
+import { ContactCta } from "@/components/ContactCta";
+import { type Locale } from "@/lib/site";
 export function BusinessCreationVisual({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
   const [startingState, setStartingState] = useState<"with-idea" | "capital">("with-idea");
@@ -115,12 +115,9 @@ export function BusinessCreationVisual({ locale }: { locale: Locale }) {
           </div>
 
           <div className="shrink-0">
-            <Link
-              href={navHref(locale, "#contact")}
-              className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
-            >
+            <ContactCta className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all">
               {isRu ? "Обсудить концепцию" : "Discuss Concept"} →
-            </Link>
+            </ContactCta>
           </div>
         </div>
 

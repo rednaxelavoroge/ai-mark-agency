@@ -4,13 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
-import { ConsultationModal } from "@/components/ConsultationModal";
+import { openLauncher } from "@/lib/contact";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
 
 export function AIBAPageContent({ locale }: { locale: Locale }) {
   const c = getAibaCopy(locale);
-  const [modalOpen, setModalOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const isRu = locale === "ru";
@@ -44,7 +43,7 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => openLauncher()}
                   className="inline-flex items-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light"
                 >
                   {c.ctaConsult} →
@@ -404,7 +403,7 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
                 <div className="mt-8 pt-4 border-t border-line">
                   <button
                     type="button"
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => openLauncher()}
                     className={`w-full rounded-full px-5 py-3 text-xs font-semibold transition-all ${
                       p.badge
                         ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
@@ -476,7 +475,7 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
                 type="button"
-                onClick={() => setModalOpen(true)}
+                onClick={() => openLauncher()}
                 className="rounded-full bg-mark px-7 py-3 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
               >
                 {c.ctaConsult} →
@@ -491,14 +490,6 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
-
-      <ConsultationModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        locale={locale}
-        productName="AI Business Assistant"
-        defaultScenario="assistant"
-      />
     </article>
   );
 }

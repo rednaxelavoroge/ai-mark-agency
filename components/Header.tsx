@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Copy } from "@/content/copy";
+import { ContactCta } from "@/components/ContactCta";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { navHref, type Locale } from "@/lib/site";
 
@@ -57,15 +58,24 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           </div>
         </Link>
         <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
-          {t.nav.items.map((item) => (
-            <Link
-              key={item.href + item.label}
-              href={navHref(locale, item.href)}
-              className="link-underline whitespace-nowrap transition-colors hover:text-paper"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {t.nav.items.map((item) =>
+            item.href === "#contact" ? (
+              <ContactCta
+                key={item.href + item.label}
+                className="link-underline whitespace-nowrap text-muted transition-colors hover:text-paper"
+              >
+                {item.label}
+              </ContactCta>
+            ) : (
+              <Link
+                key={item.href + item.label}
+                href={navHref(locale, item.href)}
+                className="link-underline whitespace-nowrap transition-colors hover:text-paper"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
@@ -89,12 +99,9 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
               {t.nav.langRu}
             </Link>
           </div>
-          <Link
-            href={navHref(locale, "#contact")}
-            className="hidden rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:inline-flex sm:px-4 sm:text-sm"
-          >
+          <ContactCta className="hidden rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:inline-flex sm:px-4 sm:text-sm">
             {t.nav.cta}
-          </Link>
+          </ContactCta>
           <button
             type="button"
             className="grid h-8 w-8 place-items-center rounded-full border border-line text-sm xl:hidden"
@@ -111,23 +118,31 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           <ul className="mx-auto grid max-w-6xl gap-2 text-sm">
             {t.nav.items.map((item) => (
               <li key={item.href + item.label}>
-                <Link
-                  href={navHref(locale, item.href)}
-                  className="block rounded-lg px-2 py-2 hover:bg-ink-3"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                {item.href === "#contact" ? (
+                  <ContactCta
+                    className="block w-full rounded-lg px-2 py-2 text-left hover:bg-ink-3"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </ContactCta>
+                ) : (
+                  <Link
+                    href={navHref(locale, item.href)}
+                    className="block rounded-lg px-2 py-2 hover:bg-ink-3"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li>
-              <Link
-                href={navHref(locale, "#contact")}
-                className="mt-2 block rounded-full bg-mark px-4 py-2.5 text-center text-sm font-semibold text-mark-ink"
+              <ContactCta
+                className="mt-2 block w-full rounded-full bg-mark px-4 py-2.5 text-center text-sm font-semibold text-mark-ink"
                 onClick={() => setOpen(false)}
               >
                 {t.nav.cta}
-              </Link>
+              </ContactCta>
             </li>
           </ul>
         </nav>

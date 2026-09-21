@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ContactCta } from "@/components/ContactCta";
 import { InvestorProposalView, revealDelay } from "@/components/InvestorProposal";
 import { getInvestorsCopy } from "@/content/investors";
 import { INVESTOR_PAGE_PATH } from "@/lib/investors";
 import { Flow } from "@/lib/markdown";
-import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
+import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -121,15 +121,12 @@ export default async function InvestorsPage({ params }: Props) {
             <p className="mt-3 text-sm leading-relaxed text-muted">{t.ctaBody}</p>
           </div>
           <div className="shrink-0">
-            <Link
-              href={navHref(locale, "#contact")}
-              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-mark px-6 py-3 text-xs font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light"
-            >
+            <ContactCta className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-mark px-6 py-3 text-xs font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light">
               {t.ctaButton}
               <span className="btn-arrow" aria-hidden>
                 →
               </span>
-            </Link>
+            </ContactCta>
           </div>
         </div>
         <p className="mt-6 border-t border-warm/20 pt-4 text-[11px] leading-relaxed text-muted">

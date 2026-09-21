@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ContactCta } from "@/components/ContactCta";
 import { getCopy } from "@/content/copy";
 import { products } from "@/content/packages";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { productPagePath } from "@/lib/products";
-import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
+import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -155,12 +156,9 @@ export default async function ProductsHubPage({ params }: Props) {
                       →
                     </span>
                   </Link>
-                  <Link
-                    href={navHref(locale, "#contact")}
-                    className="rounded-full border border-line bg-ink-3/40 px-3.5 py-2.5 text-xs font-medium text-paper transition-colors hover:border-line-strong hover:bg-ink-3"
-                  >
+                  <ContactCta className="rounded-full border border-line bg-ink-3/40 px-3.5 py-2.5 text-xs font-medium text-paper transition-colors hover:border-line-strong hover:bg-ink-3">
                     {t.products.installCta}
-                  </Link>
+                  </ContactCta>
                 </div>
               </div>
             </section>
@@ -179,12 +177,9 @@ export default async function ProductsHubPage({ params }: Props) {
               : "We'll review your company workflow and formulate the precise stack configuration."}
           </p>
         </div>
-        <Link
-          href={navHref(locale, "#contact")}
-          className="inline-flex rounded-full bg-mark px-6 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all whitespace-nowrap"
-        >
+        <ContactCta className="inline-flex rounded-full bg-mark px-6 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all whitespace-nowrap">
           {t.hero.primaryCta} →
-        </Link>
+        </ContactCta>
       </div>
     </article>
   );

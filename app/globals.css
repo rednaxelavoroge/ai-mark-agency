@@ -545,6 +545,175 @@ main {
   transform: translateX(4px);
 }
 
+/* ContactLauncher (Chat → messengers → Email) */
+.cl-root {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 70;
+}
+.cl-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 71;
+  background: transparent;
+}
+.cl-fab {
+  position: relative;
+  z-index: 73;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 20px 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  background: var(--mark);
+  color: var(--mark-ink);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cl-fab:hover {
+  background: var(--mark-light);
+  transform: translateY(-1px);
+}
+.cl-fab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.cl-fab-label {
+  white-space: nowrap;
+}
+.cl-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 14px);
+  z-index: 74;
+  width: 328px;
+  max-width: calc(100vw - 28px);
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+}
+.cl-menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 6px;
+}
+.cl-menu-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cl-menu-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.cl-menu-close:hover {
+  color: var(--paper);
+  background: var(--ink-3);
+}
+.cl-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+  color: var(--paper);
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.cl-item:hover {
+  background: var(--ink-3);
+  border-color: var(--line);
+}
+.cl-item:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.cl-item-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 700;
+}
+.cl-item-icon-ai {
+  background: var(--warm-soft);
+  color: var(--warm);
+}
+.cl-item-icon-email {
+  background: var(--ink-3);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+.cl-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.cl-item-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.cl-item-hint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.cl-menu-sep {
+  height: 1px;
+  background: var(--line);
+  margin: 6px;
+}
+
+@media (max-width: 640px) {
+  .cl-root {
+    right: 14px;
+    bottom: 14px;
+  }
+  .cl-fab {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .cl-fab-label {
+    display: none;
+  }
+  .cl-menu {
+    width: calc(100vw - 28px);
+  }
+}
+
 @media print {
   [data-reveal] {
     opacity: 1 !important;

@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { ContactCta } from "@/components/ContactCta";
 import { ContactForm } from "@/components/ContactForm";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
@@ -17,7 +17,7 @@ import { PartnerNetworkVisual } from "@/components/PartnerNetworkVisual";
 import { InvestorsSection } from "@/components/InvestorsSection";
 import { getCopy } from "@/content/copy";
 import { packages } from "@/content/packages";
-import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
+import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -241,12 +241,9 @@ export default async function HomePage({ params }: Props) {
                 <p className="mt-3 text-xs leading-relaxed text-muted">{tier.body}</p>
               </div>
               <div className="mt-6 pt-4 border-t border-line">
-                <Link
-                  href={navHref(locale, "#contact")}
-                  className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors"
-                >
+                <ContactCta className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
                   {isRu ? "Запросить условия" : "Request Details"}
-                </Link>
+                </ContactCta>
               </div>
             </article>
           ))}
@@ -297,8 +294,7 @@ export default async function HomePage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={navHref(locale, "#contact")}
+                  <ContactCta
                     className={`mt-6 inline-flex justify-center rounded-full px-4 py-2.5 text-xs font-semibold transition-all ${
                       pkg.featured
                         ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
@@ -306,7 +302,7 @@ export default async function HomePage({ params }: Props) {
                     }`}
                   >
                     {t.commercial.retainerCta}
-                  </Link>
+                  </ContactCta>
                 </article>
               );
             })}
@@ -382,7 +378,15 @@ export default async function HomePage({ params }: Props) {
       {/* 12. DIRECT CONTACT / CTA */}
       <Section id="contact" index="10" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <ContactForm t={t.contact} />
+          <div>
+            <ContactCta className="mb-6 inline-flex items-center rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light">
+              {isRu ? "Сначала чат" : "Start with chat"} →
+            </ContactCta>
+            <p className="mb-4 font-mono text-[11px] uppercase tracking-wider text-muted">
+              {isRu ? "Email-путь" : "Email path"}
+            </p>
+            <ContactForm t={t.contact} />
+          </div>
           <aside className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 text-sm text-muted space-y-6">
             <div>
               <span className="font-mono text-xs text-warm uppercase tracking-wider">

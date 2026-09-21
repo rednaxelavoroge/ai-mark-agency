@@ -2,6 +2,7 @@
 
 import { useState, useEffect, type CSSProperties } from "react";
 import Link from "next/link";
+import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
 import type { Copy } from "@/content/copy";
 
@@ -199,12 +200,9 @@ export function HeroSystem({ locale, t }: HeroProps) {
 
             {/* CTA row */}
             <div className="mt-8 flex flex-wrap items-center gap-3" data-reveal style={{ "--reveal-delay": "320ms" } as CSSProperties}>
-              <Link
-                href={navHref(locale, "#contact")}
-                className="inline-flex items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95"
-              >
+              <ContactCta className="inline-flex items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95">
                 {t.hero.primaryCta} →
-              </Link>
+              </ContactCta>
               <Link
                 href={navHref(locale, "#how")}
                 className="inline-flex items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
