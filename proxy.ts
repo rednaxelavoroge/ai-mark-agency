@@ -3,12 +3,7 @@ import { site } from "@/lib/site";
 
 const PUBLIC_FILE = /\.[^/]+$/;
 
-function withLocale(request: NextRequest, locale: string, response: NextResponse) {
-  response.headers.set("x-locale", locale);
-  return response;
-}
-
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -23,7 +18,8 @@ export function middleware(request: NextRequest) {
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set("x-locale", "ru");
     const res = NextResponse.next({ request: { headers: requestHeaders } });
-    return withLocale(request, "ru", res);
+    res.headers.set("x-locale", "ru");
+    return res;
   }
 
   const url = request.nextUrl.clone();
@@ -33,9 +29,10 @@ export function middleware(request: NextRequest) {
   const res = NextResponse.rewrite(url, {
     request: { headers: requestHeaders },
   });
-  return withLocale(request, site.defaultLocale, res);
+  res.headers.set("x-locale", site.defaultLocale);
+  return res;
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 };

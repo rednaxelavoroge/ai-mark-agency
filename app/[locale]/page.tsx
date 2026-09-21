@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
-import { Section } from "@/components/Header";
+import { Section } from "@/components/Section";
 import { getCopy } from "@/content/copy";
 import { packages, toolsViaAgency } from "@/content/packages";
 import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = absoluteUrl(locale);
 
   return {
-    title: t.meta.title,
+    title: { absolute: t.meta.title },
     description: t.meta.description,
     keywords: t.meta.keywords,
     alternates: {
@@ -69,18 +70,18 @@ export default async function HomePage({ params }: Props) {
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted">{t.hero.lead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={`${home === "/" ? "" : home}#packages`}
+              <Link
+                href={`${home}#packages`}
                 className="rounded-full bg-mark px-5 py-3 text-sm font-semibold text-mark-ink"
               >
                 {t.hero.primaryCta}
-              </a>
-              <a
-                href={`${home === "/" ? "" : home}#contact`}
+              </Link>
+              <Link
+                href={`${home}#contact`}
                 className="rounded-full border border-line px-5 py-3 text-sm hover:border-paper/40"
               >
                 {t.hero.secondaryCta}
-              </a>
+              </Link>
             </div>
           </div>
           <ul className="grid gap-3 border-t border-line pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
@@ -148,8 +149,8 @@ export default async function HomePage({ params }: Props) {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`${home === "/" ? "" : home}#contact`}
+                <Link
+                  href={`${home}#contact`}
                   className={`mt-6 inline-flex justify-center rounded-full px-4 py-2.5 text-sm font-semibold ${
                     pkg.featured
                       ? "bg-mark text-mark-ink"
@@ -157,7 +158,7 @@ export default async function HomePage({ params }: Props) {
                   }`}
                 >
                   {t.packages.cta}
-                </a>
+                </Link>
               </article>
             );
           })}

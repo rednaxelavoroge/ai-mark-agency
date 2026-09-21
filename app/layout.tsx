@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Manrope, Unbounded } from "next/font/google";
 import "./globals.css";
-import { isLocale, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -25,13 +24,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const headerLocale = (await headers()).get("x-locale") ?? site.defaultLocale;
-  const lang = isLocale(headerLocale) ? headerLocale : site.defaultLocale;
-
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang={lang}
+      lang={site.defaultLocale}
       className={`${manrope.variable} ${unbounded.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-ink text-paper">{children}</body>

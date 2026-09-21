@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import { getCopy } from "@/content/copy";
-import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { HtmlLang } from "@/components/HtmlLang";
 import { JsonLd } from "@/components/JsonLd";
 import { isLocale, site, type Locale } from "@/lib/site";
 
@@ -25,6 +26,7 @@ export default async function LocaleLayout({
 
   return (
     <div lang={locale} className="flex min-h-full flex-col">
+      <HtmlLang locale={locale} />
       <JsonLd locale={locale} />
       <Header locale={locale} t={t} />
       <main className="flex-1">{children}</main>
