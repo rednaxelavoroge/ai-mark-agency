@@ -67,6 +67,17 @@
   letter-spacing: -0.015em;
 }
 
+/* Route entry fade (opacity-only on purpose) */
+@keyframes am-pagefade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.page-in { animation: am-pagefade 0.45s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-in { animation: none !important; }
+}
+
 /* Animated underline for inline links */
 .link-underline {
   background-image: linear-gradient(currentColor, currentColor);

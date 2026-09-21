@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
-import { ProductUI } from "@/components/ui/ProductUI";
+import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { getShowroomCopy } from "@/content/products/showroom";
 import { ConsultationModal } from "@/components/ConsultationModal";
 
@@ -100,8 +100,8 @@ export function ShowroomAIPageContent({ locale }: { locale: Locale }) {
                 ))}
               </div>
 
-              <div className="mt-3" data-reveal="scale">
-                <ProductUI variant="showroom" ratio="aspect-[16/9]" />
+              <div className="mt-3 pb-0 sm:pb-12" data-reveal="scale">
+                <ProductConstellation variant="showroom" />
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
 import { ConsultationModal } from "@/components/ConsultationModal";
-import { ProductUI } from "@/components/ui/ProductUI";
+import { ProductConstellation } from "@/components/ui/ProductConstellation";
 
 export function AIMEPageContent({ locale }: { locale: Locale }) {
   const c = getAimeCopy(locale);
@@ -69,9 +69,9 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
             </div>
 
             {/* Product UI visual preview */}
-            <div className="relative" data-reveal>
-              <div className="float-slow" data-reveal="scale" data-reveal-delay="120">
-                <ProductUI variant="aime" />
+            <div className="relative pb-0 sm:pb-14" data-reveal>
+              <div data-reveal="scale" data-reveal-delay="120">
+                <ProductConstellation variant="aime" />
               </div>
 
               {/* Platform pills */}

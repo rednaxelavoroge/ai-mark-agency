@@ -130,6 +130,30 @@ const COPY: Record<Locale, { eyebrow: string; title: string; lead: string; stage
   },
 };
 
+/** Plain-language description of what each centre artifact represents. */
+const ARTIFACT_CAPTION: Record<Locale, Record<string, string>> = {
+  ru: {
+    seed: "Вход: идея, действующий бизнес или объём капитала.",
+    bars: "Аналитика рынка: спрос, конкуренты и юнит-экономика.",
+    grid: "Модель: сегменты, монетизация, каналы и стоимость привлечения.",
+    brand: "Айдентика: позиционирование, голос и визуальная система.",
+    product: "Цифровой продукт: кабинеты, расчёты, интеграции и данные.",
+    ai: "AI-агенты в операциях: контент, инбокс продаж, расчёты по каталогу.",
+    funnel: "Продажи: поток обращений, квалификация и сделки.",
+    growth: "Рост: метрики, оптимизация и партнёрская сеть.",
+  },
+  en: {
+    seed: "Input: an idea, an operating company, or a capital range.",
+    bars: "Market analytics: demand, competitors and unit economics.",
+    grid: "Model: segments, monetization, channels and cost of acquisition.",
+    brand: "Identity: positioning, voice and the visual system.",
+    product: "Digital product: workspaces, calculations, integrations and data.",
+    ai: "AI agents in operations: content, sales inbox, catalog quoting.",
+    funnel: "Sales: inquiry flow, qualification and closed deals.",
+    growth: "Growth: metrics, optimization and the partner network.",
+  },
+};
+
 const RADIUS = 37;
 const CENTER = { x: 50, y: 50 };
 
@@ -141,7 +165,25 @@ function nodePos(i: number, total: number) {
   };
 }
 
-function Artifact({ kind }: { kind: string }) {
+const ARTIFACT_LABEL: Record<Locale, Record<string, string>> = {
+  ru: {
+    bars: "спрос · конкуренты",
+    product: "кабинеты · расчёты",
+    ai: "RAG · агенты",
+    funnel: "обращения → сделки",
+    growth: "метрики · сеть",
+  },
+  en: {
+    bars: "demand · competitors",
+    product: "workspaces · quoting",
+    ai: "RAG · agents",
+    funnel: "inquiries → deals",
+    growth: "metrics · network",
+  },
+};
+
+function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
+  const label = ARTIFACT_LABEL[locale]?.[kind] ?? "";
   const base =
     "stage-enter flex h-full w-full items-center justify-center rounded-xl border border-line/70 bg-ink-2 p-3";
   if (kind === "seed") {
@@ -157,14 +199,19 @@ function Artifact({ kind }: { kind: string }) {
   if (kind === "bars") {
     return (
       <div className={base}>
-        <div className="flex h-16 w-full max-w-[150px] items-end gap-1.5">
-          {[42, 58, 50, 74, 66, 88, 80].map((h, i) => (
-            <span
-              key={i}
-              className="flex-1 rounded-t-[3px] bg-gradient-to-t from-mark/55 to-mark"
-              style={{ height: `${h}%` }}
-            />
-          ))}
+        <div className="w-full max-w-[150px]">
+          <div className="flex h-12 items-end gap-1.5">
+            {[42, 58, 50, 74, 66, 88, 80].map((h, i) => (
+              <span
+                key={i}
+                className="flex-1 rounded-t-[3px] bg-gradient-to-t from-mark/55 to-mark"
+                style={{ height: `${h}%` }}
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+            {label}
+          </p>
         </div>
       </div>
     );
@@ -210,6 +257,9 @@ function Artifact({ kind }: { kind: string }) {
             <span className="block h-2 w-full rounded bg-ink-3" />
             <span className="block h-2 w-5/6 rounded bg-ink-3" />
           </div>
+          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+            {label}
+          </p>
         </div>
       </div>
     );
@@ -217,13 +267,18 @@ function Artifact({ kind }: { kind: string }) {
   if (kind === "ai") {
     return (
       <div className={base}>
-        <div className="grid grid-cols-3 gap-2">
-          {Array.from({ length: 9 }).map((_, i) => (
-            <span
-              key={i}
-              className={`h-2.5 w-2.5 rounded-full ${i % 4 === 1 ? "bg-mark" : "bg-ink-3"}`}
-            />
-          ))}
+        <div className="text-center">
+          <div className="mx-auto grid w-fit grid-cols-3 gap-2">
+            {Array.from({ length: 9 }).map((_, i) => (
+              <span
+                key={i}
+                className={`h-2.5 w-2.5 rounded-full ${i % 4 === 1 ? "bg-mark" : "bg-ink-3"}`}
+              />
+            ))}
+          </div>
+          <p className="mt-2 font-mono text-[8px] uppercase tracking-wider text-muted">
+            {label}
+          </p>
         </div>
       </div>
     );
@@ -239,21 +294,29 @@ function Artifact({ kind }: { kind: string }) {
               style={{ width: `${w}%` }}
             />
           ))}
+          <p className="pt-1 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+            {label}
+          </p>
         </div>
       </div>
     );
   }
   return (
     <div className={base}>
-      <svg viewBox="0 0 160 60" className="h-16 w-full max-w-[170px]">
-        <path
-          d="M4 52 C40 52, 44 22, 76 22 S120 8 156 6"
-          fill="none"
-          stroke="var(--mark)"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      </svg>
+      <div className="w-full max-w-[170px]">
+        <svg viewBox="0 0 160 60" className="h-11 w-full">
+          <path
+            d="M4 52 C40 52, 44 22, 76 22 S120 8 156 6"
+            fill="none"
+            stroke="var(--mark)"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+        <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+          {label}
+        </p>
+      </div>
     </div>
   );
 }
@@ -303,6 +366,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
   const current = stages[active];
 
   return (
+    <>
     <section
       ref={sectionRef}
       id="idea-to-business"
@@ -396,8 +460,8 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                 </svg>
 
                 {/* Center artifact */}
-                <div className="absolute left-1/2 top-1/2 h-[31%] w-[31%] -translate-x-1/2 -translate-y-1/2">
-                  <Artifact kind={current.artifact} />
+                <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2">
+                  <Artifact kind={current.artifact} locale={locale} />
                 </div>
 
                 {/* Satellite nodes */}
@@ -420,8 +484,10 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                         {i === 0 ? "◦" : i}
                       </span>
                       <span
-                        className={`hidden font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 sm:inline ${
-                          on ? "text-paper" : "text-muted/60"
+                        className={`font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 ${
+                          on
+                            ? "inline font-semibold text-paper"
+                            : "hidden text-muted sm:inline"
                         }`}
                       >
                         {s.title}
@@ -430,10 +496,59 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                   );
                 })}
               </div>
+
+              {/* What the artifact means — always spelled out */}
+              <div
+                key={active}
+                className="stage-enter mx-auto mt-6 flex max-w-[460px] items-start gap-3 rounded-xl border border-line bg-ink-2 px-4 py-3"
+              >
+                <span className="mt-0.5 font-mono text-[10px] text-warm">
+                  {String(active).padStart(2, "0")}
+                </span>
+                <div>
+                  <p className="font-display text-xs font-semibold text-paper">
+                    {current.title}
+                  </p>
+                  <p className="mt-0.5 text-[11px] leading-relaxed text-muted">
+                    {ARTIFACT_CAPTION[locale]?.[current.artifact] ?? current.body}
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    {/* Stage overview — every step described in plain language */}
+    <section className="border-t border-line bg-ink-3/20">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase" data-reveal>
+          {locale === "ru" ? "Все этапы контура" : "Every stage of the contour"}
+        </p>
+        <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+          {stages.map((s, i) => (
+            <div
+              key={s.title}
+              data-reveal
+              style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties}
+              className="border-t border-line pt-4"
+            >
+              <div className="flex items-baseline gap-2">
+                <span className="font-editorial text-xl italic text-warm">
+                  {String(i).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-sm font-semibold leading-snug text-paper">
+                  {s.title}
+                </h3>
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-muted">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    </>
   );
 }

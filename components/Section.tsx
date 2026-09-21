@@ -20,7 +20,7 @@ export function Section({
           <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
             {eyebrow}
           </p>
-          <h2 className="mt-3 max-w-3xl font-display text-3xl leading-tight font-medium tracking-tight sm:text-4xl">
+          <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-[1.1] font-medium tracking-tight sm:text-4xl lg:text-[2.75rem]">
             {title}
           </h2>
           {lead ? <p className="mt-4 max-w-2xl text-muted">{lead}</p> : null}
