@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Let Playwright / 127.0.0.1 dev runs load dev assets. HANDOFF.md documents
+  // this setting; it was missing from the file it describes.
+  allowedDevOrigins: ["127.0.0.1"],
   async redirects() {
     return [
       {

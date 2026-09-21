@@ -39,25 +39,27 @@ Push to `main` → Vercel builds and deploys (~25s). Verify: fetch a page and lo
 - `components/ui/Live.tsx` — `LiveNumber` (count-up), `LiveType` (typewriter), `LiveDot`.
 - `components/ui/ProductConstellation.tsx` — `ProductConstellation` / `ConstellationOverlays` (desktop + phone + context event card, parallax). `cardKind: publish | handoff | quote`.
 - `components/ContactLauncher.tsx` — floating contact chooser (Chat → Telegram → WhatsApp → Messenger). Chat injects the real BA widget (`site.widget` in `lib/site.ts`). CTAs dispatch `am:open-launcher`; `am:open-chat` opens the widget. No email intake on the public site.
-- `app/api/chat/route.ts` — the server brain: proxies to `ASSISTANT_API_URL` when set (normalising `text|reply|answer|response|message|content|output|result|data` and OpenAI/Gemini-style SSE), otherwise talks to `AI_PROVIDER` directly with the knowledge base as a system prompt. Rate limit per IP, honeypot, history/length caps, upstream timeout. `GET /api/chat` reports `{ remote, direct, mode }` — the fastest way to check whether a brain is configured.
-- `lib/assistant-knowledge.ts` — the assistant's only source of facts (company, three products, AIBA pricing $39/$99/Enterprise, setup from $300, 1 day / 3–5 days launch, channels, CRM, AI Marketing Department retainers) plus tone rules, in RU and EN. Chat answers are never invented outside this file.
+- `components/ContactCta.tsx` — dispatches `am:open-launcher`. The public site has no email intake, so CTAs open the launcher instead of a `#contact` anchor.
+- `components/BrandLogo.tsx` — the AI MARK lockup used by the header and footer. Renders both ink variants and lets `[data-theme]` choose which is painted. Asset rationale: `public/brand/README.txt`.
+- `app/[locale]/opengraph-image.tsx` + `twitter-image.tsx` — per-locale 1200x630 link previews served from `public/og/`. `lib/social.ts` carries the image for pages that build their own `openGraph`, because Next merges metadata segments shallowly.
+- **The old hand-rolled chat brain is gone.** `app/api/chat/route.ts`, `lib/assistant-knowledge.ts` and the scripted `reply()` were deleted; the chat is the hosted BA widget injected by `ContactLauncher`. Do not add a second answer path next to it.
 - `components/products/PanelDemo.tsx` — interactive app-shell demo (dark sidebar + Dashboard / Inbox / Knowledge / Playground, working playground test).
 - `components/Manifesto.tsx`, `components/Section.tsx` (serif headings), `components/HeroSystem.tsx` (ambient hero + transformation ribbon).
 - Home: `app/[locale]/page.tsx`. Products hub: `app/[locale]/products/page.tsx` (ecosystem band). Product route: `app/[locale]/[product]/page.tsx`.
 
 ## Env vars
 - Contact form: `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, then `RESEND_API_KEY` **or** `CONTACT_WEBHOOK_URL`. Locally, without a provider, submissions are only logged (`[contact] …`).
-- Chat: `ASSISTANT_API_URL` + `ASSISTANT_API_TOKEN` (+ `ASSISTANT_API_TOKEN_HEADER`, `ASSISTANT_API_EXTRA_HEADERS`, `ASSISTANT_API_MESSAGES_FIELD`) to use an existing assistant API. Without it, `AI_PROVIDER` (`openai|anthropic|gemini|deepseek`) + the matching key + `AI_MODEL` make the route call the model itself. Guards: `ASSISTANT_RATE_LIMIT`, `ASSISTANT_RATE_WINDOW_MS`, `ASSISTANT_TIMEOUT_MS`.
-- **No key is required for local work**: with nothing configured the chat replies "ассистент ещё не подключён к модели" instead of failing silently. Full list in `.env.example`; production values go to Vercel → Settings → Environment Variables.
+- Chat: **no env vars.** The hosted widget's `src` and its public `key` live in `site.widget` (`lib/site.ts`). Title, greeting, colour and online state are workspace settings at `app.alex-dev.pro`, not repo settings.
+- `.env.example` lists only the contact-form variables. Production values go to Vercel → Settings → Environment Variables.
 - `next.config.ts` sets `allowedDevOrigins: ["127.0.0.1"]` so Playwright/`localhost` runs can load dev assets.
 
 ## Hard rules (keep these)
-- **No AlexDev / `alex-dev.pro` / "Технологии:" references anywhere public.** Verify: `grep -rn -i "alexdev\|alex-dev"` → 0.
+- **No AlexDev / `alex-dev.pro` branding visible to visitors.** The one unavoidable `alex-dev.pro` reference is the hosted widget's script origin (`site.widget.src` in `lib/site.ts`); the workspace behind that key must still read as AI Mark. `grep -rn -i "alexdev\|alex-dev"` should return `lib/site.ts` and nothing else.
 - Do not fabricate clients, revenue, partners, countries, investment amounts, ROI, case studies.
 - Investor wording stays generic (see `InvestorsSection.tsx`).
 - Don't invent contact handles — public channels are the site chat widget and URLs in `site.messengers` (`lib/site.ts`).
-- Chat pricing/facts may only come from `lib/assistant-knowledge.ts`, and its numbers must match `content/packages.ts` + `content/products/assistant.ts`. Update all three together.
-- The chat must not open with a request for a contact: that behaviour (the old `reply()` fallback) is what made the widget useless.
+- Chat facts come from the hosted orchestrator, not this repo. Public pricing in `content/packages.ts` and `content/products/assistant.ts` must agree with the product pages.
+- The chat must not open with a request for a contact: asking for an email on the first message is what made the old scripted widget useless.
 - Check horizontal overflow after layout changes (script above).
 
 ## Done (design round: catalog + premium pass)
@@ -69,7 +71,15 @@ Push to `main` → Vercel builds and deploys (~25s). Verify: fetch a page and lo
 - **Route transition.** New `RouteCurtain` wipes an ink panel with a mark→warm leading edge and the wordmark across the viewport on client navigation only — skipped on first paint, skipped under `prefers-reduced-motion`, mounted as a sibling so sticky keeps working.
 
 ## Done (this round)
-AI chat is no longer a scripted demo: `POST /api/chat` with a remote-assistant proxy + direct-model fallback, verification tests, session history, in-chat lead capture into `/api/contact`, per-IP rate limit and honeypot, and the panel no longer overflows the viewport. **Still open: plug in the real assistant API URL + token (or a model key) — the code is ready, only the credential is missing.**
+Replaced the scripted demo chat with the live hosted AI Business Assistant widget (real orchestrator, leads into the AlexDev Inbox workspace). `components/ContactLauncher.tsx` is the floating contact chooser; the public site no longer has an email intake. Brand: the approved AI MARK / AM Loop package is installed in `public/brand/`, the header and footer use it, favicons/apple-icon were rebuilt from it, and per-locale 1200x630 link previews replaced the generated OG placeholder.
+
+## Open — hosted widget workspace
+Checked against `GET https://app.alex-dev.pro/api/webchat/<key>/config` on 2026-09-22. These are workspace settings, not repo settings, so they need fixing in the AlexDev dashboard:
+1. `title: "AlexDev"` — must become AI Mark wording; a public "AlexDev" label violates the hard rule above.
+2. `greeting` is English-only — `?lang=ru` is ignored by the config endpoint, so **/ru visitors currently read an English greeting** (confirmed live). Needs a Russian greeting or a per-locale field from the backend.
+3. `online: false` — the widget renders, but the channel should be online to answer.
+4. `color: "#111827"` — the site accent is the olive `--mark`; align it for a native look.
+   No domain allowlist blocks us: a session request with `Origin: https://ai-mark.agency` returns `200`.
 
 ## Done (earlier rounds)
 Premium light palette, editorial serif, motion system, pinned narrative scene, dark cinematic operating-model chapter, manifesto, hero motion + ribbon, product mockups with live counters/typing, product constellation on all three product heroes, e-commerce mock with real product cards, products-hub ecosystem band, page transitions, embedded AI chat widget, interactive panel demo, EN routing fix, all AlexDev assets removed.
@@ -78,7 +88,8 @@ Premium light palette, editorial serif, motion system, pinned narrative scene, d
 1. Small-frame density: at 390px wide the taller mocks crop cleanly but lose their footer bands. If that matters, gate individual bands behind Tailwind container queries (`@container` on the frame body) rather than shrinking type.
 2. In-mockup life: the KPI sparklines draw once — consider a slow redraw or a moving caret on the "live" rows.
 3. `AimeMock` / `AssistantMock` / `ShowroomMock` are still the older, thinner structure (the hub cards crop them heavily). Extend the same five-band treatment, or give the hub cards a compact variant.
-4. Chat: plug in the real assistant API URL + token (or a model key) — see the round note above.
+4. Chat: fix the hosted workspace items above (title, RU greeting, online, colour). There is no repo-side credential left to plug in.
+5. Brand: `--mark` is olive while the approved logo is amber/graphite, so the header pairs an orange mark with a green CTA. Decide whether to re-tint the site accents to the logo palette.
 
 ## Last commit
 See `git log --oneline -1`.
