@@ -29,7 +29,3 @@ export function absoluteUrl(locale: Locale, path = "") {
   const p = localePath(locale, path);
   return p === "/" ? site.url : `${site.url}${p}`;
 }
-
-export function partnerProductsUrl(locale: Locale) {
-  return `${site.partner.url}/${locale}/products`;
-}

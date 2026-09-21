@@ -15,6 +15,8 @@ export type Copy = {
     cta: string;
     langEn: string;
     langRu: string;
+    themeLight: string;
+    themeDark: string;
   };
   hero: {
     eyebrow: string;
@@ -179,6 +181,8 @@ export const copy: Record<Locale, Copy> = {
       cta: "Start a brief",
       langEn: "EN",
       langRu: "RU",
+      themeLight: "Switch to light theme",
+      themeDark: "Switch to dark theme",
     },
     hero: {
       eyebrow: "AI-native marketing company",
@@ -196,12 +200,12 @@ export const copy: Record<Locale, Copy> = {
     products: {
       eyebrow: "Tools we run / can install for you",
       title: "The stack we operate — and can provision on your accounts",
-      lead: "Three products. We use them as the delivery OS for clients, and we can install them for you. Full SKUs live on the AlexDev products hub — this page is the agency, not a cloned catalog.",
+      lead: "Three products. We use them as the delivery OS for clients, and we can install them for you. Full detail for each lives on this site.",
       whoLabel: "Who it's for",
       extraLabel: "In the loop",
       detailCta: "Full detail",
       installCta: "Install with us",
-      hubCta: "All three products on alex-dev.pro",
+      hubCta: "All three product pages",
       items: {
         aime: {
           value:
@@ -231,8 +235,8 @@ export const copy: Record<Locale, Copy> = {
     agencyStrip: {
       eyebrow: "Parallel B2B line",
       title: "Autonomous toolkit for agencies",
-      body: "Already a marketing shop and want the stack yourselves — AIME multi-client (Agency setup + per-client MRR) or a License buy-in? That path lives on AlexDev. AI Mark Agency stays the service company.",
-      cta: "Agency / License on AlexDev",
+      body: "Already a marketing shop and want the stack yourselves — AIME multi-client (Agency setup + per-client MRR) or a License buy-in? Those tracks are on the product pages. AI Mark Agency stays the service company.",
+      cta: "Agency / License details",
     },
     channels: {
       eyebrow: "Channels & growth",
@@ -546,6 +550,8 @@ export const copy: Record<Locale, Copy> = {
       cta: "Оставить бриф",
       langEn: "EN",
       langRu: "RU",
+      themeLight: "Светлая тема",
+      themeDark: "Тёмная тема",
     },
     hero: {
       eyebrow: "AI-native маркетинговая компания",
@@ -563,12 +569,12 @@ export const copy: Record<Locale, Copy> = {
     products: {
       eyebrow: "Инструменты, которые ведём / можем поставить вам",
       title: "Стек, который мы ведём — и можем поставить на ваши аккаунты",
-      lead: "Три продукта. Это и операционная система поставки, и то, что можно установить вам. Полные SKU — на хабе AlexDev; этот сайт — агентство, не клон каталога.",
+      lead: "Три продукта. Это и операционная система поставки, и то, что можно установить вам. Полные страницы каждого продукта — на этом сайте.",
       whoLabel: "Кому",
       extraLabel: "В цикле",
       detailCta: "Подробности",
       installCta: "Поставить через нас",
-      hubCta: "Все три продукта на alex-dev.pro",
+      hubCta: "Все три страницы продуктов",
       items: {
         aime: {
           value:
@@ -599,8 +605,8 @@ export const copy: Record<Locale, Copy> = {
     agencyStrip: {
       eyebrow: "Параллельная B2B-линия",
       title: "Autonomous toolkit for agencies",
-      body: "Уже маркетинговое агентство и хотите стек себе — AIME multi-client (Agency setup + MRR за клиента) или License? Этот путь на AlexDev. AI Mark Agency остаётся сервисной компанией.",
-      cta: "Agency / License на AlexDev",
+      body: "Уже маркетинговое агентство и хотите стек себе — AIME multi-client (Agency setup + MRR за клиента) или License? Эти треки — на страницах продуктов. AI Mark Agency остаётся сервисной компанией.",
+      cta: "Agency / License подробно",
     },
     channels: {
       eyebrow: "Каналы и рост",

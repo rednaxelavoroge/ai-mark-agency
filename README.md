@@ -40,7 +40,9 @@ Packages:
 - **Growth** ~$2,200/mo — full Meta (IG/FB) + HITL, weekly research loop
 - **Scale** ~$3,500/mo — multi-brand / heavier volume, still HITL
 
-Tools mentioned as agency delivery (not a cloned product hub): AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Soft USD list prices and full SKUs live on [alex-dev.pro/{locale}/products](https://www.alex-dev.pro/en/products). The landing shows three equal cards plus a B2B strip for agencies that want AIME Agency/License themselves.
+Tools mentioned as agency delivery: AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Card and hub CTAs stay on this domain (`/products/aime`, `/products/assistant`, `/products/showroom`; short aliases `/aime`, `/ai-business-assistant`, `/showroom-ai`). Those routes proxy the live AlexDev landings (no visual redesign). The landing shows three equal cards plus a B2B strip. Footer still credits AlexDev as tech partner.
+
+The landing defaults to a **light** theme; a header toggle persists light/dark in `localStorage` + cookie.
 
 **Channels & growth** is a service block (not extra SKUs): Ads → Landing/CRO → Content (AIME) → Inbox (BA) → Offer (Showroom) → Analytics, plus honest channel readiness (Meta live; ads/YouTube/PR/email as retainer lines; reputation later).
 

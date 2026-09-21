@@ -5,7 +5,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { Section } from "@/components/Section";
 import { getCopy } from "@/content/copy";
 import { packages, products } from "@/content/packages";
-import { absoluteUrl, isLocale, localePath, partnerProductsUrl, site, type Locale } from "@/lib/site";
+import { productPagePath, productsHubPath } from "@/lib/products";
+import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -122,14 +123,12 @@ export default async function HomePage({ params }: Props) {
                 <p className="mt-1 text-sm text-muted">{item.extra}</p>
                 <p className="mt-4 flex-1 text-sm text-paper/80">{item.price}</p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <a
-                    href={partnerProductsUrl(locale)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={productPagePath(locale, product.id)}
                     className="inline-flex justify-center rounded-full bg-mark px-4 py-2.5 text-sm font-semibold text-mark-ink"
                   >
                     {t.products.detailCta}
-                  </a>
+                  </Link>
                   <Link
                     href={`${home}#contact`}
                     className="inline-flex justify-center rounded-full border border-line px-4 py-2.5 text-sm hover:border-paper/40"
@@ -142,14 +141,9 @@ export default async function HomePage({ params }: Props) {
           })}
         </div>
         <p className="mt-6 text-sm">
-          <a
-            href={partnerProductsUrl(locale)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-mark hover:underline"
-          >
+          <Link href={productsHubPath(locale)} className="text-mark hover:underline">
             {t.products.hubCta} →
-          </a>
+          </Link>
         </p>
       </Section>
 
@@ -162,14 +156,12 @@ export default async function HomePage({ params }: Props) {
             <p className="mt-2 font-display text-2xl">{t.agencyStrip.title}</p>
             <p className="mt-2 text-sm text-muted">{t.agencyStrip.body}</p>
           </div>
-          <a
-            href={partnerProductsUrl(locale)}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={productsHubPath(locale)}
             className="shrink-0 rounded-full bg-mark px-5 py-3 text-center text-sm font-semibold text-mark-ink"
           >
             {t.agencyStrip.cta}
-          </a>
+          </Link>
         </div>
       </aside>
 

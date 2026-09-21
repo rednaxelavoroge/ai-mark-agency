@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { localePath, site } from "@/lib/site";
 import type { Locale } from "@/lib/site";
 
@@ -29,6 +30,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           ))}
         </nav>
         <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <div className="flex overflow-hidden rounded-full border border-line text-xs">
             <Link
               href="/"

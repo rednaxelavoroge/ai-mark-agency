@@ -1,6 +1,20 @@
 @import "tailwindcss";
 
-:root {
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --ink: #f4f1e6;
+  --ink-2: #ebe6d4;
+  --ink-3: #e0d9c2;
+  --paper: #16170f;
+  --muted: #5e5c52;
+  --line: rgba(22, 23, 15, 0.14);
+  --mark: #4a5c00;
+  --mark-ink: #f4f1e6;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
   --ink: #0b0c0a;
   --ink-2: #14160f;
   --ink-3: #1c2014;

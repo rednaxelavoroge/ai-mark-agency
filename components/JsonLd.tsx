@@ -1,5 +1,6 @@
 import { getCopy } from "@/content/copy";
 import { packages, products } from "@/content/packages";
+import { productPagePath } from "@/lib/products";
 import { site, type Locale } from "@/lib/site";
 
 export function JsonLd({ locale }: { locale: Locale }) {
@@ -39,6 +40,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
           "@type": "ListItem",
           position: i + 1,
           name: tool.name,
+          url: `${site.url}${productPagePath(locale, tool.id)}`,
         })),
       },
     ],
