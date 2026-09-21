@@ -195,7 +195,7 @@ export const copy: Record<Locale, Copy> = {
     meta: {
       title: "AI Mark — From Idea to Business",
       description:
-        "AI-native venture and marketing company. We research the market, form a model, build the digital product, then run marketing, sales, and growth on our own AI infrastructure. No profit guarantees.",
+        "AI-native venture and marketing company. We research the market, form a model, build the digital product, then run marketing, sales, and growth on our own AI infrastructure.",
       ogTitle: "AI Mark — From Idea to Business",
       keywords: [
         "AI-native company",
@@ -672,7 +672,7 @@ export const copy: Record<Locale, Copy> = {
     meta: {
       title: "AI Mark — От идеи до работающего бизнеса",
       description:
-        "AI-native венчурная и маркетинговая компания. Исследуем рынок, собираем модель, строим цифровой продукт, затем ведём маркетинг, продажи и рост на собственной AI-инфраструктуре. Прибыль не обещаем.",
+        "AI-native венчурная и маркетинговая компания. Исследуем рынок, собираем модель, строим цифровой продукт, затем ведём маркетинг, продажи и рост на собственной AI-инфраструктуре.",
       ogTitle: "AI Mark — От идеи до работающего бизнеса",
       keywords: [
         "AI-native компания",
