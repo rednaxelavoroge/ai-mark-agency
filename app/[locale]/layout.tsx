@@ -33,6 +33,7 @@ export default async function LocaleLayout({
         {/* Reveal-on-scroll must never hide content when JS is unavailable. */}
         <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}`}</style>
       </noscript>
+      <div className="grain-overlay" aria-hidden />
       <MotionRoot />
       <ScrollProgress />
       <Header locale={locale} t={t} />

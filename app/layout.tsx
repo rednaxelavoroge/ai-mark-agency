@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Unbounded } from "next/font/google";
+import { Manrope, Unbounded, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
@@ -11,6 +11,12 @@ const manrope = Manrope({
 const unbounded = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin", "cyrillic"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin", "cyrillic"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang={site.defaultLocale}
       data-theme="light"
       style={{ colorScheme: "light" }}
-      className={`${manrope.variable} ${unbounded.variable} h-full antialiased`}
+      className={`${manrope.variable} ${unbounded.variable} ${playfair.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />

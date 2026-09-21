@@ -6,10 +6,12 @@ import { ContactForm } from "@/components/ContactForm";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
+import { IdeaToBusiness } from "@/components/IdeaToBusiness";
 import { BusinessCreationVisual } from "@/components/BusinessCreationVisual";
 import { DigitalProductionShowcase } from "@/components/DigitalProductionShowcase";
 import { AIProductsShowcase } from "@/components/AIProductsShowcase";
 import { OperatingModelSection } from "@/components/OperatingModelSection";
+import { Manifesto } from "@/components/Manifesto";
 import { PartnerNetworkVisual } from "@/components/PartnerNetworkVisual";
 import { InvestorsSection } from "@/components/InvestorsSection";
 import { getCopy } from "@/content/copy";
@@ -70,7 +72,10 @@ export default async function HomePage({ params }: Props) {
       {/* 1. HERO SECTION */}
       <HeroSystem locale={locale} t={t} />
 
-      {/* 2. WHAT WE DO: 5-PART CONNECTED OPERATING CONTOUR */}
+      {/* 2. PINNED NARRATIVE: IDEA → WORKING BUSINESS */}
+      <IdeaToBusiness locale={locale} />
+
+      {/* 3. WHAT WE DO: 5-PART CONNECTED OPERATING CONTOUR */}
       <Section id="what-we-do" eyebrow={t.pillars.eyebrow} title={t.pillars.title}>
         <div className="space-y-6">
           <p className="max-w-2xl text-muted text-sm sm:text-base">
@@ -141,10 +146,59 @@ export default async function HomePage({ params }: Props) {
         <AIProductsShowcase locale={locale} />
       </Section>
 
-      {/* 7. AI-NATIVE OPERATING MODEL */}
-      <Section id="how" eyebrow={t.how.eyebrow} title={t.how.title} lead={t.how.lead}>
-        <OperatingModelSection locale={locale} />
-      </Section>
+      {/* 7. AI-NATIVE OPERATING MODEL — cinematic dark chapter */}
+      <section
+        id="how"
+        data-theme="dark"
+        className="relative scroll-mt-24 overflow-hidden border-t border-line bg-ink text-paper"
+      >
+        <div
+          aria-hidden
+          className="ambient-drift pointer-events-none absolute -right-24 -top-24 h-[520px] w-[520px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(198,214,139,0.10),transparent_70%)]"
+        />
+        <div
+          aria-hidden
+          className="ambient-drift-slow pointer-events-none absolute -bottom-32 left-0 h-[480px] w-[480px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,191,140,0.08),transparent_70%)]"
+        />
+        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+          <div className="max-w-3xl" data-reveal>
+            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
+              {t.how.eyebrow}
+            </p>
+            <h2 className="mt-3 font-display text-3xl leading-tight font-medium tracking-tight sm:text-4xl lg:text-5xl">
+              {t.how.title}
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted">{t.how.lead}</p>
+          </div>
+
+          {/* HITL pull-statement */}
+          <p
+            className="mt-12 max-w-4xl font-editorial text-2xl leading-snug text-paper/95 sm:text-3xl lg:text-4xl"
+            data-reveal
+          >
+            {isRu ? (
+              <>
+                AI готовит <span className="text-mark">→</span> человек проверяет{" "}
+                <span className="text-mark">→</span> клиент утверждает{" "}
+                <span className="text-mark">→</span> действие.
+              </>
+            ) : (
+              <>
+                AI prepares <span className="text-mark">→</span> a human reviews{" "}
+                <span className="text-mark">→</span> the client approves{" "}
+                <span className="text-mark">→</span> action.
+              </>
+            )}
+          </p>
+
+          <div className="mt-12">
+            <OperatingModelSection locale={locale} />
+          </div>
+        </div>
+      </section>
+
+      {/* 8. MANIFESTO — editorial spread */}
+      <Manifesto locale={locale} />
 
       {/* 8. COMMERCIAL MODEL */}
       <Section
@@ -260,7 +314,7 @@ export default async function HomePage({ params }: Props) {
       {/* 10. WHY NOW */}
       <Section id="why-now" eyebrow={t.why.eyebrow} title={t.why.title} lead={t.why.lead}>
         <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
-          <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal="left">
+          <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal>
             <span className="font-mono text-xs font-semibold tracking-wider text-muted uppercase">
               {t.why.oldLabel}
             </span>
@@ -279,7 +333,7 @@ export default async function HomePage({ params }: Props) {
 
           <div className="hidden text-center font-display text-xl text-warm md:block">→</div>
 
-          <div className="rounded-2xl border border-mark/40 bg-ink-2 p-6 sm:p-8 shadow-sm" data-reveal="right">
+          <div className="rounded-2xl border border-mark/40 bg-ink-2 p-6 sm:p-8 shadow-sm" data-reveal>
             <span className="font-mono text-xs font-semibold tracking-wider text-mark uppercase">
               {t.why.newLabel}
             </span>

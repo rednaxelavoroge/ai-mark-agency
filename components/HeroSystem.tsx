@@ -227,7 +227,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
           {/* Right Column: Interactive Transformation Engine */}
           <div
             className="shimmer float-slow rounded-2xl border border-line bg-ink-2 p-5 shadow-lg lg:p-6"
-            data-reveal="right"
+            data-reveal
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >

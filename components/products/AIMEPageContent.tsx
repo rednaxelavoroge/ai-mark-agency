@@ -69,7 +69,7 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
             </div>
 
             {/* Product UI visual preview */}
-            <div className="relative" data-reveal="right">
+            <div className="relative" data-reveal>
               <div className="float-slow" data-reveal="scale" data-reveal-delay="120">
                 <ProductUI variant="aime" />
               </div>

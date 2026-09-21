@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Copy } from "@/content/copy";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { navHref, type Locale } from "@/lib/site";
@@ -15,9 +15,33 @@ function counterpartPath(pathname: string, next: Locale) {
 export function Header({ locale, t }: { locale: Locale; t: Copy }) {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const rafRef = useRef(0);
+
+  useEffect(() => {
+    const update = () => {
+      rafRef.current = 0;
+      setScrolled(window.scrollY > 8);
+    };
+    const onScroll = () => {
+      if (!rafRef.current) rafRef.current = requestAnimationFrame(update);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-ink/85 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-40 border-b backdrop-blur-md transition-all duration-300 ${
+        scrolled
+          ? "border-line bg-ink/90 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.35)]"
+          : "border-transparent bg-ink/70"
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <Link href={navHref(locale, "/")} className="flex min-w-0 items-center gap-2.5 group">
           <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-mark font-display text-xs font-bold text-mark-ink transition-transform group-hover:scale-105">
@@ -37,7 +61,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
             <Link
               key={item.href + item.label}
               href={navHref(locale, item.href)}
-              className="whitespace-nowrap transition-colors hover:text-paper"
+              className="link-underline whitespace-nowrap transition-colors hover:text-paper"
             >
               {item.label}
             </Link>

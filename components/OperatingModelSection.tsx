@@ -85,7 +85,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
       {/* Human-in-the-loop comparison split */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Column 1: AI Speed & Routine */}
-        <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal="left">
+        <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-mark" />
             <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider">
@@ -112,7 +112,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
         </div>
 
         {/* Column 2: Human Strategic Control */}
-        <div className="rounded-2xl border border-mark/30 bg-ink-3/40 p-6 sm:p-8" data-reveal="right">
+        <div className="rounded-2xl border border-mark/30 bg-ink-3/40 p-6 sm:p-8" data-reveal>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-warm" />
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-wider">

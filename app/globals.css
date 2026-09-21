@@ -57,6 +57,52 @@
   --color-warm: var(--warm);
   --font-sans: var(--font-manrope);
   --font-display: var(--font-unbounded);
+  --font-editorial: var(--font-serif);
+}
+
+/* Editorial serif: used for large numerals and pull-statements */
+.font-editorial {
+  font-family: var(--font-editorial), Georgia, "Times New Roman", serif;
+  font-feature-settings: "lnum" 1;
+  letter-spacing: -0.015em;
+}
+
+/* Animated underline for inline links */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* CTA arrow slides on hover */
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+a:hover .btn-arrow,
+button:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Fine paper grain — adds materiality without colour shift */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .grain-overlay {
+  opacity: 0.05;
+  mix-blend-mode: screen;
 }
 
 html {
@@ -69,6 +115,12 @@ body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   letter-spacing: -0.01em;
 }
+
+/* Guard against every horizontal-overflow bug class. `clip` (not hidden)
+   keeps position: sticky working and creates no scroll container. */
+main {
+  overflow-x: clip;
+} 
 
 ::selection {
   background: var(--mark);
@@ -206,8 +258,6 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-[data-reveal="left"] { transform: translate3d(-28px, 0, 0); }
-[data-reveal="right"] { transform: translate3d(28px, 0, 0); }
 [data-reveal="scale"] { transform: scale(0.94); }
 [data-reveal="clip"] {
   opacity: 1;
