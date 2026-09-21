@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/site";
-import type { PackageId } from "@/content/packages";
+import type { PackageId, ProductId } from "@/content/packages";
 
 export type NavItem = { href: string; label: string };
 
@@ -51,9 +51,25 @@ export type Copy = {
     ready: { title: string; body: string }[];
     laterTitle: string;
     later: { title: string; body: string }[];
-    toolsTitle: string;
-    toolsLead: string;
-    tools: Record<string, string>;
+  };
+  products: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    whoLabel: string;
+    detailCta: string;
+    installCta: string;
+    hubCta: string;
+    items: Record<
+      ProductId,
+      { value: string; who: string; price: string }
+    >;
+  };
+  agencyStrip: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    cta: string;
   };
   fit: {
     eyebrow: string;
@@ -114,6 +130,7 @@ export const copy: Record<Locale, Copy> = {
     },
     nav: {
       items: [
+        { href: "#tools", label: "Tools" },
         { href: "#how", label: "How it works" },
         { href: "#packages", label: "Packages" },
         { href: "#stack", label: "Stack" },
@@ -208,6 +225,43 @@ export const copy: Record<Locale, Copy> = {
       footnote:
         "Paid ads budget is yours. We can brief and iterate creative; media buying is scoped separately if you need it.",
     },
+    products: {
+      eyebrow: "Tools we run / can install for you",
+      title: "Three products we operate — and can provision on your accounts",
+      lead: "This site sells the agency. The stack underneath is AIME, AI Business Assistant, and Showroom AI. We run them inside retainers, or install them for you. Full specs stay on the AlexDev products hub — we do not clone that catalog here.",
+      whoLabel: "Who it's for",
+      detailCta: "Full detail",
+      installCta: "Install with us",
+      hubCta: "All three products on alex-dev.pro",
+      items: {
+        aime: {
+          value:
+            "Research → draft → human approval → Meta publish. A marketing employee, not a $29 scheduler.",
+          who: "Agencies with several brands, or in-house teams on a weekly research → content cycle.",
+          price:
+            "Lite ~$199/mo · Pro ~$349/mo. Agency: setup + per-client MRR. License path for self-host.",
+        },
+        assistant: {
+          value:
+            "Sales inbox: qualify, answer from a knowledge base, hand off to a human.",
+          who: "Teams that need Respond.io-class operations — not a chatbot funnel builder.",
+          price: "Entry $149/mo · Standard $249/mo",
+        },
+        showroom: {
+          value:
+            "Quotes, specs, and PDFs from your pricing rules — any vertical, not furniture-only.",
+          who: "Teams selling configurable offers who need CPQ, not a generic chatbot quote.",
+          price:
+            "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota.",
+        },
+      },
+    },
+    agencyStrip: {
+      eyebrow: "Parallel B2B line",
+      title: "Autonomous toolkit for agencies",
+      body: "Already a marketing shop and want the stack yourselves — AIME multi-client (Agency setup + per-client MRR) or a License buy-in? That path lives on AlexDev. AI Mark Agency stays the service retainer.",
+      cta: "Agency / License on AlexDev",
+    },
     stack: {
       eyebrow: "Readiness — honest",
       title: "Meta-first. Other channels earn a seat.",
@@ -242,18 +296,10 @@ export const copy: Record<Locale, Copy> = {
           body: "Creative support yes; running large ad accounts is a separate scope, not smuggled into the retainer.",
         },
         {
-          title: "Self-serve SaaS",
-          body: "This is an agency. You hire the operator. You do not get a login that replaces the work.",
+          title: "A login instead of an operator",
+          body: "The agency retainer is the operator. If you want the products without us, that is the toolkit line — not a silent rebrand of this site.",
         },
       ],
-      toolsTitle: "Tools we may run inside the retainer",
-      toolsLead:
-        "Software shows up as part of delivery — not a storefront price list. If a tool helps the loop, we use it. If it does not, we do not.",
-      tools: {
-        aime: "Internal marketing employee: research notes, drafts, calendars.",
-        assistant: "Business-side briefs, follow-ups, and operating memory.",
-        showroom: "Product or offer presentation when the brand needs a visual layer.",
-      },
     },
     fit: {
       eyebrow: "Fit",
@@ -270,7 +316,7 @@ export const copy: Record<Locale, Copy> = {
         "Set-and-forget posting with no human in the loop",
         "Guaranteed viral, guaranteed ROAS, or any invented percentage",
         "Ten channels from week one with no one to approve the work",
-        "A SaaS subscription that is supposed to replace a marketer overnight",
+        "A login that is supposed to replace the operator overnight — if you want the stack without the retainer, use the agency toolkit line",
       ],
     },
     contact: {
@@ -287,6 +333,7 @@ export const copy: Record<Locale, Copy> = {
         { value: "starter", label: "Starter · ~$1,200/mo" },
         { value: "growth", label: "Growth · ~$2,200/mo" },
         { value: "scale", label: "Scale · ~$3,500/mo" },
+        { value: "tools", label: "Tools / install only" },
         { value: "unsure", label: "Not sure yet" },
       ],
       submit: "Send brief",
@@ -334,6 +381,7 @@ export const copy: Record<Locale, Copy> = {
     },
     nav: {
       items: [
+        { href: "#tools", label: "Инструменты" },
         { href: "#how", label: "Как работаем" },
         { href: "#packages", label: "Пакеты" },
         { href: "#stack", label: "Стек" },
@@ -428,6 +476,43 @@ export const copy: Record<Locale, Copy> = {
       footnote:
         "Медиабюджет — ваш. Креативы можем брифровать и итерировать; байинг, если нужен, выносится в отдельный скоуп.",
     },
+    products: {
+      eyebrow: "Инструменты, которые ведём / можем поставить вам",
+      title: "Три продукта, которые мы ведём — и можем поставить на ваши аккаунты",
+      lead: "Этот сайт продаёт агентство. Стек под капотом — AIME, AI Business Assistant и Showroom AI. Ведём их внутри ретейнера или ставим вам. Полные спеки — на хабе продуктов AlexDev; каталог оттуда мы не копируем.",
+      whoLabel: "Кому",
+      detailCta: "Подробности",
+      installCta: "Поставить через нас",
+      hubCta: "Все три продукта на alex-dev.pro",
+      items: {
+        aime: {
+          value:
+            "Исследование → черновик → апрув человека → публикация в Meta. Маркетинговый сотрудник, не scheduler за $29.",
+          who: "Агентства с несколькими брендами или in-house с еженедельным циклом исследование → контент.",
+          price:
+            "Lite ~$199/мес · Pro ~$349/мес. Agency: setup + MRR за клиента. License — если хостите сами.",
+        },
+        assistant: {
+          value:
+            "Продажный inbox: квалификация, ответы из базы знаний, handoff человеку.",
+          who: "Командам, которым нужны операции класса Respond.io — не конструктор чат-воронок.",
+          price: "Entry $149/мес · Standard $249/мес",
+        },
+        showroom: {
+          value:
+            "Котировки, спецификации и PDF по вашим правилам цены — любая вертикаль, не «только мебель».",
+          who: "Командам с конфигурируемым оффером, которым нужен CPQ, а не чат с «ценой».",
+          price:
+            "Self-serve setup $0 или ~$300 done-for-you. Дальше ~$199 / $299/мес по квоте котировок.",
+        },
+      },
+    },
+    agencyStrip: {
+      eyebrow: "Параллельная B2B-линия",
+      title: "Autonomous toolkit for agencies",
+      body: "Уже маркетинговое агентство и хотите стек себе — AIME multi-client (Agency setup + MRR за клиента) или License? Этот путь на AlexDev. AI Mark Agency остаётся сервисным ретейнером.",
+      cta: "Agency / License на AlexDev",
+    },
     stack: {
       eyebrow: "Готовность — честно",
       title: "Meta-first. Остальные каналы зарабатывают место.",
@@ -462,18 +547,10 @@ export const copy: Record<Locale, Copy> = {
           body: "Поддержка креатива — да; вести крупный рекламный кабинет — отдельный скоуп, не спрятанный в ретейнере.",
         },
         {
-          title: "Self-serve SaaS",
-          body: "Это агентство. Вы нанимаете оператора. Логин, который «заменяет маркетолога», здесь не продаётся.",
+          title: "Логин вместо оператора",
+          body: "Ретейнер агентства — это оператор. Если продукты нужны без нас, это линия toolkit — не тихий ребренд этого сайта.",
         },
       ],
-      toolsTitle: "Инструменты, которые можем вести внутри ретейнера",
-      toolsLead:
-        "Софт появляется как часть поставки — не как витрина с прайсом. Помогает циклу — используем. Нет — не тащим.",
-      tools: {
-        aime: "Внутренний маркетинговый сотрудник: заметки, черновики, календари.",
-        assistant: "Бизнес-брифы, фоллоу-апы и операционная память.",
-        showroom: "Витрина продукта или оффера, когда бренду нужен визуальный слой.",
-      },
     },
     fit: {
       eyebrow: "Совпадение",
@@ -490,7 +567,7 @@ export const copy: Record<Locale, Copy> = {
         "Постинг «поставь и забудь» без человека в контуре",
         "Гарантия виральности, ROAS или любой выдуманный процент",
         "Десять каналов с первой недели без того, кто апрувит",
-        "SaaS-подписка, которая якобы заменяет маркетолога overnight",
+        "Логин, который якобы заменяет оператора overnight — если стек нужен без ретейнера, смотрите toolkit для агентств",
       ],
     },
     contact: {
@@ -507,6 +584,7 @@ export const copy: Record<Locale, Copy> = {
         { value: "starter", label: "Starter · ~$1,200/мес" },
         { value: "growth", label: "Growth · ~$2,200/мес" },
         { value: "scale", label: "Scale · ~$3,500/мес" },
+        { value: "tools", label: "Только инструменты / установка" },
         { value: "unsure", label: "Пока не уверен(а)" },
       ],
       submit: "Отправить бриф",

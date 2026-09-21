@@ -17,7 +17,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
             {site.name}
           </span>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
+        <nav className="hidden items-center gap-5 text-sm text-muted lg:flex">
           {t.nav.items.map((item) => (
             <Link
               key={item.href}

@@ -7,7 +7,7 @@ export const site = {
   defaultLocale: "en" as const,
   partner: {
     name: "AlexDev",
-    url: "https://alexdev.io",
+    url: "https://www.alex-dev.pro",
   },
 };
 
@@ -28,4 +28,8 @@ export function localePath(locale: Locale, path = "") {
 export function absoluteUrl(locale: Locale, path = "") {
   const p = localePath(locale, path);
   return p === "/" ? site.url : `${site.url}${p}`;
+}
+
+export function partnerProductsUrl(locale: Locale) {
+  return `${site.partner.url}/${locale}/products`;
 }

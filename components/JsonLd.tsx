@@ -1,5 +1,5 @@
 import { getCopy } from "@/content/copy";
-import { packages, toolsViaAgency } from "@/content/packages";
+import { packages, products } from "@/content/packages";
 import { site, type Locale } from "@/lib/site";
 
 export function JsonLd({ locale }: { locale: Locale }) {
@@ -35,7 +35,7 @@ export function JsonLd({ locale }: { locale: Locale }) {
       {
         "@type": "ItemList",
         name: "Agency tools",
-        itemListElement: toolsViaAgency.map((tool, i) => ({
+        itemListElement: products.map((tool, i) => ({
           "@type": "ListItem",
           position: i + 1,
           name: tool.name,

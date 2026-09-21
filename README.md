@@ -40,7 +40,7 @@ Packages:
 - **Growth** ~$2,200/mo — full Meta (IG/FB) + HITL, weekly research loop
 - **Scale** ~$3,500/mo — multi-brand / heavier volume, still HITL
 
-Tools mentioned as agency delivery (not a product catalog): AI Marketing Employee (AIME), AI Business Assistant, Showroom AI.
+Tools mentioned as agency delivery (not a cloned product hub): AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Soft USD list prices and full SKUs live on [alex-dev.pro/{locale}/products](https://www.alex-dev.pro/en/products). The landing shows three equal cards plus a B2B strip for agencies that want AIME Agency/License themselves.
 
 ## Vercel
 

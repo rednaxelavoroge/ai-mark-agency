@@ -4,8 +4,8 @@ import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { Section } from "@/components/Section";
 import { getCopy } from "@/content/copy";
-import { packages, toolsViaAgency } from "@/content/packages";
-import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
+import { packages, products } from "@/content/packages";
+import { absoluteUrl, isLocale, localePath, partnerProductsUrl, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -94,6 +94,79 @@ export default async function HomePage({ params }: Props) {
           </ul>
         </div>
       </section>
+
+      <Section
+        id="tools"
+        eyebrow={t.products.eyebrow}
+        title={t.products.title}
+        lead={t.products.lead}
+      >
+        <div className="grid gap-4 lg:grid-cols-3">
+          {products.map((product) => {
+            const item = t.products.items[product.id];
+            return (
+              <article
+                key={product.id}
+                className="flex flex-col rounded-xl border border-line bg-ink-2 p-6"
+              >
+                <h3 className="font-display text-xl">{product.name}</h3>
+                <p className="mt-3 text-sm text-paper/90">{item.value}</p>
+                <p className="mt-4 text-xs font-semibold tracking-wide text-mark uppercase">
+                  {t.products.whoLabel}
+                </p>
+                <p className="mt-1 text-sm text-muted">{item.who}</p>
+                <p className="mt-4 flex-1 text-sm text-paper/80">{item.price}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <a
+                    href={partnerProductsUrl(locale)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex justify-center rounded-full bg-mark px-4 py-2.5 text-sm font-semibold text-mark-ink"
+                  >
+                    {t.products.detailCta}
+                  </a>
+                  <Link
+                    href={`${home}#contact`}
+                    className="inline-flex justify-center rounded-full border border-line px-4 py-2.5 text-sm hover:border-paper/40"
+                  >
+                    {t.products.installCta}
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+        <p className="mt-6 text-sm">
+          <a
+            href={partnerProductsUrl(locale)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-mark hover:underline"
+          >
+            {t.products.hubCta} →
+          </a>
+        </p>
+      </Section>
+
+      <aside className="border-t border-line bg-ink-3">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-2xl">
+            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
+              {t.agencyStrip.eyebrow}
+            </p>
+            <p className="mt-2 font-display text-2xl">{t.agencyStrip.title}</p>
+            <p className="mt-2 text-sm text-muted">{t.agencyStrip.body}</p>
+          </div>
+          <a
+            href={partnerProductsUrl(locale)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 rounded-full bg-mark px-5 py-3 text-center text-sm font-semibold text-mark-ink"
+          >
+            {t.agencyStrip.cta}
+          </a>
+        </div>
+      </aside>
 
       <Section id="how" eyebrow={t.how.eyebrow} title={t.how.title} lead={t.how.lead}>
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -195,18 +268,6 @@ export default async function HomePage({ params }: Props) {
               ))}
             </ul>
           </div>
-        </div>
-        <div className="mt-12 rounded-xl border border-line bg-ink-2 p-6">
-          <h3 className="font-display text-lg">{t.stack.toolsTitle}</h3>
-          <p className="mt-2 max-w-2xl text-sm text-muted">{t.stack.toolsLead}</p>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-3">
-            {toolsViaAgency.map((tool) => (
-              <li key={tool.id}>
-                <p className="text-sm font-medium">{tool.name}</p>
-                <p className="mt-1 text-sm text-muted">{t.stack.tools[tool.id]}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </Section>
 

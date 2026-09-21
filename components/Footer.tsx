@@ -24,7 +24,16 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
           <p>
             © {year} {t.footer.rights}
           </p>
-          <p className="text-xs text-muted/80">{t.footer.poweredBy}</p>
+          <p className="text-xs text-muted/80">
+            <a
+              href={site.partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-paper"
+            >
+              {t.footer.poweredBy}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
