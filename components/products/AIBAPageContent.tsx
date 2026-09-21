@@ -6,6 +6,7 @@ import { type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
 import { ConsultationModal } from "@/components/ConsultationModal";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
+import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 
 const TAB_VARIANT: Record<string, ProductVariant> = {
   dashboard: "saas",
@@ -75,7 +76,9 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
             </div>
 
             {/* Simulated Live Multi-Channel Inbox Scene */}
-            <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
+            <div className="relative pb-0 sm:pb-14">
+              <ConstellationOverlays cardKind="handoff">
+                <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <div>
                   <span className="font-display text-xs font-semibold text-paper">
@@ -117,6 +120,8 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
               <div className="border-t border-line pt-2 text-[10px] text-muted font-mono leading-relaxed">
                 ℹ {c.heroScene.handoffNote}
               </div>
+                </div>
+              </ConstellationOverlays>
             </div>
           </div>
         </div>

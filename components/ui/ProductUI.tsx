@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { LiveDot, LiveNumber, LiveType } from "./Live";
 
 /**
  * AI Mark proprietary product-UI mockups.
@@ -47,7 +48,7 @@ export function UIFrame({
           {url}
         </span>
         <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-mark">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <LiveDot tone="emerald" />
           LIVE
         </span>
       </div>
@@ -88,7 +89,7 @@ function Dot({ tone = "mark" }: { tone?: "mark" | "warm" | "emerald" }) {
   return <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${map[tone]}`} />;
 }
 
-function Line({ label, value, tone = "mark" }: { label: string; value: string; tone?: "mark" | "warm" | "emerald" }) {
+function Line({ label, value, tone = "mark" }: { label: string; value: ReactNode; tone?: "mark" | "warm" | "emerald" }) {
   return (
     <div className="flex items-center justify-between rounded-md border border-line/70 bg-ink-2 px-2.5 py-1.5">
       <span className="flex items-center gap-1.5 font-mono text-[9px] text-muted">
@@ -174,9 +175,17 @@ function AimeMock() {
             </div>
           </div>
           <div className="space-y-1">
-            <Line label="Drafts / week" value="42" />
-            <Line label="Approval time" value="3.1m" tone="warm" />
-            <Line label="Reach Δ" value="+38%" tone="emerald" />
+            <Line label="Drafts / week" value={<LiveNumber value={42} />} />
+            <Line
+              label="Approval time"
+              value={<LiveNumber value={3.1} decimals={1} suffix="m" />}
+              tone="warm"
+            />
+            <Line
+              label="Reach Δ"
+              value={<LiveNumber value={38} prefix="+" suffix="%" />}
+              tone="emerald"
+            />
           </div>
         </div>
 
@@ -186,7 +195,7 @@ function AimeMock() {
             <span className="font-mono text-[8px] text-warm">human-in-the-loop</span>
           </div>
           <p className="mt-1 text-[10px] leading-snug text-paper/85">
-            Reels · «Kaçan für den Sommer» — Skript bereit.
+            <LiveType text="Reels · «Kaçan für den Sommer» — Skript bereit." />
             <span className="caret ml-1 inline-block h-3 w-[2px] translate-y-0.5 bg-mark align-middle" />
           </p>
           <div className="mt-1.5 flex gap-1.5">
@@ -262,7 +271,7 @@ function AssistantMock() {
             Hallo! Interessiert an Konfiguration und Lieferzeit.
           </div>
           <div className="ml-auto max-w-[85%] rounded-xl rounded-tr-sm bg-mark/10 px-3 py-2 text-[10px] text-paper">
-            Verfügbar: Standard & erweitert ab $1.200. Zusammenbau 5–7 Werktage.
+            <LiveType text="Verfügbar: Standard & erweitert ab $1.200. Zusammenbau 5–7 Werktage." />
             <span className="caret ml-1 inline-block h-3 w-[2px] translate-y-0.5 bg-mark align-middle" />
           </div>
           <div className="flex flex-wrap gap-1">
@@ -382,7 +391,7 @@ function ShowroomMock() {
             <span className="font-mono text-[8px] text-muted">COMMERCIAL OFFER</span>
             <span className="font-mono text-[8px] text-warm">PDF</span>
           </div>
-          <p className="mt-1 font-display text-lg font-bold text-paper">$12,480</p>
+          <p className="mt-1 font-display text-lg font-bold text-paper"><LiveNumber value={12480} prefix="$" /></p>
           <p className="font-mono text-[8px] text-muted">incl. assembly · valid 14 days</p>
           <div className="mt-2 space-y-1 border-t border-line/60 pt-2">
             <Line label="Spec lines" value="24" />
@@ -407,10 +416,10 @@ function SaasMock() {
       </div>
       <div className="mt-2 grid grid-cols-3 gap-2">
         {[
-          ["MRR", "$24.8k"],
-          ["Active seats", "1,284"],
-          ["Uptime", "99.98%"],
-        ].map(([k, v]) => (
+          { k: "MRR", v: <LiveNumber value={24.8} decimals={1} prefix="$" suffix="k" /> },
+          { k: "Active seats", v: <LiveNumber value={1284} /> },
+          { k: "Uptime", v: <LiveNumber value={99.98} decimals={2} suffix="%" /> },
+        ].map(({ k, v }) => (
           <div key={k} className="rounded-lg border border-line/70 bg-ink-2 p-2">
             <p className="font-mono text-[8px] text-muted">{k}</p>
             <p className="font-display text-sm font-semibold">{v}</p>
@@ -559,9 +568,17 @@ function AiEngineMock() {
           </div>
         </div>
         <div className="space-y-1">
-          <Line label="RAG docs" value="1,204" />
-          <Line label="Auto-resolved" value="87%" tone="emerald" />
-          <Line label="Escalated" value="13%" tone="warm" />
+          <Line label="RAG docs" value={<LiveNumber value={1204} />} />
+          <Line
+            label="Auto-resolved"
+            value={<LiveNumber value={87} suffix="%" />}
+            tone="emerald"
+          />
+          <Line
+            label="Escalated"
+            value={<LiveNumber value={13} suffix="%" />}
+            tone="warm"
+          />
         </div>
       </div>
       <div className="mt-2 rounded-lg border border-mark/25 bg-mark/5 px-2.5 py-2">

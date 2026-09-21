@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { Parallax } from "@/components/Motion";
 import { ProductUI, type ProductVariant } from "./ProductUI";
 
@@ -8,6 +9,8 @@ import { ProductUI, type ProductVariant } from "./ProductUI";
  * the desktop app, an overlapping phone screen, and a floating event card,
  * each on its own parallax layer.
  */
+
+export type CardKind = "publish" | "handoff" | "quote";
 
 function PhoneMock() {
   return (
@@ -41,7 +44,14 @@ function PhoneMock() {
   );
 }
 
-function FloatCard() {
+const CARD_COPY: Record<CardKind, { title: string; sub: string }> = {
+  publish: { title: "Telegram · approved", sub: "пост опубликован в Meta" },
+  handoff: { title: "Handoff · менеджер", sub: "лид квалифицирован, score 82" },
+  quote: { title: "КП · сформировано", sub: "PDF отправлен клиенту" },
+};
+
+function FloatCard({ kind }: { kind: CardKind }) {
+  const c = CARD_COPY[kind];
   return (
     <div className="float-slow rounded-xl border border-line bg-ink-2/95 p-3 shadow-lg backdrop-blur">
       <div className="flex items-center gap-2">
@@ -49,8 +59,8 @@ function FloatCard() {
           ✓
         </span>
         <div className="leading-tight">
-          <p className="font-mono text-[9px] font-semibold text-paper">Telegram · approved</p>
-          <p className="font-mono text-[8px] text-muted">пост опубликован в Meta</p>
+          <p className="font-mono text-[9px] font-semibold text-paper">{c.title}</p>
+          <p className="font-mono text-[8px] text-muted">{c.sub}</p>
         </div>
       </div>
       <div className="mt-2.5 space-y-1">
@@ -61,18 +71,21 @@ function FloatCard() {
   );
 }
 
-export function ProductConstellation({
-  variant,
+/** Adds phone + event-card parallax layers around any content block. */
+export function ConstellationOverlays({
+  children,
+  cardKind = "publish",
   showPhone = true,
   showCard = true,
 }: {
-  variant: ProductVariant;
+  children: ReactNode;
+  cardKind?: CardKind;
   showPhone?: boolean;
   showCard?: boolean;
 }) {
   return (
     <div className="relative">
-      <ProductUI variant={variant} />
+      {children}
 
       {showPhone ? (
         <Parallax
@@ -88,9 +101,27 @@ export function ProductConstellation({
           speed={0.09}
           className="absolute -right-5 top-10 z-10 hidden w-[46%] max-w-[230px] lg:block"
         >
-          <FloatCard />
+          <FloatCard kind={cardKind} />
         </Parallax>
       ) : null}
     </div>
+  );
+}
+
+export function ProductConstellation({
+  variant,
+  cardKind = "publish",
+  showPhone = true,
+  showCard = true,
+}: {
+  variant: ProductVariant;
+  cardKind?: CardKind;
+  showPhone?: boolean;
+  showCard?: boolean;
+}) {
+  return (
+    <ConstellationOverlays cardKind={cardKind} showPhone={showPhone} showCard={showCard}>
+      <ProductUI variant={variant} />
+    </ConstellationOverlays>
   );
 }

@@ -101,7 +101,7 @@ export function ShowroomAIPageContent({ locale }: { locale: Locale }) {
               </div>
 
               <div className="mt-3 pb-0 sm:pb-12" data-reveal="scale">
-                <ProductConstellation variant="showroom" />
+                <ProductConstellation variant="showroom" cardKind="quote" />
               </div>
             </div>
           </div>
