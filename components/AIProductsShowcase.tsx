@@ -36,7 +36,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         ? "Отвечает клиентам 24/7 в WhatsApp, Telegram, Instagram Direct, Messenger и чате на сайте. Знает каталог и цены, квалифицирует лидов, передаёт диалог менеджеру в один клик и синхронизирует переписку с CRM."
         : "Responds to inquiries 24/7 across WhatsApp, Telegram, Instagram Direct, Messenger, and webchat. Trained on your catalog and pricing, qualifies leads, and syncs conversations directly with your CRM.",
       channels: ["WhatsApp Cloud API", "Telegram", "Instagram Direct", "Messenger", "Webchat"],
-      pricing: isRu ? "От $39 / месяц (панель клиента включена)" : "From $39 / mo (Workspace panel included)",
+      pricing: isRu ? "Entry $149/мес · Standard $249/мес" : "Entry $149/mo · Standard $249/mo",
       mock: "assistant" as ProductVariant,
       highlights: [
         isRu ? "Единый инбокс для всех 5 каналов" : "Unified shared inbox for all 5 channels",

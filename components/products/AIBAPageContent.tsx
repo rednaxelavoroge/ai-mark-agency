@@ -417,40 +417,6 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
               </div>
             ))}
           </div>
-
-          {/* Turnkey Setup Card */}
-          <div className="mt-10 rounded-2xl border border-line bg-ink-2 p-6 sm:p-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div>
-                <span className="rounded bg-warm-soft px-2.5 py-0.5 font-mono text-[10px] text-warm uppercase font-semibold">
-                  Разовая услуга
-                </span>
-                <h4 className="mt-2 font-display text-xl font-semibold text-paper">
-                  {c.setupTitle} ({c.setupPrice})
-                </h4>
-                <p className="mt-2 text-xs text-muted max-w-2xl leading-relaxed">
-                  {c.setupDesc}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2 text-xs font-mono text-paper/85">
-                  {c.setupFeatures.map((f, idx) => (
-                    <span key={idx} className="rounded bg-ink-3 px-2.5 py-1">
-                      ✓ {f}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setModalOpen(true)}
-                  className="rounded-full bg-mark px-6 py-3 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
-                >
-                  Запросить настройку
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
