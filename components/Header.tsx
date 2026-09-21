@@ -23,11 +23,11 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-mark font-display text-[11px] font-semibold text-mark-ink">
             AM
           </span>
-          <span className="truncate font-display text-sm font-medium tracking-tight">
+          <span className="hidden truncate font-display text-sm font-medium tracking-tight 2xl:inline">
             {site.name}
           </span>
         </Link>
-        <nav className="hidden items-center gap-4 text-[13px] text-muted xl:flex">
+        <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
           {t.nav.items.map((item) => (
             <Link
               key={item.href + item.label}

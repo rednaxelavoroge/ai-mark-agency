@@ -29,10 +29,6 @@ function str(value: unknown, max: number) {
 
 async function deliver(text: string, subject: string) {
   const to = process.env.CONTACT_TO_EMAIL;
-  if (!to) {
-    throw new Error("CONTACT_TO_EMAIL is not set");
-  }
-
   const webhook = process.env.CONTACT_WEBHOOK_URL;
   if (webhook) {
     const res = await fetch(webhook, {
@@ -46,6 +42,7 @@ async function deliver(text: string, subject: string) {
 
   const resendKey = process.env.RESEND_API_KEY;
   if (resendKey) {
+    if (!to) throw new Error("CONTACT_TO_EMAIL is not set");
     const from =
       process.env.CONTACT_FROM_EMAIL ?? "AI Mark Agency <noreply@ai-mark.agency>";
     const res = await fetch("https://api.resend.com/emails", {
@@ -63,6 +60,10 @@ async function deliver(text: string, subject: string) {
   if (process.env.NODE_ENV !== "production") {
     console.info("[contact]", subject, text);
     return;
+  }
+
+  if (!to) {
+    throw new Error("CONTACT_TO_EMAIL is not set");
   }
 
   throw new Error("No email provider configured");
