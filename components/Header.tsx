@@ -5,12 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Copy } from "@/content/copy";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { navHref, type Locale } from "@/lib/site";
-
-function counterpartPath(pathname: string, next: Locale) {
-  const stripped = pathname.replace(/^\/ru(?=\/|$)/, "") || "/";
-  return navHref(next, stripped);
-}
+import { counterpartLocaleHref, navHref, type Locale } from "@/lib/site";
 
 export function Header({ locale, t }: { locale: Locale; t: Copy }) {
   const pathname = usePathname() || "/";
@@ -71,7 +66,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <div className="flex overflow-hidden rounded-full border border-line text-xs">
             <Link
-              href={counterpartPath(pathname, "en")}
+              href={counterpartLocaleHref(pathname, "en")}
               hrefLang="en"
               className={`px-2.5 py-1 ${
                 locale === "en" ? "bg-paper text-ink" : "text-muted hover:text-paper"
@@ -80,7 +75,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
               {t.nav.langEn}
             </Link>
             <Link
-              href={counterpartPath(pathname, "ru")}
+              href={counterpartLocaleHref(pathname, "ru")}
               hrefLang="ru"
               className={`px-2.5 py-1 ${
                 locale === "ru" ? "bg-paper text-ink" : "text-muted hover:text-paper"

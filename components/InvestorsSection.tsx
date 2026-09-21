@@ -25,12 +25,12 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
   const fundamentals = isRu
     ? [
         { title: "Технологическая база создана", desc: "Три готовых AI-продукта (AIME, AIBA, Showroom AI) уже функционируют коммерчески. Инвестиции привлекаются не в разработку с нуля, а в масштаб." },
-        { title: "Сквозная бизнес-модель", desc: "Диверсифицированная выручка: SaaS-подписки от $149–$359/мес, ретейнеры на AI-маркетинг от $1,200/мес и заказные цифровые внедрения." },
+        { title: "Сквозная бизнес-модель", desc: "Диверсифицированная выручка: SaaS-подписки от $149–$349/мес, ретейнеры на AI-маркетинг от $1,200/мес и заказные цифровые внедрения." },
         { title: "Сетевой эффект дистрибуции", desc: "Масштабирование через сеть региональных, отраслевых и агентских партнёров обеспечивает международный охват без раздувания локальных офисов." },
       ]
     : [
         { title: "Validated Technology Base", desc: "Three proprietary products (AIME, AIBA, Showroom AI) are deployed and operational. Capital fuels commercial scale rather than research from scratch." },
-        { title: "Diversified Revenue Mix", desc: "SaaS subscriptions from $149–$359/mo, marketing department retainers from $1,200/mo, and high-ticket digital production contracts." },
+        { title: "Diversified Revenue Mix", desc: "SaaS subscriptions from $149–$349/mo, marketing department retainers from $1,200/mo, and high-ticket digital production contracts." },
         { title: "Capital-Efficient Distribution", desc: "Scaling through a global web of regional, industry, and agency partners delivers international reach without burdensome fixed overhead." },
       ];
 

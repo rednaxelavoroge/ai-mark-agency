@@ -23,6 +23,24 @@ export function localePath(locale: Locale, path = "") {
   return normalized === "/" ? `/${locale}` : `/${locale}${normalized}`;
 }
 
+/** Strip `/ru` or internal `/en` prefix from a pathname (e.g. from usePathname). */
+export function stripLocaleFromPathname(pathname: string) {
+  let p = pathname || "/";
+  for (const locale of site.locales) {
+    const re = new RegExp(`^/${locale}(?=/|$)`);
+    if (re.test(p)) {
+      p = p.replace(re, "") || "/";
+      break;
+    }
+  }
+  return p;
+}
+
+/** Same page in another locale (for language switcher links). */
+export function counterpartLocaleHref(pathname: string, next: Locale) {
+  return localePath(next, stripLocaleFromPathname(pathname));
+}
+
 export function absoluteUrl(locale: Locale, path = "") {
   const p = localePath(locale, path);
   return p === "/" ? site.url : `${site.url}${p}`;

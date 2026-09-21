@@ -235,9 +235,10 @@ export const showroomRu: ShowroomContent = {
   pricingTitle: "Тарифные планы Showroom AI",
   pricingSub: "Прозрачная стоимость аренды AI-движка для вашего бизнеса.",
   pricingDesc:
-    "Стоимость зависит от объёма каталога и сложности формул расчёта. В каждый тариф входит доступ к движку и генератору PDF.",
+    "Self-serve — $0 за запуск платформы; опциональный DFY-сетап каталога и формул — около $300 разово. Далее фиксированная MRR по квоте расчётов. В каждый тариф входит движок и генератор PDF.",
   pricingPoints: [
-    "Фиксированная ежемесячная подписка",
+    "Self-serve $0 или DFY-сетап ~$300 (по желанию)",
+    "Фиксированная ежемесячная подписка $199 / $299",
     "Неограниченное число менеджеров в системе",
     "Генерация брендированных PDF включена",
     "Подключение к веб-сайту и мессенджерам",
@@ -245,9 +246,9 @@ export const showroomRu: ShowroomContent = {
   pricingTiers: [
     {
       name: "Standard",
-      price: "$149",
+      price: "$199",
       period: "/ месяц",
-      desc: "Для малого бизнеса и шоурумов: до 1 000 позиций в каталоге, стандартные формулы расчёта.",
+      desc: "Для малого бизнеса и шоурумов: до 1 000 позиций в каталоге, стандартные формулы расчёта. Self-serve $0; DFY-сетап ~$300 при необходимости.",
       features: [
         "До 1 000 SKU в каталоге",
         "До 500 расчётов КП в месяц",
@@ -481,9 +482,10 @@ export const showroomEn: ShowroomContent = {
   pricingTitle: "Showroom AI Pricing Plans",
   pricingSub: "Predictable software licensing for commercial calculation automation.",
   pricingDesc:
-    "Pricing scales with catalogue size and calculation formula complexity. All plans include document and PDF generation capabilities.",
+    "Self-serve launch at $0; optional done-for-you catalog and formula setup is ~$300 once. Then fixed MRR by calculation quota. All plans include the engine and PDF generation.",
   pricingPoints: [
-    "Fixed predictable monthly subscription",
+    "Self-serve $0 or optional ~$300 DFY setup",
+    "Fixed monthly MRR at $199 / $299",
     "Unlimited sales rep seats in the workspace",
     "Automated branded PDF output included",
     "Connects to website and messaging channels",
@@ -491,9 +493,9 @@ export const showroomEn: ShowroomContent = {
   pricingTiers: [
     {
       name: "Standard",
-      price: "$149",
+      price: "$199",
       period: "/ month",
-      desc: "For small businesses & showrooms: up to 1,000 SKUs, standard calculation formulas.",
+      desc: "For small businesses & showrooms: up to 1,000 SKUs, standard calculation formulas. Self-serve $0; optional ~$300 DFY setup.",
       features: [
         "Up to 1,000 catalog SKUs",
         "Up to 500 proposal calculations / month",

@@ -55,7 +55,9 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         ? "Конфигурируемая платформа для бизнеса со сложными расчётами: мебель, автобизнес, стройка, ритейл, недвижимость и услуги. Считывает запрос в свободной форме, применяет ваши формулы и генерирует готовое КП."
         : "Configurable AI engine for complex commercial proposals: automotive, construction, real estate, furniture, retail, and services. Converts natural inquiries into deterministic specifications and ready PDF quotes.",
       channels: ["Web", "API Gateway", "PDF Engine", "CRM Sync"],
-      pricing: isRu ? "От $149 / месяц (индивидуальная конфигурация)" : "From $149 / mo (Custom workspace config)",
+      pricing: isRu
+        ? "Self-serve $0 · MRR от $199/мес (или DFY-сетап ~$300)"
+        : "Self-serve $0 · MRR from $199/mo (or ~$300 DFY setup)",
       mock: "showroom" as ProductVariant,
       highlights: [
         isRu ? "Адаптация под 5 ключевых отраслей" : "Tailored across 5 major industry sectors",
