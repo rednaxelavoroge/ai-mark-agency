@@ -73,6 +73,66 @@ function injectHideBubbleStyle() {
       line-height: 1 !important;
     }
     .aiba-panel { z-index: 2147483001 !important; }
+
+    /*
+     * Greeting teaser.
+     *
+     * The hosted widget anchors .aiba-greeting to .aiba-root, which is a
+     * zero-width box. An auto width therefore shrink-to-fits against a 0px
+     * containing block and collapses to min-content, so the bubble rendered as
+     * a tall 95px column. Give it an explicit width instead — matched to
+     * .cl-menu so the widget and the launcher read as one system.
+     */
+    .aiba-root .aiba-greeting {
+      box-sizing: border-box !important;
+      width: 328px !important;
+      max-width: calc(100vw - 28px) !important;
+      min-width: 0 !important;
+      padding: 14px 40px 14px 16px !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 18px !important;
+      background: var(--ink-2) !important;
+      color: var(--paper) !important;
+      box-shadow: var(--shadow-lg) !important;
+      font-size: 14px !important;
+      line-height: 1.45 !important;
+    }
+    /* Downward tail, so the bubble points at the launcher button. */
+    .aiba-root .aiba-greeting::after {
+      content: "" !important;
+      position: absolute !important;
+      right: 22px !important;
+      bottom: -6px !important;
+      width: 12px !important;
+      height: 12px !important;
+      background: var(--ink-2) !important;
+      border-right: 1px solid var(--line) !important;
+      border-bottom: 1px solid var(--line) !important;
+      transform: rotate(45deg) !important;
+    }
+    .aiba-root .aiba-greeting-close {
+      position: absolute !important;
+      top: 6px !important;
+      right: 6px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 28px !important;
+      height: 28px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 50% !important;
+      background: transparent !important;
+      color: var(--muted) !important;
+      font-size: 18px !important;
+      line-height: 1 !important;
+      cursor: pointer !important;
+      transition: background 0.2s ease, color 0.2s ease !important;
+    }
+    .aiba-root .aiba-greeting-close:hover {
+      background: var(--ink-3) !important;
+      color: var(--paper) !important;
+    }
   `;
   document.head.appendChild(el);
 }
@@ -130,6 +190,20 @@ function hidePanel() {
     panel.setAttribute("hidden", "");
     panel.style.setProperty("display", "none", "important");
   }
+}
+
+/**
+ * Localize the greeting teaser.
+ *
+ * Its text comes from the workspace config, and that endpoint ignores `?lang=`,
+ * so /ru visitors were shown an English greeting. Rewrite it with the same
+ * localized copy the panel uses. Only the text div is touched — the sibling
+ * dismiss button keeps its own markup.
+ */
+function applyTeaserChrome(locale: Locale) {
+  const t = COPY[locale] ?? COPY.en;
+  const text = document.querySelector<HTMLElement>(".aiba-root .aiba-greeting > div");
+  if (text && text.textContent !== t.greeting) text.textContent = t.greeting;
 }
 
 function applyLocaleChrome(locale: Locale) {
@@ -296,6 +370,9 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
       const panel = document.querySelector<HTMLElement>(".aiba-root .aiba-panel");
       const open = !!(panel && !panel.hidden && panel.style.display !== "none");
       setChatOpen(open);
+      // The teaser is only on screen while the panel is closed, so it is patched
+      // on every tick rather than inside the `open` branch below.
+      applyTeaserChrome(locale);
       if (open) {
         setMenuOpen(false);
         applyLocaleChrome(locale);
