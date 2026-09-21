@@ -40,7 +40,7 @@ Packages:
 - **Growth** ~$2,200/mo — full Meta (IG/FB) + HITL, weekly research loop
 - **Scale** ~$3,500/mo — multi-brand / heavier volume, still HITL
 
-Tools mentioned as agency delivery: AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Card and hub CTAs stay on this domain (`/products/aime`, `/products/assistant`, `/products/showroom`; short aliases `/aime`, `/ai-business-assistant`, `/showroom-ai`). Those routes proxy the live AlexDev landings (no visual redesign). The landing shows three equal cards plus a B2B strip. Footer still credits AlexDev as tech partner.
+Tools mentioned as agency delivery: AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Card CTAs stay on this domain at the same slugs as AlexDev (`/ai-marketing-employee`, `/ai-business-assistant`, `/showroom-ai`, plus `/ru/…`). Those routes proxy the live landings (no visual redesign). `/products` lists the three. Footer still credits AlexDev as tech partner.
 
 The landing defaults to a **light** theme; a header toggle persists light/dark in `localStorage` + cookie.
 

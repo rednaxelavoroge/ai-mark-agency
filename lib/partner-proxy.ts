@@ -1,29 +1,25 @@
+import type { ProductId } from "@/content/packages";
 import {
   partnerLandingUrl,
-  partnerProductsHubUrl,
   productPagePath,
   productsHubPath,
-  type ProductSlug,
+  PRODUCT_PATHS,
 } from "@/lib/products";
 import { absoluteUrl, type Locale } from "@/lib/site";
 
 const FETCH_UA =
   "Mozilla/5.0 (compatible; AI-Mark-Agency/1.0; +https://ai-mark.agency)";
 
+const PRODUCT_IDS: ProductId[] = ["aime", "assistant", "showroom"];
+
 function localKeepPrefixes(): string[] {
   const locales: Locale[] = ["en", "ru"];
-  const slugs: ProductSlug[] = ["aime", "assistant", "showroom"];
   const paths: string[] = [];
   for (const locale of locales) {
     paths.push(productsHubPath(locale));
-    for (const slug of slugs) {
-      paths.push(productPagePath(locale, slug));
+    for (const id of PRODUCT_IDS) {
+      paths.push(productPagePath(locale, id));
     }
-    paths.push(
-      locale === "en" ? "/aime" : "/ru/aime",
-      locale === "en" ? "/ai-business-assistant" : "/ru/ai-business-assistant",
-      locale === "en" ? "/showroom-ai" : "/ru/showroom-ai",
-    );
   }
   return paths;
 }
@@ -84,11 +80,9 @@ function prefixRootRelative(
   origin: string,
   keep: string[],
 ): string {
-  const keepSet = keep;
-
   const shouldKeep = (path: string) => {
     const bare = path.split(/[?#]/)[0] || path;
-    return keepSet.some(
+    return keep.some(
       (prefix) => bare === prefix || bare.startsWith(`${prefix}/`),
     );
   };
@@ -130,9 +124,13 @@ function freezeMarketingHtml(html: string, origin: string): string {
 }
 
 function retargetSeo(html: string, canonical: string, locale: Locale): string {
-  const en = locale === "en" ? canonical : absoluteUrl("en", new URL(canonical).pathname.replace(/^\/ru/, "") || "/");
-  const ruPath = locale === "ru" ? new URL(canonical).pathname : `/ru${new URL(canonical).pathname}`;
-  const ru = absoluteUrl("ru", ruPath.replace(/^\/ru/, "") || "/");
+  const pathname = new URL(canonical).pathname;
+  const en = locale === "en"
+    ? canonical
+    : absoluteUrl("en", pathname.replace(/^\/ru/, "") || "/");
+  const ru = locale === "ru"
+    ? canonical
+    : absoluteUrl("ru", pathname.startsWith("/ru") ? pathname.replace(/^\/ru/, "") || "/" : pathname);
 
   html = html.replace(
     /<link rel="canonical"[^>]*>/i,
@@ -208,18 +206,10 @@ export async function proxyPartnerHtml(opts: {
   });
 }
 
-export function hubProxy(locale: Locale) {
+export function productProxy(locale: Locale, id: ProductId) {
   return proxyPartnerHtml({
-    sourceUrl: partnerProductsHubUrl(locale),
-    canonical: absoluteUrl(locale, "/products"),
-    locale,
-  });
-}
-
-export function productProxy(locale: Locale, slug: ProductSlug) {
-  return proxyPartnerHtml({
-    sourceUrl: partnerLandingUrl[slug](locale),
-    canonical: absoluteUrl(locale, `/products/${slug}`),
+    sourceUrl: partnerLandingUrl(locale, id),
+    canonical: absoluteUrl(locale, PRODUCT_PATHS[id]),
     locale,
   });
 }

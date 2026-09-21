@@ -1,68 +1,48 @@
-import { localePath, type Locale } from "@/lib/site";
 import type { ProductId } from "@/content/packages";
+import { localePath, type Locale } from "@/lib/site";
 
-/** Live AlexDev landings (sitemap + fetch, Sep 2026). Do not invent paths. */
+/** Confirmed live AlexDev landings (EN + RU). */
 export const PARTNER_WWW = "https://www.alex-dev.pro";
 
-export const PRODUCT_SLUGS = ["aime", "assistant", "showroom"] as const;
-
-export type ProductSlug = (typeof PRODUCT_SLUGS)[number];
-
-/** Canonical on-domain slug → live partner URL (follow redirects). */
-export const partnerLandingUrl: Record<
-  ProductSlug,
-  (locale: Locale) => string
-> = {
-  aime: (locale) => `${PARTNER_WWW}/${locale}/ai-marketing-employee`,
-  assistant: (locale) => `${PARTNER_WWW}/${locale}/ai-business-assistant`,
-  showroom: (locale) => `${PARTNER_WWW}/${locale}/showroom-ai`,
+export const PRODUCT_PATHS: Record<ProductId, `/${string}`> = {
+  aime: "/ai-marketing-employee",
+  assistant: "/ai-business-assistant",
+  showroom: "/showroom-ai",
 };
 
-export const partnerProductsHubUrl = (locale: Locale) =>
-  `${PARTNER_WWW}/${locale}/products`;
+export const PUBLIC_PRODUCT_SLUGS = [
+  "ai-marketing-employee",
+  "ai-business-assistant",
+  "showroom-ai",
+] as const;
 
-const ALIAS_TO_SLUG: Record<string, ProductSlug> = {
-  aime: "aime",
+export type PublicProductSlug = (typeof PUBLIC_PRODUCT_SLUGS)[number];
+
+const SLUG_TO_ID: Record<PublicProductSlug, ProductId> = {
   "ai-marketing-employee": "aime",
-  assistant: "assistant",
   "ai-business-assistant": "assistant",
-  showroom: "showroom",
   "showroom-ai": "showroom",
 };
 
-export function isProductSlug(value: string): value is ProductSlug {
-  return (PRODUCT_SLUGS as readonly string[]).includes(value);
+export function partnerLandingUrl(locale: Locale, id: ProductId) {
+  return `${PARTNER_WWW}/${locale}${PRODUCT_PATHS[id]}`;
 }
 
-export function resolveProductSlug(value: string): ProductSlug | null {
-  return ALIAS_TO_SLUG[value] ?? null;
-}
-
-export function productPagePath(locale: Locale, slug: ProductSlug | ProductId) {
-  return localePath(locale, `/products/${slug}`);
+export function productPagePath(locale: Locale, id: ProductId) {
+  return localePath(locale, PRODUCT_PATHS[id]);
 }
 
 export function productsHubPath(locale: Locale) {
   return localePath(locale, "/products");
 }
 
-export function shortProductPath(locale: Locale, slug: ProductSlug) {
-  const short =
-    slug === "aime"
-      ? "/aime"
-      : slug === "assistant"
-        ? "/ai-business-assistant"
-        : "/showroom-ai";
-  return localePath(locale, short);
+export function resolvePublicProductSlug(value: string): ProductId | null {
+  if (value in SLUG_TO_ID) {
+    return SLUG_TO_ID[value as PublicProductSlug];
+  }
+  return null;
 }
 
-export function aliasPathToProducts(pathname: string): string | null {
-  const match = pathname.match(
-    /^\/(en|ru)\/(aime|assistant|showroom|ai-marketing-employee|ai-business-assistant|showroom-ai)\/?$/,
-  );
-  if (!match) return null;
-  const locale = match[1] as Locale;
-  const slug = resolveProductSlug(match[2]);
-  if (!slug) return null;
-  return `/${locale}/products/${slug}`;
+export function isPublicProductSlug(value: string): value is PublicProductSlug {
+  return (PUBLIC_PRODUCT_SLUGS as readonly string[]).includes(value);
 }

@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
-import { PRODUCT_SLUGS } from "@/lib/products";
+import { PRODUCT_PATHS } from "@/lib/products";
+import type { ProductId } from "@/content/packages";
 import { absoluteUrl, site, type Locale } from "@/lib/site";
 
 function alt(enPath: string, ruPath: string) {
   return { languages: { en: enPath, ru: ruPath } };
 }
+
+const productIds: ProductId[] = ["aime", "assistant", "showroom"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -41,14 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         absoluteUrl("ru", "/products"),
       ),
     });
-    for (const slug of PRODUCT_SLUGS) {
+    for (const id of productIds) {
+      const path = PRODUCT_PATHS[id];
       entries.push({
-        url: absoluteUrl(locale, `/products/${slug}`),
+        url: absoluteUrl(locale, path),
         lastModified,
-        alternates: alt(
-          absoluteUrl("en", `/products/${slug}`),
-          absoluteUrl("ru", `/products/${slug}`),
-        ),
+        alternates: alt(absoluteUrl("en", path), absoluteUrl("ru", path)),
       });
     }
   }
