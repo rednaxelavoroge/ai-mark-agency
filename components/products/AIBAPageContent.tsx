@@ -5,23 +5,18 @@ import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
 import { ConsultationModal } from "@/components/ConsultationModal";
-import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
-
-const TAB_VARIANT: Record<string, ProductVariant> = {
-  dashboard: "saas",
-  inbox: "assistant",
-  knowledge: "ai",
-  playground: "portal",
-};
+import { PanelDemo } from "@/components/products/PanelDemo";
 
 export function AIBAPageContent({ locale }: { locale: Locale }) {
   const c = getAibaCopy(locale);
   const [modalOpen, setModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const currentTab = c.panelTabs[activeTab];
+  const isRu = locale === "ru";
+  const chatInvite = isRu
+    ? "Хочу оценить, сколько диалогов возьмёт на себя ассистент"
+    : "I want to estimate how many conversations the assistant can handle";
 
   return (
     <article className="min-h-screen bg-ink text-paper">
@@ -208,38 +203,33 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
             </p>
           </div>
 
-          {/* Interactive Tabs */}
-          <div className="mt-8 flex flex-wrap gap-2">
-            {c.panelTabs.map((tab, i) => (
-              <button
-                key={tab.key}
-                type="button"
-                onClick={() => setActiveTab(i)}
-                className={`rounded-full px-5 py-2.5 text-xs font-semibold transition-all ${
-                  activeTab === i
-                    ? "bg-mark text-mark-ink shadow-md"
-                    : "border border-line bg-ink-2 text-muted hover:text-paper"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+          {/* Chat invite: opens the assistant widget with this very text */}
+          <button
+            type="button"
+            data-reveal
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("am:open-chat", { detail: { text: chatInvite } }),
+              )
+            }
+            className="mt-8 block w-full rounded-2xl border border-mark/30 bg-mark/5 p-5 text-left transition-all hover:-translate-y-0.5 hover:border-mark/60 hover:shadow-md"
+          >
+            <span className="font-mono text-[11px] tracking-wider text-mark uppercase">
+              {isRu ? "Попробуйте ассистента" : "Try the assistant"}
+            </span>
+            <span className="mt-2 block font-display text-lg font-medium text-paper">
+              «{chatInvite}»
+            </span>
+            <span className="mt-1 block text-xs text-muted">
+              {isRu
+                ? "Нажмите — этот текст отправится в чат ассистента, и он ответит."
+                : "Click — this text opens in the assistant chat and it replies."}
+            </span>
+          </button>
 
-          {/* Tab Viewer Box */}
-          <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-ink-2 p-4 sm:p-6 shadow-xl">
-            <div className="mb-4">
-              <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider">
-                {currentTab.label}
-              </span>
-              <p className="mt-1 text-xs text-muted leading-relaxed">
-                {currentTab.caption}
-              </p>
-            </div>
-
-            <div data-reveal="scale">
-              <ProductUI variant={TAB_VARIANT[currentTab.key] ?? "assistant"} />
-            </div>
+          {/* Interactive in-page demo */}
+          <div className="mt-8" data-reveal="scale">
+            <PanelDemo locale={locale} tabs={c.panelTabs} />
           </div>
         </div>
       </section>

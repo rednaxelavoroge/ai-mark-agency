@@ -437,11 +437,25 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             {/* System diagram */}
             <div className="order-1 lg:order-2">
               <div className="relative mx-auto aspect-square w-full max-w-[460px]">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl transition-all duration-700"
+                  style={{
+                    background: `radial-gradient(circle at 50% 50%, color-mix(in srgb, ${accent(active)} 26%, transparent), transparent 68%)`,
+                  }}
+                />
                 <svg
                   viewBox="0 0 100 100"
                   className="absolute inset-0 h-full w-full"
                   preserveAspectRatio="none"
                 >
+                  <defs>
+                    <linearGradient id="amRing" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stopColor="var(--mark)" />
+                      <stop offset="50%" stopColor="var(--warm)" />
+                      <stop offset="100%" stopColor="var(--mark-light)" />
+                    </linearGradient>
+                  </defs>
                   <circle
                     cx="50"
                     cy="50"
@@ -449,6 +463,19 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                     fill="none"
                     stroke="var(--line-strong)"
                     strokeWidth="0.3"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r={RADIUS}
+                    fill="none"
+                    stroke="url(#amRing)"
+                    strokeWidth="1.1"
+                    strokeLinecap="round"
+                    strokeDasharray={2 * Math.PI * RADIUS}
+                    strokeDashoffset={2 * Math.PI * RADIUS * (1 - (active + 1) / total)}
+                    transform="rotate(-90 50 50)"
+                    style={{ transition: "stroke-dashoffset 700ms cubic-bezier(0.16,1,0.3,1)" }}
                   />
                   {stages.map((s, i) => {
                     const p = nodePos(i, total);
@@ -489,7 +516,11 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                         }`}
                         style={
                           on
-                            ? { backgroundColor: accent(i), borderColor: accent(i) }
+                            ? {
+                                backgroundColor: accent(i),
+                                borderColor: accent(i),
+                                boxShadow: `0 0 0 4px color-mix(in srgb, ${accent(i)} 20%, transparent)`,
+                              }
                             : undefined
                         }
                       >
