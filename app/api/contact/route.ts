@@ -10,6 +10,11 @@ const SCENARIOS = new Set([
   "marketing",
   "partner",
   "investment",
+  "aime",
+  "assistant",
+  "showroom",
+  "product",
+  "custom",
 ]);
 
 type Payload = {
@@ -20,6 +25,7 @@ type Payload = {
   scenario?: unknown;
   budget?: unknown;
   website?: unknown;
+  message?: unknown;
 };
 
 function str(value: unknown, max: number) {
@@ -44,7 +50,7 @@ async function deliver(text: string, subject: string) {
   if (resendKey) {
     if (!to) throw new Error("CONTACT_TO_EMAIL is not set");
     const from =
-      process.env.CONTACT_FROM_EMAIL ?? "AI Mark Agency <noreply@ai-mark.agency>";
+      process.env.CONTACT_FROM_EMAIL ?? "AI Mark <noreply@ai-mark.agency>";
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {

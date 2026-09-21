@@ -1,9 +1,6 @@
 import type { ProductId } from "@/content/packages";
 import { localePath, type Locale } from "@/lib/site";
 
-/** Confirmed live AlexDev landings (EN + RU). */
-export const PARTNER_WWW = "https://www.alex-dev.pro";
-
 export const PRODUCT_PATHS: Record<ProductId, `/${string}`> = {
   aime: "/ai-marketing-employee",
   assistant: "/ai-business-assistant",
@@ -23,10 +20,6 @@ const SLUG_TO_ID: Record<PublicProductSlug, ProductId> = {
   "ai-business-assistant": "assistant",
   "showroom-ai": "showroom",
 };
-
-export function partnerLandingUrl(locale: Locale, id: ProductId) {
-  return `${PARTNER_WWW}/${locale}${PRODUCT_PATHS[id]}`;
-}
 
 export function productPagePath(locale: Locale, id: ProductId) {
   return localePath(locale, PRODUCT_PATHS[id]);

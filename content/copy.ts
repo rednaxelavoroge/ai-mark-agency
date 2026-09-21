@@ -193,10 +193,10 @@ export type Copy = {
 export const copy: Record<Locale, Copy> = {
   en: {
     meta: {
-      title: "AI Mark Agency — from idea to a working business",
+      title: "AI Mark — From Idea to Business",
       description:
         "AI-native venture and marketing company. We research the market, form a model, build the digital product, then run marketing, sales, and growth on our own AI infrastructure. No profit guarantees.",
-      ogTitle: "From idea to a working business",
+      ogTitle: "AI Mark — From Idea to Business",
       keywords: [
         "AI-native company",
         "business creation",
@@ -650,8 +650,8 @@ export const copy: Record<Locale, Copy> = {
       blurb:
         "AI-native venture and marketing company. From idea to a working business — on our own AI infrastructure.",
       privacy: "Privacy",
-      rights: "AI Mark Agency. All rights reserved.",
-      poweredBy: "Tech by AlexDev",
+      rights: "AI Mark. All rights reserved.",
+      poweredBy: "",
     },
     privacy: {
       title: "Privacy",
@@ -670,10 +670,10 @@ export const copy: Record<Locale, Copy> = {
   },
   ru: {
     meta: {
-      title: "AI Mark Agency — от идеи до работающего бизнеса",
+      title: "AI Mark — От идеи до работающего бизнеса",
       description:
         "AI-native венчурная и маркетинговая компания. Исследуем рынок, собираем модель, строим цифровой продукт, затем ведём маркетинг, продажи и рост на собственной AI-инфраструктуре. Прибыль не обещаем.",
-      ogTitle: "От идеи до работающего бизнеса",
+      ogTitle: "AI Mark — От идеи до работающего бизнеса",
       keywords: [
         "AI-native компания",
         "создание бизнеса",
@@ -1127,8 +1127,8 @@ export const copy: Record<Locale, Copy> = {
       blurb:
         "AI-native венчурная и маркетинговая компания. От идеи до работающего бизнеса — на собственной AI-инфраструктуре.",
       privacy: "Конфиденциальность",
-      rights: "AI Mark Agency. Все права защищены.",
-      poweredBy: "Технологии: AlexDev",
+      rights: "AI Mark. Все права защищены.",
+      poweredBy: "",
     },
     privacy: {
       title: "Конфиденциальность",

@@ -1,48 +1,150 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
 import { navHref, site, type Locale } from "@/lib/site";
+import { productPagePath, productsHubPath } from "@/lib/products";
 
 export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
   const year = new Date().getFullYear();
+  const isRu = locale === "ru";
 
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-[1.2fr_0.8fr]">
-        <div className="max-w-md">
-          <p className="font-display text-sm">{site.name}</p>
-          <p className="mt-2 text-sm text-muted">{t.footer.blurb}</p>
-          <nav className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
-            {t.nav.items.map((item) => (
-              <Link
-                key={item.href + item.label}
-                href={navHref(locale, item.href)}
-                className="hover:text-paper"
+    <footer className="border-t border-line bg-ink-2/60">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+          {/* Col 1: Brand Info */}
+          <div>
+            <div className="flex items-center gap-2.5">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-mark font-display text-xs font-bold text-mark-ink">
+                AM
+              </span>
+              <span className="font-display text-base font-semibold tracking-tight text-paper">
+                AI Mark
+              </span>
+            </div>
+            <p className="mt-3 text-xs font-mono tracking-widest text-mark uppercase">
+              AI-Native Venture &amp; Marketing Company
+            </p>
+            <p className="mt-2 text-sm text-muted max-w-sm">
+              {isRu
+                ? "От идеи до работающего бизнеса. Исследуем рынки, строим цифровые продукты, разворачиваем AI-инфраструктуру, запускаем маркетинг и продажи."
+                : "From Idea to Business. Researching markets, building digital products, deploying proprietary AI infrastructure, and scaling marketing and sales operations."}
+            </p>
+            <div className="mt-4">
+              <a
+                href={`mailto:${site.email}`}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-paper hover:text-mark transition-colors"
               >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+                <span>✉</span> {site.email}
+              </a>
+            </div>
+          </div>
+
+          {/* Col 2: Core Platform Contours */}
+          <div>
+            <p className="text-xs font-mono font-semibold tracking-wider text-warm uppercase">
+              {isRu ? "Контуры" : "Capabilities"}
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-muted">
+              <li>
+                <Link href={navHref(locale, "#business-creation")} className="hover:text-paper transition-colors">
+                  {isRu ? "Создание бизнеса" : "Business Creation"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#production")} className="hover:text-paper transition-colors">
+                  {isRu ? "Digital Production" : "Digital Production"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#pipeline")} className="hover:text-paper transition-colors">
+                  {isRu ? "Сквозной процесс" : "End-to-End Pipeline"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#how")} className="hover:text-paper transition-colors">
+                  {isRu ? "Операционная AI-модель" : "AI Operating Model"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#commercial")} className="hover:text-paper transition-colors">
+                  {isRu ? "Коммерческая модель" : "Commercial Model"}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Proprietary AI Products */}
+          <div>
+            <p className="text-xs font-mono font-semibold tracking-wider text-warm uppercase">
+              {isRu ? "AI-продукты" : "AI Products"}
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-muted">
+              <li>
+                <Link href={productPagePath(locale, "aime")} className="hover:text-paper transition-colors">
+                  AI Marketing Employee
+                </Link>
+              </li>
+              <li>
+                <Link href={productPagePath(locale, "assistant")} className="hover:text-paper transition-colors">
+                  AI Business Assistant
+                </Link>
+              </li>
+              <li>
+                <Link href={productPagePath(locale, "showroom")} className="hover:text-paper transition-colors">
+                  Showroom AI
+                </Link>
+              </li>
+              <li>
+                <Link href={productsHubPath(locale)} className="text-mark hover:underline font-medium">
+                  {isRu ? "Все продукты →" : "All Products →"}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Venture & Network */}
+          <div>
+            <p className="text-xs font-mono font-semibold tracking-wider text-warm uppercase">
+              {isRu ? "Компания" : "Venture"}
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-muted">
+              <li>
+                <Link href={navHref(locale, "#partners")} className="hover:text-paper transition-colors">
+                  {isRu ? "Партнёрская сеть" : "Partner Network"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#investors")} className="hover:text-paper transition-colors">
+                  {isRu ? "Инвесторам" : "Investors"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#why-now")} className="hover:text-paper transition-colors">
+                  {isRu ? "Почему сейчас" : "Why Now"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "#contact")} className="hover:text-paper transition-colors">
+                  {isRu ? "Обсудить проект" : "Discuss a Project"}
+                </Link>
+              </li>
+              <li>
+                <Link href={navHref(locale, "/privacy")} className="hover:text-paper transition-colors">
+                  {t.footer.privacy}
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="flex flex-col gap-2 text-sm text-muted md:items-end">
-          <Link href={navHref(locale, "/privacy")} className="hover:text-paper">
-            {t.footer.privacy}
-          </Link>
-          <a href={`mailto:${site.email}`} className="hover:text-paper">
-            {site.email}
-          </a>
-          <p>
-            © {year} {t.footer.rights}
-          </p>
-          <p className="text-xs text-muted/80">
-            <a
-              href={site.partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-paper"
-            >
-              {t.footer.poweredBy}
-            </a>
-          </p>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row text-xs text-muted">
+          <p>© {year} AI Mark. {isRu ? "Все права защищены." : "All rights reserved."}</p>
+          <div className="flex items-center gap-4">
+            <span>{isRu ? "От идеи до работающего бизнеса" : "From Idea to Business"}</span>
+            <span>·</span>
+            <span>ai-mark.agency</span>
+          </div>
         </div>
       </div>
     </footer>

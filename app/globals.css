@@ -3,28 +3,44 @@
 :root,
 [data-theme="light"] {
   color-scheme: light;
-  --ink: #f7f5f0;
+  --ink: #faf8f5;
   --ink-2: #ffffff;
-  --ink-3: #efece4;
-  --paper: #171614;
-  --muted: #5f5c55;
-  --line: rgba(23, 22, 20, 0.1);
-  --mark: #3a4318;
-  --mark-ink: #f7f5f0;
-  --warm: #8a7348;
+  --ink-3: #f3efe6;
+  --ink-card: #ffffff;
+  --paper: #161614;
+  --paper-soft: #282724;
+  --muted: #6b675e;
+  --line: rgba(22, 22, 20, 0.08);
+  --line-strong: rgba(22, 22, 20, 0.16);
+  --mark: #2d381b;
+  --mark-light: #435427;
+  --mark-ink: #faf8f5;
+  --warm: #b58d4a;
+  --warm-soft: rgba(181, 141, 74, 0.12);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --ink: #121310;
-  --ink-2: #1a1c16;
-  --ink-3: #22251c;
-  --paper: #f3f0e6;
-  --muted: #9b978c;
-  --line: rgba(243, 240, 230, 0.12);
-  --mark: #c9d48a;
-  --mark-ink: #14160f;
-  --warm: #d4c09a;
+  --ink: #11120f;
+  --ink-2: #181a14;
+  --ink-3: #21241b;
+  --ink-card: #181a14;
+  --paper: #f5f2e8;
+  --paper-soft: #ddd8c8;
+  --muted: #9e9a8f;
+  --line: rgba(245, 242, 232, 0.09);
+  --line-strong: rgba(245, 242, 232, 0.18);
+  --mark: #c6d68b;
+  --mark-light: #d8e5a3;
+  --mark-ink: #12140e;
+  --warm: #d9bf8c;
+  --warm-soft: rgba(217, 191, 140, 0.15);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.4);
 }
 
 @theme inline {
@@ -34,7 +50,9 @@
   --color-paper: var(--paper);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-mark: var(--mark);
+  --color-mark-light: var(--mark-light);
   --color-mark-ink: var(--mark-ink);
   --color-warm: var(--warm);
   --font-sans: var(--font-manrope);
@@ -48,10 +66,37 @@ html {
 body {
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
   background: var(--mark);
   color: var(--mark-ink);
+}
+
+/* Glass and elevation utilities */
+.glass-panel {
+  background: color-mix(in srgb, var(--ink-2) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+}
+
+.premium-card {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.premium-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* Subtle amber badge */
+.badge-gold {
+  background: var(--warm-soft);
+  color: var(--warm);
+  border: 1px solid color-mix(in srgb, var(--warm) 25%, transparent);
 }

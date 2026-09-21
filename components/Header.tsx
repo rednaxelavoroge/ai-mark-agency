@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import type { Copy } from "@/content/copy";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { navHref, site, type Locale } from "@/lib/site";
+import { navHref, type Locale } from "@/lib/site";
 
 function counterpartPath(pathname: string, next: Locale) {
   const stripped = pathname.replace(/^\/ru(?=\/|$)/, "") || "/";
@@ -19,13 +19,18 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-ink/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <Link href={navHref(locale, "/")} className="flex min-w-0 items-center gap-2">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-mark font-display text-[11px] font-semibold text-mark-ink">
+        <Link href={navHref(locale, "/")} className="flex min-w-0 items-center gap-2.5 group">
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-mark font-display text-xs font-bold text-mark-ink transition-transform group-hover:scale-105">
             AM
           </span>
-          <span className="hidden truncate font-display text-sm font-medium tracking-tight 2xl:inline">
-            {site.name}
-          </span>
+          <div className="flex items-baseline gap-2">
+            <span className="font-display text-sm font-semibold tracking-tight text-paper">
+              AI Mark
+            </span>
+            <span className="hidden sm:inline font-mono text-[9px] tracking-wider text-warm uppercase">
+              Venture &amp; Marketing
+            </span>
+          </div>
         </Link>
         <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
           {t.nav.items.map((item) => (

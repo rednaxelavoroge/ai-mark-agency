@@ -15,8 +15,8 @@ export const packages: AgencyPackage[] = [
 ];
 
 /**
- * AlexDev products AI Mark Agency runs for clients and can provision.
- * Soft list prices originally published on alex-dev.pro; detail pages are hosted on this domain.
+ * Proprietary AI products that AI Mark provisions and operates for clients.
+ * Detail pages are hosted natively on this domain.
  */
 export const products: {
   id: ProductId;

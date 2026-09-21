@@ -1,16 +1,12 @@
 export const site = {
-  name: "AI Mark Agency",
+  name: "AI Mark",
   domain: "ai-mark.agency",
   url: "https://ai-mark.agency",
   email: "hello@ai-mark.agency",
-  taglineEn: "From idea to a working business.",
+  taglineEn: "From Idea to Business.",
   taglineRu: "От идеи до работающего бизнеса.",
   locales: ["en", "ru"] as const,
   defaultLocale: "en" as const,
-  partner: {
-    name: "AlexDev",
-    url: "https://www.alex-dev.pro",
-  },
 };
 
 export type Locale = (typeof site.locales)[number];

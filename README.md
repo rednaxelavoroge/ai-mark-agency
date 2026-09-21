@@ -52,4 +52,4 @@ The landing defaults to a **light** theme; a header toggle persists light/dark i
 
 ## Public brand
 
-Site name is **AI Mark Agency**. AlexDev appears only as a quiet tech-partner line in the footer.
+Site name is **AI Mark**. The brand is an independent AI-native venture and marketing company ("От идеи до работающего бизнеса" / "From Idea to Business"). It stands completely on its own as a sovereign digital product and venture platform.
