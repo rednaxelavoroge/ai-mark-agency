@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
-import { ContactCta } from "@/components/ContactCta";
-import { type Locale } from "@/lib/site";
+import Link from "next/link";
+import { INVESTOR_PAGE_PATH } from "@/lib/investors";
+import { navHref, type Locale } from "@/lib/site";
 export function InvestorsSection({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
 
@@ -120,9 +121,15 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
           </div>
 
           <div className="shrink-0">
-            <ContactCta className="inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-xs font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all whitespace-nowrap">
-              {isRu ? "Запросить материалы инвестора" : "Request Investor Deck"} →
-            </ContactCta>
+            <Link
+              href={navHref(locale, INVESTOR_PAGE_PATH)}
+              className="inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-xs font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all whitespace-nowrap"
+            >
+              {isRu ? "Полное инвестиционное предложение" : "Full investment proposal"}
+              <span className="btn-arrow" aria-hidden>
+                →
+              </span>
+            </Link>
           </div>
         </div>
       </div>
