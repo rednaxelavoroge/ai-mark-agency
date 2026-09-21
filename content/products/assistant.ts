@@ -73,10 +73,6 @@ export interface AibaContent {
   pricingTitle: string;
   pricingSub: string;
   plans: AibaPlan[];
-  setupTitle: string;
-  setupPrice: string;
-  setupDesc: string;
-  setupFeatures: string[];
   faqTitle: string;
   faqSub: string;
   faqs: { q: string; a: string }[];
@@ -91,7 +87,7 @@ export const aibaRu: AibaContent = {
   titleB: "Assistant",
   subtitle:
     "Один ассистент отвечает вашим клиентам в каждом мессенджере, которым они уже пользуются, — с вашим каталогом, вашими ценами и вашими правилами. Команда следит за одним инбоксом, забирает любой диалог себе в один клик, а каждая переписка попадает в вашу CRM.",
-  heroMeta: ["5 каналов в одном инбоксе", "Панель клиента", "Интеграция с CRM", "От $39 / месяц"],
+  heroMeta: ["5 каналов в одном инбоксе", "Панель клиента", "Интеграция с CRM", "Entry $149 / мес"],
   ctaConsult: "Подключить ассистента",
   ctaPricing: "Тарифы подписки",
   heroScene: {
@@ -245,9 +241,9 @@ export const aibaRu: AibaContent = {
   pricingSub: "Фиксированная подписка за всё рабочее пространство. Без скрытых доплат за операторов.",
   plans: [
     {
-      id: "starter",
-      name: "Starter",
-      price: "$39",
+      id: "entry",
+      name: "Entry",
+      price: "$149",
       period: "/ месяц",
       note: "1 канал, ответ 24/7",
       features: [
@@ -259,9 +255,9 @@ export const aibaRu: AibaContent = {
       ],
     },
     {
-      id: "business",
-      name: "Business",
-      price: "$99",
+      id: "standard",
+      name: "Standard",
+      price: "$249",
       period: "/ месяц",
       badge: "Рекомендуем",
       note: "Все 5 каналов + интеграция с CRM",
@@ -289,17 +285,6 @@ export const aibaRu: AibaContent = {
       ],
     },
   ],
-  setupTitle: "Настройка и онбординг под ключ",
-  setupPrice: "от $300 разово",
-  setupDesc:
-    "Мы подключаем каналы, импортируем ваш каталог и прайс-лист, калибруем базу знаний на ваших языках и настраиваем связку с CRM. Обычно запуск занимает 3–5 рабочих дней.",
-  setupFeatures: [
-    "Подключение WhatsApp Cloud API, Telegram и виджета сайта",
-    "Загрузка и структурирование базы знаний компании",
-    "Калибровка тональности и стоп-листов",
-    "Интеграция с CRM и тестовая прогонка сценариев",
-    "2 недели бесплатного сопровождения после запуска",
-  ],
   faqTitle: "Вопросы о подключении ассистента",
   faqSub: "Популярные вопросы по тарифам, каналам и безопасности данных.",
   faqs: [
@@ -317,7 +302,7 @@ export const aibaRu: AibaContent = {
     },
     {
       q: "Сколько операторов можно подключить к панели?",
-      a: "В тарифах Business и Enterprise число операторов в панели инбокса не ограничено. Вы платите за рабочее пространство и объём диалогов, а не за каждого сотрудника отдела продаж.",
+      a: "В тарифах Standard и Enterprise число операторов в панели инбокса не ограничено. Вы платите за рабочее пространство и объём диалогов, а не за каждого сотрудника отдела продаж.",
     },
     {
       q: "Как быстро можно запустить ассистента?",
@@ -335,7 +320,7 @@ export const aibaEn: AibaContent = {
   titleB: "Assistant",
   subtitle:
     "One AI assistant answers your customers across every messenger they already use — grounded in your catalog, your pricing, and your business rules. Your sales team tracks one unified inbox, intercepts chats in one click, and logs every conversation into your CRM.",
-  heroMeta: ["5 channels in 1 inbox", "Customer workspace panel", "Direct CRM sync", "From $39 / month"],
+  heroMeta: ["5 channels in 1 inbox", "Customer workspace panel", "Direct CRM sync", "Entry $149 / mo"],
   ctaConsult: "Deploy Sales Assistant",
   ctaPricing: "View Subscription Plans",
   heroScene: {
@@ -489,9 +474,9 @@ export const aibaEn: AibaContent = {
   pricingSub: "Fixed monthly pricing per workspace. No per-seat penalties for adding team members.",
   plans: [
     {
-      id: "starter",
-      name: "Starter",
-      price: "$39",
+      id: "entry",
+      name: "Entry",
+      price: "$149",
       period: "/ month",
       note: "1 channel, 24/7 responsiveness",
       features: [
@@ -503,9 +488,9 @@ export const aibaEn: AibaContent = {
       ],
     },
     {
-      id: "business",
-      name: "Business",
-      price: "$99",
+      id: "standard",
+      name: "Standard",
+      price: "$249",
       period: "/ month",
       badge: "Recommended",
       note: "All 5 channels + direct CRM integration",
@@ -533,17 +518,6 @@ export const aibaEn: AibaContent = {
       ],
     },
   ],
-  setupTitle: "Turnkey Setup & Onboarding",
-  setupPrice: "from $300 once",
-  setupDesc:
-    "We connect all channels, import your catalogue and price sheets, calibrate knowledge prompts, and test CRM pipelines. Live within 3–5 business days.",
-  setupFeatures: [
-    "Meta Business / WhatsApp Cloud API, Telegram, and website widget configuration",
-    "Knowledge base extraction from product catalogs and FAQ documents",
-    "Tone and guardrail calibration across supported languages",
-    "End-to-end CRM integration with verified test handoffs",
-    "Two weeks of post-launch optimization support",
-  ],
   faqTitle: "Frequently Asked Questions",
   faqSub: "Common questions regarding channels, setup, and enterprise privacy.",
   faqs: [
@@ -561,7 +535,7 @@ export const aibaEn: AibaContent = {
     },
     {
       q: "How many agents can access the workspace?",
-      a: "On Business and Enterprise tiers, team seat count is unlimited. You pay for the workspace and conversation volume, not a per-head penalty.",
+      a: "On Standard and Enterprise tiers, team seat count is unlimited. You pay for the workspace and conversation volume, not a per-head penalty.",
     },
     {
       q: "How quickly can we launch?",
