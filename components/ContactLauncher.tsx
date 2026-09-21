@@ -1,10 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { OPEN_CHAT_EVENT, OPEN_LAUNCHER_EVENT, type OpenChatDetail } from "@/lib/contact";
-import { navHref, site, type Locale } from "@/lib/site";
-
-type MessengerKey = "telegram" | "whatsapp" | "messenger" | "instagram";
+import {
+  listPublicMessengers,
+  OPEN_CHAT_EVENT,
+  OPEN_LAUNCHER_EVENT,
+  type MessengerKey,
+  type OpenChatDetail,
+} from "@/lib/contact";
+import { site, type Locale } from "@/lib/site";
 
 const COPY = {
   ru: {
@@ -14,8 +18,6 @@ const COPY = {
     aiLabel: "Чат с AI-ассистентом",
     aiHint: "Отвечает мгновенно, круглосуточно",
     messengerHint: "Обычно отвечаем в течение нескольких часов",
-    emailLabel: "Email",
-    emailHint: "Отвечаем в течение одного рабочего дня",
     greeting:
       "Здравствуйте! Я AI Business Assistant AI Mark. Расскажите, что нужно — маркетинг, продажи или продукт.",
     placeholder: "Напишите сообщение…",
@@ -27,8 +29,6 @@ const COPY = {
     aiLabel: "Chat with our AI assistant",
     aiHint: "Answers instantly, day or night",
     messengerHint: "Usually replies within a few hours",
-    emailLabel: "Email",
-    emailHint: "We reply within one business day",
     greeting:
       "Hi! I'm AI Mark's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
     placeholder: "Type a message…",
@@ -41,29 +41,6 @@ const MESSENGER_META: Record<MessengerKey, { label: string; color: string }> = {
   messenger: { label: "Messenger", color: "#0084FF" },
   instagram: { label: "Instagram", color: "#E1306C" },
 };
-
-function messengerRows(): { key: MessengerKey; href: string; label: string }[] {
-  const m = site.messengers;
-  const rows: { key: MessengerKey; href: string }[] = [];
-  if (m.telegram) rows.push({ key: "telegram", href: m.telegram });
-  if (m.whatsapp) {
-    const href = m.whatsapp.startsWith("http") ? m.whatsapp : `https://wa.me/${m.whatsapp.replace(/\D/g, "")}`;
-    rows.push({ key: "whatsapp", href });
-  }
-  if (m.messenger) rows.push({ key: "messenger", href: m.messenger });
-  if (m.instagram) rows.push({ key: "instagram", href: m.instagram });
-  return rows.map((row) => ({ ...row, label: MESSENGER_META[row.key].label }));
-}
-
-function orderedMessengers(locale: Locale) {
-  const rows = messengerRows();
-  if (locale === "en") {
-    const order: MessengerKey[] = ["whatsapp", "messenger", "instagram", "telegram"];
-    return [...rows].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
-  }
-  const order: MessengerKey[] = ["telegram", "whatsapp", "messenger", "instagram"];
-  return [...rows].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
-}
 
 let injectPromise: Promise<void> | null = null;
 
@@ -247,22 +224,12 @@ function IconSpark() {
   );
 }
 
-function IconMail() {
-  return (
-    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <rect x="3" y="5" width="18" height="14" rx="2.2" />
-      <path d="m4 7 8 6 8-6" />
-    </svg>
-  );
-}
-
 export function ContactLauncher({ locale }: { locale: Locale }) {
   const t = COPY[locale] ?? COPY.en;
   const [menuOpen, setMenuOpen] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
-  const messengers = orderedMessengers(locale);
-  const emailHref = navHref(locale, "#contact");
+  const messengers = listPublicMessengers();
   const fabOpen = menuOpen || chatOpen;
 
   const closeChat = useCallback(() => {
@@ -408,21 +375,6 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
               </span>
             </a>
           ))}
-          <div className="cl-menu-sep" />
-          <a
-            className="cl-item"
-            role="menuitem"
-            href={emailHref}
-            onClick={() => setMenuOpen(false)}
-          >
-            <span className="cl-item-icon cl-item-icon-email">
-              <IconMail />
-            </span>
-            <span className="cl-item-text">
-              <span className="cl-item-label">{t.emailLabel}</span>
-              <span className="cl-item-hint">{t.emailHint}</span>
-            </span>
-          </a>
         </div>
       ) : null}
       <button

@@ -38,7 +38,7 @@ Push to `main` → Vercel builds and deploys (~25s). Verify: fetch a page and lo
 - `components/Section.tsx` — editorial chapter wrapper; `index` renders the numbered rule (`04 ─── DIGITAL PRODUCTION`) and `width="wide"` (86rem) lets a section's media break out of the reading measure.
 - `components/ui/Live.tsx` — `LiveNumber` (count-up), `LiveType` (typewriter), `LiveDot`.
 - `components/ui/ProductConstellation.tsx` — `ProductConstellation` / `ConstellationOverlays` (desktop + phone + context event card, parallax). `cardKind: publish | handoff | quote`.
-- `components/ContactLauncher.tsx` — floating contact chooser (Chat → messengers if configured → Email last). Chat injects the real BA widget (`site.widget` in `lib/site.ts`). CTAs dispatch `am:open-launcher`; `am:open-chat` opens the widget. Email scrolls to `#contact`. No invented messenger numbers.
+- `components/ContactLauncher.tsx` — floating contact chooser (Chat → Telegram → WhatsApp → Messenger). Chat injects the real BA widget (`site.widget` in `lib/site.ts`). CTAs dispatch `am:open-launcher`; `am:open-chat` opens the widget. No email intake on the public site.
 - `app/api/chat/route.ts` — the server brain: proxies to `ASSISTANT_API_URL` when set (normalising `text|reply|answer|response|message|content|output|result|data` and OpenAI/Gemini-style SSE), otherwise talks to `AI_PROVIDER` directly with the knowledge base as a system prompt. Rate limit per IP, honeypot, history/length caps, upstream timeout. `GET /api/chat` reports `{ remote, direct, mode }` — the fastest way to check whether a brain is configured.
 - `lib/assistant-knowledge.ts` — the assistant's only source of facts (company, three products, AIBA pricing $39/$99/Enterprise, setup from $300, 1 day / 3–5 days launch, channels, CRM, AI Marketing Department retainers) plus tone rules, in RU and EN. Chat answers are never invented outside this file.
 - `components/products/PanelDemo.tsx` — interactive app-shell demo (dark sidebar + Dashboard / Inbox / Knowledge / Playground, working playground test).
@@ -55,7 +55,7 @@ Push to `main` → Vercel builds and deploys (~25s). Verify: fetch a page and lo
 - **No AlexDev / `alex-dev.pro` / "Технологии:" references anywhere public.** Verify: `grep -rn -i "alexdev\|alex-dev"` → 0.
 - Do not fabricate clients, revenue, partners, countries, investment amounts, ROI, case studies.
 - Investor wording stays generic (see `InvestorsSection.tsx`).
-- Don't invent contact handles — only `hello@ai-mark.agency` and the on-site contact form exist.
+- Don't invent contact handles — public channels are the site chat widget and URLs in `site.messengers` (`lib/site.ts`).
 - Chat pricing/facts may only come from `lib/assistant-knowledge.ts`, and its numbers must match `content/packages.ts` + `content/products/assistant.ts`. Update all three together.
 - The chat must not open with a request for a contact: that behaviour (the old `reply()` fallback) is what made the widget useless.
 - Check horizontal overflow after layout changes (script above).
