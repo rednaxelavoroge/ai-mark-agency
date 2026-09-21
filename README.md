@@ -1,6 +1,6 @@
 # AI Mark Agency
 
-Production landing for **[ai-mark.agency](https://ai-mark.agency)** — an AI-native marketing company. Most ops run through an AI system and specialized agents; humans own strategy, clients, and key decisions. Not a SaaS storefront and not an investment page.
+Production site for **[ai-mark.agency](https://ai-mark.agency)** — an AI-native venture and marketing company. Core line: from idea to a working business. English at `/`, Russian at `/ru`. Additional locales can be added to `site.locales` in `lib/site.ts` plus a copy pack in `content/copy.ts`.
 
 Source of truth: this GitHub repo. Built for Vercel.
 
@@ -15,7 +15,7 @@ npm run dev
 - English (default): http://localhost:3000/
 - Russian: http://localhost:3000/ru
 
-`CONTACT_TO_EMAIL` is required in production. In `next dev`, briefs are logged to the server console unless `RESEND_API_KEY` or `CONTACT_WEBHOOK_URL` is set.
+`CONTACT_TO_EMAIL` is required in production. In `next dev`, requests are logged to the server console unless `RESEND_API_KEY` or `CONTACT_WEBHOOK_URL` is set.
 
 ## Env
 
@@ -32,19 +32,16 @@ Never commit secrets. `.env.local` is gitignored.
 
 ## Content
 
-USD retainers live in `content/packages.ts`. EN/RU copy lives in `content/copy.ts`.
+EN/RU copy lives in `content/copy.ts`. Department retainers live in `content/packages.ts` (Starter $1,200 / Growth $2,200 / Scale $3,500) as **one** commercial format among products, marketing services, production, business creation, and enterprise.
 
-Packages:
+Product routes on this domain:
 
-- **Starter** ~$1,200/mo — Instagram + approval path, 1 brand
-- **Growth** ~$2,200/mo — full Meta (IG/FB) + HITL, weekly research loop
-- **Scale** ~$3,500/mo — multi-brand / heavier volume, still HITL
-
-Tools mentioned as agency delivery: AI Marketing Employee (AIME), AI Business Assistant, Showroom AI. Card CTAs stay on this domain at the same slugs as AlexDev (`/ai-marketing-employee`, `/ai-business-assistant`, `/showroom-ai`, plus `/ru/…`). Those routes proxy the live landings (no visual redesign). `/products` lists the three. Footer still credits AlexDev as tech partner.
+- `/ai-marketing-employee` and `/ru/ai-marketing-employee`
+- `/ai-business-assistant` and `/ru/ai-business-assistant`
+- `/showroom-ai` and `/ru/showroom-ai`
+- `/products` hub
 
 The landing defaults to a **light** theme; a header toggle persists light/dark in `localStorage` + cookie.
-
-**Channels & growth** is a service block (not extra SKUs): Ads → Landing/CRO → Content (AIME) → Inbox (BA) → Offer (Showroom) → Analytics, plus honest channel readiness (Meta live; ads/YouTube/PR/email as retainer lines; reputation later).
 
 ## Vercel
 
@@ -52,33 +49,6 @@ The landing defaults to a **light** theme; a header toggle persists light/dark i
 2. Framework preset: Next.js. Build: `npm run build`. Output: default.
 3. Set `CONTACT_TO_EMAIL` (and a provider key or webhook).
 4. Add domains `ai-mark.agency` and `www.ai-mark.agency`.
-
-## DNS for ai-mark.agency
-
-At your registrar / DNS host, point the apex and www to Vercel:
-
-**A (apex)**
-
-| Type | Name | Value |
-| --- | --- | --- |
-| A | `@` | `76.76.21.21` |
-
-**CNAME (www)**
-
-| Type | Name | Value |
-| --- | --- | --- |
-| CNAME | `www` | `cname.vercel-dns.com` |
-
-If Vercel shows project-specific targets in the domain UI, use those. Then in the Vercel project: **Add domain** `ai-mark.agency`, redirect `www` → apex (or the reverse — pick one canonical). TLS is issued by Vercel.
-
-Optional: add a `TXT` record if you verify the domain for Resend (SPF/DKIM as Resend instructs).
-
-## SEO
-
-- Metadata + Open Graph image
-- `sitemap.xml` / `robots.txt`
-- JSON-LD (`Organization` + `ProfessionalService`)
-- `hreflang` for `en` and `ru`
 
 ## Public brand
 

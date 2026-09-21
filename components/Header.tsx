@@ -1,29 +1,38 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 import type { Copy } from "@/content/copy";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { localePath, site } from "@/lib/site";
-import type { Locale } from "@/lib/site";
+import { navHref, site, type Locale } from "@/lib/site";
+
+function counterpartPath(pathname: string, next: Locale) {
+  const stripped = pathname.replace(/^\/ru(?=\/|$)/, "") || "/";
+  return navHref(next, stripped);
+}
 
 export function Header({ locale, t }: { locale: Locale; t: Copy }) {
-  const home = localePath(locale);
+  const pathname = usePathname() || "/";
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-ink/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line bg-ink/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <Link href={home} className="flex min-w-0 items-center gap-2">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-sm bg-mark font-display text-xs font-semibold text-mark-ink">
+        <Link href={navHref(locale, "/")} className="flex min-w-0 items-center gap-2">
+          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-mark font-display text-[11px] font-semibold text-mark-ink">
             AM
           </span>
-          <span className="truncate font-display text-sm font-medium tracking-tight">
+          <span className="hidden truncate font-display text-sm font-medium tracking-tight 2xl:inline">
             {site.name}
           </span>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm text-muted lg:flex">
+        <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
           {t.nav.items.map((item) => (
             <Link
-              key={item.href}
-              href={`${home}${item.href}`}
-              className="transition-colors hover:text-paper"
+              key={item.href + item.label}
+              href={navHref(locale, item.href)}
+              className="whitespace-nowrap transition-colors hover:text-paper"
             >
               {item.label}
             </Link>
@@ -33,7 +42,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <div className="flex overflow-hidden rounded-full border border-line text-xs">
             <Link
-              href="/"
+              href={counterpartPath(pathname, "en")}
               hrefLang="en"
               className={`px-2.5 py-1 ${
                 locale === "en" ? "bg-paper text-ink" : "text-muted hover:text-paper"
@@ -42,7 +51,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
               {t.nav.langEn}
             </Link>
             <Link
-              href="/ru"
+              href={counterpartPath(pathname, "ru")}
               hrefLang="ru"
               className={`px-2.5 py-1 ${
                 locale === "ru" ? "bg-paper text-ink" : "text-muted hover:text-paper"
@@ -52,13 +61,48 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
             </Link>
           </div>
           <Link
-            href={`${home}#contact`}
-            className="rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:px-4 sm:text-sm"
+            href={navHref(locale, "#contact")}
+            className="hidden rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:inline-flex sm:px-4 sm:text-sm"
           >
             {t.nav.cta}
           </Link>
+          <button
+            type="button"
+            className="grid h-8 w-8 place-items-center rounded-full border border-line text-sm xl:hidden"
+            aria-expanded={open}
+            aria-label={open ? t.nav.close : t.nav.menu}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? "×" : "☰"}
+          </button>
         </div>
       </div>
+      {open ? (
+        <nav className="border-t border-line bg-ink px-4 py-4 xl:hidden">
+          <ul className="mx-auto grid max-w-6xl gap-2 text-sm">
+            {t.nav.items.map((item) => (
+              <li key={item.href + item.label}>
+                <Link
+                  href={navHref(locale, item.href)}
+                  className="block rounded-lg px-2 py-2 hover:bg-ink-3"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href={navHref(locale, "#contact")}
+                className="mt-2 block rounded-full bg-mark px-4 py-2.5 text-center text-sm font-semibold text-mark-ink"
+                onClick={() => setOpen(false)}
+              >
+                {t.nav.cta}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      ) : null}
     </header>
   );
 }

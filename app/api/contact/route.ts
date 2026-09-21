@@ -3,13 +3,21 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const BUDGETS = new Set(["starter", "growth", "scale", "tools", "partner", "unsure"]);
+const SCENARIOS = new Set([
+  "idea",
+  "business",
+  "capital",
+  "marketing",
+  "partner",
+  "investment",
+]);
 
 type Payload = {
   name?: unknown;
   email?: unknown;
   messenger?: unknown;
   company?: unknown;
+  scenario?: unknown;
   budget?: unknown;
   website?: unknown;
 };
@@ -21,10 +29,6 @@ function str(value: unknown, max: number) {
 
 async function deliver(text: string, subject: string) {
   const to = process.env.CONTACT_TO_EMAIL;
-  if (!to) {
-    throw new Error("CONTACT_TO_EMAIL is not set");
-  }
-
   const webhook = process.env.CONTACT_WEBHOOK_URL;
   if (webhook) {
     const res = await fetch(webhook, {
@@ -38,6 +42,7 @@ async function deliver(text: string, subject: string) {
 
   const resendKey = process.env.RESEND_API_KEY;
   if (resendKey) {
+    if (!to) throw new Error("CONTACT_TO_EMAIL is not set");
     const from =
       process.env.CONTACT_FROM_EMAIL ?? "AI Mark Agency <noreply@ai-mark.agency>";
     const res = await fetch("https://api.resend.com/emails", {
@@ -55,6 +60,10 @@ async function deliver(text: string, subject: string) {
   if (process.env.NODE_ENV !== "production") {
     console.info("[contact]", subject, text);
     return;
+  }
+
+  if (!to) {
+    throw new Error("CONTACT_TO_EMAIL is not set");
   }
 
   throw new Error("No email provider configured");
@@ -76,19 +85,19 @@ export async function POST(request: Request) {
   const email = str(body.email, 200);
   const messenger = str(body.messenger, 120);
   const company = str(body.company, 160);
-  const budget = str(body.budget, 40);
+  const scenario = str(body.scenario, 40) || str(body.budget, 40);
 
-  if (!name || !EMAIL_RE.test(email) || !messenger || !company || !BUDGETS.has(budget)) {
+  if (!name || !EMAIL_RE.test(email) || !messenger || !company || !SCENARIOS.has(scenario)) {
     return NextResponse.json({ ok: false, error: "invalid_fields" }, { status: 400 });
   }
 
-  const subject = `[ai-mark.agency] ${company} · ${budget}`;
+  const subject = `[ai-mark.agency] ${company} · ${scenario}`;
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
     `Telegram/WhatsApp: ${messenger}`,
     `Company: ${company}`,
-    `Budget: ${budget}`,
+    `Scenario: ${scenario}`,
   ].join("\n");
 
   try {
