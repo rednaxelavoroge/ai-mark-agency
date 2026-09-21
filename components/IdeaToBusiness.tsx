@@ -154,6 +154,9 @@ const ARTIFACT_CAPTION: Record<Locale, Record<string, string>> = {
   },
 };
 
+const ACCENTS = ["var(--mark)", "var(--warm)", "var(--mark-light)"];
+const accent = (i: number) => ACCENTS[i % ACCENTS.length];
+
 const RADIUS = 37;
 const CENTER = { x: 50, y: 50 };
 
@@ -191,7 +194,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
       <div className={base}>
         <div className="flex items-center gap-2">
           <span className="relative grid h-3 w-3 place-items-center rounded-full bg-warm text-warm pulse-ring" />
-          <span className="font-mono text-[10px] text-muted">idea · hypothesis</span>
+          <span className="font-mono text-[10px] opacity-75">{locale === "ru" ? "идея · гипотеза" : "idea · hypothesis"}</span>
         </div>
       </div>
     );
@@ -209,7 +212,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
               />
             ))}
           </div>
-          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
             {label}
           </p>
         </div>
@@ -220,7 +223,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
     return (
       <div className={base}>
         <div className="grid w-full max-w-[140px] grid-cols-2 gap-1.5">
-          {["Segments", "Pricing", "Channels", "CAC / LTV"].map((t) => (
+          {(locale === "ru" ? ["Сегменты", "Монетизация", "Каналы", "CAC / LTV"] : ["Segments", "Pricing", "Channels", "CAC / LTV"]).map((t) => (
             <span
               key={t}
               className="rounded-md border border-line/70 px-2 py-2 text-center font-mono text-[9px] text-paper/85"
@@ -237,8 +240,8 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
       <div className={base}>
         <div className="text-center">
           <p className="font-display text-2xl font-semibold text-paper">AI Mark</p>
-          <p className="mt-1 font-mono text-[9px] tracking-widest text-warm uppercase">
-            identity system
+          <p className="mt-1 font-mono text-[9px] tracking-widest uppercase opacity-80">
+            {locale === "ru" ? "система айдентики" : "identity system"}
           </p>
         </div>
       </div>
@@ -257,7 +260,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
             <span className="block h-2 w-full rounded bg-ink-3" />
             <span className="block h-2 w-5/6 rounded bg-ink-3" />
           </div>
-          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
             {label}
           </p>
         </div>
@@ -276,7 +279,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
               />
             ))}
           </div>
-          <p className="mt-2 font-mono text-[8px] uppercase tracking-wider text-muted">
+          <p className="mt-2 font-mono text-[8px] uppercase tracking-wider opacity-75">
             {label}
           </p>
         </div>
@@ -294,7 +297,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
               style={{ width: `${w}%` }}
             />
           ))}
-          <p className="pt-1 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+          <p className="pt-1 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
             {label}
           </p>
         </div>
@@ -313,7 +316,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
             strokeLinecap="round"
           />
         </svg>
-        <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider text-muted">
+        <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
           {label}
         </p>
       </div>
@@ -389,7 +392,10 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             {/* Narrative column */}
             <div className="order-2 lg:order-1">
               <div className="flex items-center gap-3">
-                <span className="font-editorial text-5xl italic text-warm sm:text-6xl">
+                <span
+                  className="font-editorial text-5xl italic transition-colors duration-500 sm:text-6xl"
+                  style={{ color: accent(active) }}
+                >
                   {String(active).padStart(2, "0")}
                 </span>
                 <span className="h-px flex-1 bg-line" />
@@ -416,8 +422,11 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                   <span key={s.title} className="flex-1">
                     <span className="block h-[3px] overflow-hidden rounded-full bg-ink-3">
                       <span
-                        className="block h-full rounded-full bg-mark transition-transform duration-500 ease-out"
-                        style={{ transform: `scaleX(${i <= active ? 1 : 0})` }}
+                        className="block h-full rounded-full transition-transform duration-500 ease-out"
+                        style={{
+                          transform: `scaleX(${i <= active ? 1 : 0})`,
+                          backgroundColor: accent(i),
+                        }}
                       />
                     </span>
                   </span>
@@ -451,7 +460,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                         y1="50"
                         x2={p.x}
                         y2={p.y}
-                        stroke={on ? "var(--mark)" : "var(--line)"}
+                        stroke={on ? accent(i) : "var(--line)"}
                         strokeWidth={on ? 0.6 : 0.3}
                         style={{ transition: "stroke 500ms ease, stroke-width 500ms ease" }}
                       />
@@ -460,7 +469,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                 </svg>
 
                 {/* Center artifact */}
-                <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2">
+                <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2" style={{ color: accent(active) }}>
                   <Artifact kind={current.artifact} locale={locale} />
                 </div>
 
@@ -476,10 +485,13 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                     >
                       <span
                         className={`grid h-6 w-6 place-items-center rounded-full border text-[9px] font-mono transition-all duration-500 ${
-                          on
-                            ? "border-mark bg-mark text-mark-ink"
-                            : "border-line bg-ink-2 text-muted"
+                          on ? "text-mark-ink" : "border-line bg-ink-2 text-muted"
                         }`}
+                        style={
+                          on
+                            ? { backgroundColor: accent(i), borderColor: accent(i) }
+                            : undefined
+                        }
                       >
                         {i === 0 ? "◦" : i}
                       </span>
@@ -502,7 +514,10 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                 key={active}
                 className="stage-enter mx-auto mt-6 flex max-w-[460px] items-start gap-3 rounded-xl border border-line bg-ink-2 px-4 py-3"
               >
-                <span className="mt-0.5 font-mono text-[10px] text-warm">
+                <span
+                  className="mt-0.5 font-mono text-[10px]"
+                  style={{ color: accent(active) }}
+                >
                   {String(active).padStart(2, "0")}
                 </span>
                 <div>
@@ -536,7 +551,10 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
               className="border-t border-line pt-4"
             >
               <div className="flex items-baseline gap-2">
-                <span className="font-editorial text-xl italic text-warm">
+                <span
+                  className="font-editorial text-xl italic"
+                  style={{ color: accent(i) }}
+                >
                   {String(i).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-sm font-semibold leading-snug text-paper">
