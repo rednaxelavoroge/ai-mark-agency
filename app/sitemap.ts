@@ -44,6 +44,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         absoluteUrl("ru", "/products"),
       ),
     });
+    entries.push({
+      url: absoluteUrl(locale, "/investors"),
+      lastModified,
+      alternates: alt(
+        absoluteUrl("en", "/investors"),
+        absoluteUrl("ru", "/investors"),
+      ),
+    });
     for (const id of productIds) {
       const path = PRODUCT_PATHS[id];
       entries.push({
