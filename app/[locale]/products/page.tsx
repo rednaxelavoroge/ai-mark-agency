@@ -54,7 +54,46 @@ export default async function ProductsHubPage({ params }: Props) {
         </p>
       </div>
 
-      <div className="mt-12 grid gap-8 lg:grid-cols-3">
+      {/* Ecosystem band */}
+      <div
+        className="mt-10 overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6"
+        data-reveal
+      >
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
+          <span className="inline-flex items-center gap-2 rounded-full bg-mark px-4 py-2 font-mono text-[11px] font-semibold text-mark-ink">
+            <span className="relative h-1.5 w-1.5 rounded-full bg-mark-ink text-mark-ink pulse-ring" />
+            AI Mark Core
+          </span>
+          {(["aime", "assistant", "showroom"] as const).map((id, i) => (
+            <span key={id} className="flex items-center gap-3">
+              <svg width="42" height="12" viewBox="0 0 42 12" className="hidden text-warm sm:block">
+                <line x1="2" y1="6" x2="40" y2="6" stroke="currentColor" strokeWidth="1" opacity="0.28" />
+                <line
+                  x1="2"
+                  y1="6"
+                  x2="40"
+                  y2="6"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  className="flow-dash"
+                  style={{ animationDelay: `${i * 260}ms` }}
+                />
+              </svg>
+              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-ink-3/40 px-3.5 py-2 text-xs text-paper">
+                <span className="h-1.5 w-1.5 rounded-full bg-mark" />
+                {products.find((p) => p.id === id)?.name ?? id}
+              </span>
+            </span>
+          ))}
+        </div>
+        <p className="mt-4 text-xs text-muted">
+          {isRu
+            ? "Продукты работают автономно и как единый стек: общая база знаний, единый инбокс и сквозная аналитика."
+            : "The products run standalone and as one stack: shared knowledge base, unified inbox and end-to-end analytics."}
+        </p>
+      </div>
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-3">
         {products.map((product) => {
           const item = t.products.items[product.id];
           const page = t.productPages[product.id];
@@ -63,7 +102,7 @@ export default async function ProductsHubPage({ params }: Props) {
           return (
             <section
               key={product.id}
-              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:border-line-strong hover:shadow-lg"
+              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-lg"
             >
               <div>
                 <div className="flex items-center justify-between">

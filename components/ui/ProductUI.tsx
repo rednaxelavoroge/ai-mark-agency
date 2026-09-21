@@ -507,34 +507,142 @@ function PortalMock() {
   );
 }
 
+type ThumbKind = "sofa" | "chair" | "lamp" | "table" | "bag" | "watch";
+
+function Thumb({ kind }: { kind: ThumbKind }) {
+  const paths: Record<ThumbKind, ReactNode> = {
+    sofa: (
+      <>
+        <path d="M7 26v-7a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v7" />
+        <path d="M7 26h22M10 26v4M26 26v4" />
+        <path d="M10 16v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3" />
+      </>
+    ),
+    chair: (
+      <>
+        <path d="M13 9v11h10V9" />
+        <path d="M12 20h12v12" />
+        <path d="M13 32v3M23 32v3M12 24h12" />
+      </>
+    ),
+    lamp: (
+      <>
+        <path d="M14 9h8l3 8H11z" />
+        <path d="M18 17v13M12 33h12" />
+      </>
+    ),
+    table: (
+      <>
+        <path d="M7 13h22" />
+        <path d="M10 13v16M26 13v16M7 20h22" />
+      </>
+    ),
+    bag: (
+      <>
+        <path d="M10 16h16l2 15H8z" />
+        <path d="M14 16v-3a4 4 0 0 1 8 0v3" />
+        <path d="M13 22h10" />
+      </>
+    ),
+    watch: (
+      <>
+        <circle cx="18" cy="18" r="7" />
+        <path d="M15 11.5 16 6h4l1 5.5M15 24.5 16 30h4l1-5.5" />
+        <path d="M18 15v3l2 1" />
+      </>
+    ),
+  };
+  const tint: Record<ThumbKind, string> = {
+    sofa: "bg-mark/12 text-mark",
+    chair: "bg-warm/14 text-warm",
+    lamp: "bg-ink-3 text-paper/70",
+    table: "bg-mark/10 text-mark",
+    bag: "bg-warm/12 text-warm",
+    watch: "bg-ink-3 text-paper/70",
+  };
+  return (
+    <span className={`group/thumb relative grid h-14 place-items-center ${tint[kind]}`}>
+      <svg
+        viewBox="0 0 36 36"
+        className="h-8 w-8 transition-transform duration-500 group-hover/thumb:scale-110"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {paths[kind]}
+      </svg>
+      <span className="absolute right-1 top-1 rounded bg-ink-2/80 px-1 font-mono text-[7px] text-muted">
+        ●
+      </span>
+    </span>
+  );
+}
+
 function EcommerceMock() {
+  const items: {
+    kind: ThumbKind;
+    name: string;
+    cat: string;
+    price: number;
+    stock: string;
+  }[] = [
+    { kind: "sofa", name: "Модульный диван", cat: "Мебель", price: 1240, stock: "в наличии" },
+    { kind: "chair", name: "Кресло Oak", cat: "Мебель", price: 380, stock: "в наличии" },
+    { kind: "lamp", name: "Лампа Arc", cat: "Свет", price: 190, stock: "2 шт" },
+    { kind: "table", name: "Стол Duo", cat: "Мебель", price: 640, stock: "в наличии" },
+    { kind: "bag", name: "Сумка Week", cat: "Аксессуары", price: 210, stock: "в наличии" },
+    { kind: "watch", name: "Часы Minimal", cat: "Аксессуары", price: 870, stock: "под заказ" },
+  ];
   return (
     <div className="h-full bg-ink-3/30 p-3 text-paper">
       <div className="flex items-center gap-2">
         <span className="flex-1 rounded-md border border-line/70 bg-ink-2 px-2.5 py-1.5 font-mono text-[9px] text-muted">
-          search · 24,000 SKU
+          ⌕ search · 24,000 SKU
         </span>
         <span className="rounded-md bg-mark px-2.5 py-1.5 font-mono text-[8px] font-semibold text-mark-ink">
           config
         </span>
       </div>
+
+      <div className="mt-2 flex gap-1.5">
+        {["Все", "Мебель", "Свет", "Аксессуары"].map((t, i) => (
+          <span
+            key={t}
+            className={`rounded-full px-2 py-0.5 font-mono text-[8px] ${
+              i === 0 ? "bg-mark text-mark-ink" : "border border-line/70 text-muted"
+            }`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
       <div className="mt-2 grid grid-cols-3 gap-2">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="overflow-hidden rounded-lg border border-line/70 bg-ink-2">
-            <span
-              className={`block h-12 ${
-                i % 3 === 0 ? "bg-mark/15" : i % 3 === 1 ? "bg-warm/15" : "bg-ink-3"
-              }`}
-            />
+        {items.map((it, i) => (
+          <div
+            key={it.name}
+            className="group overflow-hidden rounded-lg border border-line/70 bg-ink-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
+            style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties}
+          >
+            <Thumb kind={it.kind} />
             <div className="p-1.5">
-              <p className="font-mono text-[8px] text-muted">SKU-{1024 + i}</p>
-              <p className="text-[10px] font-semibold">${(120 + i * 37).toLocaleString()}</p>
+              <p className="truncate text-[9px] font-semibold text-paper">{it.name}</p>
+              <p className="font-mono text-[7px] text-muted">{it.cat}</p>
+              <div className="mt-1 flex items-center justify-between">
+                <span className="font-mono text-[9px] font-semibold text-paper">
+                  ${it.price.toLocaleString()}
+                </span>
+                <span className="font-mono text-[7px] text-mark">{it.stock}</span>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
       <div className="mt-2 flex items-center justify-between rounded-lg border border-line/70 bg-ink-2 px-2.5 py-1.5">
-        <span className="font-mono text-[8px] text-muted">checkout · acquisition</span>
+        <span className="font-mono text-[8px] text-muted">checkout · эквайринг · рассрочка</span>
         <span className="font-mono text-[9px] text-mark">ready</span>
       </div>
     </div>
