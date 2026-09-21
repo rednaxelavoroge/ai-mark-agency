@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
@@ -99,12 +100,19 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           {networkNodes.map((n, i) => (
             <div
               key={i}
-              className={`relative flex flex-col justify-between rounded-xl border p-4 ${
+              data-reveal="scale"
+              style={{ "--reveal-delay": `${i * 110}ms` } as CSSProperties}
+              className={`relative flex flex-col justify-between rounded-xl border p-4 transition-all hover:-translate-y-1 hover:shadow-md ${
                 n.type === "core"
                   ? "border-mark/40 bg-mark/5"
                   : "border-line bg-ink-3/30"
               }`}
             >
+              <span
+                aria-hidden
+                className="loop-pulse absolute -right-2 -top-2 hidden h-4 w-4 rounded-full lg:block"
+                style={{ "--i": i } as CSSProperties}
+              />
               <div>
                 <span className="font-mono text-[10px] text-warm font-semibold">
                   STAGE 0{i + 1}
@@ -121,10 +129,12 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
 
       {/* 4 Partner Track Cards */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {partnerTypes.map((p) => (
+        {partnerTypes.map((p, pi) => (
           <div
             key={p.id}
-            className="flex flex-col rounded-xl border border-line bg-ink-2 p-6 transition-all hover:border-line-strong hover:shadow-md"
+            data-reveal
+            style={{ "--reveal-delay": `${pi * 90}ms` } as CSSProperties}
+            className="flex flex-col rounded-xl border border-line bg-ink-2 p-6 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
           >
             <div className="flex items-center justify-between">
               <span className="rounded bg-ink-3 px-2 py-0.5 font-mono text-[10px] text-warm font-medium">

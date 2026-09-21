@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { productPagePath, productsHubPath } from "@/lib/products";
 import { navHref, type Locale } from "@/lib/site";
+import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 export function AIProductsShowcase({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
 
@@ -18,7 +18,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         : "Autonomous marketing employee: conducts competitor research, creates content calendars, writes posts, generates visuals/Reels storyboards, requests Telegram approval, and publishes via Meta Graph API.",
       channels: ["Instagram", "Facebook", "Threads", "Telegram (Approval)"],
       pricing: isRu ? "От $199 / месяц (без платы за подключение)" : "From $199 / mo (No setup fee)",
-      image: "/work/ai-marketing-employee-desktop-1280.webp",
+      mock: "aime" as ProductVariant,
       highlights: [
         isRu ? "Согласование постов в 1 клик в Telegram" : "1-click Telegram approval workflow",
         isRu ? "Раскадровки и сценарии для Reels" : "Reels scripts and visual storyboards",
@@ -37,7 +37,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         : "Responds to inquiries 24/7 across WhatsApp, Telegram, Instagram Direct, Messenger, and webchat. Trained on your catalog and pricing, qualifies leads, and syncs conversations directly with your CRM.",
       channels: ["WhatsApp Cloud API", "Telegram", "Instagram Direct", "Messenger", "Webchat"],
       pricing: isRu ? "От $39 / месяц (панель клиента включена)" : "From $39 / mo (Workspace panel included)",
-      image: "/work/ai-business-assistant-desktop-1280.webp",
+      mock: "assistant" as ProductVariant,
       highlights: [
         isRu ? "Единый инбокс для всех 5 каналов" : "Unified shared inbox for all 5 channels",
         isRu ? "Мгновенная передача диалога менеджеру" : "Instant 1-click human operator handoff",
@@ -56,7 +56,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         : "Configurable AI engine for complex commercial proposals: automotive, construction, real estate, furniture, retail, and services. Converts natural inquiries into deterministic specifications and ready PDF quotes.",
       channels: ["Web", "API Gateway", "PDF Engine", "CRM Sync"],
       pricing: isRu ? "От $149 / месяц (индивидуальная конфигурация)" : "From $149 / mo (Custom workspace config)",
-      image: "/work/showroom-ai-desktop-1280.webp",
+      mock: "showroom" as ProductVariant,
       highlights: [
         isRu ? "Адаптация под 5 ключевых отраслей" : "Tailored across 5 major industry sectors",
         isRu ? "Детерминированные расчёты без галлюцинаций" : "Deterministic calculations without hallucinations",
@@ -83,15 +83,9 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
               </span>
             </div>
 
-            {/* Product Screenshot */}
-            <div className="relative mt-5 overflow-hidden rounded-xl border border-line bg-ink-3/40 aspect-[16/10] group">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
+            {/* Product UI mockup */}
+            <div className="mt-5" data-reveal="scale">
+              <ProductUI variant={product.mock} ratio="aspect-[16/11]" />
             </div>
 
             {/* Product Meta */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 export function BusinessCreationVisual({ locale }: { locale: Locale }) {
@@ -75,7 +75,9 @@ export function BusinessCreationVisual({ locale }: { locale: Locale }) {
         {points.map((p, idx) => (
           <div
             key={p.title}
-            className="group rounded-xl border border-line bg-ink-2 p-6 transition-all hover:border-line-strong hover:shadow-md"
+            data-reveal
+            style={{ "--reveal-delay": `${idx * 90}ms` } as CSSProperties}
+            className="group rounded-xl border border-line bg-ink-2 p-6 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
           >
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs font-semibold text-warm">

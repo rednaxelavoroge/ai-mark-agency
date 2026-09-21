@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
 import { ConsultationModal } from "@/components/ConsultationModal";
+import { ProductUI } from "@/components/ui/ProductUI";
 
 export function AIMEPageContent({ locale }: { locale: Locale }) {
   const c = getAimeCopy(locale);
@@ -69,18 +69,9 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
             </div>
 
             {/* Product UI visual preview */}
-            <div className="relative">
-              <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-3 shadow-xl">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-line bg-ink-3/40">
-                  <Image
-                    src="/work/ai-marketing-employee-desktop-1280.webp"
-                    alt="AI Marketing Employee Dashboard"
-                    fill
-                    priority
-                    className="object-cover object-top"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
+            <div className="relative" data-reveal="right">
+              <div className="float-slow" data-reveal="scale" data-reveal-delay="120">
+                <ProductUI variant="aime" />
               </div>
 
               {/* Platform pills */}

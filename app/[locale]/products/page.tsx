@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { getCopy } from "@/content/copy";
 import { products } from "@/content/packages";
+import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { productPagePath } from "@/lib/products";
 import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
 
@@ -27,10 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const PRODUCT_IMAGES = {
-  aime: "/work/ai-marketing-employee-desktop-1280.webp",
-  assistant: "/work/ai-business-assistant-desktop-1280.webp",
-  showroom: "/work/showroom-ai-desktop-1280.webp",
+const PRODUCT_MOCK: Record<string, ProductVariant> = {
+  aime: "aime",
+  assistant: "assistant",
+  showroom: "showroom",
 };
 
 export default async function ProductsHubPage({ params }: Props) {
@@ -58,7 +58,7 @@ export default async function ProductsHubPage({ params }: Props) {
         {products.map((product) => {
           const item = t.products.items[product.id];
           const page = t.productPages[product.id];
-          const imageSrc = PRODUCT_IMAGES[product.id];
+          const mock = PRODUCT_MOCK[product.id] ?? "saas";
 
           return (
             <section
@@ -73,14 +73,8 @@ export default async function ProductsHubPage({ params }: Props) {
                   <span className="h-1.5 w-1.5 rounded-full bg-mark" />
                 </div>
 
-                <div className="relative mt-4 aspect-[16/10] overflow-hidden rounded-xl border border-line bg-ink-3/40">
-                  <Image
-                    src={imageSrc}
-                    alt={product.name}
-                    fill
-                    className="object-cover object-top transition-transform duration-300 hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+                <div className="mt-4" data-reveal="scale">
+                  <ProductUI variant={mock} ratio="aspect-[16/11]" />
                 </div>
 
                 <h2 className="mt-5 font-display text-xl font-semibold text-paper">

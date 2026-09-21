@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
+import { ProductUI } from "@/components/ui/ProductUI";
 import { getShowroomCopy } from "@/content/products/showroom";
 import { ConsultationModal } from "@/components/ConsultationModal";
 
@@ -100,14 +100,8 @@ export function ShowroomAIPageContent({ locale }: { locale: Locale }) {
                 ))}
               </div>
 
-              <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-line bg-ink-3/40 mt-3">
-                <Image
-                  src="/work/showroom-ai-desktop-1280.webp"
-                  alt="Showroom AI Calculation Interface"
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <div className="mt-3" data-reveal="scale">
+                <ProductUI variant="showroom" ratio="aspect-[16/9]" />
               </div>
             </div>
           </div>

@@ -14,14 +14,20 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (pathname === "/ru" || pathname.startsWith("/ru/")) {
+  // Explicit locale prefixes (/ru, /en) are already valid app routes.
+  const prefixed = (site.locales as readonly string[]).find(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+  );
+
+  if (prefixed) {
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-locale", "ru");
+    requestHeaders.set("x-locale", prefixed);
     const res = NextResponse.next({ request: { headers: requestHeaders } });
-    res.headers.set("x-locale", "ru");
+    res.headers.set("x-locale", prefixed);
     return res;
   }
 
+  // Unprefixed paths are served by the default locale.
   const url = request.nextUrl.clone();
   url.pathname = `/${site.defaultLocale}${pathname === "/" ? "" : pathname}`;
   const requestHeaders = new Headers(request.headers);

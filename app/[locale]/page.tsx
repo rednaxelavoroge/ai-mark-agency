@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -81,7 +82,9 @@ export default async function HomePage({ params }: Props) {
             {t.pillars.items.map((item, idx) => (
               <li
                 key={item.n}
-                className="group relative flex flex-col justify-between rounded-xl border border-line bg-ink-2 p-6 transition-all hover:border-line-strong hover:shadow-md"
+                data-reveal
+                style={{ "--reveal-delay": `${idx * 90}ms` } as CSSProperties}
+                className="group relative flex flex-col justify-between rounded-xl border border-line bg-ink-2 p-6 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -152,10 +155,12 @@ export default async function HomePage({ params }: Props) {
       >
         <p className="mb-8 max-w-3xl text-sm text-paper/85">{t.commercial.skuNote}</p>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {t.commercial.tiers.map((tier) => (
+          {t.commercial.tiers.map((tier, ti) => (
             <article
               key={tier.name}
-              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:border-line-strong hover:shadow-md"
+              data-reveal
+              style={{ "--reveal-delay": `${ti * 100}ms` } as CSSProperties}
+              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
             >
               <div>
                 <span className="font-mono text-[10px] text-warm uppercase tracking-wider">
@@ -192,12 +197,14 @@ export default async function HomePage({ params }: Props) {
           </div>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {packages.map((pkg) => {
+            {packages.map((pkg, pi) => {
               const item = t.packages.items[pkg.id];
               return (
                 <article
                   key={pkg.id}
-                  className={`flex flex-col rounded-xl border p-6 transition-all ${
+                  data-reveal
+                  style={{ "--reveal-delay": `${pi * 100}ms` } as CSSProperties}
+                  className={`flex flex-col rounded-xl border p-6 transition-all hover:-translate-y-1 ${
                     pkg.featured
                       ? "border-mark/60 bg-ink-2 shadow-md relative"
                       : "border-line bg-ink-2 hover:border-line-strong"
@@ -253,7 +260,7 @@ export default async function HomePage({ params }: Props) {
       {/* 10. WHY NOW */}
       <Section id="why-now" eyebrow={t.why.eyebrow} title={t.why.title} lead={t.why.lead}>
         <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
-          <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8">
+          <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal="left">
             <span className="font-mono text-xs font-semibold tracking-wider text-muted uppercase">
               {t.why.oldLabel}
             </span>
@@ -272,7 +279,7 @@ export default async function HomePage({ params }: Props) {
 
           <div className="hidden text-center font-display text-xl text-warm md:block">→</div>
 
-          <div className="rounded-2xl border border-mark/40 bg-ink-2 p-6 sm:p-8 shadow-sm">
+          <div className="rounded-2xl border border-mark/40 bg-ink-2 p-6 sm:p-8 shadow-sm" data-reveal="right">
             <span className="font-mono text-xs font-semibold tracking-wider text-mark uppercase">
               {t.why.newLabel}
             </span>

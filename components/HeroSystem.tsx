@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type CSSProperties } from "react";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 import type { Copy } from "@/content/copy";
@@ -129,22 +129,48 @@ export function HeroSystem({ locale, t }: HeroProps) {
 
   const current = stages[activeStage];
 
+  const ribbon = isRu
+    ? [
+        "Идея",
+        "Исследование рынка",
+        "Бизнес-модель",
+        "Бренд",
+        "Продукт",
+        "AI-инфраструктура",
+        "Маркетинг",
+        "Продажи",
+        "Рост",
+      ]
+    : [
+        "Idea",
+        "Market Research",
+        "Business Model",
+        "Brand",
+        "Product",
+        "AI Infrastructure",
+        "Marketing",
+        "Sales",
+        "Growth",
+      ];
+
   return (
     <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-ink-3/40 via-ink to-ink pb-16 pt-12 sm:pb-24 sm:pt-20">
-      {/* Background radial ambient */}
-      <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.08),transparent_70%)]" />
-      <div className="pointer-events-none absolute -bottom-20 left-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(181,141,74,0.06),transparent_70%)]" />
+      {/* Background: ambient depth field */}
+      <div aria-hidden className="grid-field pointer-events-none absolute inset-0 opacity-60" />
+      <div className="ambient-drift pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.10),transparent_70%)]" />
+      <div className="ambient-drift-slow pointer-events-none absolute -bottom-20 left-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(181,141,74,0.09),transparent_70%)]" />
+      <div className="pointer-events-none absolute left-1/3 top-1/4 h-[300px] w-[300px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.05),transparent_70%)] ambient-drift" />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           {/* Left Column: Strategic Hero Copy */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
-              <span className="h-1.5 w-1.5 rounded-full bg-mark animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase" data-reveal>
+              <span className="relative h-1.5 w-1.5 rounded-full bg-mark text-mark pulse-ring" />
               {t.hero.eyebrow}
             </div>
 
-            <h1 className="mt-5 font-display text-4xl leading-[1.08] font-medium tracking-tight text-paper sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl leading-[1.08] font-medium tracking-tight text-paper sm:text-5xl lg:text-6xl" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties}>
               {isRu ? (
                 <>
                   От идеи до <span className="text-mark font-semibold">работающего бизнеса.</span>
@@ -156,11 +182,11 @@ export function HeroSystem({ locale, t }: HeroProps) {
               )}
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl">
+            <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl" data-reveal style={{ "--reveal-delay": "160ms" } as CSSProperties}>
               {t.hero.lead}
             </p>
 
-            <div className="mt-4 flex items-center gap-3 rounded-lg border border-line bg-ink-2/60 px-4 py-3 text-sm text-paper/90">
+            <div className="mt-4 flex items-center gap-3 rounded-lg border border-line bg-ink-2/60 px-4 py-3 text-sm text-paper/90" data-reveal style={{ "--reveal-delay": "240ms" } as CSSProperties}>
               <span className="text-warm font-mono text-xs font-semibold uppercase tracking-wider">
                 {isRu ? "Концепция" : "Concept"}:
               </span>
@@ -172,7 +198,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
             </div>
 
             {/* CTA row */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3" data-reveal style={{ "--reveal-delay": "320ms" } as CSSProperties}>
               <Link
                 href={navHref(locale, "#contact")}
                 className="inline-flex items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95"
@@ -193,14 +219,15 @@ export function HeroSystem({ locale, t }: HeroProps) {
               </Link>
             </div>
 
-            <p className="mt-6 text-xs text-muted">
+            <p className="mt-6 text-xs text-muted" data-reveal style={{ "--reveal-delay": "400ms" } as CSSProperties}>
               {t.hero.soft}
             </p>
           </div>
 
           {/* Right Column: Interactive Transformation Engine */}
           <div
-            className="rounded-2xl border border-line bg-ink-2 p-5 shadow-lg lg:p-6"
+            className="shimmer float-slow rounded-2xl border border-line bg-ink-2 p-5 shadow-lg lg:p-6"
+            data-reveal="right"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
@@ -239,8 +266,16 @@ export function HeroSystem({ locale, t }: HeroProps) {
               ))}
             </div>
 
+            {/* Auto-cycle progress */}
+            <div className="mt-3 h-[3px] overflow-hidden rounded-full bg-ink-3/60">
+              <span
+                key={activeStage}
+                className="cycle-fill block h-full rounded-full bg-gradient-to-r from-mark to-warm"
+              />
+            </div>
+
             {/* Active Stage Detail */}
-            <div className="mt-5 rounded-xl border border-line bg-ink-3/40 p-4">
+            <div key={activeStage} className="stage-enter mt-5 rounded-xl border border-line bg-ink-3/40 p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="font-mono text-[10px] text-warm uppercase tracking-widest">
@@ -302,6 +337,26 @@ export function HeroSystem({ locale, t }: HeroProps) {
                 {isRu ? "Смотреть пайплайн →" : "View Pipeline →"}
               </Link>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Transformation ribbon: idea → working business */}
+      <div className="relative mt-14 border-y border-line bg-ink-2/40 py-4 sm:mt-20">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" />
+        <div className="flex overflow-hidden">
+          <div className="marquee-track flex shrink-0 items-center gap-6 pr-6">
+            {[...ribbon, ...ribbon].map((step, i) => (
+              <span key={i} className="flex shrink-0 items-center gap-6">
+                <span className="font-mono text-[11px] tracking-widest text-muted uppercase">
+                  {step}
+                </span>
+                <span aria-hidden className="text-warm">
+                  →
+                </span>
+              </span>
+            ))}
           </div>
         </div>
       </div>

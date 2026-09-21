@@ -1,11 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
 import { ConsultationModal } from "@/components/ConsultationModal";
+import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
+
+const TAB_VARIANT: Record<string, ProductVariant> = {
+  dashboard: "saas",
+  inbox: "assistant",
+  knowledge: "ai",
+  playground: "portal",
+};
 
 export function AIBAPageContent({ locale }: { locale: Locale }) {
   const c = getAibaCopy(locale);
@@ -225,14 +232,8 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
               </p>
             </div>
 
-            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-line bg-ink-3/40">
-              <Image
-                src={currentTab.image}
-                alt={currentTab.label}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1200px) 100vw, 1200px"
-              />
+            <div data-reveal="scale">
+              <ProductUI variant={TAB_VARIANT[currentTab.key] ?? "assistant"} />
             </div>
           </div>
         </div>

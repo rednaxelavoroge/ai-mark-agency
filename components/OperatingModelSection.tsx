@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Locale } from "@/lib/site";
 export function OperatingModelSection({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
@@ -60,13 +61,20 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
     <div className="space-y-10">
       {/* 6-step loop diagram */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-        {stages.map((stg) => (
+        {stages.map((stg, i) => (
           <div
             key={stg.n}
-            className="flex flex-col justify-between rounded-xl border border-line bg-ink-2 p-4 transition-all hover:border-line-strong hover:shadow-sm"
+            data-reveal
+            style={{ "--reveal-delay": `${i * 80}ms` } as CSSProperties}
+            className="flex flex-col justify-between rounded-xl border border-line bg-ink-2 p-4 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-sm"
           >
             <div>
-              <span className="font-mono text-[11px] font-semibold text-warm">{stg.n}</span>
+              <span
+                className="loop-pulse grid h-7 w-7 place-items-center rounded-md font-mono text-[11px] font-semibold"
+                style={{ "--i": i } as CSSProperties}
+              >
+                {stg.n}
+              </span>
               <h4 className="mt-2 font-display text-sm font-semibold text-paper">{stg.t}</h4>
             </div>
             <p className="mt-3 text-[11px] leading-relaxed text-muted">{stg.d}</p>
@@ -77,7 +85,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
       {/* Human-in-the-loop comparison split */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Column 1: AI Speed & Routine */}
-        <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8">
+        <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal="left">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-mark" />
             <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider">
@@ -104,7 +112,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
         </div>
 
         {/* Column 2: Human Strategic Control */}
-        <div className="rounded-2xl border border-mark/30 bg-ink-3/40 p-6 sm:p-8">
+        <div className="rounded-2xl border border-mark/30 bg-ink-3/40 p-6 sm:p-8" data-reveal="right">
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-warm" />
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-wider">

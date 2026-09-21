@@ -14,7 +14,6 @@ export interface AibaPanelTab {
   key: "dashboard" | "inbox" | "knowledge" | "playground";
   label: string;
   caption: string;
-  image: string;
 }
 
 export interface AibaPlan {
@@ -170,25 +169,21 @@ export const aibaRu: AibaContent = {
       key: "dashboard",
       label: "Дашборд",
       caption: "Сводка за неделю: общее число диалогов, доля ответов AI, среднее время первого ответа и аналитика лимитов.",
-      image: "/aiba/panel-dashboard.webp",
     },
     {
       key: "inbox",
       label: "Инбокс",
       caption: "Все каналы в едином интерфейсе. Перехват переписки менеджером в один клик с мгновенной блокировкой бота.",
-      image: "/aiba/panel-inbox.webp",
     },
     {
       key: "knowledge",
       label: "База знаний",
       caption: "Загружайте прайс-листы, каталоги и регламенты. Ассистент цитирует их клиентам точно и без выдумок.",
-      image: "/aiba/panel-knowledge.webp",
     },
     {
       key: "playground",
       label: "Песочница",
       caption: "Тестируйте новые промпты, формулировки и сценарии в изолированной среде до запуска на клиентах.",
-      image: "/aiba/panel-playground.webp",
     },
   ],
   howTitle: "Как устроен путь клиента",
@@ -418,25 +413,21 @@ export const aibaEn: AibaContent = {
       key: "dashboard",
       label: "Dashboard",
       caption: "Weekly operations: total threads, autonomous resolution rate, average response speed, and usage quotas.",
-      image: "/aiba/panel-dashboard.webp",
     },
     {
       key: "inbox",
       label: "Shared Inbox",
       caption: "All channels in a single queue. Human operators intercept chats with one click, silencing the bot instantly.",
-      image: "/aiba/panel-inbox.webp",
     },
     {
       key: "knowledge",
       label: "Knowledge Base",
       caption: "Upload price lists, FAQs, and policies. The assistant cites them accurately without hallucinations.",
-      image: "/aiba/panel-knowledge.webp",
     },
     {
       key: "playground",
       label: "Playground",
       caption: "Test new prompts, rules, and scenarios in an isolated environment before exposing them to live customers.",
-      image: "/aiba/panel-playground.webp",
     },
   ],
   howTitle: "End-to-End Customer Flow",

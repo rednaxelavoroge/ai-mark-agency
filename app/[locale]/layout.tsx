@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { HtmlLang } from "@/components/HtmlLang";
 import { JsonLd } from "@/components/JsonLd";
+import { MotionRoot, ScrollProgress } from "@/components/Motion";
 import { isLocale, site, type Locale } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -28,6 +29,12 @@ export default async function LocaleLayout({
     <div lang={locale} className="flex min-h-full flex-col">
       <HtmlLang locale={locale} />
       <JsonLd locale={locale} />
+      <noscript>
+        {/* Reveal-on-scroll must never hide content when JS is unavailable. */}
+        <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}`}</style>
+      </noscript>
+      <MotionRoot />
+      <ScrollProgress />
       <Header locale={locale} t={t} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale} t={t} />

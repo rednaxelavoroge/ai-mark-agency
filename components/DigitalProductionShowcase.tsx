@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
+import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
   const [activeCategory, setActiveCategory] = useState<number>(0);
@@ -25,8 +25,7 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
         isRu ? "Real-time синхронизация" : "Real-time synchronization",
         isRu ? "Встроенный AI-слой" : "Integrated AI agent layer",
       ],
-      image: "/work/kredafi-desktop-1280.webp",
-      previewAlt: "SaaS platform preview",
+      mock: "saas" as ProductVariant,
     },
     {
       id: "portals",
@@ -44,8 +43,7 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
         isRu ? "PDF-генератор спецификаций" : "Automated PDF specification engine",
         isRu ? "Аналитика воронки" : "Conversion funnel telemetry",
       ],
-      image: "/work/showroom-ai-desktop-1280.webp",
-      previewAlt: "Operational portal interface",
+      mock: "portal" as ProductVariant,
     },
     {
       id: "ecommerce",
@@ -63,8 +61,7 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
         isRu ? "Подключение эквайринга и рассрочек" : "Payment processing & installment gateways",
         isRu ? "Оптимизация под Core Web Vitals" : "Strict Core Web Vitals optimization",
       ],
-      image: "/work/monte-salotti-desktop-1280.webp",
-      previewAlt: "E-commerce platform interface",
+      mock: "ecommerce" as ProductVariant,
     },
     {
       id: "ai-engines",
@@ -82,8 +79,7 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
         isRu ? "Предохранитель Hard-Floor" : "Hard-Floor safety guardrails",
         isRu ? "Нулевая утечка клиентских данных" : "Zero client data leakage",
       ],
-      image: "/work/ai-business-assistant-desktop-1280.webp",
-      previewAlt: "AI business agent interface",
+      mock: "ai" as ProductVariant,
     },
   ];
 
@@ -174,16 +170,9 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          {/* Real Screenshot Preview Container */}
-          <div className="relative overflow-hidden rounded-xl border border-line bg-ink-3/30 shadow-md aspect-[16/10]">
-            <Image
-              src={current.image}
-              alt={current.previewAlt}
-              fill
-              className="object-cover object-top transition-transform duration-500 hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent pointer-events-none" />
+          {/* Proprietary UI preview */}
+          <div data-reveal="scale">
+            <ProductUI variant={current.mock} ratio="aspect-[16/11]" />
           </div>
         </div>
       </div>

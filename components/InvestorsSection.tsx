@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 export function InvestorsSection({ locale }: { locale: Locale }) {
@@ -40,7 +41,9 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
         {fundamentals.map((f, i) => (
           <div
             key={i}
-            className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm flex flex-col justify-between"
+            data-reveal
+            style={{ "--reveal-delay": `${i * 100}ms` } as CSSProperties}
+            className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-md"
           >
             <div>
               <span className="font-mono text-xs font-semibold text-warm">
@@ -82,7 +85,9 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
           {capitalUses.map((u, idx) => (
             <div
               key={idx}
-              className="rounded-xl border border-line/70 bg-ink-3/30 p-4 transition-all hover:border-line-strong hover:bg-ink-3/60"
+              data-reveal
+              style={{ "--reveal-delay": `${idx * 70}ms` } as CSSProperties}
+              className="rounded-xl border border-line/70 bg-ink-3/30 p-4 transition-all hover:-translate-y-1 hover:border-line-strong hover:bg-ink-3/60"
             >
               <h5 className="font-display text-sm font-semibold text-paper">
                 {u.label}
