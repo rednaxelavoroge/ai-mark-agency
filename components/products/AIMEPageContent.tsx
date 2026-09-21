@@ -4,12 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
-import { ConsultationModal } from "@/components/ConsultationModal";
+import { openLauncher } from "@/lib/contact";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 
 export function AIMEPageContent({ locale }: { locale: Locale }) {
   const c = getAimeCopy(locale);
-  const [modalOpen, setModalOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -42,7 +41,7 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => openLauncher()}
                   className="inline-flex items-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light"
                 >
                   {c.ctaConsult} →
@@ -192,7 +191,7 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
                 <div className="mt-8 pt-4 border-t border-line">
                   <button
                     type="button"
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => openLauncher()}
                     className="w-full rounded-full bg-mark px-5 py-3 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
                   >
                     {c.ctaConsult}
@@ -366,7 +365,7 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
                 <div className="mt-8 pt-4 border-t border-line">
                   <button
                     type="button"
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => openLauncher()}
                     className={`w-full rounded-full px-5 py-3 text-xs font-semibold transition-all ${
                       p.featured
                         ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
@@ -410,7 +409,7 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
               <div className="mt-8 pt-4 border-t border-line">
                 <button
                   type="button"
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => openLauncher()}
                   className="w-full rounded-full border border-line bg-ink-3/40 px-5 py-3 text-xs font-semibold text-paper hover:bg-ink-3 transition-all"
                 >
                   {c.ctaConsult}
@@ -477,7 +476,7 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
                 type="button"
-                onClick={() => setModalOpen(true)}
+                onClick={() => openLauncher()}
                 className="rounded-full bg-mark px-7 py-3 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
               >
                 {c.ctaConsult} →
@@ -492,15 +491,6 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
-
-      {/* Consultation Modal */}
-      <ConsultationModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        locale={locale}
-        productName="AI Marketing Employee"
-        defaultScenario="aime"
-      />
     </article>
   );
 }

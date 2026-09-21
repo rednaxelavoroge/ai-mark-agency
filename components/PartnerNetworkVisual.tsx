@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import Link from "next/link";
-import { navHref, type Locale } from "@/lib/site";
+import { ContactCta } from "@/components/ContactCta";
+import { type Locale } from "@/lib/site";
 export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
 
@@ -179,12 +179,9 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
               : "Partners receive agreed recurring revenue shares on AI SaaS subscriptions, introduction fees, and the capability to build service retainers on top of our technology stack."}
           </p>
         </div>
-        <Link
-          href={navHref(locale, "#contact")}
-          className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-all whitespace-nowrap shadow"
-        >
+        <ContactCta className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-all whitespace-nowrap shadow">
           {isRu ? "Стать партнёром" : "Join Partner Network"} →
-        </Link>
+        </ContactCta>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { ContactCta } from "@/components/ContactCta";
 import { productPagePath, productsHubPath } from "@/lib/products";
-import { navHref, type Locale } from "@/lib/site";
+import { type Locale } from "@/lib/site";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 export function AIProductsShowcase({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
@@ -132,12 +133,9 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
                   >
                     {isRu ? "Открыть продукт" : "Product Details"} →
                   </Link>
-                  <Link
-                    href={navHref(locale, "#contact")}
-                    className="rounded-full border border-line bg-ink-3/60 px-3.5 py-2 text-xs font-medium text-paper hover:bg-ink-3 transition-all"
-                  >
+                  <ContactCta className="rounded-full border border-line bg-ink-3/60 px-3.5 py-2 text-xs font-medium text-paper hover:bg-ink-3 transition-all">
                     {isRu ? "Подключить" : "Install"}
-                  </Link>
+                  </ContactCta>
                 </div>
               </div>
             </div>

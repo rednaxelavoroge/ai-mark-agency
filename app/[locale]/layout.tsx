@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { MotionRoot, ScrollProgress } from "@/components/Motion";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteCurtain } from "@/components/RouteCurtain";
-import { AssistantWidget } from "@/components/AssistantWidget";
+import { ContactLauncher } from "@/components/ContactLauncher";
 import { isLocale, site, type Locale } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -45,7 +45,7 @@ export default async function LocaleLayout({
         <PageTransition>{children}</PageTransition>
       </main>
       <Footer locale={locale} t={t} />
-      <AssistantWidget locale={locale} />
+      <ContactLauncher locale={locale} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
+import { ContactCta } from "@/components/ContactCta";
 import { navHref, site, type Locale } from "@/lib/site";
 import { productPagePath, productsHubPath } from "@/lib/products";
 
@@ -124,9 +125,9 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 </Link>
               </li>
               <li>
-                <Link href={navHref(locale, "#contact")} className="hover:text-paper transition-colors">
+                <ContactCta className="hover:text-paper transition-colors">
                   {isRu ? "Обсудить проект" : "Discuss a Project"}
-                </Link>
+                </ContactCta>
               </li>
               <li>
                 <Link href={navHref(locale, "/privacy")} className="hover:text-paper transition-colors">

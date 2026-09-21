@@ -7,6 +7,26 @@ export const site = {
   taglineRu: "От идеи до работающего бизнеса.",
   locales: ["en", "ru"] as const,
   defaultLocale: "en" as const,
+  /**
+   * Real AI Business Assistant webchat (same embed as the BA product widget).
+   * SRC+KEY live here so the launcher never hard-codes a second copy.
+   * There is no dedicated AI Mark `wc_` in this repo; keep this workspace key
+   * so messages land in the BA inbox for that widget.
+   */
+  widget: {
+    src: "https://app.alex-dev.pro/widget.js",
+    key: "wc_30ff859272acf6000db08542",
+  },
+  /**
+   * Public messenger URLs only. Omit a channel (leave unset) rather than
+   * inventing handles or copying another brand's numbers.
+   */
+  messengers: {
+    telegram: undefined as string | undefined,
+    whatsapp: undefined as string | undefined,
+    messenger: undefined as string | undefined,
+    instagram: undefined as string | undefined,
+  },
 };
 
 export type Locale = (typeof site.locales)[number];
