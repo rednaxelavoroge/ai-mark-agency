@@ -330,16 +330,21 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
   const [active, setActive] = useState(0);
   const [reduced, setReduced] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const total = stages.length;
 
   useEffect(() => {
-    const rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (rm) {
-      const id = requestAnimationFrame(() => {
+    /* Reduced motion: no pin and no stage sequence — the static panel plus the
+       stage overview below carry the story. Set directly (not on a frame) so
+       the tall pinned track never appears for these visitors. */
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      /* Deferred to a microtask (not a frame) so it lands before paint without
+         being a synchronous setState inside the effect body. */
+      queueMicrotask(() => {
         setReduced(true);
         setActive(total - 1);
       });
-      return () => cancelAnimationFrame(id);
+      return;
     }
     let raf = 0;
     const update = () => {
@@ -347,7 +352,10 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
       const el = sectionRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
+      /* The panel is pinned for exactly its own height, so the pin distance is
+         measured from the panel — not from window.innerHeight. */
+      const panelH = panelRef.current?.getBoundingClientRect().height || window.innerHeight;
+      const scrollable = rect.height - panelH;
       const passed = -rect.top;
       const p = scrollable > 0 ? Math.max(0, Math.min(1, passed / scrollable)) : 0;
       const idx = Math.min(total - 1, Math.floor(p * total * 0.999));
@@ -367,57 +375,71 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
   }, [total]);
 
   const current = stages[active];
+  /* The slot is a size container: `.itb-dial` takes min(width, height, 460px)
+     from it, so the ring always fits the room the layout actually gives it. */
+  const slotClass = reduced
+    ? "itb-slot relative mx-auto aspect-square w-full max-w-[460px]"
+    : "itb-slot relative h-[30svh] min-h-[110px] w-full shrink-0 [@media(max-height:620px)]:h-[24svh] [@media(min-height:760px)]:h-[36svh] lg:h-auto lg:min-h-0 lg:flex-1";
 
   return (
     <>
     <section
       ref={sectionRef}
       id="idea-to-business"
-      className="relative border-t border-line bg-ink-3/20"
-      style={{ height: reduced ? "auto" : `${total * 62 + 100}vh` }}
+      className={`relative border-t border-line bg-ink-3/20 ${reduced ? "itb-static" : "itb-track"}`}
+      style={{ "--itb-stages": total } as CSSProperties}
     >
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden">
-        <div className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6">
-          <div className="max-w-3xl" data-reveal>
-            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
+      <div
+        ref={panelRef}
+        className={`flex items-center ${
+          reduced ? "relative" : "itb-panel sticky top-0 overflow-hidden"
+        }`}
+      >
+        <div className="mx-auto flex h-full w-full max-w-6xl flex-col px-4 pt-14 pb-[72px] sm:px-6 sm:pb-20 lg:pt-20 [@media(max-height:560px)]:pt-12">
+          <div className="shrink-0" data-reveal>
+            <p className="font-mono text-[11px] tracking-[0.2em] text-mark uppercase sm:text-xs">
               {copy.eyebrow}
             </p>
-            <h2 className="mt-3 font-display text-3xl leading-[1.05] font-medium tracking-tight sm:text-4xl lg:text-5xl">
+            <h2 className="mt-2 font-display text-2xl leading-[1.05] font-medium tracking-tight sm:text-3xl lg:mt-3 lg:text-4xl xl:text-5xl">
               {copy.title}
             </h2>
-            <p className="mt-4 max-w-2xl text-muted">{copy.lead}</p>
+            <p className="mt-3 hidden max-w-2xl text-muted [@media(min-height:680px)]:block lg:text-base">
+              {copy.lead}
+            </p>
           </div>
 
-          <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <div className="mt-4 grid min-h-0 flex-1 content-center gap-5 sm:mt-6 lg:grid-cols-[1fr_1.05fr] lg:content-stretch lg:gap-12">
             {/* Narrative column */}
-            <div className="order-2 lg:order-1">
+            <div className="order-2 flex min-h-0 flex-col justify-center lg:order-1">
               <div className="flex items-center gap-3">
                 <span
-                  className="font-editorial text-5xl italic transition-colors duration-500 sm:text-6xl"
+                  className="font-editorial text-3xl italic transition-colors duration-500 [@media(max-height:600px)]:text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"
                   style={{ color: accent(active) }}
                 >
                   {String(active).padStart(2, "0")}
                 </span>
                 <span className="h-px flex-1 bg-line" />
-                <span className="font-mono text-[11px] tracking-widest text-muted uppercase">
+                <span className="font-mono text-[10px] tracking-widest text-muted uppercase lg:text-[11px]">
                   {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
                 </span>
               </div>
 
-              <div key={active} className="stage-enter mt-6">
-                <p className="font-mono text-xs tracking-widest text-warm uppercase">
+              <div key={active} className="stage-enter mt-3 lg:mt-6">
+                <p className="font-mono text-[11px] tracking-widest text-warm uppercase lg:text-xs">
                   {current.kicker}
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold text-paper sm:text-3xl">
+                <h3 className="mt-1.5 font-display text-lg font-semibold text-paper sm:text-xl lg:mt-2 lg:text-2xl xl:text-3xl">
                   {current.title}
                 </h3>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
-                  {current.body}
-                </p>
+                <div className="hidden [@media(min-height:620px)]:block">
+                  <p className="mt-2 line-clamp-2 max-w-md text-xs leading-relaxed text-muted lg:mt-3 lg:line-clamp-none lg:text-sm">
+                    {current.body}
+                  </p>
+                </div>
               </div>
 
               {/* Progress rail */}
-              <div className="mt-8 flex gap-1.5">
+              <div className="mt-4 flex gap-1.5 [@media(max-height:560px)]:hidden lg:mt-8">
                 {stages.map((s, i) => (
                   <span key={s.title} className="flex-1">
                     <span className="block h-[3px] overflow-hidden rounded-full bg-ink-3">
@@ -435,8 +457,9 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             </div>
 
             {/* System diagram */}
-            <div className="order-1 lg:order-2">
-              <div className="relative mx-auto aspect-square w-full max-w-[460px]">
+            <div className="order-1 flex min-h-0 flex-col lg:order-2">
+              <div className={slotClass}>
+                <div className="itb-dial absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl transition-all duration-700"
@@ -496,7 +519,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                 </svg>
 
                 {/* Center artifact */}
-                <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2" style={{ color: accent(active) }}>
+                <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] min-h-[86px] min-w-[86px] -translate-x-1/2 -translate-y-1/2" style={{ color: accent(active) }}>
                   <Artifact kind={current.artifact} locale={locale} />
                 </div>
 
@@ -527,10 +550,8 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                         {i === 0 ? "◦" : i}
                       </span>
                       <span
-                        className={`font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 ${
-                          on
-                            ? "inline font-semibold text-paper"
-                            : "hidden text-muted sm:inline"
+                        className={`hidden font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 sm:inline ${
+                          on ? "font-semibold text-paper" : "text-muted"
                         }`}
                       >
                         {s.title}
@@ -538,12 +559,13 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                     </span>
                   );
                 })}
+                </div>
               </div>
 
               {/* What the artifact means — always spelled out */}
               <div
                 key={active}
-                className="stage-enter mx-auto mt-6 flex max-w-[460px] items-start gap-3 rounded-xl border border-line bg-ink-2 px-4 py-3"
+                className="stage-enter mx-auto mt-2 flex w-full max-w-[460px] shrink-0 items-start gap-2.5 rounded-xl border border-line bg-ink-2 px-3 py-2 lg:mt-4 lg:gap-3 lg:px-4 lg:py-2.5"
               >
                 <span
                   className="mt-0.5 font-mono text-[10px]"
@@ -551,11 +573,11 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                 >
                   {String(active).padStart(2, "0")}
                 </span>
-                <div>
-                  <p className="font-display text-xs font-semibold text-paper">
+                <div className="min-w-0">
+                  <p className="font-display text-[11px] font-semibold text-paper lg:text-xs">
                     {current.title}
                   </p>
-                  <p className="mt-0.5 text-[11px] leading-relaxed text-muted">
+                  <p className="mt-0.5 line-clamp-2 text-[10px] leading-relaxed text-muted lg:text-[11px]">
                     {ARTIFACT_CAPTION[locale]?.[current.artifact] ?? current.body}
                   </p>
                 </div>

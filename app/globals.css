@@ -178,6 +178,82 @@ main {
 }
 
 /* ============================================================
+   Idea → business pinned narrative scene.
+   The panel is pinned at exactly one screen, so the ring, the
+   nodes and the caption plate can never sit below the fold while
+   the visitor walks the eight stages. `svh` keeps phones honest
+   when browser chrome hides; `vh` is the fallback.
+   ============================================================ */
+.itb-track {
+  --itb-step: 48vh;
+  height: calc(var(--itb-stages, 8) * var(--itb-step) + 100vh);
+}
+
+.itb-panel {
+  height: 100vh;
+}
+
+@supports (height: 100svh) {
+  .itb-track {
+    height: calc(var(--itb-stages, 8) * var(--itb-step) + 100svh);
+  }
+
+  .itb-panel {
+    height: 100svh;
+  }
+}
+
+/* Reduced motion: no pin, content decides the height. */
+.itb-static {
+  height: auto;
+}
+
+/* The stage slot is a size container, so the dial can be sized from BOTH the
+   room it has and the height of the screen — no JS measurement, no hydration
+   flash, and it still renders if scripts never arrive. */
+.itb-slot {
+  container-type: size;
+  padding-inline: 12px;
+}
+
+@media (min-width: 640px) {
+  .itb-slot {
+    /* room for the node labels, which sit to the right of their dot */
+    padding-inline: 60px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .itb-slot {
+    padding-inline: 24px;
+  }
+}
+
+.itb-dial {
+  width: min(100%, 460px);
+  aspect-ratio: 1 / 1;
+}
+
+@supports (width: 1cqh) {
+  .itb-dial {
+    width: min(100%, 460px, 100cqh);
+  }
+}
+
+/* One stage should not cost a full screen of scrolling. */
+@media (max-width: 1023px) {
+  .itb-track {
+    --itb-step: 44vh;
+  }
+}
+
+@media (max-height: 700px) {
+  .itb-track {
+    --itb-step: 42vh;
+  }
+}
+
+/* ============================================================
    MOTION SYSTEM
    Art-directed, restrained, GPU-friendly. Everything degrades
    gracefully under prefers-reduced-motion.
