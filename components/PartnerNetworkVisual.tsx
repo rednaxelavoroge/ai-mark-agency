@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import { ContactCta } from "@/components/ContactCta";
-import { type Locale } from "@/lib/site";
+import Link from "next/link";
+import { localePath, type Locale } from "@/lib/site";
 export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
 
@@ -179,9 +179,12 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
               : "Partners receive agreed recurring revenue shares on AI SaaS subscriptions, introduction fees, and the capability to build service retainers on top of our technology stack."}
           </p>
         </div>
-        <ContactCta className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-all whitespace-nowrap shadow">
+        <Link
+          href={localePath(locale, "/partners")}
+          className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-all whitespace-nowrap shadow"
+        >
           {isRu ? "Стать партнёром" : "Join Partner Network"} →
-        </ContactCta>
+        </Link>
       </div>
     </div>
   );

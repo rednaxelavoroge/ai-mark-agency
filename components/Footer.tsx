@@ -98,7 +98,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               <li>
-                <Link href={navHref(locale, "#partners")} className="hover:text-paper transition-colors">
+                <Link href={navHref(locale, "/partners")} className="hover:text-paper transition-colors">
                   {isRu ? "Партнёрская сеть" : "Partner Network"}
                 </Link>
               </li>
