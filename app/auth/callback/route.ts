@@ -1,0 +1,80 @@
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { safeNextPath } from "@/lib/auth/redirects";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const NO_STORE = "private, no-cache, no-store, must-revalidate, max-age=0";
+
+/**
+ * OAuth / magic-link / email-confirmation callback.
+ *
+ * Supabase's PKCE flow returns a `?code=` which is exchanged for a session
+ * here, server-side. The same route already serves a future Google login
+ * (`signInWithOAuth({ provider: "google" })` redirects to this callback), so
+ * adding that provider needs no new auth plumbing.
+ */
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const origin = resolveOrigin(request);
+  const next = safeNextPath(searchParams.get("next"));
+
+  const providerError =
+    searchParams.get("error_description") ?? searchParams.get("error");
+  if (providerError) {
+    console.error("[auth] provider returned an error:", providerError);
+    return loginRedirect(origin, next, "provider_error");
+  }
+
+  if (!isSupabaseConfigured()) {
+    return loginRedirect(origin, next, "not_configured");
+  }
+
+  const code = searchParams.get("code");
+  if (!code) {
+    return loginRedirect(origin, next, "missing_code");
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+  if (error) {
+    console.error("[auth] code exchange failed:", error.message);
+    return loginRedirect(origin, next, "exchange_failed");
+  }
+
+  // The session cookies were written through next/headers during the exchange;
+  // Next folds them into this response.
+  const response = NextResponse.redirect(new URL(next, origin));
+  response.headers.set("Cache-Control", NO_STORE);
+  return response;
+}
+
+/**
+ * Behind a proxy (Vercel, Cloudflare) `request.nextUrl.origin` can be the
+ * internal origin, so prefer the forwarded host — except in local
+ * development, where the forwarded host is absent or meaningless.
+ */
+function resolveOrigin(request: NextRequest): string {
+  const forwardedHost = request.headers.get("x-forwarded-host");
+
+  if (process.env.NODE_ENV === "development" || !forwardedHost) {
+    return request.nextUrl.origin;
+  }
+
+  const protocol = request.headers.get("x-forwarded-proto") ?? "https";
+  return `${protocol}://${forwardedHost}`;
+}
+
+function loginRedirect(origin: string, next: string, error: string) {
+  const url = new URL("/auth/login", origin);
+  url.searchParams.set("next", next);
+  url.searchParams.set("error", error);
+
+  const response = NextResponse.redirect(url);
+  response.headers.set("Cache-Control", NO_STORE);
+  return response;
+}

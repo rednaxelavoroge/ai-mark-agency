@@ -17,6 +17,9 @@
   --mark-ink: #faf8f5;
   --warm: #b58d4a;
   --warm-soft: rgba(181, 141, 74, 0.12);
+  /* Errors / destructive state. Used by the Partner Platform surfaces;
+     the public site does not reference it. */
+  --danger: #a8342a;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
   --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
   --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
@@ -38,6 +41,7 @@
   --mark-ink: #12140e;
   --warm: #d9bf8c;
   --warm-soft: rgba(217, 191, 140, 0.15);
+  --danger: #f0a9a1;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.4);
@@ -55,6 +59,7 @@
   --color-mark-light: var(--mark-light);
   --color-mark-ink: var(--mark-ink);
   --color-warm: var(--warm);
+  --color-danger: var(--danger);
   --font-sans: var(--font-manrope);
   --font-display: var(--font-unbounded);
   --font-editorial: var(--font-serif);

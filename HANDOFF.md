@@ -15,6 +15,10 @@ npm run lint && npm run build
 Overflow regression: `BASE=https://ai-mark.agency node scripts/check-overflow.mjs`
 Design-review stills: `BASE=http://localhost:3100 node scripts/shot.mjs /ru/products /tmp/card.png 1440 1000`
 Both scripts need Playwright resolvable from the repo root (a globally installed `playwright` symlinked into `node_modules/` works).
+Partner Platform RLS + integrity suite (needs only a local PostgreSQL, no Supabase project): `bash supabase/tests/run-rls-tests.sh`
+Partner Platform against the LIVE project (needs `.env.local` + the applied schema; creates and deletes its own `phase4a-verify-*` users): `node supabase/tests/verify-live-project.mjs`
+Partner Platform through a real browser (needs a server already running): `BASE=http://localhost:3100 node supabase/tests/verify-live-browser.mjs`
+Applying migrations to a project without the CLI: `POST https://api.supabase.com/v1/projects/<ref>/database/query` with a Personal Access Token — see `supabase/README.md` §2.
 
 ## Deploy
 Push to `main` → Vercel builds and deploys (~25s). Verify: fetch a page and look for a new marker string, or run the overflow script with `BASE=https://ai-mark.agency`.
@@ -50,7 +54,8 @@ Push to `main` → Vercel builds and deploys (~25s). Verify: fetch a page and lo
 ## Env vars
 - Contact form: `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, then `RESEND_API_KEY` **or** `CONTACT_WEBHOOK_URL`. Locally, without a provider, submissions are only logged (`[contact] …`).
 - Chat: **no env vars.** The hosted widget's `src` and its public `key` live in `site.widget` (`lib/site.ts`). Title, greeting, colour and online state are workspace settings at `app.alex-dev.pro`, not repo settings.
-- `.env.example` lists only the contact-form variables. Production values go to Vercel → Settings → Environment Variables.
+- `.env.example` lists the contact-form variables **and** the Partner Platform's Supabase variables. Production values go to Vercel → Settings → Environment Variables.
+- Partner Platform (Supabase, current API keys — short `sb_…` strings, not `eyJ…` JWTs): `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (browser-safe; RLS is the boundary), plus `SUPABASE_SECRET_KEY` (**server only — it maps to `service_role` and bypasses RLS**; read in exactly one `server-only` module, `lib/supabase/admin.ts`) and an optional server-side `SUPABASE_URL`. None are needed by the public site: without them `/auth/*` renders a "not usable" notice and `/partner`, `/admin` redirect to login, so `npm run build` stays green with no credentials. A `sb_secret_…` value mistakenly placed in the `NEXT_PUBLIC_` variable is refused at runtime instead of being shipped to the browser. Never commit real values; `.env*.local` is gitignored. Vercel setup: `supabase/README.md` §7.
 - `next.config.ts` sets `allowedDevOrigins: ["127.0.0.1"]` so Playwright/`localhost` runs can load dev assets.
 
 ## Hard rules (keep these)
@@ -84,12 +89,28 @@ Checked against `GET https://app.alex-dev.pro/api/webchat/<key>/config` on 2026-
 ## Done (earlier rounds)
 Premium light palette, editorial serif, motion system, pinned narrative scene, dark cinematic operating-model chapter, manifesto, hero motion + ribbon, product mockups with live counters/typing, product constellation on all three product heroes, e-commerce mock with real product cards, products-hub ecosystem band, page transitions, embedded AI chat widget, interactive panel demo, EN routing fix, all AlexDev assets removed.
 
+## Done (Partner Platform — Phase 4A foundation)
+Additive, opt-in Supabase foundation for the Partner Platform. **The public site is untouched**: `/`, `/ru`, `/partners`, `/ru/partners`, product and investor pages all still prerender, and everything builds with no credentials present.
+
+- **Auth** — `@supabase/ssr` + Server Actions only; there is deliberately no browser-side Supabase client yet. Email/password and magic link, PKCE callback at `/auth/callback` (a future Google provider reuses it with no new route). The secret key is confined to `lib/supabase/admin.ts`, which is `server-only`. Uses the current publishable/secret API keys (`sb_publishable_…` / `sb_secret_…`); the project signs JWTs asymmetrically (ES256), so `getClaims()` verifies locally with no Auth round-trip.
+- **Authorization** — roles are rows in `public.user_roles` (`partner`, `admin`), never a hardcoded email or a client-side flag. Four layers: `proxy.ts` session refresh → `app/{partner,admin}/layout.tsx` (session) → `(platform)/layout.tsx` (role + partner record) → every page re-checks in `lib/auth/dal.ts` next to its own data. Queries always run through the user's own session, so RLS is an independent second gate.
+- **Schema** — `supabase/migrations/*` (6 files): `profiles`, `partner_profiles`, `partner_relationships`, `partner_status_history`, `user_roles`; DB-generated `partner_id` (`AM-001042`) and referral codes; signup provisioning trigger; status-audit trigger.
+- **RLS** — enabled on all five tables, no blanket policy anywhere. A partner reads only their own profile, partner profile, status history and roles; `anon` has no privileges at all; admin has full access. The sponsor edge is single-valued, immutable and impossible for a partner to set, and `partner_profiles.sponsor_partner_id` is a derived, write-once pointer.
+- **Verified for real** — `bash supabase/tests/run-rls-tests.sh` applies the migrations verbatim to a throwaway local PostgreSQL (through a Supabase-compat shim) and runs **82 assertions**, including "a partner cannot grant themselves admin", "a partner cannot have two sponsors", and "hostile signup metadata is sanitised rather than fatal".
+- **Routes** — `/partner` + dashboard, profile, network, customers, sales, commissions, payouts, resources, no-access; `/admin` + partners, network, orders, commissions, payouts, audit. Dashboard and profile render real data; the rest are honest "Planned" panels. Only the dashboard and the admin overview show figures, and anything not yet computed is a `—` — never a simulated number.
+- **Design** — `components/platform/*` reuses the existing tokens, `BrandLogo`, rounded cards and Manrope/Unbounded. One new token, `--danger`, was added to `app/globals.css`; nothing on the public site references it. Verified at 390px: `documentElement.scrollWidth === 390` (no horizontal overflow), metrics collapse to a 2x2 grid, and the section nav becomes a horizontally scrollable pill bar.
+- **Routing gotcha to keep** — `proxy.ts` skips `/partner`, `/admin` and `/auth` from the locale rewrite with a **boundary-aware** check. A naive `startsWith("/partner")` would have captured the public `/partners` page and broken it.
+- Full detail, including how to bootstrap the first admin without committing an email: `supabase/README.md`.
+
 ## Next (agreed backlog)
 1. Small-frame density: at 390px wide the taller mocks crop cleanly but lose their footer bands. If that matters, gate individual bands behind Tailwind container queries (`@container` on the frame body) rather than shrinking type.
 2. In-mockup life: the KPI sparklines draw once — consider a slow redraw or a moving caret on the "live" rows.
 3. `AimeMock` / `AssistantMock` / `ShowroomMock` are still the older, thinner structure (the hub cards crop them heavily). Extend the same five-band treatment, or give the hub cards a compact variant.
 4. Chat: fix the hosted workspace items above (title, RU greeting, online, colour). There is no repo-side credential left to plug in.
 5. Brand: `--mark` is olive while the approved logo is amber/graphite, so the header pairs an orange mark with a green CTA. Decide whether to re-tint the site accents to the logo palette.
+6. Partner Platform Phase 4B: `/go/[code]` + the referral attribution engine, then the qualifying sale that finalises a sponsor (`partner_relationships.confirmed_at` / `locked_at` already exist for it).
+7. Partner Platform: profile editing (Server Actions + a Supabase Storage avatar policy), and the admin screens over the schema that already exists.
+8. Replace the hand-written `lib/supabase/database.types.ts` with `npx supabase gen types typescript` once the project ref exists, so the types cannot drift from the migrations.
 
 ## Last commit
 See `git log --oneline -1`.
