@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 import Link from "next/link";
 import { localePath, type Locale } from "@/lib/site";
 export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
@@ -167,24 +167,56 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
         ))}
       </div>
 
-      {/* Partner Terms Banner */}
-      <div className="rounded-xl border border-line bg-ink-3/40 p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="max-w-2xl">
-          <h4 className="font-display text-sm font-semibold text-paper">
-            {isRu ? "Прозрачные коммерческие условия партнёрства" : "Transparent Commercial Partner Governance"}
-          </h4>
-          <p className="mt-1 text-xs text-muted">
-            {isRu
-              ? "Партнёры получают согласованную долю от подписок на AI-продукты, вознаграждение за привлечение клиентов и возможность продавать свои услуги поверх нашей платформы."
-              : "Partners receive agreed recurring revenue shares on AI SaaS subscriptions, introduction fees, and the capability to build service retainers on top of our technology stack."}
-          </p>
+      {/* Partner Program Banner */}
+      <div className="relative overflow-hidden rounded-2xl border border-line bg-ink-3/40 p-6 sm:p-8 lg:p-10 shadow-sm">
+        {/* Warm glow + hairline accent keep the block from reading as a plain card. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-24 -top-28 h-64 w-64 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(198,214,139,0.22),transparent_70%)]"
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mark/40 to-transparent"
+        />
+        <div className="relative flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <div className="min-w-0 max-w-3xl flex-1">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-warm">
+              {isRu ? "Партнёрская программа" : "Partner Program"}
+            </p>
+            <h3 className="mt-3 font-display text-lg font-semibold leading-snug text-paper sm:text-xl">
+              {isRu ? "Партнёрская программа AI Mark" : "The AI Mark Partner Program"}
+            </h3>
+            <p className="mt-3 text-xs leading-relaxed text-muted sm:text-sm">
+              {isRu
+                ? "Продавайте AI-продукты и цифровые решения AI Mark и получайте комиссию с квалифицированных клиентских продаж. Стройте собственную партнёрскую сеть и развивайте свой рынок вместе с AI Mark."
+                : "Sell AI Mark products and digital solutions, and earn commission on qualified customer sales. Build your own partner network and develop your market together with AI Mark."}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {(isRu
+                ? ["Личные продажи", "Продажи команды", "До 5 уровней сети"]
+                : ["Personal sales", "Team sales", "Up to 5 network levels"]
+              ).map((step, i) => (
+                <Fragment key={step}>
+                  {i > 0 && (
+                    <span aria-hidden className="font-mono text-[10px] text-warm/70">
+                      →
+                    </span>
+                  )}
+                  <span className="rounded-full border border-line bg-ink-2/70 px-2.5 py-1 font-mono text-[10px] tracking-wide text-paper/80">
+                    {step}
+                  </span>
+                </Fragment>
+              ))}
+            </div>
+          </div>
+          <Link
+            href={localePath(locale, "/partners")}
+            className="inline-flex shrink-0 items-center justify-center gap-2 self-start whitespace-nowrap rounded-full bg-mark px-6 py-3.5 text-sm font-semibold text-mark-ink shadow transition-all hover:-translate-y-0.5 hover:bg-mark-light hover:shadow-md lg:self-center"
+          >
+            {isRu ? "Подробнее о партнёрстве" : "More about the partnership"}
+            <span className="btn-arrow" aria-hidden>→</span>
+          </Link>
         </div>
-        <Link
-          href={localePath(locale, "/partners")}
-          className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-all whitespace-nowrap shadow"
-        >
-          {isRu ? "Стать партнёром" : "Join Partner Network"} →
-        </Link>
       </div>
     </div>
   );

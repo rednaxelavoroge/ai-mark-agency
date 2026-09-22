@@ -477,7 +477,7 @@ export const copy: Record<Locale, Copy> = {
     partners: {
       eyebrow: "Partners",
       title: "An international partner network is how we scale presence.",
-      lead: "We do not need a full office in every region to work a market. Partners bring clients, represent the solutions, and grow a territory.",
+      lead: "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
       model:
         "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
       earn: "A partner can:",
@@ -954,7 +954,7 @@ export const copy: Record<Locale, Copy> = {
     partners: {
       eyebrow: "Партнёры",
       title: "Международная партнёрская сеть — способ масштабировать присутствие.",
-      lead: "Не нужен полный офис в каждом регионе, чтобы работать рынок. Партнёры приводят клиентов, представляют решения и развивают территорию.",
+      lead: "Не нужен полноценный офис в каждом регионе, чтобы развивать рынок. Партнёры приводят клиентов, представляют решения и развивают локальное присутствие.",
       model:
         "Международное присутствие без собственной инфраструктуры в каждой стране. Комиссия — всегда по договорённости; обещанный доход мы не называем.",
       earn: "Партнёр может:",
