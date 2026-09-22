@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 # ============================================================================
-# Phase 4A — RLS, immutability and provisioning verification.
+# Partner Platform — RLS, immutability, provisioning and referral verification.
 #
 # Applies supabase/migrations/*.sql verbatim to a throwaway local PostgreSQL
 # database (with the Supabase-compat shim in 00_auth_shim.sql providing
 # auth.users / auth.uid() / anon / authenticated / service_role) and then
 # asserts every security property the brief asks for:
 #
-#   * a partner sees only their own profile, partner profile and status
-#     history, and cannot see another partner's;
+#   * a partner sees only their own profile, partner profile, status history,
+#     referral clicks and attributed leads — and never another partner's;
 #   * a partner cannot grant themselves admin, or edit platform-owned fields;
 #   * anonymous callers have no reachable data at all;
 #   * admin has full access;
 #   * the sponsor edge is immutable and single-valued;
-#   * signup provisioning populates profiles / partner_profiles / user_roles.
+#   * signup provisioning populates profiles / partner_profiles / user_roles;
+#   * Phase 4B — attribution is server-only: the sponsor edge is created by
+#     public.attribute_partner_signup() (service_role only), which refuses
+#     unknown, suspended, malformed, self- and duplicate sponsors, and never
+#     attributes an account that already existed;
+#   * Phase 4B — client-supplied signup metadata cannot create a sponsor, and
+#     the counts-only stats rollup exposes numbers without exposing rows.
 #
 # Usage:  bash supabase/tests/run-rls-tests.sh
 # Env:    AM_TEST_DB (default am_phase4a_test), AM_MAINT_DB (default postgres)
@@ -158,9 +164,9 @@ section "Schema — RLS enabled everywhere, no blanket policy"
 
 run_sql "select count(*) from pg_class c join pg_namespace n on n.oid = c.relnamespace
          where n.nspname = 'public'
-           and c.relname in ('profiles','partner_profiles','partner_relationships','partner_status_history','user_roles')
+           and c.relname in ('profiles','partner_profiles','partner_relationships','partner_status_history','user_roles','referral_clicks','leads')
            and c.relrowsecurity;"
-eq "all five tables have row level security enabled" "5"
+eq "all seven tables have row level security enabled" "7"
 
 run_sql "select count(*) from pg_policies
          where schemaname = 'public' and (qual = 'true' or with_check = 'true');"
@@ -170,14 +176,14 @@ eq "no permissive 'using (true)' policy exists" "0"
 # scopes itself to `authenticated`.
 run_sql "select count(*) from pg_policies
          where schemaname = 'public'
-           and tablename in ('profiles','partner_profiles','partner_relationships','partner_status_history','user_roles')
+           and tablename in ('profiles','partner_profiles','partner_relationships','partner_status_history','user_roles','referral_clicks','leads')
            and array_to_string(roles, ',') <> 'authenticated';"
 eq "every policy is scoped to authenticated only (never PUBLIC/anon)" "0"
 
 run_sql "select count(*) from pg_policies
          where schemaname = 'public'
-           and tablename in ('profiles','partner_profiles','partner_relationships','partner_status_history','user_roles');"
-eq "all 20 expected policies exist" "20"
+           and tablename in ('profiles','partner_profiles','partner_relationships','partner_status_history','user_roles','referral_clicks','leads');"
+eq "all 22 expected policies exist" "22"
 
 # Every write policy on the four platform-owned tables must route through
 # is_admin(). pg_get_expr omits the schema prefix, hence the plain name.
@@ -399,7 +405,7 @@ eq "partner identity survived every rejected write" "1"
 # ---------------------------------------------------------------------------
 section "service_role — the secret key reaches every table"
 
-for table in profiles partner_profiles partner_relationships partner_status_history user_roles; do
+for table in profiles partner_profiles partner_relationships partner_status_history user_roles referral_clicks leads; do
   run_sql "set role service_role; select count(*) from public.$table;"
   if [ "$RC" -eq 0 ]; then
     pass "service_role can read $table (grant present)"
@@ -425,6 +431,220 @@ eq "service_role can execute the Partner ID generator" "t"
 
 run_sql "select count(*) from public.user_roles where user_id = '$UID_D' and role = 'admin';"
 eq "no admin role was left behind by the elevated test" "0"
+
+# ---------------------------------------------------------------------------
+# 11. Phase 4B — the referral attribution engine
+#
+# The tables, the server-only attribution RPC and the counts-only rollup. The
+# rules under test:
+#   * a member of the public can never write attribution data;
+#   * a partner can never set, change or forge their own sponsor;
+#   * "last valid referral" attribution happens once, server-side;
+#   * unknown, suspended, malformed, self- and duplicate sponsors are refused.
+# ---------------------------------------------------------------------------
+section "Phase 4B — attribution tables: RLS, grants and isolation"
+
+# The attribution tables are read by their owner and written only by the
+# server. There is a SELECT policy and deliberately no write policy at all.
+run_sql "select count(*) from pg_policies
+         where schemaname = 'public'
+           and tablename in ('referral_clicks','leads')
+           and cmd in ('INSERT','UPDATE','DELETE');"
+eq "the attribution tables accept no client writes at all" "0"
+
+run_sql "select string_agg(distinct privilege_type, ',' order by privilege_type)
+         from information_schema.role_table_grants
+         where table_schema = 'public'
+           and table_name in ('referral_clicks','leads')
+           and grantee = 'authenticated';"
+eq "authenticated holds SELECT only on the attribution tables" "SELECT"
+
+run_sql "select count(*) from information_schema.role_table_grants
+         where table_schema = 'public'
+           and table_name in ('referral_clicks','leads')
+           and grantee = 'anon';"
+eq "anon holds no privilege on the attribution tables" "0"
+
+PID_B="$(run_sql "select partner_id from public.partner_profiles where user_id = '$UID_B'"; printf '%s' "$OUT")"
+CODE_B="$(run_sql "select referral_code from public.partner_profiles where user_id = '$UID_B'"; printf '%s' "$OUT")"
+
+# Seed clicks and leads exactly the way the server does (as the table owner).
+run_sql "
+insert into public.referral_clicks (partner_id, referral_code, landing_path, utm_source, utm_medium, utm_campaign) values
+  ('$PID_A', '$CODE_A', '/products', 'newsletter', 'email', 'phase-4b'),
+  ('$PID_A', '$CODE_A', '/partners', null, null, null),
+  ('$PID_B', '$CODE_B', '/', 'cta', 'social', 'launch');
+insert into public.leads (partner_id, referral_code, referral_source, name, email, messenger, company, scenario) values
+  ('$PID_A', '$CODE_A', 'referral', 'Lead A', 'lead-a@example.test', '@leada', 'Acme', 'idea'),
+  ('$PID_B', '$CODE_B', 'referral', 'Lead B', 'lead-b@example.test', '@leadb', 'Beta', 'business'),
+  (null, null, 'direct', 'Lead C', 'lead-c@example.test', '@leadc', 'Gamma', 'marketing');
+"
+if [ "$RC" -ne 0 ]; then fail "seed attribution rows" "$OUT"; fi
+
+user_eq "a partner sees only their own clicks" "$UID_A" "2" \
+  "select count(*) from public.referral_clicks;"
+user_eq "a partner cannot see another partner's clicks" "$UID_A" "0" \
+  "select count(*) from public.referral_clicks where partner_id = '$PID_B';"
+user_eq "a partner sees only leads attributed to them" "$UID_A" "1" \
+  "select count(*) from public.leads;"
+user_eq "a partner cannot see an unattributed lead" "$UID_A" "0" \
+  "select count(*) from public.leads where partner_id is null;"
+user_eq "a partner cannot see another partner's leads" "$UID_A" "0" \
+  "select count(*) from public.leads where partner_id = '$PID_B';"
+
+user_error "a partner cannot insert a referral click" "$UID_A" "permission denied" \
+  "insert into public.referral_clicks (partner_id, referral_code, landing_path) values ('$PID_A', '$CODE_A', '/');"
+user_error "a partner cannot insert a lead" "$UID_A" "permission denied" \
+  "insert into public.leads (name, email, messenger, company, scenario) values ('X', 'x@y.test', '@x', 'C', 'idea');"
+user_error "a partner cannot edit a referral click" "$UID_A" "permission denied" \
+  "update public.referral_clicks set landing_path = '/hijacked' where partner_id = '$PID_A';"
+user_error "a partner cannot delete a lead" "$UID_A" "permission denied" \
+  "delete from public.leads where partner_id = '$PID_A';"
+
+run_sql "set role anon; select count(*) from public.referral_clicks;"
+if [ "$RC" -ne 0 ] && grep -qi "permission denied" <<<"$OUT"; then
+  pass "anon has no SELECT privilege on referral_clicks"
+else
+  fail "anon has no SELECT privilege on referral_clicks" "rc=$RC out=$OUT"
+fi
+
+run_sql "set role anon; select count(*) from public.leads;"
+if [ "$RC" -ne 0 ] && grep -qi "permission denied" <<<"$OUT"; then
+  pass "anon has no SELECT privilege on leads"
+else
+  fail "anon has no SELECT privilege on leads" "rc=$RC out=$OUT"
+fi
+
+section "Phase 4B — partner signup attribution is server-controlled"
+
+UID_X="77777777-7777-7777-7777-777777777777"
+UID_Y="88888888-8888-8888-8888-888888888888"
+UID_Z="99999999-9999-9999-9999-999999999999"
+UID_M="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+
+run_sql "
+insert into auth.users (id, email, raw_user_meta_data) values
+  ('$UID_X', 'partner-x@example.test', '{\"full_name\":\"Partner X\"}'::jsonb),
+  ('$UID_Y', 'partner-y@example.test', '{\"full_name\":\"Partner Y\"}'::jsonb),
+  ('$UID_Z', 'partner-z@example.test', '{\"full_name\":\"Partner Z\"}'::jsonb),
+  ('$UID_M', 'partner-m@example.test',
+    jsonb_build_object(
+      'full_name', 'Partner M',
+      'sponsor_partner_id', '$PID_A',
+      'referral_code', '$CODE_A'
+    ));
+"
+if [ "$RC" -ne 0 ]; then fail "create the Phase 4B test partners" "$OUT"; fi
+
+PID_X="$(run_sql "select partner_id from public.partner_profiles where user_id = '$UID_X'"; printf '%s' "$OUT")"
+PID_Y="$(run_sql "select partner_id from public.partner_profiles where user_id = '$UID_Y'"; printf '%s' "$OUT")"
+PID_Z="$(run_sql "select partner_id from public.partner_profiles where user_id = '$UID_Z'"; printf '%s' "$OUT")"
+CODE_X="$(run_sql "select referral_code from public.partner_profiles where user_id = '$UID_X'"; printf '%s' "$OUT")"
+CODE_Y="$(run_sql "select referral_code from public.partner_profiles where user_id = '$UID_Y'"; printf '%s' "$OUT")"
+CODE_Z="$(run_sql "select referral_code from public.partner_profiles where user_id = '$UID_Z'"; printf '%s' "$OUT")"
+
+# A hostile signup that names its own sponsor through client-supplied metadata.
+run_sql "select count(*) from public.partner_relationships r
+         join public.partner_profiles pp on pp.partner_id = r.partner_id
+         where pp.user_id = '$UID_M';"
+eq "client-supplied signup metadata creates no sponsor edge" "0"
+run_sql "select sponsor_partner_id is null from public.partner_profiles where user_id = '$UID_M';"
+eq "a new partner is never born with a sponsor pointer" "t"
+
+# Valid attribution.
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_X', '$CODE_A', null);"
+eq "service_role attributes a new partner to a valid referral code" "attributed"
+run_sql "select sponsor_partner_id from public.partner_profiles where partner_id = '$PID_X';"
+eq "the attributed edge syncs the sponsor pointer" "$PID_A"
+run_sql "select attribution_source || '|' || attribution_code from public.partner_relationships where partner_id = '$PID_X';"
+eq "the edge records how it was decided" "referral_link|$CODE_A"
+
+# Duplicate relationship.
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_X', '$CODE_A', null);"
+eq "a second attribution attempt is refused" "already_attributed"
+run_sql "select count(*) from public.partner_relationships where partner_id = '$PID_X';"
+eq "the duplicate attempt created no second edge" "1"
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_X', '$CODE_Y', null);"
+eq "an attributed partner cannot be moved to another sponsor" "already_attributed"
+
+# Invalid sponsors.
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', 'zzzzzzzz', null);"
+eq "an unknown referral code is rejected" "invalid_code"
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', 'not a code', null);"
+eq "a malformed referral code is rejected" "invalid_code"
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', 'admin', null);"
+eq "a reserved referral code is rejected" "invalid_code"
+
+# Self-referral.
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', '$CODE_Y', null);"
+eq "self-referral is rejected" "self_referral"
+run_sql "select count(*) from public.partner_relationships where partner_id = '$PID_Y';"
+eq "a rejected self-referral creates no edge" "0"
+
+# A click id that belongs to a different partner is never recorded.
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', '$CODE_A', gen_random_uuid());"
+eq "a click id belonging to another partner is rejected" "invalid_click"
+
+# A suspended sponsor can never attract new partners.
+run_sql "update public.partner_profiles set status = 'suspended' where partner_id = '$PID_Z';"
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', '$CODE_Z', null);"
+eq "a suspended sponsor cannot be attributed" "invalid_code"
+
+# The happy path for a second partner.
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Y', '$CODE_X', null);"
+eq "a second partner is attributed to another partner's code" "attributed"
+
+# Unknown target account, and an account that already existed.
+run_sql "set role service_role; select public.attribute_partner_signup('00000000-0000-0000-0000-000000000000', '$CODE_A', null);"
+eq "an unknown target account is refused" "no_target"
+run_sql "update public.partner_profiles set created_at = now() - interval '2 hours' where partner_id = '$PID_Z';"
+run_sql "set role service_role; select public.attribute_partner_signup('$UID_Z', '$CODE_A', null);"
+eq "an account older than the signup window cannot be attributed" "stale_target"
+
+section "Phase 4B — no client can perform attribution"
+
+user_error "a partner cannot execute the attribution RPC" "$UID_A" "permission denied" \
+  "select public.attribute_partner_signup('$UID_Y', '$CODE_A', null);"
+user_error "a partner with no sponsor record still cannot execute it" "$UID_D" "permission denied" \
+  "select public.attribute_partner_signup('$UID_Y', '$CODE_A', null);"
+
+run_sql "set role anon; select public.attribute_partner_signup('$UID_Y', '$CODE_A', null);"
+if [ "$RC" -ne 0 ] && grep -qi "permission denied" <<<"$OUT"; then
+  pass "anon cannot execute the attribution RPC"
+else
+  fail "anon cannot execute the attribution RPC" "rc=$RC out=$OUT"
+fi
+
+user_eq "a partner cannot set their own sponsor pointer" "$UID_A" "0" \
+  "with u as (update public.partner_profiles set sponsor_partner_id = '$PID_B' returning 1) select count(*) from u;"
+user_error "a partner cannot create a sponsor edge for themselves" "$UID_A" "row-level security" \
+  "insert into public.partner_relationships (sponsor_partner_id, partner_id) values ('$PID_B', '$PID_A');"
+expect_error "attribution provenance cannot be rewritten" "immutable" \
+  "update public.partner_relationships set attribution_code = 'hijacked' where partner_id = '$PID_X';"
+
+section "Phase 4B — partner referral stats (counts only)"
+
+# PID_A: two clicks, one lead, and two sponsored partners — the Phase 4A edge
+# to B plus X, who was attributed to A's own code in Phase 4B.
+user_eq "the rollup returns the caller's real counts" "$UID_A" "2|1|2" \
+  "select clicks || '|' || leads || '|' || partner_signups from public.partner_referral_stats();"
+user_eq "a partner with no activity sees honest zeros" "$UID_Z" "0|0|0" \
+  "select clicks || '|' || leads || '|' || partner_signups from public.partner_referral_stats();"
+
+# The counts are visible, the rows are not: Phase 4A's "a sponsor cannot
+# enumerate their downline" still holds.
+user_eq "the rollup counts a downline the sponsor cannot enumerate" "$UID_A" "0" \
+  "select count(*) from public.partner_relationships;"
+
+run_sql "set role anon; select * from public.partner_referral_stats();"
+if [ "$RC" -ne 0 ] && grep -qi "permission denied" <<<"$OUT"; then
+  pass "anon cannot call the stats rollup"
+else
+  fail "anon cannot call the stats rollup" "rc=$RC out=$OUT"
+fi
+
+run_sql "set role service_role; select clicks || '|' || leads || '|' || partner_signups from public.partner_referral_stats();"
+eq "service_role can call the rollup for its own (absent) partner record" "0|0|0"
 
 # ---------------------------------------------------------------------------
 # Summary

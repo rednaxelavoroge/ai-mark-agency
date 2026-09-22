@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { cache } from "react";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import type { PartnerReferralStats } from "@/lib/partner/format";
 import type {
   PartnerProfileRow,
   PartnerRelationshipRow,
@@ -169,6 +170,57 @@ export const getPartnerAccount = cache(
       profile: profileResult.data ?? null,
       sponsor: sponsorResult.data ?? null,
       history: historyResult.data ?? [],
+    };
+  },
+);
+
+/**
+ * A metric the platform genuinely does not have yet is `null`, rendered as
+ * `—`. It must never collapse to 0, which would read as a real zero.
+ */
+const NO_REFERRAL_STATS: PartnerReferralStats = {
+  clicks: null,
+  leads: null,
+  partnerSignups: null,
+};
+
+/**
+ * Referral counters for the calling partner.
+ *
+ * Read through `public.partner_referral_stats()`, a SECURITY DEFINER rollup
+ * that returns COUNTS ONLY. That is deliberate: Phase 4A decided a sponsor
+ * must not be able to enumerate their downline, and the referral tables have
+ * no sponsor-visible rows either, so the dashboard gets real figures without
+ * a row-level view of anyone's network.
+ */
+export const getPartnerReferralStats = cache(
+  async (): Promise<PartnerReferralStats> => {
+    const auth = await getAuthContext();
+    if (!auth?.isPartner) return NO_REFERRAL_STATS;
+
+    const supabase = await createSupabaseServerClient();
+    const { data, error } = await supabase.rpc("partner_referral_stats");
+
+    if (error) {
+      // Most likely cause before the Phase 4B migration is applied: the
+      // function does not exist. The dashboard degrades to dashes.
+      console.error("[partner] referral stats failed:", error.message);
+      return NO_REFERRAL_STATS;
+    }
+
+    const row = Array.isArray(data) ? data[0] : data;
+    if (!row) return NO_REFERRAL_STATS;
+
+    const toCount = (value: unknown): number | null => {
+      if (value === null || value === undefined) return null;
+      const parsed = Number(value);
+      return Number.isFinite(parsed) ? parsed : null;
+    };
+
+    return {
+      clicks: toCount(row.clicks),
+      leads: toCount(row.leads),
+      partnerSignups: toCount(row.partner_signups),
     };
   },
 );

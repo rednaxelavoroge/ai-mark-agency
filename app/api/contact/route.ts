@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
+import { attributeContactLead } from "@/lib/referral/attribution";
 
 export const runtime = "nodejs";
+// Reads the request's referral cookie and writes a Lead row, so this route is
+// never cached or prerendered.
+export const dynamic = "force-dynamic";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SCENARIOS = new Set([
@@ -106,9 +110,22 @@ export async function POST(request: Request) {
     `Scenario: ${scenario}`,
   ].join("\n");
 
+  // Phase 4B: record the submission as a Lead, attributed to the visitor's
+  // referral cookie when there is a valid one. This is strictly ADDITIVE —
+  // it cannot throw, and it does not replace the email/webhook delivery below,
+  // which stays exactly as it was. The submission is recorded before delivery
+  // so a provider outage cannot lose the lead itself.
+  const lead = await attributeContactLead({
+    name,
+    email,
+    messenger,
+    company,
+    scenario,
+  });
+
   try {
     await deliver(text, subject);
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, lead_source: lead.source });
   } catch (error) {
     console.error("contact_failed", error);
     return NextResponse.json({ ok: false, error: "send_failed" }, { status: 503 });

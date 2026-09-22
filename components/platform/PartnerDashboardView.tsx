@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { CopyReferralLink } from "@/components/platform/CopyReferralLink";
 import {
   DetailList,
   PageHeader,
   StatCard,
 } from "@/components/platform/PageHeader";
+import { ReferralPanel } from "@/components/platform/ReferralPanel";
 import { StatusBadge } from "@/components/platform/StatusBadge";
 import { cardClass } from "@/components/ui/classes";
 import {
@@ -13,6 +13,7 @@ import {
   formatDateTime,
   partnerStatusLabel,
   referralUrl,
+  type PartnerReferralStats,
 } from "@/lib/partner/format";
 import type {
   PartnerProfileRow,
@@ -26,16 +27,18 @@ export type PartnerDashboardData = {
   profile: ProfileRow | null;
   sponsor: PartnerRelationshipRow | null;
   history: PartnerStatusHistoryRow[];
+  /** Phase 4B referral counters — real, or `null` when unreadable. */
+  stats: PartnerReferralStats;
   email: string | null;
 };
 
 /**
- * Every metric here is intentionally `NO_DATA`.
+ * The financial tiles below stay `NO_DATA` on purpose.
  *
- * Phase 4A ships no attribution, sales or commission engine, and the brief is
- * explicit that the dashboard must never display an invented figure. Each tile
- * becomes real as its phase lands. The explanation is stated once above the
- * grid rather than repeated under all four tiles.
+ * Phase 4B ships the referral engine, not the sales, commission or payout
+ * engines, and the brief is explicit that the dashboard must never display an
+ * invented figure. Each tile becomes real as its phase lands; the referral
+ * section above them already shows the counters that genuinely exist.
  */
 
 /**
@@ -51,6 +54,7 @@ export function PartnerDashboardView({
   profile,
   sponsor,
   history,
+  stats,
   email,
 }: PartnerDashboardData) {
   const displayName = profile?.full_name ?? email ?? "Partner";
@@ -65,11 +69,18 @@ export function PartnerDashboardView({
           <>
             Your Partner ID is{" "}
             <span className="font-mono text-paper">{partner.partner_id}</span>.
-            Attribution, sales and commission reporting arrive in the next
-            phases.
+            Referral clicks and attributed leads are live; sales and commission
+            reporting arrive in the next phases.
           </>
         }
         actions={<StatusBadge status={partner.status} />}
+      />
+
+      <ReferralPanel
+        partnerId={partner.partner_id}
+        referralCode={partner.referral_code}
+        url={referralUrl(partner.referral_code)}
+        stats={stats}
       />
 
       <section aria-labelledby="metrics-heading" className="grid gap-4">
@@ -128,23 +139,6 @@ export function PartnerDashboardView({
         </section>
 
         <section
-          aria-labelledby="referral-heading"
-          className={`p-5 sm:p-6 lg:col-span-2 ${cardClass}`}
-        >
-          <h2 id="referral-heading" className="text-sm font-semibold tracking-tight">
-            Referral link
-          </h2>
-          <p className="mt-1 text-xs text-muted">
-            Share it as it is — the code is yours permanently.
-          </p>
-          <div className="mt-5">
-            <CopyReferralLink url={referralUrl(partner.referral_code)} />
-          </div>
-        </section>
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-5">
-        <section
           aria-labelledby="sponsor-heading"
           className={`p-5 sm:p-6 lg:col-span-2 ${cardClass}`}
         >
@@ -155,62 +149,66 @@ export function PartnerDashboardView({
           {sponsor ? (
             <>
               <p className="mt-4 font-mono text-sm">{sponsor.sponsor_partner_id}</p>
-              <p className="mt-2 text-xs text-muted">
+              <p className="mt-2 text-xs leading-relaxed text-muted">
                 {sponsor.confirmed_at
                   ? `Confirmed ${formatDate(sponsor.confirmed_at)}.`
                   : "Recorded, not yet confirmed by a qualifying sale."}
+                {sponsor.attribution_source === "referral_link"
+                  ? " Recorded from a referral link at signup."
+                  : ""}
               </p>
             </>
           ) : (
             <p className="mt-4 text-xs leading-relaxed text-muted">
-              No sponsor recorded. Sponsor relationships are set by AI Mark,
-              never by the partner, and are immutable once confirmed.
+              No sponsor recorded. Sponsor relationships are set by AI Mark from
+              a referral link at signup, never by the partner, and are immutable
+              once confirmed.
             </p>
-          )}
-        </section>
-
-        <section
-          aria-labelledby="history-heading"
-          className={`p-5 sm:p-6 lg:col-span-3 ${cardClass}`}
-        >
-          <h2 id="history-heading" className="text-sm font-semibold tracking-tight">
-            Status history
-          </h2>
-          <p className="mt-1 text-xs text-muted">
-            Written by the database on every status change.
-          </p>
-
-          {history.length === 0 ? (
-            <p className="mt-5 text-xs text-muted">No entries yet.</p>
-          ) : (
-            <ol className="mt-5 grid gap-4">
-              {history.map((entry) => (
-                <li key={entry.id} className="flex gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-mark"
-                  />
-                  <div className="min-w-0">
-                    <p className="text-sm">
-                      {entry.old_status
-                        ? `${partnerStatusLabel(entry.old_status)} → ${partnerStatusLabel(entry.new_status)}`
-                        : partnerStatusLabel(entry.new_status)}
-                    </p>
-                    <p className="mt-0.5 text-[11px] text-muted">
-                      {formatDateTime(entry.created_at)}
-                      {entry.reason ? ` · ${entry.reason}` : ""}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
           )}
         </section>
       </div>
 
+      <section
+        aria-labelledby="history-heading"
+        className={`p-5 sm:p-6 ${cardClass}`}
+      >
+        <h2 id="history-heading" className="text-sm font-semibold tracking-tight">
+          Status history
+        </h2>
+        <p className="mt-1 text-xs text-muted">
+          Written by the database on every status change.
+        </p>
+
+        {history.length === 0 ? (
+          <p className="mt-5 text-xs text-muted">No entries yet.</p>
+        ) : (
+          <ol className="mt-5 grid gap-4">
+            {history.map((entry) => (
+              <li key={entry.id} className="flex gap-3">
+                <span
+                  aria-hidden
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-mark"
+                />
+                <div className="min-w-0">
+                  <p className="text-sm">
+                    {entry.old_status
+                      ? `${partnerStatusLabel(entry.old_status)} → ${partnerStatusLabel(entry.new_status)}`
+                      : partnerStatusLabel(entry.new_status)}
+                  </p>
+                  <p className="mt-0.5 text-[11px] text-muted">
+                    {formatDateTime(entry.created_at)}
+                    {entry.reason ? ` · ${entry.reason}` : ""}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+
       <p className="text-xs text-muted">
-        Profile details are read-only in Phase 4A. Editing, your network and the
-        resources library are described on the{" "}
+        Profile details are read-only in this release. Editing, your network and
+        the resources library are described on the{" "}
         <Link href="/partner/profile" className="link-underline text-paper">
           Profile
         </Link>{" "}

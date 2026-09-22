@@ -8,10 +8,10 @@ type CopyState = "idle" | "copied" | "failed";
 /**
  * Shows the partner's referral link and copies it to the clipboard.
  *
- * The link is real (`https://ai-mark.agency/go/<code>`) and reserved by the
- * partner's own `referral_code`, but the `/go/[code]` redirect and the
- * attribution engine ship in Phase 4B — the note below says so rather than
- * implying tracking that does not exist yet.
+ * The link is real: `/go/<code>` resolves server-side, records the click and
+ * attributes a lead or a new partner to this code. Everything the visitor
+ * carries is a signed, HTTP-only first-party cookie — the URL itself only ever
+ * contains the public referral code.
  */
 export function CopyReferralLink({ url }: { url: string }) {
   const [state, setState] = useState<CopyState>("idle");
@@ -90,9 +90,11 @@ export function CopyReferralLink({ url }: { url: string }) {
       </div>
 
       <p className="text-[11px] leading-relaxed text-muted">
-        This link is reserved for your referral code. Click tracking and
-        attribution start working in the next release (Phase 4B); until then it
-        does not record visits.
+        The link is live. Every visit is recorded and attributes a customer lead
+        for 30 days; a partner who signs up through it is recorded as your
+        referral. Add campaign parameters (for example{" "}
+        <span className="font-mono">?utm_source=newsletter</span>) to see where
+        your clicks come from.
       </p>
     </div>
   );

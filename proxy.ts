@@ -6,20 +6,24 @@ import { refreshSession } from "@/lib/supabase/proxy";
 const PUBLIC_FILE = /\.[^/]+$/;
 
 /**
- * Paths owned by the Partner Platform and the auth flow rather than the
- * localized public site. They are served unprefixed and must never be
- * rewritten to `/{locale}`.
+ * Paths served exactly as written rather than rewritten to `/{locale}`:
+ * the Partner Platform, the auth flow and the referral entry point.
+ *
+ * `/go` is here for the same reason `/partner` is: the referral route owns its
+ * own path (`/go/<code>`) and rewriting it to `/en/go/<code>` would 404. It
+ * also gets the same `no-store` treatment, which a redirect carrying a
+ * per-visitor attribution cookie requires.
  *
  * The boundary check is deliberate: a naive `startsWith("/partner")` would
  * also capture the public `/partners` marketing page and break it.
  */
-const PLATFORM_PREFIXES = ["/partner", "/admin", "/auth"] as const;
+const UNLOCALIZED_PREFIXES = ["/partner", "/admin", "/auth", "/go"] as const;
 
 const NO_STORE =
   "private, no-cache, no-store, must-revalidate, max-age=0";
 
 function isPlatformPath(pathname: string): boolean {
-  return PLATFORM_PREFIXES.some(
+  return UNLOCALIZED_PREFIXES.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
 }
@@ -36,7 +40,8 @@ function buildResponse(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl;
 
   if (isPlatformPath(pathname)) {
-    // Authenticated surfaces are user-specific: keep them out of any CDN.
+    // Authenticated surfaces are user-specific, and a referral redirect carries
+    // a per-visitor cookie: keep all of them out of any CDN.
     const res = NextResponse.next({ request: { headers: request.headers } });
     res.headers.set("Cache-Control", NO_STORE);
     return res;

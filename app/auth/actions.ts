@@ -4,7 +4,13 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { AuthActionState } from "@/lib/auth/action-state";
+import { getPartnerAccount } from "@/lib/auth/dal";
 import { safeNextPath } from "@/lib/auth/redirects";
+import {
+  attributePartnerSignup,
+  readReferralAttribution,
+  type SignupAttributionStatus,
+} from "@/lib/referral/attribution";
 import { site } from "@/lib/site";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -56,13 +62,84 @@ async function currentOrigin(): Promise<string> {
   return `${protocol}://${host}`;
 }
 
-async function callbackUrl(next: string): Promise<string> {
+/**
+ * Where an email link sends the visitor back to.
+ *
+ * `carriesReferral` adds `ref=1` when the visitor arrived through a referral
+ * link, so /auth/callback knows it may attempt partner attribution. It is only
+ * a hint: the callback re-reads the signed cookie, and the database refuses to
+ * attribute an account that was not created moments ago.
+ */
+async function callbackUrl(next: string, carriesReferral = false): Promise<string> {
   const origin = await currentOrigin();
-  return `${origin}/auth/callback?next=${encodeURIComponent(next)}`;
+  const params = new URLSearchParams({ next });
+  if (carriesReferral) params.set("ref", "1");
+  return `${origin}/auth/callback?${params.toString()}`;
 }
 
 function notConfigured(form: AuthActionState["form"]): AuthActionState {
   return { status: "error", message: NOT_CONFIGURED, form };
+}
+
+/**
+ * The referral code of the account that is ALREADY signed in, when there is
+ * one.
+ *
+ * Used to reject self-referral: signing up a second account through your own
+ * referral link would otherwise let a partner sponsor themselves. The extra
+ * Auth round trip is only paid when the visitor actually carries a referral
+ * cookie, which is also the only case in which self-referral is possible.
+ */
+async function activePartnerCode(): Promise<string | null> {
+  const attribution = await readReferralAttribution();
+  if (!attribution) return null;
+
+  const account = await getPartnerAccount();
+  return account?.partner.referral_code ?? null;
+}
+
+/**
+ * Server-side referral attribution for a brand new partner.
+ *
+ * The sponsor edge is created by `public.attribute_partner_signup()`, which
+ * only the service role may execute, so this is the one and only code path
+ * that can set a sponsor from a referral. It never throws and never changes
+ * what the signup returns — a failed attribution is a log line, not a broken
+ * registration.
+ *
+ * `identities` is the guard against attributing an *existing* account:
+ * Supabase returns an already-registered user (with the same id and an empty
+ * `identities` array) when email confirmation is on, and that user must never
+ * have a sponsor attached by a stranger's signup attempt.
+ */
+async function attributeNewPartner(user: {
+  id: string;
+  identities?: unknown[] | null;
+}): Promise<void> {
+  const isFreshAccount =
+    Array.isArray(user.identities) && user.identities.length > 0;
+
+  if (!isFreshAccount) {
+    console.warn(
+      "[auth] referral attribution skipped: this signup did not create a new account",
+    );
+    return;
+  }
+
+  const status: SignupAttributionStatus = await attributePartnerSignup({
+    userId: user.id,
+    activePartnerCode: await activePartnerCode(),
+  });
+
+  if (status === "attributed") {
+    console.info("[auth] partner attributed to a referral link");
+    return;
+  }
+  if (status === "no_referral" || status === "tracking_disabled") return;
+
+  // Everything else is a rejection worth seeing in the logs: an invalid or
+  // suspended sponsor, self-referral, a duplicate edge, or a failed write.
+  console.warn(`[auth] referral attribution not applied: ${status}`);
 }
 
 /** Email + password sign-in. */
@@ -121,7 +198,13 @@ export async function sendMagicLink(
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: await callbackUrl(next),
+      // A magic link can CREATE an account (shouldCreateUser), so it is a
+      // registration path too — the callback is told to attempt attribution
+      // when this visitor arrived through a referral link.
+      emailRedirectTo: await callbackUrl(
+        next,
+        (await readReferralAttribution()) !== null,
+      ),
       // Every account is provisioned as a partner (see the migration
       // `handle_new_user`), so the magic link may create the account.
       shouldCreateUser: true,
@@ -180,8 +263,18 @@ export async function signUpWithPassword(
     password,
     options: {
       // Consumed by public.handle_new_user() to fill profiles.full_name.
+      //
+      // NOTE: no sponsor/referral field is ever sent here. Signup metadata is
+      // client-supplied (a raw GoTrue signUp can set anything), so attribution
+      // is NOT read from it — it comes from the signed first-party cookie and
+      // is applied server-side below.
       data: { full_name: fullName },
-      emailRedirectTo: await callbackUrl(next),
+      // `ref=1` is a hint for the confirmation callback; it is not trusted on
+      // its own (see /auth/callback).
+      emailRedirectTo: await callbackUrl(
+        next,
+        (await readReferralAttribution()) !== null,
+      ),
     },
   });
 
@@ -195,9 +288,17 @@ export async function signUpWithPassword(
     };
   }
 
+  // Phase 4B: attribute the new partner to the referral link they followed,
+  // server-side. This never throws and never changes the signup outcome.
+  if (data.user) await attributeNewPartner(data.user);
+
   if (data.session) {
-    // Email confirmation is switched off for this project, so the account is
+    // Email confirmation is switched OFF for this project: the account is
     // already usable and the trigger has provisioned the partner record.
+    // When it is switched ON (currently the case in the live project), no
+    // session comes back and the account is confirmed through the email link,
+    // which lands on /auth/callback — the attribution above has already run by
+    // then, and the callback re-checks it.
     revalidatePath("/", "layout");
     redirect(next);
   }

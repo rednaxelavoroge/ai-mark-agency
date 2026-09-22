@@ -7,8 +7,10 @@
  * configured" state instead of crashing the build or the public pages.
  *
  * Only NEXT_PUBLIC_* values live here, because this module is imported by
- * client components. The secret key is deliberately absent — it is read in
- * exactly one place, `lib/supabase/admin.ts`, which is `server-only`.
+ * client components. The secret key is deliberately absent — it is read only
+ * in `server-only` modules (`lib/supabase/admin.ts` for the elevated client,
+ * `lib/referral/attribution.ts` for tracking availability, and
+ * `lib/referral/cookie.ts` as the HMAC fallback).
  *
  * Key scheme (current Supabase API keys):
  *   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY  sb_publishable_…  browser-safe; RLS applies

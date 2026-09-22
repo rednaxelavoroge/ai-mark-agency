@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test supabase/tests/referral.test.mjs",
+    "test:rls": "bash supabase/tests/run-rls-tests.sh",
+    "verify:referral": "node supabase/tests/verify-referral-live.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
