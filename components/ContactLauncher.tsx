@@ -17,9 +17,9 @@ const COPY = {
     title: "Чем можем помочь?",
     aiLabel: "Чат с AI-ассистентом",
     aiHint: "Отвечает мгновенно, круглосуточно",
-    messengerHint: "Обычно отвечаем в течение нескольких часов",
+    messengerHint: "Написать в чат",
     emailLabel: "Email",
-    emailHint: "Отвечаем в течение одного рабочего дня",
+    emailHint: "hello@ai-mark.agency",
     greeting:
       "Здравствуйте! Я AI Business Assistant AI MARK. Расскажите, что нужно — маркетинг, продажи или продукт.",
     placeholder: "Напишите сообщение…",
@@ -30,9 +30,9 @@ const COPY = {
     title: "How can we help?",
     aiLabel: "Chat with our AI assistant",
     aiHint: "Answers instantly, day or night",
-    messengerHint: "Usually replies within a few hours",
+    messengerHint: "Chat with us",
     emailLabel: "Email",
-    emailHint: "We reply within one business day",
+    emailHint: "hello@ai-mark.agency",
     greeting:
       "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
     placeholder: "Type a message…",

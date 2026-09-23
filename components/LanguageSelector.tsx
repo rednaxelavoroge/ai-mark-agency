@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import {
   LOCALES_INFO,
@@ -10,6 +10,8 @@ import {
   site,
   type Locale,
 } from "@/lib/site";
+
+const emptySubscribe = () => () => {};
 
 export function LanguageSelector({
   locale,
@@ -21,14 +23,10 @@ export function LanguageSelector({
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchId = useId();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const currentMeta = LOCALES_INFO[locale] || LOCALES_INFO.en;
   const allLocales = site.locales.map((code) => LOCALES_INFO[code]);
