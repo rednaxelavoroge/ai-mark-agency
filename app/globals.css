@@ -67,29 +67,32 @@
 
 /* Approved AI MARK lockup (raster PNG, marked up by components/BrandLogo.tsx).
    The artwork carries its own white plate, so it is framed by a light surface
-   on both themes instead of being recoloured — the approved ink never
-   changes. The caller sets only a HEIGHT; the lockup width follows the
-   artwork's own aspect ratio, so the mark is never stretched or squashed.
-   `flex: 0 0 auto` keeps a tight header row from compressing the plate into a
-   squeezed, letterboxed version of the artwork. */
+   Transparent background on both light and dark themes.
+   Light theme shows dark text, dark theme shows light text. The caller sets only
+   a HEIGHT; the lockup width follows the artwork's own aspect ratio. */
 .brand-plate {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 2px 3px;
+  background: transparent;
+  padding: 0;
   line-height: 0;
 }
 .brand-plate picture {
   display: flex;
   height: 100%;
 }
-@media (min-width: 640px) {
-  .brand-plate {
-    border-radius: 10px;
-    padding: 4px 6px;
-  }
+.brand-logo-light {
+  display: flex;
+}
+.brand-logo-dark {
+  display: none;
+}
+[data-theme="dark"] .brand-logo-light {
+  display: none !important;
+}
+[data-theme="dark"] .brand-logo-dark {
+  display: flex !important;
 }
 .brand-logo {
   display: block;

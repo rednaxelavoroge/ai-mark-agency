@@ -27,10 +27,22 @@
 export function BrandLogo({ className = "" }: { className?: string }) {
   return (
     <span className={`brand-plate ${className}`}>
-      <picture>
-        <source media="(min-width: 640px)" srcSet="/brand/ai-mark-logo.png" />
+      {/* Light theme artwork */}
+      <picture className="brand-logo-light">
+        <source media="(min-width: 640px)" srcSet="/brand/ai-mark-logo-light.png" />
         <img
-          src="/brand/ai-mark-logo-compact.png"
+          src="/brand/ai-mark-logo-compact-light.png"
+          alt="AI MARK — AI-NATIVE VENTURE & MARKETING"
+          width={1844}
+          height={261}
+          className="brand-logo"
+        />
+      </picture>
+      {/* Dark theme artwork */}
+      <picture className="brand-logo-dark">
+        <source media="(min-width: 640px)" srcSet="/brand/ai-mark-logo-dark.png" />
+        <img
+          src="/brand/ai-mark-logo-compact-dark.png"
           alt="AI MARK — AI-NATIVE VENTURE & MARKETING"
           width={1844}
           height={261}

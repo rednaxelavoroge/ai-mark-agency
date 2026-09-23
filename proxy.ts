@@ -47,7 +47,7 @@ function buildResponse(request: NextRequest): NextResponse {
     return res;
   }
 
-  // Explicit locale prefixes (/ru, /en) are already valid app routes.
+  // Explicit locale prefixes (/ru, /en, /es, etc.) are already valid app routes.
   const prefixed = (site.locales as readonly string[]).find(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
@@ -57,10 +57,28 @@ function buildResponse(request: NextRequest): NextResponse {
     requestHeaders.set("x-locale", prefixed);
     const res = NextResponse.next({ request: { headers: requestHeaders } });
     res.headers.set("x-locale", prefixed);
+    if (request.cookies.get("locale")?.value !== prefixed) {
+      res.cookies.set("locale", prefixed, {
+        maxAge: 60 * 60 * 24 * 365,
+        path: "/",
+        sameSite: "lax",
+      });
+    }
     return res;
   }
 
-  // Unprefixed paths are served by the default locale.
+  // Unprefixed paths (e.g. / or /products): check visitor's saved locale cookie
+  const cookieLocale = request.cookies.get("locale")?.value;
+  const isKnownLocale =
+    cookieLocale && (site.locales as readonly string[]).includes(cookieLocale);
+
+  if (isKnownLocale && cookieLocale !== site.defaultLocale) {
+    const targetUrl = request.nextUrl.clone();
+    targetUrl.pathname = `/${cookieLocale}${pathname === "/" ? "" : pathname}`;
+    return NextResponse.redirect(targetUrl, 307);
+  }
+
+  // Otherwise served by the default locale.
   const url = request.nextUrl.clone();
   url.pathname = `/${site.defaultLocale}${pathname === "/" ? "" : pathname}`;
   const requestHeaders = new Headers(request.headers);

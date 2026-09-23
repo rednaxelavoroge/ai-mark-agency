@@ -13,6 +13,16 @@ import {
 
 const emptySubscribe = () => () => {};
 
+function persistLocale(code: Locale) {
+  if (typeof document !== "undefined") {
+    try {
+      document.cookie = `locale=${code}; path=/; max-age=31536000; SameSite=Lax`;
+    } catch {
+      // Ignore in restricted environments
+    }
+  }
+}
+
 export function LanguageSelector({
   locale,
   className = "",
@@ -25,6 +35,7 @@ export function LanguageSelector({
   const [search, setSearch] = useState("");
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchId = useId();
 
@@ -42,19 +53,26 @@ export function LanguageSelector({
       })
     : allLocales;
 
-  // Close on outside click for desktop popover
+  const handleSelectLocale = (targetCode: Locale) => {
+    persistLocale(targetCode);
+    setOpen(false);
+  };
+
+  // Close on outside click for desktop popover & mobile drawer backdrop
   useEffect(() => {
     if (!open) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (dropdownRef.current && dropdownRef.current.contains(target)) return;
+      if (modalRef.current && modalRef.current.contains(target)) return;
+      setOpen(false);
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [open]);
 
   // Close on Escape & focus search
@@ -167,7 +185,7 @@ export function LanguageSelector({
                     key={item.code}
                     href={counterpartLocaleHref(pathname, item.code)}
                     hrefLang={item.code}
-                    onClick={() => setOpen(false)}
+                    onClick={() => handleSelectLocale(item.code)}
                     className={`flex items-center justify-between rounded-xl px-2.5 py-2 text-xs transition-colors ${
                       isActive
                         ? "bg-mark/15 font-semibold text-mark-light"
@@ -218,6 +236,7 @@ export function LanguageSelector({
 
               {/* Bottom Sheet Drawer */}
               <div
+                ref={modalRef}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Choose Language"
@@ -283,7 +302,7 @@ export function LanguageSelector({
                           key={item.code}
                           href={counterpartLocaleHref(pathname, item.code)}
                           hrefLang={item.code}
-                          onClick={() => setOpen(false)}
+                          onClick={() => handleSelectLocale(item.code)}
                           className={`flex min-h-[48px] items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-colors ${
                             isActive
                               ? "bg-mark/15 font-semibold text-mark-light border border-mark/30"
