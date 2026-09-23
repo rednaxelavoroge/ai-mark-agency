@@ -15,8 +15,8 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           {/* Col 1: Brand Info */}
           <div>
-            <Link href={navHref(locale, "/")} className="inline-flex items-center">
-              <BrandLogo className="h-8 w-auto" />
+            <Link href={navHref(locale, "/")} className="inline-flex max-w-full items-center">
+              <BrandLogo className="h-11 sm:h-14" />
             </Link>
             <p className="mt-3 text-xs font-mono tracking-widest text-mark uppercase">
               AI-Native Venture &amp; Marketing Company
@@ -128,7 +128,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row text-xs text-muted">
-          <p>© {year} AI Mark. {isRu ? "Все права защищены." : "All rights reserved."}</p>
+          <p>© {year} AI MARK. {isRu ? "Все права защищены." : "All rights reserved."}</p>
           <div className="flex items-center gap-4">
             <span>{isRu ? "От идеи до работающего бизнеса" : "From Idea to Business"}</span>
             <span>·</span>

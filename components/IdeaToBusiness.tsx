@@ -17,7 +17,7 @@ type Stage = {
   artifact: string;
 };
 
-const COPY: Record<Locale, { eyebrow: string; title: string; lead: string; stages: Stage[] }> = {
+const COPY: Record<string, { eyebrow: string; title: string; lead: string; stages: Stage[] }> = {
   ru: {
     eyebrow: "Сквозной контур",
     title: "Как идея становится работающим бизнесом.",
@@ -131,7 +131,7 @@ const COPY: Record<Locale, { eyebrow: string; title: string; lead: string; stage
 };
 
 /** Plain-language description of what each centre artifact represents. */
-const ARTIFACT_CAPTION: Record<Locale, Record<string, string>> = {
+const ARTIFACT_CAPTION: Record<string, Record<string, string>> = {
   ru: {
     seed: "Вход: идея, действующий бизнес или объём капитала.",
     bars: "Аналитика рынка: спрос, конкуренты и юнит-экономика.",
@@ -168,7 +168,7 @@ function nodePos(i: number, total: number) {
   };
 }
 
-const ARTIFACT_LABEL: Record<Locale, Record<string, string>> = {
+const ARTIFACT_LABEL: Record<string, Record<string, string>> = {
   ru: {
     bars: "спрос · конкуренты",
     product: "кабинеты · расчёты",
@@ -239,7 +239,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
     return (
       <div className={base}>
         <div className="text-center">
-          <p className="font-display text-2xl font-semibold text-paper">AI Mark</p>
+          <p className="font-display text-2xl font-semibold text-paper">AI MARK</p>
           <p className="mt-1 font-mono text-[9px] tracking-widest uppercase opacity-80">
             {locale === "ru" ? "система айдентики" : "identity system"}
           </p>

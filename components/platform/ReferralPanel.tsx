@@ -45,7 +45,7 @@ export function ReferralPanel({
         Visits through your link are recorded server-side and attribute a
         customer lead for {ATTRIBUTION_WINDOW_LABEL}. A partner who signs up
         through it is recorded as your referral. Sponsor relationships are set
-        by AI Mark from the referral link only — never from your account, and
+        by AI MARK from the referral link only — never from your account, and
         never editable from the client.
       </p>
 

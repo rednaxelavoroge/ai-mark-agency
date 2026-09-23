@@ -1,16 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { Copy } from "@/content/copy";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { counterpartLocaleHref, navHref, type Locale } from "@/lib/site";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { navHref, type Locale } from "@/lib/site";
 
 export function Header({ locale, t }: { locale: Locale; t: Copy }) {
-  const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef(0);
@@ -39,12 +38,16 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           : "border-transparent bg-ink/70"
       }`}
     >
+      {/* At 320px the row is genuinely tight, so the plate steps down to a
+          20px lockup there and back up at 360px. The right-hand controls keep
+          their own size: the brand plate is never squeezed into a letterboxed
+          version of the artwork, and the header never overlaps itself. */}
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <Link
           href={navHref(locale, "/")}
           className="group flex min-w-0 shrink items-center"
         >
-          <BrandLogo className="h-6 w-auto transition-transform duration-300 group-hover:scale-[1.03] sm:h-7 lg:h-8" />
+          <BrandLogo className="h-5 shrink min-[360px]:h-6 sm:h-8 lg:h-9 xl:h-10" />
         </Link>
         <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
           {t.nav.items.map((item) =>
@@ -68,26 +71,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
         </nav>
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
-          <div className="flex overflow-hidden rounded-full border border-line text-xs">
-            <Link
-              href={counterpartLocaleHref(pathname, "en")}
-              hrefLang="en"
-              className={`px-2.5 py-1 ${
-                locale === "en" ? "bg-paper text-ink" : "text-muted hover:text-paper"
-              }`}
-            >
-              {t.nav.langEn}
-            </Link>
-            <Link
-              href={counterpartLocaleHref(pathname, "ru")}
-              hrefLang="ru"
-              className={`px-2.5 py-1 ${
-                locale === "ru" ? "bg-paper text-ink" : "text-muted hover:text-paper"
-              }`}
-            >
-              {t.nav.langRu}
-            </Link>
-          </div>
+          <LanguageSelector locale={locale} />
           <ContactCta className="hidden rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:inline-flex sm:px-4 sm:text-sm">
             {t.nav.cta}
           </ContactCta>
@@ -125,6 +109,10 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
                 )}
               </li>
             ))}
+            <li className="pt-2 border-t border-line flex items-center justify-between px-2">
+              <span className="text-xs text-muted">Language</span>
+              <LanguageSelector locale={locale} />
+            </li>
             <li>
               <ContactCta
                 className="mt-2 block w-full rounded-full bg-mark px-4 py-2.5 text-center text-sm font-semibold text-mark-ink"

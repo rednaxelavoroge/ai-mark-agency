@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { LiveDot, LiveNumber, LiveType } from "./Live";
 
 /**
- * AI Mark proprietary product-UI mockups.
+ * AI MARK proprietary product-UI mockups.
  *
  * These are rendered entirely in HTML/CSS — no borrowed screenshots — so the
  * visuals stay on-brand and free of any third-party branding. They are plain

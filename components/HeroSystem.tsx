@@ -83,7 +83,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
         ? "Встраиваем собственные AI-продукты: автономный SMM (AIME), мультиканальный инбокс продаж и расчётный движок Showroom AI."
         : "Deploying proprietary AI products: autonomous SMM (AIME), omnichannel sales AI assistant, and Showroom AI specification engine.",
       uiSnippet: {
-        title: isRu ? "AI Mark Autonomous Mesh" : "AI Mark Autonomous Mesh",
+        title: isRu ? "AI MARK Autonomous Mesh" : "AI MARK Autonomous Mesh",
         tag: isRu ? "Собственный SaaS" : "Proprietary SaaS",
         lines: [
           isRu ? "✓ AIME: Автономный контент Meta + апрув в Telegram" : "✓ AIME: Autonomous Meta posting + TG approval",

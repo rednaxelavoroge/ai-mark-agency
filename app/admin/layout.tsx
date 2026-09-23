@@ -9,7 +9,7 @@ import { requireUser } from "@/lib/auth/dal";
  * dashboard rather than shown an admin shell.
  */
 export const metadata: Metadata = {
-  title: { default: "Admin", template: "%s · AI Mark Admin" },
+  title: { default: "Admin", template: "%s · AI MARK Admin" },
   robots: { index: false, follow: false },
 };
 

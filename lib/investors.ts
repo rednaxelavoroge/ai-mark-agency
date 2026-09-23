@@ -20,7 +20,9 @@ export type InvestorProposal = {
 const CONTENT_DIR = path.join(process.cwd(), "content", "investors");
 
 export function investorProposalFile(locale: Locale) {
-  return path.join(CONTENT_DIR, `proposal.${locale}.md`);
+  const target = path.join(CONTENT_DIR, `proposal.${locale}.md`);
+  if (fs.existsSync(target)) return target;
+  return path.join(CONTENT_DIR, "proposal.en.md");
 }
 
 /** Raw Markdown source — used by the download route and by the page. */

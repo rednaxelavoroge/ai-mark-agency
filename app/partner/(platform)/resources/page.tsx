@@ -20,7 +20,7 @@ export default async function PartnerResourcesPage() {
       <PageHeader
         eyebrow={"Partner Platform"}
         title={"Resources"}
-        lead={"Everything you need to represent AI Mark well."}
+        lead={"Everything you need to represent AI MARK well."}
       />
       <PlaceholderPanel
         summary={"The enablement library arrives with the partner programme rollout. Until then, the public product pages are the accurate source: pricing and positioning there always match the live offering."}

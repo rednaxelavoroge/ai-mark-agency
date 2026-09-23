@@ -1,10 +1,10 @@
 import { readInvestorProposalSource } from "@/lib/investors";
-import { isLocale, type Locale } from "@/lib/site";
+import { isLocale, site, type Locale } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ru" }];
+  return site.locales.map((locale) => ({ locale }));
 }
 
 /** Serves the Markdown source of the investment proposal as a download. */

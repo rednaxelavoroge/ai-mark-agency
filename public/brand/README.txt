@@ -1,66 +1,82 @@
 AI MARK — web brand assets
 ==========================
 
-Source: the approved "AI MARK — logo package" (symbol: AM Loop; palette:
-amber/orange + graphite). The AM Loop geometry, its proportions and the
-approved coordinates are unchanged in every file here.
+Approved artwork (single source of truth)
+-----------------------------------------
+The client-approved AI MARK lockup is the PNG delivered on 2026-09-22:
 
-Files
------
-ai-mark-logo.svg                 primary horizontal lockup — AM Loop + AI MARK +
-                                 descriptor. Tight crop, transparent, dark ink
-                                 for light surfaces. Use at large sizes.
-ai-mark-logo-on-dark.svg         same lockup, light ink, transparent — for dark
-                                 surfaces.
-ai-mark-logo-compact.svg         AM Loop + AI MARK wordmark, no descriptor.
-                                 Site header / footer lockup.
-ai-mark-logo-compact-on-dark.svg same, light ink.
-ai-mark-symbol.svg               standalone AM Loop mark, transparent.
-ai-mark-symbol-on-dark.svg       same mark with a light graphite stroke so the
-                                 middle of the loop still reads on dark.
-ai-mark-icon.svg                 square app-icon tile: AM Loop on ivory, so
-                                 both strokes survive at 16px.
-ai-mark-logo-card.svg            the dark card lockup exactly as delivered
-                                 (opaque #111827 plate) — for documents,
-                                 slide decks and social where a plate is wanted.
+  ai-mark-logo-master.png   the delivered file, byte-for-byte (2172x724).
+                            Source for every other asset in this folder.
+                            Not referenced by the UI.
 
-These files are derived, not hand-edited. Differences from the delivered
-package, and why:
+Production assets used by the site
+----------------------------------
+  ai-mark-logo.png          the delivered artwork, cropped tight to its ink
+                            bounds and re-padded evenly (1844x327).
+                            Mark + "AI MARK" wordmark + the
+                            "AI-NATIVE VENTURE & MARKETING" descriptor.
+                            Rendered by components/BrandLogo.tsx from 640px up
+                            (header, footer, auth screens, Partner Platform).
+  ai-mark-logo-compact.png  the same crop with only the descriptor band
+                            removed (1844x261). Used below 640px, where the
+                            descriptor would be unreadable microtext.
+  ai-mark-mark.png          the AM mark alone, same artwork, same padding unit
+                            (634x327). Source for the app icon set.
 
-1. Wordmark converted to outlines. The package draws the wordmark as live
-   <text font-family="Inter, Arial, Helvetica">. Inter is not installed
-   everywhere, so the logo would silently fall back to a different grotesque.
-   The package README sanctions outlining; the outlines were generated from
-   Inter's variable font at the approved sizes and letter-spacing
-   (wght 800 / 92 / -4 for the wordmark, wght 500 / 21 / +5.2 for the
-   descriptor). Layout is otherwise identical.
+Nothing in this folder is redrawn, recoloured, re-typeset or otherwise
+re-created: every file above is a crop of the delivered PNG. There is no
+light-ink or dark-ink variant, because the approved artwork is one artefact.
 
-2. Tight crop. The delivered artboard is 1120x230 but the ink stops at x≈905,
-   leaving ~19% dead space on the right that would misalign the lockup in any
-   layout. The web lockups are cropped to their ink bounds (padded to whole
-   units so <img width height> can mirror the viewBox exactly).
-   ai-mark-logo-card.svg keeps the original 1120x230 artboard.
+App icons (rasterised from ai-mark-mark.png)
+--------------------------------------------
+  app/icon.png              512x512, AM mark centred on the logo's own light
+                            plate tone (#FAF8F5).
+  app/apple-icon.png        180x180, same tile.
+  app/favicon.ico           multi-resolution 16/32/48/64 from the same tile.
 
-3. Dark-surface variants. The package ships one dark version with an opaque
-   plate. A plate is wrong for a sticky header, so transparent light-ink
-   variants were added. As in the delivered dark version, the loop keeps its
-   graphite stroke; on very dark surfaces that segment is deliberately subtle.
-
-Where they are used
--------------------
-- components/BrandLogo.tsx renders the compact lockup in the header and footer
-  and swaps ink off `[data-theme]` (see app/globals.css, `.brand-logo`).
-- app/icon.svg, app/favicon.ico (16/32/48) and app/apple-icon.png (180, opaque
-  and square for iOS) are all rasterised from ai-mark-icon.svg. The apple icon
-  is the same artwork with the tile bled to the edges.
+The previous app/icon.svg was removed rather than kept: the Next.js file
+convention would have kept emitting it alongside the new icons, putting two
+different AI MARK marks in the same tab. See "Superseded files" below.
 
 Link previews (Open Graph / Twitter)
 ------------------------------------
-public/og/ai-mark-preview-en.jpg and ai-mark-preview-ru.jpg are the client's
-supplied 1734x907 composites, scaled to cover 1200x630 and re-encoded as JPEG
-q90 (168 KB / 173 KB, from 1.7 MB PNG). Text stays crisp at that setting.
-They are served per locale by app/[locale]/opengraph-image.tsx, which every
-route under /[locale] inherits; app/[locale]/twitter-image.tsx reuses it.
-Pages that build their own `openGraph` object must also carry the image
-explicitly — Next merges metadata segments shallowly, so the nested product and
-investors pages would otherwise drop it. lib/social.ts exists for that.
+public/og/ai-mark-preview-en.jpg and ai-mark-preview-ru.jpg are 1200x630
+composites rebuilt from this same approved artwork by
+`scripts/build-og-previews.py` (lockup + locale tagline + ai-mark.agency). Re-run
+that script after any change to the master PNG.
+
+The client's earlier 1734x907 composites — which carried the previous AM Loop
+mark and no longer matched the site — are archived unsent in
+`public/og/_archive/` with their own README; nothing references them.
+
+They are served per locale by
+app/[locale]/opengraph-image.tsx, which every route under /[locale] inherits;
+app/[locale]/twitter-image.tsx reuses it. Pages that build their own
+`openGraph` object must also carry the image explicitly — Next merges metadata
+segments shallowly, so the nested product and investors pages would otherwise
+drop it. lib/social.ts exists for that.
+
+Superseded files (kept, unused)
+-------------------------------
+The SVG package below was generated in an earlier pass and does not match the
+approved PNG: its AM Loop has different geometry and its wordmark is outlined
+from Inter rather than the approved lettering. No public UI imports any of it.
+It is left on disk deliberately so the change is reviewable and revertible;
+delete the set when the PNG rollout is signed off.
+
+  ai-mark-logo.svg, ai-mark-logo-on-dark.svg
+  ai-mark-logo-compact.svg, ai-mark-logo-compact-on-dark.svg
+  ai-mark-symbol.svg, ai-mark-symbol-on-dark.svg
+  ai-mark-icon.svg, ai-mark-logo-card.svg
+
+Where the assets are used
+-------------------------
+- components/BrandLogo.tsx renders the PNG inside a light surface
+  container (`.brand-plate` / `.brand-logo` in app/globals.css). The plate is
+  what keeps the approved ink readable on the dark theme, so the artwork is
+  never recoloured per theme. A <picture> serves the compact crop below 640px
+  and the full lockup from 640px. The CSS aspect-ratio switches with that
+  breakpoint: the <img> width/height attributes describe only the compact
+  fallback, and must not be left to size the full lockup.
+- Call sites set only a height; the width follows the artwork's aspect ratio,
+  so the lockup is never stretched or cropped.

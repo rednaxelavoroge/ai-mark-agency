@@ -15,7 +15,7 @@ export const packages: AgencyPackage[] = [
 ];
 
 /**
- * Proprietary AI products that AI Mark provisions and operates for clients.
+ * Proprietary AI products that AI MARK provisions and operates for clients.
  * Detail pages are hosted natively on this domain.
  */
 export const products: {

@@ -21,7 +21,7 @@ import {
  *   1. validate the code SERVER-SIDE against `partner_profiles`;
  *   2. record a referral click (partner, landing path, UTM source/medium/campaign);
  *   3. set the signed, HTTP-only, same-site attribution cookie;
- *   4. redirect to the intended AI Mark landing page.
+ *   4. redirect to the intended AI MARK landing page.
  *
  * The URL never names an internal id. Its only parameter is the public
  * referral code — no `partner_id`, no `user_id`, no session token — and the

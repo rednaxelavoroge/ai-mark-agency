@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
-import { listPublicMessengers } from "@/lib/contact";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
@@ -17,7 +16,7 @@ import { PartnerNetworkVisual } from "@/components/PartnerNetworkVisual";
 import { InvestorsSection } from "@/components/InvestorsSection";
 import { getCopy } from "@/content/copy";
 import { packages } from "@/content/packages";
-import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
+import { absoluteUrl, getSiteTagline, isLocale, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -28,30 +27,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = getCopy(locale);
   const url = absoluteUrl(locale);
 
+  const tagline = getSiteTagline(locale);
+  const pageTitle = `${site.name} — ${tagline}`;
+
+  const langAlternates: Record<string, string> = {
+    "x-default": site.url,
+  };
+  for (const loc of site.locales) {
+    langAlternates[loc] = absoluteUrl(loc);
+  }
+
   return {
-    title: { absolute: `${site.name} — ${locale === "ru" ? site.taglineRu : site.taglineEn}` },
+    title: { absolute: pageTitle },
     description: t.meta.description,
     keywords: t.meta.keywords,
     alternates: {
       canonical: url,
-      languages: {
-        en: site.url,
-        ru: `${site.url}/ru`,
-        "x-default": site.url,
-      },
+      languages: langAlternates,
     },
     openGraph: {
       type: "website",
       url,
       siteName: site.name,
-      title: `${site.name} — ${locale === "ru" ? site.taglineRu : site.taglineEn}`,
+      title: pageTitle,
       description: t.meta.description,
-      locale: locale === "ru" ? "ru_RU" : "en_US",
-      alternateLocale: locale === "ru" ? ["en_US"] : ["ru_RU"],
+      locale,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${site.name} — ${locale === "ru" ? site.taglineRu : site.taglineEn}`,
+      title: pageTitle,
       description: t.meta.description,
     },
   };
@@ -383,21 +387,6 @@ export default async function HomePage({ params }: Props) {
             <ContactCta className="inline-flex items-center rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light">
               {isRu ? "Открыть чат" : "Open chat"} →
             </ContactCta>
-            <ul className="space-y-3 pt-2">
-              {listPublicMessengers().map((row) => (
-                <li key={row.key}>
-                  <a
-                    href={row.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-paper hover:text-mark transition-colors"
-                  >
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-muted">{row.label}</span>
-                    <span aria-hidden>→</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
           <aside className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 text-sm text-muted space-y-6">
             <div>
@@ -405,7 +394,7 @@ export default async function HomePage({ params }: Props) {
                 {isRu ? "Прямой контакт" : "Direct Engagement"}
               </span>
               <p className="mt-1 font-display text-xl font-semibold text-paper">
-                AI Mark
+                AI MARK
               </p>
               <p className="mt-1 text-xs font-mono text-mark uppercase">
                 AI-Native Venture &amp; Marketing Company

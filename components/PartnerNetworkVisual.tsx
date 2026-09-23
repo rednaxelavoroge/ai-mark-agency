@@ -10,7 +10,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "regional",
           title: "Региональные партнёры",
           tag: "Локализация",
-          desc: "Развивают присутствие AI Mark на локальных рынках, адаптируют продукты под региональные требования и сопровождают местных клиентов.",
+          desc: "Развивают присутствие AI MARK на локальных рынках, адаптируют продукты под региональные требования и сопровождают местных клиентов.",
           roles: ["Лидогенерация на месте", "Локальные договоры", "Сопровождение внедрений"],
         },
         {
@@ -31,7 +31,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "referral",
           title: "Реферальные партнёры",
           tag: "Интродукция",
-          desc: "Бизнес-консультанты, интеграторы и брокеры, рекомендующие комплексные решения AI Mark своим корпоративным клиентам.",
+          desc: "Бизнес-консультанты, интеграторы и брокеры, рекомендующие комплексные решения AI MARK своим корпоративным клиентам.",
           roles: ["Прямое интро", "Комиссия за сделку", "Совместные проекты"],
         },
       ]
@@ -40,7 +40,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "regional",
           title: "Regional Partners",
           tag: "Territory",
-          desc: "Expanding AI Mark presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
+          desc: "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
           roles: ["Local business development", "Territory agreements", "Customer success"],
         },
         {
@@ -61,7 +61,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "referral",
           title: "Referral & Strategic Introducers",
           tag: "Network",
-          desc: "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI Mark.",
+          desc: "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
           roles: ["Executive introductions", "Success-based commission", "Joint initiatives"],
         },
       ];
@@ -70,13 +70,13 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
     ? [
         { label: "Клиент / Бизнес", sub: "Входной запрос", type: "input" },
         { label: "Партнёрский контур", sub: "Локальный контакт & онбординг", type: "node" },
-        { label: "AI Mark Core", sub: "Продукты, AI, продакшн", type: "core" },
+        { label: "AI MARK Core", sub: "Продукты, AI, продакшн", type: "core" },
         { label: "Результат & Рост", sub: "Запущенный бизнес / выручка", type: "output" },
       ]
     : [
         { label: "Client Enterprise", sub: "Opportunity initiation", type: "input" },
         { label: "Partner Node", sub: "Territory / Domain interface", type: "node" },
-        { label: "AI Mark Platform", sub: "Products, AI core, production", type: "core" },
+        { label: "AI MARK Platform", sub: "Products, AI core, production", type: "core" },
         { label: "Operating Growth", sub: "Scaled revenue & ops", type: "output" },
       ];
 
@@ -184,12 +184,12 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
               {isRu ? "Партнёрская программа" : "Partner Program"}
             </p>
             <h3 className="mt-3 font-display text-lg font-semibold leading-snug text-paper sm:text-xl">
-              {isRu ? "Партнёрская программа AI Mark" : "The AI Mark Partner Program"}
+              {isRu ? "Партнёрская программа AI MARK" : "The AI MARK Partner Program"}
             </h3>
             <p className="mt-3 text-xs leading-relaxed text-muted sm:text-sm">
               {isRu
-                ? "Продавайте AI-продукты и цифровые решения AI Mark и получайте комиссию с квалифицированных клиентских продаж. Стройте собственную партнёрскую сеть и развивайте свой рынок вместе с AI Mark."
-                : "Sell AI Mark products and digital solutions, and earn commission on qualified customer sales. Build your own partner network and develop your market together with AI Mark."}
+                ? "Продавайте AI-продукты и цифровые решения AI MARK и получайте комиссию с квалифицированных клиентских продаж. Стройте собственную партнёрскую сеть и развивайте свой рынок вместе с AI MARK."
+                : "Sell AI MARK products and digital solutions, and earn commission on qualified customer sales. Build your own partner network and develop your market together with AI MARK."}
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-2">
               {(isRu

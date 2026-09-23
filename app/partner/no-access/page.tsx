@@ -28,7 +28,7 @@ export default async function PartnerNoAccessPage() {
         lead="Your account is signed in, but it has no partner record attached yet."
         footer={
           <p className="text-xs text-muted">
-            Think this is wrong? Reply to any AI Mark email and we will link your
+            Think this is wrong? Reply to any AI MARK email and we will link your
             partner record.
           </p>
         }
@@ -37,7 +37,7 @@ export default async function PartnerNoAccessPage() {
           <p className="text-sm text-muted">
             Signed in as{" "}
             <span className="text-paper">{auth?.email ?? "an unknown account"}</span>.
-            Partner records are issued by AI Mark; they are never created by the
+            Partner records are issued by AI MARK; they are never created by the
             account owner.
           </p>
 

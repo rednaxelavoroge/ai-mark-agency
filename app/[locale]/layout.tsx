@@ -8,7 +8,7 @@ import { MotionRoot, ScrollProgress } from "@/components/Motion";
 import { PageTransition } from "@/components/PageTransition";
 import { RouteCurtain } from "@/components/RouteCurtain";
 import { ContactLauncher } from "@/components/ContactLauncher";
-import { isLocale, site, type Locale } from "@/lib/site";
+import { isLocale, isRtlLocale, site, type Locale } from "@/lib/site";
 
 export function generateStaticParams() {
   return site.locales.map((locale) => ({ locale }));
@@ -27,9 +27,10 @@ export default async function LocaleLayout({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getCopy(locale);
+  const isRtl = isRtlLocale(locale);
 
   return (
-    <div lang={locale} className="flex min-h-full flex-col">
+    <div lang={locale} dir={isRtl ? "rtl" : "ltr"} className="flex min-h-full flex-col">
       <HtmlLang locale={locale} />
       <JsonLd locale={locale} />
       <noscript>

@@ -64,7 +64,7 @@ export default async function ProductsHubPage({ params }: Props) {
         <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
           <span className="inline-flex items-center gap-2 rounded-full bg-mark px-4 py-2 font-mono text-[11px] font-semibold text-mark-ink">
             <span className="relative h-1.5 w-1.5 rounded-full bg-mark-ink text-mark-ink pulse-ring" />
-            AI Mark Core
+            AI MARK Core
           </span>
           {(["aime", "assistant", "showroom"] as const).map((id, i) => (
             <span key={id} className="flex items-center gap-3">

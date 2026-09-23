@@ -1,5 +1,5 @@
 /**
- * Shared class strings for AI Mark's functional surfaces (the Partner
+ * Shared class strings for AI MARK's functional surfaces (the Partner
  * Platform and the auth screens).
  *
  * These build on the primitives already used by the public site (ContactForm's
@@ -22,6 +22,17 @@ export const fieldClass =
 export const primaryButtonClass =
   "inline-flex items-center justify-center gap-2 rounded-full bg-mark px-5 py-3 " +
   "text-sm font-semibold text-mark-ink transition-colors hover:bg-mark-light " +
+  "disabled:cursor-not-allowed disabled:opacity-60";
+
+/**
+ * Full-width alternative to the primary action — the magic-link submit and the
+ * Google button. Quieter than `primaryButtonClass` so "Email + password" stays
+ * the dominant way in, but still a real button rather than a link.
+ */
+export const outlineButtonClass =
+  "inline-flex w-full items-center justify-center gap-2 rounded-full " +
+  "border border-line-strong px-5 py-3 text-sm font-medium text-paper " +
+  "transition-colors hover:border-mark hover:text-mark " +
   "disabled:cursor-not-allowed disabled:opacity-60";
 
 export const secondaryButtonClass =

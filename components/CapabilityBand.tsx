@@ -8,7 +8,7 @@ import type { Locale } from "@/lib/site";
  * and outlined letterforms. Purely decorative copy — it names what the studio
  * builds and never claims a client, a metric or a partnership.
  */
-const ROWS: Record<Locale, string[][]> = {
+const ROWS: Record<string, string[][]> = {
   ru: [
     ["AI-агенты", "SaaS-платформы", "Кабинеты", "E-commerce", "Маркетплейсы"],
     ["RAG-базы знаний", "CRM-контуры", "Аналитика", "Автоматизация", "Дизайн-системы"],
@@ -45,7 +45,7 @@ function Row({ words, reverse = false }: { words: string[]; reverse?: boolean })
 }
 
 export function CapabilityBand({ locale }: { locale: Locale }) {
-  const rows = ROWS[locale];
+  const rows = ROWS[locale] || ROWS.en;
   return (
     <section
       aria-label={locale === "ru" ? "Что мы строим" : "What we build"}

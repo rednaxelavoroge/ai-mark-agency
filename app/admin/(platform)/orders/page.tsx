@@ -20,7 +20,7 @@ export default async function AdminOrdersPage() {
       <PageHeader
         eyebrow={"Admin console"}
         title={"Orders"}
-        lead={"Orders across every AI Mark product."}
+        lead={"Orders across every AI MARK product."}
       />
       <PlaceholderPanel
         summary={"There is no order pipeline yet: the public site has no checkout and the products do not report sales back. This screen is reserved for when they do."}

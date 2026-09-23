@@ -148,8 +148,8 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         <div>
           <p className="font-display text-sm font-semibold text-paper">
             {isRu
-              ? "Все продукты функционируют как единая экосистема AI Mark"
-              : "All products operate as an integrated AI Mark ecosystem"}
+              ? "Все продукты функционируют как единая экосистема AI MARK"
+              : "All products operate as an integrated AI MARK ecosystem"}
           </p>
           <p className="text-xs text-muted">
             {isRu

@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/site";
+
 export interface AimePlatform {
   type: "instagram" | "facebook" | "threads" | "tiktok";
   name: string;
@@ -83,10 +85,10 @@ export interface AimeContent {
 }
 
 export const aimeRu: AimeContent = {
-  seoTitle: "AI Marketing Employee | AI-маркетолог 24/7 для Instagram, Facebook, Reels · AI Mark",
+  seoTitle: "AI Marketing Employee | AI-маркетолог 24/7 для Instagram, Facebook, Reels · AI MARK",
   seoDescription:
     "Автономный цифровой AI-маркетолог для бизнеса и агентств: SMM 24/7 в Instagram, Facebook, Threads и Reels. Анализ ниши, генерация контента, согласование в Telegram и постинг через Meta Graph API.",
-  badge: "Собственный AI-продукт · AI Mark",
+  badge: "Собственный AI-продукт · AI MARK",
   titleA: "AI Marketing",
   titleB: "Employee",
   tagline: "AI-маркетолог вместо SMM-менеджера · Не шедулер вроде Buffer",
@@ -124,7 +126,7 @@ export const aimeRu: AimeContent = {
     },
     {
       id: "aime",
-      name: "AIME (AI Mark)",
+      name: "AIME (AI MARK)",
       tag: "Цифровой сотрудник",
       featured: true,
       desc: "Полный цикл: исследование рынка → контент-план → визуалы и Reels → апрув в Telegram → автопостинг по API → анализ охватов.",
@@ -339,10 +341,10 @@ export const aimeRu: AimeContent = {
 };
 
 export const aimeEn: AimeContent = {
-  seoTitle: "AI Marketing Employee | 24/7 Autonomous SMM for Instagram, Facebook, Reels · AI Mark",
+  seoTitle: "AI Marketing Employee | 24/7 Autonomous SMM for Instagram, Facebook, Reels · AI MARK",
   seoDescription:
     "Autonomous AI marketing employee for businesses and agencies: 24/7 SMM across Instagram, Facebook, Threads, and Reels. Competitor analysis, creative production, Telegram approval, and Meta Graph API posting.",
-  badge: "Proprietary AI Platform · AI Mark",
+  badge: "Proprietary AI Platform · AI MARK",
   titleA: "AI Marketing",
   titleB: "Employee",
   tagline: "AI Marketer replacing manual SMM · Not an empty scheduler like Buffer",
@@ -380,7 +382,7 @@ export const aimeEn: AimeContent = {
     },
     {
       id: "aime",
-      name: "AIME (AI Mark)",
+      name: "AIME (AI MARK)",
       tag: "Digital Employee",
       featured: true,
       desc: "Autonomous workflow: competitor intelligence → editorial calendar → visuals and Reels scripts → Telegram approval → API posting → analytics.",
@@ -594,6 +596,6 @@ export const aimeEn: AimeContent = {
   ],
 };
 
-export function getAimeCopy(locale: "ru" | "en"): AimeContent {
+export function getAimeCopy(locale: Locale): AimeContent {
   return locale === "ru" ? aimeRu : aimeEn;
 }

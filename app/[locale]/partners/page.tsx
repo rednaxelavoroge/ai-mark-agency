@@ -72,13 +72,13 @@ type PageCopy = {
   ctaButton: string;
 };
 
-const pageCopy: Record<Locale, PageCopy> = {
+const pageCopy: Record<string, PageCopy> = {
   en: {
-    metaTitle: "AI Mark Partner Network — Build Your Market",
-    metaDescription: "Sell AI products and digital solutions with AI Mark. Build customer relationships, develop new markets and grow through a structured partner network.",
-    eyebrow: "AI Mark Partner Network",
+    metaTitle: "AI MARK Partner Network — Build Your Market",
+    metaDescription: "Sell AI products and digital solutions with AI MARK. Build customer relationships, develop new markets and grow through a structured partner network.",
+    eyebrow: "AI MARK Partner Network",
     title: "Build the AI market in your country.",
-    lead: "Sell real AI products and digital solutions to businesses in your market. AI Mark provides the technology, product delivery and partner infrastructure. You build the relationships and the sales.",
+    lead: "Sell real AI products and digital solutions to businesses in your market. AI MARK provides the technology, product delivery and partner infrastructure. You build the relationships and the sales.",
     note: "Free to join · No inventory · No mandatory purchases · Global market",
     primary: "Become a Partner",
     secondary: "See how it works",
@@ -94,7 +94,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     marketCore: "Your market is not one product. It is every business you can reach.",
     productEyebrow: "Product portfolio",
     productTitle: "Four ways to create value for a customer.",
-    productLead: "A partner can match the customer's business problem to the right AI Mark solution instead of selling one product to one niche.",
+    productLead: "A partner can match the customer's business problem to the right AI MARK solution instead of selling one product to one niche.",
     products: [
       { name: "AI Marketing Employee", type: "RECURRING / AI PRODUCT", body: "AI-native marketing: research, strategy, content, creative production, approval, publishing and optimization.", revenue: "Subscription opportunity", variant: "aime", href: PRODUCT_PATHS.aime },
       { name: "AI Business Assistant", type: "RECURRING / AI PRODUCT", body: "A sales and support inbox that works from a business knowledge base, qualifies requests and hands off to people when needed.", revenue: "Subscription opportunity", variant: "assistant", href: PRODUCT_PATHS.assistant },
@@ -104,14 +104,14 @@ const pageCopy: Record<Locale, PageCopy> = {
     productCta: "Explore product",
     productionCta: "Digital Production",
     howEyebrow: "How it works",
-    modelTitle: "You sell. AI Mark delivers.",
-    modelLead: "The partner is the market interface. AI Mark stays responsible for the agreed product, technology and delivery layer.",
+    modelTitle: "You sell. AI MARK delivers.",
+    modelLead: "The partner is the market interface. AI MARK stays responsible for the agreed product, technology and delivery layer.",
     steps: [
       { n: "01", title: "Find a business", body: "Use your network, local market knowledge or existing customer base." },
       { n: "02", title: "Match the problem", body: "Choose the product or service that fits the business need." },
-      { n: "03", title: "Introduce AI Mark", body: "Use a referral link, demo, presentation or direct introduction." },
-      { n: "04", title: "Close the sale", body: "The customer becomes an AI Mark customer through the tracked partner channel." },
-      { n: "05", title: "AI Mark delivers", body: "Setup, implementation and service execution stay on the AI Mark side." },
+      { n: "03", title: "Introduce AI MARK", body: "Use a referral link, demo, presentation or direct introduction." },
+      { n: "04", title: "Close the sale", body: "The customer becomes an AI MARK customer through the tracked partner channel." },
+      { n: "05", title: "AI MARK delivers", body: "Setup, implementation and service execution stay on the AI MARK side." },
       { n: "06", title: "Build your market", body: "Repeat, grow your customer base and develop an eligible partner network." },
     ],
     networkEyebrow: "Partner network",
@@ -127,10 +127,10 @@ const pageCopy: Record<Locale, PageCopy> = {
     commissionLabel: "Commission",
     commissionNote: "Rates vary by product and the active Partner Program. Compensation is tied to qualifying customer revenue, not partner registration.",
     statusEyebrow: "Partner status",
-    statusTitle: "Four ways to grow with AI Mark.",
+    statusTitle: "Four ways to grow with AI MARK.",
     statusLead: "Status reflects commercial activity and relationship depth. It is a business status, not a paid rank.",
     statuses: [
-      { tag: "START", title: "Partner", body: "Sell AI Mark products, use your referral link, access sales resources and build your first customers." },
+      { tag: "START", title: "Partner", body: "Sell AI MARK products, use your referral link, access sales resources and build your first customers." },
       { tag: "ACTIVE SALES", title: "Growth Partner", body: "A consistently active seller with a growing customer portfolio and developing partner network." },
       { tag: "MARKET", title: "Regional Partner", body: "Develop a country or region through local relationships, sales activity and coordinated market growth." },
       { tag: "ENTERPRISE", title: "Strategic Partner", body: "Agencies, distributors, sales organizations and larger B2B channels working under individual commercial terms." },
@@ -147,17 +147,17 @@ const pageCopy: Record<Locale, PageCopy> = {
       "Commission and payout tracking",
       "Product knowledge and sales resources",
       "Partner Dashboard",
-      "AI Mark onboarding and support",
+      "AI MARK onboarding and support",
     ],
     globalEyebrow: "Global expansion",
-    globalTitle: "Choose the market. AI Mark provides the technology.",
+    globalTitle: "Choose the market. AI MARK provides the technology.",
     globalLead: "The same core portfolio can be introduced by different partners in different countries and industries. The market is defined by your reach and specialization.",
     global: ["Country and regional business networks", "Industry-specific sales partners", "Agencies and consultants", "Independent B2B sales professionals", "Local AI and digital transformation advisors"],
     faqEyebrow: "Questions",
     faqTitle: "Straight answers before you join.",
     faq: [
-      { q: "Do I have to buy a package to become a partner?", a: "The Partner Program is designed around selling AI Mark products and services, not purchasing a position in the network. Final onboarding rules are defined in the Partner Agreement." },
-      { q: "Do I need to deliver the product myself?", a: "No. The partner focuses on relationships and sales opportunities. AI Mark remains responsible for the agreed product and delivery layer." },
+      { q: "Do I have to buy a package to become a partner?", a: "The Partner Program is designed around selling AI MARK products and services, not purchasing a position in the network. Final onboarding rules are defined in the Partner Agreement." },
+      { q: "Do I need to deliver the product myself?", a: "No. The partner focuses on relationships and sales opportunities. AI MARK remains responsible for the agreed product and delivery layer." },
       { q: "Can I build a team?", a: "Yes. The standard model supports a multi-level partner network linked to eligible customer sales, with a maximum depth of five levels." },
       { q: "Can subscriptions create recurring commissions?", a: "Selected subscription products can generate recurring partner commissions while qualifying customer subscriptions remain active, according to the plan rules." },
       { q: "Can I become a Regional Partner?", a: "Yes. Regional status is intended for partners who demonstrate sustained commercial activity and can systematically develop a local market." },
@@ -165,14 +165,14 @@ const pageCopy: Record<Locale, PageCopy> = {
     ctaEyebrow: "Start",
     ctaTitle: "Your market. Our AI infrastructure.",
     ctaLead: "Join as a partner, choose the market you understand and start with the businesses you can actually reach.",
-    ctaButton: "Become an AI Mark Partner",
+    ctaButton: "Become an AI MARK Partner",
   },
   ru: {
-    metaTitle: "Партнёрская сеть AI Mark — Развивайте свой рынок",
-    metaDescription: "Продавайте AI-продукты и цифровые решения AI Mark. Развивайте клиентскую базу и новые рынки через структурированную партнёрскую сеть.",
-    eyebrow: "Партнёрская сеть AI Mark",
+    metaTitle: "Партнёрская сеть AI MARK — Развивайте свой рынок",
+    metaDescription: "Продавайте AI-продукты и цифровые решения AI MARK. Развивайте клиентскую базу и новые рынки через структурированную партнёрскую сеть.",
+    eyebrow: "Партнёрская сеть AI MARK",
     title: "Создавайте рынок AI в своей стране.",
-    lead: "Продавайте реальные AI-продукты и цифровые решения бизнесу в своём регионе. AI Mark даёт технологию, продукты, поставку и партнёрскую инфраструктуру. Вы строите отношения и продажи.",
+    lead: "Продавайте реальные AI-продукты и цифровые решения бизнесу в своём регионе. AI MARK даёт технологию, продукты, поставку и партнёрскую инфраструктуру. Вы строите отношения и продажи.",
     note: "Бесплатный вход · Без склада · Без обязательных закупок · Международный рынок",
     primary: "Стать партнёром",
     secondary: "Как это работает",
@@ -188,7 +188,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     marketCore: "Ваш рынок — не один продукт. Ваш рынок — это бизнесы, до которых вы можете дойти.",
     productEyebrow: "Портфель продуктов",
     productTitle: "Четыре направления создания ценности для клиента.",
-    productLead: "Партнёр сопоставляет бизнес-задачу клиента с подходящим решением AI Mark, а не продаёт один продукт одной нише.",
+    productLead: "Партнёр сопоставляет бизнес-задачу клиента с подходящим решением AI MARK, а не продаёт один продукт одной нише.",
     products: [
       { name: "AI Marketing Employee", type: "RECURRING / AI-ПРОДУКТ", body: "AI-native маркетинг: исследование, стратегия, контент, креативы, апрув, публикация и оптимизация.", revenue: "Подписочная модель", variant: "aime", href: PRODUCT_PATHS.aime },
       { name: "AI Business Assistant", type: "RECURRING / AI-ПРОДУКТ", body: "Продажный и клиентский inbox с базой знаний, квалификацией запросов и handoff человеку.", revenue: "Подписочная модель", variant: "assistant", href: PRODUCT_PATHS.assistant },
@@ -198,14 +198,14 @@ const pageCopy: Record<Locale, PageCopy> = {
     productCta: "О продукте",
     productionCta: "Цифровое производство",
     howEyebrow: "Как это работает",
-    modelTitle: "Вы продаёте. AI Mark поставляет.",
-    modelLead: "Партнёр работает на стороне рынка. AI Mark отвечает за согласованный продукт, технологию и исполнение.",
+    modelTitle: "Вы продаёте. AI MARK поставляет.",
+    modelLead: "Партнёр работает на стороне рынка. AI MARK отвечает за согласованный продукт, технологию и исполнение.",
     steps: [
       { n: "01", title: "Находите бизнес", body: "Используете свои связи, знание локального рынка или существующую клиентскую базу." },
-      { n: "02", title: "Находите задачу", body: "Подбираете продукт или сервис AI Mark под потребность компании." },
-      { n: "03", title: "Представляете AI Mark", body: "Используете referral-ссылку, демо, презентацию или прямое знакомство." },
-      { n: "04", title: "Закрываете продажу", body: "Клиент становится клиентом AI Mark через отслеживаемый канал партнёра." },
-      { n: "05", title: "AI Mark выполняет", body: "Подключение, внедрение и исполнение согласованного продукта остаются на стороне AI Mark." },
+      { n: "02", title: "Находите задачу", body: "Подбираете продукт или сервис AI MARK под потребность компании." },
+      { n: "03", title: "Представляете AI MARK", body: "Используете referral-ссылку, демо, презентацию или прямое знакомство." },
+      { n: "04", title: "Закрываете продажу", body: "Клиент становится клиентом AI MARK через отслеживаемый канал партнёра." },
+      { n: "05", title: "AI MARK выполняет", body: "Подключение, внедрение и исполнение согласованного продукта остаются на стороне AI MARK." },
       { n: "06", title: "Развиваете рынок", body: "Повторяете процесс, увеличиваете клиентскую базу и строите квалифицированную партнёрскую сеть." },
     ],
     networkEyebrow: "Партнёрская сеть",
@@ -221,10 +221,10 @@ const pageCopy: Record<Locale, PageCopy> = {
     commissionLabel: "Комиссия",
     commissionNote: "Процент зависит от продукта и действующей Partner Program. Вознаграждение возникает из квалифицированной клиентской выручки, а не из регистрации партнёров.",
     statusEyebrow: "Статус партнёра",
-    statusTitle: "Четыре способа расти вместе с AI Mark.",
+    statusTitle: "Четыре способа расти вместе с AI MARK.",
     statusLead: "Статус определяется коммерческой активностью и форматом отношений с компанией. Это бизнес-статус, а не платный ранг.",
     statuses: [
-      { tag: "START", title: "Partner", body: "Продавайте продукты AI Mark, используйте referral-ссылку, материалы и начинайте строить клиентскую базу." },
+      { tag: "START", title: "Partner", body: "Продавайте продукты AI MARK, используйте referral-ссылку, материалы и начинайте строить клиентскую базу." },
       { tag: "ACTIVE SALES", title: "Growth Partner", body: "Активный продавец с растущим портфелем клиентов и развивающейся партнёрской сетью." },
       { tag: "MARKET", title: "Regional Partner", body: "Развивайте страну или регион через локальные связи, продажи и координацию рыночного роста." },
       { tag: "ENTERPRISE", title: "Strategic Partner", body: "Агентства, дистрибьюторы, sales-организации и крупные B2B-каналы на индивидуальных коммерческих условиях." },
@@ -241,17 +241,17 @@ const pageCopy: Record<Locale, PageCopy> = {
       "Трекинг комиссий и выплат",
       "База знаний по продуктам",
       "Partner Dashboard",
-      "Поддержка и онбординг AI Mark",
+      "Поддержка и онбординг AI MARK",
     ],
     globalEyebrow: "Глобальное расширение",
-    globalTitle: "Вы выбираете рынок. AI Mark даёт технологию.",
+    globalTitle: "Вы выбираете рынок. AI MARK даёт технологию.",
     globalLead: "Один и тот же портфель можно продвигать разными партнёрами в разных странах и отраслях. Ваш рынок определяется охватом и специализацией.",
     global: ["Страновые и региональные бизнес-сети", "Отраслевые sales-партнёры", "Агентства и консультанты", "Независимые B2B-продавцы", "Локальные AI и digital transformation консультанты"],
     faqEyebrow: "Вопросы",
     faqTitle: "Прямые ответы до подключения.",
     faq: [
-      { q: "Нужно ли покупать пакет для статуса партнёра?", a: "Программа строится вокруг продаж продуктов и услуг AI Mark, а не покупки позиции в сети. Финальные правила подключения фиксируются в Partner Agreement." },
-      { q: "Нужно ли самому выполнять работу?", a: "Нет. Партнёр в основном строит отношения и продажи. AI Mark отвечает за согласованный продукт и исполнение." },
+      { q: "Нужно ли покупать пакет для статуса партнёра?", a: "Программа строится вокруг продаж продуктов и услуг AI MARK, а не покупки позиции в сети. Финальные правила подключения фиксируются в Partner Agreement." },
+      { q: "Нужно ли самому выполнять работу?", a: "Нет. Партнёр в основном строит отношения и продажи. AI MARK отвечает за согласованный продукт и исполнение." },
       { q: "Можно ли строить команду?", a: "Да. Стандартная модель поддерживает многоуровневую партнёрскую сеть, связанную с продажами клиентам, с максимальной глубиной пять уровней." },
       { q: "Могут ли подписки давать recurring-комиссии?", a: "У отдельных подписочных продуктов могут действовать recurring-комиссии, пока соответствующие подписки клиентов активны, согласно правилам программы." },
       { q: "Можно ли стать Regional Partner?", a: "Да. Такой статус предназначен для партнёров, которые демонстрируют устойчивую коммерческую активность и способны системно развивать локальный рынок." },
@@ -259,7 +259,7 @@ const pageCopy: Record<Locale, PageCopy> = {
     ctaEyebrow: "Старт",
     ctaTitle: "Ваш рынок. Наша AI-инфраструктура.",
     ctaLead: "Подключайтесь как партнёр, выбирайте понятный вам рынок и начинайте с тех компаний, до которых вы реально можете дойти.",
-    ctaButton: "Стать партнёром AI Mark",
+    ctaButton: "Стать партнёром AI MARK",
   },
 };
 
@@ -267,13 +267,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const locale = raw as Locale;
-  const t = pageCopy[locale];
+  const t = pageCopy[locale] || pageCopy.en;
+
+  const langAlternates: Record<string, string> = {};
+  for (const loc of site.locales) {
+    langAlternates[loc] = absoluteUrl(loc, "/partners");
+  }
+
   return {
     title: { absolute: t.metaTitle },
     description: t.metaDescription,
     alternates: {
       canonical: absoluteUrl(locale, "/partners"),
-      languages: { en: absoluteUrl("en", "/partners"), ru: absoluteUrl("ru", "/partners") },
+      languages: langAlternates,
     },
     openGraph: {
       title: t.metaTitle,
@@ -294,7 +300,7 @@ export default async function PartnersPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
-  const t = pageCopy[locale];
+  const t = pageCopy[locale] || pageCopy.en;
 
   return (
     <article>

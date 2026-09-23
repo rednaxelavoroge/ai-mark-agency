@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/site";
+
 export interface ShowroomIndustry {
   id: "furniture" | "automotive" | "retail" | "real-estate" | "services" | "construction";
   name: string;
@@ -61,10 +63,10 @@ export interface ShowroomContent {
 }
 
 export const showroomRu: ShowroomContent = {
-  seoTitle: "Showroom AI | AI-движок расчёта спецификаций, цен и коммерческих предложений · AI Mark",
+  seoTitle: "Showroom AI | AI-движок расчёта спецификаций, цен и коммерческих предложений · AI MARK",
   seoDescription:
     "Универсальный AI-движок для бизнеса со сложными расчётами: мебель, автодилеры, строительство, недвижимость, ритейл и B2B-услуги. Превращает свободный запрос клиента в выверенную спецификацию и готовый PDF-оффер.",
-  badge: "Собственный AI-продукт · AI Mark",
+  badge: "Собственный AI-продукт · AI MARK",
   title: "Showroom AI",
   tagline: "От свободного запроса клиента до точного КП и счёта",
   subtitle:
@@ -308,10 +310,10 @@ export const showroomRu: ShowroomContent = {
 };
 
 export const showroomEn: ShowroomContent = {
-  seoTitle: "Showroom AI | AI Engine for Quotes, Pricing & Commercial Specifications · AI Mark",
+  seoTitle: "Showroom AI | AI Engine for Quotes, Pricing & Commercial Specifications · AI MARK",
   seoDescription:
     "Universal AI calculation and quoting engine for complex business workflows: automotive, furniture, construction, real estate, retail, and B2B services. Converts customer inquiries into verified specifications and ready PDF proposals.",
-  badge: "Proprietary AI Platform · AI Mark",
+  badge: "Proprietary AI Platform · AI MARK",
   title: "Showroom AI",
   tagline: "From free-form customer inquiry to verified spec and ready PDF quote",
   subtitle:
@@ -554,6 +556,6 @@ export const showroomEn: ShowroomContent = {
   ],
 };
 
-export function getShowroomCopy(locale: "ru" | "en"): ShowroomContent {
+export function getShowroomCopy(locale: Locale): ShowroomContent {
   return locale === "ru" ? showroomRu : showroomEn;
 }

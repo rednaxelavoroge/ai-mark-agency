@@ -65,17 +65,42 @@
   --font-editorial: var(--font-serif);
 }
 
-/* Brand lockup ink. The same artwork twice; the active theme picks which ink is
-   painted. `display: none` also drops the inactive copy out of the a11y tree,
-   so the home link keeps a single accessible name. */
-.brand-logo[data-ink="dark"] {
-  display: none;
+/* Approved AI MARK lockup (raster PNG, marked up by components/BrandLogo.tsx).
+   The artwork carries its own white plate, so it is framed by a light surface
+   on both themes instead of being recoloured — the approved ink never
+   changes. The caller sets only a HEIGHT; the lockup width follows the
+   artwork's own aspect ratio, so the mark is never stretched or squashed.
+   `flex: 0 0 auto` keeps a tight header row from compressing the plate into a
+   squeezed, letterboxed version of the artwork. */
+.brand-plate {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 2px 3px;
+  line-height: 0;
 }
-[data-theme="dark"] .brand-logo[data-ink="light"] {
-  display: none;
+.brand-plate picture {
+  display: flex;
+  height: 100%;
 }
-[data-theme="dark"] .brand-logo[data-ink="dark"] {
+@media (min-width: 640px) {
+  .brand-plate {
+    border-radius: 10px;
+    padding: 4px 6px;
+  }
+}
+.brand-logo {
   display: block;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1844 / 261;
+}
+@media (min-width: 640px) {
+  .brand-logo {
+    aspect-ratio: 1844 / 327;
+  }
 }
 
 /* Editorial serif: used for large numerals and pull-statements */
@@ -639,7 +664,7 @@ main {
   transform: translateX(4px);
 }
 
-/* ContactLauncher (Chat → messengers → Email) */
+/* ContactLauncher (AI chat → Telegram → WhatsApp → Messenger → Instagram → Email) */
 .cl-root {
   position: fixed;
   right: max(20px, env(safe-area-inset-right));

@@ -16,7 +16,7 @@ import { requireUser } from "@/lib/auth/dal";
 export const metadata: Metadata = {
   title: {
     default: "Partner Platform",
-    template: "%s · AI Mark Partner Platform",
+    template: "%s · AI MARK Partner Platform",
   },
   robots: { index: false, follow: false },
 };

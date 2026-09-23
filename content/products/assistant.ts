@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/site";
+
 export interface AibaChannel {
   type: "whatsapp" | "telegram" | "webchat" | "instagram" | "messenger";
   name: string;
@@ -79,10 +81,10 @@ export interface AibaContent {
 }
 
 export const aibaRu: AibaContent = {
-  seoTitle: "AI Business Assistant | Мультиканальный AI-ассистент продаж 24/7 · AI Mark",
+  seoTitle: "AI Business Assistant | Мультиканальный AI-ассистент продаж 24/7 · AI MARK",
   seoDescription:
     "Один AI-ассистент для WhatsApp, Telegram, Instagram Direct, Messenger и сайта: единый инбокс, база знаний, квалификация лидов, передача диалога человеку и синхронизация с CRM.",
-  badge: "Собственный AI-продукт · AI Mark",
+  badge: "Собственный AI-продукт · AI MARK",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
@@ -312,10 +314,10 @@ export const aibaRu: AibaContent = {
 };
 
 export const aibaEn: AibaContent = {
-  seoTitle: "AI Business Assistant | 24/7 Omnichannel Sales AI Assistant · AI Mark",
+  seoTitle: "AI Business Assistant | 24/7 Omnichannel Sales AI Assistant · AI MARK",
   seoDescription:
     "Unified AI sales assistant for WhatsApp, Telegram, Instagram Direct, Messenger, and Website: single inbox, knowledge retrieval, lead qualification, human handoff, and CRM sync.",
-  badge: "Proprietary AI Platform · AI Mark",
+  badge: "Proprietary AI Platform · AI MARK",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
@@ -544,6 +546,6 @@ export const aibaEn: AibaContent = {
   ],
 };
 
-export function getAibaCopy(locale: "ru" | "en"): AibaContent {
+export function getAibaCopy(locale: Locale): AibaContent {
   return locale === "ru" ? aibaRu : aibaEn;
 }

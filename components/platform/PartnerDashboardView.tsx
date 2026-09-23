@@ -117,7 +117,7 @@ export function PartnerDashboardView({
             Partner identity
           </h2>
           <p className="mt-1 text-xs text-muted">
-            Issued by AI Mark. Partner ID, referral code and status are
+            Issued by AI MARK. Partner ID, referral code and status are
             immutable from your account.
           </p>
 
@@ -160,7 +160,7 @@ export function PartnerDashboardView({
             </>
           ) : (
             <p className="mt-4 text-xs leading-relaxed text-muted">
-              No sponsor recorded. Sponsor relationships are set by AI Mark from
+              No sponsor recorded. Sponsor relationships are set by AI MARK from
               a referral link at signup, never by the partner, and are immutable
               once confirmed.
             </p>

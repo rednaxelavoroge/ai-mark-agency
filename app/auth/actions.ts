@@ -12,7 +12,11 @@ import {
   type SignupAttributionStatus,
 } from "@/lib/referral/attribution";
 import { site } from "@/lib/site";
-import { isSupabaseConfigured } from "@/lib/supabase/config";
+import {
+  isSupabaseConfigured,
+  supabasePublishableKey,
+  supabaseUrl,
+} from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 /**
@@ -35,6 +39,18 @@ const NOT_CONFIGURED =
  */
 const CREDENTIALS_ERROR =
   "That email and password did not match an account.";
+
+/**
+ * Google is an ADDITIONAL way in, never a replacement: the provider is
+ * configured in the Supabase dashboard, so it can legitimately be off while
+ * the rest of the platform is live.
+ */
+const GOOGLE_DISABLED_ERROR =
+  "Google sign-in is not switched on for this project yet. Use your email and " +
+  "password, or ask for a magic link.";
+
+const GOOGLE_ERROR =
+  "We could not reach Google just now. Use your email and password, or try again.";
 
 function readString(formData: FormData, key: string, maxLength = 320): string {
   const value = formData.get(key);
@@ -79,6 +95,38 @@ async function callbackUrl(next: string, carriesReferral = false): Promise<strin
 
 function notConfigured(form: AuthActionState["form"]): AuthActionState {
   return { status: "error", message: NOT_CONFIGURED, form };
+}
+
+/**
+ * Whether the Supabase project currently has the Google provider switched on.
+ *
+ * `signInWithOAuth` builds the `/authorize` URL locally and never calls the
+ * Auth server, so it cannot report a disabled provider: the visitor would be
+ * sent to a raw GoTrue JSON error page. This reads Supabase's own public
+ * `/auth/v1/settings` first and turns that dead end into an inline message.
+ *
+ * Best effort on purpose — an unreachable settings endpoint must not block a
+ * sign-in that would otherwise work, so any failure here reports "enabled" and
+ * lets the provider itself be the source of truth.
+ */
+async function isGoogleProviderEnabled(): Promise<boolean> {
+  try {
+    const response = await fetch(`${supabaseUrl}/auth/v1/settings`, {
+      headers: { apikey: supabasePublishableKey },
+      cache: "no-store",
+    });
+
+    if (!response.ok) return true;
+
+    const settings = (await response.json()) as {
+      external?: Record<string, boolean>;
+    };
+
+    return settings.external?.google !== false;
+  } catch (error) {
+    console.warn("[auth] could not read the Supabase auth settings:", error);
+    return true;
+  }
 }
 
 /**
@@ -171,6 +219,63 @@ export async function signInWithPassword(
 
   revalidatePath("/", "layout");
   redirect(next);
+}
+
+/**
+ * Google sign-in and Google sign-up — the same button, because Supabase
+ * creates the account on the first successful round trip and signs in on every
+ * later one.
+ *
+ * The provider exchange happens at Supabase (`/auth/v1/authorize?provider=google`),
+ * so the browser only ever sees the publishable project URL. The Google client
+ * secret never leaves the Supabase dashboard and is never part of this app.
+ *
+ * `redirectTo` is the ONE existing `/auth/callback`, carrying the same `next`
+ * and `ref` parameters as the email flows: the callback exchanges the code,
+ * returns the visitor to where they were headed, and runs exactly the same
+ * server-side referral attribution. A Google signup through a referral link is
+ * therefore attributed identically to an email signup — and the database still
+ * refuses to attribute an account that already existed.
+ *
+ * `prompt=select_account` forces Google's account chooser: a shared machine
+ * must not silently sign the next visitor into the previous person's account.
+ */
+export async function signInWithGoogle(
+  _previous: AuthActionState,
+  formData: FormData,
+): Promise<AuthActionState> {
+  if (!isSupabaseConfigured()) return notConfigured("google");
+
+  const next = safeNextPath(formData.get("next"));
+
+  if (!(await isGoogleProviderEnabled())) {
+    return {
+      status: "error",
+      message: GOOGLE_DISABLED_ERROR,
+      form: "google",
+    };
+  }
+
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: await callbackUrl(
+        next,
+        (await readReferralAttribution()) !== null,
+      ),
+      queryParams: { prompt: "select_account" },
+    },
+  });
+
+  if (error || !data?.url) {
+    console.error("[auth] Google sign-in could not start:", error?.message);
+    return { status: "error", message: GOOGLE_ERROR, form: "google" };
+  }
+
+  // The PKCE code verifier was written to a cookie by the call above, so the
+  // existing /auth/callback can exchange the `code` Google sends back.
+  redirect(data.url);
 }
 
 /**

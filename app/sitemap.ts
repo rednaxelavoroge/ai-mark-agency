@@ -1,71 +1,54 @@
 import type { MetadataRoute } from "next";
 import { PRODUCT_PATHS } from "@/lib/products";
 import type { ProductId } from "@/content/packages";
-import { absoluteUrl, site, type Locale } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 
-function alt(enPath: string, ruPath: string) {
-  return { languages: { en: enPath, ru: ruPath } };
+function getLanguageAlternates(path = ""): { languages: Record<string, string> } {
+  const languages: Record<string, string> = {};
+  for (const loc of site.locales) {
+    languages[loc] = absoluteUrl(loc, path);
+  }
+  return { languages };
 }
 
 const productIds: ProductId[] = ["aime", "assistant", "showroom"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  const entries: MetadataRoute.Sitemap = [
-    {
-      url: site.url,
-      lastModified,
-      alternates: alt(site.url, `${site.url}/ru`),
-    },
-    {
-      url: `${site.url}/ru`,
-      lastModified,
-      alternates: alt(site.url, `${site.url}/ru`),
-    },
-    {
-      url: `${site.url}/privacy`,
-      lastModified,
-      alternates: alt(`${site.url}/privacy`, `${site.url}/ru/privacy`),
-    },
-    {
-      url: `${site.url}/ru/privacy`,
-      lastModified,
-      alternates: alt(`${site.url}/privacy`, `${site.url}/ru/privacy`),
-    },
-  ];
+  const entries: MetadataRoute.Sitemap = [];
 
-  const locales: Locale[] = ["en", "ru"];
-  for (const locale of locales) {
+  for (const locale of site.locales) {
+    entries.push({
+      url: absoluteUrl(locale, "/"),
+      lastModified,
+      alternates: getLanguageAlternates("/"),
+    });
+    entries.push({
+      url: absoluteUrl(locale, "/privacy"),
+      lastModified,
+      alternates: getLanguageAlternates("/privacy"),
+    });
     entries.push({
       url: absoluteUrl(locale, "/products"),
       lastModified,
-      alternates: alt(
-        absoluteUrl("en", "/products"),
-        absoluteUrl("ru", "/products"),
-      ),
+      alternates: getLanguageAlternates("/products"),
     });
     entries.push({
       url: absoluteUrl(locale, "/investors"),
       lastModified,
-      alternates: alt(
-        absoluteUrl("en", "/investors"),
-        absoluteUrl("ru", "/investors"),
-      ),
+      alternates: getLanguageAlternates("/investors"),
     });
     entries.push({
       url: absoluteUrl(locale, "/partners"),
       lastModified,
-      alternates: alt(
-        absoluteUrl("en", "/partners"),
-        absoluteUrl("ru", "/partners"),
-      ),
+      alternates: getLanguageAlternates("/partners"),
     });
     for (const id of productIds) {
       const path = PRODUCT_PATHS[id];
       entries.push({
         url: absoluteUrl(locale, path),
         lastModified,
-        alternates: alt(absoluteUrl("en", path), absoluteUrl("ru", path)),
+        alternates: getLanguageAlternates(path),
       });
     }
   }

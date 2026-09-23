@@ -18,8 +18,10 @@ const COPY = {
     aiLabel: "Чат с AI-ассистентом",
     aiHint: "Отвечает мгновенно, круглосуточно",
     messengerHint: "Обычно отвечаем в течение нескольких часов",
+    emailLabel: "Email",
+    emailHint: "Отвечаем в течение одного рабочего дня",
     greeting:
-      "Здравствуйте! Я AI Business Assistant AI Mark. Расскажите, что нужно — маркетинг, продажи или продукт.",
+      "Здравствуйте! Я AI Business Assistant AI MARK. Расскажите, что нужно — маркетинг, продажи или продукт.",
     placeholder: "Напишите сообщение…",
   },
   en: {
@@ -29,17 +31,25 @@ const COPY = {
     aiLabel: "Chat with our AI assistant",
     aiHint: "Answers instantly, day or night",
     messengerHint: "Usually replies within a few hours",
+    emailLabel: "Email",
+    emailHint: "We reply within one business day",
     greeting:
-      "Hi! I'm AI Mark's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
     placeholder: "Type a message…",
   },
 } as const;
 
-const MESSENGER_META: Record<MessengerKey, { label: string; color: string }> = {
-  telegram: { label: "Telegram", color: "#229ED9" },
-  whatsapp: { label: "WhatsApp", color: "#25D366" },
-  messenger: { label: "Messenger", color: "#0084FF" },
-  instagram: { label: "Instagram", color: "#E1306C" },
+/**
+ * Channel order is fixed and deliberate: the AI chat is the first and primary
+ * option, then the messengers, then email last. Instagram and the others are
+ * listed by `listPublicMessengers()` only when a URL is configured, so a
+ * channel disappears from the chooser rather than becoming a dead button.
+ */
+const MESSENGER_META: Record<MessengerKey, { color: string }> = {
+  telegram: { color: "#229ED9" },
+  whatsapp: { color: "#25D366" },
+  messenger: { color: "#0084FF" },
+  instagram: { color: "#E1306C" },
 };
 
 let injectPromise: Promise<void> | null = null;
@@ -201,13 +211,42 @@ function hidePanel() {
  * dismiss button keeps its own markup.
  */
 function applyTeaserChrome(locale: Locale) {
-  const t = COPY[locale] ?? COPY.en;
+  const t = locale === "ru" ? COPY.ru : COPY.en;
   const text = document.querySelector<HTMLElement>(".aiba-root .aiba-greeting > div");
   if (text && text.textContent !== t.greeting) text.textContent = t.greeting;
 }
 
+/**
+ * The hosted widget paints at z-index 2147483000, so its greeting teaser covers
+ * the channel chooser. Its DOM and ours are siblings under <body>, so no CSS
+ * selector can reach from one to the other — hide the teaser directly while the
+ * menu is up and release it as soon as the menu closes.
+ */
+function syncTeaserVisibility(hide: boolean) {
+  const teaser = document.querySelector<HTMLElement>(".aiba-root .aiba-greeting");
+  if (!teaser) return;
+  if (hide) {
+    if (teaser.style.getPropertyValue("display") !== "none") {
+      teaser.style.setProperty("display", "none", "important");
+    }
+  } else if (teaser.style.getPropertyValue("display") === "none") {
+    teaser.style.removeProperty("display");
+  }
+}
+
 function applyLocaleChrome(locale: Locale) {
-  const t = COPY[locale] ?? COPY.en;
+  const t = locale === "ru" ? COPY.ru : COPY.en;
+  // The panel header is painted from the workspace config at
+  // `app.alex-dev.pro` (`title: "AlexDev"`), which is a dashboard setting we
+  // cannot change from this repo — and a public "AlexDev" label is not
+  // acceptable. Re-assert the brand name here; `sync()` re-runs every 200ms
+  // while the panel is open, so the patch survives the widget's own renders.
+  // The widget gives no class to its title span (it is the only non-dot span
+  // inside `.aiba-header-title`), so match it structurally rather than by class.
+  const titleWrap = document.querySelector<HTMLElement>(".aiba-root .aiba-header-title");
+  const titleText = titleWrap?.querySelector<HTMLElement>("span:not(.aiba-dot)");
+  if (titleText && titleText.textContent !== site.name) titleText.textContent = site.name;
+
   const body = document.querySelector(".aiba-root .aiba-body");
   if (body) {
     const welcome = body.querySelector(".aiba-welcome-msg");
@@ -298,13 +337,25 @@ function IconSpark() {
   );
 }
 
+function IconMail() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3.5 7 8.5 6 8.5-6" />
+    </svg>
+  );
+}
+
 export function ContactLauncher({ locale }: { locale: Locale }) {
-  const t = COPY[locale] ?? COPY.en;
+  const t = locale === "ru" ? COPY.ru : COPY.en;
   const [menuOpen, setMenuOpen] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const messengers = listPublicMessengers();
   const fabOpen = menuOpen || chatOpen;
+  // The public site carries no email intake any more, so Email is a plain
+  // mailto rather than a link to a form that no longer exists.
+  const emailHref = `mailto:${site.email}?subject=${encodeURIComponent("AI MARK — inquiry")}`;
 
   const closeChat = useCallback(() => {
     hidePanel();
@@ -358,6 +409,8 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     const onOpenLauncher = () => {
+      // The CTA opens the chooser, not the chat: the AI assistant is the first
+      // item in it, but the visitor still picks their channel.
       closeChat();
       setMenuOpen(true);
     };
@@ -399,6 +452,21 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
     };
   }, [locale]);
 
+  // Keeps the widget's greeting teaser out of the way while the chooser is up.
+  // The widget paints at z-index 2147483000 and its DOM is a sibling of ours
+  // under <body>, so no stylesheet can reach it — and because it can recreate
+  // the teaser at any time, the hide is re-asserted on a timer rather than once.
+  useEffect(() => {
+    const hide = menuOpen && !chatOpen;
+    syncTeaserVisibility(hide);
+    if (!hide) return;
+    const timer = window.setInterval(() => syncTeaserVisibility(true), 200);
+    return () => {
+      window.clearInterval(timer);
+      syncTeaserVisibility(false);
+    };
+  }, [menuOpen, chatOpen]);
+
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -421,7 +489,15 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
               <IconClose />
             </button>
           </div>
-          <button type="button" className="cl-item cl-item-ai" role="menuitem" onClick={() => void openWidget()} disabled={loadingChat}>
+
+          {/* 1 — primary channel, always first */}
+          <button
+            type="button"
+            className="cl-item cl-item-ai"
+            role="menuitem"
+            onClick={() => void openWidget()}
+            disabled={loadingChat}
+          >
             <span className="cl-item-icon cl-item-icon-ai">
               <IconSpark />
             </span>
@@ -430,6 +506,8 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
               <span className="cl-item-hint">{t.aiHint}</span>
             </span>
           </button>
+
+          {/* 2 — messengers, in the order listPublicMessengers() returns them */}
           {messengers.length ? <div className="cl-menu-sep" /> : null}
           {messengers.map((row) => (
             <a
@@ -452,6 +530,18 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
               </span>
             </a>
           ))}
+
+          {/* 3 — email, always last */}
+          <div className="cl-menu-sep" />
+          <a className="cl-item" role="menuitem" href={emailHref}>
+            <span className="cl-item-icon cl-item-icon-email">
+              <IconMail />
+            </span>
+            <span className="cl-item-text">
+              <span className="cl-item-label">{t.emailLabel}</span>
+              <span className="cl-item-hint">{t.emailHint}</span>
+            </span>
+          </a>
         </div>
       ) : null}
       <button

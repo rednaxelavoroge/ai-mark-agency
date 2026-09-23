@@ -242,7 +242,7 @@ export function PanelDemo({ locale, tabs }: { locale: Locale; tabs: PanelTab[] }
                 AM
               </span>
               <div className="leading-tight">
-                <p className="font-mono text-[9px] font-semibold text-white/85">AI Mark</p>
+                <p className="font-mono text-[9px] font-semibold text-white/85">AI MARK</p>
                 <p className="font-mono text-[8px] text-white/45">workspace</p>
               </div>
             </div>

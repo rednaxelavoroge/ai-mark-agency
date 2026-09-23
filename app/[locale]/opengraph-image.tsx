@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { isLocale, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { socialAlt } from "@/lib/social";
 
 export const dynamic = "force-static";
@@ -39,7 +39,8 @@ export default async function OpengraphImage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: raw } = await params;
-  const bytes = await (isLocale(raw) ? previews[raw] : previews[site.defaultLocale]);
+  const key = raw === "ru" ? "ru" : "en";
+  const bytes = await previews[key];
 
   return new Response(new Uint8Array(bytes), {
     headers: {

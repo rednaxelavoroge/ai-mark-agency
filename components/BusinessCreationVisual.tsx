@@ -100,7 +100,7 @@ export function BusinessCreationVisual({ locale }: { locale: Locale }) {
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
             <span className="font-mono text-[11px] text-warm uppercase tracking-widest">
-              {isRu ? "Сквозная цепочка AI Mark" : "AI Mark Value Chain"}
+              {isRu ? "Сквозная цепочка AI MARK" : "AI MARK Value Chain"}
             </span>
             <p className="mt-1 font-display text-base sm:text-lg font-medium text-paper">
               {isRu
@@ -110,7 +110,7 @@ export function BusinessCreationVisual({ locale }: { locale: Locale }) {
             <p className="mt-2 text-xs text-muted">
               {isRu
                 ? "Клиенту не нужно собирать 10 разнородных подрядчиков и согласовывать стыки между ними. Мы обеспечиваем единый управляемый контур."
-                : "Clients do not need to assemble ten separate contractors. AI Mark delivers a unified, tightly integrated operating system."}
+                : "Clients do not need to assemble ten separate contractors. AI MARK delivers a unified, tightly integrated operating system."}
             </p>
           </div>
 

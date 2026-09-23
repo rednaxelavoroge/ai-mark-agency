@@ -123,7 +123,7 @@ export function ConsultationModal({
         ) : (
           <div>
             <span className="font-mono text-[10px] text-warm uppercase tracking-widest">
-              AI Mark // {productName}
+              AI MARK // {productName}
             </span>
             <h3 className="mt-1 font-display text-xl font-semibold text-paper">
               {isRu ? "Запрос на подключение" : "Deployment Request"}

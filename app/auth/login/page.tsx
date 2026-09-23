@@ -44,7 +44,7 @@ export default async function LoginPage({
     <AuthCard
       eyebrow="Partner Platform"
       title="Sign in"
-      lead="Your AI Mark partner dashboard: referral link, network, customers and commissions."
+      lead="Your AI MARK partner dashboard: referral link, network, customers and commissions."
       footer={
         <p className="text-xs text-muted">
           Not a partner yet?{" "}

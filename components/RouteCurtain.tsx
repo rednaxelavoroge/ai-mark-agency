@@ -42,7 +42,7 @@ export function RouteCurtain() {
 
   return (
     <div ref={ref} aria-hidden className="route-curtain">
-      <span className="route-curtain-mark">AI Mark</span>
+      <span className="route-curtain-mark">AI MARK</span>
     </div>
   );
 }

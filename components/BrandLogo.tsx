@@ -1,29 +1,42 @@
 /**
- * AI MARK brand lockup (AM Loop + wordmark).
+ * AI MARK brand lockup — the approved raster package.
  *
- * The site theme is a user toggle stored on `data-theme`, not a
- * `prefers-color-scheme` query, so the ink swap is driven by CSS rather than a
- * media query. Both files are mounted and the inactive one is `display: none`,
- * which also removes it from the accessibility tree — the home link keeps
- * exactly one accessible name instead of two.
+ * Both files are crops of the one client-approved PNG
+ * (`public/brand/ai-mark-logo-master.png`); nothing here redraws, recolours,
+ * re-typesets or re-proportions the artwork, it only constrains how much space
+ * the art may occupy:
  *
- * Plain <img> on purpose: the next/image optimizer refuses SVG unless
- * `dangerouslyAllowSVG` is switched on, and these assets are already ~6 KB of
- * vector with no raster variants to negotiate.
+ *   ai-mark-logo.png          mark + AI MARK wordmark + the
+ *                             "AI-NATIVE VENTURE & MARKETING" descriptor.
+ *   ai-mark-logo-compact.png  the same artwork with only the descriptor band
+ *                             removed, for viewports where a ~4 px descriptor
+ *                             would be unreadable microtext.
+ *
+ * A native <picture> picks the source, so exactly one file is ever painted and
+ * only one is downloaded — no CSS `display` juggling, and the home link keeps a
+ * single accessible name from the <img> fallback.
+ *
+ * The artwork ships on its own white plate, so it is inset in a light surface
+ * container (`.brand-plate` in app/globals.css). That is deliberate on both
+ * themes: the site's dark theme keeps the same approved ink rather than
+ * swapping to a different, redrawn lockup.
+ *
+ * Plain <img> on purpose: these are fixed rasters with no responsive variants
+ * for the optimizer to negotiate.
  */
 export function BrandLogo({ className = "" }: { className?: string }) {
-  const layout = {
-    width: 650,
-    height: 106,
-    className: `brand-logo ${className}`,
-  } as const;
-
   return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element -- see component note above */}
-      <img src="/brand/ai-mark-logo-compact.svg" alt="AI MARK" data-ink="light" {...layout} />
-      {/* eslint-disable-next-line @next/next/no-img-element -- see component note above */}
-      <img src="/brand/ai-mark-logo-compact-on-dark.svg" alt="AI MARK" data-ink="dark" {...layout} />
-    </>
+    <span className={`brand-plate ${className}`}>
+      <picture>
+        <source media="(min-width: 640px)" srcSet="/brand/ai-mark-logo.png" />
+        <img
+          src="/brand/ai-mark-logo-compact.png"
+          alt="AI MARK — AI-NATIVE VENTURE & MARKETING"
+          width={1844}
+          height={261}
+          className="brand-logo"
+        />
+      </picture>
+    </span>
   );
 }

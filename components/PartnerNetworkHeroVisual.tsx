@@ -4,7 +4,7 @@ import type { Locale } from "@/lib/site";
 /**
  * Hero network visual for the Partner Network page.
  *
- * Code-drawn (no stock photography): AI Mark core → partners → businesses →
+ * Code-drawn (no stock photography): AI MARK core → partners → businesses →
  * sales → markets. Motion comes from the design-system primitives in
  * `app/globals.css` (`grid-field`, `flow-dash`, `pulse-ring`) plus the global
  * reveal engine, so this stays a plain server component like the other visuals.
@@ -130,7 +130,7 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
                 {labels.core}
               </span>
               <span className="mt-2 block font-display text-sm font-semibold text-paper sm:text-base">
-                AI Mark
+                AI MARK
               </span>
               <span className="mt-1 block text-[9px] text-muted">
                 Products · AI · Delivery

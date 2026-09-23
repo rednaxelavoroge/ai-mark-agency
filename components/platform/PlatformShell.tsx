@@ -34,7 +34,7 @@ export function PlatformShell({
       <header className="sticky top-0 z-30 border-b border-line bg-ink/90 backdrop-blur-md lg:hidden">
         <div className="flex items-center justify-between gap-3 px-4 pt-3 pb-2">
           <Link href={homeHref} className="flex min-w-0 items-center gap-2">
-            <BrandLogo className="h-5 w-auto" />
+            <BrandLogo className="h-6 shrink-0 sm:h-7" />
             <span className="truncate rounded-full border border-line px-2 py-0.5 text-[10px] tracking-[0.14em] text-muted uppercase">
               {badge}
             </span>
@@ -58,8 +58,8 @@ export function PlatformShell({
 
       <div className="mx-auto flex w-full max-w-[92rem] gap-8 px-4 sm:px-6">
         <aside className="sticky top-0 hidden h-svh w-60 shrink-0 self-start overflow-y-auto border-r border-line py-7 lg:block">
-          <Link href={homeHref} className="inline-flex items-center">
-            <BrandLogo className="h-6 w-auto" />
+          <Link href={homeHref} className="inline-flex max-w-full items-center">
+            <BrandLogo className="h-7" />
           </Link>
 
           <p className="mt-4 rounded-full border border-line px-2.5 py-1 text-center text-[10px] tracking-[0.16em] text-muted uppercase">

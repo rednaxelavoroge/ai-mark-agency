@@ -5,7 +5,7 @@
  * module must be an async function.
  */
 
-export type AuthFormKind = "password" | "magic" | "signup";
+export type AuthFormKind = "password" | "magic" | "signup" | "google";
 
 export type AuthActionState = {
   status: "idle" | "error" | "sent";
