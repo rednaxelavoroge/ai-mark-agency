@@ -33,6 +33,17 @@ export function LanguageSelector({
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
+  /**
+   * Height of the mobile sheet, px.
+   *
+   * Measured rather than expressed in `vh` units: `100vh`/`100dvh` track the
+   * LARGE viewport once the browser's URL bar auto-hides, which parked the last
+   * language under the browser UI, while `100svh` is unsupported on older
+   * engines. `window.innerHeight` is the area actually available on every
+   * engine, and re-measuring on resize/orientation keeps it honest. Falls back
+   * to the `100svh`/`100vh` cascade before the first measurement lands.
+   */
+  const [sheetHeight, setSheetHeight] = useState<number | null>(null);
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -85,6 +96,20 @@ export function LanguageSelector({
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
+  // Measure the sheet height before paint, then keep it in step with the
+  // viewport as the browser chrome or the on-screen keyboard opens and closes.
+  useEffect(() => {
+    if (!open || typeof window === "undefined") return;
+    const measure = () => setSheetHeight(window.innerHeight);
+    measure();
+    window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("orientationchange", measure);
+    };
   }, [open]);
 
   // Lock body scroll on mobile when sheet is open, and publish the overlay flag
@@ -262,7 +287,17 @@ export function LanguageSelector({
                 role="dialog"
                 aria-modal="true"
                 aria-label="Choose Language"
-                className="am-drop fixed inset-x-0 top-0 z-10 flex h-[100vh] h-[100dvh] h-[100svh] min-h-0 flex-col border-b border-line bg-ink px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] shadow-2xl"
+                // Height is set inline on purpose. `100dvh` tracks the LARGE
+                // viewport once the URL bar auto-hides, which parks the last
+                // language under the browser UI; `100svh` is the small one and
+                // is what we want. It cannot be a Tailwind class because the
+                // `dvh` fallback must come FIRST in source order, and only an
+                // inline declaration is guaranteed to do that.
+                style={{
+                  height: sheetHeight ? `${sheetHeight}px` : "100svh",
+                  maxHeight: "100vh",
+                }}
+                className="am-drop fixed inset-x-0 top-0 z-10 flex flex-col border-b border-line bg-ink px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] shadow-2xl"
               >
                 {/* Header bar */}
                 <div className="flex items-center justify-between border-b border-line px-1 pb-2.5">

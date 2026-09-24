@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import {
   listPublicMessengers,
   OPEN_CHAT_EVENT,
@@ -143,6 +143,15 @@ function injectHideBubbleStyle() {
       background: var(--ink-3) !important;
       color: var(--paper) !important;
     }
+    /*
+     * Once-only greeting: when the visitor has already dismissed it, the marker
+     * is latched on <html> before first paint, so the widget's re-injected
+     * teaser is hidden by CSS from its very first frame. The 200ms JS loop
+     * below is only a backstop — on its own it let the card flash for a frame.
+     */
+    html[data-teaser-seen] .aiba-root .aiba-greeting {
+      display: none !important;
+    }
   `;
   document.head.appendChild(el);
 }
@@ -254,6 +263,9 @@ function syncTeaserVisibility(hide: boolean) {
 const TEASER_SEEN_KEY = "aimark.chat.teaser.v1";
 
 function hasSeenTeaser(): boolean {
+  // The attribute is the in-page latch (and survives a storage-less browser);
+  // the key carries the decision across page loads and tabs.
+  if (document.documentElement.hasAttribute("data-teaser-seen")) return true;
   try {
     return window.localStorage.getItem(TEASER_SEEN_KEY) === "1";
   } catch {
@@ -262,6 +274,9 @@ function hasSeenTeaser(): boolean {
 }
 
 function rememberTeaserSeen() {
+  // The attribute is what the stylesheet keys off; set it even if storage is
+  // unavailable so the greeting still stays down for this page view.
+  document.documentElement.setAttribute("data-teaser-seen", "");
   try {
     window.localStorage.setItem(TEASER_SEEN_KEY, "1");
   } catch {
@@ -544,6 +559,16 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
       document.removeEventListener("click", onCloseClick, true);
     };
   }, [locale]);
+
+  // Latch the once-only marker on <html> before the browser paints anything, so
+  // a returning visitor never sees the greeting flash: the rule above hides the
+  // teaser from its first frame instead of waiting for the 200ms sync loop.
+  // `injectHideBubbleStyle` runs first because it is what defines the widget's
+  // base styles in the first place.
+  useLayoutEffect(() => {
+    injectHideBubbleStyle();
+    if (hasSeenTeaser()) document.documentElement.setAttribute("data-teaser-seen", "");
+  }, []);
 
   // Keeps the widget's greeting teaser out of the way while the chooser is up.
   // The widget paints at z-index 2147483000 and its DOM is a sibling of ours
