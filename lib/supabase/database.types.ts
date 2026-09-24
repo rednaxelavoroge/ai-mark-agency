@@ -247,6 +247,126 @@ export type Database = {
         };
         Relationships: [];
       };
+      sales: {
+        Row: {
+          id: string;
+          external_order_id: string;
+          source: string;
+          product_ref: string | null;
+          partner_id: string;
+          referral_code: string | null;
+          amount: string;
+          currency: string;
+          status: string;
+          paid_at: string;
+          confirmed_at: string | null;
+          locked_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          external_order_id: string;
+          source: string;
+          product_ref?: string | null;
+          partner_id: string;
+          referral_code?: string | null;
+          amount: string;
+          currency: string;
+          status?: string;
+          paid_at: string;
+          confirmed_at?: string | null;
+          locked_at?: string | null;
+        };
+        Update: {
+          status?: string;
+          confirmed_at?: string | null;
+          locked_at?: string | null;
+        };
+        Relationships: [];
+      };
+      commission_entries: {
+        Row: {
+          id: string;
+          sale_id: string;
+          beneficiary_partner_id: string;
+          level: number;
+          commission_type: string;
+          base_amount: string;
+          rate: string;
+          amount: string;
+          currency: string;
+          status: string;
+          reverses_entry_id: string | null;
+          created_at: string;
+          updated_at: string;
+          paid_at: string | null;
+        };
+        Insert: {
+          sale_id: string;
+          beneficiary_partner_id: string;
+          level: number;
+          commission_type: string;
+          base_amount: string;
+          rate: string;
+          amount: string;
+          currency: string;
+          status: string;
+          reverses_entry_id?: string | null;
+        };
+        Update: {
+          status?: string;
+          paid_at?: string | null;
+        };
+        Relationships: [];
+      };
+      payouts: {
+        Row: {
+          id: string;
+          partner_id: string;
+          status: string;
+          currency: string;
+          amount: string;
+          created_by: string;
+          confirmed_by: string | null;
+          created_at: string;
+          updated_at: string;
+          confirmed_at: string | null;
+          paid_at: string | null;
+        };
+        Insert: {
+          partner_id: string;
+          status?: string;
+          currency: string;
+          amount: string;
+          created_by: string;
+        };
+        Update: {
+          status?: string;
+          amount?: string;
+          confirmed_by?: string | null;
+          confirmed_at?: string | null;
+          paid_at?: string | null;
+        };
+        Relationships: [];
+      };
+      payout_allocations: {
+        Row: {
+          id: string;
+          payout_id: string;
+          commission_entry_id: string;
+          allocated_amount: string;
+          created_at: string;
+        };
+        Insert: {
+          payout_id: string;
+          commission_entry_id: string;
+          allocated_amount: string;
+        };
+        Update: {
+          allocated_amount?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: { [_ in never]: never };
     Functions: {
@@ -290,6 +410,43 @@ export type Database = {
           entry_count: number;
         }[];
       };
+      record_sale: {
+        Args: {
+          p_source: string;
+          p_external_order_id: string;
+          p_product_ref: string;
+          p_amount: number;
+          p_currency: string;
+          p_paid_at: string;
+          p_referral_code?: string;
+          p_partner_id?: string;
+        };
+        Returns: string;
+      };
+      qualify_sale: {
+        Args: { p_sale_id: string };
+        Returns: string;
+      };
+      post_commission_entries: {
+        Args: { p_sale_id: string };
+        Returns: number;
+      };
+      advance_sponsor_lock: {
+        Args: { p_sale_id?: string };
+        Returns: number;
+      };
+      create_payout: {
+        Args: {
+          p_partner_id: string;
+          p_currency: string;
+          p_created_by: string;
+        };
+        Returns: string;
+      };
+      confirm_payout: {
+        Args: { p_payout_id: string; p_confirmed_by: string };
+        Returns: string;
+      };
     };
     Enums: {
       app_role: AppRole;
@@ -310,3 +467,7 @@ export type UserRoleRow = Database["public"]["Tables"]["user_roles"]["Row"];
 export type ReferralClickRow =
   Database["public"]["Tables"]["referral_clicks"]["Row"];
 export type LeadRow = Database["public"]["Tables"]["leads"]["Row"];
+export type SaleRow = Database["public"]["Tables"]["sales"]["Row"];
+export type CommissionEntryRow =
+  Database["public"]["Tables"]["commission_entries"]["Row"];
+export type PayoutRow = Database["public"]["Tables"]["payouts"]["Row"];

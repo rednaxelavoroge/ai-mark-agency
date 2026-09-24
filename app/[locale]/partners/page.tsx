@@ -2,8 +2,10 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ContactCta } from "@/components/ContactCta";
+import { LocaleProgram } from "@/components/partners/LocaleProgram";
 import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual";
+import { getCopy } from "@/content/copy";
+import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { PRODUCT_PATHS, productsHubPath } from "@/lib/products";
 import { partnerProgramTerms } from "@/content/partner-program";
@@ -73,7 +75,7 @@ type PageCopy = {
   ctaButton: string;
 };
 
-const pageCopy: Record<string, PageCopy> = {
+const pageCopy: Partial<Record<Locale, PageCopy>> = {
   en: {
     metaTitle: "AI MARK Partner Network — Build Your Market",
     metaDescription: "Sell AI products and digital solutions with AI MARK. Build customer relationships, develop new markets and grow through a structured partner network.",
@@ -268,7 +270,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const locale = raw as Locale;
-  const t = pageCopy[locale] || pageCopy.en;
+  const t = pageCopy[locale];
+  const copy = getCopy(locale);
+  const metaTitle = t?.metaTitle ?? copy.partners.title;
+  const metaDescription = t?.metaDescription ?? copy.partners.lead;
 
   const langAlternates: Record<string, string> = {};
   for (const loc of site.locales) {
@@ -276,15 +281,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: t.metaTitle },
-    description: t.metaDescription,
+    title: { absolute: metaTitle },
+    description: metaDescription,
     alternates: {
       canonical: absoluteUrl(locale, "/partners"),
       languages: langAlternates,
     },
     openGraph: {
-      title: t.metaTitle,
-      description: t.metaDescription,
+      title: metaTitle,
+      description: metaDescription,
       siteName: site.name,
       url: absoluteUrl(locale, "/partners"),
       type: "article",
@@ -301,8 +306,19 @@ export default async function PartnersPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
-  const t = pageCopy[locale] || pageCopy.en;
+  const dedicated = pageCopy[locale];
+  if (!dedicated) {
+    return <LocaleProgram locale={locale} />;
+  }
+  const t = dedicated;
   const terms = partnerProgramTerms[locale];
+  const published = getCopy(locale);
+  const publishedPrices = [
+    published.products.items.aime.price,
+    published.products.items.assistant.price,
+    published.products.items.showroom.price,
+    published.commercial.tiers[3]?.price ?? "",
+  ];
 
   return (
     <article>
@@ -315,10 +331,10 @@ export default async function PartnersPage({ params }: Props) {
             <h1 className="mt-4 max-w-2xl font-editorial text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.title}</h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <ContactCta className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">
+              <Link href={PARTNER_SIGNUP_HREF} className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">
                 {t.primary}
                 <span className="btn-arrow" aria-hidden>→</span>
-              </ContactCta>
+              </Link>
               <a href="#how-it-works" className="inline-flex rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-semibold text-paper transition hover:border-line-strong">{t.secondary}</a>
             </div>
             <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
@@ -367,7 +383,7 @@ export default async function PartnersPage({ params }: Props) {
                   <h3 className="mt-3 font-display text-xl font-semibold text-paper">{product.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{product.body}</p>
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line/60 pt-4">
-                    <span className="font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">{product.revenue}</span>
+                    <span className="font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">{publishedPrices[i] || product.revenue}</span>
                     {product.href ? <Link href={localePath(locale, product.href)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productCta} →</Link> : <Link href={productsHubPath(locale)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productionCta} →</Link>}
                   </div>
                 </div>
@@ -398,6 +414,8 @@ export default async function PartnersPage({ params }: Props) {
               <p className="mt-2 text-xs leading-relaxed text-paper/80">{terms.note}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">{terms.example}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.lock}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.payout}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">{terms.country}</p>
             </div>
           </div>
@@ -437,7 +455,7 @@ export default async function PartnersPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><ContactCta className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></ContactCta></div></section>
+      <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
     </article>
   );
 }

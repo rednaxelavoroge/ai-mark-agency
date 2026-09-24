@@ -1,34 +1,33 @@
 import type { Metadata } from "next";
+import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader } from "@/components/platform/PageHeader";
-import { PlaceholderPanel } from "@/components/platform/StatusBadge";
-import { requirePartner } from "@/lib/auth/dal";
+import { getPartnerLeads, requirePartner } from "@/lib/auth/dal";
+import { NO_DATA, formatDateTime } from "@/lib/partner/format";
 
 export const metadata: Metadata = { title: "Customers" };
 
-/**
- * Phase 4A route placeholder.
- *
- * The route, the shell and the server-side authorization are real; the feature
- * behind it is not built yet, and this page says so instead of showing
- * invented data.
- */
 export default async function PartnerCustomersPage() {
   await requirePartner("/partner/customers");
+  const leads = await getPartnerLeads();
 
   return (
     <div className="grid gap-7">
       <PageHeader
-        eyebrow={"Partner Platform"}
-        title={"Customers"}
-        lead={"The businesses and people attributed to your referral code."}
+        eyebrow="Partner Platform"
+        title="Customers"
+        lead="People who submitted the contact form after opening your referral link. A lead is not a sale."
       />
-      <PlaceholderPanel
-        summary={"Customer attribution depends on the click-tracking engine, which arrives in Phase 4B. Until then this list is genuinely empty — nothing is inferred or back-filled."}
-        planned={[
-          "Customers attributed to your referral code, with first-touch date",
-          "Product and plan they signed up for",
-          "Consent state and data-request handling",
-        ]}
+      <DataTable
+        unreadable={leads.unreadable}
+        empty="No attributed leads. A row appears when someone writes through the site while your referral cookie is still valid."
+        columns={["Name", "Company", "Email", "Scenario", "When"]}
+        rows={(leads.rows ?? []).map((lead) => [
+          lead.name || NO_DATA,
+          lead.company || NO_DATA,
+          lead.email || NO_DATA,
+          lead.scenario || NO_DATA,
+          formatDateTime(lead.created_at),
+        ])}
       />
     </div>
   );

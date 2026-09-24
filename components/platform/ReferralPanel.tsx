@@ -77,9 +77,9 @@ export function ReferralPanel({
       </div>
 
       <p className="mt-5 text-[11px] leading-relaxed text-muted">
-        A dash means the platform could not read that count — it is never
-        rounded up, estimated or simulated. Commission and payout figures stay
-        empty until those engines ship.
+        A dash means that count could not be read. Zero is a real zero. Clicks
+        and leads are not sales. Commission and payout amounts are on the
+        ledger, not on this panel.
       </p>
     </section>
   );

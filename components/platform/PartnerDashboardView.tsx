@@ -13,6 +13,7 @@ import {
   formatDate,
   formatDateTime,
   formatLedgerMoney,
+  launchWindow,
   partnerStatusLabel,
   referralUrl,
   type PartnerLedgerStats,
@@ -36,12 +37,6 @@ export type PartnerDashboardData = {
   ledger: PartnerLedgerStats;
   email: string | null;
 };
-
-/**
- * Qualifying sales and commission come only from the ledger. An empty ledger
- * is a real zero. Network size and customers stay `—` because those records
- * do not exist yet — they are not estimated from clicks or leads.
- */
 
 /**
  * Presentational dashboard body.
@@ -72,8 +67,8 @@ export function PartnerDashboardView({
           <>
             Your Partner ID is{" "}
             <span className="font-mono text-paper">{partner.partner_id}</span>.
-            Referral clicks and attributed leads are live. Qualifying sales and
-            commission are read from the ledger.
+            Your referral link is live. Sales, commission and payout figures
+            come from the ledger.
           </>
         }
         actions={<StatusBadge status={partner.status} />}
@@ -104,8 +99,6 @@ export function PartnerDashboardView({
         {/* Two columns even at 390px: four stacked tiles pushed the identity
             block below the fold on a phone. */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
-          <StatCard label="Network size" value={NO_DATA} />
-          <StatCard label="Customers" value={NO_DATA} />
           <StatCard
             label="Qualifying sales"
             value={
@@ -116,14 +109,34 @@ export function PartnerDashboardView({
           />
           <StatCard
             label="Commission"
-            value={formatLedgerMoney(ledger)}
-            hint={ledger.currency ?? NO_DATA}
+            value={formatLedgerMoney(ledger.commissionNet, ledger.currency)}
+            hint={ledger.currency ?? (ledger.commissionNet === "0.00" ? "No currency yet" : NO_DATA)}
+          />
+          <StatCard
+            label="Payable"
+            value={formatLedgerMoney(ledger.payableAmount, ledger.currency)}
+          />
+          <StatCard
+            label="Paid"
+            value={formatLedgerMoney(ledger.paidAmount, ledger.currency)}
           />
         </div>
         {ledger.entryCount === 0 ? (
           <p className="text-xs text-muted">No commission entries.</p>
         ) : null}
+        {ledger.currencies && ledger.currencies.length > 1 ? (
+          <ul className="grid gap-2 text-xs text-muted">
+            {ledger.currencies.map((row) => (
+              <li key={row.currency ?? "none"}>
+                {row.currency ?? NO_DATA}: commission {row.commissionNet}, payable{" "}
+                {row.payableAmount}, paid {row.paidAmount}
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </section>
+
+      <LaunchCard createdAt={partner.created_at} />
 
       <div className="grid gap-6 lg:grid-cols-5">
         <section
@@ -224,17 +237,38 @@ export function PartnerDashboardView({
       </section>
 
       <p className="text-xs text-muted">
-        Profile details are read-only in this release. Editing, your network and
-        the resources library are described on the{" "}
-        <Link href="/partner/profile" className="link-underline text-paper">
-          Profile
-        </Link>{" "}
-        and{" "}
+        Sales, commissions and payouts list the ledger rows. The sales kit is
+        on{" "}
         <Link href="/partner/resources" className="link-underline text-paper">
           Resources
-        </Link>{" "}
-        pages.
+        </Link>
+        .
       </p>
     </div>
+  );
+}
+
+function LaunchCard({ createdAt }: { createdAt: string }) {
+  const schedule = launchWindow(createdAt);
+  if (!schedule) {
+    return null;
+  }
+
+  const ends = formatDate(schedule.endsAt);
+  const launch = schedule.phase === "launch";
+
+  return (
+    <section aria-labelledby="schedule-heading" className={`p-5 sm:p-6 ${cardClass}`}>
+      <h2 id="schedule-heading" className="text-sm font-semibold tracking-tight">
+        {launch ? "Launch schedule" : "Base schedule"}
+      </h2>
+      <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
+        {launch
+          ? `Qualifying payments before ${ends} use the launch schedule. The window starts at the partner record and lasts 90 days. It is not a calendar quarter and it is not lifetime.`
+          : `The 90-day launch window ended ${ends}. Qualifying payments after that date use the base schedule.`}
+        {" "}
+        The amounts above are the ledger totals. This card does not calculate them.
+      </p>
+    </section>
   );
 }

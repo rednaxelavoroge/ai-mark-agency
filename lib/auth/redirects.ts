@@ -8,6 +8,9 @@
 
 export const DEFAULT_PARTNER_PATH = "/partner/dashboard";
 
+/** Public signup that lands in the cabinet, where the referral link already exists. */
+export const PARTNER_SIGNUP_HREF = `/auth/signup?next=${encodeURIComponent(DEFAULT_PARTNER_PATH)}`;
+
 const DISALLOWED_PREFIXES = ["/auth", "/api", "/_next"];
 
 export function safeNextPath(
