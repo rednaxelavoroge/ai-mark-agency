@@ -5,11 +5,17 @@ export const site = {
   email: "hello@ai-mark.agency",
   taglineEn: "From Idea to Business.",
   taglineRu: "От идеи до работающего бизнеса.",
+  /**
+   * Display order for the language selector, the sitemap and every
+   * generateStaticParams list. English is the root locale; the rest run from
+   * the broadest reach to the narrowest, with Russian placed after the other
+   * two Latin-script markets (es, pt) and before the RTL/CJK blocks.
+   */
   locales: [
     "en",
-    "ru",
     "es",
     "pt",
+    "ru",
     "ar",
     "zh",
     "id",

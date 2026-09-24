@@ -87,17 +87,23 @@ export function LanguageSelector({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
-  // Lock body scroll on mobile when sheet is open
+  // Lock body scroll on mobile when sheet is open, and publish the overlay flag
+  // so overlays we do not own (the hosted AI widget paints at z-index
+  // 2147483000 from a sibling <body> subtree) can stand down while we cover the
+  // screen. ContactLauncher observes this attribute.
   useEffect(() => {
-    if (open && typeof document !== "undefined") {
-      const originalStyle = document.body.style.overflow;
-      if (window.innerWidth < 640) {
-        document.body.style.overflow = "hidden";
-      }
-      return () => {
-        document.body.style.overflow = originalStyle;
-      };
+    if (!open || typeof document === "undefined") return;
+    const root = document.documentElement;
+    const isMobile = window.innerWidth < 640;
+    const originalStyle = document.body.style.overflow;
+    if (isMobile) {
+      document.body.style.overflow = "hidden";
+      root.setAttribute("data-overlay-open", "true");
     }
+    return () => {
+      document.body.style.overflow = originalStyle;
+      root.removeAttribute("data-overlay-open");
+    };
   }, [open]);
 
   return (
@@ -227,10 +233,11 @@ export function LanguageSelector({
       ) : null}
 
       {/* Mobile Language Sheet rendered via Portal into document.body.
-          It hangs from the TOP of the viewport — directly under the trigger
-          that opened it — with its own scroll area, never from the bottom:
-          on a phone this is a switch, not a task sheet, so reaching for the
-          far bottom edge would be needless travel. */}
+          Full height, hanging from the TOP edge where its trigger lives: on a
+          phone this is a switch, not a task sheet, so it claims the whole
+          screen rather than making the reader scroll a half-height drawer.
+          The list keeps its own scroll area for the tail languages and for the
+          on-screen keyboard, and the panel respects the device safe areas. */}
       {mounted && open
         ? createPortal(
             <div className="sm:hidden fixed inset-0 z-[999999]">
@@ -241,16 +248,16 @@ export function LanguageSelector({
                 aria-hidden
               />
 
-              {/* Top Sheet Panel */}
+              {/* Full-height Top Panel */}
               <div
                 ref={modalRef}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Choose Language"
-                className="am-drop fixed inset-x-2 top-2 z-10 flex max-h-[70vh] max-h-[70dvh] min-h-0 flex-col rounded-3xl border border-line bg-ink p-4 pb-5 shadow-2xl"
+                className="am-drop fixed inset-x-0 top-0 z-10 flex h-[100vh] h-[100dvh] min-h-0 flex-col border-b border-line bg-ink px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] shadow-2xl"
               >
                 {/* Header bar */}
-                <div className="flex items-center justify-between pb-3 border-b border-line px-1">
+                <div className="flex items-center justify-between border-b border-line px-1 pb-2.5">
                   <div>
                     <h3 className="text-base font-semibold text-paper">
                       Language / Язык
@@ -270,7 +277,7 @@ export function LanguageSelector({
                 </div>
 
                 {/* Search Input for Mobile */}
-                <div className="py-3">
+                <div className="py-2.5">
                   <div className="relative">
                     <input
                       type="text"
@@ -292,8 +299,10 @@ export function LanguageSelector({
                   </div>
                 </div>
 
-                {/* Scrollable Language List */}
-                <div className="flex-1 overflow-y-auto space-y-1 py-1 pr-1 overscroll-contain">
+                {/* Scrollable Language List — sized so all 12 languages fit a
+                    typical phone screen without scrolling; the scroll area is
+                    still there for short screens and the on-screen keyboard. */}
+                <div className="flex-1 overflow-y-auto space-y-px py-1 pr-1 overscroll-contain min-[380px]:space-y-0.5">
                   {filteredLocales.length === 0 ? (
                     <p className="py-8 text-center text-sm text-muted">
                       No language found
@@ -307,21 +316,24 @@ export function LanguageSelector({
                           href={counterpartLocaleHref(pathname, item.code)}
                           hrefLang={item.code}
                           onClick={() => handleSelectLocale(item.code)}
-                          className={`flex min-h-[48px] items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-colors ${
+                          className={`flex min-h-[44px] items-center justify-between rounded-xl px-3 py-2 text-sm transition-colors ${
                             isActive
                               ? "bg-mark/15 font-semibold text-mark-light border border-mark/30"
                               : "text-paper hover:bg-paper/8 active:bg-paper/12"
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <span className="text-2xl leading-none" aria-hidden>
+                            <span
+                              className="text-xl leading-none min-[380px]:text-2xl"
+                              aria-hidden
+                            >
                               {item.flag}
                             </span>
                             <div className="flex flex-col">
-                              <span className="font-semibold text-paper">
+                              <span className="text-[15px] font-semibold text-paper min-[380px]:text-base">
                                 {item.name}
                               </span>
-                              <span className="text-xs text-muted">
+                              <span className="text-[11px] leading-tight text-muted min-[380px]:text-xs">
                                 {item.region}
                               </span>
                             </div>

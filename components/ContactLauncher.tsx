@@ -221,6 +221,10 @@ function applyTeaserChrome(locale: Locale) {
  * the channel chooser. Its DOM and ours are siblings under <body>, so no CSS
  * selector can reach from one to the other — hide the teaser directly while the
  * menu is up and release it as soon as the menu closes.
+ *
+ * The body-level `data-overlay-open` flag is set by any full-screen overlay we
+ * own (the mobile language sheet publishes it) and is observed here, so the
+ * teaser also stays out of the way of overlays this component never sees.
  */
 function syncTeaserVisibility(hide: boolean) {
   const teaser = document.querySelector<HTMLElement>(".aiba-root .aiba-greeting");
@@ -233,6 +237,7 @@ function syncTeaserVisibility(hide: boolean) {
     teaser.style.removeProperty("display");
   }
 }
+
 
 function applyLocaleChrome(locale: Locale) {
   const t = locale === "ru" ? COPY.ru : COPY.en;
@@ -512,6 +517,20 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
       window.clearInterval(timer);
       syncTeaserVisibility(false);
     };
+  }, [menuOpen, chatOpen]);
+
+  // Any full-screen overlay we own (today the mobile language sheet) raises the
+  // body-level `data-overlay-open` flag; mirror it into the hosted widget's
+  // teaser, which paints at z-index 2147483000 and would otherwise sit on top of
+  // an overlay its DOM has no relation to.
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const overlayOpen = document.documentElement.hasAttribute("data-overlay-open");
+      if (overlayOpen) syncTeaserVisibility(true);
+      else syncTeaserVisibility(menuOpen && !chatOpen);
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-overlay-open"] });
+    return () => observer.disconnect();
   }, [menuOpen, chatOpen]);
 
   useEffect(() => {
