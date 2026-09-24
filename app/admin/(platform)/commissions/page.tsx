@@ -1,34 +1,34 @@
 import type { Metadata } from "next";
+import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader } from "@/components/platform/PageHeader";
-import { PlaceholderPanel } from "@/components/platform/StatusBadge";
-import { requireAdmin } from "@/lib/auth/dal";
+import { getAdminCommissionEntries, requireAdmin } from "@/lib/auth/dal";
+import { formatDateTime, formatStoredMoney } from "@/lib/partner/format";
 
 export const metadata: Metadata = { title: "Commissions" };
 
-/**
- * Phase 4A route placeholder.
- *
- * The route, the shell and the server-side authorization are real; the feature
- * behind it is not built yet, and this page says so instead of showing
- * invented data.
- */
 export default async function AdminCommissionsPage() {
   await requireAdmin("/admin/commissions");
+  const entries = await getAdminCommissionEntries();
 
   return (
     <div className="grid gap-7">
       <PageHeader
-        eyebrow={"Admin console"}
-        title={"Commissions"}
-        lead={"The full commission ledger across partners and levels."}
+        eyebrow="Admin console"
+        title="Commissions"
+        lead="Commission entries across partners. Status, level and amount are the stored ledger values. This screen does not recompute a rate and does not pay anyone. Up to 100 rows, newest first."
       />
-      <PlaceholderPanel
-        summary={"The commission engine is not part of Phase 4A: no calculations, no distribution, no fraud rules. These screens ship together with that engine so the ledger is never shown without the logic behind it."}
-        planned={[
-          "Ledger view across partners and L1-L5 levels",
-          "Rule versioning and safe recomputation",
-          "Reversals, disputes and manual adjustments",
-        ]}
+      <DataTable
+        unreadable={entries.unreadable}
+        empty="No commission entries. A row appears after a qualifying sale is posted. An empty list is empty."
+        columns={["Partner", "Status", "Level", "Type", "Amount", "Posted"]}
+        rows={(entries.rows ?? []).map((entry) => [
+          entry.beneficiary_partner_id,
+          entry.status,
+          `L${entry.level}`,
+          entry.commission_type,
+          formatStoredMoney(entry.amount, entry.currency),
+          formatDateTime(entry.created_at),
+        ])}
       />
     </div>
   );

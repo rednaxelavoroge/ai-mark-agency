@@ -644,6 +644,41 @@ export const getAdminPayableEntries = cache(
   },
 );
 
+/** Any commission entry an admin can read. Amount and status stay as stored. */
+export type AdminCommissionEntry = AdminPayableEntry & { status: string };
+
+/**
+ * The commission ledger across partners.
+ *
+ * Read through the admin session. This does not post, reverse or pay an
+ * entry, and it does not recompute a rate. An empty result is an empty list.
+ */
+export const getAdminCommissionEntries = cache(
+  async (): Promise<ReadableRows<AdminCommissionEntry>> => {
+    const auth = await getAuthContext();
+    if (!auth?.isAdmin) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("commission_entries")
+      .select(
+        "id, sale_id, beneficiary_partner_id, level, commission_type, amount, currency, status, created_at",
+      )
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[admin] commission entries failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return {
+      rows: (result.data ?? []).map((row) => ({
+        ...row,
+        amount: asText(row.amount),
+      })),
+      unreadable: false,
+    };
+  },
+);
+
 /** Where the partner asked to be paid. Blank fields stay null. */
 export type PayoutInstruction = {
   recipient: string | null;
