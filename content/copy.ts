@@ -162,6 +162,8 @@ export type Copy = {
     eyebrow: string;
     title: string;
     lead: string;
+    formNote: string;
+    formCta: string;
     name: string;
     email: string;
     messenger: string;

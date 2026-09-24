@@ -24,6 +24,12 @@ export default async function AdminOrdersPage({
   const sales = await getAdminSales();
   const error = first(params.error);
   const recorded = first(params.recorded);
+  const referralDefault = first(params.referral_code).trim().toLowerCase();
+  const partnerDefault = first(params.partner_id).trim().toUpperCase();
+  const referralValue = /^[a-z0-9][a-z0-9_-]{3,31}$/.test(referralDefault)
+    ? referralDefault
+    : "";
+  const partnerValue = /^AM-[0-9]{4,12}$/.test(partnerDefault) ? partnerDefault : "";
 
   return (
     <div className="grid gap-7">
@@ -77,11 +83,22 @@ export default async function AdminOrdersPage({
         </label>
         <label className={labelClass}>
           <span className="text-muted">Referral code</span>
-          <input className={fieldClass} name="referral_code" maxLength={32} />
+          <input
+            className={fieldClass}
+            name="referral_code"
+            maxLength={32}
+            defaultValue={referralValue}
+          />
         </label>
         <label className={labelClass}>
           <span className="text-muted">Partner ID, if you are not using a code</span>
-          <input className={fieldClass} name="partner_id" maxLength={16} placeholder="AM-001042" />
+          <input
+            className={fieldClass}
+            name="partner_id"
+            maxLength={16}
+            placeholder="AM-001042"
+            defaultValue={partnerValue}
+          />
         </label>
         <button type="submit" className={`w-fit ${primaryButtonClass}`}>
           Record qualifying sale

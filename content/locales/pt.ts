@@ -364,6 +364,8 @@ export const copyPt: Copy = {
     "eyebrow": "Inicie seu projeto",
     "title": "Vamos conversar sobre o seu próximo salto de crescimento.",
     "lead": "Deixe seus dados e agendaremos uma sessão estratégica de 20 minutos com nossos fundadores.",
+    "formNote": "Deixe o nome e uma forma de contacto. Se chegou pelo link de um parceiro, o pedido fica atribuído a esse parceiro. Enviar isto não é um pagamento.",
+    "formCta": "Deixar contato",
     "name": "Nome completo",
     "email": "E-mail corporativo",
     "messenger": "WhatsApp ou Telegram",

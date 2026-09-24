@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LeadInquiry } from "@/components/LeadInquiry";
 import { LocaleProgram } from "@/components/partners/LocaleProgram";
 import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual";
 import { getCopy } from "@/content/copy";
@@ -454,6 +455,8 @@ export default async function PartnersPage({ params }: Props) {
           <div className="mt-8 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-ink-2">{t.faq.map((item) => <details key={item.q} className="group px-5 py-5 sm:px-7"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-display text-sm font-semibold text-paper"><span>{item.q}</span><span className="font-mono text-lg text-mark transition group-open:rotate-45">+</span></summary><p className="max-w-3xl pt-3 text-xs leading-relaxed text-muted">{item.a}</p></details>)}</div>
         </div>
       </section>
+
+      <LeadInquiry contact={published.contact} />
 
       <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
     </article>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LeadInquiry } from "@/components/LeadInquiry";
 import { partnerProgramTerms } from "@/content/partner-program";
 import { getCopy } from "@/content/copy";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
@@ -93,6 +94,8 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <LeadInquiry contact={copy.contact} />
 
       <section className="border-b border-line">
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">

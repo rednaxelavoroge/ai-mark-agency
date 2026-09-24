@@ -406,6 +406,8 @@ export const copyId: Copy = {
     "eyebrow": "Contact",
     "title": "Tell us which door you are walking through.",
     "lead": "Open the site chat. The AI assistant answers right away.",
+    "formNote": "Tinggalkan nama dan cara menghubungi Anda. Jika Anda datang lewat tautan partner, permintaan ini diatribusikan ke partner itu. Mengirim ini bukan pembayaran.",
+    "formCta": "Tinggalkan kontak",
     "name": "Name",
     "email": "Email",
     "messenger": "Telegram or WhatsApp",

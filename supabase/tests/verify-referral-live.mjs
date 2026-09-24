@@ -20,10 +20,9 @@
  *
  * Needs `.env.local` (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
  * SUPABASE_SECRET_KEY) and, for the HTTP half, a server already listening on
- * BASE. Run the dev server rather than `next start` if no contact provider is
- * configured: without RESEND_API_KEY / CONTACT_WEBHOOK_URL, a production-mode
- * server returns 503 for a contact submission (pre-existing behaviour) even
- * though the lead is still recorded.
+ * BASE. A recorded lead is a successful intake: if the row is written, the
+ * route answers 200 even when mail delivery is not configured. It still
+ * returns 503 when nothing was stored and delivery failed.
  *
  * Re-runnable: it removes leftover `phase4b-verify-*` users and its own rows
  * first, and cleans up everything it created in a `finally` block. It never

@@ -11,6 +11,7 @@ import {
   PUBLIC_PRODUCT_SLUGS,
   resolvePublicProductSlug,
 } from "@/lib/products";
+import { getCopy } from "@/content/copy";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
 
@@ -73,16 +74,18 @@ export default async function ProductPage({ params }: Props) {
   const id = resolvePublicProductSlug(product);
   if (!id) notFound();
 
+  const contact = getCopy(locale).contact;
+
   if (id === "aime") {
-    return <AIMEPageContent locale={locale} />;
+    return <AIMEPageContent locale={locale} contact={contact} />;
   }
 
   if (id === "assistant") {
-    return <AIBAPageContent locale={locale} />;
+    return <AIBAPageContent locale={locale} contact={contact} />;
   }
 
   if (id === "showroom") {
-    return <ShowroomAIPageContent locale={locale} />;
+    return <ShowroomAIPageContent locale={locale} contact={contact} />;
   }
 
   notFound();

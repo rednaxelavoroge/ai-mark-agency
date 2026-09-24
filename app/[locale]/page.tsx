@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
+import { LeadInquiry } from "@/components/LeadInquiry";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
@@ -422,6 +423,9 @@ export default async function HomePage({ params }: Props) {
               </p>
             </div>
           </aside>
+        </div>
+        <div id="inquiry" className="mt-12 scroll-mt-24">
+          <LeadInquiry contact={t.contact} framed={false} compact />
         </div>
       </Section>
     </>

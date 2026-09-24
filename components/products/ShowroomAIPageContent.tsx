@@ -5,9 +5,17 @@ import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { getShowroomCopy } from "@/content/products/showroom";
+import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
+import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 
-export function ShowroomAIPageContent({ locale }: { locale: Locale }) {
+export function ShowroomAIPageContent({
+  locale,
+  contact,
+}: {
+  locale: Locale;
+  contact: Copy["contact"];
+}) {
   const c = getShowroomCopy(locale);
   const [activeIndustry, setActiveIndustry] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -55,6 +63,10 @@ export function ShowroomAIPageContent({ locale }: { locale: Locale }) {
                 >
                   {c.ctaExplore}
                 </a>
+                <InquiryLink
+                  contact={contact}
+                  className="inline-flex items-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
+                />
               </div>
 
               {/* Hero meta chips */}
@@ -425,6 +437,8 @@ export function ShowroomAIPageContent({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <LeadInquiry contact={contact} scenario="showroom" />
 
       {/* 8. BOTTOM BANNER */}
       <section className="py-16 sm:py-20">

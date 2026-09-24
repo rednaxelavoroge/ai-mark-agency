@@ -5,9 +5,20 @@ import type { Copy } from "@/content/copy";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function ContactForm({ t }: { t: Copy["contact"] }) {
+const LOCKED_SCENARIOS = new Set(["aime", "assistant", "showroom"]);
+
+export function ContactForm({
+  t,
+  scenario: lockedScenario,
+}: {
+  t: Copy["contact"];
+  /** Product pages lock the scenario. The visitor does not choose a rate or a partner. */
+  scenario?: "aime" | "assistant" | "showroom";
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [scenario, setScenario] = useState("");
+  const fixedScenario =
+    lockedScenario && LOCKED_SCENARIOS.has(lockedScenario) ? lockedScenario : "";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,8 +35,9 @@ export function ContactForm({ t }: { t: Copy["contact"] }) {
           email: data.get("email"),
           messenger: data.get("messenger"),
           company: data.get("company"),
-          scenario: data.get("scenario"),
+          scenario: fixedScenario || data.get("scenario"),
           website: data.get("website"),
+          landing_path: window.location.pathname,
         }),
       });
       if (!res.ok) throw new Error("fail");
@@ -46,34 +58,38 @@ export function ContactForm({ t }: { t: Copy["contact"] }) {
         Website
         <input type="text" name="website" tabIndex={-1} autoComplete="off" />
       </label>
-      <fieldset>
-        <legend className="mb-3 text-sm">{t.scenario}</legend>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {t.scenarioOptions.map((opt) => {
-            const active = scenario === opt.value;
-            return (
-              <label
-                key={opt.value}
-                className={`cursor-pointer rounded-xl border p-4 transition-colors ${
-                  active ? "border-mark bg-ink-3" : "border-line bg-ink-2 hover:border-paper/20"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="scenario"
-                  value={opt.value}
-                  required
-                  className="sr-only"
-                  checked={scenario === opt.value}
-                  onChange={() => setScenario(opt.value)}
-                />
-                <span className="block text-sm font-medium">{opt.label}</span>
-                <span className="mt-1 block text-xs text-muted">{opt.hint}</span>
-              </label>
-            );
-          })}
-        </div>
-      </fieldset>
+      {fixedScenario ? (
+        <input type="hidden" name="scenario" value={fixedScenario} />
+      ) : (
+        <fieldset>
+          <legend className="mb-3 text-sm">{t.scenario}</legend>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {t.scenarioOptions.map((opt) => {
+              const active = scenario === opt.value;
+              return (
+                <label
+                  key={opt.value}
+                  className={`cursor-pointer rounded-xl border p-4 transition-colors ${
+                    active ? "border-mark bg-ink-3" : "border-line bg-ink-2 hover:border-paper/20"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="scenario"
+                    value={opt.value}
+                    required
+                    className="sr-only"
+                    checked={scenario === opt.value}
+                    onChange={() => setScenario(opt.value)}
+                  />
+                  <span className="block text-sm font-medium">{opt.label}</span>
+                  <span className="mt-1 block text-xs text-muted">{opt.hint}</span>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+      )}
       <label className="grid gap-1.5 text-sm">
         {t.name}
         <input name="name" required maxLength={120} className={field} />
