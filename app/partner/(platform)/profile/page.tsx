@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DetailList, PageHeader } from "@/components/platform/PageHeader";
 import { CopyReferralLink } from "@/components/platform/CopyReferralLink";
 import { cardClass } from "@/components/ui/classes";
-import { requirePartner } from "@/lib/auth/dal";
+import { getOwnProfile, requirePartner } from "@/lib/auth/dal";
 import { NO_DATA, formatDate, referralUrl } from "@/lib/partner/format";
 
 export const metadata: Metadata = { title: "Profile" };
@@ -16,8 +16,8 @@ export const metadata: Metadata = { title: "Profile" };
  * profile-update phase.
  */
 export default async function PartnerProfilePage() {
-  const { auth, account } = await requirePartner("/partner/profile");
-  const { profile, partner } = account;
+  const { auth, partner } = await requirePartner("/partner/profile");
+  const profile = await getOwnProfile(auth.userId);
 
   return (
     <div className="grid gap-7">

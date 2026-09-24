@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { AuthActionState } from "@/lib/auth/action-state";
-import { getPartnerAccount } from "@/lib/auth/dal";
+import { getPartnerShell } from "@/lib/auth/dal";
 import { safeNextPath } from "@/lib/auth/redirects";
 import {
   attributePartnerSignup,
@@ -142,8 +142,8 @@ async function activePartnerCode(): Promise<string | null> {
   const attribution = await readReferralAttribution();
   if (!attribution) return null;
 
-  const account = await getPartnerAccount();
-  return account?.partner.referral_code ?? null;
+  const shell = await getPartnerShell();
+  return shell?.partner?.referral_code ?? null;
 }
 
 /**

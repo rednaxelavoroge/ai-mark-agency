@@ -1,0 +1,31 @@
+{
+  "id": "/partner/",
+  "name": "AI MARK Partner Platform",
+  "short_name": "AI MARK",
+  "description": "Partner cabinet for AI MARK",
+  "start_url": "/partner/dashboard",
+  "scope": "/partner/",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#2d381b",
+  "icons": [
+    {
+      "src": "/partner/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/partner/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/partner/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

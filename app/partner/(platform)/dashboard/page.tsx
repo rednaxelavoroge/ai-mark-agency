@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { PartnerDashboardView } from "@/components/platform/PartnerDashboardView";
 import {
+  getOwnProfile,
   getPartnerLedgerStats,
   getPartnerReferralStats,
+  getSponsorEdge,
+  getStatusHistory,
   requirePartner,
 } from "@/lib/auth/dal";
 
@@ -21,16 +24,21 @@ export const metadata: Metadata = { title: "Dashboard" };
  * across partners, and a sponsor still cannot enumerate their downline.
  */
 export default async function PartnerDashboardPage() {
-  const { auth, account } = await requirePartner("/partner/dashboard");
-  const stats = await getPartnerReferralStats();
-  const ledger = await getPartnerLedgerStats();
+  const { auth, partner } = await requirePartner("/partner/dashboard");
+  const [profile, sponsor, history, stats, ledger] = await Promise.all([
+    getOwnProfile(auth.userId),
+    getSponsorEdge(partner.partner_id),
+    getStatusHistory(partner.partner_id),
+    getPartnerReferralStats(),
+    getPartnerLedgerStats(),
+  ]);
 
   return (
     <PartnerDashboardView
-      partner={account.partner}
-      profile={account.profile}
-      sponsor={account.sponsor}
-      history={account.history}
+      partner={partner}
+      profile={profile}
+      sponsor={sponsor}
+      history={history}
       stats={stats}
       ledger={ledger}
       email={auth.email}
