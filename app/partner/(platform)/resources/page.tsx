@@ -3,17 +3,20 @@ import { CopyText } from "@/components/platform/CopyText";
 import { PageHeader } from "@/components/platform/PageHeader";
 import { ReferralPanel } from "@/components/platform/ReferralPanel";
 import { cardClass } from "@/components/ui/classes";
-import { getPartnerReferralStats, requirePartner } from "@/lib/auth/dal";
+import { getOwnProfile, getPartnerReferralStats, requirePartner } from "@/lib/auth/dal";
 import { buildSalesKit, cabinetLocale } from "@/lib/partner/catalog";
 import { referralUrl } from "@/lib/partner/format";
 
 export const metadata: Metadata = { title: "Resources" };
 
 export default async function PartnerResourcesPage() {
-  const { account } = await requirePartner("/partner/resources");
-  const locale = cabinetLocale(account.profile?.language);
-  const kit = buildSalesKit(locale, account.partner.referral_code);
-  const stats = await getPartnerReferralStats();
+  const { auth, partner } = await requirePartner("/partner/resources");
+  const [profile, stats] = await Promise.all([
+    getOwnProfile(auth.userId),
+    getPartnerReferralStats(),
+  ]);
+  const locale = cabinetLocale(profile?.language);
+  const kit = buildSalesKit(locale, partner.referral_code);
   const labels = kit.labels;
 
   return (
@@ -25,9 +28,9 @@ export default async function PartnerResourcesPage() {
       />
 
       <ReferralPanel
-        partnerId={account.partner.partner_id}
-        referralCode={account.partner.referral_code}
-        url={referralUrl(account.partner.referral_code)}
+        partnerId={partner.partner_id}
+        referralCode={partner.referral_code}
+        url={referralUrl(partner.referral_code)}
         stats={stats}
       />
 

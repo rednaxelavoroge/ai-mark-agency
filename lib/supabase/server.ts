@@ -2,6 +2,7 @@ import "server-only";
 
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { cache } from "react";
 import { requireSupabaseConfig } from "./config";
 import type { Database } from "./database.types";
 
@@ -22,7 +23,7 @@ export type SupabaseServerClient = Awaited<
  * Server Components; that throw is swallowed because session refresh is owned
  * by `proxy.ts` (see lib/supabase/proxy.ts).
  */
-export async function createSupabaseServerClient() {
+export const createSupabaseServerClient = cache(async function createSupabaseServerClient() {
   const { url, key } = requireSupabaseConfig();
   const cookieStore = await cookies();
 
@@ -43,4 +44,4 @@ export async function createSupabaseServerClient() {
       },
     },
   });
-}
+});

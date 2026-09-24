@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DetailList, PageHeader, StatCard } from "@/components/platform/PageHeader";
 import { cardClass } from "@/components/ui/classes";
-import { getPartnerReferralStats, requirePartner } from "@/lib/auth/dal";
+import { getPartnerReferralStats, getSponsorEdge, requirePartner } from "@/lib/auth/dal";
 import {
   NO_DATA,
   formatCount,
@@ -12,9 +12,11 @@ import {
 export const metadata: Metadata = { title: "Network" };
 
 export default async function PartnerNetworkPage() {
-  const { account } = await requirePartner("/partner/network");
-  const stats = await getPartnerReferralStats();
-  const sponsor = account.sponsor;
+  const { partner } = await requirePartner("/partner/network");
+  const [sponsor, stats] = await Promise.all([
+    getSponsorEdge(partner.partner_id),
+    getPartnerReferralStats(),
+  ]);
 
   return (
     <div className="grid gap-7">
@@ -72,7 +74,7 @@ export default async function PartnerNetworkPage() {
       <section className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 className="text-sm font-semibold tracking-tight">Your status</h2>
         <p className="mt-3 text-sm">
-          {partnerStatusLabel(account.partner.status)}
+          {partnerStatusLabel(partner.status)}
         </p>
         <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted">
           {stats.partnerSignups === 0

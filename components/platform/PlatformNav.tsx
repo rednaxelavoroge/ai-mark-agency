@@ -3,6 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+export function CabinetBack({ homeHref }: { homeHref: string }) {
+  const pathname = usePathname() || "";
+  if (pathname === homeHref) return null;
+
+  return (
+    <Link
+      href={homeHref}
+      prefetch
+      aria-label="Back"
+      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-sm text-paper"
+    >
+      ←
+    </Link>
+  );
+}
+
 export type PlatformNavItem = {
   href: string;
   label: string;
@@ -46,6 +62,7 @@ export function PlatformNav({
             <Link
               key={item.href}
               href={item.href}
+              prefetch
               aria-current={active ? "page" : undefined}
               className={`relative rounded-lg px-3 py-2 text-sm transition-colors ${
                 active
@@ -78,6 +95,7 @@ export function PlatformNav({
           <Link
             key={item.href}
             href={item.href}
+            prefetch
             aria-current={active ? "page" : undefined}
             className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs whitespace-nowrap transition-colors ${
               active

@@ -64,19 +64,28 @@ export type PartnerAccount = {
 
 const HISTORY_LIMIT = 20;
 
+const PARTNER_COLUMNS =
+  "id, user_id, partner_id, referral_code, sponsor_partner_id, status, created_at, updated_at";
+const PROFILE_COLUMNS =
+  "id, full_name, email, phone, country, region, language, avatar_url, created_at, updated_at";
+const SPONSOR_COLUMNS =
+  "id, sponsor_partner_id, partner_id, attribution_source, attribution_code, confirmed_at, locked_at, created_at";
+const HISTORY_COLUMNS =
+  "id, partner_id, old_status, new_status, reason, created_at, changed_by";
+
+type ClaimsIdentity = { userId: string; email: string | null };
+
 /**
- * Verifies the caller's JWT and resolves their application roles.
- * Returns null for anonymous visitors and for an unconfigured project.
+ * Verifies the JWT once per request.
+ *
+ * `cookies()` is what makes every gated route request-time by construction.
+ * Without it, the early `!isSupabaseConfigured()` return would let a build
+ * with no Supabase environment bake a static auth answer into HTML.
+ *
+ * `getClaims()` verifies the asymmetric JWT locally. It does not ask Auth
+ * over the network. The proxy refreshes the cookie; this check is the gate.
  */
-export const getAuthContext = cache(async (): Promise<AuthContext | null> => {
-  // Read the request cookie jar before anything else.
-  //
-  // This is not a redundant read — it is what makes every gated route
-  // request-time BY CONSTRUCTION. `cookies()` is a Request-time API, so its
-  // use here stops Next.js prerendering the platform subtree at build time.
-  // Without it, the early `!isSupabaseConfigured()` return below would let a
-  // build with no Supabase environment bake a build-time auth answer into
-  // static HTML — a shell that must never be cached or shared.
+const readClaims = cache(async (): Promise<ClaimsIdentity | null> => {
   await cookies();
 
   if (!isSupabaseConfigured()) return null;
@@ -94,93 +103,152 @@ export const getAuthContext = cache(async (): Promise<AuthContext | null> => {
       ? data.claims.email
       : null;
 
-  // RLS lets a user read their own role rows and nothing else.
-  const { data: roleRows, error: rolesError } = await supabase
-    .from("user_roles")
-    .select("role")
-    .eq("user_id", userId);
+  return { userId, email };
+});
 
+const readRoles = cache(async (userId: string) => {
+  const supabase = await createSupabaseServerClient();
+  return supabase.from("user_roles").select("role").eq("user_id", userId);
+});
+
+function toAuth(
+  identity: ClaimsIdentity,
+  roleRows: { role: AppRole }[] | null,
+  rolesError: { message: string } | null,
+): AuthContext {
   if (rolesError) {
     console.error("[auth] could not read user_roles:", rolesError.message);
-    // Fail closed: no trustworthy role set means no privileged access.
-    return { userId, email, roles: [], isAdmin: false, isPartner: false };
+    return {
+      userId: identity.userId,
+      email: identity.email,
+      roles: [],
+      isAdmin: false,
+      isPartner: false,
+    };
   }
 
   const roles = (roleRows ?? []).map((row) => row.role);
-
   return {
-    userId,
-    email,
+    userId: identity.userId,
+    email: identity.email,
     roles,
     isAdmin: roles.includes("admin"),
     isPartner: roles.includes("partner"),
   };
+}
+
+/**
+ * Verifies the caller's JWT and resolves their application roles.
+ * Returns null for anonymous visitors and for an unconfigured project.
+ */
+export const getAuthContext = cache(async (): Promise<AuthContext | null> => {
+  const identity = await readClaims();
+  if (!identity) return null;
+
+  const { data: roleRows, error: rolesError } = await readRoles(identity.userId);
+  return toAuth(identity, roleRows, rolesError);
 });
+
+/**
+ * Session plus the caller's partner row, and nothing else.
+ *
+ * Roles and the partner row are one parallel round trip. Profile, sponsor
+ * and status history stay off this path so a list page does not pay for them.
+ */
+export const getPartnerShell = cache(
+  async (): Promise<{ auth: AuthContext; partner: PartnerProfileRow | null } | null> => {
+    const identity = await readClaims();
+    if (!identity) return null;
+
+    const supabase = await createSupabaseServerClient();
+    const [rolesResult, partnerResult] = await Promise.all([
+      readRoles(identity.userId),
+      supabase
+        .from("partner_profiles")
+        .select(PARTNER_COLUMNS)
+        .eq("user_id", identity.userId)
+        .maybeSingle(),
+    ]);
+
+    const auth = toAuth(identity, rolesResult.data, rolesResult.error);
+    if (partnerResult.error) {
+      console.error(
+        "[partner] could not read partner_profiles:",
+        partnerResult.error.message,
+      );
+      return { auth, partner: null };
+    }
+
+    return { auth, partner: partnerResult.data };
+  },
+);
+
+export const getOwnProfile = cache(async (userId: string): Promise<ProfileRow | null> => {
+  const supabase = await createSupabaseServerClient();
+  const result = await supabase
+    .from("profiles")
+    .select(PROFILE_COLUMNS)
+    .eq("id", userId)
+    .maybeSingle();
+  if (result.error) {
+    console.error("[partner] could not read profiles:", result.error.message);
+    return null;
+  }
+  return result.data;
+});
+
+export const getSponsorEdge = cache(
+  async (partnerId: string): Promise<PartnerRelationshipRow | null> => {
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("partner_relationships")
+      .select(SPONSOR_COLUMNS)
+      .eq("partner_id", partnerId)
+      .maybeSingle();
+    if (result.error) {
+      console.error("[partner] could not read sponsor edge:", result.error.message);
+      return null;
+    }
+    return result.data;
+  },
+);
+
+export const getStatusHistory = cache(
+  async (partnerId: string): Promise<PartnerStatusHistoryRow[]> => {
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("partner_status_history")
+      .select(HISTORY_COLUMNS)
+      .eq("partner_id", partnerId)
+      .order("created_at", { ascending: false })
+      .limit(HISTORY_LIMIT);
+    if (result.error) {
+      console.error("[partner] could not read status history:", result.error.message);
+      return [];
+    }
+    return result.data ?? [];
+  },
+);
 
 /**
  * Loads the caller's own partner record. Returns null when the caller has no
  * partner profile (not a partner, or provisioning was interrupted).
+ *
+ * The shell is shared with the layout. Profile, sponsor and history are a
+ * second parallel wave, only for screens that ask for this full account.
  */
 export const getPartnerAccount = cache(
   async (): Promise<PartnerAccount | null> => {
-    const auth = await getAuthContext();
-    if (!auth) return null;
+    const shell = await getPartnerShell();
+    if (!shell?.partner) return null;
 
-    const supabase = await createSupabaseServerClient();
-
-    const { data: partner, error: partnerError } = await supabase
-      .from("partner_profiles")
-      .select("*")
-      .eq("user_id", auth.userId)
-      .maybeSingle();
-
-    if (partnerError) {
-      console.error(
-        "[partner] could not read partner_profiles:",
-        partnerError.message,
-      );
-      return null;
-    }
-    if (!partner) return null;
-
-    const [profileResult, sponsorResult, historyResult] = await Promise.all([
-      supabase.from("profiles").select("*").eq("id", auth.userId).maybeSingle(),
-      // The row naming this partner as the downline side — their sponsor.
-      supabase
-        .from("partner_relationships")
-        .select("*")
-        .eq("partner_id", partner.partner_id)
-        .maybeSingle(),
-      supabase
-        .from("partner_status_history")
-        .select("*")
-        .eq("partner_id", partner.partner_id)
-        .order("created_at", { ascending: false })
-        .limit(HISTORY_LIMIT),
+    const [profile, sponsor, history] = await Promise.all([
+      getOwnProfile(shell.auth.userId),
+      getSponsorEdge(shell.partner.partner_id),
+      getStatusHistory(shell.partner.partner_id),
     ]);
 
-    if (profileResult.error) {
-      console.error("[partner] could not read profiles:", profileResult.error.message);
-    }
-    if (sponsorResult.error) {
-      console.error(
-        "[partner] could not read sponsor edge:",
-        sponsorResult.error.message,
-      );
-    }
-    if (historyResult.error) {
-      console.error(
-        "[partner] could not read status history:",
-        historyResult.error.message,
-      );
-    }
-
-    return {
-      partner,
-      profile: profileResult.data ?? null,
-      sponsor: sponsorResult.data ?? null,
-      history: historyResult.data ?? [],
-    };
+    return { partner: shell.partner, profile, sponsor, history };
   },
 );
 
@@ -318,8 +386,8 @@ export type ReadableRows<T> = {
  * own cabinet from listing every partner's rows.
  */
 async function ownPartnerId(): Promise<string | null> {
-  const account = await getPartnerAccount();
-  return account?.partner.partner_id ?? null;
+  const shell = await getPartnerShell();
+  return shell?.partner?.partner_id ?? null;
 }
 
 /** Sales attributed to the caller. Amounts stay as stored text. */
@@ -490,6 +558,18 @@ export async function requireUser(nextPath: string): Promise<AuthContext> {
 }
 
 /**
+ * Session gate with no database read.
+ *
+ * Partner pages still load roles next to their data. This only keeps an
+ * anonymous request out of the subtree before that work starts.
+ */
+export async function requireSession(nextPath: string): Promise<ClaimsIdentity> {
+  const identity = await readClaims();
+  if (!identity) redirect(loginHref(nextPath));
+  return identity;
+}
+
+/**
  * Requires the admin role. A signed-in non-admin is sent back to their own
  * dashboard rather than shown an admin shell they cannot use.
  */
@@ -501,7 +581,7 @@ export async function requireAdmin(nextPath: string): Promise<AuthContext> {
 
 export type PartnerSession = {
   auth: AuthContext;
-  account: PartnerAccount;
+  partner: PartnerProfileRow;
 };
 
 /**
@@ -510,18 +590,21 @@ export type PartnerSession = {
  * Both the layout and each page call this: a layout check renders the shell,
  * but per the Next.js security guidance a layout does not stop nested route
  * segments from rendering, so the check must also sit next to the data.
+ *
+ * The gate loads the partner row only. Screens that need profile, sponsor or
+ * history ask for those after this returns, in parallel with their own query.
  */
 export async function requirePartner(nextPath: string): Promise<PartnerSession> {
-  const auth = await requireUser(nextPath);
-  const account = await getPartnerAccount();
+  const shell = await getPartnerShell();
+  if (!shell) redirect(loginHref(nextPath));
 
-  if (!account) {
+  if (!shell.partner) {
     // Signed in but not provisioned as a partner. An admin still has a home;
     // anyone else gets an explanation instead of a redirect loop.
-    redirect(auth.isAdmin ? "/admin" : "/partner/no-access");
+    redirect(shell.auth.isAdmin ? "/admin" : "/partner/no-access");
   }
 
-  return { auth, account };
+  return { auth: shell.auth, partner: shell.partner };
 }
 
 export type AdminOverview = {

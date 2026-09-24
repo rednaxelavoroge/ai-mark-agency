@@ -24,14 +24,14 @@ export default async function PartnerPlatformLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { auth, account } = await requirePartner("/partner/dashboard");
+  const { auth, partner } = await requirePartner("/partner/dashboard");
 
   return (
     <PlatformShell
       nav={PARTNER_NAV}
       navLabel="Partner sections"
       homeHref="/partner/dashboard"
-      badge={account.partner.partner_id}
+      badge={partner.partner_id}
       userEmail={auth.email}
     >
       {children}
