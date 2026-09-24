@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { PartnerDashboardView } from "@/components/platform/PartnerDashboardView";
-import { getPartnerReferralStats, requirePartner } from "@/lib/auth/dal";
+import {
+  getPartnerLedgerStats,
+  getPartnerReferralStats,
+  requirePartner,
+} from "@/lib/auth/dal";
 
 export const metadata: Metadata = { title: "Dashboard" };
 
@@ -19,6 +23,7 @@ export const metadata: Metadata = { title: "Dashboard" };
 export default async function PartnerDashboardPage() {
   const { auth, account } = await requirePartner("/partner/dashboard");
   const stats = await getPartnerReferralStats();
+  const ledger = await getPartnerLedgerStats();
 
   return (
     <PartnerDashboardView
@@ -27,6 +32,7 @@ export default async function PartnerDashboardPage() {
       sponsor={account.sponsor}
       history={account.history}
       stats={stats}
+      ledger={ledger}
       email={auth.email}
     />
   );

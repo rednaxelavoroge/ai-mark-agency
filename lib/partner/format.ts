@@ -43,6 +43,46 @@ export type PartnerReferralStats = {
   partnerSignups: number | null;
 };
 
+/**
+ * Ledger figures for the calling partner.
+ *
+ * `null` means the ledger could not be read, which renders as `—`. A readable
+ * empty ledger is a real zero, a null currency and an empty entry list — never
+ * an estimate. Amounts stay as database text so the browser does not treat
+ * money as a float. Mixed currencies are not summed.
+ */
+export type PartnerLedgerStats = {
+  qualifyingSales: number | null;
+  commissionNet: string | null;
+  currency: string | null;
+  entryCount: number | null;
+};
+
+export const EMPTY_LEDGER: PartnerLedgerStats = {
+  qualifyingSales: 0,
+  commissionNet: "0.00",
+  currency: null,
+  entryCount: 0,
+};
+
+export const UNREADABLE_LEDGER: PartnerLedgerStats = {
+  qualifyingSales: null,
+  commissionNet: null,
+  currency: null,
+  entryCount: null,
+};
+
+/** Renders a ledger amount. Real zero with no currency is `0`; unreadable is `—`. */
+export function formatLedgerMoney(stats: PartnerLedgerStats): string {
+  if (stats.commissionNet === null) return NO_DATA;
+  if (!stats.currency) {
+    return stats.commissionNet === "0.00" || stats.commissionNet === "0"
+      ? "0"
+      : NO_DATA;
+  }
+  return `${stats.currency} ${stats.commissionNet}`;
+}
+
 /** Renders a count, or the dash when the figure is genuinely unknown. */
 export function formatCount(value: number | null | undefined): string {
   if (value === null || value === undefined || !Number.isFinite(value)) {

@@ -275,6 +275,21 @@ export type Database = {
           partner_signups: number;
         }[];
       };
+      /**
+       * Ledger rollup for the calling partner. Amounts are text from numeric
+       * columns. An empty ledger is zeros; mixed currencies are separate rows.
+       */
+      partner_ledger_stats: {
+        Args: Record<string, never>;
+        Returns: {
+          qualifying_sales: number;
+          commission_net: string;
+          currency: string | null;
+          payable_amount: string;
+          paid_amount: string;
+          entry_count: number;
+        }[];
+      };
     };
     Enums: {
       app_role: AppRole;
