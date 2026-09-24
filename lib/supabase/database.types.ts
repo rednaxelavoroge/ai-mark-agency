@@ -42,6 +42,8 @@ export type Database = {
           region: string | null;
           language: string;
           avatar_url: string | null;
+          payout_recipient: string | null;
+          payout_details: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -54,6 +56,8 @@ export type Database = {
           region?: string | null;
           language?: string;
           avatar_url?: string | null;
+          payout_recipient?: string | null;
+          payout_details?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -64,6 +68,8 @@ export type Database = {
           region?: string | null;
           language?: string;
           avatar_url?: string | null;
+          payout_recipient?: string | null;
+          payout_details?: string | null;
           updated_at?: string;
         };
         Relationships: [];

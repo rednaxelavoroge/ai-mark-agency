@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader, StatCard } from "@/components/platform/PageHeader";
+import { PayoutDestinationText } from "@/components/platform/PayoutDestination";
 import { cardClass } from "@/components/ui/classes";
 import {
+  getOwnPayoutDetails,
   getPartnerLedgerStats,
   getPartnerPayouts,
   requirePartner,
@@ -18,10 +21,11 @@ import {
 export const metadata: Metadata = { title: "Payouts" };
 
 export default async function PartnerPayoutsPage() {
-  await requirePartner("/partner/payouts");
-  const [payouts, ledger] = await Promise.all([
+  const { auth } = await requirePartner("/partner/payouts");
+  const [payouts, ledger, destination] = await Promise.all([
     getPartnerPayouts(),
     getPartnerLedgerStats(),
+    getOwnPayoutDetails(auth.userId),
   ]);
 
   return (
@@ -29,8 +33,28 @@ export default async function PartnerPayoutsPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Payouts"
-        lead="Payout rows recorded for you, and the payable and paid totals from the ledger. There is no separate payout provider on this screen."
+        lead="Payout rows recorded for you, the payable and paid totals from the ledger, and the destination saved on your profile. There is no separate payout provider on this screen."
       />
+
+      <section className={`p-5 sm:p-6 ${cardClass}`}>
+        <h2 className="text-sm font-semibold tracking-tight">Where a payout is sent</h2>
+        <p className="mt-1 text-xs text-muted">
+          Saved on your profile. A blank destination is blank.
+        </p>
+        <div className="mt-4">
+          {destination.unreadable ? (
+            <p className="text-sm text-muted">{NO_DATA} Payout details could not be read.</p>
+          ) : (
+            <PayoutDestinationText
+              recipient={destination.recipient}
+              details={destination.details}
+            />
+          )}
+        </div>
+        <Link href="/partner/profile" className="mt-4 inline-block text-xs font-medium text-paper link-underline">
+          Edit payout details
+        </Link>
+      </section>
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 className="text-sm font-semibold tracking-tight">How a payout moves</h2>
