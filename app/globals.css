@@ -66,10 +66,12 @@
 }
 
 /* Approved AI MARK lockup (raster PNG, marked up by components/BrandLogo.tsx).
-   The artwork carries its own white plate, so it is framed by a light surface
-   Transparent background on both light and dark themes.
-   Light theme shows dark text, dark theme shows light text. The caller sets only
-   a HEIGHT; the lockup width follows the artwork's own aspect ratio. */
+   Wordmark artwork on a transparent plate; light theme paints the dark ink,
+   dark theme the light ink. The caller sets only a HEIGHT; the lockup width
+   follows the artwork's own aspect ratio, so the wordmark is never stretched.
+   The two aspect ratios below track the two crops: the compact 1201x261 file
+   below 640px, the 1201x327 file at and above it. They must stay in sync with
+   the PNGs in public/brand/ and with the width/height on <BrandLogo>'s <img>. */
 .brand-plate {
   display: inline-flex;
   flex: 0 0 auto;
@@ -79,30 +81,29 @@
   line-height: 0;
 }
 .brand-plate picture {
-  display: flex;
   height: 100%;
 }
-.brand-logo-light {
-  display: flex;
+.brand-plate .brand-logo-light {
+  display: flex !important;
 }
-.brand-logo-dark {
-  display: none;
-}
-[data-theme="dark"] .brand-logo-light {
+.brand-plate .brand-logo-dark {
   display: none !important;
 }
-[data-theme="dark"] .brand-logo-dark {
+[data-theme="dark"] .brand-plate .brand-logo-light {
+  display: none !important;
+}
+[data-theme="dark"] .brand-plate .brand-logo-dark {
   display: flex !important;
 }
 .brand-logo {
   display: block;
   height: 100%;
   width: auto;
-  aspect-ratio: 1844 / 261;
+  aspect-ratio: 1201 / 261;
 }
 @media (min-width: 640px) {
   .brand-logo {
-    aspect-ratio: 1844 / 327;
+    aspect-ratio: 1201 / 327;
   }
 }
 
@@ -300,6 +301,25 @@ main {
 @keyframes am-fade {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Mobile language sheet: drops in from the top edge, where its trigger lives,
+   instead of rising from the bottom of the screen. */
+@keyframes am-drop {
+  from { opacity: 0; transform: translate3d(0, -14px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.am-drop {
+  animation: am-drop 0.26s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.am-fade {
+  animation: am-fade 0.2s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .am-drop,
+  .am-fade {
+    animation: none !important;
+  }
 }
 
 @keyframes am-float {

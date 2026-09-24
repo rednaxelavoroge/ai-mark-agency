@@ -42,12 +42,12 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           20px lockup there and back up at 360px. The right-hand controls keep
           their own size: the brand plate is never squeezed into a letterboxed
           version of the artwork, and the header never overlaps itself. */}
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-3">
         <Link
           href={navHref(locale, "/")}
           className="group flex min-w-0 shrink items-center"
         >
-          <BrandLogo className="h-5 shrink min-[360px]:h-6 sm:h-8 lg:h-9 xl:h-10" />
+          <BrandLogo className="h-5 shrink sm:h-7 lg:h-9 xl:h-10" />
         </Link>
         <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
           {t.nav.items.map((item) =>
@@ -69,7 +69,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
             ),
           )}
         </nav>
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3">
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <LanguageSelector locale={locale} />
           <ContactCta className="hidden rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:inline-flex sm:px-4 sm:text-sm">
@@ -77,7 +77,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           </ContactCta>
           <button
             type="button"
-            className="grid h-8 w-8 place-items-center rounded-full border border-line text-sm xl:hidden"
+            className="grid h-7.5 w-7.5 place-items-center rounded-full border border-line text-xs xl:hidden sm:h-8 sm:w-8 sm:text-sm"
             aria-expanded={open}
             aria-label={open ? t.nav.close : t.nav.menu}
             onClick={() => setOpen((v) => !v)}

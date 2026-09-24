@@ -50,7 +50,7 @@ export function ThemeToggle({
     <button
       type="button"
       onClick={toggle}
-      className="grid h-8 w-8 place-items-center rounded-full border border-line text-sm text-muted transition-colors hover:text-paper"
+      className="grid h-7.5 w-7.5 place-items-center rounded-full border border-line text-xs text-muted transition-colors hover:text-paper sm:h-8 sm:w-8 sm:text-sm cursor-pointer"
       aria-label={isDark ? lightLabel : darkLabel}
       title={isDark ? lightLabel : darkLabel}
     >

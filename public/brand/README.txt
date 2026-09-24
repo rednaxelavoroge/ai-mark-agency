@@ -11,21 +11,42 @@ The client-approved AI MARK lockup is the PNG delivered on 2026-09-22:
 
 Production assets used by the site
 ----------------------------------
-  ai-mark-logo.png          the delivered artwork, cropped tight to its ink
-                            bounds and re-padded evenly (1844x327).
-                            Mark + "AI MARK" wordmark + the
+  ai-mark-logo-light.png    the delivered artwork, cropped tight to the
+  ai-mark-logo-dark.png     "AI MARK" wordmark only — the leading orange AM
+                            symbol is cropped away — and re-padded evenly
+                            (1201x327). Carries the wordmark plus the
                             "AI-NATIVE VENTURE & MARKETING" descriptor.
                             Rendered by components/BrandLogo.tsx from 640px up
                             (header, footer, auth screens, Partner Platform).
-  ai-mark-logo-compact.png  the same crop with only the descriptor band
-                            removed (1844x261). Used below 640px, where the
+                            Light/dark are the same geometry with the wordmark
+                            inked for that theme's surface.
+  ai-mark-logo-compact-light.png
+  ai-mark-logo-compact-dark.png
+                            the same wordmark-only crop with only the descriptor
+                            band removed (1201x261). Used below 640px, where the
                             descriptor would be unreadable microtext.
   ai-mark-mark.png          the AM mark alone, same artwork, same padding unit
-                            (634x327). Source for the app icon set.
+                            (634x327). Source for the app icon set — this is the
+                            one place the symbol is the whole asset.
+
+Why the symbol is not in the header lockup
+------------------------------------------
+The delivered master opens with the orange AM symbol and then repeats the
+letter A in "AI MARK", so painting the full lockup in a 20–40 px header slot
+read as the mark appearing at both ends of the strip. The site therefore ships
+the wordmark alone in the header, while the symbol keeps its own asset
+(ai-mark-mark.png) for the app icon, the favicon and the launcher avatar.
+
+Both crops above were cut at the first clear column gap in the master's ink
+(x=783..820 in the 2172x724 file); nothing was redrawn, recoloured or
+re-typeset. `scripts/build-og-previews.py` measures the same gap at run time, so
+`python3 scripts/build-og-previews.py` re-derives it if the master is
+re-delivered.
 
 Nothing in this folder is redrawn, recoloured, re-typeset or otherwise
-re-created: every file above is a crop of the delivered PNG. There is no
-light-ink or dark-ink variant, because the approved artwork is one artefact.
+re-created: every production file above is a crop of the delivered PNG. There is
+no separately drawn light-ink or dark-ink artwork, because the approved artwork
+is one artefact.
 
 App icons (rasterised from ai-mark-mark.png)
 --------------------------------------------
@@ -42,8 +63,10 @@ Link previews (Open Graph / Twitter)
 ------------------------------------
 public/og/ai-mark-preview-en.jpg and ai-mark-preview-ru.jpg are 1200x630
 composites rebuilt from this same approved artwork by
-`scripts/build-og-previews.py` (lockup + locale tagline + ai-mark.agency). Re-run
-that script after any change to the master PNG.
+`scripts/build-og-previews.py` (wordmark lockup + locale tagline +
+ai-mark.agency). They use the same wordmark-only crop as the header, so the AM
+symbol does not appear a second time alongside the wordmark. Re-run that script
+after any change to the master PNG.
 
 The client's earlier 1734x907 composites — which carried the previous AM Loop
 mark and no longer matched the site — are archived unsent in
@@ -71,12 +94,11 @@ delete the set when the PNG rollout is signed off.
 
 Where the assets are used
 -------------------------
-- components/BrandLogo.tsx renders the PNG inside a light surface
-  container (`.brand-plate` / `.brand-logo` in app/globals.css). The plate is
-  what keeps the approved ink readable on the dark theme, so the artwork is
-  never recoloured per theme. A <picture> serves the compact crop below 640px
-  and the full lockup from 640px. The CSS aspect-ratio switches with that
-  breakpoint: the <img> width/height attributes describe only the compact
-  fallback, and must not be left to size the full lockup.
+- components/BrandLogo.tsx picks the light or dark PNG with a themed <picture>
+  (`.brand-plate` / `.brand-logo` in app/globals.css). A <picture> also serves
+  the compact crop below 640px and the full lockup from 640px. The CSS
+  aspect-ratio switches with that breakpoint (1201/261 then 1201/327): the <img>
+  width/height attributes describe only the compact fallback, and must not be
+  left to size the full lockup.
 - Call sites set only a height; the width follows the artwork's aspect ratio,
   so the lockup is never stretched or cropped.

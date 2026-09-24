@@ -105,23 +105,26 @@ export function LanguageSelector({
       {/* Trigger Button */}
       <button
         type="button"
-        onClick={() => {
+        onClick={(event) => {
           setOpen((v) => !v);
           setSearch("");
+          // The sheet takes focus on phones; drop the button's own ring so the
+          // open panel is the only focus affordance on screen.
+          event.currentTarget.blur();
         }}
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={`Current language: ${currentMeta.name}. Change language`}
-        className="flex h-8 items-center gap-1.5 rounded-full border border-line bg-paper/5 px-2.5 text-xs font-medium text-paper transition-all hover:border-paper/40 hover:bg-paper/10 sm:h-9 sm:px-3 sm:text-xs cursor-pointer"
+        className="flex h-7.5 items-center gap-1 rounded-full border border-line bg-paper/5 px-2 text-xs font-medium text-paper transition-all hover:border-paper/40 hover:bg-paper/10 sm:h-8 sm:px-2.5 sm:gap-1.5 cursor-pointer"
       >
-        <span className="text-sm leading-none" aria-hidden>
+        <span className="text-xs leading-none" aria-hidden>
           {currentMeta.flag}
         </span>
-        <span className="font-mono uppercase tracking-wider font-semibold">
+        <span className="font-mono uppercase tracking-wider font-semibold text-[11px] sm:text-xs">
           {currentMeta.code}
         </span>
         <svg
-          className={`h-3.5 w-3.5 text-muted transition-transform duration-200 ${
+          className={`h-3 w-3 text-muted transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
           fill="none"
@@ -223,28 +226,29 @@ export function LanguageSelector({
         </div>
       ) : null}
 
-      {/* Mobile Bottom Sheet Modal rendered via Portal into document.body */}
+      {/* Mobile Language Sheet rendered via Portal into document.body.
+          It hangs from the TOP of the viewport — directly under the trigger
+          that opened it — with its own scroll area, never from the bottom:
+          on a phone this is a switch, not a task sheet, so reaching for the
+          far bottom edge would be needless travel. */}
       {mounted && open
         ? createPortal(
             <div className="sm:hidden fixed inset-0 z-[999999]">
               {/* Backdrop overlay */}
               <div
-                className="fixed inset-0 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200"
+                className="am-fade fixed inset-0 bg-black/70 backdrop-blur-sm"
                 onClick={() => setOpen(false)}
                 aria-hidden
               />
 
-              {/* Bottom Sheet Drawer */}
+              {/* Top Sheet Panel */}
               <div
                 ref={modalRef}
                 role="dialog"
                 aria-modal="true"
                 aria-label="Choose Language"
-                className="fixed inset-x-0 bottom-0 z-10 max-h-[85vh] flex flex-col rounded-t-3xl border-t border-line bg-ink p-4 pb-8 shadow-2xl animate-in slide-in-from-bottom duration-300"
+                className="am-drop fixed inset-x-2 top-2 z-10 flex max-h-[70vh] max-h-[70dvh] min-h-0 flex-col rounded-3xl border border-line bg-ink p-4 pb-5 shadow-2xl"
               >
-                {/* Handle pill */}
-                <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-line-strong" />
-
                 {/* Header bar */}
                 <div className="flex items-center justify-between pb-3 border-b border-line px-1">
                   <div>
