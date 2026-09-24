@@ -13,10 +13,9 @@ function render(value: number | null): string {
 }
 
 /**
- * These four tiles are real. They read the Phase 4A tables through the admin's
- * own session, so they double as a live check that the admin RLS policies
- * grant the access they are supposed to. Everything financial stays a stated
- * placeholder rather than a simulated number.
+ * These four tiles are real. They read the partner tables through the admin's
+ * own session. Sales, commissions and payouts have their own screens and are
+ * not repeated here as invented figures.
  */
 export default async function AdminOverviewPage() {
   await requireAdmin("/admin");
@@ -27,7 +26,7 @@ export default async function AdminOverviewPage() {
       <PageHeader
         eyebrow="Admin console"
         title="Overview"
-        lead="Live counts from the Phase 4A schema. Financial reporting arrives with the commission and payout phases."
+        lead="Live counts from the partner schema. Sales, commissions and payouts are on their own screens."
       />
 
       <section aria-label="Schema counts" className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -54,11 +53,10 @@ export default async function AdminOverviewPage() {
       </section>
 
       <PlaceholderPanel
-        summary="Phase 4A delivers the schema, the roles and the Row Level Security boundary. The administration screens that operate on them — partner management, the network tree, the ledger and payouts — are built on top of this foundation in later phases."
+        summary="Partner records, the sponsor tree and the audit trail are already in the database. Those admin screens are not built yet."
         planned={[
           "Partner list with status transitions and a required reason",
           "Sponsor tree across the whole partner base",
-          "Commission ledger, payout batches and reconciliation",
           "Role grants and the full audit trail",
         ]}
       />
