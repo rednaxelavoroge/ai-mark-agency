@@ -52,10 +52,13 @@ export type AuthContext = {
   isPartner: boolean;
 };
 
+/** Profile columns every cabinet screen reads. Payout destination is separate. */
+export type AccountProfile = Omit<ProfileRow, "payout_recipient" | "payout_details">;
+
 export type PartnerAccount = {
   partner: PartnerProfileRow;
   /** Null only if provisioning was interrupted; the UI degrades to "—". */
-  profile: ProfileRow | null;
+  profile: AccountProfile | null;
   /** The canonical sponsor edge for this partner (they are the downline side). */
   sponsor: PartnerRelationshipRow | null;
   /** Most recent status transitions, newest first. */
@@ -183,7 +186,7 @@ export const getPartnerShell = cache(
   },
 );
 
-export const getOwnProfile = cache(async (userId: string): Promise<ProfileRow | null> => {
+export const getOwnProfile = cache(async (userId: string): Promise<AccountProfile | null> => {
   const supabase = await createSupabaseServerClient();
   const result = await supabase
     .from("profiles")
@@ -196,6 +199,36 @@ export const getOwnProfile = cache(async (userId: string): Promise<ProfileRow | 
   }
   return result.data;
 });
+
+/**
+ * Destination the caller saved on their own profile.
+ *
+ * A failed read stays unreadable so a missing column is not shown as a blank
+ * form. Blank saved fields are null.
+ */
+export const getOwnPayoutDetails = cache(
+  async (
+    userId: string,
+  ): Promise<{ recipient: string | null; details: string | null; unreadable: boolean }> => {
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("profiles")
+      .select("payout_recipient, payout_details")
+      .eq("id", userId)
+      .maybeSingle();
+    if (result.error || !result.data) {
+      if (result.error) {
+        console.error("[partner] payout details failed:", result.error.message);
+      }
+      return { recipient: null, details: null, unreadable: true };
+    }
+    return {
+      recipient: result.data.payout_recipient,
+      details: result.data.payout_details,
+      unreadable: false,
+    };
+  },
+);
 
 export const getSponsorEdge = cache(
   async (partnerId: string): Promise<PartnerRelationshipRow | null> => {
@@ -565,6 +598,116 @@ export const getAdminPayouts = cache(
     };
   },
 );
+
+/** One payable commission entry, as stored. Amount is ledger text. */
+export type AdminPayableEntry = {
+  id: string;
+  sale_id: string;
+  beneficiary_partner_id: string;
+  level: number;
+  commission_type: string;
+  amount: string;
+  currency: string;
+  created_at: string;
+};
+
+/**
+ * Commission entries an admin can already pay.
+ *
+ * Read through the admin session. The list does not open a payout and does
+ * not compute a rate. An empty result is an empty list.
+ */
+export const getAdminPayableEntries = cache(
+  async (): Promise<ReadableRows<AdminPayableEntry>> => {
+    const auth = await getAuthContext();
+    if (!auth?.isAdmin) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("commission_entries")
+      .select(
+        "id, sale_id, beneficiary_partner_id, level, commission_type, amount, currency, created_at",
+      )
+      .eq("status", "payable")
+      .order("created_at", { ascending: true })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[admin] payable entries failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return {
+      rows: (result.data ?? []).map((row) => ({
+        ...row,
+        amount: asText(row.amount),
+      })),
+      unreadable: false,
+    };
+  },
+);
+
+/** Where the partner asked to be paid. Blank fields stay null. */
+export type PayoutInstruction = {
+  recipient: string | null;
+  details: string | null;
+};
+
+/**
+ * Payout instructions the partners saved on their own profiles.
+ *
+ * A missing profile is an empty instruction, rendered as a dash. A failed
+ * read is unreadable so a blank form is not mistaken for "no details".
+ */
+export async function getAdminPayoutInstructions(
+  partnerIds: string[],
+): Promise<{ byPartner: Map<string, PayoutInstruction>; unreadable: boolean }> {
+  const ids = [...new Set(partnerIds.filter((id) => id.length > 0))];
+  const byPartner = new Map<string, PayoutInstruction>();
+  if (ids.length === 0) return { byPartner, unreadable: false };
+
+  const auth = await getAuthContext();
+  if (!auth?.isAdmin) return { byPartner, unreadable: true };
+
+  const supabase = await createSupabaseServerClient();
+  const partners = await supabase
+    .from("partner_profiles")
+    .select("partner_id, user_id")
+    .in("partner_id", ids);
+  if (partners.error) {
+    console.error("[admin] payout partners failed:", partners.error.message);
+    return { byPartner, unreadable: true };
+  }
+
+  const userIds = [...new Set((partners.data ?? []).map((row) => row.user_id))];
+  const profiles =
+    userIds.length === 0
+      ? { data: [], error: null }
+      : await supabase
+          .from("profiles")
+          .select("id, payout_recipient, payout_details")
+          .in("id", userIds);
+  if (profiles.error) {
+    console.error("[admin] payout details failed:", profiles.error.message);
+    return { byPartner, unreadable: true };
+  }
+
+  const byUser = new Map(
+    (profiles.data ?? []).map((row) => [
+      row.id,
+      {
+        recipient: row.payout_recipient,
+        details: row.payout_details,
+      } satisfies PayoutInstruction,
+    ]),
+  );
+
+  for (const partner of partners.data ?? []) {
+    byPartner.set(
+      partner.partner_id,
+      byUser.get(partner.user_id) ?? { recipient: null, details: null },
+    );
+  }
+
+  return { byPartner, unreadable: false };
+}
 
 /**
  * Requires a verified session. Sends anonymous visitors to the login page with

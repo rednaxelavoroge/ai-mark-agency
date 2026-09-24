@@ -28,7 +28,7 @@ import type {
 
 export type PartnerDashboardData = {
   partner: PartnerProfileRow;
-  profile: ProfileRow | null;
+  profile: Omit<ProfileRow, "payout_recipient" | "payout_details"> | null;
   sponsor: PartnerRelationshipRow | null;
   history: PartnerStatusHistoryRow[];
   /** Phase 4B referral counters — real, or `null` when unreadable. */
