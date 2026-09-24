@@ -1,12 +1,12 @@
 /**
- * AI MARK brand lockup — the approved raster package, wordmark only.
+ * AI MARK brand lockup — the approved raster package.
  *
  * Both files are crops of the one client-approved PNG
  * (`public/brand/ai-mark-logo-master.png`); nothing here redraws, recolours,
  * re-typesets or re-proportions the artwork, it only constrains how much space
  * the art may occupy:
  *
- *   ai-mark-logo-light/dark.png          the "AI MARK" wordmark + the
+ *   ai-mark-logo-light/dark.png          AM symbol + AI MARK wordmark + the
  *                                        "AI-NATIVE VENTURE & MARKETING"
  *                                        descriptor.
  *   ai-mark-logo-compact-light/dark.png  the same crop with only the descriptor
@@ -14,11 +14,9 @@
  *                                        ~4 px descriptor would be unreadable
  *                                        microtext.
  *
- * The orange AM symbol that opens the master file is deliberately NOT part of
- * the header lockup: the brand mark already appears on its own (app icon,
- * favicon), and pairing the full symbol with the wordmark inside a 20–40 px
- * header slot repeated it at both ends of the strip. The wordmark alone is the
- * header artwork; see the crop note in public/brand/README.txt.
+ * The AM symbol is part of the lockup: symbol first, then the wordmark. Its
+ * ribbon passes behind the "A" of AI, which is why the opening glyph reads as
+ * a doubled A — that interlock is the approved artwork, not a repeated mark.
  *
  * A native <picture> picks the theme source, so exactly one file is ever
  * painted and only one is downloaded — no CSS `display` juggling, and the home
@@ -36,7 +34,7 @@ export function BrandLogo({ className = "" }: { className?: string }) {
         <img
           src="/brand/ai-mark-logo-compact-light.png"
           alt="AI MARK — AI-NATIVE VENTURE & MARKETING"
-          width={1201}
+          width={1844}
           height={261}
           className="brand-logo"
         />
@@ -47,7 +45,7 @@ export function BrandLogo({ className = "" }: { className?: string }) {
         <img
           src="/brand/ai-mark-logo-compact-dark.png"
           alt="AI MARK — AI-NATIVE VENTURE & MARKETING"
-          width={1201}
+          width={1844}
           height={261}
           className="brand-logo"
         />

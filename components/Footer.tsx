@@ -15,8 +15,11 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           {/* Col 1: Brand Info */}
           <div>
+            {/* Below 360px the 44px lockup is wider than the footer's text
+                column (the symbol + wordmark is a wide 7:1 raster), so it steps
+                down to 40px and stops pushing the page sideways. */}
             <Link href={navHref(locale, "/")} className="inline-flex max-w-full items-center">
-              <BrandLogo className="h-11 sm:h-14" />
+              <BrandLogo className="h-10 min-[360px]:h-11 sm:h-14" />
             </Link>
             <p className="mt-3 text-xs font-mono tracking-widest text-mark uppercase">
               AI-Native Venture &amp; Marketing Company

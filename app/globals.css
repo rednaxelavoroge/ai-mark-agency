@@ -66,11 +66,11 @@
 }
 
 /* Approved AI MARK lockup (raster PNG, marked up by components/BrandLogo.tsx).
-   Wordmark artwork on a transparent plate; light theme paints the dark ink,
+   Symbol + wordmark on a transparent plate; light theme paints the dark ink,
    dark theme the light ink. The caller sets only a HEIGHT; the lockup width
-   follows the artwork's own aspect ratio, so the wordmark is never stretched.
-   The two aspect ratios below track the two crops: the compact 1201x261 file
-   below 640px, the 1201x327 file at and above it. They must stay in sync with
+   follows the artwork's own aspect ratio, so it is never stretched.
+   The two aspect ratios below track the two crops: the compact 1844x261 file
+   below 640px, the 1844x327 file at and above it. They must stay in sync with
    the PNGs in public/brand/ and with the width/height on <BrandLogo>'s <img>. */
 .brand-plate {
   display: inline-flex;
@@ -99,11 +99,11 @@
   display: block;
   height: 100%;
   width: auto;
-  aspect-ratio: 1201 / 261;
+  aspect-ratio: 1844 / 261;
 }
 @media (min-width: 640px) {
   .brand-logo {
-    aspect-ratio: 1201 / 327;
+    aspect-ratio: 1844 / 327;
   }
 }
 
