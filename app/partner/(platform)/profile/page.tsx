@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { DetailList, PageHeader } from "@/components/platform/PageHeader";
-import { PlaceholderPanel } from "@/components/platform/StatusBadge";
+import { CopyReferralLink } from "@/components/platform/CopyReferralLink";
 import { cardClass } from "@/components/ui/classes";
 import { requirePartner } from "@/lib/auth/dal";
-import { NO_DATA, formatDate } from "@/lib/partner/format";
+import { NO_DATA, formatDate, referralUrl } from "@/lib/partner/format";
 
 export const metadata: Metadata = { title: "Profile" };
 
@@ -75,14 +75,15 @@ export default async function PartnerProfilePage() {
         </section>
       </div>
 
-      <PlaceholderPanel
-        summary="Profile editing is not enabled in Phase 4A. Your name, phone, country, region, language and avatar become editable in a later phase, with the same server-side authorization and RLS you are seeing here."
-        planned={[
-          "Server Action validation for every editable field",
-          "Avatar upload to Supabase Storage with a per-user policy",
-          "Email changes routed through Supabase Auth confirmation instead of a direct write",
-        ]}
-      />
+      <section className={`p-5 sm:p-6 ${cardClass}`}>
+        <h2 className="text-sm font-semibold tracking-tight">Referral link</h2>
+        <p className="mt-1 text-xs text-muted">
+          Issued with the account. Profile fields on this page stay read-only.
+        </p>
+        <div className="mt-5">
+          <CopyReferralLink url={referralUrl(partner.referral_code)} />
+        </div>
+      </section>
     </div>
   );
 }

@@ -51,36 +51,100 @@ export type PartnerReferralStats = {
  * an estimate. Amounts stay as database text so the browser does not treat
  * money as a float. Mixed currencies are not summed.
  */
+export type LedgerCurrencyRow = {
+  currency: string | null;
+  commissionNet: string;
+  payableAmount: string;
+  paidAmount: string;
+  entryCount: number;
+};
+
 export type PartnerLedgerStats = {
   qualifyingSales: number | null;
   commissionNet: string | null;
   currency: string | null;
+  payableAmount: string | null;
+  paidAmount: string | null;
   entryCount: number | null;
+  /**
+   * One row per currency from the ledger. Empty when the ledger is empty.
+   * `null` when the ledger could not be read. Never summed across currencies.
+   */
+  currencies: LedgerCurrencyRow[] | null;
 };
 
 export const EMPTY_LEDGER: PartnerLedgerStats = {
   qualifyingSales: 0,
   commissionNet: "0.00",
   currency: null,
+  payableAmount: "0.00",
+  paidAmount: "0.00",
   entryCount: 0,
+  currencies: [],
 };
 
 export const UNREADABLE_LEDGER: PartnerLedgerStats = {
   qualifyingSales: null,
   commissionNet: null,
   currency: null,
+  payableAmount: null,
+  paidAmount: null,
   entryCount: null,
+  currencies: null,
 };
 
+/** Launch window length. Display only — the ledger posts the amount. */
+export const LAUNCH_WINDOW_DAYS = 90;
+
+/** Hold after confirmation before an entry can be paid. Display only. */
+export const LOCK_HOLD_DAYS = 14;
+
+export function referralUrlTo(code: string, path: string): string {
+  const url = new URL(referralUrl(code));
+  url.searchParams.set("to", path);
+  return url.toString();
+}
+
+/**
+ * Whether a sale paid at `now` would fall in this partner's launch window.
+ *
+ * The boundary matches the ledger: paid_at < created_at + 90 days is launch.
+ * This does not compute commission.
+ */
+export function launchWindow(
+  createdAt: string | null | undefined,
+  now: Date = new Date(),
+): { phase: "launch" | "base"; endsAt: string } | null {
+  if (!createdAt) return null;
+  const start = new Date(createdAt);
+  if (Number.isNaN(start.getTime())) return null;
+  const endsAt = new Date(start.getTime() + LAUNCH_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+  return {
+    phase: now.getTime() < endsAt.getTime() ? "launch" : "base",
+    endsAt: endsAt.toISOString(),
+  };
+}
+
+/** Renders a stored money amount. Does not parse or recompute it. */
+export function formatStoredMoney(
+  amount: string | null | undefined,
+  currency: string | null | undefined,
+): string {
+  if (amount === null || amount === undefined || amount === "") return NO_DATA;
+  if (!currency) return amount;
+  return `${currency} ${amount}`;
+}
+
 /** Renders a ledger amount. Real zero with no currency is `0`; unreadable is `—`. */
-export function formatLedgerMoney(stats: PartnerLedgerStats): string {
-  if (stats.commissionNet === null) return NO_DATA;
-  if (!stats.currency) {
-    return stats.commissionNet === "0.00" || stats.commissionNet === "0"
-      ? "0"
-      : NO_DATA;
+export function formatLedgerMoney(
+  amount: string | null,
+  currency: string | null,
+): string {
+  if (amount === null) return NO_DATA;
+  if (!currency) {
+    return amount === "0.00" || amount === "0" ? "0" : NO_DATA;
   }
-  return `${stats.currency} ${stats.commissionNet}`;
+  return `${currency} ${amount}`;
 }
 
 /** Renders a count, or the dash when the figure is genuinely unknown. */

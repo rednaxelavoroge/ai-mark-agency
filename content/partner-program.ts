@@ -10,6 +10,10 @@ export type PartnerProgramTerms = {
   launch: string;
   example: string;
   country: string;
+  lock: string;
+  payout: string;
+  join: string;
+  signup: string;
   recurringQ: string;
   recurringA: string;
 };
@@ -23,6 +27,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "On a $1,000 paid sale the direct partner receives $150 at the base rate. Commission is calculated on the amount collected, not on AI MARK profit. Cost, salaries, AI, API and infrastructure are not deducted. VAT, sales tax, refunds and chargebacks are excluded.",
     country:
       "Country Partner and Strategic Partner are a separate agreement. They are not paid from this affiliate schedule.",
+    lock: "Commission stays confirmed for 14 days after the sale is confirmed. It is not paid during that hold. With no refund, chargeback or cancellation, the entry becomes payable.",
+    payout:
+      "AI MARK records a payout from payable commission. An open payout becomes paid when it is confirmed. A refund or chargeback does not change the original entry: a separate reversal with a negative amount is written.",
+    join: "Create a partner account. Your Partner ID and referral link are on the dashboard as soon as you sign in.",
+    signup: "Create a partner account",
     recurringQ: "Can subscriptions create recurring commissions?",
     recurringA:
       "Each qualifying payment is commissioned under the rule in force when it is paid. Payments in the first 90 days after the partner joins use the 1.5× launch rates. Later payments, including later subscription charges, use the base rates. The launch boost is not lifetime.",
@@ -35,6 +44,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "С оплаченной продажи на $1000 прямой партнёр получает $150 по базовой ставке. Комиссия считается от полученной суммы, а не от прибыли AI MARK. Себестоимость, зарплаты, AI, API и инфраструктура не вычитаются. НДС, sales tax, возвраты и chargeback исключаются.",
     country:
       "Country Partner и Strategic Partner — отдельное соглашение. Они не оплачиваются по этой партнёрской сетке.",
+    lock: "Комиссия остаётся confirmed 14 дней после подтверждения продажи и в этот срок не выплачивается. Если нет возврата, chargeback или отмены, запись становится payable.",
+    payout:
+      "AI MARK записывает выплату из payable-комиссии. Выплата со статусом open становится paid после подтверждения. Возврат и chargeback не меняют исходную запись: пишется отдельная reversal с отрицательной суммой.",
+    join: "Создайте аккаунт партнёра. Partner ID и referral-ссылка появляются в кабинете сразу после входа.",
+    signup: "Создать аккаунт партнёра",
     recurringQ: "Могут ли подписки давать повторяющуюся комиссию?",
     recurringA:
       "Каждый квалифицированный платёж считается по правилу, которое действует в день оплаты. Платежи в первые 90 дней после подключения партнёра идут по launch-ставкам с множителем 1,5. Более поздние платежи, включая следующие списания подписки, идут по базовым ставкам. Launch не пожизненный.",
@@ -47,6 +61,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "En una venta pagada de $1000 el partner directo recibe $150 con la tasa base. La comisión se calcula sobre el importe cobrado, no sobre el beneficio de AI MARK. No se descuentan coste, salarios, AI, API ni infraestructura. Quedan fuera el IVA, el sales tax, los reembolsos y los chargebacks.",
     country:
       "Country Partner y Strategic Partner son un acuerdo aparte. No se pagan con esta tabla de afiliación.",
+    lock: "La comisión permanece confirmed durante 14 días después de confirmar la venta y no se paga en ese plazo. Sin reembolso, chargeback o cancelación, la entrada pasa a payable.",
+    payout:
+      "AI MARK registra un pago a partir de la comisión payable. Un pago open pasa a paid cuando se confirma. Un reembolso o chargeback no cambia la entrada original: se escribe una reversal aparte con importe negativo.",
+    join: "Crea una cuenta de partner. Tu Partner ID y el enlace de referido están en el panel en cuanto inicias sesión.",
+    signup: "Crear cuenta de partner",
     recurringQ: "¿Las suscripciones generan comisión recurrente?",
     recurringA:
       "Cada pago cualificado se comisiona con la regla vigente el día en que se cobra. Los pagos de los primeros 90 días desde el alta del partner usan las tasas de lanzamiento 1,5×. Los posteriores, incluidos los cargos siguientes de la suscripción, usan las tasas base. El impulso de lanzamiento no es de por vida.",
@@ -59,6 +78,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "Numa venda paga de $1000 o parceiro direto recebe $150 à taxa base. A comissão incide sobre o valor recebido, não sobre o lucro da AI MARK. Custo, salários, AI, API e infraestrutura não são deduzidos. IVA, sales tax, reembolsos e chargebacks ficam de fora.",
     country:
       "Country Partner e Strategic Partner são um acordo à parte. Não são pagos por esta tabela de afiliados.",
+    lock: "A comissão fica confirmed durante 14 dias após a confirmação da venda e não é paga nesse prazo. Sem reembolso, chargeback ou cancelamento, o lançamento passa a payable.",
+    payout:
+      "A AI MARK regista um pagamento a partir da comissão payable. Um pagamento open passa a paid quando é confirmado. Um reembolso ou chargeback não altera o lançamento original: escreve-se uma reversal separada com valor negativo.",
+    join: "Crie uma conta de parceiro. O Partner ID e a ligação de referência ficam no painel assim que entrar.",
+    signup: "Criar conta de parceiro",
     recurringQ: "As subscrições geram comissão recorrente?",
     recurringA:
       "Cada pagamento qualificado segue a regra em vigor no dia em que é pago. Os pagamentos dos primeiros 90 dias após a entrada do parceiro usam as taxas de lançamento de 1,5×. Os seguintes, incluindo as cobranças posteriores da subscrição, usam as taxas base. O impulso de lançamento não é vitalício.",
@@ -71,6 +95,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "في بيع مدفوع بقيمة $1000 يحصل الشريك المباشر على $150 بالنسبة الأساسية. تُحسب العمولة من المبلغ المحصّل، لا من ربح AI MARK. لا تُخصم التكلفة ولا الرواتب ولا AI ولا API ولا البنية التحتية. ضريبة القيمة المضافة وضريبة المبيعات والمبالغ المستردة وعمليات الاسترداد القسري مستبعدة.",
     country:
       "Country Partner وStrategic Partner اتفاق منفصل. لا يُدفعان من جدول العمولة هذا.",
+    lock: "تبقى العمولة confirmed لمدة 14 يومًا بعد تأكيد البيع ولا تُدفع خلال هذه المدة. إذا لم يكن هناك استرداد أو chargeback أو إلغاء، تصبح الحركة payable.",
+    payout:
+      "تسجّل AI MARK دفعة من العمولة payable. تنتقل الدفعة من open إلى paid عند التأكيد. الاسترداد وchargeback لا يغيّران الحركة الأصلية: تُكتب reversal منفصلة بمبلغ سالب.",
+    join: "أنشئ حساب شريك. يظهر معرّف الشريك ورابط الإحالة في اللوحة فور تسجيل الدخول.",
+    signup: "إنشاء حساب شريك",
     recurringQ: "هل يمكن أن تولّد الاشتراكات عمولة متكررة؟",
     recurringA:
       "كل دفعة مؤهلة تُحتسب بالقاعدة السارية يوم الدفع. الدفعات خلال أول 90 يومًا بعد انضمام الشريك تستخدم نسب الإطلاق 1.5×. الدفعات اللاحقة، بما فيها خصومات الاشتراك التالية، تستخدم النسب الأساسية. تعزيز الإطلاق ليس مدى الحياة.",
@@ -83,6 +112,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "一笔已支付的 $1000 销售，直接合伙人按基础比例获得 $150。佣金按实收金额计算，不是 AI MARK 的利润分成。成本、工资、AI、API 和基础设施不从中扣除。增值税、销售税、退款和拒付除外。",
     country:
       "Country Partner 与 Strategic Partner 是另行约定的合作，不走这张联盟佣金表。",
+    lock: "佣金在销售确认后保持 confirmed 14 天，在此期间不支付。若没有退款、拒付或取消，该记录变为 payable。",
+    payout:
+      "AI MARK 从 payable 佣金记一笔 payout。open 的 payout 在确认后变为 paid。退款和拒付不改原记录：另记一笔金额为负的 reversal。",
+    join: "创建合伙人账户。登录后，看板里立即有 Partner ID 和推荐链接。",
+    signup: "创建合伙人账户",
     recurringQ: "订阅会产生持续佣金吗？",
     recurringA:
       "每一笔合格付款按支付当日生效的规则计算。合伙人加入后前 90 天的付款使用 1.5 倍启动比例。其后的付款，包括后续订阅扣款，使用基础比例。启动加成不是终身的。",
@@ -95,6 +129,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "Pada penjualan terbayar sebesar $1000, partner langsung menerima $150 dengan tarif dasar. Komisi dihitung dari jumlah yang diterima, bukan dari laba AI MARK. Modal, gaji, AI, API, dan infrastruktur tidak dipotong. PPN, sales tax, refund, dan chargeback tidak masuk.",
     country:
       "Country Partner dan Strategic Partner adalah perjanjian terpisah. Keduanya tidak dibayar dari tabel afiliasi ini.",
+    lock: "Komisi tetap confirmed selama 14 hari setelah penjualan dikonfirmasi dan tidak dibayar dalam masa itu. Jika tidak ada refund, chargeback, atau pembatalan, entri menjadi payable.",
+    payout:
+      "AI MARK mencatat payout dari komisi payable. Payout open menjadi paid saat dikonfirmasi. Refund atau chargeback tidak mengubah entri asli: ditulis reversal terpisah dengan jumlah negatif.",
+    join: "Buat akun partner. Partner ID dan tautan referral ada di dasbor begitu Anda masuk.",
+    signup: "Buat akun partner",
     recurringQ: "Apakah langganan menghasilkan komisi berulang?",
     recurringA:
       "Setiap pembayaran yang lolos kualifikasi mengikuti aturan yang berlaku pada hari pembayaran. Pembayaran dalam 90 hari pertama setelah partner bergabung memakai tarif peluncuran 1,5×. Pembayaran setelahnya, termasuk tagihan langganan berikutnya, memakai tarif dasar. Bonus peluncuran tidak seumur hidup.",
@@ -107,6 +146,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "Với giao dịch đã thanh toán $1000, đối tác trực tiếp nhận $150 theo tỷ lệ cơ sở. Hoa hồng tính trên số tiền đã thu, không phải trên lợi nhuận của AI MARK. Giá vốn, lương, AI, API và hạ tầng không bị trừ. VAT, sales tax, hoàn tiền và chargeback nằm ngoài.",
     country:
       "Country Partner và Strategic Partner là thỏa thuận riêng. Hai hình thức này không được trả theo bảng hoa hồng liên kết này.",
+    lock: "Hoa hồng giữ trạng thái confirmed trong 14 ngày sau khi giao dịch được xác nhận và không được trả trong thời gian đó. Nếu không có hoàn tiền, chargeback hoặc hủy, bút toán chuyển thành payable.",
+    payout:
+      "AI MARK ghi một payout từ hoa hồng payable. Payout open thành paid khi được xác nhận. Hoàn tiền hoặc chargeback không sửa bút toán gốc: một reversal riêng với số âm được ghi thêm.",
+    join: "Tạo tài khoản đối tác. Partner ID và liên kết giới thiệu có trên bảng điều khiển ngay khi bạn đăng nhập.",
+    signup: "Tạo tài khoản đối tác",
     recurringQ: "Gói đăng ký có tạo hoa hồng định kỳ không?",
     recurringA:
       "Mỗi khoản thanh toán đủ điều kiện được tính theo quy tắc đang hiệu lực vào ngày thanh toán. Các khoản trong 90 ngày đầu sau khi đối tác tham gia dùng tỷ lệ ra mắt 1,5×. Các khoản sau đó, kể cả các lần trừ tiền đăng ký tiếp theo, dùng tỷ lệ cơ sở. Mức thưởng ra mắt không phải trọn đời.",
@@ -119,6 +163,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "Bei einem bezahlten Verkauf über $1000 erhält der direkte Partner $150 zum Basissatz. Die Provision wird auf den eingegangenen Betrag gerechnet, nicht auf den Gewinn von AI MARK. Kosten, Gehälter, AI, API und Infrastruktur werden nicht abgezogen. MwSt., Sales Tax, Erstattungen und Chargebacks sind ausgenommen.",
     country:
       "Country Partner und Strategic Partner sind eine eigene Vereinbarung. Sie werden nicht nach diesem Affiliate-Plan vergütet.",
+    lock: "Die Provision bleibt 14 Tage nach der Bestätigung des Verkaufs confirmed und wird in dieser Frist nicht ausgezahlt. Ohne Erstattung, Chargeback oder Storno wird der Eintrag payable.",
+    payout:
+      "AI MARK erfasst eine Auszahlung aus payable Provision. Eine open Auszahlung wird mit der Bestätigung paid. Erstattung und Chargeback ändern den ursprünglichen Eintrag nicht: es wird eine eigene reversal mit negativem Betrag geschrieben.",
+    join: "Legen Sie ein Partnerkonto an. Partner-ID und Empfehlungslink stehen im Dashboard, sobald Sie sich anmelden.",
+    signup: "Partnerkonto erstellen",
     recurringQ: "Können Abos wiederkehrende Provision erzeugen?",
     recurringA:
       "Jede qualifizierte Zahlung folgt der Regel, die am Tag der Zahlung gilt. Zahlungen in den ersten 90 Tagen nach dem Partnerstart nutzen die Launch-Sätze mit Faktor 1,5. Spätere Zahlungen, auch weitere Abo-Abbuchungen, nutzen die Basissätze. Der Launch-Faktor ist nicht lebenslang.",
@@ -131,6 +180,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "Sur une vente payée de 1 000 $, le partenaire direct reçoit 150 $ au taux de base. La commission se calcule sur le montant encaissé, pas sur le bénéfice d'AI MARK. Coût, salaires, IA, API et infrastructure ne sont pas déduits. TVA, sales tax, remboursements et chargebacks sont exclus.",
     country:
       "Country Partner et Strategic Partner relèvent d'un accord distinct. Ils ne sont pas rémunérés selon cette grille d'affiliation.",
+    lock: "La commission reste confirmed pendant 14 jours après la confirmation de la vente et n'est pas versée pendant ce délai. Sans remboursement, chargeback ou annulation, l'écriture devient payable.",
+    payout:
+      "AI MARK enregistre un versement à partir de la commission payable. Un versement open devient paid lorsqu'il est confirmé. Un remboursement ou un chargeback ne modifie pas l'écriture d'origine : une reversal séparée, d'un montant négatif, est ajoutée.",
+    join: "Créez un compte partenaire. Votre Partner ID et votre lien de parrainage sont dans le tableau de bord dès la connexion.",
+    signup: "Créer un compte partenaire",
     recurringQ: "Les abonnements peuvent-ils créer une commission récurrente ?",
     recurringA:
       "Chaque paiement qualifié suit la règle en vigueur le jour où il est encaissé. Les paiements des 90 premiers jours après l'entrée du partenaire utilisent les taux de lancement ×1,5. Les paiements suivants, y compris les échéances d'abonnement, utilisent les taux de base. Le boost de lancement n'est pas à vie.",
@@ -143,6 +197,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "支払済みの $1000 の販売では、直接のパートナーが基本率で $150 を受け取ります。報酬は入金額に対するもので、AI MARK の利益の分配ではありません。原価、人件費、AI、API、インフラは引きません。VAT、売上税、返金、チャージバックは対象外です。",
     country:
       "Country Partner と Strategic Partner は別契約です。このアフィリエイト表からは支払われません。",
+    lock: "報酬は販売確定後 14 日間 confirmed のままで、その間は支払われません。返金、チャージバック、取消がなければ payable になります。",
+    payout:
+      "AI MARK は payable の報酬から payout を記録します。open の payout は確認されると paid になります。返金とチャージバックは元の記録を変えません。負の金額の reversal が別に書かれます。",
+    join: "パートナーアカウントを作成してください。ログインすると、ダッシュボードに Partner ID と紹介リンクがあります。",
+    signup: "パートナーアカウントを作成",
     recurringQ: "サブスクリプションは継続報酬になりますか？",
     recurringA:
       "適格な支払いごとに、支払日に有効な規則で計算します。参加から 90 日以内の支払いは 1.5 倍のローンチ率です。それ以降の支払い（次回以降のサブスクリプション請求を含む）は基本率です。ローンチ倍率は生涯ではありません。",
@@ -155,6 +214,11 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
       "Ödenmiş $1000'lık bir satışta doğrudan partner taban oranla $150 alır. Komisyon tahsil edilen tutar üzerinden hesaplanır, AI MARK kârından pay değildir. Maliyet, maaşlar, AI, API ve altyapı düşülmez. KDV, sales tax, iadeler ve chargeback kapsam dışıdır.",
     country:
       "Country Partner ve Strategic Partner ayrı bir anlaşmadır. Bu iş ortağı tablosundan ödenmez.",
+    lock: "Komisyon, satış onayından sonra 14 gün confirmed kalır ve bu sürede ödenmez. İade, chargeback veya iptal yoksa kayıt payable olur.",
+    payout:
+      "AI MARK, payable komisyondan bir payout kaydeder. open payout onaylanınca paid olur. İade ve chargeback özgün kaydı değiştirmez: negatif tutarlı ayrı bir reversal yazılır.",
+    join: "Bir partner hesabı oluşturun. Giriş yaptığınızda Partner ID ve referral bağlantısı panelde hazırdır.",
+    signup: "Partner hesabı oluştur",
     recurringQ: "Abonelikler yinelenen komisyon oluşturur mu?",
     recurringA:
       "Her nitelikli ödeme, tahsil edildiği gün yürürlükte olan kuralla hesaplanır. Partnerin katılımından sonraki ilk 90 günün ödemeleri 1,5× lansman oranlarını kullanır. Sonraki ödemeler, sonraki abonelik tahsilatları dahil, taban oranları kullanır. Lansman çarpanı ömür boyu değildir.",

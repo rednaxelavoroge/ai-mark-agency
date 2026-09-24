@@ -6,15 +6,21 @@ import { cache } from "react";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
+  EMPTY_LEDGER,
   UNREADABLE_LEDGER,
+  type LedgerCurrencyRow,
   type PartnerLedgerStats,
   type PartnerReferralStats,
 } from "@/lib/partner/format";
 import type {
+  CommissionEntryRow,
+  LeadRow,
   PartnerProfileRow,
   PartnerRelationshipRow,
   PartnerStatusHistoryRow,
+  PayoutRow,
   ProfileRow,
+  SaleRow,
 } from "@/lib/supabase/database.types";
 import { loginHref } from "./redirects";
 import type { AppRole } from "./roles";
@@ -249,14 +255,17 @@ export const getPartnerLedgerStats = cache(
       return UNREADABLE_LEDGER;
     }
 
-    if (data.length === 0) {
-      return {
-        qualifyingSales: 0,
-        commissionNet: "0.00",
-        currency: null,
-        entryCount: 0,
-      };
-    }
+    if (data.length === 0) return EMPTY_LEDGER;
+
+    const currencies: LedgerCurrencyRow[] = data.map((row) => ({
+      currency: row.currency,
+      commissionNet: row.commission_net ?? "0.00",
+      payableAmount: row.payable_amount ?? "0.00",
+      paidAmount: row.paid_amount ?? "0.00",
+      entryCount: Number.isFinite(Number(row.entry_count))
+        ? Number(row.entry_count)
+        : 0,
+    }));
 
     const qualifyingSales = data.reduce<number | null>((max, row) => {
       const value = Number(row.qualifying_sales);
@@ -264,27 +273,208 @@ export const getPartnerLedgerStats = cache(
       return max === null ? value : Math.max(max, value);
     }, null);
 
-    const entryCount = data.reduce<number | null>((sum, row) => {
-      const value = Number(row.entry_count);
-      if (!Number.isFinite(value)) return sum;
-      return (sum ?? 0) + value;
-    }, 0);
+    const entryCount = currencies.reduce((sum, row) => sum + row.entryCount, 0);
 
-    if (data.length > 1) {
+    if (currencies.length > 1) {
       return {
         qualifyingSales,
         commissionNet: null,
         currency: null,
+        payableAmount: null,
+        paidAmount: null,
         entryCount,
+        currencies,
       };
     }
 
-    const row = data[0];
+    const row = currencies[0];
     return {
       qualifyingSales,
-      commissionNet: row.commission_net ?? null,
+      commissionNet: row.commissionNet,
       currency: row.currency,
+      payableAmount: row.payableAmount,
+      paidAmount: row.paidAmount,
       entryCount,
+      currencies,
+    };
+  },
+);
+
+const LEDGER_LIMIT = 100;
+
+function asText(value: unknown): string {
+  if (value === null || value === undefined) return "";
+  return String(value);
+}
+
+export type ReadableRows<T> = {
+  rows: T[] | null;
+  unreadable: boolean;
+};
+
+/**
+ * Partner cabinet reads are filtered to the caller's partner id even when the
+ * session is also an admin. RLS still applies; the filter keeps an admin's
+ * own cabinet from listing every partner's rows.
+ */
+async function ownPartnerId(): Promise<string | null> {
+  const account = await getPartnerAccount();
+  return account?.partner.partner_id ?? null;
+}
+
+/** Sales attributed to the caller. Amounts stay as stored text. */
+export const getPartnerSales = cache(
+  async (): Promise<ReadableRows<SaleRow>> => {
+    const partnerId = await ownPartnerId();
+    if (!partnerId) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("sales")
+      .select(
+        "id, external_order_id, source, product_ref, partner_id, referral_code, amount, currency, status, paid_at, confirmed_at, locked_at, created_at, updated_at",
+      )
+      .eq("partner_id", partnerId)
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[partner] sales failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return {
+      rows: (result.data ?? []).map((row) => ({
+        ...row,
+        amount: asText(row.amount),
+      })),
+      unreadable: false,
+    };
+  },
+);
+
+/** Commission entries for the caller. Status and amount are the ledger's. */
+export const getPartnerCommissions = cache(
+  async (): Promise<ReadableRows<CommissionEntryRow>> => {
+    const partnerId = await ownPartnerId();
+    if (!partnerId) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("commission_entries")
+      .select(
+        "id, sale_id, beneficiary_partner_id, level, commission_type, base_amount, rate, amount, currency, status, reverses_entry_id, created_at, updated_at, paid_at",
+      )
+      .eq("beneficiary_partner_id", partnerId)
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[partner] commissions failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return {
+      rows: (result.data ?? []).map((row) => ({
+        ...row,
+        base_amount: asText(row.base_amount),
+        rate: asText(row.rate),
+        amount: asText(row.amount),
+      })),
+      unreadable: false,
+    };
+  },
+);
+
+/** Payouts recorded for the caller. */
+export const getPartnerPayouts = cache(
+  async (): Promise<ReadableRows<PayoutRow>> => {
+    const partnerId = await ownPartnerId();
+    if (!partnerId) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("payouts")
+      .select(
+        "id, partner_id, status, currency, amount, created_by, confirmed_by, created_at, updated_at, confirmed_at, paid_at",
+      )
+      .eq("partner_id", partnerId)
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[partner] payouts failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return {
+      rows: (result.data ?? []).map((row) => ({
+        ...row,
+        amount: asText(row.amount),
+      })),
+      unreadable: false,
+    };
+  },
+);
+
+/** Leads attributed to the caller's referral code. */
+export const getPartnerLeads = cache(
+  async (): Promise<ReadableRows<LeadRow>> => {
+    const partnerId = await ownPartnerId();
+    if (!partnerId) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("leads")
+      .select(
+        "id, partner_id, referral_code, referral_source, referral_click_id, name, email, messenger, company, scenario, message, landing_path, created_at",
+      )
+      .eq("partner_id", partnerId)
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[partner] leads failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return { rows: result.data ?? [], unreadable: false };
+  },
+);
+
+/** Admin read of every sale. Partners do not use this. */
+export const getAdminSales = cache(async (): Promise<ReadableRows<SaleRow>> => {
+  const auth = await getAuthContext();
+  if (!auth?.isAdmin) return { rows: null, unreadable: true };
+  const supabase = await createSupabaseServerClient();
+  const result = await supabase
+    .from("sales")
+    .select(
+      "id, external_order_id, source, product_ref, partner_id, referral_code, amount, currency, status, paid_at, confirmed_at, locked_at, created_at, updated_at",
+    )
+    .order("created_at", { ascending: false })
+    .limit(LEDGER_LIMIT);
+  if (result.error) {
+    console.error("[admin] sales failed:", result.error.message);
+    return { rows: null, unreadable: true };
+  }
+  return {
+    rows: (result.data ?? []).map((row) => ({ ...row, amount: asText(row.amount) })),
+    unreadable: false,
+  };
+});
+
+/** Admin read of payouts. */
+export const getAdminPayouts = cache(
+  async (): Promise<ReadableRows<PayoutRow>> => {
+    const auth = await getAuthContext();
+    if (!auth?.isAdmin) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+    const result = await supabase
+      .from("payouts")
+      .select(
+        "id, partner_id, status, currency, amount, created_by, confirmed_by, created_at, updated_at, confirmed_at, paid_at",
+      )
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+    if (result.error) {
+      console.error("[admin] payouts failed:", result.error.message);
+      return { rows: null, unreadable: true };
+    }
+    return {
+      rows: (result.data ?? []).map((row) => ({
+        ...row,
+        amount: asText(row.amount),
+      })),
+      unreadable: false,
     };
   },
 );
