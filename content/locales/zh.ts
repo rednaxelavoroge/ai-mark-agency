@@ -364,6 +364,8 @@ export const copyZh: Copy = {
     "eyebrow": "开启合作",
     "title": "共同探讨您的下一阶段业务跃迁。",
     "lead": "留下您的联系方式，我们的创始团队将在 2 小时内与您预约 20 分钟战略沟通会。",
+    "formNote": "留下姓名和联系方式。如果你是通过合伙人链接来的，这条请求会记到该合伙人名下。提交不是付款。",
+    "formCta": "留下联系方式",
     "name": "您的姓名",
     "email": "工作邮箱",
     "messenger": "Telegram / WhatsApp / 微信",

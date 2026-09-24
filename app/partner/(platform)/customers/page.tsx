@@ -15,17 +15,18 @@ export default async function PartnerCustomersPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Customers"
-        lead="People who submitted the contact form after opening your referral link. A lead is not a sale."
+        lead="People who submitted the contact form on the site while your referral link was still valid. A lead is not a sale and is not a commission."
       />
       <DataTable
         unreadable={leads.unreadable}
-        empty="No attributed leads. A row appears when someone writes through the site while your referral cookie is still valid."
-        columns={["Name", "Company", "Email", "Scenario", "When"]}
+        empty="No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty."
+        columns={["Name", "Company", "Email", "Scenario", "Page", "When"]}
         rows={(leads.rows ?? []).map((lead) => [
           lead.name || NO_DATA,
           lead.company || NO_DATA,
           lead.email || NO_DATA,
           lead.scenario || NO_DATA,
+          lead.landing_path || NO_DATA,
           formatDateTime(lead.created_at),
         ])}
       />

@@ -498,6 +498,25 @@ export const getPartnerLeads = cache(
   },
 );
 
+/** Admin read of contact leads. Partners read only their own rows. */
+export const getAdminLeads = cache(async (): Promise<ReadableRows<LeadRow>> => {
+  const auth = await getAuthContext();
+  if (!auth?.isAdmin) return { rows: null, unreadable: true };
+  const supabase = await createSupabaseServerClient();
+  const result = await supabase
+    .from("leads")
+    .select(
+      "id, partner_id, referral_code, referral_source, referral_click_id, name, email, messenger, company, scenario, message, landing_path, created_at",
+    )
+    .order("created_at", { ascending: false })
+    .limit(LEDGER_LIMIT);
+  if (result.error) {
+    console.error("[admin] leads failed:", result.error.message);
+    return { rows: null, unreadable: true };
+  }
+  return { rows: result.data ?? [], unreadable: false };
+});
+
 /** Admin read of every sale. Partners do not use this. */
 export const getAdminSales = cache(async (): Promise<ReadableRows<SaleRow>> => {
   const auth = await getAuthContext();

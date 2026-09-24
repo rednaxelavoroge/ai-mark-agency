@@ -4,10 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
+import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
+import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 
-export function AIMEPageContent({ locale }: { locale: Locale }) {
+export function AIMEPageContent({
+  locale,
+  contact,
+}: {
+  locale: Locale;
+  contact: Copy["contact"];
+}) {
   const c = getAimeCopy(locale);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -52,6 +60,10 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
                 >
                   {c.ctaPricing}
                 </a>
+                <InquiryLink
+                  contact={contact}
+                  className="inline-flex items-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
+                />
               </div>
 
               {/* Hero meta chips */}
@@ -462,6 +474,8 @@ export function AIMEPageContent({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <LeadInquiry contact={contact} scenario="aime" />
 
       {/* 8. BOTTOM CTA BANNER */}
       <section className="py-16 sm:py-20">

@@ -391,6 +391,8 @@ export const copyDe: Copy = {
     "eyebrow": "Contact",
     "title": "Tell us which door you are walking through.",
     "lead": "Open the site chat. The AI assistant answers right away.",
+    "formNote": "Hinterlassen Sie einen Namen und einen Kontaktweg. Wenn Sie über einen Partnerlink gekommen sind, wird diese Anfrage diesem Partner zugeordnet. Das Senden ist keine Zahlung.",
+    "formCta": "Kontaktdaten hinterlassen",
     "name": "Name",
     "email": "Email",
     "messenger": "Telegram or WhatsApp",

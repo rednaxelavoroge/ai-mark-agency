@@ -406,6 +406,8 @@ export const copyJa: Copy = {
     "eyebrow": "Contact",
     "title": "Tell us which door you are walking through.",
     "lead": "Open the site chat. The AI assistant answers right away.",
+    "formNote": "お名前と連絡先を残してください。パートナーのリンクから来た場合、この依頼はそのパートナーに紐づきます。送信は支払いではありません。",
+    "formCta": "連絡先を残す",
     "name": "Name",
     "email": "Email",
     "messenger": "Telegram or WhatsApp",

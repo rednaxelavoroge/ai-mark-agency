@@ -406,6 +406,8 @@ export const copyTr: Copy = {
     "eyebrow": "Contact",
     "title": "Tell us which door you are walking through.",
     "lead": "Open the site chat. The AI assistant answers right away.",
+    "formNote": "Adınızı ve size ulaşmanın bir yolunu bırakın. Bir partner bağlantısından geldiyseniz, bu talep o partnere yazılır. Göndermek bir ödeme değildir.",
+    "formCta": "İletişim bırakın",
     "name": "Name",
     "email": "Email",
     "messenger": "Telegram or WhatsApp",

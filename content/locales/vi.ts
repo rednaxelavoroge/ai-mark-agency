@@ -406,6 +406,8 @@ export const copyVi: Copy = {
     "eyebrow": "Contact",
     "title": "Tell us which door you are walking through.",
     "lead": "Open the site chat. The AI assistant answers right away.",
+    "formNote": "Để lại tên và cách liên hệ. Nếu bạn đến từ liên kết đối tác, yêu cầu này được ghi cho đối tác đó. Gửi biểu mẫu không phải là thanh toán.",
+    "formCta": "Để lại liên hệ",
     "name": "Name",
     "email": "Email",
     "messenger": "Telegram or WhatsApp",

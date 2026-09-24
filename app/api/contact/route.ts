@@ -30,11 +30,20 @@ type Payload = {
   budget?: unknown;
   website?: unknown;
   message?: unknown;
+  landing_path?: unknown;
 };
 
 function str(value: unknown, max: number) {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, max);
+}
+
+/** Internal path only. Query strings and off-site values are dropped. */
+function landingPath(value: unknown): string | null {
+  const raw = str(value, 300);
+  if (!raw.startsWith("/") || raw.startsWith("//")) return null;
+  if (/[\s?#\\]/.test(raw)) return null;
+  return raw;
 }
 
 async function deliver(text: string, subject: string) {
@@ -101,6 +110,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "invalid_fields" }, { status: 400 });
   }
 
+  const message = str(body.message, 4000);
+  const landing = landingPath(body.landing_path);
   const subject = `[ai-mark.agency] ${company} · ${scenario}`;
   const text = [
     `Name: ${name}`,
@@ -108,7 +119,11 @@ export async function POST(request: Request) {
     `Telegram/WhatsApp: ${messenger}`,
     `Company: ${company}`,
     `Scenario: ${scenario}`,
-  ].join("\n");
+    landing ? `Page: ${landing}` : "",
+    message ? `Message: ${message}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   // Phase 4B: record the submission as a Lead, attributed to the visitor's
   // referral cookie when there is a valid one. This is strictly ADDITIVE —
@@ -121,13 +136,30 @@ export async function POST(request: Request) {
     messenger,
     company,
     scenario,
+    message: message || null,
+    landingPath: landing,
   });
 
+  const recorded = Boolean(lead.leadId);
   try {
     await deliver(text, subject);
-    return NextResponse.json({ ok: true, lead_source: lead.source });
+    return NextResponse.json({ ok: true, lead_source: lead.source, recorded });
   } catch (error) {
     console.error("contact_failed", error);
-    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 503 });
+    // The lead row is the commercial record. A mail outage must not make the
+    // visitor retry as if nothing was stored. Delivery still runs first when
+    // a provider is configured; 503 remains when nothing was recorded.
+    if (recorded) {
+      return NextResponse.json({
+        ok: true,
+        lead_source: lead.source,
+        recorded: true,
+        notified: false,
+      });
+    }
+    return NextResponse.json(
+      { ok: false, error: "send_failed", recorded: false },
+      { status: 503 },
+    );
   }
 }

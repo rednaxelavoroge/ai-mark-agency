@@ -12,6 +12,7 @@ const ADMIN_NAV: PlatformNavItem[] = [
   { href: "/admin", label: "Overview", exact: true },
   { href: "/admin/partners", label: "Partners" },
   { href: "/admin/network", label: "Network" },
+  { href: "/admin/leads", label: "Leads" },
   { href: "/admin/orders", label: "Orders" },
   { href: "/admin/commissions", label: "Commissions" },
   { href: "/admin/payouts", label: "Payouts" },

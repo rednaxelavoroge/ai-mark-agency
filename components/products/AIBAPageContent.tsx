@@ -4,11 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 import { type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
+import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
+import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
 
-export function AIBAPageContent({ locale }: { locale: Locale }) {
+export function AIBAPageContent({
+  locale,
+  contact,
+}: {
+  locale: Locale;
+  contact: Copy["contact"];
+}) {
   const c = getAibaCopy(locale);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -54,6 +62,10 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
                 >
                   {c.ctaPricing}
                 </a>
+                <InquiryLink
+                  contact={contact}
+                  className="inline-flex items-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
+                />
               </div>
 
               {/* Hero meta chips */}
@@ -461,6 +473,8 @@ export function AIBAPageContent({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <LeadInquiry contact={contact} scenario="assistant" />
 
       {/* 9. BOTTOM BANNER */}
       <section className="py-16 sm:py-20">
