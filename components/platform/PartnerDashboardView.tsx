@@ -9,10 +9,13 @@ import { StatusBadge } from "@/components/platform/StatusBadge";
 import { cardClass } from "@/components/ui/classes";
 import {
   NO_DATA,
+  formatCount,
   formatDate,
   formatDateTime,
+  formatLedgerMoney,
   partnerStatusLabel,
   referralUrl,
+  type PartnerLedgerStats,
   type PartnerReferralStats,
 } from "@/lib/partner/format";
 import type {
@@ -29,16 +32,15 @@ export type PartnerDashboardData = {
   history: PartnerStatusHistoryRow[];
   /** Phase 4B referral counters — real, or `null` when unreadable. */
   stats: PartnerReferralStats;
+  /** Phase 4C ledger. Empty is zero; unreadable is null. */
+  ledger: PartnerLedgerStats;
   email: string | null;
 };
 
 /**
- * The financial tiles below stay `NO_DATA` on purpose.
- *
- * Phase 4B ships the referral engine, not the sales, commission or payout
- * engines, and the brief is explicit that the dashboard must never display an
- * invented figure. Each tile becomes real as its phase lands; the referral
- * section above them already shows the counters that genuinely exist.
+ * Qualifying sales and commission come only from the ledger. An empty ledger
+ * is a real zero. Network size and customers stay `—` because those records
+ * do not exist yet — they are not estimated from clicks or leads.
  */
 
 /**
@@ -55,6 +57,7 @@ export function PartnerDashboardView({
   sponsor,
   history,
   stats,
+  ledger,
   email,
 }: PartnerDashboardData) {
   const displayName = profile?.full_name ?? email ?? "Partner";
@@ -69,8 +72,8 @@ export function PartnerDashboardView({
           <>
             Your Partner ID is{" "}
             <span className="font-mono text-paper">{partner.partner_id}</span>.
-            Referral clicks and attributed leads are live; sales and commission
-            reporting arrive in the next phases.
+            Referral clicks and attributed leads are live. Qualifying sales and
+            commission are read from the ledger.
           </>
         }
         actions={<StatusBadge status={partner.status} />}
@@ -92,9 +95,9 @@ export function PartnerDashboardView({
             Performance
           </h2>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">
-            These figures stay empty until the sales, commission and payout
-            engines ship. A dash means the platform genuinely does not know yet
-            — nothing here is estimated or simulated.
+            Qualifying sales and commission come from the ledger. An empty
+            ledger is zero. A dash means the figure could not be read, or that
+            the record does not exist yet. Nothing here is estimated.
           </p>
         </div>
 
@@ -103,9 +106,23 @@ export function PartnerDashboardView({
         <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
           <StatCard label="Network size" value={NO_DATA} />
           <StatCard label="Customers" value={NO_DATA} />
-          <StatCard label="Qualifying sales" value={NO_DATA} />
-          <StatCard label="Commission" value={NO_DATA} />
+          <StatCard
+            label="Qualifying sales"
+            value={
+              ledger.qualifyingSales === null
+                ? NO_DATA
+                : formatCount(ledger.qualifyingSales)
+            }
+          />
+          <StatCard
+            label="Commission"
+            value={formatLedgerMoney(ledger)}
+            hint={ledger.currency ?? NO_DATA}
+          />
         </div>
+        {ledger.entryCount === 0 ? (
+          <p className="text-xs text-muted">No commission entries.</p>
+        ) : null}
       </section>
 
       <div className="grid gap-6 lg:grid-cols-5">

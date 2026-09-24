@@ -5,7 +5,11 @@ import { redirect } from "next/navigation";
 import { cache } from "react";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { PartnerReferralStats } from "@/lib/partner/format";
+import {
+  UNREADABLE_LEDGER,
+  type PartnerLedgerStats,
+  type PartnerReferralStats,
+} from "@/lib/partner/format";
 import type {
   PartnerProfileRow,
   PartnerRelationshipRow,
@@ -221,6 +225,66 @@ export const getPartnerReferralStats = cache(
       clicks: toCount(row.clicks),
       leads: toCount(row.leads),
       partnerSignups: toCount(row.partner_signups),
+    };
+  },
+);
+
+/**
+ * Earnings for the calling partner, from `public.partner_ledger_stats()` only.
+ *
+ * A failed read stays `—`. An empty ledger is a real zero, a blank currency
+ * and an empty entry list. Amounts are kept as text. Rows in more than one
+ * currency are not added together.
+ */
+export const getPartnerLedgerStats = cache(
+  async (): Promise<PartnerLedgerStats> => {
+    const auth = await getAuthContext();
+    if (!auth?.isPartner) return UNREADABLE_LEDGER;
+
+    const supabase = await createSupabaseServerClient();
+    const { data, error } = await supabase.rpc("partner_ledger_stats");
+
+    if (error || !data) {
+      console.error("[partner] ledger stats failed:", error?.message);
+      return UNREADABLE_LEDGER;
+    }
+
+    if (data.length === 0) {
+      return {
+        qualifyingSales: 0,
+        commissionNet: "0.00",
+        currency: null,
+        entryCount: 0,
+      };
+    }
+
+    const qualifyingSales = data.reduce<number | null>((max, row) => {
+      const value = Number(row.qualifying_sales);
+      if (!Number.isFinite(value)) return max;
+      return max === null ? value : Math.max(max, value);
+    }, null);
+
+    const entryCount = data.reduce<number | null>((sum, row) => {
+      const value = Number(row.entry_count);
+      if (!Number.isFinite(value)) return sum;
+      return (sum ?? 0) + value;
+    }, 0);
+
+    if (data.length > 1) {
+      return {
+        qualifyingSales,
+        commissionNet: null,
+        currency: null,
+        entryCount,
+      };
+    }
+
+    const row = data[0];
+    return {
+      qualifyingSales,
+      commissionNet: row.commission_net ?? null,
+      currency: row.currency,
+      entryCount,
     };
   },
 );
