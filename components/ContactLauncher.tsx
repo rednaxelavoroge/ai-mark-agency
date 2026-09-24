@@ -238,6 +238,47 @@ function syncTeaserVisibility(hide: boolean) {
   }
 }
 
+/**
+ * Once-only greeting.
+ *
+ * The hosted widget re-injects its greeting teaser on every full page load and
+ * keeps re-rendering it while the visitor navigates, so without a marker it
+ * pops up again and again — on reloads, on soft navigations and on any later
+ * visit. The widget exposes no API for this, so the dismissal is remembered in
+ * localStorage and re-asserted over the widget's own DOM, the same way the
+ * channel-chooser hide works.
+ *
+ * The marker is written when the visitor dismisses the teaser themselves; an
+ * ignored greeting is not treated as seen.
+ */
+const TEASER_SEEN_KEY = "aimark.chat.teaser.v1";
+
+function hasSeenTeaser(): boolean {
+  try {
+    return window.localStorage.getItem(TEASER_SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function rememberTeaserSeen() {
+  try {
+    window.localStorage.setItem(TEASER_SEEN_KEY, "1");
+  } catch {
+    // Private mode / storage disabled: the greeting simply reappears, which is
+    // the pre-existing behaviour and never blocks the page.
+  }
+}
+
+/**
+ * Close button wiring for the hosted teaser, delegated at the document so it
+ * also catches a teaser the widget re-creates after a soft navigation.
+ */
+function isTeaserCloseClick(target: EventTarget | null): boolean {
+  const el = target as HTMLElement | null;
+  return !!el?.closest?.(".aiba-root .aiba-greeting-close");
+}
+
 
 function applyLocaleChrome(locale: Locale) {
   const t = locale === "ru" ? COPY.ru : COPY.en;
@@ -508,16 +549,37 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
   // The widget paints at z-index 2147483000 and its DOM is a sibling of ours
   // under <body>, so no stylesheet can reach it — and because it can recreate
   // the teaser at any time, the hide is re-asserted on a timer rather than once.
+  // The same loop re-asserts the once-only dismissal, since the widget re-injects
+  // its greeting on every soft navigation.
   useEffect(() => {
-    const hide = menuOpen && !chatOpen;
-    syncTeaserVisibility(hide);
-    if (!hide) return;
-    const timer = window.setInterval(() => syncTeaserVisibility(true), 200);
+    const syncTeaser = () => {
+      if (hasSeenTeaser()) {
+        syncTeaserVisibility(true);
+        return;
+      }
+      syncTeaserVisibility(menuOpen && !chatOpen);
+    };
+
+    syncTeaser();
+    const timer = window.setInterval(syncTeaser, 200);
     return () => {
       window.clearInterval(timer);
-      syncTeaserVisibility(false);
+      if (!hasSeenTeaser()) syncTeaserVisibility(false);
     };
   }, [menuOpen, chatOpen]);
+
+  // Remember the dismissal the moment the visitor closes the greeting, so the
+  // widget cannot bring it back on the next page or the next visit. Delegated at
+  // the document because the widget owns (and re-creates) the markup.
+  useEffect(() => {
+    const onCloseClick = (e: Event) => {
+      if (!isTeaserCloseClick(e.target)) return;
+      rememberTeaserSeen();
+      window.setTimeout(() => syncTeaserVisibility(true), 0);
+    };
+    document.addEventListener("click", onCloseClick, true);
+    return () => document.removeEventListener("click", onCloseClick, true);
+  }, []);
 
   // Any full-screen overlay we own (today the mobile language sheet) raises the
   // body-level `data-overlay-open` flag; mirror it into the hosted widget's
@@ -526,7 +588,7 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
   useEffect(() => {
     const observer = new MutationObserver(() => {
       const overlayOpen = document.documentElement.hasAttribute("data-overlay-open");
-      if (overlayOpen) syncTeaserVisibility(true);
+      if (overlayOpen || hasSeenTeaser()) syncTeaserVisibility(true);
       else syncTeaserVisibility(menuOpen && !chatOpen);
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-overlay-open"] });

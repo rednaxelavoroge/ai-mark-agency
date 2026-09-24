@@ -236,8 +236,16 @@ export function LanguageSelector({
           Full height, hanging from the TOP edge where its trigger lives: on a
           phone this is a switch, not a task sheet, so it claims the whole
           screen rather than making the reader scroll a half-height drawer.
-          The list keeps its own scroll area for the tail languages and for the
-          on-screen keyboard, and the panel respects the device safe areas. */}
+
+          The height is `100svh` — the SMALL viewport, i.e. the area left with
+          the browser's own chrome on screen. `100dvh` grows to the full height
+          as soon as the URL bar auto-hides, which parked the last language
+          under the browser bar where it could be neither seen nor tapped.
+
+          The list is a real scroll container (`min-h-0`, `touch-action: pan-y`,
+          `overscroll-contain`): today's 12 languages end with breathing room on
+          a typical phone, and the list keeps scrolling normally as more are
+          added. The panel also respects the device safe areas. */}
       {mounted && open
         ? createPortal(
             <div className="sm:hidden fixed inset-0 z-[999999]">
@@ -254,7 +262,7 @@ export function LanguageSelector({
                 role="dialog"
                 aria-modal="true"
                 aria-label="Choose Language"
-                className="am-drop fixed inset-x-0 top-0 z-10 flex h-[100vh] h-[100dvh] min-h-0 flex-col border-b border-line bg-ink px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] shadow-2xl"
+                className="am-drop fixed inset-x-0 top-0 z-10 flex h-[100vh] h-[100dvh] h-[100svh] min-h-0 flex-col border-b border-line bg-ink px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] shadow-2xl"
               >
                 {/* Header bar */}
                 <div className="flex items-center justify-between border-b border-line px-1 pb-2.5">
@@ -302,7 +310,10 @@ export function LanguageSelector({
                 {/* Scrollable Language List — sized so all 12 languages fit a
                     typical phone screen without scrolling; the scroll area is
                     still there for short screens and the on-screen keyboard. */}
-                <div className="flex-1 overflow-y-auto space-y-px py-1 pr-1 overscroll-contain min-[380px]:space-y-0.5">
+                <div
+                  className="min-h-0 flex-1 overflow-y-auto overscroll-contain space-y-px py-1 pb-2 pr-1 min-[380px]:space-y-0.5"
+                  style={{ touchAction: "pan-y", WebkitOverflowScrolling: "touch" }}
+                >
                   {filteredLocales.length === 0 ? (
                     <p className="py-8 text-center text-sm text-muted">
                       No language found
