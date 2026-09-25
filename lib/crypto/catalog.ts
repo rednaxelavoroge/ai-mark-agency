@@ -9,6 +9,27 @@ import { packages } from "@/content/packages";
  * Custom / "по запросу" / Digital Production are not here — there is no
  * published number to charge.
  */
+
+/**
+ * The one payment path a buyer is sent to from anywhere on the site.
+ *
+ * Every "buy" call-to-action on a product page, a pricing card or the
+ * department-retainer block links here with `?sku=<published sku id>`, so the
+ * visitor never has to re-identify the product they just chose. It lives next
+ * to the SKU list because the two must agree: a link may only ever preselect an
+ * id that exists in `PAYABLE_SKUS`.
+ */
+export const PAY_PAGE_PATH = "/pay";
+
+/**
+ * The query parameter a buy link uses to preselect a SKU on `/pay`.
+ *
+ * It carries a published sku id, never a price: the amount charged is always
+ * resolved server-side from `PAYABLE_SKUS`, so a hand-edited URL cannot change
+ * what is invoiced.
+ */
+export const PAY_SKU_PARAM = "sku";
+
 export type PayableSku = {
   id: string;
   productRef: string;
@@ -53,6 +74,19 @@ export const PAYABLE_SKUS: PayableSku[] = [
 
 export function payableSkuById(id: string): PayableSku | null {
   return PAYABLE_SKUS.find((sku) => sku.id === id) ?? null;
+}
+
+/**
+ * The published sku id a `?sku=` value refers to, or null.
+ *
+ * Unknown or hand-edited values are dropped rather than repaired: `/pay` then
+ * falls back to its normal first-SKU default instead of inventing a product.
+ */
+export function payableSkuIdFromParam(value: string | null | undefined): string | null {
+  if (typeof value !== "string") return null;
+  const id = value.trim();
+  if (!id || id.length > 64) return null;
+  return payableSkuById(id)?.id ?? null;
 }
 
 export function formatUsdAmount(amount: number): string {

@@ -56,7 +56,20 @@ export interface ShowroomContent {
   pricingSub: string;
   pricingDesc: string;
   pricingPoints: string[];
-  pricingTiers: { name: string; price: string; period: string; desc: string; features: string[] }[];
+  pricingTiers: {
+    name: string;
+    price: string;
+    period: string;
+    desc: string;
+    features: string[];
+    /**
+     * The published payable SKU this tier maps to in `lib/crypto/catalog.ts`.
+     *
+     * Present only for tiers with a published monthly list price. The
+     * Enterprise tier is custom, so it keeps its contact call-to-action.
+     */
+    skuId?: string;
+  }[];
   faqTitle: string;
   faqSub: string;
   faqs: { q: string; a: string }[];
@@ -251,6 +264,7 @@ export const showroomRu: ShowroomContent = {
       price: "$199",
       period: "/ месяц",
       desc: "Для малого бизнеса и шоурумов: до 1 000 позиций в каталоге, стандартные формулы расчёта. Self-serve $0; DFY-сетап ~$300 при необходимости.",
+      skuId: "showroom-standard",
       features: [
         "До 1 000 SKU в каталоге",
         "До 500 расчётов КП в месяц",
@@ -264,6 +278,7 @@ export const showroomRu: ShowroomContent = {
       price: "$299",
       period: "/ месяц",
       desc: "Для фабрик и дилеров: сложные параметрические зависимости, неограниченный каталог и CRM-синхронизация.",
+      skuId: "showroom-business",
       features: [
         "Неограниченный объём каталога",
         "До 3 000 расчётов КП в месяц",
@@ -498,6 +513,7 @@ export const showroomEn: ShowroomContent = {
       price: "$199",
       period: "/ month",
       desc: "For small businesses & showrooms: up to 1,000 SKUs, standard calculation formulas. Self-serve $0; optional ~$300 DFY setup.",
+      skuId: "showroom-standard",
       features: [
         "Up to 1,000 catalog SKUs",
         "Up to 500 proposal calculations / month",
@@ -511,6 +527,7 @@ export const showroomEn: ShowroomContent = {
       price: "$299",
       period: "/ month",
       desc: "For manufacturers, dealerships & distributors: advanced formulas, unlimited catalogue, and CRM sync.",
+      skuId: "showroom-business",
       features: [
         "Unlimited catalog SKUs",
         "Up to 3,000 proposal calculations / month",

@@ -128,31 +128,40 @@ export function collectUtm(
  * Anything that is not a plain internal path — a scheme, a protocol-relative
  * `//host`, a backslash (which some browsers normalise to `/`), a reserved
  * prefix, an over-long value — falls back to DEFAULT_LANDING_PATH instead of
- * being "fixed up". Query strings in `to` are dropped; the only query
- * parameters that survive are the sanitised UTM ones, re-attached below.
+ * being "fixed up".
+ *
+ * An internal target keeps its own query string, because a partner link is
+ * allowed to point at a specific offer: `?to=/pay?sku=aime-pro` must land on
+ * that product rather than silently on the default one. The query is only ever
+ * taken from a same-origin path that already passed `safeInternalPath`, and a
+ * sanitised UTM parameter never overwrites a key the target already set.
  */
 export function resolveLandingPath(
   rawTo: unknown,
   utm: UtmParams = {},
 ): string {
   const fallback = DEFAULT_LANDING_PATH;
-  let path = fallback;
+  let target: { path: string; search: string } | null = null;
 
   if (
     typeof rawTo === "string" &&
     rawTo.length > 0 &&
     rawTo.length <= MAX_LANDING_PATH_LENGTH
   ) {
-    path = safeInternalPath(rawTo) ?? fallback;
+    target = safeInternalPath(rawTo);
   }
 
-  const query = new URLSearchParams();
+  // UTM parameters ride along with the landing page. A key the target already
+  // carries wins: the destination's own intent is not silently rewritten.
+  const query = new URLSearchParams(target?.search ?? "");
   for (const key of UTM_KEYS) {
     const value = utm[key];
-    if (value) query.set(key, value);
+    if (value && !query.has(key)) query.set(key, value);
   }
   const qs = query.toString();
-  return qs ? `${path}?${qs}` : path;
+
+  if (!target) return qs ? `${fallback}?${qs}` : fallback;
+  return qs ? `${target.path}?${qs}` : target.path;
 }
 
 /**
@@ -184,8 +193,8 @@ export function buildReferralUrl(code: string, origin = SITE_ORIGIN): string {
   return `${origin}/go/${code}`;
 }
 
-/** Same-origin path, or null. See resolveLandingPath() for the policy. */
-function safeInternalPath(raw: string): string | null {
+/** Same-origin path plus its query, or null. See resolveLandingPath(). */
+function safeInternalPath(raw: string): { path: string; search: string } | null {
   if (!raw.startsWith("/")) return null;
   if (raw.startsWith("//")) return null;
   if (raw.includes("\\")) return null;
@@ -211,5 +220,5 @@ function safeInternalPath(raw: string): string | null {
   );
   if (reserved) return null;
 
-  return path;
+  return { path, search: parsed.search };
 }

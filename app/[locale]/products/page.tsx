@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
+import { BuyLink } from "@/components/BuyLink";
 import { getCopy } from "@/content/copy";
 import { products } from "@/content/packages";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
@@ -160,6 +161,14 @@ export default async function ProductsHubPage({ params }: Props) {
                     {t.products.installCta}
                   </ContactCta>
                 </div>
+                {/* A hub card covers a product family with several published
+                    plans, so it links to the payment page without a preselected
+                    SKU; the buyer picks (and sees) the exact plan on /pay. */}
+                <BuyLink
+                  locale={locale}
+                  label={isRu ? "Оплатить USDT / USDC" : "Pay USDT / USDC"}
+                  className="mt-2 block w-full rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-center text-xs font-medium text-paper transition-colors hover:border-line-strong hover:bg-ink-3"
+                />
               </div>
             </section>
           );

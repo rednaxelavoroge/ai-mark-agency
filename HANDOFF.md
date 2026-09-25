@@ -66,28 +66,78 @@ Confirm email** off (a production security decision, not a test detail).
 4. `supabase/migrations/20260922090600_phase4b_referral_schema.sql` — the RPC
    contract and every rejection path.
 
-### Phase 4C — where to start (not started)
+### Phase 4C — the ledger that exists today (implemented, not a plan)
 
-Everything Phase 4C needs is already in the schema; no commission code exists
-yet:
+Phase 4C **is implemented and applied to the live project.** The qualifying sale,
+L1–L5 distribution, the 14-day hold, payouts and the partner read path all exist:
 
-* `partner_relationships.confirmed_at` / `locked_at` — a qualifying sale
-  finalises an edge by advancing these, never by rewriting the edge.
-* `partner_relationships.attribution_source` / `attribution_code` — how each
-  sponsor edge was decided.
-* `leads` and `referral_clicks` — the attributable events a sale can be tied to.
-* Pattern to copy for an aggregate a partner may read: `public.partner_referral_stats()`,
-  a counts-only `SECURITY DEFINER` rollup (Phase 4A deliberately does not let a
-  sponsor enumerate their downline).
-* Pattern to copy for something a client must never do: a `SECURITY DEFINER`
-  function with EXECUTE revoked from `PUBLIC`/`anon`/`authenticated` and granted
-  to `service_role` only, plus RLS with no write policy at all.
+* `supabase/migrations/20260922090800_phase4c_ledger.sql` — `sales`,
+  `commission_rules` (seeded L1 15% / L2 5% / L3 3% / L4 2% / L5 1%, launch
+  multiplier 1.5 while the L1 partner is under 90 days old), `commission_entries`,
+  `payouts`, `payout_allocations`, and the RPCs `record_sale`, `qualify_sale`,
+  `post_commission_entries`, `reverse_sale_commissions`, `advance_sponsor_lock`,
+  `create_payout`, `confirm_payout`, `partner_ledger_stats`. Every RPC is
+  `SECURITY DEFINER` and executable by `service_role` only except the stats
+  rollup, which the partner's own session may call.
+* `supabase/migrations/20260924220000_payout_destination.sql` — the USDC
+  destination a partner saves on their profile. It is a note, not a KYC record,
+  and nothing in the app moves tokens.
+* `/pay` + `/admin/invoices` — the buyer pays USDT/USDC to a treasury address,
+  an operator matches the tx hash, and that single confirmation runs
+  `record_sale` → `qualify_sale` → `post_commission_entries`.
+* `/admin/orders` — the same three RPCs for a sale recorded by hand.
+* `/partner/commissions`, `/partner/payouts`, `/partner/profile` — a partner
+  reads their own entries, their payable/paid totals and their saved
+  destination. `/admin/payouts` opens and confirms the payout itself.
 
-Open questions Phase 4C must answer before coding: what exactly counts as a
-qualifying sale, where the sale event comes from, the L1–L5 distribution rules,
-the commission base and currency, and how payouts are recorded. **Do not invent
-financial numbers in the UI** — the dashboard shows `—`, never a simulated
-figure, and that rule stays.
+What Phase 4C deliberately does **not** do yet, and which is therefore an owner
+decision rather than a bug to fix silently:
+
+* no token movement — `confirm_payout` is a ledger write, an operator still sends
+  the transfer outside the app;
+* no partner-initiated payout request (the operator creates it) and no
+  two-person rule on `created_by` vs `confirmed_by`;
+* no scheduled job calls `advance_sponsor_lock`; the admin payouts screen has the
+  button, so a commission only becomes payable when someone advances the lock;
+* `reverse_sale_commissions` exists in SQL but has no UI caller yet, so a
+  refund/chargeback cannot be recorded from the product;
+* `payouts.status = 'void'` is defined and guarded but unreachable, so a mistaken
+  open payout cannot yet be released from the admin UI;
+* a sale **must** be attributed: `sales.partner_id` is `NOT NULL`, so direct
+  (non-referred) revenue cannot enter the ledger at all.
+
+**Do not invent financial numbers in the UI** — the dashboard shows `—`, never a
+simulated figure, and that rule stays. Before the CTA work below, the buyer could
+not even reach `/pay` from a product page: every pricing card sent the visitor to
+chat, and the only payment link on the site was the footer.
+
+### Selling: every published price has a purchase path
+
+A published price with no way to buy it is a broken promise, so each payable
+offering now carries a second, explicit call-to-action next to the contact one:
+
+* `components/BuyLink.tsx` links to `/<locale>/pay` and preselects the published
+  sku (`?sku=<id>`). It renders nothing when handed an id that is not in
+  `lib/crypto/catalog.ts`, so a mis-wired card disappears instead of silently
+  charging for another product.
+* `app/[locale]/pay/page.tsx` validates `?sku=` with `payableSkuIdFromParam()`
+  and falls back to the ordinary first-SKU default on anything unknown.
+* Wired on: the three product pages (`AIMEPageContent`, `AIBAPageContent`,
+  `ShowroomAIPageContent` — one link per tier that has a published price), the
+  home-page department-retainer cards, the home AI-products showcase, and the
+  `/products` hub cards.
+* Custom tiers (AIBA Enterprise, Showroom Enterprise, the AIME agency construct
+  with its $799 setup, the ~$300 Showroom DFY setup, "AI Marketing Services from
+  $500+") deliberately keep the contact CTA only. They have no published
+  self-serve SKU, and inventing one would publish a number nobody agreed to.
+* **Attribution survives the deep link** — `/go/<code>?to=/pay?sku=<id>` keeps
+  the target's own query string instead of dropping it (`resolveLandingPath()` in
+  `lib/referral/rules.ts`), so a partner can hand out a link to a specific offer.
+  The query is only ever taken from a path that already passed the same-origin
+  and reserved-prefix checks, and a sanitised UTM parameter never overwrites a
+  key the target already set. `/admin/invoices` now says plainly that the
+  referral code is optional because the invoice already stores the code captured
+  at checkout — the operator only fills it to override by hand.
 
 ---
 
@@ -105,10 +155,13 @@ Overflow regression: `BASE=https://ai-mark.agency node scripts/check-overflow.mj
 Design-review stills: `BASE=http://localhost:3100 node scripts/shot.mjs /ru/products /tmp/card.png 1440 1000`
 Both scripts need Playwright resolvable from the repo root (a globally installed `playwright` symlinked into `node_modules/` works).
 Partner Platform RLS + integrity suite (needs only a local PostgreSQL, no Supabase project): `npm run test:rls` (127 assertions)
+Commission/sales ledger suite (needs only a local PostgreSQL; now also runs the whole commerce chain: link → invoice → sale → payout → cabinet): `npm run test:ledger` (72 assertions)
 Referral attribution unit tests (no database, no credentials): `npm test`
 Referral engine against the LIVE project (needs `.env.local` + the applied schema; add `BASE=` for the HTTP half): `npm run verify:referral`
+Whole sales chain through a real browser against the LIVE project (buyer → partner link → /pay → operator confirm → commission → cabinet; needs `.env.local` incl. `SUPABASE_ACCESS_TOKEN` for the append-only cleanup, a server on `BASE`, and Playwright): `BASE=http://localhost:3100 npm run verify:commerce`
 Partner Platform against the LIVE project (needs `.env.local` + the applied schema; creates and deletes its own `phase4a-verify-*` users): `node supabase/tests/verify-live-project.mjs`
 Partner Platform through a real browser (needs a server already running): `BASE=http://localhost:3100 node supabase/tests/verify-live-browser.mjs`
+Horizontal-overflow regression (needs a server or the live site): `BASE=https://ai-mark.agency npm run verify:overflow`
 Applying migrations to a project without the CLI: `POST https://api.supabase.com/v1/projects/<ref>/database/query` with a Personal Access Token — see `supabase/README.md` §2. Without a token, paste `supabase/.generated/phase4b-all.sql` into the Supabase SQL editor.
 
 ## Deploy
@@ -213,13 +266,22 @@ Reliable, server-side referral attribution. **The public site is untouched**: `/
 3. `AimeMock` / `AssistantMock` / `ShowroomMock` are still the older, thinner structure (the hub cards crop them heavily). Extend the same five-band treatment, or give the hub cards a compact variant.
 4. Chat: fix the hosted workspace items above (title, RU greeting, online, colour). There is no repo-side credential left to plug in.
 5. Brand: `--mark` is olive while the approved logo is amber/graphite, so the header pairs an orange mark with a green CTA. Decide whether to re-tint the site accents to the logo palette.
-6. Partner Platform Phase 4C: the qualifying sale that finalises a sponsor (`partner_relationships.confirmed_at` / `locked_at` already exist for it, and `attribution_source`/`attribution_code` already record how the edge was decided), then L1–L5 distribution and commissions. **Not started — Phase 4B stops at attribution.**
-7. Partner Platform: profile editing (Server Actions + a Supabase Storage avatar policy), and the admin screens over the schema that already exists.
+6. Partner Platform Phase 4C is **done and live** (see the Phase 4C section above): qualifying sale, L1–L5, the 14-day hold, payouts and the partner read path. What is still open there is the product surface around it — a `reverse_sale_commissions` UI, a reachable payout `void`, a scheduled `advance_sponsor_lock` instead of the manual admin button, and a partner-initiated payout request.
+7. Partner Platform: profile editing (Server Actions + a Supabase Storage avatar policy), and the admin screens over the schema that already exists (`/admin/audit`, `/admin/partners`, `/admin/network` are still placeholders).
 8. Replace the hand-written `lib/supabase/database.types.ts` with `npx supabase gen types typescript` once the project ref exists, so the types cannot drift from the migrations.
 
 ## Last commit
 
-The Phase 4A + Phase 4B work is **uncommitted** — the last commit on `main` only
-contains the public-site work. `git log --oneline -1` shows it; `git status` is
-the authoritative list of what a new session would be committing. Do not commit
-or push without being asked.
+The Partner Platform (Phase 4A + 4B + 4C) and the purchase path are **on `main`**;
+the last commit there is authoritative. Work happens on short-lived branches off
+`origin/main` — `git log --oneline -1` and `git status` are the source of truth.
+Do not commit or push without being asked.
+
+**Deliberately not in the repository.** The Capital Partner commercial path
+(public page, nav/footer entries, the home intent router and its chapter) is
+**not** part of this release and must not be advertised: the owner decisions it
+depends on — above all *what is published on the site* — are still open. The two
+working documents that analyse it (`capital-partner-economic-model.md`,
+`capital-partner-owner-decisions.md`) are drafts and stay **uncommitted**, by
+their own headers. Nothing of its economics may be implemented until those
+decisions are taken.

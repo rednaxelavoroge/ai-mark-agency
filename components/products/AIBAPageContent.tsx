@@ -6,6 +6,7 @@ import { type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
+import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
@@ -424,6 +425,19 @@ export function AIBAPageContent({
                   >
                     {c.ctaConsult}
                   </button>
+                  {/* Self-serve purchase of this exact tier. The Enterprise tier
+                      has no published price and no sku id, so it renders
+                      nothing here and stays contact-only. */}
+                  <BuyLink
+                    locale={locale}
+                    skuId={p.skuId}
+                    label={
+                      locale === "ru"
+                        ? `Оплатить ${p.price} в USDT / USDC`
+                        : `Pay ${p.price} with USDT / USDC`
+                    }
+                    className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
+                  />
                 </div>
               </div>
             ))}

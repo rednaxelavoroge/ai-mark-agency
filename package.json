@@ -10,7 +10,9 @@
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test supabase/tests/referral.test.mjs",
     "test:rls": "bash supabase/tests/run-rls-tests.sh",
     "test:ledger": "bash supabase/tests/run-phase4c-tests.sh",
-    "verify:referral": "node supabase/tests/verify-referral-live.mjs"
+    "verify:referral": "node supabase/tests/verify-referral-live.mjs",
+    "verify:commerce": "node supabase/tests/verify-commerce-live.mjs",
+    "verify:overflow": "node scripts/check-overflow.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

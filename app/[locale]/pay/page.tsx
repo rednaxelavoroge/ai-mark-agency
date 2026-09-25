@@ -2,13 +2,18 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/platform/PageHeader";
 import { cardClass, fieldClass, labelClass, primaryButtonClass } from "@/components/ui/classes";
-import { PAYABLE_SKUS, formatUsdAmount } from "@/lib/crypto/catalog";
+import {
+  PAYABLE_SKUS,
+  formatUsdAmount,
+  payableSkuIdFromParam,
+} from "@/lib/crypto/catalog";
 import {
   NETWORK_LABELS,
   PAYMENT_ASSETS,
   PAYMENT_NETWORKS,
   configuredTreasuryRails,
   treasuryAddress,
+  type PaymentAsset,
 } from "@/lib/crypto/networks";
 import { localePath, isLocale, type Locale } from "@/lib/site";
 import { readReferralAttribution } from "@/lib/referral/attribution";
@@ -35,6 +40,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export const dynamic = "force-dynamic";
 
+/**
+ * The networks actually offered for a given stablecoin.
+ *
+ * A rail exists only when the owner set that asset/network address in env, so
+ * this filter reports real configuration rather than the full network list. It
+ * mirrors the invariant enforced in `createPaymentInvoice()`: no address means
+ * no invoice.
+ */
+function networksForAsset(asset: PaymentAsset) {
+  return PAYMENT_NETWORKS.filter((network) => treasuryAddress(asset, network));
+}
+
 export default async function PayPage({ params, searchParams }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
@@ -47,6 +64,21 @@ export default async function PayPage({ params, searchParams }: Props) {
   const defaultNetwork = rails[0]?.network ?? "solana";
   const defaultAsset =
     rails.find((rail) => rail.network === defaultNetwork)?.asset ?? "USDC";
+
+  // A buy link on a product page arrives as `/pay?sku=<published id>`. Unknown
+  // values are ignored, never repaired, so the form falls back to its normal
+  // default instead of silently charging for another product.
+  const requestedSkuId = payableSkuIdFromParam(first(paramsIn.sku));
+  const initialSkuId = requestedSkuId ?? PAYABLE_SKUS[0]?.id ?? "";
+
+  // Keep the preselected SKU, the stablecoin and the network consistent: a
+  // network whose rail exists only for the other stablecoin is narrowed to one
+  // that actually works for the default asset.
+  const initialNetwork = networksForAsset(defaultAsset).some(
+    (network) => network === defaultNetwork,
+  )
+    ? defaultNetwork
+    : (networksForAsset(defaultAsset)[0] ?? defaultNetwork);
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
@@ -79,7 +111,7 @@ export default async function PayPage({ params, searchParams }: Props) {
           <input type="hidden" name="locale" value={locale} />
           <label className={labelClass}>
             <span className="text-muted">{ru ? "Продукт" : "Product"}</span>
-            <select className={fieldClass} name="sku_id" required defaultValue={PAYABLE_SKUS[0]?.id}>
+            <select className={fieldClass} name="sku_id" required defaultValue={initialSkuId}>
               {PAYABLE_SKUS.map((sku) => (
                 <option key={sku.id} value={sku.id}>
                   {sku.name} · {formatUsdAmount(sku.amountUsd)}
@@ -99,7 +131,7 @@ export default async function PayPage({ params, searchParams }: Props) {
           </label>
           <label className={labelClass}>
             <span className="text-muted">{ru ? "Сеть" : "Network"}</span>
-            <select className={fieldClass} name="network" required defaultValue={defaultNetwork}>
+            <select className={fieldClass} name="network" required defaultValue={initialNetwork}>
               {PAYMENT_NETWORKS.filter((network) =>
                 PAYMENT_ASSETS.some((asset) => treasuryAddress(asset, network)),
               ).map((network) => (

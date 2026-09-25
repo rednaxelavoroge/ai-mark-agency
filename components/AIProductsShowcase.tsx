@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
+import { BuyLink } from "@/components/BuyLink";
 import { productPagePath, productsHubPath } from "@/lib/products";
 import { type Locale } from "@/lib/site";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
@@ -137,6 +138,15 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
                     {isRu ? "Подключить" : "Install"}
                   </ContactCta>
                 </div>
+                {/* This card summarises a product family with several published
+                    plans, so it links to the payment page without preselecting a
+                    SKU: the buyer picks the exact plan (and sees its price) on
+                    /pay, which is the published price list. */}
+                <BuyLink
+                  locale={locale}
+                  label={isRu ? "Оплатить USDT / USDC" : "Pay USDT / USDC"}
+                  className="mt-2 block w-full rounded-full border border-line bg-ink-3/40 px-4 py-2 text-center text-xs font-medium text-paper transition-colors hover:border-line-strong hover:bg-ink-3"
+                />
               </div>
             </div>
           </div>

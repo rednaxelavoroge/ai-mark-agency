@@ -96,13 +96,20 @@ export default async function AdminInvoicesPage({
           <input className={fieldClass} type="datetime-local" name="paid_at" required />
         </label>
         <label className={labelClass}>
-          <span className="text-muted">Referral code</span>
-          <input className={fieldClass} name="referral_code" maxLength={32} />
+          <span className="text-muted">Referral code (optional — leave blank to use the invoice&apos;s stored code)</span>
+          <input className={fieldClass} name="referral_code" maxLength={32} placeholder="from the buyer's link" />
         </label>
         <label className={labelClass}>
-          <span className="text-muted">Partner ID, if you are not using a code</span>
+          <span className="text-muted">Partner ID instead of a code (optional)</span>
           <input className={fieldClass} name="partner_id" maxLength={16} placeholder="AM-001042" />
         </label>
+        <p className="text-xs leading-relaxed text-muted">
+          Leave both blank when the buyer arrived through a partner link: the invoice
+          already stores the referral code captured at checkout, and the sale is
+          attributed to it server-side. Fill a field only to override that with the
+          partner you matched by hand. Either way the code is re-validated against the
+          partner table before anything is posted.
+        </p>
         <button type="submit" className={`w-fit ${primaryButtonClass}`}>
           Confirm payment
         </button>
@@ -111,7 +118,7 @@ export default async function AdminInvoicesPage({
       <DataTable
         unreadable={invoices.unreadable}
         empty="No invoices."
-        columns={["Ref", "Product", "Send", "Rail", "Status", "Tx", "Created"]}
+        columns={["Ref", "Product", "Send", "Rail", "Status", "Ref code", "Tx", "Created"]}
         rows={(invoices.rows ?? []).map((invoice) => {
           const sku = payableSkuById(invoice.sku_id);
           const network = isPaymentNetwork(invoice.network) ? invoice.network : null;
@@ -121,6 +128,7 @@ export default async function AdminInvoicesPage({
             `${invoice.expected_amount} ${invoice.asset}`,
             network ? NETWORK_LABELS[network] : invoice.network,
             invoice.status,
+            invoice.referral_code ?? NO_DATA,
             invoice.tx_hash ?? NO_DATA,
             formatDateTime(invoice.created_at),
           ];
