@@ -3,6 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requirePartner } from "@/lib/auth/dal";
+import {
+  DEFAULT_PAYOUT_NETWORK,
+  formatPayoutDetails,
+  validatePartnerUsdcAddress,
+} from "@/lib/crypto/payout-destination";
+import { isPaymentNetwork } from "@/lib/crypto/networks";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 const RECIPIENT_MAX = 120;
@@ -39,7 +45,20 @@ function optionalText(
 export async function savePayoutDetails(formData: FormData): Promise<void> {
   const { auth } = await requirePartner("/partner/profile");
   const recipient = optionalText(formData.get("payout_recipient"), RECIPIENT_MAX, false);
-  const details = optionalText(formData.get("payout_details"), DETAILS_MAX, true);
+  const networkRaw = optionalText(formData.get("payout_network"), 16, false)?.toLowerCase();
+  const network = networkRaw && isPaymentNetwork(networkRaw) ? networkRaw : DEFAULT_PAYOUT_NETWORK;
+  const address = optionalText(formData.get("payout_address"), 128, false);
+  const notes = optionalText(formData.get("payout_notes"), DETAILS_MAX, true);
+  if (address) {
+    const invalid = validatePartnerUsdcAddress(network, address);
+    if (invalid) fail(invalid);
+  }
+  const details = address
+    ? formatPayoutDetails({ network, address, notes })
+    : notes;
+  if (details && [...details].length > DETAILS_MAX) {
+    fail(`Keep that field to ${DETAILS_MAX} characters.`);
+  }
 
   const supabase = await createSupabaseServerClient();
   const result = await supabase

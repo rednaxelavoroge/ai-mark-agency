@@ -43,6 +43,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       alternates: getLanguageAlternates("/partners"),
     });
+    entries.push({
+      url: absoluteUrl(locale, "/pay"),
+      lastModified,
+      alternates: getLanguageAlternates("/pay"),
+    });
     for (const id of productIds) {
       const path = PRODUCT_PATHS[id];
       entries.push({

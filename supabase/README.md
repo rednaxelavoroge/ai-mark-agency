@@ -77,6 +77,10 @@ Apply in filename order.
 | `20260922090500_phase4a_auth_provisioning.sql` | `auth.users` triggers: provision a partner on signup, mirror email changes. |
 | `20260922090600_phase4b_referral_schema.sql` | `referral_clicks`, `leads`, sponsor-attribution provenance, `attribute_partner_signup()`, `partner_referral_stats()`. |
 | `20260922090700_phase4b_referral_rls.sql` | RLS for the two new tables: read-your-own, no client writes, no `anon` grants. |
+| `20260922090800_phase4c_ledger.sql` | Qualifying sales, commissions, payout RPCs. |
+| `20260924120000_partner_read_path.sql` | Partner read indexes. |
+| `20260924220000_payout_destination.sql` | `payout_recipient` / `payout_details` on `profiles`. |
+| `20260925120000_payment_invoices.sql` | Treasury invoices (USDT/USDC to AI MARK addresses). Client cannot write. |
 
 A single-paste bundle of the Phase 4B half (for a project that already has
 Phase 4A) is generated at `supabase/.generated/phase4b-all.sql`:
@@ -445,6 +449,8 @@ the legacy `eyJ…` JWTs. See
 | `SUPABASE_URL` | **server only** | — | Optional; falls back to `NEXT_PUBLIC_SUPABASE_URL`. |
 | `SUPABASE_SECRET_KEY` | **server only** | `service_role`, which has `BYPASSRLS` | Elevates past every RLS policy. Never `NEXT_PUBLIC_`. **Phase 4B uses it at runtime** (see below). |
 | `REFERRAL_COOKIE_SECRET` | **server only** | — | Optional. HMAC key for the attribution cookie; falls back to `SUPABASE_SECRET_KEY`. |
+| `TREASURY_USDT_*` / `TREASURY_USDC_*` | **server only** | — | Receive addresses (Tron, Ethereum, Polygon, Solana). Empty = that rail is off. Never a private key. |
+| `SOLANA_RPC_URL` | **server only** | — | Optional. Signature lookup only. Does not send tokens. |
 
 ### Guard rails already in the code
 

@@ -33,7 +33,7 @@ export default async function PartnerPayoutsPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Payouts"
-        lead="Payout rows recorded for you, the payable and paid totals from the ledger, and the destination saved on your profile. There is no separate payout provider on this screen."
+        lead="Payout rows recorded for you, the payable and paid totals from the ledger, and the USDC destination saved on your profile. This screen does not send tokens."
       />
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
