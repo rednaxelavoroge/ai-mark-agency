@@ -8,7 +8,7 @@ import {
   formatPayoutDetails,
   validatePartnerUsdcAddress,
 } from "@/lib/crypto/payout-destination";
-import { isPaymentNetwork } from "@/lib/crypto/networks";
+import { isPayoutNetwork } from "@/lib/crypto/networks";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 const RECIPIENT_MAX = 120;
@@ -46,7 +46,7 @@ export async function savePayoutDetails(formData: FormData): Promise<void> {
   const { auth } = await requirePartner("/partner/profile");
   const recipient = optionalText(formData.get("payout_recipient"), RECIPIENT_MAX, false);
   const networkRaw = optionalText(formData.get("payout_network"), 16, false)?.toLowerCase();
-  const network = networkRaw && isPaymentNetwork(networkRaw) ? networkRaw : DEFAULT_PAYOUT_NETWORK;
+  const network = networkRaw && isPayoutNetwork(networkRaw) ? networkRaw : DEFAULT_PAYOUT_NETWORK;
   const address = optionalText(formData.get("payout_address"), 128, false);
   const notes = optionalText(formData.get("payout_notes"), DETAILS_MAX, true);
   if (address) {

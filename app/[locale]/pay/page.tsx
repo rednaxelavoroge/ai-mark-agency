@@ -100,15 +100,13 @@ export default async function PayPage({ params, searchParams }: Props) {
           <label className={labelClass}>
             <span className="text-muted">{ru ? "Сеть" : "Network"}</span>
             <select className={fieldClass} name="network" required defaultValue={defaultNetwork}>
-              {PAYMENT_NETWORKS.map((network) => {
-                const ready = PAYMENT_ASSETS.some((asset) => treasuryAddress(asset, network));
-                return (
-                  <option key={network} value={network} disabled={!ready}>
-                    {NETWORK_LABELS[network]}
-                    {ready ? "" : ru ? " — адрес не задан" : " — address not set"}
-                  </option>
-                );
-              })}
+              {PAYMENT_NETWORKS.filter((network) =>
+                PAYMENT_ASSETS.some((asset) => treasuryAddress(asset, network)),
+              ).map((network) => (
+                <option key={network} value={network}>
+                  {NETWORK_LABELS[network]}
+                </option>
+              ))}
             </select>
           </label>
           <label className={labelClass}>
