@@ -10,14 +10,14 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
   const productsList = [
     {
       id: "aime" as const,
-      badge: isRu ? "Автономный SMM 24/7" : "Autonomous Meta SMM",
+      badge: isRu ? "Маркетинговый цикл" : "Marketing cycle",
       name: "AI Marketing Employee",
       tagline: isRu
-        ? "AI-маркетолог вместо SMM-менеджера · Не шедулер"
-        : "AI Marketer replacing manual SMM · Not a scheduler",
+        ? "Исследование → стратегия → контент → апрув → публикация → аналитика → оптимизация"
+        : "Research → Strategy → Content → Approval → Publication → Analytics → Optimization",
       value: isRu
-        ? "Исследует нишу и конкурентов, формирует контент-планы, пишет тексты, генерирует визуалы и раскадровки для Reels, запрашивает аппрув в Telegram и автоматически публикует в Instagram, Facebook и Threads через официальный Meta Graph API."
-        : "Autonomous marketing employee: conducts competitor research, creates content calendars, writes posts, generates visuals/Reels storyboards, requests Telegram approval, and publishes via Meta Graph API.",
+        ? "Ведёт маркетинговый цикл и публикует только после вашего подтверждения в Telegram. Это не замена отдела и не пустой планировщик постов."
+        : "Runs the marketing cycle and publishes only after you approve in Telegram. It does not replace a department, and it is not an empty post scheduler.",
       channels: ["Instagram", "Facebook", "Threads", "Telegram (Approval)"],
       pricing: isRu ? "От $199 / месяц (без платы за подключение)" : "From $199 / mo (No setup fee)",
       mock: "aime" as ProductVariant,
@@ -29,14 +29,14 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
     },
     {
       id: "assistant" as const,
-      badge: isRu ? "Мультиканальный инбокс продаж" : "Omnichannel Sales AI",
+      badge: isRu ? "Ответы и квалификация" : "Answers and qualification",
       name: "AI Business Assistant",
       tagline: isRu
-        ? "Один AI-ассистент для всех мессенджеров + CRM"
-        : "Unified AI Assistant across messengers + CRM",
+        ? "Ответ → квалификация → передача человеку"
+        : "Answers → Qualification → Human Handoff",
       value: isRu
-        ? "Отвечает клиентам 24/7 в WhatsApp, Telegram, Instagram Direct, Messenger и чате на сайте. Знает каталог и цены, квалифицирует лидов, передаёт диалог менеджеру в один клик и синхронизирует переписку с CRM."
-        : "Responds to inquiries 24/7 across WhatsApp, Telegram, Instagram Direct, Messenger, and webchat. Trained on your catalog and pricing, qualifies leads, and syncs conversations directly with your CRM.",
+        ? "Клиент пишет — AI отвечает по базе знаний, квалифицирует обращение и передаёт человеку. Цену и коммерческое предложение считает Showroom.pro."
+        : "The customer writes. AI answers from the knowledge base, qualifies the request, and hands it to a person. Showroom.pro calculates the price and prepares the proposal.",
       channels: ["WhatsApp Cloud API", "Telegram", "Instagram Direct", "Messenger", "Webchat"],
       pricing: isRu ? "Entry $149/мес · Standard $249/мес" : "Entry $149/mo · Standard $249/mo",
       mock: "assistant" as ProductVariant,
@@ -51,19 +51,19 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
       badge: isRu ? "AI-продавец" : "AI Sales Agent",
       name: "Showroom.pro",
       tagline: isRu
-        ? "Общение с клиентами, подбор решений, расчёт и коммерческое предложение"
-        : "Customer conversations, product selection, pricing & commercial proposals",
+        ? "Понимание → подбор → расчёт → коммерческое предложение → менеджер"
+        : "Understanding → Selection → Calculation → Commercial Proposal → Manager",
       value: isRu
-        ? "Ваш AI-продавец: общается с клиентами, подбирает решения, рассчитывает предложение и готовит коммерческое предложение. Мебель, авто, строительство, недвижимость, ритейл и B2B — с детерминированным расчётом по вашим правилам."
-        : "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals. Works across automotive, construction, real estate, furniture, retail, and B2B — with deterministic pricing by your business rules.",
+        ? "Клиент пишет — AI понимает потребность, подбирает, считает по вашим правилам и готовит коммерческое предложение для менеджера. Это не замена отдела продаж."
+        : "The customer writes. AI understands the need, matches a solution, calculates by your rules, and prepares a commercial proposal for the manager. It does not replace the sales team.",
       channels: ["Web", "API Gateway", "PDF Engine", "CRM Sync"],
       pricing: isRu
         ? "Self-serve $0 · MRR от $199/мес (или DFY-сетап ~$300)"
         : "Self-serve $0 · MRR from $199/mo (or ~$300 DFY setup)",
       mock: "showroom" as ProductVariant,
       highlights: [
-        isRu ? "Адаптация под 5 ключевых отраслей" : "Tailored across 5 major industry sectors",
-        isRu ? "Детерминированные расчёты без галлюцинаций" : "Deterministic calculations without hallucinations",
+        isRu ? "Отраслевые правила: мебель, авто, стройка, недвижимость, ритейл, услуги" : "Industry rules: furniture, auto, construction, real estate, retail, services",
+        isRu ? "Расчёт по вашим формулам, отдельно от текста диалога" : "Calculation follows your formulas, separate from the dialogue",
         isRu ? "Генерация профессиональных PDF-офферов" : "Automated PDF proposal and invoice generation",
       ],
     },
@@ -71,6 +71,11 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
 
   return (
     <div className="space-y-10">
+      <p className="max-w-3xl text-sm leading-relaxed text-paper/90">
+        {isRu
+          ? "Ассистент отвечает и квалифицирует. Showroom продаёт и готовит сделку."
+          : "The assistant answers and qualifies. Showroom sells and prepares the deal."}
+      </p>
       <div className="grid gap-8 lg:grid-cols-3">
         {productsList.map((product) => (
           <div

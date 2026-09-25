@@ -7,7 +7,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
     ? [
         "Непрерывный мониторинг конкурентов и трендов",
         "Генерация контента, визуалов и сценариев Reels",
-        "Круглосуточный первый ответ в 5 каналах (< 30 сек)",
+        "Первый ответ в мессенджерах и на сайте, затем передача человеку",
         "Первичная квалификация входящих обращений",
         "Расчёт сложных спецификаций по каталогам и формулам",
         "Формирование регулярных аналитических отчётов",
@@ -15,7 +15,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
     : [
         "Continuous competitor and trend intelligence",
         "Automated content, visual drafts & Reels storyboards",
-        "24/7 first response across 5 channels (< 30 sec)",
+        "First reply in messengers and on the site, then a handoff to a person",
         "Pre-qualification of inbound commercial inquiries",
         "Deterministic quote and spec calculations by formulas",
         "Automated analytics reporting & cohort analysis",
@@ -124,8 +124,8 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
           </h3>
           <p className="mt-2 text-xs text-muted">
             {isRu
-              ? "AI никогда не публикует обязательства или цены без согласования. Человек сохраняет 100% контроль."
-              : "AI never publishes binding legal commitments or arbitrary discounts. Humans maintain full authoritative veto."}
+              ? "Обязательства и цены не публикуются без согласования человека."
+              : "Binding commitments and prices are not published without a person's approval."}
           </p>
 
           <ul className="mt-6 space-y-2.5 text-xs text-paper/85">

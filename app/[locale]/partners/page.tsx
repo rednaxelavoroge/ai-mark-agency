@@ -331,6 +331,17 @@ export default async function PartnersPage({ params }: Props) {
             <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">{t.eyebrow}</p>
             <h1 className="mt-4 max-w-2xl font-editorial text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.title}</h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
+            <ol className="mt-5 flex flex-wrap items-center gap-2">
+              {(locale === "ru"
+                ? ["Личная продажа", "Продажи команды", "До 5 уровней", "Комиссия"]
+                : ["Personal sale", "Team sales", "Up to 5 levels", "Commission"]
+              ).map((step, i) => (
+                <li key={step} className="flex items-center gap-2">
+                  {i > 0 ? <span className="font-mono text-xs text-warm">→</span> : null}
+                  <span className="rounded-full border border-line bg-ink-2 px-3 py-1.5 text-sm text-paper">{step}</span>
+                </li>
+              ))}
+            </ol>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link href={PARTNER_SIGNUP_HREF} className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">
                 {t.primary}

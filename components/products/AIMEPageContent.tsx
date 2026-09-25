@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { type Locale } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
@@ -18,6 +18,8 @@ export function AIMEPageContent({
   contact: Copy["contact"];
 }) {
   const c = getAimeCopy(locale);
+  const ru = locale === "ru";
+  const section = (n: string, en: string, ruLabel: string) => `${n} // ${ru ? ruLabel : en}`;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -83,7 +85,7 @@ export function AIMEPageContent({
             {/* Product UI visual preview */}
             <div className="relative pb-0 sm:pb-14" data-reveal>
               <div data-reveal="scale" data-reveal-delay="120">
-                <ProductConstellation variant="aime" />
+                <ProductConstellation variant="aime" locale={locale} />
               </div>
 
               {/* Platform pills */}
@@ -115,7 +117,7 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              01 // Позиционирование
+              {section("01", "Positioning", "Позиционирование")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.compareTitle}
@@ -160,7 +162,7 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              02 // Форматы использования
+              {section("02", "How it is used", "Форматы использования")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.tracksTitle}
@@ -221,7 +223,7 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              03 // Технологический регламент
+              {section("03", "How publishing works", "Технологический регламент")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.howTitle}
@@ -259,7 +261,7 @@ export function AIMEPageContent({
             {/* Meta Cards */}
             <div>
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-                04 // Безопасность доступов
+                {section("04", "Account access", "Безопасность доступов")}
               </span>
               <h2 className="mt-2 font-display text-2xl font-semibold text-paper">
                 {c.metaTitle}
@@ -285,7 +287,7 @@ export function AIMEPageContent({
             {/* Trust Levels & Hard Floor */}
             <div>
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-                05 // Модель автономии
+                {section("05", "Approval before publish", "Модель согласования")}
               </span>
               <h2 className="mt-2 font-display text-2xl font-semibold text-paper">
                 {c.trustTitle}
@@ -329,7 +331,7 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              06 // Стоимость подписки
+              {section("06", "Subscription price", "Стоимость подписки")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.pricingTitle}
@@ -353,7 +355,7 @@ export function AIMEPageContent({
               >
                 {p.featured && (
                   <span className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase">
-                    Рекомендуем
+                    {ru ? "Рекомендуем" : "Recommended"}
                   </span>
                 )}
                 <div>
@@ -417,7 +419,7 @@ export function AIMEPageContent({
             <div className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7">
               <div>
                 <span className="rounded bg-ink-3 px-2 py-0.5 font-mono text-[10px] text-warm uppercase">
-                  Агентский формат
+                  {ru ? "Агентский формат" : "Agency format"}
                 </span>
                 <h3 className="mt-2 font-display text-2xl font-semibold text-paper">
                   {c.planAgency.name}
@@ -460,7 +462,7 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              07 // Вопросы и ответы
+              {section("07", "Questions", "Вопросы и ответы")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.faqTitle}
@@ -505,10 +507,12 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
-              Готовы запустить AI Marketing Employee?
+              {ru ? "Готовы запустить AI Marketing Employee?" : "Ready to start AI Marketing Employee?"}
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
-              Подключение занимает до 5 рабочих дней. Для прямого бизнеса — без платы за настройку.
+              {ru
+                ? "Подключение занимает до 5 рабочих дней. Для прямого бизнеса — без платы за настройку."
+                : "Connection takes up to 5 business days. Direct businesses are not charged a setup fee."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
@@ -519,10 +523,10 @@ export function AIMEPageContent({
                 {c.ctaConsult} →
               </button>
               <Link
-                href="/products"
+                href={localePath(locale, "/products")}
                 className="rounded-full border border-line bg-ink-2 px-6 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
               >
-                Каталог продуктов
+                {ru ? "Каталог продуктов" : "Product catalog"}
               </Link>
             </div>
           </div>

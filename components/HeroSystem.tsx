@@ -23,22 +23,22 @@ export function HeroSystem({ locale, t }: HeroProps) {
       name: isRu ? "Идея & Капитал" : "Idea & Capital",
       sub: isRu ? "Рыночный анализ и скоринг" : "Market Research & Scoring",
       badge: isRu ? "Входной контур" : "Input Contour",
-      status: isRu ? "Валидировано" : "Validated",
+      status: isRu ? "Пример" : "Example",
       metrics: [
-        { label: isRu ? "Оценка ниши" : "Market TAM", val: "$4.2B" },
-        { label: isRu ? "Риски / Баги" : "Risk Score", val: "Low (0.12)" },
-        { label: isRu ? "Моделирование" : "Unit Economics", val: "Positive" },
+        { label: isRu ? "Рынок" : "Market", val: isRu ? "Спрос и конкуренты" : "Demand & rivals" },
+        { label: isRu ? "Аудитория" : "Audience", val: isRu ? "Кто покупает" : "Who buys" },
+        { label: isRu ? "Модель" : "Model", val: isRu ? "Набросок экономики" : "Economics sketch" },
       ],
       description: isRu
-        ? "Исследуем рынок, конкурентов и аудиторию. Если идеи нет — находим рыночные окна под ваш капитал."
-        : "Deep market, competitor, and audience intelligence. If no idea exists, we uncover high-margin windows for your capital.",
+        ? "Исследуем рынок, конкурентов и аудиторию. Если идеи нет — ищем окна под ваш капитал. Цифры на панели — схема возможностей, не результат клиента."
+        : "We study the market, competitors, and audience. If there is no idea yet, we look for openings that fit your capital. The panel is a capability sketch, not a client result.",
       uiSnippet: {
-        title: isRu ? "Инвестиционный скоринг возможностей" : "Opportunity Assessment Matrix",
-        tag: isRu ? "Синтез данных" : "Data Synthesis",
+        title: isRu ? "Что проверяет исследование" : "What research checks",
+        tag: isRu ? "Пример" : "Example",
         lines: [
-          isRu ? "✓ Выделено 3 перспективных сегмента B2B" : "✓ 3 B2B segments identified",
-          isRu ? "✓ Прямой конкурентный анализ: 14 игроков" : "✓ Direct competitor audit: 14 companies",
-          isRu ? "✓ Сходимость юнит-экономики: LTV/CAC > 3.8" : "✓ Unit economics: LTV/CAC > 3.8",
+          isRu ? "✓ Спрос, конкуренты и ограничения ниши" : "✓ Demand, competitors, and constraints",
+          isRu ? "✓ Несколько направлений для сравнения" : "✓ Several directions compared",
+          isRu ? "✓ Набросок экономики для обсуждения" : "✓ An economics sketch for discussion",
         ],
       },
     },
@@ -72,23 +72,23 @@ export function HeroSystem({ locale, t }: HeroProps) {
       num: "03",
       name: isRu ? "AI-инфраструктура" : "AI Infrastructure",
       sub: isRu ? "AIME, Sales AI & Showroom.pro" : "AIME, Sales AI & Showroom.pro",
-      badge: isRu ? "Собственные AI-модели" : "Proprietary AI Core",
-      status: isRu ? "Активно 24/7" : "Active 24/7",
+      badge: isRu ? "Собственные AI-продукты" : "Proprietary AI Core",
+      status: isRu ? "Пример" : "Example",
       metrics: [
-        { label: isRu ? "Задержка ответа" : "Latency", val: "< 1.2s" },
-        { label: isRu ? "Каналы" : "Channels", val: "5 Integrated" },
-        { label: isRu ? "Предохранитель" : "HITL Guard", val: "Hard-Floor" },
+        { label: isRu ? "Маркетинг" : "Marketing", val: "AIME" },
+        { label: isRu ? "Ответы" : "Replies", val: isRu ? "Ассистент" : "Assistant" },
+        { label: isRu ? "Сделка" : "Deal", val: "Showroom" },
       ],
       description: isRu
-        ? "Встраиваем собственные AI-продукты: автономный SMM (AIME), мультиканальный инбокс продаж (AI Business Assistant) и Showroom.pro — AI-продавец для диалогов, подбора и КП."
-        : "Deploying proprietary AI products: autonomous SMM (AIME), omnichannel sales inbox (AI Business Assistant), and Showroom.pro — AI Sales Agent for conversations, selection, and commercial proposals.",
+        ? "Три продукта в одном контуре: AIME ведёт маркетинговый цикл до вашего апрува, AI Business Assistant отвечает и квалифицирует, Showroom.pro подбирает, считает и готовит коммерческое предложение."
+        : "Three products in one system: AIME runs the marketing cycle up to your approval, AI Business Assistant answers and qualifies, and Showroom.pro matches, calculates, and prepares a commercial proposal.",
       uiSnippet: {
-        title: isRu ? "AI MARK Autonomous Mesh" : "AI MARK Autonomous Mesh",
-        tag: isRu ? "Собственный SaaS" : "Proprietary SaaS",
+        title: isRu ? "Три продукта, три задачи" : "Three products, three jobs",
+        tag: isRu ? "Пример" : "Example",
         lines: [
-          isRu ? "✓ AIME: Автономный контент Meta + апрув в Telegram" : "✓ AIME: Autonomous Meta posting + TG approval",
-          isRu ? "✓ AI Business Assistant: WhatsApp, TG, Webchat" : "✓ AI Business Assistant: 5-channel 24/7 inbox",
-          isRu ? "✓ Showroom.pro — AI-продавец: диалог, подбор, КП" : "✓ Showroom.pro — AI Sales Agent: talk, select, quote",
+          isRu ? "✓ AIME: исследование → контент → апрув → публикация" : "✓ AIME: research → content → approval → publish",
+          isRu ? "✓ Ассистент: ответ → квалификация → человек" : "✓ Assistant: reply → qualification → human",
+          isRu ? "✓ Showroom.pro: подбор → расчёт → КП → менеджер" : "✓ Showroom.pro: match → calculate → proposal → manager",
         ],
       },
     },
@@ -98,22 +98,22 @@ export function HeroSystem({ locale, t }: HeroProps) {
       name: isRu ? "Маркетинг, Продажи & Рост" : "Marketing, Sales & Growth",
       sub: isRu ? "Выручка, клиенты & сеть" : "Revenue, Clients & Network",
       badge: isRu ? "Масштабирование" : "Scaling Loop",
-      status: isRu ? "Рост" : "Scaling",
+      status: isRu ? "Пример" : "Example",
       metrics: [
-        { label: isRu ? "Скорость закрытия" : "Lead-to-Quote", val: "4.8x faster" },
-        { label: isRu ? "Конверсия лидов" : "Qualification", val: "94%" },
-        { label: isRu ? "Партнёрская сеть" : "Scale Model", val: "Global" },
+        { label: isRu ? "Спрос" : "Demand", val: isRu ? "Маркетинг" : "Marketing" },
+        { label: isRu ? "Сделка" : "Deal", val: isRu ? "Продажи" : "Sales" },
+        { label: isRu ? "Сеть" : "Network", val: isRu ? "Партнёры" : "Partners" },
       ],
       description: isRu
-        ? "Система начинает привлекать клиентов, квалифицировать обращения, формировать предложения и генерировать прибыль."
-        : "The operating company begins generating qualified demand, closing transactions, and scaling across international markets.",
+        ? "Дальше система ведёт спрос, квалификацию и коммерческие предложения. Партнёрская сеть расширяет присутствие. Это схема контура, не отчёт о выручке."
+        : "The system then runs demand, qualification, and commercial proposals. The partner network extends presence. This is a map of the loop, not a revenue report.",
       uiSnippet: {
-        title: isRu ? "Commercial Operations Dashboard" : "Commercial Operations Dashboard",
-        tag: isRu ? "В реальном времени" : "Real-time Telemetry",
+        title: isRu ? "Что происходит после запуска" : "What happens after launch",
+        tag: isRu ? "Пример" : "Example",
         lines: [
-          isRu ? "✓ Лиды квалифицируются и синхронизируются с CRM" : "✓ Leads qualified & synced to CRM instant",
-          isRu ? "✓ Контент-маркетинг обучается на конверсиях" : "✓ Marketing loop optimizes on conversion data",
-          isRu ? "✓ Подключение региональных и отраслевых партнёров" : "✓ Regional and industry partner distribution",
+          isRu ? "✓ Обращения квалифицируются и попадают в CRM" : "✓ Inquiries are qualified and sent to CRM",
+          isRu ? "✓ Маркетинг возвращается к тому, что сработало" : "✓ Marketing returns to what already worked",
+          isRu ? "✓ Партнёры продают в своих рынках" : "✓ Partners sell in their own markets",
         ],
       },
     },
@@ -185,6 +185,12 @@ export function HeroSystem({ locale, t }: HeroProps) {
 
             <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl" data-reveal style={{ "--reveal-delay": "160ms" } as CSSProperties}>
               {t.hero.lead}
+            </p>
+
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-paper/90" data-reveal style={{ "--reveal-delay": "200ms" } as CSSProperties}>
+              {isRu
+                ? "AI MARK объединяет AI-маркетинг, AI-продажи, клиентский сервис, автоматизацию, цифровую разработку, финансовые и Web3-решения, создание бизнеса и партнёрскую сеть в одной AI-native инфраструктуре."
+                : "AI MARK brings together AI marketing, AI sales, customer service, automation, digital production, financial and Web3 solutions, business creation, and a partner network in one AI-native infrastructure."}
             </p>
 
             <div className="mt-4 flex items-center gap-3 rounded-lg border border-line bg-ink-2/60 px-4 py-3 text-sm text-paper/90" data-reveal style={{ "--reveal-delay": "240ms" } as CSSProperties}>
@@ -329,7 +335,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
             {/* Bottom connected transformation indicator */}
             <div className="mt-4 flex items-center justify-between border-t border-line pt-3 text-[11px] text-muted">
               <span className="font-mono">
-                {isRu ? "Сквозной процесс: 100% сопряжение" : "Loop status: 100% interconnected"}
+                {isRu ? "Пример контура, не отчёт" : "Example of the loop, not a report"}
               </span>
               <Link href={navHref(locale, "#pipeline")} className="text-mark font-medium hover:underline">
                 {isRu ? "Смотреть пайплайн →" : "View Pipeline →"}

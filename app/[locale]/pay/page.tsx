@@ -87,8 +87,8 @@ export default async function PayPage({ params, searchParams }: Props) {
         title={ru ? "Оплата на кошелёк AI MARK" : "Pay to an AI MARK wallet"}
         lead={
           ru
-            ? "USDT или USDC на адреса казны. Деньги не хранятся у NOWPayments, BitPay или Coinbase Commerce. Stripe позже, здесь его нет."
-            : "USDT or USDC to treasury addresses. Funds are not held at NOWPayments, BitPay or Coinbase Commerce. Stripe is later; it is not connected here."
+            ? "Оплата согласованного счёта в USDT или USDC на кошелёк AI MARK. Сумма берётся из опубликованного прайса."
+            : "Pay an agreed invoice in USDT or USDC to an AI MARK wallet. The amount comes from the published price."
         }
       />
 

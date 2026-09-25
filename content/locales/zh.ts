@@ -90,7 +90,7 @@ export const copyZh: Copy = {
       {
         "n": "04",
         "title": "AI 自动化销售",
-        "body": "全天候线索清洗与多渠道即时响应，自动输出精准报价单并无缝流转至销售成单。"
+        "body": "从第一次咨询到资格判断、方案匹配、计算和商业提案：AI Business Assistant 与 Showroom.pro。"
       },
       {
         "n": "05",

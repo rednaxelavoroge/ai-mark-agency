@@ -85,7 +85,7 @@ export const showroomRu: ShowroomContent = {
   subtitle:
     "AI-продавец, который общается с клиентами, понимает их потребность, работает с каталогом и бизнес-правилами, рассчитывает предложение и готовит коммерческое предложение для отдела продаж. Закрывает значительную часть продажного workflow и передаёт подготовленную сделку команде.",
   ctaConsult: "Запросить конфигурацию",
-  ctaExplore: "Смотреть архитектуру",
+  ctaExplore: "Как проходит сделка",
   heroMeta: [
     "Мультиотраслевая адаптация",
     "Детерминированный расчёт",
@@ -94,13 +94,13 @@ export const showroomRu: ShowroomContent = {
   ],
   heroSpec: {
     title: "Showroom.pro Core / Статус среды",
-    status: "Активен • v2.4",
+    status: "Пример",
     rows: [
       { n: "01", label: "Multi-Tenant контекст каталога", tag: "Изолирован" },
       { n: "02", label: "Движок формул и бизнес-правил", tag: "Детерминирован" },
       { n: "03", label: "Отраслевой конфигуратор параметров", tag: "Активен" },
-      { n: "04", label: "Валидация спецификации и цены", tag: "Без ошибок" },
-      { n: "05", label: "Генератор PDF коммерческих предложений", tag: "Мгновенно" },
+      { n: "04", label: "Валидация спецификации и цены", tag: "По правилам" },
+      { n: "05", label: "Генератор PDF коммерческих предложений", tag: "Документ" },
       { n: "06", label: "Handoff в CRM и менеджеру", tag: "Синхронизирован" },
     ],
   },
@@ -115,8 +115,8 @@ export const showroomRu: ShowroomContent = {
       desc: "Учитывает размеры под заказ, категории обивочных тканей, модульные конфигурации, повышающие коэффициенты и формирует детальную спецификацию изделия.",
       tags: ["Кастомные габариты", "Категории тканей", "Формулы наценок", "Спецификация для фабрики"],
       metrics: [
-        { label: "Скорость расчёта КП", val: "< 15 сек" },
-        { label: "Точность формул", val: "100%" },
+        { label: "Расчёт", val: "По вашим формулам" },
+        { label: "Результат", val: "Спецификация" },
       ],
     },
     {
@@ -126,8 +126,8 @@ export const showroomRu: ShowroomContent = {
       desc: "Ориентируется в комплектациях, пакетах опций, актуальных остатках на складах, программах трейд-ин, лизинге и формирует персональное предложение на автомобиль.",
       tags: ["Комплектации & пакеты", "Складской учёт", "Трейд-ин скоринг", "Лизинговый расчёт"],
       metrics: [
-        { label: "Сверка со складом", val: "Real-time" },
-        { label: "Конверсия в просмотр", val: "+34%" },
+        { label: "Комплектация", val: "Из каталога" },
+        { label: "Предложение", val: "Для менеджера" },
       ],
     },
     {
@@ -137,8 +137,8 @@ export const showroomRu: ShowroomContent = {
       desc: "Считывает площади, технологические требования и чертежи, подбирает номенклатуру материалов по каталогу и рассчитывает сметную стоимость объекта.",
       tags: ["Сметный расчёт", "Строительные нормы", "Объёмы и площади", "Ведомость материалов"],
       metrics: [
-        { label: "Снижение рутины сметчика", val: "85%" },
-        { label: "Генерация сметы", val: "1 клик" },
+        { label: "Объёмы", val: "Из запроса" },
+        { label: "Результат", val: "Смета по правилам" },
       ],
     },
     {
@@ -148,19 +148,19 @@ export const showroomRu: ShowroomContent = {
       desc: "Находит квартиры и коммерческие помещения по планировкам, метражу и этажности, рассчитывает график рассрочки или ипотеки и генерирует презентационный буклет.",
       tags: ["База планировок", "Графики рассрочки", "Бронирование визита", "Презентационные PDF"],
       metrics: [
-        { label: "Время ответа клиенту", val: "< 30 сек" },
-        { label: "Бронь на просмотр", val: "Авто" },
+        { label: "Подбор", val: "По параметрам" },
+        { label: "Результат", val: "График и буклет" },
       ],
     },
     {
       id: "retail",
       name: "Ритейл & Дистрибуция",
       title: "Оптовые поставщики, B2B-дистрибьюторы и маркетплейсы",
-      desc: "Обрабатывает прайс-листы на десятки тысяч SKU, учитывает оптовые градации цен, скидки от объёма партии и проверяет остатки в реальном времени.",
+      desc: "Работает с крупным каталогом, учитывает оптовые градации цен, скидки от объёма партии и правила остатков.",
       tags: ["Большие каталоги SKU", "Оптовые скидки", "Минимальные партии", "Резервирование"],
       metrics: [
-        { label: "Поддержка SKU", val: "50,000+" },
-        { label: "Формирование счёта", val: "Мгновенно" },
+        { label: "Каталог", val: "Правила и партии" },
+        { label: "Результат", val: "Счёт по правилам" },
       ],
     },
     {
@@ -170,8 +170,8 @@ export const showroomRu: ShowroomContent = {
       desc: "Структурирует пакеты услуг, оценивает трудозатраты специалистов по часовым ставкам, собирает поэтапный график проекта и выдаёт структурированное КП.",
       tags: ["Оценка трудозатрат", "Этапы проекта", "Тарифная сетка", "Договорной бриф"],
       metrics: [
-        { label: "Согласование скоупа", val: "В тот же день" },
-        { label: "Готовность КП", val: "Авто" },
+        { label: "Скоуп", val: "Этапы и ставки" },
+        { label: "Результат", val: "Коммерческое предложение" },
       ],
     },
   ],
@@ -184,7 +184,7 @@ export const showroomRu: ShowroomContent = {
     { step: "05", name: "PDF Generator", desc: "Выпуск готового коммерческого предложения и счёта" },
   ],
   capabilitiesTitle: "Ключевые возможности платформы",
-  capabilitiesSub: "Инженерная система, созданная для замены ручных многочасовых расчётов.",
+  capabilitiesSub: "Меньше ручной обработки первого обращения. Менеджер подключается на сложной и финальной коммуникации.",
   capabilities: [
     {
       num: "01",
@@ -218,7 +218,7 @@ export const showroomRu: ShowroomContent = {
     },
   ],
   workflowTitle: "Пошаговый цикл работы Showroom.pro",
-  workflowSub: "От входящего сообщения до готового коммерческого предложения за считанные секунды.",
+  workflowSub: "От входящего сообщения до коммерческого предложения, которое забирает менеджер.",
   workflowSteps: [
     { num: "01", label: "Запрос клиента", desc: "Клиент описывает потребность своими словами или присылает параметры." },
     { num: "02", label: "Сверка с каталогом", desc: "AI находит подходящие позиции в вашей номенклатуре и базе артикулов." },
@@ -229,7 +229,7 @@ export const showroomRu: ShowroomContent = {
   ],
   deterministicTitle: "Детерминированный расчётный шлюз",
   deterministicDesc:
-    "Главный риск обычных чат-ботов — выдумывание цен и характеристик. В Showroom.pro расчёт отделён от генерации текста: AI ведёт диалог и считывает контекст, а калькулятор считает по точным формулам. Ошибка исключена.",
+    "Обычный чат может выдумать цену. В Showroom.pro расчёт отделён от текста: AI ведёт диалог, а калькулятор считает по формулам, которые вы задали. Это не гарантия, что в правилах нет ошибки — это отказ считать цену «из воздуха».",
   multitenantTitle: "Изолированная архитектура Multi-Tenant",
   multitenantLead:
     "Данные каждого предприятия, каталоги и коммерческие тайны изолированы на уровне выделенных тенантов.",
@@ -334,7 +334,7 @@ export const showroomEn: ShowroomContent = {
   subtitle:
     "An AI salesperson that talks to customers, understands their needs, works with your product catalog and business rules, calculates the right offer and prepares a commercial proposal for your sales team. Handles a major part of the sales workflow and prepares the opportunity for your human sales team.",
   ctaConsult: "Request Configuration",
-  ctaExplore: "Explore Architecture",
+  ctaExplore: "How a deal moves",
   heroMeta: [
     "Cross-Industry Adaptation",
     "Deterministic Pricing Math",
@@ -343,13 +343,13 @@ export const showroomEn: ShowroomContent = {
   ],
   heroSpec: {
     title: "Showroom.pro Core / Runtime Status",
-    status: "Active • v2.4",
+    status: "Example",
     rows: [
       { n: "01", label: "Multi-Tenant Catalog Context", tag: "Isolated" },
       { n: "02", label: "Formulas & Business Rules Engine", tag: "Deterministic" },
       { n: "03", label: "Industry Configuration Layer", tag: "Active" },
-      { n: "04", label: "Specification & Pricing Gate", tag: "Exact" },
-      { n: "05", label: "Automated PDF Document Generator", tag: "Instant" },
+      { n: "04", label: "Specification & Pricing Gate", tag: "By rules" },
+      { n: "05", label: "Automated PDF Document Generator", tag: "Document" },
       { n: "06", label: "CRM & Sales Manager Handoff", tag: "Connected" },
     ],
   },
@@ -364,8 +364,8 @@ export const showroomEn: ShowroomContent = {
       desc: "Processes custom dimensions, fabric categories, modular layout configurations, and generates comprehensive factory-ready production specifications.",
       tags: ["Custom Dimensions", "Fabric Tiers", "Markup Logic", "Factory Specs"],
       metrics: [
-        { label: "Quote Generation Speed", val: "< 15 sec" },
-        { label: "Pricing Math Accuracy", val: "100%" },
+        { label: "Calculation", val: "By your formulas" },
+        { label: "Output", val: "Specification" },
       ],
     },
     {
@@ -375,8 +375,8 @@ export const showroomEn: ShowroomContent = {
       desc: "Understands vehicle trims, optional packages, current inventory availability, trade-in valuations, and structures bespoke commercial offers.",
       tags: ["Trim Packages", "Stock Availability", "Trade-in Scoring", "Lease Math"],
       metrics: [
-        { label: "Inventory Sync", val: "Real-time" },
-        { label: "Viewing Booking Lift", val: "+34%" },
+        { label: "Configuration", val: "From the catalog" },
+        { label: "Output", val: "For the manager" },
       ],
     },
     {
@@ -386,8 +386,8 @@ export const showroomEn: ShowroomContent = {
       desc: "Parses architectural requirements, square footage, and project scopes to recommend catalogue items and calculate comprehensive bill of materials.",
       tags: ["Estimate Math", "Building Codes", "Dimensional Scope", "Bill of Materials"],
       metrics: [
-        { label: "Estimator Time Saved", val: "85%" },
-        { label: "Estimate Output", val: "1 Click" },
+        { label: "Quantities", val: "From the request" },
+        { label: "Output", val: "Rule-based estimate" },
       ],
     },
     {
@@ -397,19 +397,19 @@ export const showroomEn: ShowroomContent = {
       desc: "Navigates property floor plans, square footage, installment schedules, or mortgage scenarios and outputs presentation booklets instantly.",
       tags: ["Floor Plan Sync", "Payment Schedules", "Viewing Scheduling", "Presentation PDFs"],
       metrics: [
-        { label: "Inquiry Response Time", val: "< 30 sec" },
-        { label: "Tour Booking", val: "Automated" },
+        { label: "Match", val: "By parameters" },
+        { label: "Output", val: "Schedule and booklet" },
       ],
     },
     {
       id: "retail",
       name: "Retail & Wholesale",
       title: "B2B Distributors, Wholesale Suppliers & High-SKU Catalogs",
-      desc: "Manages catalogues with tens of thousands of items, applying tiered volume discounts, minimum order quantities, and real-time inventory checks.",
+      desc: "Works with a large catalog, applying volume discounts, minimum quantities, and the stock rules you define.",
       tags: ["High-SKU Catalogs", "Volume Discounts", "Minimum Quantities", "Stock Hold"],
       metrics: [
-        { label: "Catalog Scale", val: "50,000+ SKU" },
-        { label: "Invoice Preparation", val: "Instant" },
+        { label: "Catalog", val: "Rules and quantities" },
+        { label: "Output", val: "Invoice by rules" },
       ],
     },
     {
@@ -419,8 +419,8 @@ export const showroomEn: ShowroomContent = {
       desc: "Structures complex service packages, estimates labor hours by rate cards, maps deliverables, and drafts formal proposals automatically.",
       tags: ["Scope Estimation", "Project Milestones", "Rate Card Logic", "Contract Briefs"],
       metrics: [
-        { label: "Scope Sign-off", val: "Same Day" },
-        { label: "Proposal Readiness", val: "Automated" },
+        { label: "Scope", val: "Stages and rates" },
+        { label: "Output", val: "Commercial proposal" },
       ],
     },
   ],
@@ -433,7 +433,7 @@ export const showroomEn: ShowroomContent = {
     { step: "05", name: "PDF Generator", desc: "Issues verified commercial proposal & invoice" },
   ],
   capabilitiesTitle: "Core Platform Capabilities",
-  capabilitiesSub: "Engineered to eliminate error-prone manual calculations and quotation delays.",
+  capabilitiesSub: "Less manual handling of the first inquiry. The manager joins for complex or final communication.",
   capabilities: [
     {
       num: "01",
@@ -467,7 +467,7 @@ export const showroomEn: ShowroomContent = {
     },
   ],
   workflowTitle: "Step-by-Step Processing Cycle",
-  workflowSub: "From incoming client conversation to finalized commercial proposal in seconds.",
+  workflowSub: "From the incoming conversation to a commercial proposal the manager can take over.",
   workflowSteps: [
     { num: "01", label: "Inquiry Ingestion", desc: "Customer conveys requirements via natural language or parameters." },
     { num: "02", label: "Catalog Matching", desc: "AI maps requirements to verified catalog items and SKU databases." },
@@ -478,7 +478,7 @@ export const showroomEn: ShowroomContent = {
   ],
   deterministicTitle: "Deterministic Verification Gate",
   deterministicDesc:
-    "Standard chatbots hallucinate prices and imaginary inventory. Showroom.pro strictly bifurcates dialogue and language understanding from mathematical computation: the AI talks to customers and parses context, while verified code computes prices. Zero calculation errors.",
+    "An ordinary chat can invent a price. In Showroom.pro the calculation is separate from the dialogue: the AI talks, and the calculator follows the formulas you set. That is not a promise that the rules themselves are flawless. It means the price is not made up in the conversation.",
   multitenantTitle: "Isolated Multi-Tenant Security",
   multitenantLead:
     "Every client organization's catalog data, pricing logic, and commercial formulas remain completely isolated.",

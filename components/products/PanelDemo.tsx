@@ -16,13 +16,16 @@ const NAV: Record<TabKey, { ru: string; en: string }> = {
 
 function Dashboard({ ru }: { ru: boolean }) {
   const kpis = [
-    { k: ru ? "Диалоги / нед." : "Threads / wk", v: "1,284" },
-    { k: ru ? "Отвечено AI" : "AI-resolved", v: "82%" },
-    { k: ru ? "Первый ответ" : "First reply", v: "24s" },
-    { k: ru ? "Handoff" : "Handoffs", v: "18%" },
+    { k: ru ? "Очередь" : "Queue", v: ru ? "Входящие" : "Inbound" },
+    { k: ru ? "Ответ" : "Reply", v: ru ? "По базе" : "From knowledge" },
+    { k: ru ? "Квалификация" : "Qualification", v: ru ? "В диалоге" : "In the chat" },
+    { k: ru ? "Передача" : "Handoff", v: ru ? "Человеку" : "To a person" },
   ];
   return (
     <div className="space-y-3">
+      <p className="font-mono text-[9px] uppercase tracking-wider text-muted">
+        {ru ? "Пример интерфейса" : "Example interface"}
+      </p>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {kpis.map((x) => (
           <div key={x.k} className="rounded-lg border border-line/70 bg-ink-2 p-2.5">
@@ -86,8 +89,8 @@ function Inbox({ ru }: { ru: boolean }) {
           </div>
           <div className="ml-auto max-w-[85%] rounded-xl rounded-tr-sm bg-mark/10 px-3 py-2 text-[10px] text-paper">
             {ru
-              ? "Да — от $1,200, доставка 5–7 дней. Прислать спецификацию?"
-              : "Yes — from $1,200, delivery in 5–7 days. Send a spec sheet?"}
+              ? "Проверю базу знаний и передам диалог человеку, если нужно решение."
+              : "I'll check the knowledge base and hand this to a person if a decision is needed."}
           </div>
           <div className="rounded-lg border border-warm/40 bg-warm/5 px-2.5 py-1.5 text-[9px] text-warm">
             {ru ? "Менеджер подключился · ассистент замолчал" : "Manager joined · assistant silenced"}
@@ -100,7 +103,7 @@ function Inbox({ ru }: { ru: boolean }) {
 
 function Knowledge({ ru }: { ru: boolean }) {
   const docs = [
-    { n: ru ? "Каталог · 428 SKU" : "Catalog · 428 SKU", s: "indexed" },
+    { n: ru ? "Каталог" : "Catalog", s: "indexed" },
     { n: ru ? "Прайс-лист" : "Price list", s: "indexed" },
     { n: ru ? "FAQ · 36 вопросов" : "FAQ · 36 items", s: "indexed" },
     { n: ru ? "Доставка и оплата" : "Delivery & payment", s: "syncing" },
@@ -170,8 +173,8 @@ function Playground({ ru }: { ru: boolean }) {
             setAnswer(
               value.trim()
                 ? ru
-                  ? "Ответ построен по вашей базе знаний: доставка 3–5 недель, рассрочка 0/12 — расчёт готовлю PDF."
-                  : "Answer built from your knowledge base: delivery 3–5 weeks, 0/12 installments — preparing a PDF quote."
+                  ? "Ответ по базе знаний. Если нужен расчёт или коммерческое предложение, диалог передаётся человеку или в Showroom.pro."
+                  : "Answer from the knowledge base. A calculation or commercial proposal is handed to a person or to Showroom.pro."
                 : null,
             )
           }

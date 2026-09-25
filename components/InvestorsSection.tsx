@@ -30,7 +30,7 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
         { title: "Сетевой эффект дистрибуции", desc: "Масштабирование через сеть региональных, отраслевых и агентских партнёров обеспечивает международный охват без раздувания локальных офисов." },
       ]
     : [
-        { title: "Validated Technology Base", desc: "Three proprietary products (AIME, AIBA, Showroom.pro — AI Sales Agent) are deployed and operational. Capital fuels commercial scale rather than research from scratch." },
+        { title: "Technology already in commercial use", desc: "Three proprietary products (AIME, AIBA, Showroom.pro — AI Sales Agent) are already used commercially. Capital, if taken, is for scale rather than building the stack from scratch." },
         { title: "Diversified Revenue Mix", desc: "SaaS subscriptions from $149–$349/mo, marketing department retainers from $1,200/mo, and high-ticket digital production contracts." },
         { title: "Capital-Efficient Distribution", desc: "Scaling through a global web of regional, industry, and agency partners delivers international reach without burdensome fixed overhead." },
       ];

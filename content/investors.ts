@@ -26,9 +26,9 @@ export type InvestorsPageCopy = {
 
 const EN: InvestorsPageCopy = {
   eyebrow: "Investment Proposal",
-  title: "AI-Native Venture & Marketing Company",
-  subtitle: "Building and scaling digital businesses on our own AI infrastructure",
-  lead: "We create, launch and scale digital businesses — from idea analysis and market research to product, marketing, sales and growth. The core AI infrastructure is already built and used in commercial work; the next stage is turning it into a scalable international company.",
+  title: "Investment in AI MARK",
+  subtitle: "Participation in the company, not an order to build a business and not the partner network",
+  lead: "This page is about investing in AI MARK as a company. It is separate from Business Creation, where we build a business for a client, and from the Partner Network, where partners earn commission on sales. The core AI infrastructure is already in commercial use; financing, if taken, is for scale.",
   meta: "Technology → Commercialization → Scale",
   stats: [
     {
@@ -61,7 +61,7 @@ const EN: InvestorsPageCopy = {
   downloadLabel: "Download as Markdown",
   downloadHint: "The document below is rendered from the Markdown source.",
   ctaEyebrow: "Participation & Terms",
-  ctaTitle: "Early investors and strategic partners",
+  ctaTitle: "Early investors",
   ctaBody:
     "Participation size, deal structure and terms are determined individually. We can demonstrate the working AI infrastructure, present the existing products and discuss the business model and scaling strategy.",
   ctaButton: "Request investor materials",
@@ -69,10 +69,10 @@ const EN: InvestorsPageCopy = {
 
 const RU: InvestorsPageCopy = {
   eyebrow: "Инвестиционное предложение",
-  title: "AI-Native Venture & Marketing Company",
+  title: "Инвестиция в компанию AI MARK",
   subtitle:
-    "Создание и масштабирование цифровых бизнесов с использованием собственной AI-инфраструктуры",
-  lead: "Мы создаём, запускаем и масштабируем цифровые бизнесы — от анализа идеи и исследования рынка до продукта, маркетинга, продаж и роста. Основная AI-инфраструктура уже создана и используется в коммерческой работе; следующий этап — превратить её в масштабируемую международную компанию.",
+    "Участие в компании, а не заказ на создание бизнеса и не партнёрская сеть",
+  lead: "Эта страница — про инвестицию в AI MARK как компанию. Она отдельно от создания бизнеса для клиента и отдельно от партнёрской сети, где партнёр получает комиссию с продаж. Основная AI-инфраструктура уже используется в коммерческой работе; финансирование, если мы его берём, — на масштаб.",
   meta: "Technology → Commercialization → Scale",
   stats: [
     {
@@ -105,7 +105,7 @@ const RU: InvestorsPageCopy = {
   downloadLabel: "Скачать в Markdown",
   downloadHint: "Документ ниже отрендерен из Markdown-источника.",
   ctaEyebrow: "Формат участия",
-  ctaTitle: "Ранние инвесторы и стратегические партнёры",
+  ctaTitle: "Ранние инвесторы",
   ctaBody:
     "Размер участия, структура сделки и условия определяются индивидуально. Мы можем показать работающую AI-инфраструктуру, презентовать существующие продукты и обсудить бизнес-модель и стратегию масштабирования.",
   ctaButton: "Запросить материалы инвестора",

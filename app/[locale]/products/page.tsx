@@ -91,8 +91,8 @@ export default async function ProductsHubPage({ params }: Props) {
         </div>
         <p className="mt-4 text-xs text-muted">
           {isRu
-            ? "Продукты работают автономно и как единый стек: общая база знаний, единый инбокс и сквозная аналитика."
-            : "The products run standalone and as one stack: shared knowledge base, unified inbox and end-to-end analytics."}
+            ? "Три продукта. Три разные задачи. Ассистент отвечает и квалифицирует. Showroom продаёт и готовит сделку. AIME ведёт маркетинг до вашего апрува."
+            : "Three products. Three different jobs. The assistant answers and qualifies. Showroom sells and prepares the deal. AIME runs marketing up to your approval."}
         </p>
       </div>
 

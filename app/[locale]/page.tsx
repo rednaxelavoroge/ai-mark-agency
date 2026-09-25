@@ -18,7 +18,7 @@ import { PartnerNetworkVisual } from "@/components/PartnerNetworkVisual";
 import { InvestorsSection } from "@/components/InvestorsSection";
 import { getCopy } from "@/content/copy";
 import { packages } from "@/content/packages";
-import { absoluteUrl, getSiteTagline, isLocale, site, type Locale } from "@/lib/site";
+import { absoluteUrl, getSiteTagline, isLocale, navHref, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -79,19 +79,19 @@ export default async function HomePage({ params }: Props) {
       {/* 1. HERO SECTION */}
       <HeroSystem locale={locale} t={t} />
 
-      {/* 2. PINNED NARRATIVE: IDEA → WORKING BUSINESS */}
-      <IdeaToBusiness locale={locale} />
-
-      {/* 2b. FULL-BLEED CAPABILITY BAND */}
+      {/* What the company contains — before the long narrative */}
       <CapabilityBand locale={locale} />
+
+      {/* 2. PINNED NARRATIVE: the one full path */}
+      <IdeaToBusiness locale={locale} />
 
       {/* 3. WHAT WE DO: 5-PART CONNECTED OPERATING CONTOUR */}
       <Section id="what-we-do" index="01" eyebrow={t.pillars.eyebrow} title={t.pillars.title}>
         <div className="space-y-6">
           <p className="max-w-2xl text-muted text-sm sm:text-base">
             {isRu
-              ? "Мы не разделяем создание бизнеса, разработку продукта и маркетинг на независимые контракты. Все пять элементов работают как единая операционная система."
-              : "We never fragment venture creation, software engineering, and customer acquisition across isolated silos. All five elements function as an integrated operating engine."}
+              ? "Пять функций одной инфраструктуры. Путь от идеи до бизнеса — в блоке выше; здесь — какая функция за что отвечает."
+              : "Five functions of one infrastructure. The path from idea to a working business is above; here is which function does which job."}
           </p>
           <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
             {t.pillars.items.map((item, idx) => (
@@ -134,12 +134,12 @@ export default async function HomePage({ params }: Props) {
 
       {/* 4. END-TO-END BUSINESS PATH (PIPELINE) */}
       <Section id="pipeline" index="03" eyebrow={t.pipeline.eyebrow} title={t.pipeline.title}>
-        <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 shadow-sm">
-          <p className="text-xs font-mono text-warm uppercase tracking-widest mb-4">
-            {isRu ? "Сквозная операционная цепочка" : "End-to-End Operational Pipeline"}
-          </p>
-          <Pipeline steps={t.pipeline.steps} />
-        </div>
+        <p className="mb-4 max-w-2xl text-sm text-muted">
+          {isRu
+            ? "Это тот же путь, что в блоке выше, одной строкой. Войти можно на любом шаге."
+            : "The same path as above, in one line. You can join at any step."}
+        </p>
+        <Pipeline steps={t.pipeline.steps} />
       </Section>
 
       {/* 5. DIGITAL PRODUCTION */}
@@ -247,9 +247,24 @@ export default async function HomePage({ params }: Props) {
                 <p className="mt-3 text-xs leading-relaxed text-muted">{tier.body}</p>
               </div>
               <div className="mt-6 pt-4 border-t border-line">
-                <ContactCta className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
-                  {isRu ? "Запросить условия" : "Request Details"}
-                </ContactCta>
+                {ti === 0 ? (
+                  <a
+                    href={navHref(locale, "/products")}
+                    className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors"
+                  >
+                    {isRu ? "Смотреть продукты" : "View Products"}
+                  </a>
+                ) : (
+                  <ContactCta className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
+                    {ti === 1 || ti === 2
+                      ? isRu
+                        ? "Запросить условия"
+                        : "Request Details"
+                      : isRu
+                        ? "Обсудить проект"
+                        : "Discuss Project"}
+                  </ContactCta>
+                )}
               </div>
             </article>
           ))}
@@ -266,6 +281,12 @@ export default async function HomePage({ params }: Props) {
             </h3>
             <p className="mt-2 text-sm text-muted">{t.commercial.tiers[2].body}</p>
           </div>
+
+          <p className="mt-4 max-w-2xl text-xs leading-relaxed text-muted">
+            {isRu
+              ? "Ниже — опубликованные планы отдела: Starter $1,200, Growth $2,200, Scale $3,500 в месяц. Коридор $1,500–3,500+ на карточке выше — тот же формат, записанный диапазоном. Оплата — за выбранный план. Другой скоуп обсуждается отдельно."
+              : "Below are the published department plans: Starter $1,200, Growth $2,200, and Scale $3,500 per month. The $1,500–3,500+ band on the card above is the same format, written as a range. Pay is for the selected plan. A different scope is a separate conversation."}
+          </p>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {packages.map((pkg, pi) => {
@@ -300,28 +321,25 @@ export default async function HomePage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
-                  <ContactCta
-                    className={`mt-6 inline-flex justify-center rounded-full px-4 py-2.5 text-xs font-semibold transition-all ${
-                      pkg.featured
-                        ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
-                        : "border border-line bg-ink-3/40 text-paper hover:border-paper/40"
-                    }`}
-                  >
-                    {t.commercial.retainerCta}
-                  </ContactCta>
-                  {/* A retainer is a published SKU, so it is payable too: the
-                      exact published amount is preselected on /pay. The contact
-                      CTA above stays for a scoped or multi-department deal. */}
+                  {/* Published plan: Pay is the SKU action. A different scope
+                      stays a conversation and is not the same button. */}
                   <BuyLink
                     locale={locale}
                     skuId={pkg.id}
                     label={
                       isRu
-                        ? `Оплатить ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth} в USDT / USDC`
-                        : `Pay ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth} with USDT / USDC`
+                        ? `Оплатить ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
+                        : `Pay ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
                     }
-                    className="mt-2 inline-flex w-full justify-center rounded-full border border-mark/50 bg-mark/10 px-4 py-2.5 text-xs font-semibold text-mark transition-all hover:bg-mark/20"
+                    className={`mt-6 inline-flex w-full justify-center rounded-full px-4 py-2.5 text-xs font-semibold transition-all ${
+                      pkg.featured
+                        ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
+                        : "border border-mark/50 bg-mark/10 text-mark hover:bg-mark/20"
+                    }`}
                   />
+                  <ContactCta className="mt-2 inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
+                    {isRu ? "Другой скоуп — обсудить" : "Different scope — discuss"}
+                  </ContactCta>
                 </article>
               );
             })}
