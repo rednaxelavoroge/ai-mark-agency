@@ -6,6 +6,7 @@ import { type Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
+import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 
@@ -386,6 +387,20 @@ export function AIMEPageContent({
                   >
                     {c.ctaConsult}
                   </button>
+                  {/* The published, self-serve way to buy this exact plan. A plan
+                      with no listed sku id renders nothing here (the agency
+                      construct has no published self-serve SKU), so its card
+                      keeps the contact CTA above rather than inventing a price. */}
+                  <BuyLink
+                    locale={locale}
+                    skuId={p.skuId}
+                    label={
+                      locale === "ru"
+                        ? `Оплатить ${p.price} в USDT / USDC`
+                        : `Pay ${p.price} with USDT / USDC`
+                    }
+                    className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
+                  />
                 </div>
               </div>
             ))}

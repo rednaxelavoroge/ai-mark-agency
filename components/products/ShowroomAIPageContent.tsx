@@ -7,6 +7,7 @@ import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { getShowroomCopy } from "@/content/products/showroom";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
+import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 
 export function ShowroomAIPageContent({
@@ -387,6 +388,19 @@ export function ShowroomAIPageContent({
                   >
                     {c.ctaConsult}
                   </button>
+                  {/* Self-serve purchase of this exact tier. The Enterprise tier
+                      is custom (no published price, no sku id), so it renders
+                      nothing here and stays contact-only. */}
+                  <BuyLink
+                    locale={locale}
+                    skuId={tier.skuId}
+                    label={
+                      locale === "ru"
+                        ? `Оплатить ${tier.price} в USDT / USDC`
+                        : `Pay ${tier.price} with USDT / USDC`
+                    }
+                    className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
+                  />
                 </div>
               </div>
             ))}

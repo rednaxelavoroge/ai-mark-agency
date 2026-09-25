@@ -156,7 +156,13 @@ test("invalid referral: an unknown landing target falls back to the Partner Netw
 test("invalid referral: only internal paths are kept, and they stay on-origin", () => {
   assert.equal(resolveLandingPath("/products"), "/products");
   assert.equal(resolveLandingPath("/ru/partners"), "/ru/partners");
-  assert.equal(resolveLandingPath("/products/aime?x=1"), "/products/aime", "query is dropped");
+  // A partner link may point at a specific offer, so the target's own query
+  // survives; the hash is never forwarded.
+  assert.equal(
+    resolveLandingPath("/products/aime?x=1"),
+    "/products/aime?x=1",
+    "the target's query is kept",
+  );
   assert.equal(resolveLandingPath("/privacy#top"), "/privacy", "hash is dropped");
   assert.equal(resolveLandingPath(undefined), DEFAULT_LANDING_PATH);
 
@@ -196,6 +202,34 @@ test("UTM: the three stored parameters are kept, sanitised and forwarded", () =>
     "/products?utm_source=newsletter&utm_medium=email&utm_campaign=phase-4b&utm_term=referral&utm_content=header-link",
   );
   assert.equal(landingPathOnly(landing), "/products", "only the path is stored on the click");
+});
+
+test("landing: a partner link can point at a specific offer", () => {
+  // The buy call-to-action deep link a partner shares: the product choice must
+  // survive the redirect, otherwise the buyer lands on the default product.
+  assert.equal(
+    resolveLandingPath("/en/pay?sku=aime-pro"),
+    "/en/pay?sku=aime-pro",
+  );
+
+  // UTMs still ride along, and the destination's own parameter is not rewritten.
+  assert.equal(
+    resolveLandingPath("/en/pay?sku=showroom-business", {
+      utm_source: "telegram",
+      utm_campaign: "launch",
+    }),
+    "/en/pay?sku=showroom-business&utm_source=telegram&utm_campaign=launch",
+  );
+
+  // A hostile target is still discarded entirely, query included.
+  assert.equal(
+    resolveLandingPath("//evil.example/pay?sku=aime-pro"),
+    DEFAULT_LANDING_PATH,
+  );
+  assert.equal(
+    resolveLandingPath("/admin?sku=aime-pro"),
+    DEFAULT_LANDING_PATH,
+  );
 });
 
 test("UTM: control characters are stripped and values are bounded", () => {

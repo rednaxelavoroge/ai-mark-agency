@@ -34,6 +34,13 @@ run_sql() {
   OUT="$("${PSQL_BASE[@]}" -d "$TEST_DB" -A -t -c "$1" 2>&1)"
   RC=$?
 }
+# Like run_sql, but returns the LAST result line: a statement string may carry
+# more than one command (`set role …; select …`), and only the final line is the
+# answer the caller wants.
+run_sql_last() {
+  run_sql "$1"
+  OUT="${OUT##*$'\n'}"
+}
 eq() {
   if [ "$OUT" = "$2" ]; then pass "$1"; else fail "$1" "expected [$2], got [$OUT]"; fi
 }
@@ -50,6 +57,12 @@ expect_error() {
 as_user() {
   local uid="$1" body="$2"
   run_sql "set role authenticated; set request.jwt.claims = '{\"sub\":\"$uid\"}'; $body"
+}
+# The same call, but keeping only the answer: `as_user` runs two setup
+# statements before the query, so the raw output has extra lines.
+as_user_last() {
+  as_user "$1" "$2"
+  OUT="${OUT##*$'\n'}"
 }
 user_eq() {
   as_user "$2" "$4"
@@ -219,6 +232,103 @@ svc "select public.qualify_sale('$REC_OUT'); select public.post_commission_entri
 run_sql "select amount::text || ':' || commission_type from public.commission_entries where sale_id = '$REC_OUT' and level = 1;"
 eq "recurring payment after 90 days is base" "150.00:base"
 
+section "The commerce chain: link → invoice → sale → payout → partner cabinet"
+
+# Everything above proves the engine's arithmetic. This section proves the
+# product path end to end on the same database: a buyer arrives through a
+# partner's referral link, the code is captured on the payment invoice, an
+# operator confirms the transfer, and the partner is paid and can read it.
+#
+# The buyer here is an ordinary customer, not a partner: they follow L1's link,
+# so L1 is who the sale is attributed to. Attribution resolves from the referral
+# code on the invoice — the buyer never writes a sale, and the partner can never
+# write one either.
+UID_BUYER="88888888-8888-4888-8888-888888888888"
+run_sql "insert into auth.users (id, email, raw_user_meta_data) values
+           ('$UID_BUYER', 'buyer@example.test', '{\"full_name\":\"Buyer\"}'::jsonb);"
+
+# Snapshot the seller's cabinet BEFORE this chain, so the assertions below are
+# deltas and do not depend on how many sales the earlier sections already posted.
+# `partner_ledger_stats()` is resolved from the caller's JWT, so the snapshot is
+# taken with the seller's own role, not as the superuser.
+as_user_last "$UID_L1" "select qualifying_sales from public.partner_ledger_stats();"
+L1_BEFORE_SALES="$OUT"
+
+# Captured at checkout, exactly as /pay stores it: the signed cookie's code.
+# The reference follows the same `^aim[a-z0-9]{8}$` shape the app generates.
+CHAIN_REF="aim$(run_sql "select substr(md5(random()::text), 1, 8);"; printf '%s' "$OUT")"
+run_sql "
+insert into public.payment_invoices
+  (public_ref, sku_id, product_ref, amount, expected_amount, ledger_currency,
+   asset, network, treasury_address, memo, referral_code, status)
+values
+  ('$CHAIN_REF', 'aime-lite', 'aime', 1000.00, 1000.37, 'USD',
+   'USDT', 'tron', 'TTestTreasuryAddressOnly0000000000', '$CHAIN_REF', '$CODE_L1', 'awaiting');"
+if [ "$RC" -ne 0 ]; then fail "the payment invoice stores the referral code" "$OUT"; else
+  run_sql "select referral_code || '|' || status from public.payment_invoices where public_ref = '$CHAIN_REF';"
+  eq "the payment invoice stores the referral code" "$CODE_L1|awaiting"
+fi
+
+# The confirmation the admin screen performs: record → qualify → post, with the
+# attribution coming from the invoice rather than a hand-typed code.
+svc "select public.record_sale('treasury', '$CHAIN_REF', 'aime', 1000.37::numeric, 'USD',
+        now() - interval '15 days',
+        (select referral_code from public.payment_invoices where public_ref = '$CHAIN_REF'), null);"
+CHAIN_SALE="$OUT"
+if [ "$RC" -ne 0 ]; then fail "the invoice records an attributed sale" "$OUT"; else pass "the invoice records an attributed sale"; fi
+
+svc_eq "confirming the invoice qualifies the sale" "$CHAIN_SALE" \
+  "select public.qualify_sale('$CHAIN_SALE');"
+svc_eq "confirming the invoice posts five entries" "5" \
+  "select public.post_commission_entries('$CHAIN_SALE');"
+
+run_sql "select partner_id = '$PID_L1' from public.sales where id = '$CHAIN_SALE';"
+eq "the buying customer's sale is attributed to the partner whose link they followed" "t"
+
+run_sql "select string_agg(beneficiary_partner_id || ':' || level::text, ',' order by level)
+           from public.commission_entries where sale_id = '$CHAIN_SALE';"
+eq "the partner's upline is paid L1-L5" \
+  "$PID_L1:1,$PID_L2:2,$PID_L3:3,$PID_L4:4,$PID_TOP:5"
+
+run_sql "select status::text from public.sales where id = '$CHAIN_SALE';"
+eq "a 15-day-old sale is still confirmed, not yet locked" "confirmed"
+
+svc_eq "the sale locks once the 14-day hold has elapsed" "1" \
+  "select public.advance_sponsor_lock('$CHAIN_SALE');"
+run_sql "select status::text from public.sales where id = '$CHAIN_SALE';"
+eq "the locked sale is marked locked" "locked"
+
+L1_PAYABLE="$(run_sql "select coalesce(sum(amount), 0)::numeric(20,2) from public.commission_entries
+                        where sale_id = '$CHAIN_SALE' and beneficiary_partner_id = '$PID_L1' and status = 'payable';"; printf '%s' "$OUT")"
+run_sql "select (count(*) > 0)::text from public.commission_entries
+          where sale_id = '$CHAIN_SALE' and beneficiary_partner_id = '$PID_L1' and status = 'payable';"
+eq "the L1 commission is payable after the lock" "true"
+
+user_eq "the L1 partner sees the customer's sale and its commission as payable" "$UID_L1" "$((L1_BEFORE_SALES + 1))|$L1_PAYABLE" \
+  "select qualifying_sales || '|' || payable_amount from public.partner_ledger_stats();"
+
+svc "select public.create_payout('$PID_L1', 'USD', '$UID_ADMIN');"
+CHAIN_PAYOUT="$OUT"
+if [ "$RC" -ne 0 ]; then fail "an operator opens a payout from the payable entry" "$OUT"; else pass "an operator opens a payout from the payable entry"; fi
+
+run_sql "select amount::numeric(20,2)::text from public.payouts where id = '$CHAIN_PAYOUT';"
+eq "the payout amount is the allocated L1 commission" "$L1_PAYABLE"
+
+svc_eq "confirming the payout marks it paid" "$CHAIN_PAYOUT" \
+  "select public.confirm_payout('$CHAIN_PAYOUT', '$UID_ADMIN');"
+run_sql "select status::text from public.commission_entries
+          where sale_id = '$CHAIN_SALE' and beneficiary_partner_id = '$PID_L1';"
+eq "the L1 entry is paid after the payout is confirmed" "paid"
+
+user_eq "the L1 partner's cabinet reports the money as paid" "$UID_L1" "0.00|$L1_PAYABLE" \
+  "select payable_amount || '|' || paid_amount from public.partner_ledger_stats();"
+
+user_eq "the buying customer has no partner ledger at all" "$UID_BUYER" "0|0.00" \
+  "select coalesce(qualifying_sales, 0) || '|' || coalesce(payable_amount, '0.00') from public.partner_ledger_stats();"
+
+user_eq "the customer cannot read the commission their purchase generated" "$UID_BUYER" "0" \
+  "select count(*)::text from public.commission_entries where sale_id = '$CHAIN_SALE';"
+
 section "Refund and chargeback reverse without rewriting history"
 
 svc "select public.record_sale('invoice', 'ord-refund', 'aime', 1000::numeric, 'USD', timestamptz '2026-06-01 00:00:00+00', null, '$PID_L1');"
@@ -337,8 +447,12 @@ run_sql "set role service_role; select has_table_privilege('service_role', 'publ
   and has_table_privilege('service_role', 'public.payouts', 'INSERT');"
 eq "service_role can mutate sales, commissions and payouts" "t"
 
-user_eq "seller ledger reports the qualifying sales, not the click" "$UID_L1" "6" \
-  "select qualifying_sales::text from public.partner_ledger_stats();"
+# The seller's count is the sales attributed to them, not their clicks or leads.
+# Three attributed sales were added after the snapshot: the customer's purchase
+# from the commerce chain, and the refunded and charged-back sales in between.
+as_user_last "$UID_L1" "select qualifying_sales from public.partner_ledger_stats();"
+L1_AFTER_SALES="$OUT"
+eq "seller ledger counts the attributed sales, not the click" "$((L1_BEFORE_SALES + 3))" "$L1_AFTER_SALES"
 
 printf '\n%s%d passed, %d failed%s\n' "$C_BOLD" "$PASSES" "$FAILURES" "$C_OFF"
 if [ "$FAILURES" -gt 0 ]; then

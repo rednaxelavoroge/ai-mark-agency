@@ -26,6 +26,14 @@ export interface AibaPlan {
   badge?: string;
   note: string;
   features: string[];
+  /**
+   * The published payable SKU this plan maps to in `lib/crypto/catalog.ts`.
+   *
+   * Present only for the self-serve tiers with a published list price. The
+   * Enterprise tier is "по запросу" / custom, so it stays contact-only: a
+   * payable link there would publish a number that does not exist.
+   */
+  skuId?: string;
 }
 
 export interface AibaContent {
@@ -248,6 +256,7 @@ export const aibaRu: AibaContent = {
       price: "$149",
       period: "/ месяц",
       note: "1 канал, ответ 24/7",
+      skuId: "assistant-entry",
       features: [
         "1 канал на выбор (WhatsApp, TG или Вебчат)",
         "До 1 000 диалогов в месяц",
@@ -263,6 +272,7 @@ export const aibaRu: AibaContent = {
       period: "/ месяц",
       badge: "Рекомендуем",
       note: "Все 5 каналов + интеграция с CRM",
+      skuId: "assistant-standard",
       features: [
         "Все 5 каналов (WhatsApp, TG, IG, Messenger, Веб)",
         "До 5 000 диалогов в месяц",
@@ -481,6 +491,7 @@ export const aibaEn: AibaContent = {
       price: "$149",
       period: "/ month",
       note: "1 channel, 24/7 responsiveness",
+      skuId: "assistant-entry",
       features: [
         "1 channel of choice (WhatsApp, TG, or Webchat)",
         "Up to 1,000 conversations / month",
@@ -496,6 +507,7 @@ export const aibaEn: AibaContent = {
       period: "/ month",
       badge: "Recommended",
       note: "All 5 channels + direct CRM integration",
+      skuId: "assistant-standard",
       features: [
         "All 5 channels (WhatsApp, TG, IG, Messenger, Web)",
         "Up to 5,000 conversations / month",

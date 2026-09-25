@@ -30,6 +30,15 @@ export interface AimePlan {
   featured?: boolean;
   channels: string[];
   features: string[];
+  /**
+   * The published payable SKU this plan maps to in `lib/crypto/catalog.ts`.
+   *
+   * Present only when the plan has a published self-serve list price that the
+   * `/pay` page can actually invoice. The agency construct is deliberately left
+   * without one: its $799 setup is not a published self-serve SKU, so its card
+   * keeps the contact call-to-action instead of inventing a charge.
+   */
+  skuId?: string;
 }
 
 export interface AimeContent {
@@ -257,6 +266,7 @@ export const aimeRu: AimeContent = {
       price: "$199",
       period: "/ месяц",
       note: "Без платы за подключение",
+      skuId: "aime-lite",
       desc: "Для малого бизнеса: стабильное ведение Instagram без найма SMM-специалиста в штат.",
       channels: ["Instagram"],
       features: [
@@ -275,6 +285,7 @@ export const aimeRu: AimeContent = {
       period: "/ месяц",
       featured: true,
       note: "Без платы за подключение · Рекомендуем",
+      skuId: "aime-pro",
       desc: "Три сети Meta, сценарии Reels, регулярная публикация и самообучение алгоритмов на цифрах.",
       channels: ["Instagram", "Facebook", "Threads"],
       features: [
@@ -513,6 +524,7 @@ export const aimeEn: AimeContent = {
       price: "$199",
       period: "/ month",
       note: "No setup fee",
+      skuId: "aime-lite",
       desc: "For small businesses wanting steady, high-quality Instagram presence without hiring an internal SMM team.",
       channels: ["Instagram"],
       features: [
@@ -531,6 +543,7 @@ export const aimeEn: AimeContent = {
       period: "/ month",
       featured: true,
       note: "No setup fee · Recommended",
+      skuId: "aime-pro",
       desc: "Three Meta platforms, Reels storyboards, comprehensive calendar, and continuous analytics self-learning.",
       channels: ["Instagram", "Facebook", "Threads"],
       features: [

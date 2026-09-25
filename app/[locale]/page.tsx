@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
+import { BuyLink } from "@/components/BuyLink";
 import { LeadInquiry } from "@/components/LeadInquiry";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
@@ -308,6 +309,19 @@ export default async function HomePage({ params }: Props) {
                   >
                     {t.commercial.retainerCta}
                   </ContactCta>
+                  {/* A retainer is a published SKU, so it is payable too: the
+                      exact published amount is preselected on /pay. The contact
+                      CTA above stays for a scoped or multi-department deal. */}
+                  <BuyLink
+                    locale={locale}
+                    skuId={pkg.id}
+                    label={
+                      isRu
+                        ? `Оплатить ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth} в USDT / USDC`
+                        : `Pay ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth} with USDT / USDC`
+                    }
+                    className="mt-2 inline-flex w-full justify-center rounded-full border border-mark/50 bg-mark/10 px-4 py-2.5 text-xs font-semibold text-mark transition-all hover:bg-mark/20"
+                  />
                 </article>
               );
             })}
