@@ -90,7 +90,7 @@ export const copyPt: Copy = {
       {
         "n": "04",
         "title": "Vendas com IA",
-        "body": "Qualificação de leads, respostas imediatas multicanal, propostas automáticas e repasse direto para fechamento."
+        "body": "Do primeiro contato à qualificação, seleção, cálculo e proposta comercial: AI Business Assistant e Showroom.pro."
       },
       {
         "n": "05",

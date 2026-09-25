@@ -90,7 +90,7 @@ export const copyDe: Copy = {
       {
         "n": "04",
         "title": "AI Sales",
-        "body": "Business Assistant inbox: qualify, answer from a knowledge base, hand off to a human."
+        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and Showroom.pro."
       },
       {
         "n": "05",

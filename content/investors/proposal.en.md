@@ -351,7 +351,7 @@ Capital accelerates:
 
 ## 12. Opportunity for early participants
 
-The company is considering early investors and strategic partners at the commercial scaling stage.
+The company is considering early investors at the commercial scaling stage.
 
 At this early stage, the cost of participation and the deal structure are discussed individually.
 
@@ -413,7 +413,7 @@ The company's current focus:
 
 ## 16. Format of participation
 
-We are considering early investors and strategic partners who are interested in participating in the development of an AI-Native company at its commercial scaling stage.
+We are considering early investors who are interested in participating in AI MARK as a company at its commercial scaling stage.
 
 The size of participation, the deal structure and the terms are determined individually.
 

@@ -29,7 +29,7 @@ export default async function SignupPage({
       lead="One account gives you your Partner ID, a referral code and the partner dashboard."
       footer={
         <p className="text-xs text-muted">
-          By creating an account you agree to the AI MARK partner terms. Read the{" "}
+          Partner terms are not published on this site yet. Programme rules are confirmed during onboarding, before you sell. Read the{" "}
           <Link href="/privacy" className="link-underline text-paper">
             privacy notice
           </Link>

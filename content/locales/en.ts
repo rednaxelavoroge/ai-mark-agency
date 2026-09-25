@@ -47,7 +47,7 @@ export const copyEn: Copy = {
     },
     pillars: {
       eyebrow: "What we can do",
-      title: "Five parts of the same loop.",
+      title: "Five functions. One infrastructure.",
       items: [
         {
           n: "01",
@@ -67,7 +67,7 @@ export const copyEn: Copy = {
         {
           n: "04",
           title: "AI Sales",
-          body: "Business Assistant inbox: qualify, answer from a knowledge base, hand off to a human.",
+          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and Showroom.pro.",
         },
         {
           n: "05",
@@ -122,9 +122,9 @@ export const copyEn: Copy = {
       detailCta: "Full detail",
       installCta: "Talk installation",
       hubCta: "All product pages",
-      hubTitle: "AI products",
+      hubTitle: "Three products. Three jobs.",
       hubLead:
-        "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+        "AIME runs the marketing cycle up to your approval. AI Business Assistant answers and qualifies. Showroom.pro — AI Sales Agent matches, calculates, and prepares the commercial proposal.",
       items: {
         aime: {
           value:
@@ -135,8 +135,8 @@ export const copyEn: Copy = {
         },
         assistant: {
           value:
-            "Sales AI inbox — WhatsApp, Instagram Direct, Messenger, website chat, Telegram. Knowledge base, replies, qualify, human handoff.",
-          who: "Teams that need a sales inbox, not a chatbot funnel builder.",
+            "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are Showroom.pro.",
+          who: "Teams that need replies and qualification, not a quote engine.",
           extra: "A person takes over when the conversation needs a human.",
           price: "Entry $149/mo · Standard $249/mo",
         },
@@ -418,7 +418,7 @@ export const copyEn: Copy = {
       assistant: {
         eyebrow: "BA",
         title: "AI Business Assistant",
-        lead: "A sales inbox that answers, qualifies, and hands off. Not a funnel-builder with a chatbot skin.",
+        lead: "Answers and qualifies, then hands the conversation to a person. Showroom.pro is the one that sells and prepares the deal.",
         metaphor: "One inbox across the channels your buyers already use.",
         sections: [
           {

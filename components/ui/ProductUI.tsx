@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { LiveDot, LiveNumber, LiveType } from "./Live";
+import { LiveNumber, LiveType } from "./Live";
 
 /**
  * AI MARK proprietary product-UI mockups.
@@ -54,9 +54,8 @@ export function UIFrame({
         <span className="ml-1 hidden truncate rounded-md border border-line bg-ink-2 px-2.5 py-1 font-mono text-[10px] text-muted sm:block">
           {url}
         </span>
-        <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-mark">
-          <LiveDot tone="emerald" />
-          LIVE
+        <span className="ml-auto font-mono text-[10px] tracking-wide text-muted uppercase">
+          Example
         </span>
       </div>
       <div className={`relative isolate overflow-hidden ${ratio}`}>
@@ -268,15 +267,15 @@ function AimeMock() {
             </div>
           </div>
           <div className="space-y-1">
-            <Line label="Drafts / week" value={<LiveNumber value={42} />} />
+            <Line label="Drafts" value="In review" />
             <Line
-              label="Approval time"
-              value={<LiveNumber value={3.1} decimals={1} suffix="m" />}
+              label="Approval"
+              value="Before publish"
               tone="warm"
             />
             <Line
-              label="Reach Δ"
-              value={<LiveNumber value={38} prefix="+" suffix="%" />}
+              label="Next step"
+              value="Analytics"
               tone="emerald"
             />
           </div>
@@ -346,7 +345,7 @@ function AssistantMock() {
         <div className="mt-auto border-t border-line/70 p-2.5">
           <p className="font-mono text-[8px] text-muted">KNOWLEDGE BASE · RAG</p>
           <div className="mt-1 space-y-1">
-            <Line label="Catalog + 428 SKU" value="synced" />
+            <Line label="Catalog" value="synced" />
             <Line label="Pricing rules" value="live" tone="emerald" />
           </div>
         </div>
@@ -484,7 +483,7 @@ function ShowroomMock() {
             <span className="font-mono text-[8px] text-muted">COMMERCIAL OFFER</span>
             <span className="font-mono text-[8px] text-warm">PDF</span>
           </div>
-          <p className="mt-1 font-display text-lg font-bold text-paper"><LiveNumber value={12480} prefix="$" /></p>
+          <p className="mt-1 font-display text-lg font-bold text-paper">Draft</p>
           <p className="font-mono text-[8px] text-muted">incl. assembly · valid 14 days</p>
           <div className="mt-2 space-y-1 border-t border-line/60 pt-2">
             <Line label="Spec lines" value="24" />
@@ -500,10 +499,10 @@ function ShowroomMock() {
 
 function SaasMock() {
   const tenants = [
-    { n: "Nordwind GmbH", plan: "Scale", seats: "240", mrr: "$6.4k", state: "live", tone: "emerald" as const },
-    { n: "Kavo Retail", plan: "Growth", seats: "118", mrr: "$2.9k", state: "live", tone: "emerald" as const },
-    { n: "Atelier 9", plan: "Starter", seats: "34", mrr: "$890", state: "trial", tone: "warm" as const },
-    { n: "Mira Logistics", plan: "Scale", seats: "186", mrr: "$4.2k", state: "live", tone: "emerald" as const },
+    { n: "Workspace A", plan: "Scale", seats: "—", mrr: "Sample", state: "example", tone: "emerald" as const },
+    { n: "Workspace B", plan: "Growth", seats: "—", mrr: "Sample", state: "example", tone: "emerald" as const },
+    { n: "Workspace C", plan: "Starter", seats: "—", mrr: "Sample", state: "trial", tone: "warm" as const },
+    { n: "Workspace D", plan: "Scale", seats: "—", mrr: "Sample", state: "example", tone: "emerald" as const },
   ];
   return (
     <div className="flex h-full flex-col gap-2 overflow-hidden bg-ink-3/30 p-3 text-paper">
@@ -530,30 +529,30 @@ function SaasMock() {
       <div className="grid grid-cols-4 gap-1.5">
         {[
           {
-            k: "MRR",
-            v: <LiveNumber value={24.8} decimals={1} prefix="$" suffix="k" />,
-            d: "+8.2%",
+            k: "Billing",
+            v: "Sample",
+            d: "Example",
             tone: "emerald" as const,
             spark: [18, 22, 20, 27, 25, 32, 30, 38],
           },
           {
-            k: "Active seats",
-            v: <LiveNumber value={1284} />,
-            d: "+64",
+            k: "Seats",
+            v: "Sample",
+            d: "Example",
             tone: "emerald" as const,
             spark: [12, 15, 14, 19, 23, 21, 27, 31],
           },
           {
-            k: "Uptime",
-            v: <LiveNumber value={99.98} decimals={2} suffix="%" />,
-            d: "SLA",
+            k: "Status",
+            v: "Sketch",
+            d: "Example",
             tone: "mark" as const,
             spark: [30, 29, 30, 28, 30, 30, 29, 30],
           },
           {
-            k: "Churn",
-            v: <LiveNumber value={0.8} decimals={1} suffix="%" />,
-            d: "−0.2",
+            k: "Health",
+            v: "Sketch",
+            d: "Example",
             tone: "warm" as const,
             spark: [27, 25, 26, 22, 19, 20, 16, 13],
           },
@@ -582,7 +581,7 @@ function SaasMock() {
                 USAGE · API CALLS / WEEK
               </span>
               <span className="flex items-center gap-1 font-mono text-[7px] text-mark">
-                <Dot tone="emerald" /> live
+                <Dot tone="emerald" /> example
               </span>
             </div>
             <div className="mt-1.5 flex min-h-0 flex-1 items-end justify-between gap-1 overflow-hidden">
@@ -959,18 +958,18 @@ function EcommerceMock() {
     price: number;
     stock: string;
   }[] = [
-    { kind: "sofa", name: "Модульный диван", cat: "Мебель", price: 1240, stock: "в наличии" },
-    { kind: "chair", name: "Кресло Oak", cat: "Мебель", price: 380, stock: "в наличии" },
-    { kind: "lamp", name: "Лампа Arc", cat: "Свет", price: 190, stock: "2 шт" },
-    { kind: "table", name: "Стол Duo", cat: "Мебель", price: 640, stock: "в наличии" },
-    { kind: "bag", name: "Сумка Week", cat: "Аксессуары", price: 210, stock: "в наличии" },
-    { kind: "watch", name: "Часы Minimal", cat: "Аксессуары", price: 870, stock: "под заказ" },
+    { kind: "sofa", name: "Modular sofa", cat: "Furniture", price: 1240, stock: "in stock" },
+    { kind: "chair", name: "Oak chair", cat: "Furniture", price: 380, stock: "in stock" },
+    { kind: "lamp", name: "Arc lamp", cat: "Lighting", price: 190, stock: "2 left" },
+    { kind: "table", name: "Duo table", cat: "Furniture", price: 640, stock: "in stock" },
+    { kind: "bag", name: "Week bag", cat: "Accessories", price: 210, stock: "in stock" },
+    { kind: "watch", name: "Minimal watch", cat: "Accessories", price: 870, stock: "made to order" },
   ];
   return (
     <div className="h-full bg-ink-3/30 p-3 text-paper">
       <div className="flex items-center gap-2">
         <span className="flex-1 rounded-md border border-line/70 bg-ink-2 px-2.5 py-1.5 font-mono text-[9px] text-muted">
-          ⌕ search · 24,000 SKU
+          ⌕ search catalog
         </span>
         <span className="rounded-md bg-mark px-2.5 py-1.5 font-mono text-[8px] font-semibold text-mark-ink">
           config
@@ -978,7 +977,7 @@ function EcommerceMock() {
       </div>
 
       <div className="mt-2 flex gap-1.5">
-        {["Все", "Мебель", "Свет", "Аксессуары"].map((t, i) => (
+        {["All", "Furniture", "Lighting", "Accessories"].map((t, i) => (
           <Chip key={t} active={i === 0}>
             {t}
           </Chip>
@@ -1008,7 +1007,7 @@ function EcommerceMock() {
       </div>
 
       <div className="mt-2 flex items-center justify-between rounded-lg border border-line/70 bg-ink-2 px-2.5 py-1.5">
-        <span className="font-mono text-[8px] text-muted">checkout · эквайринг · рассрочка</span>
+        <span className="font-mono text-[8px] text-muted">checkout · card · invoice</span>
         <span className="font-mono text-[9px] text-mark">ready</span>
       </div>
     </div>

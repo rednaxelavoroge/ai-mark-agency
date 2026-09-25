@@ -89,14 +89,14 @@ export interface AibaContent {
 }
 
 export const aibaRu: AibaContent = {
-  seoTitle: "AI Business Assistant | Мультиканальный AI-ассистент продаж 24/7 · AI MARK",
+  seoTitle: "AI Business Assistant | Ответы, квалификация и передача человеку · AI MARK",
   seoDescription:
-    "Один AI-ассистент для WhatsApp, Telegram, Instagram Direct, Messenger и сайта: единый инбокс, база знаний, квалификация лидов, передача диалога человеку и синхронизация с CRM.",
+    "Клиент пишет в WhatsApp, Telegram, Instagram Direct, Messenger или на сайте. AI отвечает по базе знаний, квалифицирует обращение и передаёт его человеку. Цену и коммерческое предложение готовит Showroom.pro.",
   badge: "Собственный AI-продукт · AI MARK",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
-    "Один ассистент отвечает вашим клиентам в каждом мессенджере, которым они уже пользуются, — с вашим каталогом, вашими ценами и вашими правилами. Команда следит за одним инбоксом, забирает любой диалог себе в один клик, а каждая переписка попадает в вашу CRM.",
+    "Клиент пишет. Ассистент отвечает по базе знаний, квалифицирует обращение и передаёт диалог человеку. Коммерческое предложение считает Showroom.pro.",
   heroMeta: ["5 каналов в одном инбоксе", "Панель клиента", "Интеграция с CRM", "Entry $149 / мес"],
   ctaConsult: "Подключить ассистента",
   ctaPricing: "Тарифы подписки",
@@ -106,10 +106,10 @@ export const aibaRu: AibaContent = {
     tag: "Активен • AI 24/7",
     customerMeta: "Клиент → WhatsApp",
     customer: "«Здравствуйте! Интересует конфигурация продукта и сколько времени займёт доставка?»",
-    engineNote: "AI-движок: база знаний + прайс-лист + регламенты",
+    engineNote: "AI-движок: база знаний и квалификация",
     aiLabel: "AI Business Assistant",
     aiReply:
-      "«Добрый день! Доступны стандартная и расширенная комплектации от $1,200. Срок сборки и доставки составляет 5–7 рабочих дней. Прислать подробную спецификацию?»",
+      "«Добрый день. Отвечу по базе знаний и зафиксирую, что вам нужно. Человек подключится, когда потребуется решение или коммерческое предложение.»",
     operatorMeta: "Менеджер → подключился · 11:42",
     operatorReply: "«Здравствуйте! Подключаюсь к диалогу. Давайте согласуем точный перечень параметров.»",
     handoffNote:
@@ -149,13 +149,11 @@ export const aibaRu: AibaContent = {
     "Для WhatsApp, Instagram и Messenger требуется подтверждённый Meta Business аккаунт — мы даём готовый чек-лист и помогаем настроить всё на онбординге.",
   autoTitle: "Что мы автоматизируем",
   autoSub:
-    "Ваша команда занимается диалогами, которые закрывают сделки. Всё, что до этого, берёт на себя ассистент.",
+    "Ассистент отвечает и квалифицирует. Коммерческое предложение и финальный разговор остаются за человеком или за Showroom.pro.",
   autoList: [
-    "Консультации по товарам, услугам и ценам",
-    "Поиск по каталогу и характеристикам",
-    "Проверка наличия и условий доставки",
-    "Мгновенный ответ ночью и в выходные (< 30 сек)",
-    "Квалификация лида по бюджету и срокам",
+    "Ответы по базе знаний",
+    "Квалификация бюджета, задачи и сроков",
+    "Ответ ночью и в выходные, затем передача человеку",
     "Сбор контактных данных и требований",
     "Запись на встречу, звонок или аудит",
     "Распознавание постоянных клиентов",
@@ -324,16 +322,16 @@ export const aibaRu: AibaContent = {
 };
 
 export const aibaEn: AibaContent = {
-  seoTitle: "AI Business Assistant | 24/7 Omnichannel Sales AI Assistant · AI MARK",
+  seoTitle: "AI Business Assistant | Answers, qualification, and human handoff · AI MARK",
   seoDescription:
-    "Unified AI sales assistant for WhatsApp, Telegram, Instagram Direct, Messenger, and Website: single inbox, knowledge retrieval, lead qualification, human handoff, and CRM sync.",
+    "One assistant answers in WhatsApp, Telegram, Instagram Direct, Messenger, and on the website from your knowledge base, qualifies the request, and hands it to a person. Commercial proposals are Showroom.pro.",
   badge: "Proprietary AI Platform · AI MARK",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
-    "One AI assistant answers your customers across every messenger they already use — grounded in your catalog, your pricing, and your business rules. Your sales team tracks one unified inbox, intercepts chats in one click, and logs every conversation into your CRM.",
+    "The customer writes. The assistant answers from your knowledge base, qualifies the request, and hands the conversation to a person. It does not calculate a commercial proposal — that is Showroom.pro.",
   heroMeta: ["5 channels in 1 inbox", "Customer workspace panel", "Direct CRM sync", "Entry $149 / mo"],
-  ctaConsult: "Deploy Sales Assistant",
+  ctaConsult: "Get Started",
   ctaPricing: "View Subscription Plans",
   heroScene: {
     headerTitle: "Unified Shared Inbox",
@@ -341,10 +339,10 @@ export const aibaEn: AibaContent = {
     tag: "Active • AI 24/7",
     customerMeta: "Customer → WhatsApp",
     customer: "«Hello! I'm interested in the commercial specs and delivery timeline for this model.»",
-    engineNote: "AI Core: Knowledge base + Catalog + Business rules",
+    engineNote: "AI Core: Knowledge base + qualification",
     aiLabel: "AI Business Assistant",
     aiReply:
-      "«Hello! Standard and configured options start at $1,200. Lead time is 5–7 business days. Would you like me to send the complete specification sheet?»",
+      "«Hello. I can answer from the knowledge base and note what you need. A person will take the conversation when it needs a decision or a proposal.»",
     operatorMeta: "Nino (Manager) → Intercepted · 11:42",
     operatorReply: "«Hi! Nino here, joining the conversation. Let's confirm your exact sizing requirements.»",
     handoffNote:
@@ -384,15 +382,13 @@ export const aibaEn: AibaContent = {
     "WhatsApp, Instagram, and Messenger require a verified Meta Business account — we provide a step-by-step checklist and guide you through onboarding.",
   autoTitle: "What We Automate",
   autoSub:
-    "Your team focuses on conversations that close deals. Everything preceding that is handled automatically by the assistant.",
+    "The assistant answers and qualifies. The commercial proposal and the final conversation stay with a person or with Showroom.pro.",
   autoList: [
-    "Product catalog, specifications, and pricing inquiries",
-    "Instant sub-second semantic catalog search",
-    "Inventory availability and delivery terms verification",
-    "Night and weekend first responses (< 30 sec)",
-    "Lead qualification by budget, scope, and timeframe",
+    "Answers from the knowledge base",
+    "Qualification of budget, scope, and timing",
+    "Night and weekend first replies, then a handoff",
     "Contact information and requirements collection",
-    "Appointment and showroom booking scheduling",
+    "Appointment scheduling",
     "Returning customer recognition and context retention",
     "Order status and warranty policy guidance",
     "Operating hours, office locations, and billing details",
@@ -409,7 +405,7 @@ export const aibaEn: AibaContent = {
     {
       key: "dashboard",
       label: "Dashboard",
-      caption: "Weekly operations: total threads, autonomous resolution rate, average response speed, and usage quotas.",
+      caption: "Example workspace: the queue, knowledge base, and handoffs. The figures in the demo are not client results.",
     },
     {
       key: "inbox",
@@ -428,7 +424,7 @@ export const aibaEn: AibaContent = {
     },
   ],
   howTitle: "End-to-End Customer Flow",
-  howSub: "From first incoming message to a qualified deal inside your CRM in under a minute.",
+  howSub: "From the first message to a qualified conversation a person can take over.",
   steps: [
     { num: "01", title: "Customer writes in preferred channel", desc: "WhatsApp, Telegram, Instagram Direct, Messenger, or webchat." },
     { num: "02", title: "AI identifies intent and language", desc: "Recognizes returning clients, restores previous context, and classifies intent." },
@@ -444,8 +440,8 @@ export const aibaEn: AibaContent = {
   handoffAi: {
     title: "AI Handles Repetitive Routine",
     items: [
-      "Instant 24/7 first response in < 30 seconds",
-      "Catalog navigation and pricing questions",
+      "First replies outside working hours",
+      "Answers from the knowledge base",
       "Office directions, hours, and policies",
       "Initial requirements gathering and data capture",
     ],
@@ -537,7 +533,7 @@ export const aibaEn: AibaContent = {
   faqs: [
     {
       q: "Do I need an official WhatsApp Business account?",
-      a: "Yes. We connect via official Meta Cloud API on your designated business number. This guarantees 100% account safety, zero anti-bot bans, and no third-party per-message surcharge. We guide you through verification.",
+      a: "Yes. We connect via the official Meta Cloud API on your business number and walk you through verification. The assistant does not ask for a personal password.",
     },
     {
       q: "How does a manager know when to intervene?",

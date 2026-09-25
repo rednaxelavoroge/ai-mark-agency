@@ -106,7 +106,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 </Link>
               </li>
               <li>
-                <Link href={navHref(locale, "#investors")} className="hover:text-paper transition-colors">
+                <Link href={navHref(locale, "/investors")} className="hover:text-paper transition-colors">
                   {isRu ? "Инвесторам" : "Investors"}
                 </Link>
               </li>

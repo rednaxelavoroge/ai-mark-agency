@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { type Locale } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/site";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { getShowroomCopy } from "@/content/products/showroom";
 import type { Copy } from "@/content/copy";
@@ -18,6 +18,8 @@ export function ShowroomAIPageContent({
   contact: Copy["contact"];
 }) {
   const c = getShowroomCopy(locale);
+  const ru = locale === "ru";
+  const section = (n: string, en: string, ruLabel: string) => `${n} // ${ru ? ruLabel : en}`;
   const [activeIndustry, setActiveIndustry] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -48,6 +50,22 @@ export function ShowroomAIPageContent({
                 {c.subtitle}
               </p>
 
+              <p className="mt-4 text-sm font-medium leading-relaxed text-paper">
+                {ru
+                  ? "Обращение → потребность → квалификация → подбор → расчёт → коммерческое предложение → менеджер"
+                  : "Inquiry → need → qualification → selection → calculation → commercial proposal → manager"}
+              </p>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+                {ru
+                  ? "Меньше ручной обработки обращений, быстрее переход от запроса к предложению. Менеджер подключается там, где нужна сложная или финальная коммуникация. AI не заменяет отдел продаж."
+                  : "Less manual handling of inquiries, and a shorter path from request to proposal. A manager joins where the conversation is complex or final. The AI does not replace the sales team."}
+              </p>
+              <p className="mt-3 text-sm text-paper/90">
+                {ru
+                  ? "Ассистент отвечает и квалифицирует. Showroom продаёт и готовит сделку."
+                  : "The assistant answers and qualifies. Showroom sells and prepares the deal."}
+              </p>
+
               {/* CTAs */}
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <button
@@ -58,7 +76,7 @@ export function ShowroomAIPageContent({
                   {c.ctaConsult} →
                 </button>
                 <a
-                  href="#industries"
+                  href="#workflow"
                   className="inline-flex items-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
                 >
                   {c.ctaExplore}
@@ -112,7 +130,7 @@ export function ShowroomAIPageContent({
               </div>
 
               <div className="mt-3 pb-0 sm:pb-12" data-reveal="scale">
-                <ProductConstellation variant="showroom" cardKind="quote" />
+                <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               </div>
             </div>
           </div>
@@ -124,7 +142,7 @@ export function ShowroomAIPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              01 // Отраслевая адаптивность
+              {section("01", "Industry fit", "Отраслевая адаптивность")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.industriesTitle}
@@ -157,7 +175,7 @@ export function ShowroomAIPageContent({
             <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
               <div>
                 <span className="font-mono text-[10px] text-mark uppercase tracking-wider font-semibold">
-                  Отраслевой сценарий // {currentInd.name}
+                  {`${ru ? "Сценарий" : "Scenario"} · ${currentInd.name}`}
                 </span>
                 <h3 className="mt-2 font-display text-xl sm:text-2xl font-semibold text-paper">
                   {currentInd.title}
@@ -168,7 +186,7 @@ export function ShowroomAIPageContent({
 
                 <div className="mt-6">
                   <p className="font-mono text-[10px] text-warm uppercase tracking-wider mb-2 font-semibold">
-                    Учитываемые параметры & формулы:
+                    {ru ? "Параметры и формулы" : "Parameters and formulas"}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {currentInd.tags.map((t, idx) => (
@@ -186,7 +204,7 @@ export function ShowroomAIPageContent({
               {/* Metrics Strip */}
               <div className="rounded-xl border border-line bg-ink-3/30 p-5 space-y-3">
                 <p className="font-mono text-[10px] text-muted uppercase tracking-wider">
-                  Показатели эффективности:
+                  {ru ? "Что делает сценарий" : "What this scenario does"}
                 </p>
                 {currentInd.metrics.map((m, idx) => (
                   <div key={idx} className="flex items-center justify-between border-b border-line/60 pb-2">
@@ -200,7 +218,7 @@ export function ShowroomAIPageContent({
                     onClick={() => openLauncher()}
                     className="w-full rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-colors"
                   >
-                    Запросить конфигуратор под отрасль
+                    {ru ? "Обсудить конфигурацию" : "Discuss this configuration"}
                   </button>
                 </div>
               </div>
@@ -214,7 +232,7 @@ export function ShowroomAIPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              02 // Сквозная архитектура
+              {section("02", "How a request is handled", "Сквозная архитектура")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.archFlowTitle}
@@ -245,7 +263,7 @@ export function ShowroomAIPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              03 // Возможности платформы
+              {section("03", "Platform capabilities", "Возможности платформы")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.capabilitiesTitle}
@@ -273,12 +291,12 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 5. WORKFLOW & DETERMINISTIC GATE */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section id="workflow" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-                04 // Пошаговый цикл
+                {section("04", "Step by step", "Пошаговый цикл")}
               </span>
               <h2 className="mt-2 font-display text-2xl font-semibold text-paper">
                 {c.workflowTitle}
@@ -318,7 +336,7 @@ export function ShowroomAIPageContent({
 
               <div>
                 <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-                  05 // Защита данных
+                  {section("05", "Data isolation", "Защита данных")}
                 </span>
                 <h3 className="mt-2 font-display text-xl font-semibold text-paper">
                   {c.multitenantTitle}
@@ -346,7 +364,7 @@ export function ShowroomAIPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              06 // Стоимость лицензии
+              {section("06", "Licence price", "Стоимость лицензии")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.pricingTitle}
@@ -421,7 +439,7 @@ export function ShowroomAIPageContent({
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              07 // Вопросы и ответы
+              {section("07", "Questions", "Вопросы и ответы")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.faqTitle}
@@ -484,10 +502,10 @@ export function ShowroomAIPageContent({
                 {c.ctaConsult} →
               </button>
               <Link
-                href="/products"
+                href={localePath(locale, "/products")}
                 className="rounded-full border border-line bg-ink-2 px-6 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
               >
-                Все продукты
+                {ru ? "Все продукты" : "All products"}
               </Link>
             </div>
           </div>

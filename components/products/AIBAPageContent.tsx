@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { type Locale } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
@@ -22,6 +22,7 @@ export function AIBAPageContent({
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const isRu = locale === "ru";
+  const section = (n: string, en: string, ruLabel: string) => `${n} // ${isRu ? ruLabel : en}`;
   const chatInvite = isRu
     ? "Хочу оценить, сколько диалогов возьмёт на себя ассистент"
     : "I want to estimate how many conversations the assistant can handle";
@@ -84,7 +85,7 @@ export function AIBAPageContent({
 
             {/* Simulated Live Multi-Channel Inbox Scene */}
             <div className="relative pb-0 sm:pb-14">
-              <ConstellationOverlays cardKind="handoff">
+              <ConstellationOverlays cardKind="handoff" locale={locale}>
                 <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <div>
@@ -139,7 +140,7 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              01 // Каналы коммуникации
+              {section("01", "Channels", "Каналы коммуникации")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.channelsTitle}
@@ -176,7 +177,7 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              02 // Автоматизация
+              {section("02", "What it handles", "Автоматизация")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.autoTitle}
@@ -205,7 +206,7 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              03 // Панель управления
+              {section("03", "Team panel", "Панель управления")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.panelTitle}
@@ -251,7 +252,7 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              04 // Сквозной цикл
+              {section("04", "The conversation", "Сквозной цикл")}
             </span>
             <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
               {c.howTitle}
@@ -289,7 +290,7 @@ export function AIBAPageContent({
             {/* Handoff Split */}
             <div>
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-                05 // Баланс ролей
+                {section("05", "Who does what", "Баланс ролей")}
               </span>
               <h2 className="mt-2 font-display text-2xl font-semibold text-paper">
                 {c.handoffTitle}
@@ -326,7 +327,7 @@ export function AIBAPageContent({
             {/* CRM Connectors */}
             <div>
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-                06 // CRM и интеграции
+                {section("06", "CRM and integrations", "CRM и интеграции")}
               </span>
               <h2 className="mt-2 font-display text-2xl font-semibold text-paper">
                 {c.crmTitle}
@@ -370,7 +371,7 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              07 // Тарифные планы
+              {section("07", "Plans", "Тарифные планы")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.pricingTitle}
@@ -458,7 +459,7 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              08 // Вопросы и ответы
+              {section("08", "Questions", "Вопросы и ответы")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.faqTitle}
@@ -503,10 +504,12 @@ export function AIBAPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
-              Хватит терять клиентов, написавших ночью
+              {isRu ? "Ответы ночью не должны ждать утра" : "Night inquiries should not wait until morning"}
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
-              Подключите AI Business Assistant и автоматизируйте первичный ответ за считанные секунды.
+              {isRu
+                ? "AI Business Assistant отвечает по базе знаний, квалифицирует и передаёт диалог человеку. Расчёт и коммерческое предложение — задача Showroom.pro."
+                : "AI Business Assistant answers from the knowledge base, qualifies, and hands the conversation to a person. Calculation and the commercial proposal belong to Showroom.pro."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
@@ -517,10 +520,10 @@ export function AIBAPageContent({
                 {c.ctaConsult} →
               </button>
               <Link
-                href="/products"
+                href={localePath(locale, "/products")}
                 className="rounded-full border border-line bg-ink-2 px-6 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
               >
-                Все продукты
+                {isRu ? "Все продукты" : "All products"}
               </Link>
             </div>
           </div>

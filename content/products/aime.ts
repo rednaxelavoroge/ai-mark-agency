@@ -94,19 +94,19 @@ export interface AimeContent {
 }
 
 export const aimeRu: AimeContent = {
-  seoTitle: "AI Marketing Employee | AI-маркетолог 24/7 для Instagram, Facebook, Reels · AI MARK",
+  seoTitle: "AI Marketing Employee | Цикл маркетинга с вашим апрувом · AI MARK",
   seoDescription:
-    "Автономный цифровой AI-маркетолог для бизнеса и агентств: SMM 24/7 в Instagram, Facebook, Threads и Reels. Анализ ниши, генерация контента, согласование в Telegram и постинг через Meta Graph API.",
+    "Маркетинговый цикл для бизнеса и агентств: исследование, стратегия, контент, ваше подтверждение в Telegram и публикация в Instagram, Facebook и Threads.",
   badge: "Собственный AI-продукт · AI MARK",
   titleA: "AI Marketing",
   titleB: "Employee",
-  tagline: "AI-маркетолог вместо SMM-менеджера · Не шедулер вроде Buffer",
+  tagline: "Исследование → стратегия → контент → ваш апрув → публикация",
   subtitle:
     "Продуктовый цифровой AI-сотрудник: исследует нишу, конкурентов и аудиторию, составляет контент-планы, пишет посты, готовит визуалы, запрашивает аппрув в Telegram и автоматически публикует в ваши каналы Meta (Instagram, Facebook, Threads) — постоянно обучаясь на результатах.",
   ctaConsult: "Запросить подключение",
   ctaPricing: "Смотреть тарифы",
   heroMeta: [
-    "Автономный пайплайн SMM",
+    "Цикл с апрувом перед публикацией",
     "Согласование через Telegram",
     "Meta Graph API (IG · FB · Threads)",
     "Тарифы для бизнеса и агентств",
@@ -117,7 +117,7 @@ export const aimeRu: AimeContent = {
     { type: "threads", name: "Threads", status: "ready", badge: null },
     { type: "tiktok", name: "TikTok", status: "soon", badge: "В плане / аудит API" },
   ],
-  compareTitle: "Не шедулер — полноценный сотрудник",
+  compareTitle: "Не пустой планировщик — цикл маркетинга с вашим апрувом",
   compareSub:
     "AIME берёт на себя всю цепочку: стратегия → контент-план → посты и визуалы → согласование в Telegram → публикация в Instagram, Facebook и Threads.",
   compareColumns: [
@@ -178,7 +178,7 @@ export const aimeRu: AimeContent = {
       ],
     },
   ],
-  howTitle: "Полный цикл SMM. Замкнутый автономный процесс.",
+  howTitle: "Полный цикл маркетинга. Публикация после вашего апрува.",
   howSub:
     "От конкурентного анализа и трендов до публикации в Meta Graph API и дообучения на реальных охватах.",
   steps: [
@@ -226,7 +226,7 @@ export const aimeRu: AimeContent = {
       desc: "Если Meta Business Suite ещё не связан с аккаунтами — мы предоставляем детальный чек-лист и помогаем настроить всё за 1 звонок.",
     },
     {
-      title: "100% изоляция доступов",
+      title: "Доступы остаются у вас",
       desc: "Клиент сохраняет полное единоличное владение своими страницами и правами доступа. Сторонние портфолио не аккумулируют ваши доступы.",
     },
     {
@@ -352,19 +352,19 @@ export const aimeRu: AimeContent = {
 };
 
 export const aimeEn: AimeContent = {
-  seoTitle: "AI Marketing Employee | 24/7 Autonomous SMM for Instagram, Facebook, Reels · AI MARK",
+  seoTitle: "AI Marketing Employee | Research to publish, with your approval · AI MARK",
   seoDescription:
-    "Autonomous AI marketing employee for businesses and agencies: 24/7 SMM across Instagram, Facebook, Threads, and Reels. Competitor analysis, creative production, Telegram approval, and Meta Graph API posting.",
+    "A marketing cycle for businesses and agencies: research, strategy, content, your approval in Telegram, then publishing to Instagram, Facebook, and Threads.",
   badge: "Proprietary AI Platform · AI MARK",
   titleA: "AI Marketing",
   titleB: "Employee",
-  tagline: "AI Marketer replacing manual SMM · Not an empty scheduler like Buffer",
+  tagline: "Research → strategy → content → your approval → publication",
   subtitle:
     "Proprietary digital employee: analyzes your market, rivals, and audience, formulates content strategies, writes copy, crafts visuals and Reels storyboards, requests Telegram approval, and publishes via Meta Graph API — continuously self-optimizing on performance.",
   ctaConsult: "Deploy Marketing Employee",
   ctaPricing: "View Pricing Plans",
   heroMeta: [
-    "Autonomous SMM Pipeline",
+    "Marketing cycle with approval",
     "1-Click Telegram Approval",
     "Meta Graph API (IG · FB · Threads)",
     "Direct Business & Agency Tiers",
@@ -375,7 +375,7 @@ export const aimeEn: AimeContent = {
     { type: "threads", name: "Threads", status: "ready", badge: null },
     { type: "tiktok", name: "TikTok", status: "soon", badge: "Roadmap / API Audit" },
   ],
-  compareTitle: "Not an empty scheduler — an autonomous employee",
+  compareTitle: "Not an empty scheduler — a marketing cycle with approval",
   compareSub:
     "AIME executes the full lifecycle: Research → Strategy → Content & Visuals → Telegram Review → Meta Graph Publishing.",
   compareColumns: [
@@ -396,7 +396,7 @@ export const aimeEn: AimeContent = {
       name: "AIME (AI MARK)",
       tag: "Digital Employee",
       featured: true,
-      desc: "Autonomous workflow: competitor intelligence → editorial calendar → visuals and Reels scripts → Telegram approval → API posting → analytics.",
+      desc: "Research → calendar → visuals and Reels scripts → your Telegram approval → publishing → analytics.",
     },
   ],
   tracksTitle: "Two Deployment Tracks",
@@ -484,7 +484,7 @@ export const aimeEn: AimeContent = {
       desc: "If Meta Business Suite or accounts need linking, we provide a step-by-step checklist and guide you through setup in one call.",
     },
     {
-      title: "100% Client Account Sovereignty",
+      title: "The accounts stay yours",
       desc: "Clients retain absolute ownership and security credentials over their assets. Third parties never pool or commandeer your tokens.",
     },
     {
@@ -596,7 +596,7 @@ export const aimeEn: AimeContent = {
     },
     {
       q: "Who owns the Meta accounts and content?",
-      a: "You retain 100% ownership. Everything connects via official Meta Graph APIs inside your own Business Suite. No personal passwords are ever shared.",
+      a: "The accounts stay yours. Everything connects via official Meta Graph APIs inside your own Business Suite. No personal passwords are shared.",
     },
     {
       q: "Is TikTok supported today?",

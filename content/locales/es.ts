@@ -90,7 +90,7 @@ export const copyEs: Copy = {
       {
         "n": "04",
         "title": "Ventas con IA",
-        "body": "Calificación de prospectos, respuestas omnicanal en tiempo real, cotizaciones automáticas y traspaso directo a cierre."
+        "body": "Del primer contacto a la calificación, la selección, el cálculo y la propuesta comercial: AI Business Assistant y Showroom.pro."
       },
       {
         "n": "05",

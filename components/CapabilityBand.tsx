@@ -1,68 +1,72 @@
 import type { Locale } from "@/lib/site";
 
 /**
- * Full-bleed display marquee.
- *
- * A deliberately oversized typographic band that breaks the reading measure of
- * the page: two counter-scrolling rows of capability nouns, alternating solid
- * and outlined letterforms. Purely decorative copy — it names what the studio
- * builds and never claims a client, a metric or a partnership.
+ * Company scope, placed before the long narrative.
+ * Names the system in three groups. No client metrics.
  */
-const ROWS: Record<string, string[][]> = {
+const GROUPS: Record<string, { label: string; items: string[] }[]> = {
   ru: [
-    ["AI-агенты", "SaaS-платформы", "Кабинеты", "E-commerce", "Маркетплейсы"],
-    ["RAG-базы знаний", "CRM-контуры", "Аналитика", "Автоматизация", "Дизайн-системы"],
+    {
+      label: "AI-инфраструктура",
+      items: ["AI-маркетинг", "AI-продажи", "Клиентский сервис", "Автоматизация", "Цифровая разработка"],
+    },
+    {
+      label: "Создание бизнеса",
+      items: ["Исследование", "Бизнес-модель", "Цифровой продукт", "Запуск", "Рост"],
+    },
+    {
+      label: "Дополнительные направления",
+      items: ["Финансовые и Web3-решения", "Партнёрская сеть", "Инвесторам"],
+    },
   ],
   en: [
-    ["AI agents", "SaaS platforms", "Client portals", "E-commerce", "Marketplaces"],
-    ["RAG knowledge", "CRM contours", "Analytics", "Automation", "Design systems"],
+    {
+      label: "AI infrastructure",
+      items: ["AI Marketing", "AI Sales", "Customer Service", "Automation", "Digital Production"],
+    },
+    {
+      label: "Business creation",
+      items: ["Research", "Business Model", "Digital Product", "Launch", "Growth"],
+    },
+    {
+      label: "Additional directions",
+      items: ["Financial / Web3 Solutions", "Partner Network", "Investors"],
+    },
   ],
 };
 
-function Row({ words, reverse = false }: { words: string[]; reverse?: boolean }) {
-  return (
-    <div className="flex overflow-hidden">
-      <div
-        className={`marquee-track flex shrink-0 items-center gap-8 pr-8 ${reverse ? "reverse" : ""}`}
-      >
-        {[...words, ...words].map((word, i) => (
-          <span key={`${word}-${i}`} className="flex shrink-0 items-center gap-8">
-            <span
-              className={
-                i % 2 === 0
-                  ? "font-display text-3xl font-semibold tracking-tight text-paper sm:text-4xl lg:text-5xl"
-                  : "text-outline font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl"
-              }
-            >
-              {word}
-            </span>
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-warm/70" />
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function CapabilityBand({ locale }: { locale: Locale }) {
-  const rows = ROWS[locale] || ROWS.en;
+  const groups = GROUPS[locale] ?? GROUPS.en;
+  const ru = locale === "ru";
   return (
     <section
-      aria-label={locale === "ru" ? "Что мы строим" : "What we build"}
-      className="marquee-host relative overflow-hidden border-y border-line bg-ink-2/40"
+      aria-label={ru ? "Из чего состоит AI MARK" : "What AI MARK includes"}
+      className="relative border-y border-line bg-ink-2/40"
     >
-      <div aria-hidden className="grid-field pointer-events-none absolute inset-0 opacity-50" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent sm:w-40"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent sm:w-40"
-      />
-      <div className="relative space-y-3 py-10 sm:py-14">
-        <Row words={rows[0]} />
-        <Row words={rows[1]} reverse />
+      <div aria-hidden className="grid-field pointer-events-none absolute inset-0 opacity-40" />
+      <div className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-warm">
+          {ru ? "Одна система" : "One system"}
+        </p>
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          {groups.map((group) => (
+            <div key={group.label} className="rounded-xl border border-line bg-ink-2/80 p-4">
+              <p className="font-display text-sm font-semibold text-paper">{group.label}</p>
+              <ul className="mt-3 space-y-1.5">
+                {group.items.map((item) => (
+                  <li key={item} className="text-xs text-muted">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-muted">
+          {ru
+            ? "Инвесторы — это участие в компании AI MARK. Это отдельное направление и не совпадает с партнёрской сетью или заказом на создание бизнеса."
+            : "Investors means participation in AI MARK as a company. It is separate from the partner network and from ordering a business to be built."}
+        </p>
       </div>
     </section>
   );

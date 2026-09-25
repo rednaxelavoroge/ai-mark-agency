@@ -80,8 +80,43 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
         { label: "Operating Growth", sub: "Scaled revenue & ops", type: "output" },
       ];
 
+  const mechanic = isRu
+    ? ["Личная продажа", "Продажи команды", "До 5 уровней", "Комиссия"]
+    : ["Personal sale", "Team sales", "Up to 5 levels", "Commission"];
+
   return (
     <div className="space-y-10">
+      <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-warm">
+          {isRu ? "Как устроена комиссия" : "How commission works"}
+        </p>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          {mechanic.map((step, i) => (
+            <Fragment key={step}>
+              {i > 0 ? (
+                <span aria-hidden className="font-mono text-xs text-warm">
+                  →
+                </span>
+              ) : null}
+              <span className="rounded-full border border-line bg-ink-3/50 px-3 py-1.5 text-sm text-paper">
+                {step}
+              </span>
+            </Fragment>
+          ))}
+        </div>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+          {isRu
+            ? "Сначала личная продажа, затем продажи команды, до пяти уровней, и комиссия с оплаченной суммы. Типы партнёров и ставки — ниже и на странице программы."
+            : "A personal sale comes first, then team sales, up to five levels, and commission on the amount the customer paid. Partner types and rates come after this, on the programme page."}
+        </p>
+        <Link
+          href={localePath(locale, "/partners")}
+          className="mt-5 inline-flex text-sm font-semibold text-mark hover:underline"
+        >
+          {isRu ? "Как устроена комиссия →" : "How the commission works →"}
+        </Link>
+      </div>
+
       {/* Network Flow Nodes */}
       <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 shadow-sm">
         <div className="flex items-center justify-between border-b border-line pb-4">
@@ -191,23 +226,6 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
                 ? "Продавайте AI-продукты и цифровые решения AI MARK и получайте комиссию с квалифицированных клиентских продаж. Стройте собственную партнёрскую сеть и развивайте свой рынок вместе с AI MARK."
                 : "Sell AI MARK products and digital solutions, and earn commission on qualified customer sales. Build your own partner network and develop your market together with AI MARK."}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              {(isRu
-                ? ["Личные продажи", "Продажи команды", "До 5 уровней сети"]
-                : ["Personal sales", "Team sales", "Up to 5 network levels"]
-              ).map((step, i) => (
-                <Fragment key={step}>
-                  {i > 0 && (
-                    <span aria-hidden className="font-mono text-[10px] text-warm/70">
-                      →
-                    </span>
-                  )}
-                  <span className="rounded-full border border-line bg-ink-2/70 px-2.5 py-1 font-mono text-[10px] tracking-wide text-paper/80">
-                    {step}
-                  </span>
-                </Fragment>
-              ))}
-            </div>
           </div>
           <Link
             href={localePath(locale, "/partners")}
