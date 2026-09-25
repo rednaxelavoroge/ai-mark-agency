@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+import { explicitLocaleCookieAssignments } from "@/lib/locale-negotiate";
 import {
   LOCALES_INFO,
   counterpartLocaleHref,
@@ -14,12 +15,13 @@ import {
 const emptySubscribe = () => () => {};
 
 function persistLocale(code: Locale) {
-  if (typeof document !== "undefined") {
-    try {
-      document.cookie = `locale=${code}; path=/; max-age=31536000; SameSite=Lax`;
-    } catch {
-      // Ignore in restricted environments
+  if (typeof document === "undefined") return;
+  try {
+    for (const assignment of explicitLocaleCookieAssignments(code)) {
+      document.cookie = assignment;
     }
+  } catch {
+    // Ignore in restricted environments
   }
 }
 
