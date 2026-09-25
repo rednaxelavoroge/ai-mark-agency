@@ -63,14 +63,14 @@ export interface ShowroomContent {
 }
 
 export const showroomRu: ShowroomContent = {
-  seoTitle: "Showroom AI | AI-движок расчёта спецификаций, цен и коммерческих предложений · AI MARK",
+  seoTitle: "Showroom.pro — AI-продавец | Диалоги, подбор, расчёт и коммерческие предложения · AI MARK",
   seoDescription:
-    "Универсальный AI-движок для бизнеса со сложными расчётами: мебель, автодилеры, строительство, недвижимость, ритейл и B2B-услуги. Превращает свободный запрос клиента в выверенную спецификацию и готовый PDF-оффер.",
+    "AI-продавец, который общается с клиентами, понимает их потребность, работает с каталогом и бизнес-правилами, рассчитывает предложение и готовит коммерческое предложение для отдела продаж. Мебель, авто, строительство, недвижимость, ритейл и B2B.",
   badge: "Собственный AI-продукт · AI MARK",
-  title: "Showroom AI",
-  tagline: "От свободного запроса клиента до точного КП и счёта",
+  title: "Showroom.pro",
+  tagline: "AI-продавец",
   subtitle:
-    "Единый отраслевой AI-движок: принимает запрос клиента на естественном языке, сопоставляет с вашим каталогом и правилами, производит детерминированный расчёт цен по вашим формулам и мгновенно формирует готовую спецификацию и PDF-предложение.",
+    "AI-продавец, который общается с клиентами, понимает их потребность, работает с каталогом и бизнес-правилами, рассчитывает предложение и готовит коммерческое предложение для отдела продаж. Закрывает значительную часть продажного workflow и передаёт подготовленную сделку команде.",
   ctaConsult: "Запросить конфигурацию",
   ctaExplore: "Смотреть архитектуру",
   heroMeta: [
@@ -80,7 +80,7 @@ export const showroomRu: ShowroomContent = {
     "Multi-Tenant архитектура",
   ],
   heroSpec: {
-    title: "Showroom AI Core / Статус среды",
+    title: "Showroom.pro Core / Статус среды",
     status: "Активен • v2.4",
     rows: [
       { n: "01", label: "Multi-Tenant контекст каталога", tag: "Изолирован" },
@@ -93,7 +93,7 @@ export const showroomRu: ShowroomContent = {
   },
   industriesTitle: "Единое ядро. Конфигурация под любую отрасль.",
   industriesSub:
-    "Showroom AI не привязан к одной нише. Архитектура разделяет общее AI-ядро и отраслевой слой правил, каталогов и формул расчёта.",
+    "Showroom.pro не привязан к одной нише. Архитектура разделяет общее AI-ядро и отраслевой слой правил, каталогов и формул расчёта.",
   industries: [
     {
       id: "furniture",
@@ -164,7 +164,7 @@ export const showroomRu: ShowroomContent = {
   ],
   archFlowTitle: "Сквозной процесс обработки запроса",
   archFlow: [
-    { step: "01", name: "Showroom AI Core", desc: "Принимает запрос клиента на естественном языке" },
+    { step: "01", name: "Showroom.pro Core", desc: "Ведёт диалог и принимает запрос клиента на естественном языке" },
     { step: "02", name: "Business Knowledge", desc: "Извлекает каталог, ограничения и формулы цен" },
     { step: "03", name: "Industry Rules", desc: "Применяет специфические отраслевые параметры" },
     { step: "04", name: "Exact Calculation", desc: "Детерминированный математический расчёт без галлюцинаций" },
@@ -204,7 +204,7 @@ export const showroomRu: ShowroomContent = {
       desc: "Менеджер отдела продаж получает не просто контакт, а готовую выверенную спецификацию и сумму сделки в CRM.",
     },
   ],
-  workflowTitle: "Пошаговый цикл работы Showroom AI",
+  workflowTitle: "Пошаговый цикл работы Showroom.pro",
   workflowSub: "От входящего сообщения до готового коммерческого предложения за считанные секунды.",
   workflowSteps: [
     { num: "01", label: "Запрос клиента", desc: "Клиент описывает потребность своими словами или присылает параметры." },
@@ -216,7 +216,7 @@ export const showroomRu: ShowroomContent = {
   ],
   deterministicTitle: "Детерминированный расчётный шлюз",
   deterministicDesc:
-    "Главный риск обычных чат-ботов — выдумывание цен и характеристик. В Showroom AI расчёт отделён от генерации текста: AI считывает контекст, а калькулятор считает по точным формулам. Ошибка исключена.",
+    "Главный риск обычных чат-ботов — выдумывание цен и характеристик. В Showroom.pro расчёт отделён от генерации текста: AI ведёт диалог и считывает контекст, а калькулятор считает по точным формулам. Ошибка исключена.",
   multitenantTitle: "Изолированная архитектура Multi-Tenant",
   multitenantLead:
     "Данные каждого предприятия, каталоги и коммерческие тайны изолированы на уровне выделенных тенантов.",
@@ -234,7 +234,7 @@ export const showroomRu: ShowroomContent = {
       text: "Подключение к внутренним базам данных и закрытым CRM через защищённые API-ключи и выделенные шлюзы.",
     },
   ],
-  pricingTitle: "Тарифные планы Showroom AI",
+  pricingTitle: "Тарифные планы Showroom.pro",
   pricingSub: "Прозрачная стоимость аренды AI-движка для вашего бизнеса.",
   pricingDesc:
     "Self-serve — $0 за запуск платформы; опциональный DFY-сетап каталога и формул — около $300 разово. Далее фиксированная MRR по квоте расчётов. В каждый тариф входит движок и генератор PDF.",
@@ -287,16 +287,16 @@ export const showroomRu: ShowroomContent = {
       ],
     },
   ],
-  faqTitle: "Вопросы о Showroom AI",
+  faqTitle: "Вопросы о Showroom.pro — AI-продавец",
   faqSub: "Всё о внедрении расчётного движка в коммерческие процессы компании.",
   faqs: [
     {
       q: "Это подходит только для мебельного бизнеса?",
-      a: "Нет. Showroom AI — универсальный движок для любых конфигурируемых товаров и услуг: автодилеров, строительства, ритейла, B2B-поставок, недвижимости и услуг. Вся отраслевая специфика настраивается через структуру каталога и формулы.",
+      a: "Нет. Showroom.pro — AI-продавец для любых конфигурируемых товаров и услуг: автодилеров, строительства, ритейла, B2B-поставок, недвижимости и услуг. Вся отраслевая специфика настраивается через структуру каталога и формулы.",
     },
     {
       q: "Может ли система ошибиться в цене?",
-      a: "Нет. В Showroom AI реализован детерминированный шлюз: искусственный интеллект только извлекает параметры из запроса, а расчёт суммы выполняется математическим модулем по строго заданным формулам компании.",
+      a: "Нет. В Showroom.pro реализован детерминированный шлюз: AI ведёт диалог и извлекает параметры, а расчёт суммы выполняется математическим модулем по строго заданным формулам компании.",
     },
     {
       q: "Как клиенты получают готовое коммерческое предложение?",
@@ -310,14 +310,14 @@ export const showroomRu: ShowroomContent = {
 };
 
 export const showroomEn: ShowroomContent = {
-  seoTitle: "Showroom AI | AI Engine for Quotes, Pricing & Commercial Specifications · AI MARK",
+  seoTitle: "Showroom.pro — AI Sales Agent | Customer conversations, quoting & commercial proposals · AI MARK",
   seoDescription:
-    "Universal AI calculation and quoting engine for complex business workflows: automotive, furniture, construction, real estate, retail, and B2B services. Converts customer inquiries into verified specifications and ready PDF proposals.",
+    "An AI salesperson that talks to customers, understands their needs, works with your product catalog and business rules, calculates the right offer and prepares a commercial proposal for your sales team. Automotive, construction, real estate, furniture, retail, and B2B.",
   badge: "Proprietary AI Platform · AI MARK",
-  title: "Showroom AI",
-  tagline: "From free-form customer inquiry to verified spec and ready PDF quote",
+  title: "Showroom.pro",
+  tagline: "AI Sales Agent",
   subtitle:
-    "One configurable AI calculation platform: receives customer requirements in natural language, cross-references against your catalog and rules, runs deterministic price calculations, and generates polished commercial proposals and invoices in seconds.",
+    "An AI salesperson that talks to customers, understands their needs, works with your product catalog and business rules, calculates the right offer and prepares a commercial proposal for your sales team. Handles a major part of the sales workflow and prepares the opportunity for your human sales team.",
   ctaConsult: "Request Configuration",
   ctaExplore: "Explore Architecture",
   heroMeta: [
@@ -327,7 +327,7 @@ export const showroomEn: ShowroomContent = {
     "Multi-Tenant Isolation",
   ],
   heroSpec: {
-    title: "Showroom AI Core / Runtime Status",
+    title: "Showroom.pro Core / Runtime Status",
     status: "Active • v2.4",
     rows: [
       { n: "01", label: "Multi-Tenant Catalog Context", tag: "Isolated" },
@@ -340,7 +340,7 @@ export const showroomEn: ShowroomContent = {
   },
   industriesTitle: "One Unified Core. Configured for Any Industry.",
   industriesSub:
-    "Showroom AI is not tethered to a single vertical. The architecture cleanly separates the core AI reasoning engine from industry-specific data schemas, pricing formulas, and document templates.",
+    "Showroom.pro is not tethered to a single vertical. The architecture cleanly separates the core AI reasoning engine from industry-specific data schemas, pricing formulas, and document templates.",
   industries: [
     {
       id: "furniture",
@@ -411,7 +411,7 @@ export const showroomEn: ShowroomContent = {
   ],
   archFlowTitle: "End-to-End Processing Architecture",
   archFlow: [
-    { step: "01", name: "Showroom AI Core", desc: "Receives customer inquiry in free-form language" },
+    { step: "01", name: "Showroom.pro Core", desc: "Talks to the customer and receives inquiry in free-form language" },
     { step: "02", name: "Business Knowledge", desc: "Retrieves catalog records, constraints, and pricing rules" },
     { step: "03", name: "Industry Rules", desc: "Applies vertical-specific parameter logic" },
     { step: "04", name: "Exact Calculation", desc: "Deterministic mathematical computation without hallucination" },
@@ -463,7 +463,7 @@ export const showroomEn: ShowroomContent = {
   ],
   deterministicTitle: "Deterministic Verification Gate",
   deterministicDesc:
-    "Standard chatbots hallucinate prices and imaginary inventory. Showroom AI strictly bifurcates language understanding from mathematical computation: the AI parses context, while verified code computes prices. Zero calculation errors.",
+    "Standard chatbots hallucinate prices and imaginary inventory. Showroom.pro strictly bifurcates dialogue and language understanding from mathematical computation: the AI talks to customers and parses context, while verified code computes prices. Zero calculation errors.",
   multitenantTitle: "Isolated Multi-Tenant Security",
   multitenantLead:
     "Every client organization's catalog data, pricing logic, and commercial formulas remain completely isolated.",
@@ -481,7 +481,7 @@ export const showroomEn: ShowroomContent = {
       text: "Connect to private enterprise databases and internal CRM systems via authenticated API keys and dedicated gateways.",
     },
   ],
-  pricingTitle: "Showroom AI Pricing Plans",
+  pricingTitle: "Showroom.pro Pricing Plans",
   pricingSub: "Predictable software licensing for commercial calculation automation.",
   pricingDesc:
     "Self-serve launch at $0; optional done-for-you catalog and formula setup is ~$300 once. Then fixed MRR by calculation quota. All plans include the engine and PDF generation.",
@@ -535,15 +535,15 @@ export const showroomEn: ShowroomContent = {
     },
   ],
   faqTitle: "Frequently Asked Questions",
-  faqSub: "Everything you need to know about implementing the Showroom AI calculation engine.",
+  faqSub: "Everything you need to know about implementing Showroom.pro as your AI Sales Agent.",
   faqs: [
     {
-      q: "Is Showroom AI exclusively for furniture companies?",
-      a: "No. Showroom AI is an industry-agnostic engine designed for any configurable business: automotive dealerships, construction contractors, building materials, real estate developers, equipment distributors, and B2B services. Industry specificity is configured via data schemas and formulas.",
+      q: "Is Showroom.pro exclusively for furniture companies?",
+      a: "No. Showroom.pro is an AI Sales Agent for any configurable business: automotive dealerships, construction contractors, building materials, real estate developers, equipment distributors, and B2B services. Industry specificity is configured via data schemas and formulas.",
     },
     {
       q: "Can the system hallucinate prices?",
-      a: "No. Showroom AI utilizes a deterministic calculation gate: the AI merely extracts user parameters, while calculation of subtotals and totals is performed by verified mathematical code based on your exact formulas.",
+      a: "No. Showroom.pro utilizes a deterministic calculation gate: the AI talks to customers and extracts parameters, while calculation of subtotals and totals is performed by verified mathematical code based on your exact formulas.",
     },
     {
       q: "How do customers receive the finalized quote?",

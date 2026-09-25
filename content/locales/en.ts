@@ -12,7 +12,7 @@ export const copyEn: Copy = {
         "AI marketing",
         "digital production",
         "AIME",
-        "Showroom AI",
+        "Showroom.pro",
         "ai-mark.agency",
       ],
     },
@@ -124,7 +124,7 @@ export const copyEn: Copy = {
       hubCta: "All product pages",
       hubTitle: "AI products",
       hubLead:
-        "AIME, AI Business Assistant, and Showroom AI. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+        "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
       items: {
         aime: {
           value:
@@ -142,10 +142,10 @@ export const copyEn: Copy = {
         },
         showroom: {
           value:
-            "Industry-neutral CPQ: complex commercial requests, specs, calculations, and quotes by your business rules.",
-          who: "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
+            "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",
+          who: "Teams that need sales conversations, selection, and quotes — not a support chatbot or a price invented in chat.",
           extra:
-            "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
+            "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades. Deterministic pricing engine behind the dialogue.",
           price:
             "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota.",
         },
@@ -218,7 +218,7 @@ export const copyEn: Copy = {
         {
           name: "AI Products",
           price: "$149–349+",
-          body: "AIME, Business Assistant, Showroom AI as product SKUs — install and operate on your side, or with us.",
+          body: "AIME, Business Assistant, Showroom.pro — AI Sales Agent as product SKUs — install and operate on your side, or with us.",
         },
         {
           name: "AI Marketing Services",
@@ -266,7 +266,7 @@ export const copyEn: Copy = {
           summary: "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
           points: [
             "Instagram and Facebook as a paired Meta system",
-            "Inbox and Showroom when the offer needs them",
+            "Inbox and Showroom.pro when the offer needs them",
             "Human-in-the-loop on every publish",
             "Analytics feeding the next cycle",
           ],
@@ -437,10 +437,10 @@ export const copyEn: Copy = {
         flow: ["Inbound", "Knowledge base", "Reply", "Qualify", "Human handoff"],
       },
       showroom: {
-        eyebrow: "CPQ",
-        title: "Showroom AI",
-        lead: "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
-        metaphor: "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
+        eyebrow: "AI Sales Agent",
+        title: "Showroom.pro — AI Sales Agent",
+        lead: "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals — with deterministic rules behind the quote. Not furniture-only, not support chat.",
+        metaphor: "Dialogue + catalog + business rules → selection → calc → spec → commercial proposal / PDF.",
         sections: [
           {
             title: "Industry-neutral",
@@ -452,7 +452,7 @@ export const copyEn: Copy = {
           },
           {
             title: "Where it sits",
-            body: "After a qualified conversation. The inbox can collect intent; Showroom turns intent into a document.",
+            body: "After marketing or inbox qualification. Showroom.pro turns conversation and parameters into a verified commercial document.",
           },
         ],
         flow: ["Catalog", "Business rules", "Client parameters", "Calculation", "Spec", "Quote / PDF"],

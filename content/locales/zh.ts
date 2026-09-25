@@ -11,7 +11,7 @@ export const copyZh: Copy = {
       "AI营销",
       "数字化开发",
       "AIME",
-      "Showroom AI",
+      "Showroom.pro",
       "ai-mark.agency"
     ]
   },
@@ -142,7 +142,7 @@ export const copyZh: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and Showroom AI. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AIME — AI 营销数字员工",
@@ -157,7 +157,7 @@ export const copyZh: Copy = {
         "price": "149 美元/月起"
       },
       "showroom": {
-        "value": "Showroom AI 智能配置展厅",
+        "value": "Showroom.pro — AI Sales Agent配置展厅",
         "who": "制造业工厂、汽车销售、全屋定制及工程总包",
         "extra": "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。",
         "price": "299 美元/月起"
@@ -240,7 +240,7 @@ export const copyZh: Copy = {
       {
         "name": "Scale 规模版",
         "price": "$3,500",
-        "body": "企业级完整方案：全渠道自动化、Showroom AI 深度定制与 24/7 优先支持。"
+        "body": "企业级完整方案：全渠道自动化、Showroom.pro — AI Sales Agent 深度定制与 24/7 优先支持。"
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -262,7 +262,7 @@ export const copyZh: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom when the offer needs them",
+          "Inbox and Showroom.pro when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -470,7 +470,7 @@ export const copyZh: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom AI",
+      "title": "Showroom.pro — AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -484,7 +484,7 @@ export const copyZh: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom turns intent into a document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

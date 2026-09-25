@@ -11,7 +11,7 @@ export const copyDe: Copy = {
       "AI marketing",
       "digital production",
       "AIME",
-      "Showroom AI",
+      "Showroom.pro",
       "ai-mark.agency"
     ]
   },
@@ -169,7 +169,7 @@ export const copyDe: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and Showroom AI. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
@@ -184,7 +184,7 @@ export const copyDe: Copy = {
         "price": "Entry $149/mo · Standard $249/mo"
       },
       "showroom": {
-        "value": "Industry-neutral CPQ: complex commercial requests, specs, calculations, and quotes by your business rules.",
+        "value": "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",
         "who": "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
         "extra": "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
         "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota."
@@ -267,7 +267,7 @@ export const copyDe: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "Komplettlösung: Vollständige Omnichannel-Infrastruktur, Showroom AI und 24/7 Premium-Support."
+        "body": "Komplettlösung: Vollständige Omnichannel-Infrastruktur, Showroom.pro — AI Sales Agent und 24/7 Premium-Support."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -289,7 +289,7 @@ export const copyDe: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom when the offer needs them",
+          "Inbox and Showroom.pro when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -497,7 +497,7 @@ export const copyDe: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom AI",
+      "title": "Showroom.pro — AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -511,7 +511,7 @@ export const copyDe: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom turns intent into a document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

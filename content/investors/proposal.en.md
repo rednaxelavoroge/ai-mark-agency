@@ -63,9 +63,9 @@ It can connect to a range of communication channels, including:
 - Telegram
 - website chat
 
-### Showroom AI
+### Showroom.pro — AI Sales Agent
 
-An AI system for handling complex commercial requests, specifications, calculations, quotation building and the handover of that information into business processes.
+An AI Sales Agent that talks to customers, understands needs, works with your catalog and business rules, calculates pricing, generates specifications and commercial proposals, and hands qualified opportunities to sales and CRM.
 
 **The solution is not limited to a single industry.**
 
