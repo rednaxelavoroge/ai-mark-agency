@@ -43,7 +43,10 @@ export async function createPaymentInvoice(
   const sku = payableSkuById(input.skuId);
   if (!sku) return { ok: false, error: "Choose a published product with a list price." };
   if (!isPaymentAsset(input.asset) || !isPaymentNetwork(input.network)) {
-    return { ok: false, error: "Choose USDT or USDC on Tron, Ethereum, Polygon or Solana." };
+    return {
+      ok: false,
+      error: "Choose USDT or USDC on Tron, Ethereum, Polygon, Solana, BNB Chain or TON.",
+    };
   }
   const address = treasuryAddress(input.asset as PaymentAsset, input.network as PaymentNetwork);
   if (!address) {

@@ -8,7 +8,7 @@ import {
   PAYOUT_ASSET,
   parsePayoutDetails,
 } from "@/lib/crypto/payout-destination";
-import { NETWORK_LABELS, PAYMENT_NETWORKS } from "@/lib/crypto/networks";
+import { NETWORK_LABELS, PAYOUT_NETWORKS } from "@/lib/crypto/networks";
 import { NO_DATA, formatDate, referralUrl } from "@/lib/partner/format";
 import { savePayoutDetails } from "./actions";
 
@@ -145,7 +145,7 @@ export default async function PartnerProfilePage({
                 name="payout_network"
                 defaultValue={parsedPayout?.network ?? DEFAULT_PAYOUT_NETWORK}
               >
-                {PAYMENT_NETWORKS.map((network) => (
+                {PAYOUT_NETWORKS.map((network) => (
                   <option key={network} value={network}>
                     {NETWORK_LABELS[network]}
                     {network === DEFAULT_PAYOUT_NETWORK ? " (default)" : ""}

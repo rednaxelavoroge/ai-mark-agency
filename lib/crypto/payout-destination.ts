@@ -1,14 +1,14 @@
 import {
   DEFAULT_PAYOUT_NETWORK,
   PAYOUT_ASSET,
-  isPaymentNetwork,
+  isPayoutNetwork,
   looksLikeAddress,
-  type PaymentNetwork,
+  type PayoutNetwork,
 } from "./networks";
 
 export type StructuredPayout = {
   asset: typeof PAYOUT_ASSET;
-  network: PaymentNetwork;
+  network: PayoutNetwork;
   address: string;
   notes: string | null;
 };
@@ -24,7 +24,7 @@ const HEADER = /^USDC\s+(solana|ethereum|polygon|tron)\s*$/i;
  * Optional notes follow a blank line. Legacy free-text is left as-is.
  */
 export function formatPayoutDetails(input: {
-  network: PaymentNetwork;
+  network: PayoutNetwork;
   address: string;
   notes?: string | null;
 }): string {
@@ -43,7 +43,7 @@ export function parsePayoutDetails(
   const match = HEADER.exec(header);
   if (!match) return null;
   const network = match[1].toLowerCase();
-  if (!isPaymentNetwork(network)) return null;
+  if (!isPayoutNetwork(network)) return null;
   const address = lines[1]?.trim() ?? "";
   if (!address) return null;
   const rest = lines.slice(2).join("\n").trim();
@@ -57,14 +57,14 @@ export function parsePayoutDetails(
 
 export function payoutAddressHint(
   details: string | null | undefined,
-): { network: PaymentNetwork; address: string } | null {
+): { network: PayoutNetwork; address: string } | null {
   const parsed = parsePayoutDetails(details);
   if (!parsed) return null;
   return { network: parsed.network, address: parsed.address };
 }
 
 export function validatePartnerUsdcAddress(
-  network: PaymentNetwork,
+  network: PayoutNetwork,
   address: string,
 ): string | null {
   const trimmed = address.trim();

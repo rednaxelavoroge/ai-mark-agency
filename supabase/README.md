@@ -449,7 +449,7 @@ the legacy `eyJ…` JWTs. See
 | `SUPABASE_URL` | **server only** | — | Optional; falls back to `NEXT_PUBLIC_SUPABASE_URL`. |
 | `SUPABASE_SECRET_KEY` | **server only** | `service_role`, which has `BYPASSRLS` | Elevates past every RLS policy. Never `NEXT_PUBLIC_`. **Phase 4B uses it at runtime** (see below). |
 | `REFERRAL_COOKIE_SECRET` | **server only** | — | Optional. HMAC key for the attribution cookie; falls back to `SUPABASE_SECRET_KEY`. |
-| `TREASURY_USDT_*` / `TREASURY_USDC_*` | **server only** | — | Receive addresses (Tron, Ethereum, Polygon, Solana). Empty = that rail is off. Never a private key. |
+| `TREASURY_USDT_*` / `TREASURY_USDC_*` | **server only** | — | Receive addresses (Tron, Ethereum, Polygon, Solana, BNB Chain, TON). Empty = that rail is off. Never a private key. |
 | `SOLANA_RPC_URL` | **server only** | — | Optional. Signature lookup only. Does not send tokens. |
 
 ### Guard rails already in the code
