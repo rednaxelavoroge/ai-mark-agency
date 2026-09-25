@@ -77,7 +77,7 @@ export default async function AdminPayoutsPage({
       <PageHeader
         eyebrow="Admin console"
         title="Payouts"
-        lead="Payable commission entries, the destination saved on the partner profile, and the existing ledger actions. Opening a payout calls create_payout. Confirming it calls confirm_payout and records the payout as paid. Neither action sends money."
+        lead="Payable commission entries and the USDC destination saved on the partner profile. Opening a payout calls create_payout. Confirming it calls confirm_payout and marks the payout paid in the ledger. Tokens are not sent from this app."
       />
 
       {notice ? (
@@ -128,9 +128,9 @@ export default async function AdminPayoutsPage({
       <section className="grid gap-4">
         <h2 className="text-sm font-semibold tracking-tight">Open a payout</h2>
         <p className="max-w-2xl text-xs leading-relaxed text-muted">
-          Each button opens one payout for that partner and currency. The
-          ledger sets the amount from the payable entries. You do not type an
-          amount, a rate, or a level.
+          Each button opens one payout for that partner and currency. Send the
+          same amount as USDC on Solana unless the partner saved a different
+          network. The ledger sets the amount. This app does not sign a transfer.
         </p>
         {payable.unreadable ? (
           <p className="text-sm text-muted">{NO_DATA} Payable entries could not be read.</p>

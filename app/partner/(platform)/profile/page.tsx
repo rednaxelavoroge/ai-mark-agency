@@ -3,6 +3,12 @@ import { DetailList, PageHeader } from "@/components/platform/PageHeader";
 import { CopyReferralLink } from "@/components/platform/CopyReferralLink";
 import { cardClass, fieldClass, labelClass, primaryButtonClass } from "@/components/ui/classes";
 import { getOwnPayoutDetails, getOwnProfile, requirePartner } from "@/lib/auth/dal";
+import {
+  DEFAULT_PAYOUT_NETWORK,
+  PAYOUT_ASSET,
+  parsePayoutDetails,
+} from "@/lib/crypto/payout-destination";
+import { NETWORK_LABELS, PAYMENT_NETWORKS } from "@/lib/crypto/networks";
 import { NO_DATA, formatDate, referralUrl } from "@/lib/partner/format";
 import { savePayoutDetails } from "./actions";
 
@@ -32,6 +38,7 @@ export default async function PartnerProfilePage({
     getOwnPayoutDetails(auth.userId),
     searchParams,
   ]);
+  const parsedPayout = parsePayoutDetails(payout.details);
   const error = first(params.error);
   const saved = first(params.saved);
 
@@ -107,9 +114,8 @@ export default async function PartnerProfilePage({
           Payout details
         </h2>
         <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">
-          Where AI MARK should send a payout. Type the recipient and the
-          destination yourself. This does not verify identity and does not
-          send money.
+          Partner payouts are USDC. Default network is Solana. This form
+          stores the destination on your profile. It does not send tokens.
         </p>
         {payout.unreadable ? (
           <p className="mt-5 text-sm text-muted">
@@ -119,7 +125,7 @@ export default async function PartnerProfilePage({
         ) : (
           <form action={savePayoutDetails} className="mt-5 grid max-w-xl gap-4">
             <label className={labelClass}>
-              <span className="text-muted">Recipient</span>
+              <span className="text-muted">Recipient name</span>
               <input
                 className={fieldClass}
                 name="payout_recipient"
@@ -129,13 +135,42 @@ export default async function PartnerProfilePage({
               />
             </label>
             <label className={labelClass}>
-              <span className="text-muted">Destination</span>
+              <span className="text-muted">Payout asset</span>
+              <input className={fieldClass} value={PAYOUT_ASSET} readOnly />
+            </label>
+            <label className={labelClass}>
+              <span className="text-muted">Network</span>
+              <select
+                className={fieldClass}
+                name="payout_network"
+                defaultValue={parsedPayout?.network ?? DEFAULT_PAYOUT_NETWORK}
+              >
+                {PAYMENT_NETWORKS.map((network) => (
+                  <option key={network} value={network}>
+                    {NETWORK_LABELS[network]}
+                    {network === DEFAULT_PAYOUT_NETWORK ? " (default)" : ""}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className={labelClass}>
+              <span className="text-muted">USDC address</span>
+              <input
+                className={`${fieldClass} font-mono text-xs`}
+                name="payout_address"
+                maxLength={128}
+                defaultValue={parsedPayout?.address ?? ""}
+                placeholder="Solana address"
+                autoComplete="off"
+              />
+            </label>
+            <label className={labelClass}>
+              <span className="text-muted">Notes (optional)</span>
               <textarea
-                className={`${fieldClass} min-h-28`}
-                name="payout_details"
+                className={`${fieldClass} min-h-20`}
+                name="payout_notes"
                 maxLength={2000}
-                defaultValue={payout.details ?? ""}
-                placeholder="Bank, account, wallet, or other instructions"
+                defaultValue={parsedPayout?.notes ?? (!parsedPayout ? payout.details ?? "" : "")}
               />
             </label>
             <button type="submit" className={`w-fit ${primaryButtonClass}`}>

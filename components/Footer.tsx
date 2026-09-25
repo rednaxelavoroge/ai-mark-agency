@@ -121,6 +121,11 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 </ContactCta>
               </li>
               <li>
+                <Link href={navHref(locale, "/pay")} className="hover:text-paper transition-colors">
+                  {isRu ? "Оплата USDT / USDC" : "Pay USDT / USDC"}
+                </Link>
+              </li>
+              <li>
                 <Link href={navHref(locale, "/privacy")} className="hover:text-paper transition-colors">
                   {t.footer.privacy}
                 </Link>

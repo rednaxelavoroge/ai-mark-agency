@@ -253,6 +253,56 @@ export type Database = {
         };
         Relationships: [];
       };
+      payment_invoices: {
+        Row: {
+          id: string;
+          public_ref: string;
+          sku_id: string;
+          product_ref: string;
+          amount: string;
+          expected_amount: string;
+          ledger_currency: string;
+          asset: string;
+          network: string;
+          treasury_address: string;
+          memo: string;
+          referral_code: string | null;
+          status: string;
+          tx_hash: string | null;
+          sale_id: string | null;
+          confirmed_by: string | null;
+          confirmed_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          public_ref: string;
+          sku_id: string;
+          product_ref: string;
+          amount: number | string;
+          expected_amount: number | string;
+          ledger_currency?: string;
+          asset: string;
+          network: string;
+          treasury_address: string;
+          memo: string;
+          referral_code?: string | null;
+          status?: string;
+          tx_hash?: string | null;
+          sale_id?: string | null;
+          confirmed_by?: string | null;
+          confirmed_at?: string | null;
+        };
+        Update: {
+          status?: string;
+          tx_hash?: string | null;
+          sale_id?: string | null;
+          confirmed_by?: string | null;
+          confirmed_at?: string | null;
+          referral_code?: string | null;
+        };
+        Relationships: [];
+      };
       sales: {
         Row: {
           id: string;
@@ -477,3 +527,5 @@ export type SaleRow = Database["public"]["Tables"]["sales"]["Row"];
 export type CommissionEntryRow =
   Database["public"]["Tables"]["commission_entries"]["Row"];
 export type PayoutRow = Database["public"]["Tables"]["payouts"]["Row"];
+export type PaymentInvoiceRow =
+  Database["public"]["Tables"]["payment_invoices"]["Row"];
