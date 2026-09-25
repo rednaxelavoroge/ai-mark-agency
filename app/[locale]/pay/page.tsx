@@ -44,6 +44,9 @@ export default async function PayPage({ params, searchParams }: Props) {
   const error = first(paramsIn.error);
   const attribution = await readReferralAttribution();
   const rails = configuredTreasuryRails();
+  const defaultNetwork = rails[0]?.network ?? "solana";
+  const defaultAsset =
+    rails.find((rail) => rail.network === defaultNetwork)?.asset ?? "USDC";
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
@@ -86,7 +89,7 @@ export default async function PayPage({ params, searchParams }: Props) {
           </label>
           <label className={labelClass}>
             <span className="text-muted">{ru ? "Стейбл" : "Stablecoin"}</span>
-            <select className={fieldClass} name="asset" required defaultValue="USDC">
+            <select className={fieldClass} name="asset" required defaultValue={defaultAsset}>
               {PAYMENT_ASSETS.map((asset) => (
                 <option key={asset} value={asset}>
                   {asset}
@@ -96,7 +99,7 @@ export default async function PayPage({ params, searchParams }: Props) {
           </label>
           <label className={labelClass}>
             <span className="text-muted">{ru ? "Сеть" : "Network"}</span>
-            <select className={fieldClass} name="network" required defaultValue="solana">
+            <select className={fieldClass} name="network" required defaultValue={defaultNetwork}>
               {PAYMENT_NETWORKS.map((network) => {
                 const ready = PAYMENT_ASSETS.some((asset) => treasuryAddress(asset, network));
                 return (
