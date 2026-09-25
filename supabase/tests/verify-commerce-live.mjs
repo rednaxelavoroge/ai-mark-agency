@@ -291,6 +291,19 @@ try {
       buyLinks.some((l) => /[?&]sku=/.test(l.href ?? "")),
       JSON.stringify(buyLinks),
     );
+    // A product page must not offer a payable link for a tier that has no
+    // published self-serve sku. The only legitimate /pay link without a sku on
+    // these pages is the footer one: a card without a sku that links to /pay
+    // would land the buyer on some other product's default. Regression guard
+    // for the Enterprise/"Custom" tier that shipped a "Pay Custom" CTA.
+    const skuLess = await probePage
+      .locator('a[href*="/pay"]:not([href*="sku="])')
+      .evaluateAll((nodes) => nodes.map((n) => n.textContent.trim()));
+    check(
+      `${product.name}: only the footer links to /pay without a chosen product`,
+      skuLess.length === 1,
+      JSON.stringify(skuLess),
+    );
   }
 
   // The hub card and the home retainer cards must not be dead ends either.

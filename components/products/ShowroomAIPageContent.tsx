@@ -388,19 +388,27 @@ export function ShowroomAIPageContent({
                   >
                     {c.ctaConsult}
                   </button>
-                  {/* Self-serve purchase of this exact tier. The Enterprise tier
-                      is custom (no published price, no sku id), so it renders
-                      nothing here and stays contact-only. */}
-                  <BuyLink
-                    locale={locale}
-                    skuId={tier.skuId}
-                    label={
-                      locale === "ru"
-                        ? `Оплатить ${tier.price} в USDT / USDC`
-                        : `Pay ${tier.price} with USDT / USDC`
-                    }
-                    className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
-                  />
+                  {/* Self-serve purchase of this exact tier, and only of a tier
+                      that has a published self-serve price. The Enterprise tier
+                      is custom (no sku id), so it renders nothing here and stays
+                      contact-only.
+                      The guard is at the call site on purpose: `BuyLink` without
+                      a sku is a legitimate family link (the /products hub and the
+                      home showcase use it that way), but on a *priced tier card*
+                      it would send the buyer to /pay with some other product
+                      preselected. A tier with no sku must not be payable. */}
+                  {tier.skuId ? (
+                    <BuyLink
+                      locale={locale}
+                      skuId={tier.skuId}
+                      label={
+                        locale === "ru"
+                          ? `Оплатить ${tier.price} в USDT / USDC`
+                          : `Pay ${tier.price} with USDT / USDC`
+                      }
+                      className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
+                    />
+                  ) : null}
                 </div>
               </div>
             ))}
