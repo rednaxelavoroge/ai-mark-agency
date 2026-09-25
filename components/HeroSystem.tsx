@@ -71,7 +71,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
       id: "ai",
       num: "03",
       name: isRu ? "AI-инфраструктура" : "AI Infrastructure",
-      sub: isRu ? "AIME, Sales AI & Showroom" : "AIME, Sales AI & Showroom",
+      sub: isRu ? "AIME, Sales AI & Showroom.pro" : "AIME, Sales AI & Showroom.pro",
       badge: isRu ? "Собственные AI-модели" : "Proprietary AI Core",
       status: isRu ? "Активно 24/7" : "Active 24/7",
       metrics: [
@@ -80,15 +80,15 @@ export function HeroSystem({ locale, t }: HeroProps) {
         { label: isRu ? "Предохранитель" : "HITL Guard", val: "Hard-Floor" },
       ],
       description: isRu
-        ? "Встраиваем собственные AI-продукты: автономный SMM (AIME), мультиканальный инбокс продаж и расчётный движок Showroom AI."
-        : "Deploying proprietary AI products: autonomous SMM (AIME), omnichannel sales AI assistant, and Showroom AI specification engine.",
+        ? "Встраиваем собственные AI-продукты: автономный SMM (AIME), мультиканальный инбокс продаж (AI Business Assistant) и Showroom.pro — AI-продавец для диалогов, подбора и КП."
+        : "Deploying proprietary AI products: autonomous SMM (AIME), omnichannel sales inbox (AI Business Assistant), and Showroom.pro — AI Sales Agent for conversations, selection, and commercial proposals.",
       uiSnippet: {
         title: isRu ? "AI MARK Autonomous Mesh" : "AI MARK Autonomous Mesh",
         tag: isRu ? "Собственный SaaS" : "Proprietary SaaS",
         lines: [
           isRu ? "✓ AIME: Автономный контент Meta + апрув в Telegram" : "✓ AIME: Autonomous Meta posting + TG approval",
           isRu ? "✓ AI Business Assistant: WhatsApp, TG, Webchat" : "✓ AI Business Assistant: 5-channel 24/7 inbox",
-          isRu ? "✓ Showroom AI: Точный расчёт спецификаций и КП" : "✓ Showroom AI: Exact quote & PDF generator",
+          isRu ? "✓ Showroom.pro — AI-продавец: диалог, подбор, КП" : "✓ Showroom.pro — AI Sales Agent: talk, select, quote",
         ],
       },
     },

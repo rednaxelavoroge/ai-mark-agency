@@ -47,14 +47,14 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
     },
     {
       id: "showroom" as const,
-      badge: isRu ? "Расчётный движок КП и спецификаций" : "Commercial Spec & Quoting Engine",
-      name: "Showroom AI",
+      badge: isRu ? "AI-продавец" : "AI Sales Agent",
+      name: "Showroom.pro",
       tagline: isRu
-        ? "От сложного запроса до точной спецификации и PDF-предложения"
-        : "From customer inquiry to verified spec & ready PDF quote",
+        ? "Общение с клиентами, подбор решений, расчёт и коммерческое предложение"
+        : "Customer conversations, product selection, pricing & commercial proposals",
       value: isRu
-        ? "Конфигурируемая платформа для бизнеса со сложными расчётами: мебель, автобизнес, стройка, ритейл, недвижимость и услуги. Считывает запрос в свободной форме, применяет ваши формулы и генерирует готовое КП."
-        : "Configurable AI engine for complex commercial proposals: automotive, construction, real estate, furniture, retail, and services. Converts natural inquiries into deterministic specifications and ready PDF quotes.",
+        ? "Ваш AI-продавец: общается с клиентами, подбирает решения, рассчитывает предложение и готовит коммерческое предложение. Мебель, авто, строительство, недвижимость, ритейл и B2B — с детерминированным расчётом по вашим правилам."
+        : "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals. Works across automotive, construction, real estate, furniture, retail, and B2B — with deterministic pricing by your business rules.",
       channels: ["Web", "API Gateway", "PDF Engine", "CRM Sync"],
       pricing: isRu
         ? "Self-serve $0 · MRR от $199/мес (или DFY-сетап ~$300)"

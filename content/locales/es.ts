@@ -11,7 +11,7 @@ export const copyEs: Copy = {
       "marketing con IA",
       "producción digital",
       "AIME",
-      "Showroom AI",
+      "Showroom.pro",
       "ai-mark.agency"
     ]
   },
@@ -157,7 +157,7 @@ export const copyEs: Copy = {
         "price": "Desde $149/mes"
       },
       "showroom": {
-        "value": "Showroom AI",
+        "value": "Showroom.pro",
         "who": "Fabricantes, concesionarios, interiorismo y proyectos a medida",
         "extra": "Generador interactivo de especificaciones técnicas y propuestas comerciales en PDF en segundos.",
         "price": "Desde $299/mes"
@@ -240,7 +240,7 @@ export const copyEs: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "Solución completa: infraestructura omnicanal, Showroom AI y soporte prioritario 24/7."
+        "body": "Solución completa: infraestructura omnicanal, Showroom.pro — AI Sales Agent y soporte prioritario 24/7."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -262,7 +262,7 @@ export const copyEs: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom when the offer needs them",
+          "Inbox and Showroom.pro when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -470,7 +470,7 @@ export const copyEs: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom AI",
+      "title": "Showroom.pro — AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -484,7 +484,7 @@ export const copyEs: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom turns intent into a document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

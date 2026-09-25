@@ -404,7 +404,7 @@ function ShowroomMock() {
     <div className="grid h-full grid-cols-[56%_44%] bg-ink-3/30 text-paper">
       <div className="flex flex-col gap-2 border-r border-line/70 p-3">
         <div className="flex items-center justify-between">
-          <span className="font-display text-[11px] font-semibold">Showroom AI Core</span>
+          <span className="font-display text-[11px] font-semibold">Showroom.pro Core</span>
           <span className="flex items-center gap-1 font-mono text-[8px] text-mark">
             <Dot tone="emerald" /> v2.4
           </span>

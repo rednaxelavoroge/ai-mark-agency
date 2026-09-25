@@ -38,11 +38,10 @@ export function ShowroomAIPageContent({
 
               <h1 className="mt-4 font-display text-4xl leading-[1.08] font-medium tracking-tight text-paper sm:text-5xl lg:text-6xl">
                 {c.title}
+                <span className="block text-2xl sm:text-3xl lg:text-4xl text-warm font-normal mt-2">
+                  — {c.tagline}
+                </span>
               </h1>
-
-              <p className="mt-3 font-mono text-xs text-warm tracking-wider uppercase">
-                {c.tagline}
-              </p>
 
               <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
                 {c.subtitle}
@@ -445,10 +444,14 @@ export function ShowroomAIPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
-              Перестаньте тратить часы на ручные расчёты КП
+              {locale === "ru"
+                ? "Передайте диалоги, подбор и КП AI-продавцу"
+                : "Let your AI Sales Agent handle conversations, selection, and quotes"}
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
-              Автоматизируйте расчёт сложных спецификаций с детерминированной математикой Showroom AI.
+              {locale === "ru"
+                ? "Showroom.pro ведёт разговор с клиентом, применяет ваши правила и детерминированный расчёт — и готовит сделку для отдела продаж."
+                : "Showroom.pro talks to customers, applies your catalog and business rules with deterministic pricing — and prepares the opportunity for your sales team."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button

@@ -11,7 +11,7 @@ export const copyFr: Copy = {
       "AI marketing",
       "digital production",
       "AIME",
-      "Showroom AI",
+      "Showroom.pro",
       "ai-mark.agency"
     ]
   },
@@ -169,7 +169,7 @@ export const copyFr: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and Showroom AI. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
@@ -184,7 +184,7 @@ export const copyFr: Copy = {
         "price": "Entry $149/mo · Standard $249/mo"
       },
       "showroom": {
-        "value": "Industry-neutral CPQ: complex commercial requests, specs, calculations, and quotes by your business rules.",
+        "value": "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",
         "who": "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
         "extra": "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
         "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota."
@@ -257,7 +257,7 @@ export const copyFr: Copy = {
       {
         "name": "AI Products",
         "price": "$149–349+",
-        "body": "AIME, Business Assistant, Showroom AI as product SKUs — install and operate on your side, or with us."
+        "body": "AIME, Business Assistant, Showroom.pro — AI Sales Agent as product SKUs — install and operate on your side, or with us."
       },
       {
         "name": "AI Marketing Services",
@@ -304,7 +304,7 @@ export const copyFr: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom when the offer needs them",
+          "Inbox and Showroom.pro when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -512,7 +512,7 @@ export const copyFr: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom AI",
+      "title": "Showroom.pro — AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -526,7 +526,7 @@ export const copyFr: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom turns intent into a document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

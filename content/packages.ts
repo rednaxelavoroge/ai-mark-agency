@@ -24,5 +24,5 @@ export const products: {
 }[] = [
   { id: "aime", name: "AI Marketing Employee (AIME)" },
   { id: "assistant", name: "AI Business Assistant" },
-  { id: "showroom", name: "Showroom AI" },
+  { id: "showroom", name: "Showroom.pro — AI Sales Agent" },
 ];
