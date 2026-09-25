@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import {
+  FALLBACK_LOCALE,
+  LOCALE_COOKIE,
+  LOCALE_SOURCE_COOKIE,
+  decidePublicLocale,
+} from "@/lib/locale-negotiate";
 import { site } from "@/lib/site";
 import { refreshSession } from "@/lib/supabase/proxy";
 
@@ -36,6 +42,31 @@ function isPlatformPath(pathname: string): boolean {
  * time — so the response has to be rebuilt from the mutated request (see
  * lib/supabase/proxy.ts).
  */
+function applyLocaleHeaders(
+  res: NextResponse,
+  locale: string,
+  clearStaleLocaleCookie: boolean,
+  varyOnLanguage: boolean,
+) {
+  res.headers.set("x-locale", locale);
+  if (varyOnLanguage) res.headers.set("Vary", "Accept-Language");
+  if (!clearStaleLocaleCookie) return;
+  // Drop a leftover `locale=fr` (or any other code) that was stored without an
+  // explicit selector choice. The response is private so a shared cache cannot
+  // replay the Set-Cookie, or a previous public 307 to /fr, for everyone.
+  res.headers.set("Cache-Control", NO_STORE);
+  res.cookies.set(LOCALE_COOKIE, "", {
+    path: "/",
+    maxAge: 0,
+    sameSite: "lax",
+  });
+  res.cookies.set(LOCALE_SOURCE_COOKIE, "", {
+    path: "/",
+    maxAge: 0,
+    sameSite: "lax",
+  });
+}
+
 function buildResponse(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl;
 
@@ -47,46 +78,46 @@ function buildResponse(request: NextRequest): NextResponse {
     return res;
   }
 
-  // Explicit locale prefixes (/ru, /en, /es, etc.) are already valid app routes.
-  const prefixed = (site.locales as readonly string[]).find(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
-  );
+  const decision = decidePublicLocale({
+    pathname,
+    acceptLanguage: request.headers.get("accept-language"),
+    localeCookie: request.cookies.get(LOCALE_COOKIE)?.value ?? null,
+    localeSource: request.cookies.get(LOCALE_SOURCE_COOKIE)?.value ?? null,
+    locales: site.locales,
+    defaultLocale: site.defaultLocale,
+    fallbackLocale: FALLBACK_LOCALE,
+  });
 
-  if (prefixed) {
+  if (decision.action === "next") {
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-locale", prefixed);
+    requestHeaders.set("x-locale", decision.locale);
     const res = NextResponse.next({ request: { headers: requestHeaders } });
-    res.headers.set("x-locale", prefixed);
-    if (request.cookies.get("locale")?.value !== prefixed) {
-      res.cookies.set("locale", prefixed, {
-        maxAge: 60 * 60 * 24 * 365,
-        path: "/",
-        sameSite: "lax",
-      });
-    }
+    applyLocaleHeaders(
+      res,
+      decision.locale,
+      decision.clearStaleLocaleCookie,
+      false,
+    );
     return res;
   }
 
-  // Unprefixed paths (e.g. / or /products): check visitor's saved locale cookie
-  const cookieLocale = request.cookies.get("locale")?.value;
-  const isKnownLocale =
-    cookieLocale && (site.locales as readonly string[]).includes(cookieLocale);
-
-  if (isKnownLocale && cookieLocale !== site.defaultLocale) {
+  if (decision.action === "redirect") {
     const targetUrl = request.nextUrl.clone();
-    targetUrl.pathname = `/${cookieLocale}${pathname === "/" ? "" : pathname}`;
-    return NextResponse.redirect(targetUrl, 307);
+    targetUrl.pathname = decision.pathname;
+    const res = NextResponse.redirect(targetUrl, 307);
+    res.headers.set("Cache-Control", NO_STORE);
+    applyLocaleHeaders(res, decision.locale, decision.clearStaleLocaleCookie, true);
+    return res;
   }
 
-  // Otherwise served by the default locale.
   const url = request.nextUrl.clone();
-  url.pathname = `/${site.defaultLocale}${pathname === "/" ? "" : pathname}`;
+  url.pathname = decision.pathname;
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-locale", site.defaultLocale);
+  requestHeaders.set("x-locale", decision.locale);
   const res = NextResponse.rewrite(url, {
     request: { headers: requestHeaders },
   });
-  res.headers.set("x-locale", site.defaultLocale);
+  applyLocaleHeaders(res, decision.locale, decision.clearStaleLocaleCookie, true);
   return res;
 }
 
