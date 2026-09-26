@@ -44,7 +44,7 @@ export default async function InvestorsPage({ params }: Props) {
   const isRu = locale === "ru";
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <article className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
       <header className="max-w-3xl">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mark">
           {t.eyebrow}

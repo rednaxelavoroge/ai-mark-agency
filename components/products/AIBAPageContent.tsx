@@ -10,6 +10,7 @@ import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
+import { ProductGlance } from "@/components/hub/ProductGlance";
 
 export function AIBAPageContent({
   locale,
@@ -134,6 +135,8 @@ export function AIBAPageContent({
           </div>
         </div>
       </section>
+
+      <ProductGlance locale={locale} id="assistant" />
 
       {/* 2. CHANNELS SECTION */}
       <section className="border-b border-line py-16 sm:py-20">

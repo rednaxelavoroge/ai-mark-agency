@@ -688,6 +688,47 @@ main {
   transform: translateX(4px);
 }
 
+/* Compact hub IA: horizontal first-level scan, details stay in the DOM. */
+.hub-hscroll {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.35rem;
+  scrollbar-width: thin;
+}
+.hub-hscroll > * {
+  flex: 0 0 min(18.5rem, 82vw);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+@media (min-width: 1024px) {
+  .hub-hscroll {
+    display: grid;
+    overflow: visible;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+    grid-template-columns: repeat(var(--hub-cols, 4), minmax(0, 1fr));
+  }
+  .hub-hscroll > * {
+    flex: none;
+    min-width: 0;
+  }
+}
+.hub-explore > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.hub-explore > summary::-webkit-details-marker {
+  display: none;
+}
+.hub-section {
+  scroll-margin-top: 6rem;
+}
+
 /* ContactLauncher (AI chat → Telegram → WhatsApp → Messenger → Instagram → Email) */
 .cl-root {
   position: fixed;
