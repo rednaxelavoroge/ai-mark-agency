@@ -325,7 +325,7 @@ export const showroomRu: ShowroomContent = {
 };
 
 export const showroomEn: ShowroomContent = {
-  seoTitle: "SHOWROOM AI — AI Sales Agent | Customer conversations, quoting & commercial proposals · AI MARK",
+  seoTitle: "SHOWROOM AI / AI Sales Agent | Customer conversations, quoting & commercial proposals · AI MARK",
   seoDescription:
     "An AI salesperson that talks to customers, understands their needs, works with your product catalog and business rules, calculates the right offer and prepares a commercial proposal for your sales team. Automotive, construction, real estate, furniture, retail, and B2B.",
   badge: "Proprietary AI Platform · AI MARK",

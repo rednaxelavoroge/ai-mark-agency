@@ -47,7 +47,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "industry",
           title: "Industry Partners",
           tag: "Verticals",
-          desc: "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI — AI Sales Agent and sales tools into their industry networks.",
+          desc: "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
           roles: ["Domain-specific catalogs", "Vertical deployment", "Specialized ERP flows"],
         },
         {

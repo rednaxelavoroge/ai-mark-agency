@@ -125,7 +125,7 @@ export const copyEn: Copy = {
       hubCta: "All product pages",
       hubTitle: "Three products. Three jobs.",
       hubLead:
-        "AIME runs the marketing cycle up to your approval. AI Business Assistant answers and qualifies. SHOWROOM AI — AI Sales Agent matches, calculates, and prepares the commercial proposal.",
+        "AIME runs the marketing cycle up to your approval. AI Business Assistant answers and qualifies. SHOWROOM AI / AI Sales Agent matches, calculates, and prepares the commercial proposal.",
       items: {
         aime: {
           value:
@@ -219,7 +219,7 @@ export const copyEn: Copy = {
         {
           name: "AI Products",
           price: "$149–349+",
-          body: "AIME, Business Assistant, SHOWROOM AI — AI Sales Agent as product SKUs — install and operate on your side, or with us.",
+          body: "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us.",
         },
         {
           name: "AI Marketing Services",
@@ -440,7 +440,7 @@ export const copyEn: Copy = {
       },
       showroom: {
         eyebrow: "AI Sales Agent",
-        title: "SHOWROOM AI — AI Sales Agent",
+        title: "SHOWROOM AI / AI Sales Agent",
         lead: "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals — with deterministic rules behind the quote. Not furniture-only, not support chat.",
         metaphor: "Dialogue + catalog + business rules → selection → calc → spec → commercial proposal / PDF.",
         sections: [

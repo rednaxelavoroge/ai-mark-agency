@@ -66,8 +66,8 @@ export const copyJa: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "プロジェクト相談",
     "secondaryCta": "仕組みを見る",
-    "partnerCta": "パートナー向け",
-    "investorCta": "投資家向け情報"
+    "investorCta": "投資家向け情報",
+    "partnerCta": "パートナー向け"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -170,7 +170,7 @@ export const copyJa: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
@@ -258,7 +258,7 @@ export const copyJa: Copy = {
       {
         "name": "AI Products",
         "price": "$149–349+",
-        "body": "AIME, Business Assistant, SHOWROOM AI — AI Sales Agent as product SKUs — install and operate on your side, or with us."
+        "body": "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us."
       },
       {
         "name": "AI Marketing Services",
@@ -514,7 +514,7 @@ export const copyJa: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

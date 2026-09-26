@@ -66,8 +66,8 @@ export const copyZh: Copy = {
     "soft": "无论您处于概念构思阶段还是手握资本，我们都能助您完成产品研发、商业上线与日常稳定运营。",
     "primaryCta": "预约项目探讨",
     "secondaryCta": "运作机制",
-    "partnerCta": "面向合作伙伴",
-    "investorCta": "面向投资者"
+    "investorCta": "面向投资者",
+    "partnerCta": "合作伙伴"
   },
   "pillars": {
     "eyebrow": "业务全景",
@@ -143,7 +143,7 @@ export const copyZh: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AIME — AI 营销数字员工",
@@ -158,7 +158,7 @@ export const copyZh: Copy = {
         "price": "149 美元/月起"
       },
       "showroom": {
-        "value": "SHOWROOM AI — AI Sales Agent配置展厅",
+        "value": "SHOWROOM AI / AI Sales Agent配置展厅",
         "who": "制造业工厂、汽车销售、全屋定制及工程总包",
         "extra": "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。",
         "price": "299 美元/月起"
@@ -241,7 +241,7 @@ export const copyZh: Copy = {
       {
         "name": "Scale 规模版",
         "price": "$3,500",
-        "body": "企业级完整方案：全渠道自动化、SHOWROOM AI — AI Sales Agent 深度定制与 24/7 优先支持。"
+        "body": "企业级完整方案：全渠道自动化、SHOWROOM AI / AI Sales Agent 深度定制与 24/7 优先支持。"
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -472,7 +472,7 @@ export const copyZh: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

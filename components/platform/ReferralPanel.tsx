@@ -14,10 +14,8 @@ import { formatCount, type PartnerReferralStats } from "@/lib/partner/format";
  *   * the three counters come from `public.partner_referral_stats()`, a
  *     counts-only server rollup.
  *
- * There are deliberately no revenue, commission or payout figures: those
- * engines do not exist yet, and an invented number on a partner's dashboard
- * would be worse than an empty tile. A count that could not be read renders as
- * `—`, never as 0.
+ * Commission and payout amounts are on the ledger screens, not on this panel.
+ * A count that could not be read renders as `—`, never as 0.
  */
 export function ReferralPanel({
   partnerId,

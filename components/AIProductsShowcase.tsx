@@ -49,7 +49,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
     {
       id: "showroom" as const,
       badge: isRu ? "AI-продавец" : "AI Sales Agent",
-      name: isRu ? "SHOWROOM AI — AI-продавец" : "SHOWROOM AI — AI Sales Agent",
+      name: "SHOWROOM AI",
       tagline: isRu
         ? "Понимание → подбор → расчёт → коммерческое предложение → менеджер"
         : "Understanding → Selection → Calculation → Commercial Proposal → Manager",

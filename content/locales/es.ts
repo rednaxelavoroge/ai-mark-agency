@@ -66,8 +66,8 @@ export const copyEs: Copy = {
     "soft": "Le ayudamos a pasar de una idea o un brief de investigación a una empresa desarrollada, lanzada y operando.",
     "primaryCta": "Consultar proyecto",
     "secondaryCta": "Cómo funciona",
-    "partnerCta": "Para partners",
-    "investorCta": "Para inversores"
+    "investorCta": "Para inversores",
+    "partnerCta": "Para socios"
   },
   "pillars": {
     "eyebrow": "Lo que construimos",
@@ -241,7 +241,7 @@ export const copyEs: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "Solución completa: infraestructura omnicanal, SHOWROOM AI — AI Sales Agent y soporte prioritario 24/7."
+        "body": "Solución completa: infraestructura omnicanal, SHOWROOM AI / AI Sales Agent y soporte prioritario 24/7."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -472,7 +472,7 @@ export const copyEs: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

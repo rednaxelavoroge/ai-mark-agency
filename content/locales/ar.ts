@@ -66,8 +66,8 @@ export const copyAr: Copy = {
     "soft": "نساعدك على الانتقال من مجرد فكرة أو دراسة جدوى إلى مشروع متكامل يعمل ويدر عوائد مالية.",
     "primaryCta": "ناقش مشروعك",
     "secondaryCta": "كيف نعمل",
-    "partnerCta": "للشركاء",
-    "investorCta": "للمستثمرين"
+    "investorCta": "للمستثمرين",
+    "partnerCta": "للشركاء"
   },
   "pillars": {
     "eyebrow": "ما الذي نقدمه",
@@ -158,7 +158,7 @@ export const copyAr: Copy = {
         "price": "يبدأ من 149$ / شهرياً"
       },
       "showroom": {
-        "value": "SHOWROOM AI — AI Sales Agent — حاسبة المواصفات وعروض الأسعار",
+        "value": "SHOWROOM AI / AI Sales Agent — حاسبة المواصفات وعروض الأسعار",
         "who": "المصانع، معارض السيارات، التصميم الداخلي ومصنعو الأثاث",
         "extra": "تحويل متطلبات العميل المعقدة إلى عروض أسعار ومواصفات هندسية بصيغة PDF في ثوانٍ معدودة.",
         "price": "يبدأ من 299$ / شهرياً"
@@ -241,7 +241,7 @@ export const copyAr: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، SHOWROOM AI — AI Sales Agent ودعم فني مخصص 24/7."
+        "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، SHOWROOM AI / AI Sales Agent ودعم فني مخصص 24/7."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -472,7 +472,7 @@ export const copyAr: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

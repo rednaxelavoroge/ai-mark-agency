@@ -60,7 +60,7 @@ export default async function AdminOrdersPage({
           <select className={fieldClass} name="product_ref" required defaultValue="aime">
             <option value="aime">AI Marketing Employee</option>
             <option value="assistant">AI Business Assistant</option>
-            <option value="showroom">SHOWROOM AI — AI Sales Agent</option>
+            <option value="showroom">SHOWROOM AI / AI Sales Agent</option>
             <option value="starter">Starter retainer</option>
             <option value="growth">Growth retainer</option>
             <option value="scale">Scale retainer</option>
