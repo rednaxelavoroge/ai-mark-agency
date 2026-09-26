@@ -1,14 +1,14 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LeadInquiry } from "@/components/LeadInquiry";
+import { AccordionItem, Explore } from "@/components/hub/Explore";
+import { HScroll } from "@/components/hub/HScroll";
 import { LocaleProgram } from "@/components/partners/LocaleProgram";
-import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual";
 import { getCopy } from "@/content/copy";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
-import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { PRODUCT_PATHS, productsHubPath } from "@/lib/products";
+import type { ProductVariant } from "@/components/ui/ProductUI";
 import { partnerProgramTerms } from "@/content/partner-program";
 import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
@@ -299,8 +299,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const reveal = (ms: number): CSSProperties => ({ "--reveal-delay": ms + "ms" } as CSSProperties);
-
 export default async function PartnersPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
@@ -318,156 +316,224 @@ export default async function PartnersPage({ params }: Props) {
     published.products.items.showroom.price,
     published.commercial.tiers[3]?.price ?? "",
   ];
+  const isRu = locale === "ru";
+  const answers = isRu
+    ? [
+        { k: "Что продавать", v: t.productLead },
+        { k: "Как зарабатывать", v: t.commissionNote },
+        { k: "Как идёт продажа", v: t.modelLead },
+        { k: "Что получаете", v: t.kitLead },
+      ]
+    : [
+        { k: "What you sell", v: t.productLead },
+        { k: "How you earn", v: t.commissionNote },
+        { k: "How a sale works", v: t.modelLead },
+        { k: "What you get", v: t.kitLead },
+      ];
 
   return (
     <article>
       <section className="relative overflow-hidden border-b border-line">
-        <div className="ambient-drift pointer-events-none absolute -right-20 -top-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(198,214,139,0.12),transparent_68%)]" />
-        <div className="ambient-drift-slow pointer-events-none absolute -bottom-40 left-0 h-[460px] w-[460px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,191,140,0.09),transparent_68%)]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:py-24">
-          <div data-reveal>
-            <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">{t.eyebrow}</p>
-            <h1 className="mt-4 max-w-2xl font-editorial text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.title}</h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
-            <ol className="mt-5 flex flex-wrap items-center gap-2">
-              {(locale === "ru"
-                ? ["Личная продажа", "Продажи команды", "До 5 уровней", "Комиссия"]
-                : ["Personal sale", "Team sales", "Up to 5 levels", "Commission"]
-              ).map((step, i) => (
-                <li key={step} className="flex items-center gap-2">
-                  {i > 0 ? <span className="font-mono text-xs text-warm">→</span> : null}
-                  <span className="rounded-full border border-line bg-ink-2 px-3 py-1.5 text-sm text-paper">{step}</span>
-                </li>
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+          <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">{t.eyebrow}</p>
+          <h1 className="mt-3 max-w-2xl font-editorial text-3xl leading-[1.05] tracking-tight text-paper sm:text-5xl">{t.title}</h1>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base">{t.lead}</p>
+          <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            {answers.map((item) => (
+              <article key={item.k} className="rounded-xl border border-line bg-ink-2 p-4">
+                <h2 className="font-display text-sm font-semibold text-paper">{item.k}</h2>
+                <p className="mt-2 line-clamp-4 text-[11px] leading-relaxed text-muted">{item.v}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Link href={PARTNER_SIGNUP_HREF} className="inline-flex items-center gap-1.5 rounded-full bg-mark px-4 py-2.5 text-sm font-semibold text-mark-ink hover:bg-mark-light">
+              {t.primary}
+              <span className="btn-arrow" aria-hidden>→</span>
+            </Link>
+            <a href="#how-it-works" className="inline-flex rounded-full border border-line bg-ink-2 px-4 py-2.5 text-sm font-semibold text-paper">{t.secondary}</a>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+            {t.note.split(" · ").map((item) => (
+              <span key={item} className="font-mono text-[10px] tracking-wide text-muted">{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" className="scroll-mt-24 border-b border-line">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.howEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.modelTitle}</h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted">{t.modelLead}</p>
+          <div className="mt-4">
+            <HScroll cols={6} label={t.modelTitle}>
+              {t.steps.map((step) => (
+                <article key={step.n} role="listitem" className="rounded-xl border border-line bg-ink-2 p-4">
+                  <span className="font-mono text-[10px] font-semibold text-warm">{step.n}</span>
+                  <h3 className="mt-1 font-display text-sm font-semibold text-paper">{step.title}</h3>
+                  <p className="mt-2 text-[11px] leading-relaxed text-muted">{step.body}</p>
+                </article>
               ))}
-            </ol>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href={PARTNER_SIGNUP_HREF} className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">
-                {t.primary}
-                <span className="btn-arrow" aria-hidden>→</span>
-              </Link>
-              <a href="#how-it-works" className="inline-flex rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-semibold text-paper transition hover:border-line-strong">{t.secondary}</a>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-              {t.note.split(" · ").map((item) => <span key={item} className="font-mono text-[10px] tracking-wide text-muted">{item}</span>)}
-            </div>
-          </div>
-          <div data-reveal style={reveal(120)}><PartnerNetworkHeroVisual locale={locale} /></div>
-        </div>
-      </section>
-
-      <section id="market" className="scroll-mt-24 border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal>
-            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.marketEyebrow}</p>
-            <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.marketTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted">{t.marketLead}</p>
-          </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {t.market.map((item, i) => (
-              <article key={item.title} data-reveal style={reveal(i * 80)} className="rounded-2xl border border-line bg-ink-2 p-6 transition hover:-translate-y-1 hover:border-line-strong hover:shadow-md">
-                <div className="flex items-center justify-between"><span className="font-mono text-[10px] font-semibold tracking-[0.18em] text-warm">0{i + 1}</span><span className="h-1.5 w-1.5 rounded-full bg-mark" /></div>
-                <h3 className="mt-5 font-display text-base font-semibold text-paper">{item.title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{item.body}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 rounded-2xl border border-mark/30 bg-mark/5 p-6 sm:p-8">
-            <p className="font-editorial text-2xl leading-snug text-paper sm:text-3xl">{t.marketCore}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal>
-            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.productEyebrow}</p>
-            <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.productTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted">{t.productLead}</p>
-          </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {t.products.map((product, i) => (
-              <article key={product.name} data-reveal style={reveal(i * 90)} className="catalog-card peek-host group overflow-hidden rounded-2xl border border-line bg-ink-2 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-xl">
-                <div className="p-4 sm:p-5"><div className="overflow-hidden rounded-xl border border-line bg-ink-3/30"><ProductUI variant={product.variant} ratio="aspect-[16/8.8]" peek /></div></div>
-                <div className="border-t border-line p-6 sm:p-7">
-                  <div className="flex items-center justify-between gap-3"><span className="font-mono text-[10px] font-semibold tracking-[0.14em] text-warm uppercase">{product.type}</span><span className="h-1.5 w-1.5 rounded-full bg-mark" /></div>
-                  <h3 className="mt-3 font-display text-xl font-semibold text-paper">{product.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{product.body}</p>
-                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line/60 pt-4">
-                    <span className="font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">{publishedPrices[i] || product.revenue}</span>
-                    {product.href ? <Link href={localePath(locale, product.href)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productCta} →</Link> : <Link href={productsHubPath(locale)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productionCta} →</Link>}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="how-it-works" className="scroll-mt-24 border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.howEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.modelTitle}</h2><p className="mt-4 max-w-2xl text-muted">{t.modelLead}</p></div>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {t.steps.map((step) => <article key={step.n} className="bg-ink p-6 sm:p-7" data-reveal><span className="font-mono text-xs font-semibold text-warm">{step.n}</span><h3 className="mt-3 font-display text-base font-semibold text-paper">{step.title}</h3><p className="mt-2 text-xs leading-relaxed text-muted">{step.body}</p></article>)}
+            </HScroll>
           </div>
         </div>
       </section>
 
       <section id="network" className="scroll-mt-24 border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.networkEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.networkTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.networkLead}</p></div>
-          <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-ink-2">
-            <div className="grid md:grid-cols-5">
-              {t.levels.map((level, i) => <div key={level.n} className="border-b border-line p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 sm:p-6" data-reveal style={reveal(i * 70)}><span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-warm">{level.n}</span><h3 className="mt-3 font-display text-sm font-semibold text-paper">{level.title}</h3><p className="mt-2 text-[11px] leading-relaxed text-muted">{level.body}</p></div>)}
-            </div>
-            <div className="border-t border-line bg-ink-3/30 px-6 py-5">
-              <p className="font-mono text-[10px] tracking-wider text-muted uppercase">{t.commissionLabel}</p>
-              <p className="mt-2 text-xs leading-relaxed text-paper/80">{terms.note}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.example}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.lock}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.payout}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.country}</p>
-            </div>
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.networkEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.networkTitle}</h2>
+          <p className="mt-2 max-w-3xl text-sm text-muted">{t.networkLead}</p>
+          <div className="mt-4">
+            <HScroll cols={5} label={t.commissionLabel}>
+              {t.levels.map((level) => (
+                <article key={level.n} role="listitem" className="rounded-xl border border-line bg-ink-2 p-4">
+                  <span className="font-mono text-[11px] font-semibold text-warm">{level.n}</span>
+                  <h3 className="mt-1 font-display text-sm font-semibold text-paper">{level.title}</h3>
+                  <p className="mt-2 text-[11px] leading-relaxed text-muted">{level.body}</p>
+                </article>
+              ))}
+            </HScroll>
           </div>
-        </div>
-      </section>
-
-      <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.statusLead}</p></div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-4">
-            {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex min-h-[250px] flex-col rounded-2xl border border-line bg-ink-2 p-6 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{status.body}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-line">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.kitEyebrow}</p><h2 className="mt-3 font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.kitTitle}</h2><p className="mt-4 text-muted">{t.kitLead}</p></div>
-          <div className="grid gap-3 sm:grid-cols-2" data-reveal style={reveal(120)}>{t.kit.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-[10px] font-bold text-mark-ink">{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
-        </div>
-      </section>
-
-      <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-line bg-ink-2" data-reveal><div aria-hidden className="grid-field absolute inset-0 opacity-60" /><div className="relative flex min-h-[360px] items-center justify-center p-8"><div className="relative h-64 w-full max-w-xl"><div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-mark/50 bg-ink/90 px-5 py-4 text-center shadow-xl backdrop-blur"><span className="font-mono text-[9px] tracking-[0.18em] text-warm">AI MARK</span><span className="mt-1 block font-display text-sm font-semibold text-paper">Global Partner Core</span><span className="mt-1 block text-[9px] text-muted">Countries · Verticals · Sales Channels</span></div>{["9% 30%","23% 68%","43% 18%","54% 51%","72% 27%","82% 67%","92% 43%"].map((p, i) => <span key={i} className="absolute h-2.5 w-2.5 rounded-full bg-mark shadow-[0_0_0_5px_rgba(198,214,139,0.08)]" style={{ left: p.split(" ")[0], top: p.split(" ")[1] }} />)}</div></div></div>
-            <div className="space-y-3" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
+          <div className="mt-4 space-y-2">
+            <Explore summary={isRu ? "90-дневный launch 1,5×" : "90-day 1.5× launch boost"}>
+              <p>{terms.launch}</p>
+              <p>{terms.recurringA}</p>
+            </Explore>
+            <Explore summary={isRu ? "14-дневный hold" : "14-day hold"}>
+              <p>{terms.lock}</p>
+            </Explore>
+            <Explore summary={isRu ? "Выплата и reversal" : "Payout and reversal"}>
+              <p>{terms.payout}</p>
+              <p>{terms.example}</p>
+            </Explore>
+            <Explore summary={isRu ? "Referral и сетка" : "Referral and schedule"}>
+              <p>{terms.note}</p>
+              <p>{terms.country}</p>
+              <p>{terms.join}</p>
+            </Explore>
           </div>
         </div>
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.faqEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.faqTitle}</h2></div>
-          <div className="mt-8 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-ink-2">{t.faq.map((item) => <details key={item.q} className="group px-5 py-5 sm:px-7"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-display text-sm font-semibold text-paper"><span>{item.q}</span><span className="font-mono text-lg text-mark transition group-open:rotate-45">+</span></summary><p className="max-w-3xl pt-3 text-xs leading-relaxed text-muted">{item.a}</p></details>)}</div>
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.productEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.productTitle}</h2>
+          <p className="mt-2 max-w-3xl text-sm text-muted">{t.productLead}</p>
+          <div className="mt-4">
+            <HScroll cols={4} label={t.productTitle}>
+              {t.products.map((product, i) => (
+                <article key={product.name} role="listitem" className="rounded-xl border border-line bg-ink-2 p-4">
+                  <p className="font-mono text-[10px] font-semibold text-warm uppercase">{product.type}</p>
+                  <h3 className="mt-1 font-display text-sm font-semibold text-paper">{product.name}</h3>
+                  <p className="mt-2 line-clamp-3 text-[11px] leading-relaxed text-muted">{product.body}</p>
+                  <p className="mt-2 font-mono text-[11px] text-mark">{publishedPrices[i] || product.revenue}</p>
+                  {product.href ? (
+                    <Link href={localePath(locale, product.href)} className="mt-3 inline-flex text-[11px] font-semibold text-paper link-underline">
+                      {t.productCta}
+                    </Link>
+                  ) : (
+                    <Link href={productsHubPath(locale)} className="mt-3 inline-flex text-[11px] font-semibold text-paper link-underline">
+                      {t.productionCta}
+                    </Link>
+                  )}
+                </article>
+              ))}
+            </HScroll>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.kitEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.kitTitle}</h2>
+          <p className="mt-2 text-sm text-muted">{t.kitLead}</p>
+          <div className="mt-4">
+            <HScroll cols={4} label={t.kitTitle}>
+              {t.kit.map((item) => (
+                <article key={item} role="listitem" className="rounded-xl border border-line bg-ink-2 p-4">
+                  <p className="text-xs leading-relaxed text-paper/90">{item}</p>
+                </article>
+              ))}
+            </HScroll>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.statusTitle}</h2>
+          <p className="mt-2 text-sm text-muted">{t.statusLead}</p>
+          <div className="mt-4">
+            <HScroll cols={4} label={t.statusTitle}>
+              {t.statuses.map((status) => (
+                <article key={status.title} role="listitem" className="rounded-xl border border-line bg-ink-2 p-4">
+                  <span className="font-mono text-[9px] text-warm">{status.tag}</span>
+                  <h3 className="mt-2 font-display text-sm font-semibold text-paper">{status.title}</h3>
+                  <p className="mt-2 text-[11px] leading-relaxed text-muted">{status.body}</p>
+                </article>
+              ))}
+            </HScroll>
+          </div>
+        </div>
+      </section>
+
+      <section id="market" className="scroll-mt-24 border-b border-line">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.marketEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.marketTitle}</h2>
+          <p className="mt-2 text-sm text-muted">{t.marketLead}</p>
+          <Explore summary={isRu ? "Рынок подробно" : "Market detail"} className="mt-4">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {t.market.map((item) => (
+                <article key={item.title}>
+                  <h3 className="font-display text-sm font-semibold text-paper">{item.title}</h3>
+                  <p className="mt-1">{item.body}</p>
+                </article>
+              ))}
+            </div>
+            <p className="mt-3 text-paper">{t.marketCore}</p>
+            <p className="mt-3">{t.globalLead}</p>
+            <ul className="mt-2 space-y-1">
+              {t.global.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Explore>
+        </div>
+      </section>
+
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.faqEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-2xl tracking-tight text-paper sm:text-3xl">{t.faqTitle}</h2>
+          <div className="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line bg-ink-2">
+            {t.faq.map((item) => (
+              <AccordionItem key={item.q} q={item.q} a={item.a} />
+            ))}
+            <AccordionItem q={terms.recurringQ} a={terms.recurringA} />
+          </div>
         </div>
       </section>
 
       <LeadInquiry contact={published.contact} locale={locale} />
 
-      <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
+      <section className="border-b border-line">
+        <div className="mx-auto max-w-5xl px-4 py-10 text-center sm:px-6 sm:py-12">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p>
+          <h2 className="mt-2 font-editorial text-3xl tracking-tight text-paper sm:text-4xl">{t.ctaTitle}</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted">{t.ctaLead}</p>
+          <p className="mx-auto mt-2 max-w-xl text-xs text-muted">{terms.join}</p>
+          <Link href={PARTNER_SIGNUP_HREF} className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink hover:bg-mark-light">
+            {t.ctaButton}
+            <span className="btn-arrow" aria-hidden>→</span>
+          </Link>
+        </div>
+      </section>
     </article>
   );
 }

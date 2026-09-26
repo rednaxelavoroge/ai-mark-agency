@@ -211,25 +211,36 @@ function CardGrid({ cards, idPrefix }: { cards: Card[]; idPrefix: string }) {
   );
 }
 
+function firstParagraph(section: InvestorSection): string {
+  const p = section.blocks.find((block) => block.kind === "p");
+  return p && p.kind === "p" ? p.text.replace(/\*\*/g, "") : section.title;
+}
+
 function Section({ section }: { section: InvestorSection }) {
   const segments = segment(section.blocks);
 
   return (
-    <section
+    <details
       id={section.id}
       data-reveal
-      className="scroll-mt-24 rounded-2xl border border-line bg-ink-2 p-5 shadow-sm sm:p-7"
+      className="hub-explore group scroll-mt-24 rounded-2xl border border-line bg-ink-2 p-5 shadow-sm sm:p-7"
     >
-      <header className="flex items-start gap-4 border-b border-line pb-4">
+      <summary className="flex cursor-pointer list-none items-start gap-4">
         <span className="mt-1 shrink-0 font-mono text-[11px] font-semibold tracking-wider text-warm">
           {section.number ? String(section.number).padStart(2, "0") : "—"}
         </span>
-        <h2 className="min-w-0 font-display text-lg font-semibold leading-snug text-paper sm:text-2xl">
-          {renderInline(section.title)}
-        </h2>
-      </header>
+        <span className="min-w-0 flex-1">
+          <h2 className="font-display text-lg font-semibold leading-snug text-paper sm:text-2xl">
+            {renderInline(section.title)}
+          </h2>
+          <p className="mt-2 line-clamp-2 text-xs text-muted">{firstParagraph(section)}</p>
+        </span>
+        <span className="font-mono text-mark transition group-open:rotate-45" aria-hidden>
+          +
+        </span>
+      </summary>
 
-      <div className="mt-5 space-y-5">
+      <div className="mt-5 space-y-5 border-t border-line pt-5">
         {segments.map((seg, index) =>
           seg.kind === "flow" ? (
             <div key={`f${index}`} className="space-y-4">
@@ -244,7 +255,7 @@ function Section({ section }: { section: InvestorSection }) {
           ),
         )}
       </div>
-    </section>
+    </details>
   );
 }
 
@@ -256,9 +267,35 @@ export function InvestorProposalView({
   copy: InvestorsPageCopy;
 }) {
   const { sections } = getInvestorProposal(locale);
+  const overview = [
+    { label: locale === "ru" ? "Что строим" : "What we build", ids: ["s1", "s2", "s4"] },
+    { label: locale === "ru" ? "Бизнес-модель" : "Business model", ids: ["s5", "s6"] },
+    { label: locale === "ru" ? "Продукты" : "Products", ids: ["s3"] },
+    { label: locale === "ru" ? "Дистрибуция" : "Distribution", ids: ["s8"] },
+    { label: locale === "ru" ? "Технология" : "Technology", ids: ["s3", "s9"] },
+    { label: locale === "ru" ? "Рынок" : "Market", ids: ["s7", "s11"] },
+    { label: locale === "ru" ? "Капитал" : "Capital use", ids: ["s10"] },
+  ];
 
   return (
-    <div className="mt-14 grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
+    <div className="mt-8 grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
+      <div className="lg:col-span-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {overview.map((item) => {
+          const first = sections.find((section) => item.ids.includes(section.id));
+          return (
+            <a
+              key={item.label}
+              href={`#${item.ids[0]}`}
+              className="rounded-xl border border-line bg-ink-2 p-4 transition hover:border-line-strong"
+            >
+              <h2 className="font-display text-sm font-semibold text-paper">{item.label}</h2>
+              <p className="mt-2 line-clamp-3 text-[11px] leading-relaxed text-muted">
+                {first ? firstParagraph(first) : item.label}
+              </p>
+            </a>
+          );
+        })}
+      </div>
       <aside className="lg:sticky lg:top-24 lg:self-start">
         <div className="rounded-2xl border border-line bg-ink-2 p-4 sm:p-5">
           <div className="flex items-baseline justify-between gap-2">

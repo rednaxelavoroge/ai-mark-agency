@@ -9,6 +9,7 @@ import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
 import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
+import { ProductGlance } from "@/components/hub/ProductGlance";
 
 export function ShowroomAIPageContent({
   locale,
@@ -136,6 +137,8 @@ export function ShowroomAIPageContent({
           </div>
         </div>
       </section>
+
+      <ProductGlance locale={locale} id="showroom" />
 
       {/* 2. INDUSTRY CONFIGURATIONS */}
       <section id="industries" className="border-b border-line py-16 sm:py-20">
