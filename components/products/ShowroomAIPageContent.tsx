@@ -477,7 +477,7 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} scenario="showroom" />
+      <LeadInquiry contact={contact} locale={locale} scenario="showroom" />
 
       {/* 8. BOTTOM BANNER */}
       <section className="py-16 sm:py-20">
@@ -490,8 +490,8 @@ export function ShowroomAIPageContent({
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {locale === "ru"
-                ? "Showroom.pro ведёт разговор с клиентом, применяет ваши правила и детерминированный расчёт — и готовит сделку для отдела продаж."
-                : "Showroom.pro talks to customers, applies your catalog and business rules with deterministic pricing — and prepares the opportunity for your sales team."}
+                ? "SHOWROOM AI ведёт разговор с клиентом, применяет ваши правила и детерминированный расчёт — и готовит сделку для отдела продаж."
+                : "SHOWROOM AI talks to customers, applies your catalog and business rules with deterministic pricing — and prepares the opportunity for your sales team."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button

@@ -8,6 +8,7 @@ import {
   type MessengerKey,
   type OpenChatDetail,
 } from "@/lib/contact";
+import { isWidgetMessageUrl, withChatContext } from "@/lib/chat-context";
 import { site, type Locale } from "@/lib/site";
 
 const COPY = {
@@ -152,6 +153,8 @@ function injectHideBubbleStyle() {
     html[data-teaser-seen] .aiba-root .aiba-greeting {
       display: none !important;
     }
+    /* Hosted widget footer links the BA product origin (alex-dev.pro). Hide it. */
+    .aiba-root .aiba-footer { display: none !important; }
   `;
   document.head.appendChild(el);
 }
@@ -292,6 +295,64 @@ function rememberTeaserSeen() {
 function isTeaserCloseClick(target: EventTarget | null): boolean {
   const el = target as HTMLElement | null;
   return !!el?.closest?.(".aiba-root .aiba-greeting-close");
+}
+
+/**
+ * The widget POSTs visitor text to the hosted orchestrator with no prompt
+ * override. Prefix AI MARK context onto those payloads only.
+ */
+function installChatContextGate() {
+  const w = window as Window & { __aimarkChatGate?: boolean };
+  if (w.__aimarkChatGate) return;
+  w.__aimarkChatGate = true;
+  const originalFetch = window.fetch.bind(window);
+  window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
+    const url =
+      typeof input === "string"
+        ? input
+        : input instanceof URL
+          ? input.href
+          : input instanceof Request
+            ? input.url
+            : String(input);
+    if (!isWidgetMessageUrl(url) || (init?.method ?? "GET").toUpperCase() !== "POST") {
+      return originalFetch(input, init);
+    }
+    const bodyText = typeof init?.body === "string" ? init.body : null;
+    if (!bodyText && input instanceof Request) {
+      return input
+        .clone()
+        .text()
+        .then((text) => {
+          try {
+            const payload = JSON.parse(text) as { text?: string };
+            if (typeof payload.text === "string") {
+              payload.text = withChatContext(payload.text);
+              return originalFetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              });
+            }
+          } catch {
+            /* send original */
+          }
+          return originalFetch(input, init);
+        });
+    }
+    if (bodyText) {
+      try {
+        const payload = JSON.parse(bodyText) as { text?: string };
+        if (typeof payload.text === "string") {
+          payload.text = withChatContext(payload.text);
+          return originalFetch(input, { ...init, body: JSON.stringify(payload) });
+        }
+      } catch {
+        /* send original */
+      }
+    }
+    return originalFetch(input, init);
+  };
 }
 
 
@@ -495,6 +556,7 @@ export function ContactLauncher({ locale }: { locale: Locale }) {
   );
 
   useEffect(() => {
+    installChatContextGate();
     const id = window.setTimeout(() => {
       void ensureWidget();
     }, 200);

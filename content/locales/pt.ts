@@ -11,7 +11,7 @@ export const copyPt: Copy = {
       "marketing com IA",
       "produção digital",
       "AIME",
-      "Showroom.pro",
+      "SHOWROOM AI",
       "ai-mark.agency"
     ]
   },
@@ -90,7 +90,7 @@ export const copyPt: Copy = {
       {
         "n": "04",
         "title": "Vendas com IA",
-        "body": "Do primeiro contato à qualificação, seleção, cálculo e proposta comercial: AI Business Assistant e Showroom.pro."
+        "body": "Do primeiro contato à qualificação, seleção, cálculo e proposta comercial: AI Business Assistant e SHOWROOM AI."
       },
       {
         "n": "05",
@@ -157,7 +157,7 @@ export const copyPt: Copy = {
         "price": "A partir de $149/mês"
       },
       "showroom": {
-        "value": "Showroom.pro",
+        "value": "SHOWROOM AI",
         "who": "Indústrias, fabricantes, móveis planejados e projetos sob medida",
         "extra": "Gerador instantâneo de especificações técnicas e propostas comerciais em PDF com regras de negócio.",
         "price": "A partir de $299/mês"
@@ -240,7 +240,7 @@ export const copyPt: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "Ecossistema completo: atendimento multicanal, Showroom.pro — AI Sales Agent e suporte prioritário 24/7."
+        "body": "Ecossistema completo: atendimento multicanal, SHOWROOM AI — AI Sales Agent e suporte prioritário 24/7."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -262,7 +262,7 @@ export const copyPt: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom.pro when the offer needs them",
+          "Inbox and SHOWROOM AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -408,7 +408,8 @@ export const copyPt: Copy = {
     "sending": "Enviando...",
     "success": "Solicitação recebida! Responderemos em até 2 horas úteis.",
     "error": "Ocorreu um erro. Por favor, envie e-mail para hello@ai-mark.agency",
-    "privacy": "By sending, you agree we may contact you about this request. See Privacy."
+    "privacy": "By sending, you agree we may contact you about this request.",
+    "privacyLink": "Privacy"
   },
   "productPages": {
     "aime": {
@@ -470,7 +471,7 @@ export const copyPt: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom.pro — AI Sales Agent",
+      "title": "SHOWROOM AI — AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -484,7 +485,7 @@ export const copyPt: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

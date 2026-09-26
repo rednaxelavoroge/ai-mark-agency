@@ -112,7 +112,7 @@ export default async function HomePage({ params }: Props) {
                   <p className="mt-2 text-xs leading-relaxed text-muted">{item.body}</p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-line/50 flex items-center justify-between text-[10px] font-mono text-muted">
-                  <span>STAGE 0{idx + 1}</span>
+                  <span>{isRu ? `Этап 0${idx + 1}` : `STAGE 0${idx + 1}`}</span>
                   {idx < 4 ? <span className="text-warm">→</span> : <span className="text-mark font-bold">✓</span>}
                 </div>
               </li>
@@ -367,7 +367,7 @@ export default async function HomePage({ params }: Props) {
               {t.why.oldLabel}
             </span>
             <h4 className="mt-2 font-display text-lg font-semibold text-paper">
-              {isRu ? "Изолированные инструменты & ручной труд" : "Fragmented Tools & Manual Overhead"}
+              {isRu ? "Изолированные инструменты и ручной труд" : "Fragmented Tools & Manual Overhead"}
             </h4>
             <ul className="mt-6 divide-y divide-line text-xs text-muted">
               {t.why.old.map((item) => (
@@ -416,48 +416,31 @@ export default async function HomePage({ params }: Props) {
       <Section id="contact" index="10" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-6">
-            <p className="text-sm leading-relaxed text-muted">{t.contact.lead}</p>
             <ContactCta className="inline-flex items-center rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light">
               {isRu ? "Открыть чат" : "Open chat"} →
             </ContactCta>
           </div>
-          <aside className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 text-sm text-muted space-y-6">
+          <aside className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 text-sm text-muted space-y-4">
             <div>
-              <span className="font-mono text-xs text-warm uppercase tracking-wider">
-                {isRu ? "Прямой контакт" : "Direct Engagement"}
-              </span>
-              <p className="mt-1 font-display text-xl font-semibold text-paper">
+              <p className="font-display text-xl font-semibold text-paper">
                 AI MARK
               </p>
               <p className="mt-1 text-xs font-mono text-mark uppercase">
                 AI-Native Venture &amp; Marketing Company
               </p>
+              <p className="mt-2 text-xs font-mono">
+                {site.email}
+              </p>
             </div>
-
             <p className="text-xs leading-relaxed text-muted">
-              {t.footer.blurb}
+              {isRu
+                ? "Короткий разбор задачи: применимость AI, идея или подбор готового продукта."
+                : "A short first conversation: AI fit, an idea, or the right published product."}
             </p>
-
-            <div className="border-t border-line pt-4">
-              <p className="text-xs text-paper font-mono">
-                Domain: <span className="text-muted">{site.domain}</span>
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-line/70 bg-ink-3/40 p-4 text-xs text-muted">
-              <p className="font-semibold text-paper mb-1">
-                {isRu ? "Формат первого диалога:" : "First Contact Cadence:"}
-              </p>
-              <p>
-                {isRu
-                  ? "Короткий 20-минутный разбор задачи: оценка применимости AI, аудит идеи или подбор готового продукта."
-                  : "A focused 20-minute discussion: applicability audit, opportunity screening, or product onboarding."}
-              </p>
-            </div>
           </aside>
         </div>
         <div id="inquiry" className="mt-12 scroll-mt-24">
-          <LeadInquiry contact={t.contact} framed={false} compact />
+          <LeadInquiry contact={t.contact} locale={locale} framed={false} compact />
         </div>
       </Section>
     </>

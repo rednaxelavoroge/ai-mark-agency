@@ -102,7 +102,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     products: [
       { name: "AI Marketing Employee", type: "RECURRING / AI PRODUCT", body: "AI-native marketing: research, strategy, content, creative production, approval, publishing and optimization.", revenue: "Subscription opportunity", variant: "aime", href: PRODUCT_PATHS.aime },
       { name: "AI Business Assistant", type: "RECURRING / AI PRODUCT", body: "A sales and support inbox that works from a business knowledge base, qualifies requests and hands off to people when needed.", revenue: "Subscription opportunity", variant: "assistant", href: PRODUCT_PATHS.assistant },
-      { name: "Showroom.pro — AI Sales Agent", type: "RECURRING / AI PRODUCT", body: "AI Sales Agent for customer conversations, catalog selection, pricing rules, specifications and commercial proposals across industries.", revenue: "Subscription opportunity", variant: "showroom", href: PRODUCT_PATHS.showroom },
+      { name: "SHOWROOM AI — AI Sales Agent", type: "RECURRING / AI PRODUCT", body: "AI Sales Agent for customer conversations, catalog selection, pricing rules, specifications and commercial proposals across industries.", revenue: "Subscription opportunity", variant: "showroom", href: PRODUCT_PATHS.showroom },
       { name: "Digital Production & AI Engineering", type: "PROJECT / B2B SERVICE", body: "Websites, portals, applications, integrations, automation and custom AI systems for businesses that need a larger digital build.", revenue: "Project opportunity", variant: "saas" },
     ],
     productCta: "Explore product",
@@ -196,7 +196,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     products: [
       { name: "AI Marketing Employee", type: "RECURRING / AI-ПРОДУКТ", body: "AI-native маркетинг: исследование, стратегия, контент, креативы, апрув, публикация и оптимизация.", revenue: "Подписочная модель", variant: "aime", href: PRODUCT_PATHS.aime },
       { name: "AI Business Assistant", type: "RECURRING / AI-ПРОДУКТ", body: "Продажный и клиентский inbox с базой знаний, квалификацией запросов и handoff человеку.", revenue: "Подписочная модель", variant: "assistant", href: PRODUCT_PATHS.assistant },
-      { name: "Showroom.pro — AI-продавец", type: "RECURRING / AI-ПРОДУКТ", body: "AI-продавец для диалогов с клиентами, подбора по каталогу, правил цен, спецификаций и коммерческих предложений в разных отраслях.", revenue: "Подписочная модель", variant: "showroom", href: PRODUCT_PATHS.showroom },
+      { name: "SHOWROOM AI — AI-продавец", type: "RECURRING / AI-ПРОДУКТ", body: "AI-продавец для диалогов с клиентами, подбора по каталогу, правил цен, спецификаций и коммерческих предложений в разных отраслях.", revenue: "Подписочная модель", variant: "showroom", href: PRODUCT_PATHS.showroom },
       { name: "Digital Production & AI Engineering", type: "PROJECT / B2B-СЕРВИС", body: "Сайты, кабинеты, приложения, интеграции, автоматизация и custom AI-системы для бизнеса.", revenue: "Проектная модель", variant: "saas" },
     ],
     productCta: "О продукте",
@@ -467,7 +467,7 @@ export default async function PartnersPage({ params }: Props) {
         </div>
       </section>
 
-      <LeadInquiry contact={published.contact} />
+      <LeadInquiry contact={published.contact} locale={locale} />
 
       <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
     </article>

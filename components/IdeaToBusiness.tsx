@@ -550,7 +550,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                         {i === 0 ? "◦" : i}
                       </span>
                       <span
-                        className={`hidden font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 sm:inline ${
+                        className={`hidden font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 lg:inline ${
                           on ? "font-semibold text-paper" : "text-muted"
                         }`}
                       >

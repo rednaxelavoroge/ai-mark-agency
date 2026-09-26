@@ -41,12 +41,12 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
 
   const stages = isRu
     ? [
-        { n: "01", t: "Research & Data", d: "AI непрерывно анализирует рынок и аудиторию" },
-        { n: "02", t: "Strategy & Model", d: "Человек определяет цели и экономические рамки" },
-        { n: "03", t: "Production Drafts", d: "AI формирует код, тексты, визуалы и расчёты" },
-        { n: "04", t: "Human Approval", d: "Апрув в 1 клик через Telegram или рабочий инбокс" },
-        { n: "05", t: "Execution", d: "Автоматическая публикация и доставка клиентам" },
-        { n: "06", t: "Optimization", d: "Самообучение алгоритмов на конверсиях" },
+        { n: "01", t: "Исследование и данные", d: "AI непрерывно анализирует рынок и аудиторию" },
+        { n: "02", t: "Стратегия и модель", d: "Человек определяет цели и экономические рамки" },
+        { n: "03", t: "Черновики производства", d: "AI формирует код, тексты, визуалы и расчёты" },
+        { n: "04", t: "Согласование человеком", d: "Апрув в 1 клик через Telegram или рабочий инбокс" },
+        { n: "05", t: "Исполнение", d: "Автоматическая публикация и доставка клиентам" },
+        { n: "06", t: "Оптимизация", d: "Самообучение алгоритмов на конверсиях" },
       ]
     : [
         { n: "01", t: "Research & Data", d: "AI continuously monitors competitors and intent" },
@@ -89,7 +89,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-mark" />
             <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider">
-              {isRu ? "AI берёт на себя (Скорость & Рутина)" : "AI Core (Speed & Repetitive Ops)"}
+              {isRu ? "AI берёт на себя (скорость и рутина)" : "AI Core (Speed & Repetitive Ops)"}
             </span>
           </div>
           <h3 className="mt-3 font-display text-xl font-semibold text-paper">
@@ -116,7 +116,7 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-warm" />
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-wider">
-              {isRu ? "Человек контролирует (Стратегия & Доверие)" : "Human Control (Strategy & Trust)"}
+              {isRu ? "Человек контролирует (стратегия и доверие)" : "Human Control (Strategy & Trust)"}
             </span>
           </div>
           <h3 className="mt-3 font-display text-xl font-semibold text-paper">

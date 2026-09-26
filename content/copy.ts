@@ -176,6 +176,7 @@ export type Copy = {
     success: string;
     error: string;
     privacy: string;
+    privacyLink: string;
   };
   productPages: Record<
     ProductId,

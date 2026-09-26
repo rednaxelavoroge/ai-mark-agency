@@ -45,6 +45,10 @@ export const site = {
    * SRC+KEY live here so the launcher never hard-codes a second copy.
    * There is no dedicated AI MARK `wc_` in this repo; keep this workspace key
    * so messages land in the BA inbox for that widget.
+   *
+   * Workspace config (title still "AlexDev" as of 2026-09-26) is NOT in this
+   * repo. Public answers are grounded with `lib/chat-context.ts` on send.
+   * Dashboard path is documented on that module.
    */
   widget: {
     src: "https://app.alex-dev.pro/widget.js",

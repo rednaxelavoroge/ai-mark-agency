@@ -35,8 +35,8 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         ? "Ответ → квалификация → передача человеку"
         : "Answers → Qualification → Human Handoff",
       value: isRu
-        ? "Клиент пишет — AI отвечает по базе знаний, квалифицирует обращение и передаёт человеку. Цену и коммерческое предложение считает Showroom.pro."
-        : "The customer writes. AI answers from the knowledge base, qualifies the request, and hands it to a person. Showroom.pro calculates the price and prepares the proposal.",
+        ? "Клиент пишет — AI отвечает по базе знаний, квалифицирует обращение и передаёт человеку. Цену и коммерческое предложение считает SHOWROOM AI."
+        : "The customer writes. AI answers from the knowledge base, qualifies the request, and hands it to a person. SHOWROOM AI calculates the price and prepares the proposal.",
       channels: ["WhatsApp Cloud API", "Telegram", "Instagram Direct", "Messenger", "Webchat"],
       pricing: isRu ? "Entry $149/мес · Standard $249/мес" : "Entry $149/mo · Standard $249/mo",
       mock: "assistant" as ProductVariant,
@@ -49,7 +49,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
     {
       id: "showroom" as const,
       badge: isRu ? "AI-продавец" : "AI Sales Agent",
-      name: "Showroom.pro",
+      name: isRu ? "SHOWROOM AI — AI-продавец" : "SHOWROOM AI — AI Sales Agent",
       tagline: isRu
         ? "Понимание → подбор → расчёт → коммерческое предложение → менеджер"
         : "Understanding → Selection → Calculation → Commercial Proposal → Manager",
@@ -102,6 +102,13 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
               <h3 className="font-display text-xl font-semibold text-paper leading-snug">
                 {product.name}
               </h3>
+              {product.id === "showroom" ? (
+                <p className="mt-1 text-xs font-medium text-paper/90">
+                  {isRu
+                    ? "AI-продавец первой линии: диалог, подбор, расчёт и коммерческое предложение."
+                    : "First-line AI Sales Agent: conversation, matching, quoting, and the commercial proposal."}
+                </p>
+              ) : null}
               <p className="mt-1 font-mono text-xs text-warm">{product.tagline}</p>
               <p className="mt-3 text-xs leading-relaxed text-muted flex-1">
                 {product.value}

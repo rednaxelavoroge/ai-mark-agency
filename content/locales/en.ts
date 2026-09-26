@@ -12,7 +12,7 @@ export const copyEn: Copy = {
         "AI marketing",
         "digital production",
         "AIME",
-        "Showroom.pro",
+        "SHOWROOM AI",
         "ai-mark.agency",
       ],
     },
@@ -67,7 +67,7 @@ export const copyEn: Copy = {
         {
           n: "04",
           title: "AI Sales",
-          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and Showroom.pro.",
+          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI.",
         },
         {
           n: "05",
@@ -124,7 +124,7 @@ export const copyEn: Copy = {
       hubCta: "All product pages",
       hubTitle: "Three products. Three jobs.",
       hubLead:
-        "AIME runs the marketing cycle up to your approval. AI Business Assistant answers and qualifies. Showroom.pro — AI Sales Agent matches, calculates, and prepares the commercial proposal.",
+        "AIME runs the marketing cycle up to your approval. AI Business Assistant answers and qualifies. SHOWROOM AI — AI Sales Agent matches, calculates, and prepares the commercial proposal.",
       items: {
         aime: {
           value:
@@ -135,7 +135,7 @@ export const copyEn: Copy = {
         },
         assistant: {
           value:
-            "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are Showroom.pro.",
+            "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are SHOWROOM AI.",
           who: "Teams that need replies and qualification, not a quote engine.",
           extra: "A person takes over when the conversation needs a human.",
           price: "Entry $149/mo · Standard $249/mo",
@@ -218,7 +218,7 @@ export const copyEn: Copy = {
         {
           name: "AI Products",
           price: "$149–349+",
-          body: "AIME, Business Assistant, Showroom.pro — AI Sales Agent as product SKUs — install and operate on your side, or with us.",
+          body: "AIME, Business Assistant, SHOWROOM AI — AI Sales Agent as product SKUs — install and operate on your side, or with us.",
         },
         {
           name: "AI Marketing Services",
@@ -266,7 +266,7 @@ export const copyEn: Copy = {
           summary: "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
           points: [
             "Instagram and Facebook as a paired Meta system",
-            "Inbox and Showroom.pro when the offer needs them",
+            "Inbox and SHOWROOM AI when the offer needs them",
             "Human-in-the-loop on every publish",
             "Analytics feeding the next cycle",
           ],
@@ -382,7 +382,8 @@ export const copyEn: Copy = {
       sending: "Sending…",
       success: "Received. We will reply to the email or messenger you left.",
       error: "Could not send. Email hello@ai-mark.agency or try again.",
-      privacy: "By sending, you agree we may contact you about this request. See Privacy.",
+      privacy: "By sending, you agree we may contact you about this request.",
+      privacyLink: "Privacy",
     },
     productPages: {
       aime: {
@@ -418,7 +419,7 @@ export const copyEn: Copy = {
       assistant: {
         eyebrow: "BA",
         title: "AI Business Assistant",
-        lead: "Answers and qualifies, then hands the conversation to a person. Showroom.pro is the one that sells and prepares the deal.",
+        lead: "Answers and qualifies, then hands the conversation to a person. SHOWROOM AI is the one that sells and prepares the deal.",
         metaphor: "One inbox across the channels your buyers already use.",
         sections: [
           {
@@ -438,7 +439,7 @@ export const copyEn: Copy = {
       },
       showroom: {
         eyebrow: "AI Sales Agent",
-        title: "Showroom.pro — AI Sales Agent",
+        title: "SHOWROOM AI — AI Sales Agent",
         lead: "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals — with deterministic rules behind the quote. Not furniture-only, not support chat.",
         metaphor: "Dialogue + catalog + business rules → selection → calc → spec → commercial proposal / PDF.",
         sections: [
@@ -452,7 +453,7 @@ export const copyEn: Copy = {
           },
           {
             title: "Where it sits",
-            body: "After marketing or inbox qualification. Showroom.pro turns conversation and parameters into a verified commercial document.",
+            body: "After marketing or inbox qualification. SHOWROOM AI turns conversation and parameters into a verified commercial document.",
           },
         ],
         flow: ["Catalog", "Business rules", "Client parameters", "Calculation", "Spec", "Quote / PDF"],

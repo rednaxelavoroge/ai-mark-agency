@@ -7,7 +7,7 @@ function Connector({ delay }: { delay: number }) {
       width="46"
       height="12"
       viewBox="0 0 46 12"
-      className="hidden shrink-0 text-warm sm:block"
+      className="hidden shrink-0 text-warm md:block"
     >
       <line x1="2" y1="6" x2="44" y2="6" stroke="currentColor" strokeWidth="1" opacity="0.28" />
       <line
@@ -33,19 +33,19 @@ export function Pipeline({
   result?: string;
 }) {
   return (
-    <div className="overflow-x-auto pb-2" data-reveal>
-      <ol className="flex min-w-max items-center">
+    <div data-reveal>
+      <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
         {steps.map((step, i) => (
-          <li key={step} className="flex items-center">
+          <li key={step} className="flex min-w-0 items-center">
             <span
               data-reveal
               style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
-              className="premium-card flex items-center gap-2 rounded-full px-3.5 py-2 text-sm"
+              className="premium-card flex min-w-0 items-center gap-2 rounded-full px-3.5 py-2 text-sm"
             >
               <span className="font-mono text-[11px] text-warm">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="text-paper">{step}</span>
+              <span className="min-w-0 text-pretty text-paper">{step}</span>
             </span>
             {i < steps.length - 1 ? <Connector delay={i * 70} /> : null}
           </li>

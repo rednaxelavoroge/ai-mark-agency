@@ -63,7 +63,7 @@ It can connect to a range of communication channels, including:
 - Telegram
 - website chat
 
-### Showroom.pro — AI Sales Agent
+### SHOWROOM AI — AI Sales Agent
 
 An AI Sales Agent that talks to customers, understands needs, works with your catalog and business rules, calculates pricing, generates specifications and commercial proposals, and hands qualified opportunities to sales and CRM.
 

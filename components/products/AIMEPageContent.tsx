@@ -500,7 +500,7 @@ export function AIMEPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} scenario="aime" />
+      <LeadInquiry contact={contact} locale={locale} scenario="aime" />
 
       {/* 8. BOTTOM CTA BANNER */}
       <section className="py-16 sm:py-20">

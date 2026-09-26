@@ -103,7 +103,7 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <LeadInquiry contact={copy.contact} />
+      <LeadInquiry contact={copy.contact} locale={locale} />
 
       <section className="border-b border-line">
         <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">

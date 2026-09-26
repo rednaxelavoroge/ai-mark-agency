@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Copy } from "@/content/copy";
+import { localePath, type Locale } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -9,9 +11,11 @@ const LOCKED_SCENARIOS = new Set(["aime", "assistant", "showroom"]);
 
 export function ContactForm({
   t,
+  locale,
   scenario: lockedScenario,
 }: {
   t: Copy["contact"];
+  locale: Locale;
   /** Product pages lock the scenario. The visitor does not choose a rate or a partner. */
   scenario?: "aime" | "assistant" | "showroom";
 }) {
@@ -125,7 +129,13 @@ export function ContactForm({
       {status === "error" ? (
         <p className="text-sm text-red-700">{t.error}</p>
       ) : null}
-      <p className="text-xs text-muted">{t.privacy}</p>
+      <p className="text-xs text-muted">
+        {t.privacy}{" "}
+        <Link href={localePath(locale, "/privacy")} className="link-underline text-paper">
+          {t.privacyLink}
+        </Link>
+        .
+      </p>
     </form>
   );
 }

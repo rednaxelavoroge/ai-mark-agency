@@ -143,22 +143,24 @@ export async function POST(request: Request) {
   const recorded = Boolean(lead.leadId);
   try {
     await deliver(text, subject);
-    return NextResponse.json({ ok: true, lead_source: lead.source, recorded });
+    return NextResponse.json({
+      ok: true,
+      lead_source: lead.source,
+      recorded,
+      notified: true,
+    });
   } catch (error) {
     console.error("contact_failed", error);
-    // The lead row is the commercial record. A mail outage must not make the
-    // visitor retry as if nothing was stored. Delivery still runs first when
-    // a provider is configured; 503 remains when nothing was recorded.
-    if (recorded) {
-      return NextResponse.json({
-        ok: true,
-        lead_source: lead.source,
-        recorded: true,
-        notified: false,
-      });
-    }
+    // A stored row is not a delivered notification. The form must not show
+    // success when the operator was never emailed / webhooked.
     return NextResponse.json(
-      { ok: false, error: "send_failed", recorded: false },
+      {
+        ok: false,
+        error: "send_failed",
+        recorded,
+        lead_source: lead.source,
+        notified: false,
+      },
       { status: 503 },
     );
   }

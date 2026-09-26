@@ -56,13 +56,13 @@ export const PAYABLE_SKUS: PayableSku[] = [
     id: "showroom-standard",
     productRef: "showroom",
     amountUsd: 199,
-    name: "Showroom.pro Standard",
+    name: "SHOWROOM AI Standard",
   },
   {
     id: "showroom-business",
     productRef: "showroom",
     amountUsd: 299,
-    name: "Showroom.pro Business",
+    name: "SHOWROOM AI Business",
   },
   ...packages.map((pkg) => ({
     id: pkg.id,

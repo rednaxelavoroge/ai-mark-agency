@@ -497,7 +497,7 @@ export function AIBAPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} scenario="assistant" />
+      <LeadInquiry contact={contact} locale={locale} scenario="assistant" />
 
       {/* 9. BOTTOM BANNER */}
       <section className="py-16 sm:py-20">
@@ -508,8 +508,8 @@ export function AIBAPageContent({
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {isRu
-                ? "AI Business Assistant отвечает по базе знаний, квалифицирует и передаёт диалог человеку. Расчёт и коммерческое предложение — задача Showroom.pro."
-                : "AI Business Assistant answers from the knowledge base, qualifies, and hands the conversation to a person. Calculation and the commercial proposal belong to Showroom.pro."}
+                ? "AI Business Assistant отвечает по базе знаний, квалифицирует и передаёт диалог человеку. Расчёт и коммерческое предложение — задача SHOWROOM AI."
+                : "AI Business Assistant answers from the knowledge base, qualifies, and hands the conversation to a person. Calculation and the commercial proposal belong to SHOWROOM AI."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button

@@ -44,7 +44,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
               </li>
               <li>
                 <Link href={navHref(locale, "#production")} className="hover:text-paper transition-colors">
-                  {isRu ? "Digital Production" : "Digital Production"}
+                  {isRu ? "Цифровое производство" : "Digital Production"}
                 </Link>
               </li>
               <li>
@@ -83,7 +83,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
               </li>
               <li>
                 <Link href={productPagePath(locale, "showroom")} className="hover:text-paper transition-colors">
-                  {isRu ? "Showroom.pro — AI-продавец" : "Showroom.pro — AI Sales Agent"}
+                  {isRu ? "SHOWROOM AI — AI-продавец" : "SHOWROOM AI — AI Sales Agent"}
                 </Link>
               </li>
               <li>

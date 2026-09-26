@@ -4,27 +4,46 @@
 import { chromium } from "playwright";
 
 const BASE = process.env.BASE || "http://localhost:3000";
-const WIDTHS = (process.env.WIDTHS || "360,390,768,1024,1280,1440,1920").split(",").map(Number);
+const WIDTHS = (process.env.WIDTHS || "375,390,412,1440").split(",").map(Number);
+const HEIGHTS = { 375: 812, 390: 844, 412: 915, 1440: 900 };
 const ROUTES = (
   process.env.ROUTES ||
-  "/ru,/ru/ai-marketing-employee,/ru/ai-business-assistant,/ru/showroom-ai,/ru/products,/en"
+  "/,/products,/ai-marketing-employee,/ai-business-assistant,/showroom-ai,/partners,/investors,/pay,/ru,/ru/products,/ru/ai-marketing-employee,/ru/ai-business-assistant,/ru/showroom-ai,/ru/partners,/ru/investors,/ru/pay"
 ).split(",");
 
 const browser = await chromium.launch();
 let failures = 0;
 for (const width of WIDTHS) {
-  const page = await browser.newPage({ viewport: { width, height: 900 } });
+  const height = HEIGHTS[width] || 900;
+  const page = await browser.newPage({ viewport: { width, height } });
   for (const route of ROUTES) {
     await page.goto(BASE + route, { waitUntil: "load", timeout: 60000 });
-    await page.waitForTimeout(800);
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight * 0.5));
-    await page.waitForTimeout(400);
-    const over = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
-    if (over > 1) {
-      console.log(`OVERFLOW w=${width} ${route} = ${over}px`);
+    await page.waitForTimeout(600);
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight * 0.45));
+    await page.waitForTimeout(300);
+    const report = await page.evaluate((vw) => {
+      const docOver = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+      const offenders = [];
+      if (docOver > 1) {
+        for (const el of document.querySelectorAll("body *")) {
+          const r = el.getBoundingClientRect();
+          if (r.width < 2 || r.height < 1) continue;
+          if (r.right > vw + 2) {
+            const tag = el.tagName.toLowerCase();
+            const cls = typeof el.className === "string" ? el.className.slice(0, 80) : "";
+            offenders.push(`${tag}.${cls} right=${Math.round(r.right)}`);
+            if (offenders.length >= 8) break;
+          }
+        }
+      }
+      return { docOver, offenders };
+    }, width);
+    if (report.docOver > 1) {
+      console.log(`OVERFLOW w=${width} h=${height} ${route} = ${report.docOver}px`);
+      for (const row of report.offenders) console.log(`  ${row}`);
       failures++;
+    } else {
+      console.log(`ok w=${width} ${route}`);
     }
   }
   await page.close();
