@@ -43,6 +43,7 @@ export const copyEn: Copy = {
       soft: "We can help you move from an idea or a research brief to something built, launched, and operated.",
       primaryCta: "Discuss a project",
       secondaryCta: "How it works",
+      partnerCta: "For partners",
       investorCta: "For investors",
     },
     pillars: {

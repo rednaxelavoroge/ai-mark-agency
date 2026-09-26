@@ -66,6 +66,7 @@ export const copyEs: Copy = {
     "soft": "Le ayudamos a pasar de una idea o un brief de investigación a una empresa desarrollada, lanzada y operando.",
     "primaryCta": "Consultar proyecto",
     "secondaryCta": "Cómo funciona",
+    "partnerCta": "Para partners",
     "investorCta": "Para inversores"
   },
   "pillars": {

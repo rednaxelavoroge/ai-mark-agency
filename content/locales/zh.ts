@@ -66,6 +66,7 @@ export const copyZh: Copy = {
     "soft": "无论您处于概念构思阶段还是手握资本，我们都能助您完成产品研发、商业上线与日常稳定运营。",
     "primaryCta": "预约项目探讨",
     "secondaryCta": "运作机制",
+    "partnerCta": "面向合作伙伴",
     "investorCta": "面向投资者"
   },
   "pillars": {

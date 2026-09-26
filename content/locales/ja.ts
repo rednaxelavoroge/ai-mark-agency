@@ -66,6 +66,7 @@ export const copyJa: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "プロジェクト相談",
     "secondaryCta": "仕組みを見る",
+    "partnerCta": "パートナー向け",
     "investorCta": "投資家向け情報"
   },
   "pillars": {

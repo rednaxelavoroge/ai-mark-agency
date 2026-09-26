@@ -66,6 +66,7 @@ export const copyAr: Copy = {
     "soft": "نساعدك على الانتقال من مجرد فكرة أو دراسة جدوى إلى مشروع متكامل يعمل ويدر عوائد مالية.",
     "primaryCta": "ناقش مشروعك",
     "secondaryCta": "كيف نعمل",
+    "partnerCta": "للشركاء",
     "investorCta": "للمستثمرين"
   },
   "pillars": {

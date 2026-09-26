@@ -66,6 +66,7 @@ export const copyId: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Konsultasi Proyek",
     "secondaryCta": "Cara Kerja",
+    "partnerCta": "Untuk Mitra",
     "investorCta": "Untuk Investor"
   },
   "pillars": {

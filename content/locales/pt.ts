@@ -66,6 +66,7 @@ export const copyPt: Copy = {
     "soft": "Ajudamos você a ir de uma ideia ou tese de pesquisa a um negócio desenvolvido, lançado e faturando.",
     "primaryCta": "Falar sobre projeto",
     "secondaryCta": "Como funciona",
+    "partnerCta": "Para parceiros",
     "investorCta": "Para investidores"
   },
   "pillars": {

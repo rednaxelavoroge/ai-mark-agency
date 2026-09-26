@@ -43,6 +43,7 @@ export const copyRu: Copy = {
       soft: "Можем провести от идеи или исследования до сборки, запуска и операционной работы.",
       primaryCta: "Обсудить проект",
       secondaryCta: "Как устроено",
+      partnerCta: "Партнёрам",
       investorCta: "Инвесторам",
     },
     pillars: {

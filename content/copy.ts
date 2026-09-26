@@ -40,6 +40,7 @@ export type Copy = {
     soft: string;
     primaryCta: string;
     secondaryCta: string;
+    partnerCta: string;
     investorCta: string;
   };
   pillars: {

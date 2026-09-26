@@ -66,6 +66,7 @@ export const copyTr: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Proje Görüşmesi",
     "secondaryCta": "Nasıl Çalışır",
+    "partnerCta": "Partnerler İçin",
     "investorCta": "Yatırımcılar İçin"
   },
   "pillars": {

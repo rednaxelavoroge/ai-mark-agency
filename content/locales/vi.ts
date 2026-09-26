@@ -66,6 +66,7 @@ export const copyVi: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Trao đổi dự án",
     "secondaryCta": "Quy trình",
+    "partnerCta": "Dành cho đối tác",
     "investorCta": "Dành cho nhà đầu tư"
   },
   "pillars": {

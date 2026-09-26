@@ -198,18 +198,24 @@ export function HeroSystem({ locale, t }: HeroProps) {
 
             {/* CTA row */}
             <div className="mt-8 flex flex-wrap items-center gap-3" data-reveal style={{ "--reveal-delay": "320ms" } as CSSProperties}>
-              <ContactCta className="inline-flex items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95">
+              <ContactCta className="inline-flex min-h-11 items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95">
                 {t.hero.primaryCta} →
               </ContactCta>
               <Link
                 href={navHref(locale, "#how")}
-                className="inline-flex items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
               >
                 {t.hero.secondaryCta}
               </Link>
               <Link
+                href={navHref(locale, "/partners")}
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+              >
+                {t.hero.partnerCta}
+              </Link>
+              <Link
                 href={navHref(locale, "#investors")}
-                className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
               >
                 {t.hero.investorCta}
               </Link>
