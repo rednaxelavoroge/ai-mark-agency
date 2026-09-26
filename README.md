@@ -24,7 +24,7 @@ See `.env.example`:
 | Variable | Purpose |
 | --- | --- |
 | `CONTACT_TO_EMAIL` | Operator inbox for `/api/contact` |
-| `CONTACT_FROM_EMAIL` | Optional From header (Resend) |
+| `CONTACT_FROM_EMAIL` | From header for Resend. Must be on a verified domain (`auth.ai-mark.agency` today; apex `ai-mark.agency` is not verified) |
 | `RESEND_API_KEY` | Send via [Resend](https://resend.com) |
 | `CONTACT_WEBHOOK_URL` | Optional JSON webhook instead of Resend |
 

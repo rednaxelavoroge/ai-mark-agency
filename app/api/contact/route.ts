@@ -63,7 +63,8 @@ async function deliver(text: string, subject: string) {
   if (resendKey) {
     if (!to) throw new Error("CONTACT_TO_EMAIL is not set");
     const from =
-      process.env.CONTACT_FROM_EMAIL ?? "AI MARK <noreply@ai-mark.agency>";
+      process.env.CONTACT_FROM_EMAIL ??
+      "AI MARK <noreply@auth.ai-mark.agency>";
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
