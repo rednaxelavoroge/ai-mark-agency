@@ -6,8 +6,10 @@
  * are dashboard settings, not repo settings. Public GET
  * `/api/webchat/<key>/config` is read-only (PATCH/PUT return 405).
  *
- * Until Inbox → Webchat `wc_30ff859272acf6000db08542` is updated, ContactLauncher
- * prefixes outbound visitor messages with this context so replies stay on AI MARK.
+ * ContactLauncher prefixes outbound visitor messages with `CHAT_CONTEXT_PREFIX`
+ * only. The full `CHAT_KNOWLEDGE` block is too large for
+ * `POST /api/webchat/<key>/messages` (HTTP 413). Keep this file as the
+ * dashboard copy-source; do not send it on the wire.
  *
  * Dashboard path (owner, not this repo):
  * 1. Sign in at https://app.alex-dev.pro
@@ -48,10 +50,14 @@ Contact: site chat, Telegram, WhatsApp, Messenger, hello@ai-mark.agency. Do not 
 
 export const CHAT_CONTEXT_MARKER = "[AI MARK assistant context]";
 
+/** Short enough for the hosted `/messages` body limit. */
+export const CHAT_CONTEXT_PREFIX = `${CHAT_CONTEXT_MARKER}
+You are AI MARK (ai-mark.agency), not AlexDev. Names: AIME, AI Business Assistant, SHOWROOM AI (not Showroom.pro). No 14-day trial. Prices: AIME Lite $199 / Pro $349; AIBA Entry $149 / Standard $249; SHOWROOM AI Standard $199 / Business $299; retainers $1,200 / $2,200 / $3,500.`;
+
 export function withChatContext(visitorText: string): string {
   const text = visitorText.trim();
   if (!text || text.startsWith(CHAT_CONTEXT_MARKER)) return text;
-  return `${CHAT_CONTEXT_MARKER}\n${CHAT_KNOWLEDGE}\n\nVisitor message:\n${text}`;
+  return `${CHAT_CONTEXT_PREFIX}\n\nVisitor message:\n${text}`;
 }
 
 export function isWidgetMessageUrl(url: string): boolean {
