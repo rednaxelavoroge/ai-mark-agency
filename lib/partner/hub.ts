@@ -84,7 +84,7 @@ const LABELS: Record<"en" | "ru", HubLabels> = {
     openPay: "Open checkout with your link",
     liveChat: "Live AI Business Assistant widget on the public site (same widget visitors already see).",
     panelDemo: "Interactive panel demo on the Assistant product page (example workspace, not a client result).",
-    noSandbox: "No logged-in AIME or Showroom.pro demo tenant is issued to partners.",
+    noSandbox: "No logged-in AIME or SHOWROOM AI demo tenant is issued to partners.",
     noDeck: "No PDF or PPT presentation file is in this repository.",
     materialsTitle: "Marketing materials",
     materialsLead:
@@ -164,7 +164,7 @@ const LABELS: Record<"en" | "ru", HubLabels> = {
     openPay: "Открыть оплату по вашей ссылке",
     liveChat: "Живой виджет AI Business Assistant на публичном сайте (тот же, что видит посетитель).",
     panelDemo: "Интерактивное демо панели на странице Assistant (пример рабочей области, не результат клиента).",
-    noSandbox: "Партнёру не выдаётся отдельный демо-тенант AIME или Showroom.pro.",
+    noSandbox: "Партнёру не выдаётся отдельный демо-тенант AIME или SHOWROOM AI.",
     noDeck: "В репозитории нет файла презентации PDF или PPT.",
     materialsTitle: "Рекламные материалы",
     materialsLead:

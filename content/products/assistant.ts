@@ -91,12 +91,12 @@ export interface AibaContent {
 export const aibaRu: AibaContent = {
   seoTitle: "AI Business Assistant | Ответы, квалификация и передача человеку · AI MARK",
   seoDescription:
-    "Клиент пишет в WhatsApp, Telegram, Instagram Direct, Messenger или на сайте. AI отвечает по базе знаний, квалифицирует обращение и передаёт его человеку. Цену и коммерческое предложение готовит Showroom.pro.",
+    "Клиент пишет в WhatsApp, Telegram, Instagram Direct, Messenger или на сайте. AI отвечает по базе знаний, квалифицирует обращение и передаёт его человеку. Цену и коммерческое предложение готовит SHOWROOM AI.",
   badge: "Собственный AI-продукт · AI MARK",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
-    "Клиент пишет. Ассистент отвечает по базе знаний, квалифицирует обращение и передаёт диалог человеку. Коммерческое предложение считает Showroom.pro.",
+    "Клиент пишет. Ассистент отвечает по базе знаний, квалифицирует обращение и передаёт диалог человеку. Коммерческое предложение считает SHOWROOM AI.",
   heroMeta: ["5 каналов в одном инбоксе", "Панель клиента", "Интеграция с CRM", "Entry $149 / мес"],
   ctaConsult: "Подключить ассистента",
   ctaPricing: "Тарифы подписки",
@@ -149,7 +149,7 @@ export const aibaRu: AibaContent = {
     "Для WhatsApp, Instagram и Messenger требуется подтверждённый Meta Business аккаунт — мы даём готовый чек-лист и помогаем настроить всё на онбординге.",
   autoTitle: "Что мы автоматизируем",
   autoSub:
-    "Ассистент отвечает и квалифицирует. Коммерческое предложение и финальный разговор остаются за человеком или за Showroom.pro.",
+    "Ассистент отвечает и квалифицирует. Коммерческое предложение и финальный разговор остаются за человеком или за SHOWROOM AI.",
   autoList: [
     "Ответы по базе знаний",
     "Квалификация бюджета, задачи и сроков",
@@ -324,12 +324,12 @@ export const aibaRu: AibaContent = {
 export const aibaEn: AibaContent = {
   seoTitle: "AI Business Assistant | Answers, qualification, and human handoff · AI MARK",
   seoDescription:
-    "One assistant answers in WhatsApp, Telegram, Instagram Direct, Messenger, and on the website from your knowledge base, qualifies the request, and hands it to a person. Commercial proposals are Showroom.pro.",
+    "One assistant answers in WhatsApp, Telegram, Instagram Direct, Messenger, and on the website from your knowledge base, qualifies the request, and hands it to a person. Commercial proposals are SHOWROOM AI.",
   badge: "Proprietary AI Platform · AI MARK",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
-    "The customer writes. The assistant answers from your knowledge base, qualifies the request, and hands the conversation to a person. It does not calculate a commercial proposal — that is Showroom.pro.",
+    "The customer writes. The assistant answers from your knowledge base, qualifies the request, and hands the conversation to a person. It does not calculate a commercial proposal — that is SHOWROOM AI.",
   heroMeta: ["5 channels in 1 inbox", "Customer workspace panel", "Direct CRM sync", "Entry $149 / mo"],
   ctaConsult: "Get Started",
   ctaPricing: "View Subscription Plans",
@@ -382,7 +382,7 @@ export const aibaEn: AibaContent = {
     "WhatsApp, Instagram, and Messenger require a verified Meta Business account — we provide a step-by-step checklist and guide you through onboarding.",
   autoTitle: "What We Automate",
   autoSub:
-    "The assistant answers and qualifies. The commercial proposal and the final conversation stay with a person or with Showroom.pro.",
+    "The assistant answers and qualifies. The commercial proposal and the final conversation stay with a person or with SHOWROOM AI.",
   autoList: [
     "Answers from the knowledge base",
     "Qualification of budget, scope, and timing",

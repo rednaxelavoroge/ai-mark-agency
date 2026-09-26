@@ -71,7 +71,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
       id: "ai",
       num: "03",
       name: isRu ? "AI-инфраструктура" : "AI Infrastructure",
-      sub: isRu ? "AIME, Sales AI & Showroom.pro" : "AIME, Sales AI & Showroom.pro",
+      sub: isRu ? "AIME, Sales AI & SHOWROOM AI" : "AIME, Sales AI & SHOWROOM AI",
       badge: isRu ? "Собственные AI-продукты" : "Proprietary AI Core",
       status: isRu ? "Пример" : "Example",
       metrics: [
@@ -80,15 +80,15 @@ export function HeroSystem({ locale, t }: HeroProps) {
         { label: isRu ? "Сделка" : "Deal", val: "Showroom" },
       ],
       description: isRu
-        ? "Три продукта в одном контуре: AIME ведёт маркетинговый цикл до вашего апрува, AI Business Assistant отвечает и квалифицирует, Showroom.pro подбирает, считает и готовит коммерческое предложение."
-        : "Three products in one system: AIME runs the marketing cycle up to your approval, AI Business Assistant answers and qualifies, and Showroom.pro matches, calculates, and prepares a commercial proposal.",
+        ? "Три продукта в одном контуре: AIME ведёт маркетинговый цикл до вашего апрува, AI Business Assistant отвечает и квалифицирует, SHOWROOM AI подбирает, считает и готовит коммерческое предложение."
+        : "Three products in one system: AIME runs the marketing cycle up to your approval, AI Business Assistant answers and qualifies, and SHOWROOM AI matches, calculates, and prepares a commercial proposal.",
       uiSnippet: {
         title: isRu ? "Три продукта, три задачи" : "Three products, three jobs",
         tag: isRu ? "Пример" : "Example",
         lines: [
           isRu ? "✓ AIME: исследование → контент → апрув → публикация" : "✓ AIME: research → content → approval → publish",
           isRu ? "✓ Ассистент: ответ → квалификация → человек" : "✓ Assistant: reply → qualification → human",
-          isRu ? "✓ Showroom.pro: подбор → расчёт → КП → менеджер" : "✓ Showroom.pro: match → calculate → proposal → manager",
+          isRu ? "✓ SHOWROOM AI: подбор → расчёт → КП → менеджер" : "✓ SHOWROOM AI: match → calculate → proposal → manager",
         ],
       },
     },
@@ -215,12 +215,20 @@ export function HeroSystem({ locale, t }: HeroProps) {
               >
                 {t.hero.secondaryCta}
               </Link>
-              <Link
-                href={navHref(locale, "#investors")}
-                className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
-              >
-                {t.hero.investorCta}
-              </Link>
+              <span className="inline-flex items-center gap-3">
+                <Link
+                  href={navHref(locale, "#investors")}
+                  className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+                >
+                  {t.hero.investorCta}
+                </Link>
+                <Link
+                  href={navHref(locale, "/partners")}
+                  className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+                >
+                  {t.hero.partnerCta}
+                </Link>
+              </span>
             </div>
 
             <p className="mt-6 text-xs text-muted" data-reveal style={{ "--reveal-delay": "400ms" } as CSSProperties}>

@@ -11,7 +11,7 @@ export const copyDe: Copy = {
       "AI marketing",
       "digital production",
       "AIME",
-      "Showroom.pro",
+      "SHOWROOM AI",
       "ai-mark.agency"
     ]
   },
@@ -66,7 +66,8 @@ export const copyDe: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Projekt besprechen",
     "secondaryCta": "Funktionsweise",
-    "investorCta": "Für Investoren"
+    "investorCta": "Für Investoren",
+    "partnerCta": "Für Partner"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -90,7 +91,7 @@ export const copyDe: Copy = {
       {
         "n": "04",
         "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and Showroom.pro."
+        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
       },
       {
         "n": "05",
@@ -169,7 +170,7 @@ export const copyDe: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
@@ -267,7 +268,7 @@ export const copyDe: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "Komplettlösung: Vollständige Omnichannel-Infrastruktur, Showroom.pro — AI Sales Agent und 24/7 Premium-Support."
+        "body": "Komplettlösung: Vollständige Omnichannel-Infrastruktur, SHOWROOM AI / AI Sales Agent und 24/7 Premium-Support."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -289,7 +290,7 @@ export const copyDe: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom.pro when the offer needs them",
+          "Inbox and SHOWROOM AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -497,7 +498,7 @@ export const copyDe: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom.pro — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -511,7 +512,7 @@ export const copyDe: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

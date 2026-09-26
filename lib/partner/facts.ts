@@ -72,24 +72,24 @@ export const PARTNER_PRODUCT_LIMITS: Record<
   },
   assistant: {
     en: [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is Showroom.pro.",
+      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
       "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
       "WhatsApp, Instagram, and Messenger need a verified Meta Business account.",
     ],
     ru: [
-      "Ассистент отвечает и квалифицирует. Коммерческое предложение считает Showroom.pro.",
+      "Ассистент отвечает и квалифицирует. Коммерческое предложение считает SHOWROOM AI.",
       "Отвечает по базе знаний клиента. Если цены или позиции нет в базе, он это говорит и не выдумывает.",
       "WhatsApp, Instagram и Messenger требуют верифицированный Meta Business аккаунт.",
     ],
   },
   showroom: {
     en: [
-      "Not a support chatbot. Showroom.pro is for selection, pricing rules, and a commercial proposal.",
+      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
       "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
       "That is not a promise that the customer's own rules are flawless.",
     ],
     ru: [
-      "Не чат поддержки. Showroom.pro — подбор, правила цены и коммерческое предложение.",
+      "Не чат поддержки. SHOWROOM AI — подбор, правила цены и коммерческое предложение.",
       "Цена не считается «из воздуха». Расчёт идёт по формулам, которые задал клиент.",
       "Это не обещание, что в правилах клиента нет ошибки.",
     ],

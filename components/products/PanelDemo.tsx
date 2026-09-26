@@ -173,8 +173,8 @@ function Playground({ ru }: { ru: boolean }) {
             setAnswer(
               value.trim()
                 ? ru
-                  ? "Ответ по базе знаний. Если нужен расчёт или коммерческое предложение, диалог передаётся человеку или в Showroom.pro."
-                  : "Answer from the knowledge base. A calculation or commercial proposal is handed to a person or to Showroom.pro."
+                  ? "Ответ по базе знаний. Если нужен расчёт или коммерческое предложение, диалог передаётся человеку или в SHOWROOM AI."
+                  : "Answer from the knowledge base. A calculation or commercial proposal is handed to a person or to SHOWROOM AI."
                 : null,
             )
           }

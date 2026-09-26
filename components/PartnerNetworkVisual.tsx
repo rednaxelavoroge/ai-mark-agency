@@ -17,7 +17,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "industry",
           title: "Отраслевые партнёры",
           tag: "Вертикали",
-          desc: "Эксперты в конкретных индустриях (мебель, автодилеры, строительство, недвижимость), внедряющие Showroom.pro — AI-продавца и ассистентов в свои отраслевые кластеры.",
+          desc: "Эксперты в конкретных индустриях (мебель, автодилеры, строительство, недвижимость), внедряющие SHOWROOM AI — AI-продавца и ассистентов в свои отраслевые кластеры.",
           roles: ["Отраслевые каталоги", "Внедрение в нишу", "Интеграции с ERP/CRM"],
         },
         {
@@ -47,7 +47,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           id: "industry",
           title: "Industry Partners",
           tag: "Verticals",
-          desc: "Domain specialists (automotive, construction, retail, real estate) embedding Showroom.pro — AI Sales Agent and sales tools into their industry networks.",
+          desc: "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
           roles: ["Domain-specific catalogs", "Vertical deployment", "Specialized ERP flows"],
         },
         {

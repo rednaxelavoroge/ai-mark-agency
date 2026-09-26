@@ -11,7 +11,7 @@ export const copyZh: Copy = {
       "AI营销",
       "数字化开发",
       "AIME",
-      "Showroom.pro",
+      "SHOWROOM AI",
       "ai-mark.agency"
     ]
   },
@@ -66,7 +66,8 @@ export const copyZh: Copy = {
     "soft": "无论您处于概念构思阶段还是手握资本，我们都能助您完成产品研发、商业上线与日常稳定运营。",
     "primaryCta": "预约项目探讨",
     "secondaryCta": "运作机制",
-    "investorCta": "面向投资者"
+    "investorCta": "面向投资者",
+    "partnerCta": "合作伙伴"
   },
   "pillars": {
     "eyebrow": "业务全景",
@@ -90,7 +91,7 @@ export const copyZh: Copy = {
       {
         "n": "04",
         "title": "AI 自动化销售",
-        "body": "从第一次咨询到资格判断、方案匹配、计算和商业提案：AI Business Assistant 与 Showroom.pro。"
+        "body": "从第一次咨询到资格判断、方案匹配、计算和商业提案：AI Business Assistant 与 SHOWROOM AI。"
       },
       {
         "n": "05",
@@ -142,7 +143,7 @@ export const copyZh: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AIME — AI 营销数字员工",
@@ -157,7 +158,7 @@ export const copyZh: Copy = {
         "price": "149 美元/月起"
       },
       "showroom": {
-        "value": "Showroom.pro — AI Sales Agent配置展厅",
+        "value": "SHOWROOM AI / AI Sales Agent配置展厅",
         "who": "制造业工厂、汽车销售、全屋定制及工程总包",
         "extra": "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。",
         "price": "299 美元/月起"
@@ -240,7 +241,7 @@ export const copyZh: Copy = {
       {
         "name": "Scale 规模版",
         "price": "$3,500",
-        "body": "企业级完整方案：全渠道自动化、Showroom.pro — AI Sales Agent 深度定制与 24/7 优先支持。"
+        "body": "企业级完整方案：全渠道自动化、SHOWROOM AI / AI Sales Agent 深度定制与 24/7 优先支持。"
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -262,7 +263,7 @@ export const copyZh: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom.pro when the offer needs them",
+          "Inbox and SHOWROOM AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -470,7 +471,7 @@ export const copyZh: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom.pro — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -484,7 +485,7 @@ export const copyZh: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

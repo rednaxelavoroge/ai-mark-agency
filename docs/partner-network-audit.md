@@ -65,13 +65,9 @@ Statuses used: REAL / PARTIAL / MOCK / MISSING. Nothing in the eight claims is a
 
 ## 5. Marketing claims vs production
 
-Public kit on `/ru/partners` and `/partners` still lists all eight items. That copy was **not** rewritten (parallel UX workstream). After this PR the cabinet can fulfil items 2, 3, 6, 8 as **honest inventories**, not as new products.
+The public kit on `/partners` and `/ru/partners` now lists only what exists: referral link and Partner ID, Partner Dashboard, live product pages, published brand files, contact-form / signup / `/pay` attribution, Partner Hub facts, and the public support channels. It states the absences: sandbox, PDF/PPT, campaign creatives, partner payout request, automatic lock, reversal screen, tickets, LMS, and chat / Telegram / WhatsApp / email leads.
 
-Claims that remain stronger than the product:
-
-- “Ready-made marketing creatives” — brand files, not ads.
-- “Product demos and presentations” — live pages, not a demo tenant.
-- “Lead tracking” — form + pay, not every conversation channel.
+The public product label is SHOWROOM AI (English: SHOWROOM AI / AI Sales Agent; Russian: SHOWROOM AI — AI-продавец). SKU id `showroom` is unchanged. Prices are unchanged.
 
 ## 6. Security / RLS
 
@@ -118,7 +114,7 @@ Not run in this cloud pass unless Postgres is present: `npm run test:rls`, `npm 
 
 ## 11. Remaining gaps
 
-P0: public copy still implies creatives/demos/support as a full machine; cabinet now tells the truth, public page not edited.
+P0 closed in this pass: public `/partners` kit matches the cabinet, and the public Showroom.pro label is SHOWROOM AI.
 
 P1: chat/messenger leads not attributed; no partner payout request; lock not automatic.
 

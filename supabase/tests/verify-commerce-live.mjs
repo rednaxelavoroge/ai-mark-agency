@@ -274,7 +274,7 @@ try {
   const productPages = [
     { path: "/en/ai-marketing-employee", name: "AIME" },
     { path: "/en/ai-business-assistant", name: "AI Business Assistant" },
-    { path: "/en/showroom-ai", name: "Showroom.pro" },
+    { path: "/en/showroom-ai", name: "SHOWROOM AI" },
   ];
   for (const product of productPages) {
     await probePage.goto(`${BASE}${product.path}`, { waitUntil: "load" });

@@ -35,8 +35,8 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         ? "Ответ → квалификация → передача человеку"
         : "Answers → Qualification → Human Handoff",
       value: isRu
-        ? "Клиент пишет — AI отвечает по базе знаний, квалифицирует обращение и передаёт человеку. Цену и коммерческое предложение считает Showroom.pro."
-        : "The customer writes. AI answers from the knowledge base, qualifies the request, and hands it to a person. Showroom.pro calculates the price and prepares the proposal.",
+        ? "Клиент пишет — AI отвечает по базе знаний, квалифицирует обращение и передаёт человеку. Цену и коммерческое предложение считает SHOWROOM AI."
+        : "The customer writes. AI answers from the knowledge base, qualifies the request, and hands it to a person. SHOWROOM AI calculates the price and prepares the proposal.",
       channels: ["WhatsApp Cloud API", "Telegram", "Instagram Direct", "Messenger", "Webchat"],
       pricing: isRu ? "Entry $149/мес · Standard $249/мес" : "Entry $149/mo · Standard $249/mo",
       mock: "assistant" as ProductVariant,
@@ -49,7 +49,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
     {
       id: "showroom" as const,
       badge: isRu ? "AI-продавец" : "AI Sales Agent",
-      name: "Showroom.pro",
+      name: "SHOWROOM AI",
       tagline: isRu
         ? "Понимание → подбор → расчёт → коммерческое предложение → менеджер"
         : "Understanding → Selection → Calculation → Commercial Proposal → Manager",
