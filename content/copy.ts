@@ -40,8 +40,8 @@ export type Copy = {
     soft: string;
     primaryCta: string;
     secondaryCta: string;
-    investorCta: string;
     partnerCta: string;
+    investorCta: string;
   };
   pillars: {
     eyebrow: string;
@@ -177,6 +177,7 @@ export type Copy = {
     success: string;
     error: string;
     privacy: string;
+    privacyLink: string;
   };
   productPages: Record<
     ProductId,

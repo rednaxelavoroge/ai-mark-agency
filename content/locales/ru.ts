@@ -43,8 +43,8 @@ export const copyRu: Copy = {
       soft: "Можем провести от идеи или исследования до сборки, запуска и операционной работы.",
       primaryCta: "Обсудить проект",
       secondaryCta: "Как устроено",
-      investorCta: "Инвесторам",
       partnerCta: "Партнёрам",
+      investorCta: "Инвесторам",
     },
     pillars: {
       eyebrow: "Что умеем",
@@ -383,7 +383,8 @@ export const copyRu: Copy = {
       sending: "Отправляем…",
       success: "Получили. Ответим на email или в мессенджер, который вы оставили.",
       error: "Не отправилось. Напишите hello@ai-mark.agency или попробуйте ещё раз.",
-      privacy: "Отправляя, вы соглашаетесь, что мы свяжемся по этому запросу. См. Privacy.",
+      privacy: "Отправляя, вы соглашаетесь, что мы свяжемся по этому запросу.",
+      privacyLink: "Конфиденциальность",
     },
     productPages: {
       aime: {

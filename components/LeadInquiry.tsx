@@ -2,6 +2,7 @@
 
 import { ContactForm } from "@/components/ContactForm";
 import type { Copy } from "@/content/copy";
+import type { Locale } from "@/lib/site";
 
 /**
  * Public request form. Posts to `/api/contact`, which attributes the row from
@@ -9,11 +10,13 @@ import type { Copy } from "@/content/copy";
  */
 export function LeadInquiry({
   contact,
+  locale,
   scenario,
   framed = true,
   compact = false,
 }: {
   contact: Copy["contact"];
+  locale: Locale;
   scenario?: "aime" | "assistant" | "showroom";
   framed?: boolean;
   /** Parent already rendered the section title. */
@@ -23,7 +26,7 @@ export function LeadInquiry({
     return (
       <div className="grid max-w-xl gap-6">
         <p className="text-sm leading-relaxed text-muted">{contact.formNote}</p>
-        <ContactForm t={contact} scenario={scenario} />
+        <ContactForm t={contact} locale={locale} scenario={scenario} />
       </div>
     );
   }
@@ -39,7 +42,7 @@ export function LeadInquiry({
         </h2>
         <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{contact.formNote}</p>
       </div>
-      <ContactForm t={contact} scenario={scenario} />
+      <ContactForm t={contact} locale={locale} scenario={scenario} />
     </div>
   );
 

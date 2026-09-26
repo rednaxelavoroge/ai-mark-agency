@@ -248,6 +248,7 @@ main {
 .itb-slot {
   container-type: size;
   padding-inline: 12px;
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {

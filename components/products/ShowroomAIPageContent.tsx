@@ -477,7 +477,7 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} scenario="showroom" />
+      <LeadInquiry contact={contact} locale={locale} scenario="showroom" />
 
       {/* 8. BOTTOM BANNER */}
       <section className="py-16 sm:py-20">

@@ -44,7 +44,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
               </li>
               <li>
                 <Link href={navHref(locale, "#production")} className="hover:text-paper transition-colors">
-                  {isRu ? "Digital Production" : "Digital Production"}
+                  {isRu ? "Цифровое производство" : "Digital Production"}
                 </Link>
               </li>
               <li>

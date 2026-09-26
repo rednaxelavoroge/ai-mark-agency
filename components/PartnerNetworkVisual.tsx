@@ -229,7 +229,7 @@ export function PartnerNetworkVisual({ locale }: { locale: Locale }) {
           </div>
           <Link
             href={localePath(locale, "/partners")}
-            className="inline-flex shrink-0 items-center justify-center gap-2 self-start whitespace-nowrap rounded-full bg-mark px-6 py-3.5 text-sm font-semibold text-mark-ink shadow transition-all hover:-translate-y-0.5 hover:bg-mark-light hover:shadow-md lg:self-center"
+            className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-mark px-6 py-3.5 text-sm font-semibold text-mark-ink shadow transition-all hover:-translate-y-0.5 hover:bg-mark-light hover:shadow-md lg:self-center"
           >
             {isRu ? "Подробнее о партнёрстве" : "More about the partnership"}
             <span className="btn-arrow" aria-hidden>→</span>

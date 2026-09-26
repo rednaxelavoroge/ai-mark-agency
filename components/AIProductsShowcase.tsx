@@ -102,6 +102,13 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
               <h3 className="font-display text-xl font-semibold text-paper leading-snug">
                 {product.name}
               </h3>
+              {product.id === "showroom" ? (
+                <p className="mt-1 text-xs font-medium text-paper/90">
+                  {isRu
+                    ? "AI-продавец первой линии: диалог, подбор, расчёт и коммерческое предложение."
+                    : "First-line AI Sales Agent: conversation, matching, quoting, and the commercial proposal."}
+                </p>
+              ) : null}
               <p className="mt-1 font-mono text-xs text-warm">{product.tagline}</p>
               <p className="mt-3 text-xs leading-relaxed text-muted flex-1">
                 {product.value}

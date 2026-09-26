@@ -11,8 +11,8 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
   const categories = [
     {
       id: "saas",
-      name: isRu ? "SaaS & Веб-приложения" : "SaaS & Web Applications",
-      badge: "High Scale",
+      name: isRu ? "SaaS и веб-приложения" : "SaaS & Web Applications",
+      badge: isRu ? "Большой масштаб" : "High Scale",
       headline: isRu
         ? "Сложные веб-платформы, личные кабинеты и многопользовательские системы"
         : "Complex Web Platforms, Workspaces & Multi-Tenant SaaS Engines",
@@ -29,8 +29,8 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
     },
     {
       id: "portals",
-      name: isRu ? "Кабинеты & Внутренние системы" : "Portals & Operations",
-      badge: "Enterprise",
+      name: isRu ? "Кабинеты и внутренние системы" : "Portals & Operations",
+      badge: isRu ? "Корпоративный" : "Enterprise",
       headline: isRu
         ? "Клиентские порталы, дашборды и CRM/ERP-коннекторы"
         : "Customer Portals, Operational Dashboards & ERP Integrations",
@@ -47,8 +47,8 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
     },
     {
       id: "ecommerce",
-      name: isRu ? "E-Commerce & Маркетплейсы" : "E-Commerce & Marketplaces",
-      badge: "Transactional",
+      name: isRu ? "E-commerce и маркетплейсы" : "E-Commerce & Marketplaces",
+      badge: isRu ? "Транзакции" : "Transactional",
       headline: isRu
         ? "Транзакционные платформы с гибкими каталогами и автоматизацией"
         : "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -65,8 +65,8 @@ export function DigitalProductionShowcase({ locale }: { locale: Locale }) {
     },
     {
       id: "ai-engines",
-      name: isRu ? "AI-инструменты & Автоматизация" : "AI Engines & Automation",
-      badge: "Proprietary",
+      name: isRu ? "AI-инструменты и автоматизация" : "AI Engines & Automation",
+      badge: isRu ? "Свой продукт" : "Proprietary",
       headline: isRu
         ? "Индивидуальные AI-пайплайны и автоматизированные агенты"
         : "Custom AI Agent Pipelines & Autonomous Business Workflows",

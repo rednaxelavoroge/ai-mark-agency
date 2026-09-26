@@ -465,7 +465,7 @@ export default async function PartnersPage({ params }: Props) {
         </div>
       </section>
 
-      <LeadInquiry contact={published.contact} />
+      <LeadInquiry contact={published.contact} locale={locale} />
 
       <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
     </article>

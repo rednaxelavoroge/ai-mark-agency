@@ -409,7 +409,8 @@ export const copyZh: Copy = {
     "sending": "正在提交...",
     "success": "我们已成功收到您的咨询！专家将在 2 小时内主动联系您。",
     "error": "提交失败，请直接发送邮件至 hello@ai-mark.agency",
-    "privacy": "By sending, you agree we may contact you about this request. See Privacy."
+    "privacy": "By sending, you agree we may contact you about this request.",
+    "privacyLink": "Privacy"
   },
   "productPages": {
     "aime": {

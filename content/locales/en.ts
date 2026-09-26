@@ -43,8 +43,8 @@ export const copyEn: Copy = {
       soft: "We can help you move from an idea or a research brief to something built, launched, and operated.",
       primaryCta: "Discuss a project",
       secondaryCta: "How it works",
-      investorCta: "For investors",
       partnerCta: "For partners",
+      investorCta: "For investors",
     },
     pillars: {
       eyebrow: "What we can do",
@@ -383,7 +383,8 @@ export const copyEn: Copy = {
       sending: "Sending…",
       success: "Received. We will reply to the email or messenger you left.",
       error: "Could not send. Email hello@ai-mark.agency or try again.",
-      privacy: "By sending, you agree we may contact you about this request. See Privacy.",
+      privacy: "By sending, you agree we may contact you about this request.",
+      privacyLink: "Privacy",
     },
     productPages: {
       aime: {

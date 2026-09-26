@@ -38,6 +38,7 @@ es.hero.extra = "Creamos y escalamos negocios digitales utilizando nuestra propi
 es.hero.soft = "Le ayudamos a pasar de una idea o un brief de investigación a una empresa desarrollada, lanzada y operando.";
 es.hero.primaryCta = "Consultar proyecto";
 es.hero.secondaryCta = "Cómo funciona";
+es.hero.partnerCta = "Para partners";
 es.hero.investorCta = "Para inversores";
 
 es.pillars.eyebrow = "Lo que construimos";
@@ -139,6 +140,7 @@ pt.hero.extra = "Criamos e escalamos negócios digitais utilizando nossa própri
 pt.hero.soft = "Ajudamos você a ir de uma ideia ou tese de pesquisa a um negócio desenvolvido, lançado e faturando.";
 pt.hero.primaryCta = "Falar sobre projeto";
 pt.hero.secondaryCta = "Como funciona";
+pt.hero.partnerCta = "Para parceiros";
 pt.hero.investorCta = "Para investidores";
 
 pt.pillars.eyebrow = "O que construímos";
@@ -233,6 +235,7 @@ ar.hero.extra = "نؤسس ونوسع الأعمال الرقمية بالاعت�
 ar.hero.soft = "نساعدك على الانتقال من مجرد فكرة أو دراسة جدوى إلى مشروع متكامل يعمل ويدر عوائد مالية.";
 ar.hero.primaryCta = "ناقش مشروعك";
 ar.hero.secondaryCta = "كيف نعمل";
+ar.hero.partnerCta = "للشركاء";
 ar.hero.investorCta = "للمستثمرين";
 
 ar.pillars.eyebrow = "ما الذي نقدمه";
@@ -334,6 +337,7 @@ zh.hero.extra = "依托专有 AI 基础设施，为您从零打造并规模化�
 zh.hero.soft = "无论您处于概念构思阶段还是手握资本，我们都能助您完成产品研发、商业上线与日常稳定运营。";
 zh.hero.primaryCta = "预约项目探讨";
 zh.hero.secondaryCta = "运作机制";
+zh.hero.partnerCta = "面向合作伙伴";
 zh.hero.investorCta = "面向投资者";
 
 zh.pillars.eyebrow = "业务全景";
@@ -418,6 +422,7 @@ id.hero.title = "Dari ide menjadi bisnis yang berjalan nyata.";
 id.hero.lead = "Kami meriset pasar, merumuskan model bisnis, membangun produk digital, lalu mengoperasikan pemasaran dan penjualan — meningkatkan skala operasi dengan AI.";
 id.hero.primaryCta = "Konsultasi Proyek";
 id.hero.secondaryCta = "Cara Kerja";
+id.hero.partnerCta = "Untuk Mitra";
 id.hero.investorCta = "Untuk Investor";
 id.footer.blurb = "Perusahaan venture builder & pemasaran AI-native. Dari ide menjadi bisnis nyata di atas infrastruktur mandiri.";
 
@@ -441,6 +446,7 @@ vi.hero.title = "Từ ý tưởng đến doanh nghiệp hoạt động thực t�
 vi.hero.lead = "Chúng tôi nghiên cứu thị trường, hoàn thiện mô hình, lập trình sản phẩm số và tự động hóa quy trình tiếp thị & bán hàng bằng AI.";
 vi.hero.primaryCta = "Trao đổi dự án";
 vi.hero.secondaryCta = "Quy trình";
+vi.hero.partnerCta = "Dành cho đối tác";
 vi.hero.investorCta = "Dành cho nhà đầu tư";
 vi.footer.blurb = "Công ty khởi tạo doanh nghiệp & tiếp thị AI-native. Từ ý tưởng đến doanh nghiệp thành công trên hạ tầng AI.";
 
@@ -464,6 +470,7 @@ de.hero.title = "Von der Idee zum profitablen Unternehmen.";
 de.hero.lead = "Wir analysieren den Markt, entwickeln das Modell, bauen das digitale Produkt und steuern Vertrieb und Marketing — skaliert durch eigene KI-Infrastruktur.";
 de.hero.primaryCta = "Projekt besprechen";
 de.hero.secondaryCta = "Funktionsweise";
+de.hero.partnerCta = "Für Partner";
 de.hero.investorCta = "Für Investoren";
 de.commercial.tiers = [
   { name: "Starter", price: "$1,200", body: "Für den Einstieg in die Automatisierung: Einrichtung von 1 KI-System auf dem Hauptkanal." },
@@ -495,6 +502,7 @@ fr.hero.title = "De l'idée à l'entreprise opérationnelle.";
 fr.hero.lead = "Nous analysons le marché, structurons le modèle, concevons le produit numérique et orchestrons les ventes et le marketing — propulsés par l'IA.";
 fr.hero.primaryCta = "Échanger sur un projet";
 fr.hero.secondaryCta = "Méthode";
+fr.hero.partnerCta = "Pour les partenaires";
 fr.hero.investorCta = "Pour les investisseurs";
 fr.footer.blurb = "Société de venture building et marketing native IA. De l'idée à l'entreprise rentable sur notre propre infrastructure.";
 
@@ -518,6 +526,7 @@ ja.hero.title = "アイデアから持続可能な事業の立ち上げまで。
 ja.hero.lead = "市場調査、ビジネスモデル検証、デジタルプロダクト開発、そしてAIによるマーケティングと営業の自動化を通じて、ビジネスの急成長を実現します。";
 ja.hero.primaryCta = "プロジェクト相談";
 ja.hero.secondaryCta = "仕組みを見る";
+ja.hero.partnerCta = "パートナー向け";
 ja.hero.investorCta = "投資家向け情報";
 ja.footer.blurb = "AIネイティブのベンチャー創出＆マーケティング企業。独自のAIインフラでアイデアを確かな事業へ。";
 
@@ -541,6 +550,7 @@ tr.hero.title = "Fikirden çalışan ve büyüyen bir işletmeye.";
 tr.hero.lead = "Pazarı araştırıyor, iş modelini oluşturuyor, dijital ürünü geliştiriyor ve pazarlama ile satış süreçlerini yapay zeka ile otomatikleştiriyoruz.";
 tr.hero.primaryCta = "Proje Görüşmesi";
 tr.hero.secondaryCta = "Nasıl Çalışır";
+tr.hero.partnerCta = "Partnerler İçin";
 tr.hero.investorCta = "Yatırımcılar İçin";
 tr.footer.blurb = "Yapay zeka odaklı girişim kurucu ve pazarlama şirketi. Kendi altyapımızla fikirden karlı bir işletmeye.";
 

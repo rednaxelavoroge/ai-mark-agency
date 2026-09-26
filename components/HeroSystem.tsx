@@ -20,7 +20,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
     {
       id: "idea",
       num: "01",
-      name: isRu ? "Идея & Капитал" : "Idea & Capital",
+      name: isRu ? "Идея и капитал" : "Idea & Capital",
       sub: isRu ? "Рыночный анализ и скоринг" : "Market Research & Scoring",
       badge: isRu ? "Входной контур" : "Input Contour",
       status: isRu ? "Пример" : "Example",
@@ -47,7 +47,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
       num: "02",
       name: isRu ? "Цифровой продукт" : "Digital Product",
       sub: isRu ? "Архитектура, веб & сервисы" : "Architecture & Platforms",
-      badge: isRu ? "Production" : "Production",
+      badge: isRu ? "Сборка" : "Production",
       status: isRu ? "Сборка" : "Building",
       metrics: [
         { label: isRu ? "Архитектура" : "Stack", val: "Next.js / Cloud" },
@@ -58,7 +58,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
         ? "Сайты, SaaS, кабинеты клиентов, каталоги и платформы, на которых бизнес физически ведёт операции."
         : "Web applications, customer portals, marketplaces, SaaS engines, and interfaces running operational workflows.",
       uiSnippet: {
-        title: isRu ? "Digital Infrastructure Blueprint" : "Digital Infrastructure Blueprint",
+        title: isRu ? "Чертёж цифровой инфраструктуры" : "Digital Infrastructure Blueprint",
         tag: isRu ? "Готово к запуску" : "Production Ready",
         lines: [
           isRu ? "✓ Высокоскоростной веб-интерфейс (App Router)" : "✓ High-speed web architecture (App Router)",
@@ -95,8 +95,8 @@ export function HeroSystem({ locale, t }: HeroProps) {
     {
       id: "growth",
       num: "04",
-      name: isRu ? "Маркетинг, Продажи & Рост" : "Marketing, Sales & Growth",
-      sub: isRu ? "Выручка, клиенты & сеть" : "Revenue, Clients & Network",
+      name: isRu ? "Маркетинг, продажи и рост" : "Marketing, Sales & Growth",
+      sub: isRu ? "Выручка, клиенты и сеть" : "Revenue, Clients & Network",
       badge: isRu ? "Масштабирование" : "Scaling Loop",
       status: isRu ? "Пример" : "Example",
       metrics: [
@@ -171,16 +171,8 @@ export function HeroSystem({ locale, t }: HeroProps) {
               {t.hero.eyebrow}
             </div>
 
-            <h1 className="mt-5 font-display text-4xl leading-[1.08] font-medium tracking-tight text-paper sm:text-5xl lg:text-6xl" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties}>
-              {isRu ? (
-                <>
-                  От идеи до <span className="text-mark font-semibold">работающего бизнеса.</span>
-                </>
-              ) : (
-                <>
-                  From Idea to a <span className="text-mark font-semibold">Working Business.</span>
-                </>
-              )}
+            <h1 className="mt-5 font-display text-4xl leading-[1.08] font-medium tracking-tight text-paper sm:text-5xl lg:text-6xl break-words" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties}>
+              {t.hero.title}
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl" data-reveal style={{ "--reveal-delay": "160ms" } as CSSProperties}>
@@ -193,7 +185,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
                 : "AI MARK brings together AI marketing, AI sales, customer service, automation, digital production, financial and Web3 solutions, business creation, and a partner network in one AI-native infrastructure."}
             </p>
 
-            <div className="mt-4 flex items-center gap-3 rounded-lg border border-line bg-ink-2/60 px-4 py-3 text-sm text-paper/90" data-reveal style={{ "--reveal-delay": "240ms" } as CSSProperties}>
+            <div className="mt-4 flex flex-col gap-2 rounded-lg border border-line bg-ink-2/60 px-4 py-3 text-sm text-paper/90 sm:flex-row sm:items-center sm:gap-3" data-reveal style={{ "--reveal-delay": "240ms" } as CSSProperties}>
               <span className="text-warm font-mono text-xs font-semibold uppercase tracking-wider">
                 {isRu ? "Концепция" : "Concept"}:
               </span>
@@ -206,29 +198,27 @@ export function HeroSystem({ locale, t }: HeroProps) {
 
             {/* CTA row */}
             <div className="mt-8 flex flex-wrap items-center gap-3" data-reveal style={{ "--reveal-delay": "320ms" } as CSSProperties}>
-              <ContactCta className="inline-flex items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95">
+              <ContactCta className="inline-flex min-h-11 items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95">
                 {t.hero.primaryCta} →
               </ContactCta>
               <Link
                 href={navHref(locale, "#how")}
-                className="inline-flex items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
               >
                 {t.hero.secondaryCta}
               </Link>
-              <span className="inline-flex items-center gap-3">
-                <Link
-                  href={navHref(locale, "#investors")}
-                  className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
-                >
-                  {t.hero.investorCta}
-                </Link>
-                <Link
-                  href={navHref(locale, "/partners")}
-                  className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
-                >
-                  {t.hero.partnerCta}
-                </Link>
-              </span>
+              <Link
+                href={navHref(locale, "/partners")}
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+              >
+                {t.hero.partnerCta}
+              </Link>
+              <Link
+                href={navHref(locale, "#investors")}
+                className="inline-flex min-h-11 items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+              >
+                {t.hero.investorCta}
+              </Link>
             </div>
 
             <p className="mt-6 text-xs text-muted" data-reveal style={{ "--reveal-delay": "400ms" } as CSSProperties}>
@@ -357,7 +347,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
       <div className="relative mt-14 border-y border-line bg-ink-2/40 py-4 sm:mt-20">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" />
-        <div className="flex overflow-hidden">
+        <div className="marquee-host flex overflow-hidden">
           <div className="marquee-track flex shrink-0 items-center gap-6 pr-6">
             {[...ribbon, ...ribbon].map((step, i) => (
               <span key={i} className="flex shrink-0 items-center gap-6">

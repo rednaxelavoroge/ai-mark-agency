@@ -409,7 +409,8 @@ export const copyAr: Copy = {
     "sending": "جاري الإرسال...",
     "success": "تم استلام طلبك بنجاح! سنعاود التواصل معك خلال ساعتي عمل.",
     "error": "حدث خطأ غير متوقع. يرجى مراسلتنا على hello@ai-mark.agency",
-    "privacy": "By sending, you agree we may contact you about this request. See Privacy."
+    "privacy": "By sending, you agree we may contact you about this request.",
+    "privacyLink": "Privacy"
   },
   "productPages": {
     "aime": {

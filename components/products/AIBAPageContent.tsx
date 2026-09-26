@@ -497,7 +497,7 @@ export function AIBAPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} scenario="assistant" />
+      <LeadInquiry contact={contact} locale={locale} scenario="assistant" />
 
       {/* 9. BOTTOM BANNER */}
       <section className="py-16 sm:py-20">

@@ -451,7 +451,8 @@ export const copyJa: Copy = {
     "sending": "Sending…",
     "success": "Received. We will reply to the email or messenger you left.",
     "error": "Could not send. Email hello@ai-mark.agency or try again.",
-    "privacy": "By sending, you agree we may contact you about this request. See Privacy."
+    "privacy": "By sending, you agree we may contact you about this request.",
+    "privacyLink": "Privacy"
   },
   "productPages": {
     "aime": {

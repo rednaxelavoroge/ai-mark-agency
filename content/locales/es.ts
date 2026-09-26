@@ -409,7 +409,8 @@ export const copyEs: Copy = {
     "sending": "Enviando...",
     "success": "¡Solicitud recibida! Le responderemos en menos de 2 horas hábiles.",
     "error": "Ocurrió un error. Por favor escriba a hello@ai-mark.agency",
-    "privacy": "By sending, you agree we may contact you about this request. See Privacy."
+    "privacy": "By sending, you agree we may contact you about this request.",
+    "privacyLink": "Privacy"
   },
   "productPages": {
     "aime": {

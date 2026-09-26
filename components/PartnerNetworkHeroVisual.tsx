@@ -106,7 +106,7 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
             <div
               data-reveal
               style={{ "--reveal-delay": `${240 + index * 90}ms` } as CSSProperties}
-              className="min-w-[100px] rounded-2xl border border-line bg-ink/90 px-2.5 py-2.5 backdrop-blur-md sm:min-w-[128px] sm:px-4 sm:py-3"
+              className="min-w-0 max-w-[min(140px,calc(50vw-2.5rem))] rounded-2xl border border-line bg-ink/90 px-2 py-2 backdrop-blur-md sm:max-w-none sm:min-w-[128px] sm:px-4 sm:py-3"
             >
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-mark" />
