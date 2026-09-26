@@ -11,7 +11,7 @@ export const copyJa: Copy = {
       "AI marketing",
       "digital production",
       "AIME",
-      "Showroom.pro",
+      "SHOWROOM AI",
       "ai-mark.agency"
     ]
   },
@@ -66,7 +66,8 @@ export const copyJa: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "プロジェクト相談",
     "secondaryCta": "仕組みを見る",
-    "investorCta": "投資家向け情報"
+    "investorCta": "投資家向け情報",
+    "partnerCta": "パートナー向け"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -90,7 +91,7 @@ export const copyJa: Copy = {
       {
         "n": "04",
         "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and Showroom.pro."
+        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
       },
       {
         "n": "05",
@@ -169,7 +170,7 @@ export const copyJa: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and Showroom.pro — AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
@@ -257,7 +258,7 @@ export const copyJa: Copy = {
       {
         "name": "AI Products",
         "price": "$149–349+",
-        "body": "AIME, Business Assistant, Showroom.pro — AI Sales Agent as product SKUs — install and operate on your side, or with us."
+        "body": "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us."
       },
       {
         "name": "AI Marketing Services",
@@ -304,7 +305,7 @@ export const copyJa: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom.pro when the offer needs them",
+          "Inbox and SHOWROOM AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -512,7 +513,7 @@ export const copyJa: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom.pro — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -526,7 +527,7 @@ export const copyJa: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

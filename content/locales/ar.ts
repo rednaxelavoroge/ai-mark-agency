@@ -11,7 +11,7 @@ export const copyAr: Copy = {
       "تسويق بالذكاء الاصطناعي",
       "برمجة وتطوير",
       "AIME",
-      "Showroom.pro",
+      "SHOWROOM AI",
       "ai-mark.agency"
     ]
   },
@@ -66,7 +66,8 @@ export const copyAr: Copy = {
     "soft": "نساعدك على الانتقال من مجرد فكرة أو دراسة جدوى إلى مشروع متكامل يعمل ويدر عوائد مالية.",
     "primaryCta": "ناقش مشروعك",
     "secondaryCta": "كيف نعمل",
-    "investorCta": "للمستثمرين"
+    "investorCta": "للمستثمرين",
+    "partnerCta": "للشركاء"
   },
   "pillars": {
     "eyebrow": "ما الذي نقدمه",
@@ -90,7 +91,7 @@ export const copyAr: Copy = {
       {
         "n": "04",
         "title": "المبيعات الذكية",
-        "body": "من أول رسالة إلى التأهيل واختيار الحل والحساب والعرض التجاري: AI Business Assistant وShowroom.pro."
+        "body": "من أول رسالة إلى التأهيل واختيار الحل والحساب والعرض التجاري: AI Business Assistant وSHOWROOM AI."
       },
       {
         "n": "05",
@@ -157,7 +158,7 @@ export const copyAr: Copy = {
         "price": "يبدأ من 149$ / شهرياً"
       },
       "showroom": {
-        "value": "Showroom.pro — AI Sales Agent — حاسبة المواصفات وعروض الأسعار",
+        "value": "SHOWROOM AI / AI Sales Agent — حاسبة المواصفات وعروض الأسعار",
         "who": "المصانع، معارض السيارات، التصميم الداخلي ومصنعو الأثاث",
         "extra": "تحويل متطلبات العميل المعقدة إلى عروض أسعار ومواصفات هندسية بصيغة PDF في ثوانٍ معدودة.",
         "price": "يبدأ من 299$ / شهرياً"
@@ -240,7 +241,7 @@ export const copyAr: Copy = {
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، Showroom.pro — AI Sales Agent ودعم فني مخصص 24/7."
+        "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، SHOWROOM AI / AI Sales Agent ودعم فني مخصص 24/7."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -262,7 +263,7 @@ export const copyAr: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and Showroom.pro when the offer needs them",
+          "Inbox and SHOWROOM AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -470,7 +471,7 @@ export const copyAr: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "Showroom.pro — AI Sales Agent",
+      "title": "SHOWROOM AI / AI Sales Agent",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
@@ -484,7 +485,7 @@ export const copyAr: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; Showroom.pro turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

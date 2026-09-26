@@ -41,6 +41,7 @@ export type Copy = {
     primaryCta: string;
     secondaryCta: string;
     investorCta: string;
+    partnerCta: string;
   };
   pillars: {
     eyebrow: string;

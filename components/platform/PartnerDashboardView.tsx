@@ -236,10 +236,46 @@ export function PartnerDashboardView({
         )}
       </section>
 
+      <section
+        aria-labelledby="hub-heading"
+        className={`p-5 sm:p-6 ${cardClass}`}
+      >
+        <h2 id="hub-heading" className="text-sm font-semibold tracking-tight">
+          Demos, materials, knowledge, support
+        </h2>
+        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
+          Product pages, brand files, published limits, and the public support
+          channels are on Resources. There is no partner-only sandbox, no
+          slide deck, and no ticket queue.
+        </p>
+        <ul className="mt-4 grid gap-2 text-xs">
+          <li>
+            <Link href="/partner/resources#demos" className="link-underline text-paper">
+              Demos and presentations
+            </Link>
+          </li>
+          <li>
+            <Link href="/partner/resources#knowledge" className="link-underline text-paper">
+              Product knowledge
+            </Link>
+          </li>
+          <li>
+            <Link href="/partner/resources#materials" className="link-underline text-paper">
+              Brand files
+            </Link>
+          </li>
+          <li>
+            <Link href="/partner/resources#support" className="link-underline text-paper">
+              Support
+            </Link>
+          </li>
+        </ul>
+      </section>
+
       <p className="text-xs text-muted">
-        Sales, commissions and payouts list the ledger rows. The sales kit is
-        on{" "}
-        <Link href="/partner/resources" className="link-underline text-paper">
+        Sales, commissions and payouts list the ledger rows. How tracking works
+        is on{" "}
+        <Link href="/partner/resources#tracking" className="link-underline text-paper">
           Resources
         </Link>
         .

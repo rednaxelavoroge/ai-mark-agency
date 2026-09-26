@@ -13,7 +13,7 @@ const es = clone(en);
 es.meta.title = "AI MARK — De la Idea a un Negocio Rentable";
 es.meta.description = "Empresa de capital de riesgo y marketing impulsada por IA. Investigamos el mercado, estructuramos el modelo, desarrollamos el producto digital y operamos marketing, ventas y crecimiento con nuestra propia infraestructura de IA.";
 es.meta.ogTitle = "AI MARK — De la Idea al Negocio Rentable";
-es.meta.keywords = ["empresa nativa de IA", "creación de empresas", "marketing con IA", "producción digital", "AIME", "Showroom.pro", "ai-mark.agency"];
+es.meta.keywords = ["empresa nativa de IA", "creación de empresas", "marketing con IA", "producción digital", "AIME", "SHOWROOM AI", "ai-mark.agency"];
 
 es.nav.items = [
   { href: "/", label: "Inicio" },
@@ -80,13 +80,13 @@ es.products.hubLead = "Sistemas autónomos listos para integrarse en su flujo de
 es.products.items = {
   aime: { value: "AIME — Empleado de marketing con IA", who: "Marcas, tiendas de e-commerce y agencias", extra: "Planificación, diseño y publicación autónoma en Instagram, Facebook y Threads con aprobación vía Telegram.", price: "Desde $199/mes" },
   assistant: { value: "AI Business Assistant", who: "Empresas de servicios, inmobiliarias, B2B y retail", extra: "Asistente omnicanal 24/7 en WhatsApp, Telegram y web con calificación y captura de leads en CRM.", price: "Desde $149/mes" },
-  showroom: { value: "Showroom.pro", who: "Fabricantes, concesionarios, interiorismo y proyectos a medida", extra: "Generador interactivo de especificaciones técnicas y propuestas comerciales en PDF en segundos.", price: "Desde $299/mes" }
+  showroom: { value: "SHOWROOM AI", who: "Fabricantes, concesionarios, interiorismo y proyectos a medida", extra: "Generador interactivo de especificaciones técnicas y propuestas comerciales en PDF en segundos.", price: "Desde $299/mes" }
 };
 
 es.commercial.tiers = [
   { name: "Starter", price: "$1,200", body: "Para empresas que inician su automatización: configuración de 1 producto de IA y canal clave." },
   { name: "Growth", price: "$2,200", body: "Para negocios en aceleración: despliegue de AIME + AIBA y gestión activa de campañas." },
-  { name: "Scale", price: "$3,500", body: "Solución completa: infraestructura omnicanal, Showroom.pro y soporte prioritario 24/7." }
+  { name: "Scale", price: "$3,500", body: "Solución completa: infraestructura omnicanal, SHOWROOM AI y soporte prioritario 24/7." }
 ];
 es.commercial.perMonth = "/mes";
 es.commercial.featured = "Más popular";
@@ -115,7 +115,7 @@ const pt = clone(es);
 pt.meta.title = "AI MARK — Da Ideia ao Negócio em Operação";
 pt.meta.description = "Empresa de venture builder e marketing nativa em IA. Pesquisamos o mercado, estruturamos o modelo, desenvolvemos o produto digital e operamos marketing, vendas e escala com infraestrutura proprietária de IA.";
 pt.meta.ogTitle = "AI MARK — Da Ideia ao Negócio em Operação";
-pt.meta.keywords = ["empresa nativa em IA", "criação de negócios", "marketing com IA", "produção digital", "AIME", "Showroom.pro", "ai-mark.agency"];
+pt.meta.keywords = ["empresa nativa em IA", "criação de negócios", "marketing com IA", "produção digital", "AIME", "SHOWROOM AI", "ai-mark.agency"];
 
 pt.nav.items = [
   { href: "/", label: "Início" },
@@ -174,13 +174,13 @@ pt.products.lead = "Soluções proprietárias de IA que operam de forma autônom
 pt.products.items = {
   aime: { value: "AIME — Funcionário de marketing com IA", who: "Marcas, e-commerces e agências", extra: "Planejamento, redação, design e postagem automática no Instagram, Facebook e Threads com aprovação no Telegram.", price: "A partir de $199/mês" },
   assistant: { value: "AI Business Assistant", who: "Prestadores de serviços, imobiliárias, B2B e varejo", extra: "Atendente omnicanal 24/7 no WhatsApp, Telegram e site com qualificação e envio de leads para CRM.", price: "A partir de $149/mês" },
-  showroom: { value: "Showroom.pro", who: "Indústrias, fabricantes, móveis planejados e projetos sob medida", extra: "Gerador instantâneo de especificações técnicas e propostas comerciais em PDF com regras de negócio.", price: "A partir de $299/mês" }
+  showroom: { value: "SHOWROOM AI", who: "Indústrias, fabricantes, móveis planejados e projetos sob medida", extra: "Gerador instantâneo de especificações técnicas e propostas comerciais em PDF com regras de negócio.", price: "A partir de $299/mês" }
 };
 
 pt.commercial.tiers = [
   { name: "Starter", price: "$1,200", body: "Para empresas iniciando automação: configuração de 1 produto de IA e canal principal." },
   { name: "Growth", price: "$2,200", body: "Para aceleração de vendas: AIME + AIBA integrados e gestão ativa de campanhas." },
-  { name: "Scale", price: "$3,500", body: "Ecossistema completo: atendimento multicanal, Showroom.pro e suporte prioritário 24/7." }
+  { name: "Scale", price: "$3,500", body: "Ecossistema completo: atendimento multicanal, SHOWROOM AI e suporte prioritário 24/7." }
 ];
 pt.commercial.perMonth = "/mês";
 pt.commercial.featured = "Mais escolhido";
@@ -208,7 +208,7 @@ const ar = clone(en);
 ar.meta.title = "AI MARK — من الفكرة إلى شركة ناجحة";
 ar.meta.description = "شركة تسويق واستثمار ريادي معتمدة على الذكاء الاصطناعي الأصيل. ندرس السوق، ونبني النموذج، ونطور المنتجات الرقمية، ثم ندير التسويق والمبيعات عبر بنيتنا التحتية الخاصة.";
 ar.meta.ogTitle = "AI MARK — من الفكرة إلى شركة ناشئة ناجحة";
-ar.meta.keywords = ["ذكاء اصطناعي", "تأسيس شركات", "تسويق بالذكاء الاصطناعي", "برمجة وتطوير", "AIME", "Showroom.pro", "ai-mark.agency"];
+ar.meta.keywords = ["ذكاء اصطناعي", "تأسيس شركات", "تسويق بالذكاء الاصطناعي", "برمجة وتطوير", "AIME", "SHOWROOM AI", "ai-mark.agency"];
 
 ar.nav.items = [
   { href: "/", label: "الرئيسية" },
@@ -275,13 +275,13 @@ ar.products.hubLead = "أنظمة ذاتية القيادة مجهزة لتسر�
 ar.products.items = {
   aime: { value: "AIME — موظف التسويق بالذكاء الاصطناعي", who: "العلامات التجارية، المتاجر الإلكترونية والوكالات", extra: "تخطيط المحتوى وتوليد المنشورات والنشر التلقائي في Instagram و Facebook و Threads بموافقة عبر تليجرام.", price: "يبدأ من 199$ / شهرياً" },
   assistant: { value: "مساعد الأعمال الذكي (AIBA)", who: "الشركات العقارية، قطاع الخدمات، التجارة والشركات B2B", extra: "خدمة عملاء ومبيعات فورية 24/7 عبر واتساب وتليجرام والموقع الإلكتروني وتأهيل العملاء للـ CRM.", price: "يبدأ من 149$ / شهرياً" },
-  showroom: { value: "Showroom.pro — حاسبة المواصفات وعروض الأسعار", who: "المصانع، معارض السيارات، التصميم الداخلي ومصنعو الأثاث", extra: "تحويل متطلبات العميل المعقدة إلى عروض أسعار ومواصفات هندسية بصيغة PDF في ثوانٍ معدودة.", price: "يبدأ من 299$ / شهرياً" }
+  showroom: { value: "SHOWROOM AI — حاسبة المواصفات وعروض الأسعار", who: "المصانع، معارض السيارات، التصميم الداخلي ومصنعو الأثاث", extra: "تحويل متطلبات العميل المعقدة إلى عروض أسعار ومواصفات هندسية بصيغة PDF في ثوانٍ معدودة.", price: "يبدأ من 299$ / شهرياً" }
 };
 
 ar.commercial.tiers = [
   { name: "Starter", price: "$1,200", body: "للشركات الراغبة في بدء الأتمتة: تشغيل منتج ذكاء اصطناعي واحد على قناة أساسية." },
   { name: "Growth", price: "$2,200", body: "للشركات النامية: ربط AIME و AIBA وإدارة الحملات التسويقية النشطة." },
-  { name: "Scale", price: "$3,500", body: "حل شامل ومتكامل: أتمتة كاملة للقنوات، نظام Showroom.pro ودعم فني مخصص 24/7." }
+  { name: "Scale", price: "$3,500", body: "حل شامل ومتكامل: أتمتة كاملة للقنوات، نظام SHOWROOM AI ودعم فني مخصص 24/7." }
 ];
 ar.commercial.perMonth = "/ شهرياً";
 ar.commercial.featured = "الأكثر طلباً";
@@ -309,7 +309,7 @@ const zh = clone(en);
 zh.meta.title = "AI MARK — 从商业创意到落地盈利";
 zh.meta.description = "AI原生创业孵化与数字营销公司。我们深入调研市场，打磨商业模型，打造数字化产品，并通过自主研发的 AI 基础设施驱动营销、销售与全流程增长。";
 zh.meta.ogTitle = "AI MARK — 从创意到成熟商业模式";
-zh.meta.keywords = ["AI原生企业", "商业孵化", "AI营销", "数字化开发", "AIME", "Showroom.pro", "ai-mark.agency"];
+zh.meta.keywords = ["AI原生企业", "商业孵化", "AI营销", "数字化开发", "AIME", "SHOWROOM AI", "ai-mark.agency"];
 
 zh.nav.items = [
   { href: "/", label: "首页" },
@@ -369,13 +369,13 @@ zh.products.lead = "具备自主决策能力的专业智能体系统，并在关
 zh.products.items = {
   aime: { value: "AIME — AI 营销数字员工", who: "消费品牌、出海跨境电商与营销机构", extra: "自主完成 Instagram、Facebook、Threads 内容策划、排版与发布，通过 Telegram 一键审核。", price: "199 美元/月起" },
   assistant: { value: "AI Business Assistant 业务助手", who: "房产顾问、高端服务业、B2B 外贸与企业客发", extra: "7×24 全渠道在线（WhatsApp / Telegram / 网页），智能初筛潜客并自动归档至 CRM 系统。", price: "149 美元/月起" },
-  showroom: { value: "Showroom.pro 智能配置展厅", who: "制造业工厂、汽车销售、全屋定制及工程总包", extra: "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。", price: "299 美元/月起" }
+  showroom: { value: "SHOWROOM AI 智能配置展厅", who: "制造业工厂、汽车销售、全屋定制及工程总包", extra: "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。", price: "299 美元/月起" }
 };
 
 zh.commercial.tiers = [
   { name: "Starter 入门版", price: "$1,200", body: "适合初步尝试业务自动化：部署 1 款核心 AI 智能体及单一主渠道对接。" },
   { name: "Growth 成长版", price: "$2,200", body: "适合加速销售扩张：组合部署 AIME 与 AIBA，并由专业团队持续调优营销。" },
-  { name: "Scale 规模版", price: "$3,500", body: "企业级完整方案：全渠道自动化、Showroom.pro 深度定制与 24/7 优先支持。" }
+  { name: "Scale 规模版", price: "$3,500", body: "企业级完整方案：全渠道自动化、SHOWROOM AI 深度定制与 24/7 优先支持。" }
 ];
 zh.commercial.perMonth = "/月";
 zh.commercial.featured = "最多客户选择";
@@ -468,7 +468,7 @@ de.hero.investorCta = "Für Investoren";
 de.commercial.tiers = [
   { name: "Starter", price: "$1,200", body: "Für den Einstieg in die Automatisierung: Einrichtung von 1 KI-System auf dem Hauptkanal." },
   { name: "Growth", price: "$2,200", body: "Für wachstumsorientierte Unternehmen: AIME + AIBA und aktive Kampagnensteuerung." },
-  { name: "Scale", price: "$3,500", body: "Komplettlösung: Vollständige Omnichannel-Infrastruktur, Showroom.pro und 24/7 Premium-Support." }
+  { name: "Scale", price: "$3,500", body: "Komplettlösung: Vollständige Omnichannel-Infrastruktur, SHOWROOM AI und 24/7 Premium-Support." }
 ];
 de.commercial.perMonth = "/Monat";
 de.commercial.featured = "Beliebteste Wahl";

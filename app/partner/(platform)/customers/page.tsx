@@ -15,7 +15,7 @@ export default async function PartnerCustomersPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Customers"
-        lead="People who submitted the contact form on the site while your referral link was still valid. A lead is not a sale and is not a commission."
+        lead="People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
       />
       <DataTable
         unreadable={leads.unreadable}
