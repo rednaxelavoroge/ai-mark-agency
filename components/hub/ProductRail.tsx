@@ -58,7 +58,7 @@ export function ProductRail({
     },
     {
       id: "production",
-      name: t.production.title,
+      name: isRu ? "Digital Production & AI Engineering" : "Digital Production & AI Engineering",
       category: t.production.eyebrow,
       body: t.production.lead,
       price: t.commercial.tiers[3]?.price ?? t.commercial.custom,
