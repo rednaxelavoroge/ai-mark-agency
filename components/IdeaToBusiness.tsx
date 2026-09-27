@@ -374,6 +374,18 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
     };
   }, [total]);
 
+  const jumpToStage = (i: number) => {
+    setActive(i);
+    const el = sectionRef.current;
+    if (!el || reduced) return;
+    const panelH = panelRef.current?.getBoundingClientRect().height || window.innerHeight;
+    const rect = el.getBoundingClientRect();
+    const scrollable = rect.height - panelH;
+    if (scrollable <= 0) return;
+    const targetScrollY = window.scrollY + rect.top + (i / Math.max(1, total - 1)) * scrollable;
+    window.scrollTo({ top: targetScrollY, behavior: "smooth" });
+  };
+
   const current = stages[active];
   /* The slot is a size container: `.itb-dial` takes min(width, height, 460px)
      from it, so the ring always fits the room the layout actually gives it. */
@@ -441,8 +453,14 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
               {/* Progress rail */}
               <div className="mt-4 flex gap-1.5 [@media(max-height:560px)]:hidden lg:mt-8">
                 {stages.map((s, i) => (
-                  <span key={s.title} className="flex-1">
-                    <span className="block h-[3px] overflow-hidden rounded-full bg-ink-3">
+                  <button
+                    key={s.title}
+                    type="button"
+                    onClick={() => jumpToStage(i)}
+                    className="flex-1 cursor-pointer py-1 group"
+                    aria-label={`Jump to stage ${i}: ${s.title}`}
+                  >
+                    <span className="block h-[3px] overflow-hidden rounded-full bg-ink-3 group-hover:bg-line-strong transition-colors">
                       <span
                         className="block h-full rounded-full transition-transform duration-500 ease-out"
                         style={{
@@ -451,7 +469,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                         }}
                       />
                     </span>
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -523,44 +541,41 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                   <Artifact kind={current.artifact} locale={locale} />
                 </div>
 
-                {/* Satellite nodes */}
+                {/* Satellite nodes — clean glowing badges around the dial ring, zero label collision */}
                 {stages.map((s, i) => {
                   const p = nodePos(i, total);
                   const on = i <= active;
-                  const isRight = p.x > 55;
+                  const isCurrent = i === active;
                   return (
                     <button
                       key={s.title}
                       type="button"
-                      onClick={() => setActive(i)}
-                      className={`absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap cursor-pointer group transition-transform hover:scale-105 ${
-                        isRight ? "flex-row-reverse text-right" : "text-left"
-                      }`}
+                      onClick={() => jumpToStage(i)}
+                      className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center cursor-pointer group transition-all"
                       style={{ left: `${p.x}%`, top: `${p.y}%` } as CSSProperties}
                       aria-label={`Stage ${i}: ${s.title}`}
+                      title={`${String(i).padStart(2, "0")} — ${s.title}`}
                     >
                       <span
-                        className={`grid h-6 w-6 place-items-center rounded-full border text-[9px] font-mono transition-all duration-500 ${
-                          on ? "text-mark-ink" : "border-line bg-ink-2 text-muted group-hover:border-paper/40 group-hover:text-paper"
+                        className={`grid h-7 w-7 sm:h-8 sm:w-8 place-items-center rounded-full border text-[10px] sm:text-xs font-mono font-medium transition-all duration-300 ${
+                          on
+                            ? "text-mark-ink font-semibold"
+                            : "border-line bg-ink-2 text-muted group-hover:border-paper/40 group-hover:text-paper"
                         }`}
                         style={
                           on
                             ? {
                                 backgroundColor: accent(i),
                                 borderColor: accent(i),
-                                boxShadow: `0 0 0 4px color-mix(in srgb, ${accent(i)} 20%, transparent)`,
+                                boxShadow: isCurrent
+                                  ? `0 0 0 5px color-mix(in srgb, ${accent(i)} 24%, transparent), 0 0 14px ${accent(i)}`
+                                  : `0 0 0 2px color-mix(in srgb, ${accent(i)} 20%, transparent)`,
+                                transform: isCurrent ? "scale(1.15)" : "scale(1)",
                               }
                             : undefined
                         }
                       >
-                        {i === 0 ? "◦" : i}
-                      </span>
-                      <span
-                        className={`hidden font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 lg:inline ${
-                          on ? "font-semibold text-paper" : "text-muted group-hover:text-paper/80"
-                        }`}
-                      >
-                        {s.title}
+                        {String(i).padStart(2, "0")}
                       </span>
                     </button>
                   );
@@ -597,11 +612,11 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
 
     {/* Stage overview — every step described in plain language */}
     <section className="border-t border-line bg-ink-3/20">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
         <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase" data-reveal>
           {locale === "ru" ? "Все этапы контура" : "Every stage of the contour"}
         </p>
-        <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
           {stages.map((s, i) => (
             <div
               key={s.title}

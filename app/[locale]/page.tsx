@@ -173,6 +173,7 @@ export default async function HomePage({ params }: Props) {
       <Manifesto locale={locale} />
 
       {/* 6. COMMERCIAL MODEL */}
+      {/* 6. COMMERCIAL MODEL */}
       <Section
         id="commercial"
         index="04"
@@ -180,124 +181,151 @@ export default async function HomePage({ params }: Props) {
         title={t.commercial.title}
         lead={t.commercial.lead}
       >
-        <p className="mb-8 max-w-3xl text-sm text-paper/85">{t.commercial.skuNote}</p>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {t.commercial.tiers.map((tier, ti) => (
-            <article
-              key={tier.name}
-              data-reveal
-              style={{ "--reveal-delay": `${ti * 100}ms` } as CSSProperties}
-              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
-            >
-              <div>
-                <span className="font-mono text-[10px] text-warm uppercase tracking-wider">
-                  {isRu ? "Формат сотрудничества" : "Engagement Model"}
-                </span>
-                <h3 className="mt-1 font-display text-xl font-semibold text-paper">{tier.name}</h3>
-                <p className="mt-3 font-display text-2xl font-bold tracking-tight text-mark">
-                  {tier.price}
-                </p>
-                <p className="mt-3 text-xs leading-relaxed text-muted">{tier.body}</p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-line">
-                {ti === 0 ? (
-                  <a
-                    href={navHref(locale, "/products")}
-                    className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors"
-                  >
-                    {isRu ? "Смотреть продукты" : "View Products"}
-                  </a>
-                ) : (
-                  <ContactCta className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
-                    {ti === 1 || ti === 2
-                      ? isRu
-                        ? "Запросить условия"
-                        : "Request Details"
-                      : isRu
-                        ? "Обсудить проект"
-                        : "Discuss Project"}
-                  </ContactCta>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Marketing Department Retainers Sub-Block */}
-        <div className="mt-16 rounded-2xl border border-line bg-ink-3/30 p-6 sm:p-8">
-          <div className="max-w-2xl">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-wider">
-              {isRu ? "Пакеты отдела маркетинга" : "Dedicated Marketing Department Retainers"}
+        {/* Marketing Department Retainer Packages */}
+        <div>
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-6">
+            <div>
+              <span className="font-mono text-xs font-semibold text-warm uppercase tracking-wider">
+                {isRu ? "Пакеты отдела маркетинга" : "Dedicated Marketing Department Retainers"}
+              </span>
+              <p className="mt-1 text-xs text-muted max-w-xl">
+                {isRu
+                  ? "Постоянный HITL-маркетинг: AI генерирует, человек утверждает. Медиабюджет оплачивается отдельно."
+                  : "Continuous HITL marketing: AI drafts, human reviews. Media budget is separate."}
+              </p>
+            </div>
+            <span className="font-mono text-xs text-mark shrink-0">
+              {isRu ? "Оплата за выбранный план" : "Fixed monthly fee"}
             </span>
-            <h3 className="mt-1 font-display text-2xl font-semibold text-paper">
-              {t.commercial.tiers[2].name}
-            </h3>
-            <p className="mt-2 text-sm text-muted">{t.commercial.tiers[2].body}</p>
           </div>
 
-          <p className="mt-4 max-w-2xl text-xs leading-relaxed text-muted">
-            {isRu
-              ? "Ниже — опубликованные планы отдела: Starter $1,200, Growth $2,200, Scale $3,500 в месяц. Коридор $1,500–3,500+ на карточке выше — тот же формат, записанный диапазоном. Оплата — за выбранный план. Другой скоуп обсуждается отдельно."
-              : "Below are the published department plans: Starter $1,200, Growth $2,200, and Scale $3,500 per month. The $1,500–3,500+ band on the card above is the same format, written as a range. Pay is for the selected plan. A different scope is a separate conversation."}
-          </p>
-
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-3">
             {packages.map((pkg, pi) => {
               const item = t.packages.items[pkg.id];
               return (
                 <article
                   key={pkg.id}
                   data-reveal
-                  style={{ "--reveal-delay": `${pi * 100}ms` } as CSSProperties}
-                  className={`flex flex-col rounded-xl border p-6 transition-all hover:-translate-y-1 ${
+                  style={{ "--reveal-delay": `${pi * 80}ms` } as CSSProperties}
+                  className={`flex flex-col justify-between rounded-2xl border p-5 sm:p-6 transition-all hover:-translate-y-1 ${
                     pkg.featured
                       ? "border-mark/60 bg-ink-2 shadow-md relative"
-                      : "border-line bg-ink-2 hover:border-line-strong"
+                      : "border-line bg-ink-2 hover:border-line-strong hover:shadow-sm"
                   }`}
                 >
-                  {pkg.featured ? (
-                    <div className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 text-[10px] font-mono font-semibold text-mark-ink uppercase">
-                      {t.commercial.featured}
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-display text-lg font-semibold text-paper">{item.name}</h4>
+                      {pkg.featured ? (
+                        <span className="rounded-full bg-mark px-2.5 py-0.5 text-[9px] font-mono font-semibold text-mark-ink uppercase">
+                          {t.commercial.featured}
+                        </span>
+                      ) : null}
                     </div>
-                  ) : null}
-                  <h4 className="font-display text-xl font-semibold text-paper">{item.name}</h4>
-                  <p className="mt-3 font-display text-3xl font-bold tracking-tight text-paper">
-                    {formatUsd(pkg.priceUsd)}
-                    <span className="text-sm font-normal text-muted ml-1.5">{t.commercial.perMonth}</span>
-                  </p>
-                  <p className="mt-3 text-xs text-muted leading-relaxed">{item.summary}</p>
-                  <ul className="mt-5 flex-1 space-y-2 text-xs border-t border-line/60 pt-4 text-paper/85">
-                    {item.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {/* Published plan: Pay is the SKU action. A different scope
-                      stays a conversation and is not the same button. */}
-                  <BuyLink
-                    locale={locale}
-                    skuId={pkg.id}
-                    label={
-                      isRu
-                        ? `Оплатить ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
-                        : `Pay ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
-                    }
-                    className={`mt-6 inline-flex w-full justify-center rounded-full px-4 py-2.5 text-xs font-semibold transition-all ${
-                      pkg.featured
-                        ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
-                        : "border border-mark/50 bg-mark/10 text-mark hover:bg-mark/20"
-                    }`}
-                  />
-                  <ContactCta className="mt-2 inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
-                    {isRu ? "Другой скоуп — обсудить" : "Different scope — discuss"}
-                  </ContactCta>
+
+                    <p className="mt-3 font-display text-2xl sm:text-3xl font-bold tracking-tight text-paper">
+                      {formatUsd(pkg.priceUsd)}
+                      <span className="text-xs font-normal text-muted ml-1.5">{t.commercial.perMonth}</span>
+                    </p>
+                    <p className="mt-2 text-xs text-muted leading-relaxed">{item.summary}</p>
+
+                    <ul className="mt-4 space-y-1.5 text-xs border-t border-line/60 pt-3 text-paper/85">
+                      {item.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2">
+                          <span className="text-mark font-bold shrink-0">✓</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-5 pt-3 border-t border-line/60 space-y-2">
+                    <BuyLink
+                      locale={locale}
+                      skuId={pkg.id}
+                      label={
+                        isRu
+                          ? `Оплатить ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
+                          : `Pay ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
+                      }
+                      className={`inline-flex w-full justify-center rounded-full px-4 py-2.5 text-xs font-semibold transition-all ${
+                        pkg.featured
+                          ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
+                          : "border border-mark/50 bg-mark/10 text-mark hover:bg-mark/20"
+                      }`}
+                    />
+                    <ContactCta className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-3 py-1.5 text-[11px] font-medium text-muted hover:text-paper hover:border-paper/40 transition-colors">
+                      {isRu ? "Другой скоуп — обсудить" : "Different scope — discuss"}
+                    </ContactCta>
+                  </div>
                 </article>
               );
             })}
           </div>
         </div>
+
+        {/* Other Collaboration Formats */}
+        {(() => {
+          const otherTiers = t.commercial.tiers.filter(
+            (tier) =>
+              tier &&
+              !["Starter", "Growth", "Scale"].includes(tier.name) &&
+              !tier.name.toLowerCase().includes("department") &&
+              !tier.name.toLowerCase().includes("отдел")
+          );
+          if (otherTiers.length === 0) return null;
+          return (
+            <div className="mt-10 pt-8 border-t border-line">
+              <div className="mb-5">
+                <span className="font-mono text-xs font-semibold text-warm uppercase tracking-wider">
+                  {isRu ? "Другие форматы сотрудничества" : "Other Engagement Formats"}
+                </span>
+                <p className="mt-1 text-xs text-muted">
+                  {t.commercial.skuNote}
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {otherTiers.map((tier, ti) => (
+                  <article
+                    key={tier.name}
+                    data-reveal
+                    style={{ "--reveal-delay": `${ti * 70}ms` } as CSSProperties}
+                    className="flex flex-col justify-between rounded-xl border border-line bg-ink-2 p-5 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-sm"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[10px] text-warm uppercase tracking-wider">
+                          {isRu ? "Формат" : "Format"}
+                        </span>
+                        <span className="font-display text-sm font-bold text-mark">
+                          {tier.price}
+                        </span>
+                      </div>
+                      <h4 className="mt-2 font-display text-base font-semibold text-paper">{tier.name}</h4>
+                      <p className="mt-2 text-xs leading-relaxed text-muted">{tier.body}</p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-line">
+                      {ti === 0 ? (
+                        <a
+                          href={navHref(locale, "/products")}
+                          className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2 text-xs font-semibold text-paper hover:border-paper/40 transition-colors"
+                        >
+                          {isRu ? "Смотреть продукты →" : "View Products →"}
+                        </a>
+                      ) : (
+                        <ContactCta className="inline-flex w-full justify-center rounded-full border border-line bg-ink-3/40 px-4 py-2 text-xs font-semibold text-paper hover:border-paper/40 transition-colors">
+                          {isRu ? "Обсудить проект →" : "Discuss Project →"}
+                        </ContactCta>
+                      )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         <p className="mt-6 text-xs text-muted font-mono">{t.commercial.footnote}</p>
       </Section>
 

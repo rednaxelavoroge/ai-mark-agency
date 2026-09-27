@@ -354,7 +354,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
       </div>
 
       {/* Transformation ribbon: idea → working business */}
-      <div className="relative mt-14 border-y border-line bg-ink-2/40 py-4 sm:mt-20">
+      <div className="relative mt-14 overflow-hidden border-y border-line bg-ink-2/40 py-4 sm:mt-20">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" />
         <div className="flex overflow-hidden">

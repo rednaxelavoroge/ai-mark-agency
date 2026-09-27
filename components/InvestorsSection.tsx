@@ -36,20 +36,25 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
       ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* 3 Fundamentals Cards */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3">
         {fundamentals.map((f, i) => (
           <div
             key={i}
             data-reveal
-            style={{ "--reveal-delay": `${i * 100}ms` } as CSSProperties}
-            className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-md"
+            style={{ "--reveal-delay": `${i * 90}ms` } as CSSProperties}
+            className="rounded-xl border border-line bg-ink-2 p-5 sm:p-6 shadow-sm flex flex-col justify-between transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
           >
             <div>
-              <span className="font-mono text-xs font-semibold text-warm">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-xs font-semibold text-warm">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-mono text-[10px] text-mark uppercase tracking-wider">
+                  {isRu ? "Устойчивость" : "Value Driver"}
+                </span>
+              </div>
               <h4 className="mt-3 font-display text-base font-semibold text-paper leading-snug">
                 {f.title}
               </h4>
@@ -57,73 +62,28 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
                 {f.desc}
               </p>
             </div>
-            <div className="mt-5 border-t border-line/60 pt-3">
-              <span className="font-mono text-[10px] text-mark uppercase tracking-wider">
-                {isRu ? "Фактор устойчивости" : "Value Driver"}
-              </span>
-            </div>
           </div>
         ))}
       </div>
 
-      {/* Capital Allocation Matrix */}
-      <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-line pb-4">
-          <div>
-            <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider">
-              {isRu ? "Направления использования капитала" : "Allocation of Growth Capital"}
-            </span>
-            <h3 className="mt-1 font-display text-lg font-semibold text-paper">
-              {isRu ? "Целевое применение инвестиционных ресурсов" : "Targeted Commercial Deployment"}
-            </h3>
-          </div>
-          <span className="font-mono text-[11px] text-warm uppercase">
-            {isRu ? "Коммерческое масштабирование" : "Commercial Scaling Phase"}
-          </span>
-        </div>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {capitalUses.map((u, idx) => (
-            <div
-              key={idx}
-              data-reveal
-              style={{ "--reveal-delay": `${idx * 70}ms` } as CSSProperties}
-              className="rounded-xl border border-line/70 bg-ink-3/30 p-4 transition-all hover:-translate-y-1 hover:border-line-strong hover:bg-ink-3/60"
-            >
-              <h5 className="font-display text-sm font-semibold text-paper">
-                {u.label}
-              </h5>
-              <p className="mt-2 text-xs text-muted leading-relaxed">
-                {u.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Structured Venture Statement & CTA */}
-      <div className="rounded-2xl border border-warm/30 bg-warm-soft p-6 sm:p-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-3xl">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {isRu ? "Формат участия & Структура" : "Participation & Terms"}
+      <div className="relative overflow-hidden rounded-2xl border border-warm/30 bg-warm-soft p-5 sm:p-7">
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-2xl">
+            <span className="font-mono text-[10px] font-semibold text-warm uppercase tracking-widest">
+              {isRu ? "Seed-раунд & Коммерческое масштабирование" : "Seed Round & Commercial Scaling"}
             </span>
-            <p className="mt-2 font-display text-base sm:text-lg font-medium text-paper">
+            <p className="mt-1 font-display text-sm sm:text-base font-medium text-paper">
               {isRu
-                ? "Компания открыта к раннему финансированию на этапе коммерческого масштабирования. Размер участия и структура сделки определяются индивидуально."
-                : "The company is open to early-stage financing during its commercial scaling phase. Participation size and structure are determined individually."}
-            </p>
-            <p className="mt-2 text-xs text-muted">
-              {isRu
-                ? "По мере роста клиентской базы, операционной выручки и международного присутствия компания может рассматривать дальнейшие этапы финансирования."
-                : "As the verified customer base, revenue volume, and international presence expand, the company may evaluate subsequent financing rounds."}
+                ? "Компания открыта к инвестициям на этапе масштабирования готовой технологической базы. Структура сделки и условия обсуждаются индивидуально."
+                : "The company is open to growth capital during its commercial scaling phase. Deal structure and terms are discussed individually."}
             </p>
           </div>
 
           <div className="shrink-0">
             <Link
               href={navHref(locale, INVESTOR_PAGE_PATH)}
-              className="inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-xs font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-3 text-xs font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all whitespace-nowrap"
             >
               {isRu ? "Полное инвестиционное предложение" : "Full investment proposal"}
               <span className="btn-arrow" aria-hidden>
