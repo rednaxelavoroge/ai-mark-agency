@@ -42,7 +42,7 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
             {copy.partners.lead}
           </p>
           <ol className="mt-5 flex flex-wrap items-center gap-2">
-            {["Personal sale", "Team sales", "Up to 5 levels", "Commission"].map((step, i) => (
+            {["Personal sale", "Team sales", "Up to 5 levels", "Up to 80%"].map((step, i) => (
               <li key={step} className="flex items-center gap-2">
                 {i > 0 ? <span className="font-mono text-xs text-warm">→</span> : null}
                 <span className="rounded-full border border-line bg-ink-2 px-3 py-1.5 text-sm text-paper">{step}</span>

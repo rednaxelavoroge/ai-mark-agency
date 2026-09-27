@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CommissionScheduleCard } from "@/components/platform/CommissionScheduleCard";
 import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader } from "@/components/platform/PageHeader";
 import { getPartnerCommissions, requirePartner } from "@/lib/auth/dal";
@@ -15,8 +16,9 @@ export default async function PartnerCommissionsPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Commissions"
-        lead="Ledger entries for your partner id. Status, rate and amount are stored values. This page does not recompute them. A reversal is its own row with a negative amount."
+        lead="Ledger entries for your partner id. Status, rate and amount are stored values. This page does not recompute them. A reversal is its own row with a negative amount. The published schedule is L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, with an 80% aggregate network pool."
       />
+      <CommissionScheduleCard />
       <DataTable
         unreadable={entries.unreadable}
         empty="No commission entries. Nothing is estimated. An entry appears after a qualifying sale is posted to the ledger."

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CommissionScheduleCard } from "@/components/platform/CommissionScheduleCard";
 import { DetailList, PageHeader, StatCard } from "@/components/platform/PageHeader";
 import { cardClass } from "@/components/ui/classes";
 import { getPartnerReferralStats, getSponsorEdge, requirePartner } from "@/lib/auth/dal";
@@ -34,6 +35,8 @@ export default async function PartnerNetworkPage() {
           value={formatCount(stats.partnerSignups)}
         />
       </div>
+
+      <CommissionScheduleCard />
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 className="text-sm font-semibold tracking-tight">Your sponsor</h2>

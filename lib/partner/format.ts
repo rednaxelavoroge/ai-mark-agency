@@ -106,10 +106,10 @@ export function referralUrlTo(code: string, path: string): string {
 }
 
 /**
- * Whether a sale paid at `now` would fall in this partner's launch window.
+ * Whether a sale paid at `now` would fall in this partner's launch-period flag.
  *
  * The boundary matches the ledger: paid_at < created_at + 90 days is launch.
- * This does not compute commission.
+ * Launch is a status flag only. It does not multiply commission rates.
  */
 export function launchWindow(
   createdAt: string | null | undefined,

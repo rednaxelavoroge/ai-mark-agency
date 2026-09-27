@@ -72,13 +72,18 @@ Phase 4C **is implemented and applied to the live project.** The qualifying sale
 L1–L5 distribution, the 14-day hold, payouts and the partner read path all exist:
 
 * `supabase/migrations/20260922090800_phase4c_ledger.sql` — `sales`,
-  `commission_rules` (seeded L1 15% / L2 5% / L3 3% / L4 2% / L5 1%, launch
-  multiplier 1.5 while the L1 partner is under 90 days old), `commission_entries`,
-  `payouts`, `payout_allocations`, and the RPCs `record_sale`, `qualify_sale`,
-  `post_commission_entries`, `reverse_sale_commissions`, `advance_sponsor_lock`,
-  `create_payout`, `confirm_payout`, `partner_ledger_stats`. Every RPC is
-  `SECURITY DEFINER` and executable by `service_role` only except the stats
-  rollup, which the partner's own session may call.
+  `commission_rules`, `commission_entries`, `payouts`, `payout_allocations`,
+  and the RPCs `record_sale`, `qualify_sale`, `post_commission_entries`,
+  `reverse_sale_commissions`, `advance_sponsor_lock`, `create_payout`,
+  `confirm_payout`, `partner_ledger_stats`. Every RPC is `SECURITY DEFINER`
+  and executable by `service_role` only except the stats rollup, which the
+  partner's own session may call.
+* `supabase/migrations/20260927170000_partner_commission_model_v2.sql` —
+  Partner Commission Model v2: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%,
+  partner pool cap 80%, AI Mark retained share 20% of commissionable amount.
+  Launch is a status flag, not a 1.5× multiplier. Historical v1 rules are
+  closed, not deleted; already-posted entries are not rewritten.
+  Contract: `docs/partner-economic-model.md`.
 * `supabase/migrations/20260924220000_payout_destination.sql` — the USDC
   destination a partner saves on their profile. It is a note, not a KYC record,
   and nothing in the app moves tokens.

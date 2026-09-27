@@ -5,9 +5,10 @@ cursor:
 
 # Phase 4C contract
 
-STATUS = APPROVED
+STATUS = APPROVED (operations). Rates: see Partner Commission Model v2.
 
-Числа ниже фиксированы. Движок читает ставки из `commission_rules`, а не из кода интерфейса.
+Числа ставок — в `docs/partner-economic-model.md`. Движок читает ставки из
+`commission_rules`, а не из кода интерфейса и не из клиента.
 
 ## Qualifying sale
 
@@ -15,19 +16,21 @@ Qualifying sale — фактически оплаченная клиентом �
 
 `referral_clicks` и `leads` не являются sales и не входят в ledger.
 
-## Base
+## Base (superseded by v2 — historical v1)
 
-L1 15%, L2 5%, L3 3%, L4 2%, L5 1%. Pool 26%. Пример: $1000 → L1 $150, L2 $50, L3 $30, L4 $20, L5 $10 (итого $260).
+Historical v1, closed at `2026-09-27 00:00:00+00`: L1 15%, L2 5%, L3 3%, L4 2%, L5 1%. Pool 26%. Пример: $1000 → L1 $150, L2 $50, L3 $30, L4 $20, L5 $10 (итого $260). Already-posted entries keep these amounts.
 
-## Launch boost
+Active v2: L1 50%, L2 15%, L3 7%, L4 5%, L5 3%. Partner pool 80%. AI Mark retained share 20% of commissionable amount. Пример: $1000 → L1 $500, L2 $150, L3 $70, L4 $50, L5 $30 (итого $800). Direct L1 is $500, not $800.
 
-90 дней с активации партнёра, индивидуально, не календарный квартал. Множитель 1.5: 22.5 / 7.5 / 4.5 / 3 / 1.5. Pool 39%. Пример: $1000 → L1 $225, L2 $75, L3 $45, L4 $30, L5 $15 (итого $390).
+## Launch boost (disabled as a rate multiplier)
 
-Повторяющиеся qualifying payments внутри 90 дней считаются по launch. После 90 дней — по base. Lifetime не обещать.
+90 дней с активации партнёра, индивидуально, не календарный квартал. Это **статусный флаг** `commission_type`, не множитель ставки. Множитель 1.5 больше не применяется: он поднимал бы v2-пул выше 80% (80% × 1.5 = 120%), что запрещено.
+
+Повторяющиеся qualifying payments используют те же v2-ставки внутри и после 90 дней. Lifetime не обещать.
 
 Launch eligibility = timestamp активации партнёра, которому атрибутирована продажа (L1), плюс 90 дней, сравнённый с временем фактической оплаты. В `partner_profiles` нет колонки activation: используется существующий `created_at`. Новую колонку не добавлять.
 
-Окно считается по L1 этой продажи и применяется ко всем уровням той же продажи.
+Окно считается по L1 этой продажи и применяется ко всем уровням той же продажи как тип записи, не как арифметика.
 
 ## Country / Strategic Partner
 
@@ -71,9 +74,9 @@ Refund и chargeback не меняют историческую entry. Пише�
 
 Колонки: `level`, `base_rate`, `launch_multiplier`, `active_from`, `active_to` nullable.
 
-Seed BASE: 0.15 / 0.05 / 0.03 / 0.02 / 0.01 и multiplier 1.5.
+Seed: historical v1 0.15 / 0.05 / 0.03 / 0.02 / 0.01 with stored multiplier 1.5, closed at v2. Active v2: 0.50 / 0.15 / 0.07 / 0.05 / 0.03 with multiplier 1.0. Engine ignores `launch_multiplier`. `PARTNER_POOL_CAP = 0.80`.
 
-Движок читает правила из базы. Маркетинговая страница может показать эти ставки как контракт. Экран earnings ставки не хардкодит.
+Движок читает `base_rate` из базы и не умножает. Маркетинговая страница показывает v2 как контракт. Экран earnings ставки не принимает от клиента.
 
 ## RPC
 

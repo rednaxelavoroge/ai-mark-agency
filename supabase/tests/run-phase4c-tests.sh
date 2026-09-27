@@ -149,12 +149,24 @@ if [ "$RC" -ne 0 ]; then
   printf '%sChain setup failed: %s%s\n' "$C_RED" "$OUT" "$C_OFF"; exit 1
 fi
 
-section "Rules are seeded as numeric, not hardcoded in the engine"
+section "Rules are versioned: historical v1 closed, active v2 is the 80% pool"
 
 run_sql "select string_agg(level::text || ':' || base_rate::text || ':' || launch_multiplier::text, ',' order by level)
-         from public.commission_rules;"
-eq "base rates 0.15/0.05/0.03/0.02/0.01 and multiplier 1.5" \
+         from public.commission_rules
+        where active_to is not null;"
+eq "historical v1 rates 0.15/0.05/0.03/0.02/0.01 and stored multiplier 1.5 remain closed, not deleted" \
   "1:0.150000:1.500000,2:0.050000:1.500000,3:0.030000:1.500000,4:0.020000:1.500000,5:0.010000:1.500000"
+
+run_sql "select string_agg(level::text || ':' || base_rate::text || ':' || launch_multiplier::text, ',' order by level)
+         from public.commission_rules
+        where active_to is null;"
+eq "active v2 rates 0.50/0.15/0.07/0.05/0.03 and multiplier 1.0" \
+  "1:0.500000:1.000000,2:0.150000:1.000000,3:0.070000:1.000000,4:0.050000:1.000000,5:0.030000:1.000000"
+
+run_sql "select public.partner_pool_cap()::text;"
+eq "partner pool cap is 80%" "0.800000"
+run_sql "select public.ai_mark_retained_share()::text;"
+eq "AI Mark retained share is 20% of commissionable amount" "0.200000"
 
 section "Empty partner and non-sales"
 
@@ -211,10 +223,10 @@ svc_eq "launch sale posts five entries" "5" "select public.post_commission_entri
 run_sql "select string_agg(amount::text, ',' order by level)
            from public.commission_entries
           where sale_id = '$LAUNCH_SALE' and commission_type = 'launch';"
-eq "launch L1-L5 is 225, 75, 45, 30, 15" "225.00,75.00,45.00,30.00,15.00"
+eq "launch L1-L5 uses v1 base rates without the historical 1.5 multiplier: 150, 50, 30, 20, 10" "150.00,50.00,30.00,20.00,10.00"
 
 run_sql "select sum(amount)::numeric(20,2) from public.commission_entries where sale_id = '$LAUNCH_SALE' and commission_type = 'launch';"
-eq "launch pool is 390" "390.00"
+eq "launch pool in the v1 window is 260, not 390" "260.00"
 
 run_sql "select partner_id from public.sales where id = '$LAUNCH_SALE';"
 eq "referral code resolves server-side to the selling partner" "$PID_L1"
@@ -224,7 +236,7 @@ svc "select public.record_sale('invoice', 'ord-rec-in', 'aime', 1000::numeric, '
 REC_IN="$OUT"
 svc "select public.qualify_sale('$REC_IN'); select public.post_commission_entries('$REC_IN');" >/dev/null
 run_sql "select amount::text || ':' || commission_type from public.commission_entries where sale_id = '$REC_IN' and level = 1;"
-eq "recurring payment inside 90 days is launch" "225.00:launch"
+eq "recurring payment inside 90 days is launch-typed at the v1 base rate, not 1.5x" "150.00:launch"
 
 svc "select public.record_sale('invoice', 'ord-rec-out', 'aime', 1000::numeric, 'USD', timestamptz '2026-01-01 00:00:00+00' + interval '100 days', null, '$PID_L1');"
 REC_OUT="$OUT"
@@ -272,7 +284,7 @@ fi
 # The confirmation the admin screen performs: record → qualify → post, with the
 # attribution coming from the invoice rather than a hand-typed code.
 svc "select public.record_sale('treasury', '$CHAIN_REF', 'aime', 1000.37::numeric, 'USD',
-        now() - interval '15 days',
+        timestamptz '2026-08-15 00:00:00+00',
         (select referral_code from public.payment_invoices where public_ref = '$CHAIN_REF'), null);"
 CHAIN_SALE="$OUT"
 if [ "$RC" -ne 0 ]; then fail "the invoice records an attributed sale" "$OUT"; else pass "the invoice records an attributed sale"; fi
@@ -385,7 +397,7 @@ eq "early sale stays confirmed with no locked_at" "confirmed|true"
 run_sql "select count(*) from public.commission_entries where sale_id = '$EARLY' and status = 'payable';"
 eq "unlocked commission is not payable" "0"
 
-svc "select public.record_sale('invoice', 'ord-lock', 'aime', 1000::numeric, 'USD', now() - interval '20 days', null, '$PID_L1');"
+svc "select public.record_sale('invoice', 'ord-lock', 'aime', 1000::numeric, 'USD', timestamptz '2026-08-01 00:00:00+00', null, '$PID_L1');"
 LOCK_SALE="$OUT"
 svc "select public.qualify_sale('$LOCK_SALE'); select public.post_commission_entries('$LOCK_SALE');" >/dev/null
 expect_error "payable payout is refused before the lock" "no payable" \
@@ -427,12 +439,127 @@ user_error "a partner cannot insert a sale" "$UID_L1" "permission denied" \
    values ('invoice', 'ord-hack', '$PID_L1', 1000, 'USD', now());"
 user_error "a partner cannot insert a commission" "$UID_L1" "permission denied" \
   "insert into public.commission_entries (sale_id, beneficiary_partner_id, level, commission_type, base_amount, rate, amount, currency, status)
-   values ('$BASE_SALE', '$PID_L1', 1, 'base', 1000, 0.15, 150, 'USD', 'confirmed');"
+   values ('$BASE_SALE', '$PID_L1', 1, 'base', 1000, 0.50, 500, 'USD', 'confirmed');"
 user_error "a partner cannot insert a payout" "$UID_L1" "permission denied" \
   "insert into public.payouts (partner_id, status, currency, amount, created_by)
    values ('$PID_L1', 'open', 'USD', 1, '$UID_L1');"
 user_error "a partner cannot call record_sale" "$UID_L1" "permission denied" \
   "select public.record_sale('invoice', 'ord-hack-2', 'aime', 1000::numeric, 'USD', now(), null, '$PID_L1');"
+
+section "Partner Commission Model v2 — $1000, 80% cap, no launch multiplier"
+
+# Snapshot v1 history before posting v2 so we prove the migration did not rewrite it.
+run_sql "select string_agg(amount::text, ',' order by level)
+           from public.commission_entries
+          where sale_id = '$BASE_SALE' and commission_type = 'base';"
+eq "historical v1 base sale is unchanged at 150,50,30,20,10 after v2 rules exist" "150.00,50.00,30.00,20.00,10.00"
+run_sql "select amount::text from public.payouts where id = '$PAYOUT';"
+eq "historical paid payout amount is unchanged" "150.00"
+
+svc "select public.record_sale('invoice', 'ord-v2', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-01 00:00:00+00', null, '$PID_L1');"
+if [ "$RC" -ne 0 ]; then fail "service_role records the v2 sale" "$OUT"; else V2_SALE="$OUT"; pass "service_role records the v2 sale"; fi
+svc_eq "qualify the v2 sale" "$V2_SALE" "select public.qualify_sale('$V2_SALE');"
+svc_eq "v2 sale posts five commission entries" "5" "select public.post_commission_entries('$V2_SALE');"
+svc_eq "posting the v2 sale again does not duplicate" "5" "select public.post_commission_entries('$V2_SALE');"
+
+run_sql "select string_agg(amount::text, ',' order by level)
+           from public.commission_entries
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+eq "v2 L1-L5 on \$1000 is 500, 150, 70, 50, 30" "500.00,150.00,70.00,50.00,30.00"
+
+run_sql "select sum(amount)::numeric(20,2) from public.commission_entries
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+eq "v2 partner pool on \$1000 is 800" "800.00"
+
+run_sql "select (1000::numeric(20,2) - sum(amount))::numeric(20,2)
+           from public.commission_entries
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+eq "v2 AI Mark retained share on \$1000 is 200" "200.00"
+
+run_sql "select (sum(amount) <= round(1000::numeric * public.partner_pool_cap(), 2))::text
+           from public.commission_entries
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+eq "v2 posted pool is not greater than 80%" "t"
+
+run_sql "select amount::text || ':' || rate::text || ':' || commission_type
+           from public.commission_entries where sale_id = '$V2_SALE' and level = 1;"
+eq "v2 L1 is \$500 at rate 0.50 after the 90-day window (base type)" "500.00:0.500000:base"
+
+# Launch-period flag on a v2-dated sale: same rates, never 1.5x.
+run_sql "update public.partner_profiles
+            set created_at = timestamptz '2026-09-20 00:00:00+00'
+          where partner_id = '$PID_L1';"
+svc "select public.record_sale('invoice', 'ord-v2-launch', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-05 00:00:00+00', null, '$PID_L1');"
+V2_LAUNCH="$OUT"
+svc "select public.qualify_sale('$V2_LAUNCH'); select public.post_commission_entries('$V2_LAUNCH');" >/dev/null
+run_sql "select string_agg(amount::text, ',' order by level) || '|' || max(commission_type)
+           from public.commission_entries
+          where sale_id = '$V2_LAUNCH' and commission_type in ('base', 'launch');"
+eq "v2 launch flag does not multiply: 500,150,70,50,30 typed launch" "500.00,150.00,70.00,50.00,30.00|launch"
+run_sql "select (sum(amount) <= 800.00)::text from public.commission_entries
+          where sale_id = '$V2_LAUNCH' and commission_type in ('base', 'launch');"
+eq "v2 launch sale cannot pay more than \$800 on a \$1000 commissionable amount" "t"
+
+run_sql "select string_agg(amount::text, ',' order by level)
+           from public.commission_entries
+          where sale_id = '$BASE_SALE' and commission_type = 'base';"
+eq "v1 historical entries stay 150,50,30,20,10 after v2 postings" "150.00,50.00,30.00,20.00,10.00"
+
+expect_error "v2 rules reject a launch multiplier other than 1" "launch multiplier" \
+  "insert into public.commission_rules (level, base_rate, launch_multiplier, active_from)
+   values (1, 0.50::numeric(12, 6), 1.5::numeric(12, 6), timestamptz '2026-12-01 00:00:00+00');"
+
+expect_error "a rule set that would exceed the 80% pool cap is rejected" "80%" \
+  "insert into public.commission_rules (level, base_rate, launch_multiplier, active_from)
+   values (1, 0.90::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-12-01 00:00:00+00');"
+
+# Refund / chargeback on a v2 sale: original row unchanged, negative reversal.
+svc "select public.record_sale('invoice', 'ord-v2-refund', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-10 00:00:00+00', null, '$PID_L1');"
+V2_REFUND="$OUT"
+svc "select public.qualify_sale('$V2_REFUND'); select public.post_commission_entries('$V2_REFUND');" >/dev/null
+V2_ORIG="$(run_sql "select id::text || '|' || amount::text from public.commission_entries where sale_id = '$V2_REFUND' and level = 1;"; printf '%s' "$OUT")"
+V2_ORIG_ID="${V2_ORIG%%|*}"
+V2_ORIG_AMT="${V2_ORIG##*|}"
+svc_eq "v2 refund inserts one reversal per original entry" "5" \
+  "select public.reverse_sale_commissions('$V2_REFUND', 'refund');"
+run_sql "select amount::text from public.commission_entries where id = '$V2_ORIG_ID';"
+eq "the original v2 refunded entry is unchanged" "$V2_ORIG_AMT"
+eq "the original v2 L1 refunded amount is 500.00" "500.00"
+run_sql "select amount::text from public.commission_entries where reverses_entry_id = '$V2_ORIG_ID';"
+eq "the v2 refund reversal is the negative amount" "-${V2_ORIG_AMT}"
+
+svc "select public.record_sale('invoice', 'ord-v2-cb', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-11 00:00:00+00', null, '$PID_L1');"
+V2_CB="$OUT"
+svc "select public.qualify_sale('$V2_CB'); select public.post_commission_entries('$V2_CB');" >/dev/null
+V2_CB_ORIG="$(run_sql "select id from public.commission_entries where sale_id = '$V2_CB' and level = 1;"; printf '%s' "$OUT")"
+svc_eq "v2 chargeback inserts reversals" "5" \
+  "select public.reverse_sale_commissions('$V2_CB', 'chargeback');"
+run_sql "select amount::text from public.commission_entries where id = '$V2_CB_ORIG';"
+eq "the original v2 chargeback entry is unchanged at \$500" "500.00"
+
+run_sql "set role service_role;
+   insert into public.payouts (id, partner_id, status, currency, amount, created_by)
+   values ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', '$PID_L1', 'open', 'USD', 0, '$UID_ADMIN');
+   insert into public.payout_allocations (payout_id, commission_entry_id, allocated_amount)
+   values ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', '$LOCK_ENTRY', 150.00);"
+if [ "$RC" -ne 0 ] && grep -qi "already in an active payout\|only a payable" <<<"$OUT"; then
+  pass "a paid commission cannot be allocated again"
+else
+  fail "a paid commission cannot be allocated again" "rc=$RC out=$OUT"
+fi
+
+run_sql "set role authenticated; set request.jwt.claims = '{\"sub\":\"$UID_L1\"}';
+  insert into public.commission_entries (sale_id, beneficiary_partner_id, level, commission_type, base_amount, rate, amount, currency, status)
+  values ('$V2_SALE', '$PID_L1', 1, 'base', 1000, 0.80, 800, 'USD', 'confirmed');"
+if [ "$RC" -ne 0 ] && grep -qi "permission denied" <<<"$OUT"; then
+  pass "a partner cannot post a client-supplied 80% L1 rate"
+else
+  fail "a partner cannot post a client-supplied 80% L1 rate" "rc=$RC out=$OUT"
+fi
+
+run_sql "set role authenticated;" # reset
+
+section "Client cannot write the ledger — continued"
 
 run_sql "set role anon; insert into public.sales (source, external_order_id, partner_id, amount, currency, paid_at)
          values ('invoice', 'ord-anon', '$PID_L1', 1000, 'USD', now());"
@@ -448,11 +575,11 @@ run_sql "set role service_role; select has_table_privilege('service_role', 'publ
 eq "service_role can mutate sales, commissions and payouts" "t"
 
 # The seller's count is the sales attributed to them, not their clicks or leads.
-# Three attributed sales were added after the snapshot: the customer's purchase
-# from the commerce chain, and the refunded and charged-back sales in between.
+# After the snapshot: commerce chain, early lock sale, lock sale, plus two v2
+# confirmed sales. Refunded and charged-back sales are not qualifying.
 as_user_last "$UID_L1" "select qualifying_sales from public.partner_ledger_stats();"
 L1_AFTER_SALES="$OUT"
-eq "seller ledger counts the attributed sales, not the click" "$((L1_BEFORE_SALES + 3))" "$L1_AFTER_SALES"
+eq "seller ledger counts the attributed sales, not the click" "$((L1_BEFORE_SALES + 5))" "$L1_AFTER_SALES"
 
 printf '\n%s%d passed, %d failed%s\n' "$C_BOLD" "$PASSES" "$FAILURES" "$C_OFF"
 if [ "$FAILURES" -gt 0 ]; then

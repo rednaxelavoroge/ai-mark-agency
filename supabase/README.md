@@ -78,6 +78,7 @@ Apply in filename order.
 | `20260922090600_phase4b_referral_schema.sql` | `referral_clicks`, `leads`, sponsor-attribution provenance, `attribute_partner_signup()`, `partner_referral_stats()`. |
 | `20260922090700_phase4b_referral_rls.sql` | RLS for the two new tables: read-your-own, no client writes, no `anon` grants. |
 | `20260922090800_phase4c_ledger.sql` | Qualifying sales, commissions, payout RPCs. |
+| `20260927170000_partner_commission_model_v2.sql` | Partner Commission Model v2 rates, 80% pool cap, launch is not a multiplier. |
 | `20260924120000_partner_read_path.sql` | Partner read indexes. |
 | `20260924220000_payout_destination.sql` | `payout_recipient` / `payout_details` on `profiles`. |
 | `20260925120000_payment_invoices.sql` | Treasury invoices (USDT/USDC to AI MARK addresses). Client cannot write. |
