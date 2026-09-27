@@ -8,7 +8,8 @@ import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual"
 import { getCopy } from "@/content/copy";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
-import { PRODUCT_PATHS, productsHubPath } from "@/lib/products";
+import { PRODUCT_PATHS } from "@/lib/products";
+import { digitalProductionPath } from "@/lib/digital-production";
 import { partnerProgramTerms } from "@/content/partner-program";
 import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
@@ -396,7 +397,7 @@ export default async function PartnersPage({ params }: Props) {
                   <p className="mt-2 text-sm leading-relaxed text-muted">{product.body}</p>
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line/60 pt-4">
                     <span className="font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">{publishedPrices[i] || product.revenue}</span>
-                    {product.href ? <Link href={localePath(locale, product.href)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productCta} →</Link> : <Link href={productsHubPath(locale)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productionCta} →</Link>}
+                    {product.href ? <Link href={localePath(locale, product.href)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productCta} →</Link> : <Link href={digitalProductionPath(locale)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productionCta} →</Link>}
                   </div>
                 </div>
               </article>

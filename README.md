@@ -40,6 +40,7 @@ Product routes on this domain:
 - `/ai-business-assistant` and `/ru/ai-business-assistant`
 - `/showroom-ai` and `/ru/showroom-ai`
 - `/products` hub
+- `/digital-production` — custom Digital Production (not the three SKUs)
 
 The landing defaults to a **light** theme; a header toggle persists light/dark in `localStorage` + cookie.
 

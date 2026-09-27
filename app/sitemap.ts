@@ -34,6 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: getLanguageAlternates("/products"),
     });
     entries.push({
+      url: absoluteUrl(locale, "/digital-production"),
+      lastModified,
+      alternates: getLanguageAlternates("/digital-production"),
+    });
+    entries.push({
       url: absoluteUrl(locale, "/investors"),
       lastModified,
       alternates: getLanguageAlternates("/investors"),

@@ -8,6 +8,7 @@ import { BuyLink } from "@/components/BuyLink";
 import { getCopy } from "@/content/copy";
 import { packages } from "@/content/packages";
 import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
+import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -272,9 +273,12 @@ export default async function PricingPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="mt-5">
-                  <ContactCta className="block w-full rounded-lg border border-line bg-ink-3 py-2 text-center text-xs font-medium text-paper hover:bg-ink-3/80 transition-all">
-                    {isRu ? "Обсудить проект →" : "Discuss project →"}
-                  </ContactCta>
+                  <Link
+                    href={navHref(locale, DIGITAL_PRODUCTION_PATH)}
+                    className="block w-full rounded-lg border border-line bg-ink-3 py-2 text-center text-xs font-medium text-paper hover:bg-ink-3/80 transition-all"
+                  >
+                    {isRu ? "Цифровое производство →" : "Digital Production →"}
+                  </Link>
                 </div>
               </div>
             </>
