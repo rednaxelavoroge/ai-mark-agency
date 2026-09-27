@@ -49,11 +49,7 @@ export function Section({
           </h2>
           {lead ? <p className="mt-4 max-w-2xl text-muted">{lead}</p> : null}
         </div>
-        <div
-          className="mt-10"
-          data-reveal
-          style={{ "--reveal-delay": "120ms" } as CSSProperties}
-        >
+        <div className="mt-10">
           {children}
         </div>
       </div>

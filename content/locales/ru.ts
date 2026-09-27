@@ -19,10 +19,9 @@ export const copyRu: Copy = {
     nav: {
       items: [
         { href: "/", label: "Главная" },
-        { href: "#what-we-do", label: "Что делаем" },
-        { href: "#business-creation", label: "Создание бизнеса" },
         { href: "/products", label: "AI-продукты" },
-        { href: "#how", label: "Как устроено" },
+        { href: "/how-it-works", label: "Как устроено" },
+        { href: "/pricing", label: "Тарифы" },
         { href: "/partners", label: "Партнёры" },
         { href: "/investors", label: "Инвесторам" },
         { href: "#contact", label: "Контакт" },

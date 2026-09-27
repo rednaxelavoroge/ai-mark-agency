@@ -19,10 +19,9 @@ export const copyEn: Copy = {
     nav: {
       items: [
         { href: "/", label: "Home" },
-        { href: "#what-we-do", label: "What we do" },
-        { href: "#business-creation", label: "Business Creation" },
         { href: "/products", label: "AI Products" },
-        { href: "#how", label: "How it works" },
+        { href: "/how-it-works", label: "How It Works" },
+        { href: "/pricing", label: "Pricing" },
         { href: "/partners", label: "Partners" },
         { href: "/investors", label: "Investors" },
         { href: "#contact", label: "Contact" },

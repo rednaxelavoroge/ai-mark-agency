@@ -244,13 +244,13 @@ main {
   height: auto;
 }
 
-/* The stage slot is a size container, so the dial can be sized from BOTH the
-   room it has and the height of the screen — no JS measurement, no hydration
-   flash, and it still renders if scripts never arrive. */
+/* The stage slot holds the circular clock dial, centered and fully visible */
 .itb-slot {
-  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-inline: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 @media (min-width: 640px) {
@@ -268,12 +268,7 @@ main {
 .itb-dial {
   width: min(100%, 460px);
   aspect-ratio: 1 / 1;
-}
-
-@supports (width: 1cqh) {
-  .itb-dial {
-    width: min(100%, 460px, 100cqh);
-  }
+  position: relative;
 }
 
 /* One stage should not cost a marathon of scrolling: 16vh gives instant, crisp feedback */

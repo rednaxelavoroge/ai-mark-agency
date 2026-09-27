@@ -387,11 +387,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
   };
 
   const current = stages[active];
-  /* The slot is a size container: `.itb-dial` takes min(width, height, 460px)
-     from it, so the ring always fits the room the layout actually gives it. */
-  const slotClass = reduced
-    ? "itb-slot relative mx-auto aspect-square w-full max-w-[460px]"
-    : "itb-slot relative h-[30svh] min-h-[110px] w-full shrink-0 [@media(max-height:620px)]:h-[24svh] [@media(min-height:760px)]:h-[36svh] lg:h-auto lg:min-h-0 lg:flex-1";
+  const slotClass = "itb-slot relative w-full flex items-center justify-center py-2 sm:py-4";
 
   return (
     <>
@@ -477,7 +473,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             {/* System diagram */}
             <div className="order-1 flex min-h-0 flex-col lg:order-2">
               <div className={slotClass}>
-                <div className="itb-dial absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="itb-dial relative mx-auto">
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl transition-all duration-700"
