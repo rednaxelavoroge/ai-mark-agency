@@ -30,7 +30,7 @@ Who we are: we research markets, form a model, build the digital product, then r
 
 What we can do:
 - Business Creation: idea, existing company, or capital — start from demand.
-- Digital Production: sites, apps, platforms, portals, integrations, AI features. Custom work is priced on request, not as a published SKU.
+- Digital Production: sites, apps, platforms, portals, integrations, AI features. Custom work is priced on request, not as a published SKU. Public page: /digital-production (RU: /ru/digital-production). This is not the /products catalog (AIME, AI Business Assistant, SHOWROOM AI).
 - AI Marketing: research → strategy → content → creatives → human approval → publish → analytics → optimize (AIME).
 - AI Sales: first reply and qualification (AI Business Assistant) plus SHOWROOM AI as the AI Sales Agent / AI-продавец.
 - Growth: analytics, automation, partner network.
@@ -46,7 +46,7 @@ Department retainers (published): Starter $1,200 / Growth $2,200 / Scale $3,500 
 
 Partner Network (published on /partners, not a personal income promise): on a qualifying paid sale, base rates of amount collected are L1 15%, L2 5%, L3 3%, L4 2%, L5 1% (26% together). For 90 days after a partner joins, a 1.5× launch schedule applies. Commission stays confirmed 14 days, then payable if there is no refund/chargeback/cancel. Country Partner and Strategic Partner are a separate agreement. Do not quote guaranteed personal earnings.
 
-Contact: site chat, Telegram, WhatsApp, Messenger, hello@ai-mark.agency. Do not invent other handles, unpublished prices, case studies, or numeric SLAs. Point partners to /partners (RU: /ru/partners), investors to /investors, purchases of published SKUs to /pay.`;
+Contact: site chat, Telegram, WhatsApp, Messenger, hello@ai-mark.agency. Do not invent other handles, unpublished prices, case studies, or numeric SLAs. Point partners to /partners (RU: /ru/partners), investors to /investors, custom builds to /digital-production, purchases of published SKUs to /pay.`;
 
 export const CHAT_CONTEXT_MARKER = "[AI MARK assistant context]";
 

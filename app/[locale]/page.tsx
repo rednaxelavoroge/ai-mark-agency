@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,6 +10,7 @@ import { getCopy } from "@/content/copy";
 import { absoluteUrl, getSiteTagline, isLocale, navHref, site, type Locale } from "@/lib/site";
 import { productPagePath } from "@/lib/products";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
+import { DigitalProductionHubCard } from "@/components/DigitalProductionHubCard";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -394,6 +394,25 @@ export default async function HomePage({ params }: Props) {
           >
             {isRu ? "Открыть полный каталог AI-продуктов" : "Open Full AI Products Catalog"} →
           </Link>
+        </div>
+
+        <div className="mt-12" data-reveal>
+          <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">
+            {isRu ? "Отдельный сервис" : "A separate service"}
+          </p>
+          <h3 className="mt-2 font-display text-xl font-semibold text-paper sm:text-2xl">
+            {isRu
+              ? "Цифровое производство — не четвёртый SKU."
+              : "Digital Production is not a fourth SKU."}
+          </h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+            {isRu
+              ? "Три карточки выше — готовые продукты. Ниже — кастомная сборка с нуля: сайты, платформы, кабинеты и AI-системы под задачу."
+              : "The three cards above are ready products. Below is a custom build from scratch: sites, platforms, cabinets and AI systems for a specific task."}
+          </p>
+          <div className="mt-6 max-w-3xl">
+            <DigitalProductionHubCard locale={locale} />
+          </div>
         </div>
       </Section>
 

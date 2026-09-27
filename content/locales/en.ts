@@ -20,6 +20,7 @@ export const copyEn: Copy = {
       items: [
         { href: "/", label: "Home" },
         { href: "/products", label: "AI Products" },
+        { href: "/digital-production", label: "Digital Production" },
         { href: "/how-it-works", label: "How It Works" },
         { href: "/pricing", label: "Pricing" },
         { href: "/partners", label: "Partners" },

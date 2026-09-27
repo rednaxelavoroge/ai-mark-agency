@@ -20,6 +20,7 @@ export const copyRu: Copy = {
       items: [
         { href: "/", label: "Главная" },
         { href: "/products", label: "AI-продукты" },
+        { href: "/digital-production", label: "Цифровое производство" },
         { href: "/how-it-works", label: "Как устроено" },
         { href: "/pricing", label: "Тарифы" },
         { href: "/partners", label: "Партнёры" },

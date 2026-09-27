@@ -4,6 +4,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
 import { productPagePath, productsHubPath } from "@/lib/products";
+import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
 
 export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
   const year = new Date().getFullYear();
@@ -43,8 +44,8 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 </Link>
               </li>
               <li>
-                <Link href={navHref(locale, "/how-it-works#production")} className="hover:text-paper transition-colors">
-                  {isRu ? "Digital Production" : "Digital Production"}
+                <Link href={navHref(locale, DIGITAL_PRODUCTION_PATH)} className="hover:text-paper transition-colors">
+                  {isRu ? "Цифровое производство" : "Digital Production"}
                 </Link>
               </li>
               <li>

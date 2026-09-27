@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { BackButton } from "@/components/BackButton";
 import { ContactCta } from "@/components/ContactCta";
 import { Section } from "@/components/Section";
@@ -9,6 +10,7 @@ import { DigitalProductionShowcase } from "@/components/DigitalProductionShowcas
 import { OperatingModelSection } from "@/components/OperatingModelSection";
 import { Manifesto } from "@/components/Manifesto";
 import { getCopy } from "@/content/copy";
+import { digitalProductionPath } from "@/lib/digital-production";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -78,6 +80,14 @@ export default async function HowItWorksPage({ params }: Props) {
           width="wide"
         >
           <DigitalProductionShowcase locale={locale} />
+          <div className="mt-8">
+            <Link
+              href={digitalProductionPath(locale)}
+              className="inline-flex items-center gap-2 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light"
+            >
+              {isRu ? "Страница цифрового производства" : "Digital Production page"} →
+            </Link>
+          </div>
         </Section>
       </div>
 
