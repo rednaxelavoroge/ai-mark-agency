@@ -446,7 +446,7 @@ user_error "a partner cannot insert a payout" "$UID_L1" "permission denied" \
 user_error "a partner cannot call record_sale" "$UID_L1" "permission denied" \
   "select public.record_sale('invoice', 'ord-hack-2', 'aime', 1000::numeric, 'USD', now(), null, '$PID_L1');"
 
-section "Partner Commission Model v2 — $1000, 80% cap, no launch multiplier"
+section "Partner Commission Model v2 — \$1000, 80% cap, no launch multiplier"
 
 # Snapshot v1 history before posting v2 so we prove the migration did not rewrite it.
 run_sql "select string_agg(amount::text, ',' order by level)
@@ -479,7 +479,7 @@ eq "v2 AI Mark retained share on \$1000 is 200" "200.00"
 run_sql "select (sum(amount) <= round(1000::numeric * public.partner_pool_cap(), 2))::text
            from public.commission_entries
           where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
-eq "v2 posted pool is not greater than 80%" "t"
+eq "v2 posted pool is not greater than 80%" "true"
 
 run_sql "select amount::text || ':' || rate::text || ':' || commission_type
            from public.commission_entries where sale_id = '$V2_SALE' and level = 1;"
@@ -498,7 +498,7 @@ run_sql "select string_agg(amount::text, ',' order by level) || '|' || max(commi
 eq "v2 launch flag does not multiply: 500,150,70,50,30 typed launch" "500.00,150.00,70.00,50.00,30.00|launch"
 run_sql "select (sum(amount) <= 800.00)::text from public.commission_entries
           where sale_id = '$V2_LAUNCH' and commission_type in ('base', 'launch');"
-eq "v2 launch sale cannot pay more than \$800 on a \$1000 commissionable amount" "t"
+eq "v2 launch sale cannot pay more than \$800 on a \$1000 commissionable amount" "true"
 
 run_sql "select string_agg(amount::text, ',' order by level)
            from public.commission_entries

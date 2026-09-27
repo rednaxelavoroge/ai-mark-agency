@@ -39,9 +39,13 @@ export const AI_MARK_RETAINED_SHARE_BPS = 2000;
 export const LAUNCH_RATE_MULTIPLIER = 1;
 export const LAUNCH_WINDOW_DAYS = 90;
 
-export const EXAMPLE_SALE_MINOR = 100_000n; // $1,000.00 in cents
+export const EXAMPLE_SALE_MINOR = BigInt(100000); // $1,000.00 in cents
 
-const BPS_DENOMINATOR = 10_000n;
+const ZERO = BigInt(0);
+const ONE = BigInt(1);
+const TWO = BigInt(2);
+const HUNDRED = BigInt(100);
+const BPS_DENOMINATOR = BigInt(10000);
 
 export function rateBps(level: CommissionLevel): number {
   return LEVEL_RATE_BPS[level];
@@ -77,30 +81,30 @@ export function parseMinorUnits(amount: string): bigint {
   if (!match) {
     throw new Error(`not a 2-decimal money amount: ${amount}`);
   }
-  const sign = match[1] === "-" ? -1n : 1n;
+  const sign = match[1] === "-" ? -ONE : ONE;
   const whole = BigInt(match[2]);
   const frac = BigInt((match[3] ?? "").padEnd(2, "0"));
-  return sign * (whole * 100n + frac);
+  return sign * (whole * HUNDRED + frac);
 }
 
 export function formatMinorUnits(minor: bigint): string {
-  const sign = minor < 0n ? "-" : "";
-  const abs = minor < 0n ? -minor : minor;
-  const whole = abs / 100n;
-  const frac = abs % 100n;
+  const sign = minor < ZERO ? "-" : "";
+  const abs = minor < ZERO ? -minor : minor;
+  const whole = abs / HUNDRED;
+  const frac = abs % HUNDRED;
   return `${sign}${whole}.${frac.toString().padStart(2, "0")}`;
 }
 
 /** Round half away from zero, matching PostgreSQL `round(numeric, 0)`. */
 function roundDivHalfAwayFromZero(numerator: bigint, denominator: bigint): bigint {
-  if (denominator <= 0n) {
+  if (denominator <= ZERO) {
     throw new Error("denominator must be positive");
   }
-  const sign = numerator < 0n ? -1n : 1n;
-  const abs = numerator < 0n ? -numerator : numerator;
+  const sign = numerator < ZERO ? -ONE : ONE;
+  const abs = numerator < ZERO ? -numerator : numerator;
   const q = abs / denominator;
   const r = abs % denominator;
-  return sign * (r * 2n >= denominator ? q + 1n : q);
+  return sign * (r * TWO >= denominator ? q + ONE : q);
 }
 
 /**
@@ -111,7 +115,7 @@ export function commissionMinor(baseMinor: bigint, rateBpsValue: number): bigint
   if (!Number.isInteger(rateBpsValue) || rateBpsValue < 0) {
     throw new Error("rate must be a non-negative integer of basis points");
   }
-  if (baseMinor < 0n) {
+  if (baseMinor < ZERO) {
     throw new Error("commissionable amount cannot be negative");
   }
   return roundDivHalfAwayFromZero(
@@ -134,7 +138,7 @@ export type PoolBreakdown = {
 };
 
 export function allocatePartnerPool(baseMinor: bigint): PoolBreakdown {
-  if (baseMinor < 0n) {
+  if (baseMinor < ZERO) {
     throw new Error("commissionable amount cannot be negative");
   }
   const levels = COMMISSION_LEVELS.map((level) => ({
@@ -144,7 +148,7 @@ export function allocatePartnerPool(baseMinor: bigint): PoolBreakdown {
   }));
   const partnerPoolMinor = levels.reduce(
     (sum, row) => sum + row.amountMinor,
-    0n,
+    ZERO,
   );
   const capMinor = commissionMinor(baseMinor, PARTNER_POOL_CAP_BPS);
   if (partnerPoolMinor > capMinor) {
