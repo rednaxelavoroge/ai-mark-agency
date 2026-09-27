@@ -8,9 +8,9 @@ import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
 import { CapabilityBand } from "@/components/CapabilityBand";
 import { getCopy } from "@/content/copy";
-import { products } from "@/content/packages";
 import { absoluteUrl, getSiteTagline, isLocale, navHref, site, type Locale } from "@/lib/site";
 import { productPagePath } from "@/lib/products";
+import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -171,33 +171,72 @@ export default async function HomePage({ params }: Props) {
   const featuredProducts = [
     {
       id: "showroom",
+      variant: "showroom" as ProductVariant,
       name: "Showroom AI",
       tag: isRu ? "AI-продавец" : "AI Sales Agent",
       price: isRu ? "от $349/мес" : "from $349/mo",
       desc: isRu
-        ? "Подбирает товары по каталогу, рассчитывает спецификации и формирует готовое коммерческое предложение."
+        ? "Подбирает товары по каталогу, рассчитывает спецификации по формулам и формирует готовое КП."
         : "Matches catalog items, computes dynamic formulas, and outputs finished commercial quotes.",
+      highlights: isRu
+        ? [
+            "Отраслевые формулы расчёта без галлюцинаций",
+            "Генерация точных PDF-предложений для клиента",
+            "Синхронизация с CRM и передача менеджеру",
+          ]
+        : [
+            "Deterministic custom calculation formulas",
+            "Automated verified PDF quote generator",
+            "Seamless CRM sync & manager handoff",
+          ],
       href: productPagePath(locale, "showroom"),
+      externalUrl: "https://showroom-ai.pro",
     },
     {
       id: "assistant",
+      variant: "assistant" as ProductVariant,
       name: "AI Business Assistant",
       tag: isRu ? "Инбокс и квалификация" : "Inbox & Qualification",
       price: isRu ? "от $149/мес" : "from $149/mo",
       desc: isRu
         ? "Круглосуточный AI-ассистент: отвечает по базе знаний, квалифицирует лидов и передаёт диалог человеку."
         : "24/7 conversational assistant: grounds in company knowledge, qualifies leads, and hands off to human operators.",
+      highlights: isRu
+        ? [
+            "Единый инбокс: WhatsApp, Telegram, Direct, Web",
+            "Ответы строго по базе знаний компании",
+            "Мгновенный перевод на оператора в 1 клик",
+          ]
+        : [
+            "Unified WhatsApp, Telegram, Direct & Web inbox",
+            "Grounded strictly in company knowledge base",
+            "Instant 1-click human operator handoff",
+          ],
       href: productPagePath(locale, "assistant"),
+      externalUrl: null,
     },
     {
       id: "aime",
+      variant: "aime" as ProductVariant,
       name: "AI Marketing Employee",
       tag: isRu ? "Автономный маркетинг" : "Autonomous Marketing",
       price: isRu ? "от $1,200/мес" : "from $1,200/mo",
       desc: isRu
         ? "Ведёт полный маркетинговый цикл: анализ конкурентов, тексты, визуалы и посты — строго до вашего апрува."
         : "Executes the full marketing workflow: market intelligence, visual assets, and social drafts — up to your approval.",
+      highlights: isRu
+        ? [
+            "Анализ рынка и контент-план под ваш бренд",
+            "Сценарии для Reels и визуальные концепты",
+            "Публикация строго после подтверждения в Telegram",
+          ]
+        : [
+            "Market intelligence & on-brand content planning",
+            "Visual drafts & high-converting Reels scripts",
+            "Strict 1-click Telegram approval gate",
+          ],
       href: productPagePath(locale, "aime"),
+      externalUrl: null,
     },
   ];
 
@@ -274,39 +313,78 @@ export default async function HomePage({ params }: Props) {
         title={t.tech.title}
         lead={t.tech.lead}
       >
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
           {featuredProducts.map((p) => (
-            <div
+            <article
               key={p.id}
-              className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 transition-all hover:border-line-strong hover:shadow-md"
+              className="catalog-card peek-host group flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-line-strong hover:shadow-xl"
             >
               <div>
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-mark">
+                {/* Top Bar: Category Pill & Price */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-mark/25 bg-mark/10 px-3 py-1 font-mono text-[10px] font-semibold text-mark uppercase tracking-wider">
+                    <span className="h-1.5 w-1.5 rounded-full bg-mark animate-pulse" />
                     {p.tag}
                   </span>
                   <span className="font-mono text-xs font-semibold text-paper">
                     {p.price}
                   </span>
                 </div>
-                <h3 className="mt-3 font-display text-lg font-semibold text-paper">
-                  {p.name}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted">
-                  {p.desc}
-                </p>
+
+                {/* Animated Interactive Mockup (ProductUI) */}
+                <div className="mt-4 overflow-hidden rounded-xl border border-line bg-ink-3/40 shadow-sm transition-colors group-hover:border-line-strong">
+                  <ProductUI variant={p.variant} ratio="aspect-[16/10]" peek={true} />
+                </div>
+
+                {/* Title & Description */}
+                <div className="mt-5">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-display text-xl font-semibold text-paper group-hover:text-warm transition-colors">
+                      {p.name}
+                    </h3>
+                    <span className="font-mono text-[10px] text-muted uppercase">
+                      {p.id.toUpperCase()}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">
+                    {p.desc}
+                  </p>
+                </div>
+
+                {/* Feature Highlights */}
+                <ul className="mt-4 space-y-2 border-t border-line/60 pt-3">
+                  {p.highlights.map((h, i) => (
+                    <li key={i} className="flex items-center gap-2 text-[11px] font-mono text-paper/85">
+                      <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-mark/15 text-[10px] font-bold text-mark">
+                        ✓
+                      </span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-line flex items-center justify-between">
+              {/* Action Buttons */}
+              <div className="mt-6 border-t border-line/60 pt-4 flex flex-wrap items-center justify-between gap-3">
                 <Link
                   href={p.href}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-warm hover:text-paper transition-colors"
                 >
                   {isRu ? "Подробнее о продукте" : "Product details"}
-                  <span className="btn-arrow" aria-hidden>→</span>
+                  <span className="catalog-cta-arrow" aria-hidden>→</span>
                 </Link>
+                {p.externalUrl ? (
+                  <a
+                    href={p.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-full border border-line bg-ink-3/40 px-3 py-1 font-mono text-[10px] text-muted hover:border-paper/40 hover:text-paper transition-colors"
+                  >
+                    showroom-ai.pro ↗
+                  </a>
+                ) : null}
               </div>
-            </div>
+            </article>
           ))}
         </div>
         <div className="mt-8 text-center">

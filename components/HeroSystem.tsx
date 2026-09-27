@@ -210,13 +210,13 @@ export function HeroSystem({ locale, t }: HeroProps) {
                 {t.hero.primaryCta} →
               </ContactCta>
               <Link
-                href={navHref(locale, "#how")}
+                href={navHref(locale, "/how-it-works")}
                 className="inline-flex items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
               >
                 {t.hero.secondaryCta}
               </Link>
               <Link
-                href={navHref(locale, "#investors")}
+                href={navHref(locale, "/investors")}
                 className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
               >
                 {t.hero.investorCta}
