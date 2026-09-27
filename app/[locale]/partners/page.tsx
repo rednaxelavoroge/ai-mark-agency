@@ -53,7 +53,12 @@ type PageCopy = {
   networkEyebrow: string;
   networkTitle: string;
   networkLead: string;
-  levels: { n: string; title: string; body: string }[];
+  poolHeadline: string;
+  poolLead: string;
+  exampleTitle: string;
+  exampleRows: { label: string; value: string; accent?: boolean }[];
+  exampleFoot: string;
+  levels: { n: string; title: string; body: string; rate: string }[];
   commissionLabel: string;
   commissionNote: string;
   statusEyebrow: string;
@@ -85,7 +90,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     eyebrow: "AI MARK Partner Network",
     title: "Build the AI market in your country.",
     lead: "Sell real AI products and digital solutions to businesses in your market. AI MARK provides the technology, product delivery and partner infrastructure. You build the relationships and the sales.",
-    note: "Free to join · No inventory · No mandatory purchases · Global market",
+    note: "50% for a direct sale · Up to 80% total partner rewards across the network · Free to join",
     primary: "Become a Partner",
     secondary: "See how it works",
     marketEyebrow: "The market",
@@ -122,16 +127,29 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     ],
     networkEyebrow: "Partner network",
     networkTitle: "Personal sales first. Network sales next.",
-    networkLead: "The network is built around paid customer sales, not registrations. Five levels share the amount the customer actually paid.",
+    networkLead: "The network is built around paid customer sales, not registrations. Five levels share the amount the customer actually paid. 80% is the aggregate partner pool across qualified levels — not a single-partner payout.",
+    poolHeadline: "50% for a direct sale. Up to 80% total partner rewards across the network.",
+    poolLead: "L1 is 50% of the commissionable amount. The remaining levels share 30%. Together that is an 80% network pool. AI Mark retained share is 20%.",
+    exampleTitle: "On a $1,000 commissionable sale with a full network",
+    exampleRows: [
+      { label: "L1 direct partner", value: "$500", accent: true },
+      { label: "L2", value: "$150" },
+      { label: "L3", value: "$70" },
+      { label: "L4", value: "$50" },
+      { label: "L5", value: "$30" },
+      { label: "Partner pool (aggregate)", value: "$800" },
+      { label: "AI Mark retained share", value: "$200" },
+    ],
+    exampleFoot: "The direct partner receives $500, not $800. 80% is the total across L1–L5 when every level is qualified.",
     levels: [
-      { n: "L1", title: "Direct sale", body: "The customer you personally introduce. Base rate 15%." },
-      { n: "L2", title: "First network", body: "Paid customer sales from your first-level partners. Base rate 5%." },
-      { n: "L3", title: "Extended network", body: "Paid sales one level deeper. Base rate 3%." },
-      { n: "L4", title: "Market depth", body: "The network beyond direct relationships. Base rate 2%." },
-      { n: "L5", title: "Maximum depth", body: "The deepest level of the standard schedule. Base rate 1%." },
+      { n: "L1", title: "Direct sale", body: "The customer you personally introduce.", rate: "50%" },
+      { n: "L2", title: "First network", body: "Paid customer sales from your first-level partners.", rate: "15%" },
+      { n: "L3", title: "Extended network", body: "Paid sales one level deeper.", rate: "7%" },
+      { n: "L4", title: "Market depth", body: "The network beyond direct relationships.", rate: "5%" },
+      { n: "L5", title: "Maximum depth", body: "The deepest level of the standard schedule.", rate: "3%" },
     ],
     commissionLabel: "Commission",
-    commissionNote: "Base 15 / 5 / 3 / 2 / 1 on the amount collected. A $1,000 paid sale pays the direct partner $150.",
+    commissionNote: "L1 50% / L2 15% / L3 7% / L4 5% / L5 3% on the amount collected. Total network pool 80%.",
     statusEyebrow: "Partner status",
     statusTitle: "Four ways to grow with AI MARK.",
     statusLead: "Status reflects commercial activity and relationship depth. It is a business status, not a paid rank.",
@@ -164,7 +182,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
       { q: "Do I have to buy a package to become a partner?", a: "The Partner Program is designed around selling AI MARK products and services, not purchasing a position in the network. Final onboarding rules are defined in the Partner Agreement." },
       { q: "Do I need to deliver the product myself?", a: "No. The partner focuses on relationships and sales opportunities. AI MARK remains responsible for the agreed product and delivery layer." },
       { q: "Can I build a team?", a: "Yes. The standard model supports a multi-level partner network linked to eligible customer sales, with a maximum depth of five levels." },
-      { q: "Can subscriptions create recurring commissions?", a: "Each qualifying payment follows the rule in force on the day it is paid. Payments in the first 90 days after the partner joins use the 1.5× launch rates. Later payments use the base rates. The launch boost is not lifetime." },
+      { q: "Can subscriptions create recurring commissions?", a: "Each qualifying payment follows the rule in force on the day it is paid. The 90-day launch window is a status flag only and does not multiply rates. Recurring payments use the same L1 50% / L2 15% / L3 7% / L4 5% / L5 3% schedule, with an 80% aggregate pool across qualified levels." },
       { q: "Can I become a Regional Partner?", a: "Yes. Regional status is intended for partners who demonstrate sustained commercial activity and can systematically develop a local market." },
     ],
     ctaEyebrow: "Start",
@@ -178,7 +196,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     eyebrow: "Партнёрская сеть AI MARK",
     title: "Создавайте рынок AI в своей стране.",
     lead: "Продавайте реальные AI-продукты и цифровые решения бизнесу в своём регионе. AI MARK даёт технологию, продукты, поставку и партнёрскую инфраструктуру. Вы строите отношения и продажи.",
-    note: "Бесплатный вход · Без склада · Без обязательных закупок · Международный рынок",
+    note: "До 80% партнёрского вознаграждения · L1 50% за прямую продажу · Бесплатный вход",
     primary: "Стать партнёром",
     secondary: "Как это работает",
     marketEyebrow: "Рынок",
@@ -215,16 +233,29 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     ],
     networkEyebrow: "Партнёрская сеть",
     networkTitle: "Сначала личные продажи. Затем продажи сети.",
-    networkLead: "Сеть строится вокруг оплаченных клиентских продаж, а не регистрации людей. Пять уровней делят сумму, которую клиент фактически заплатил.",
+    networkLead: "Сеть строится вокруг оплаченных клиентских продаж, а не регистрации людей. Пять уровней делят сумму, которую клиент фактически заплатил. 80% — это совокупный партнёрский пул по квалифицированным уровням, а не выплата одному партнёру.",
+    poolHeadline: "До 80% партнёрского вознаграждения. L1 50% за прямую продажу.",
+    poolLead: "L1 — 50% комиссионной базы. Остальные уровни делят 30%. Вместе это пул сети 80%. Доля AI Mark — 20%.",
+    exampleTitle: "Комиссионная продажа на $1000 при полной сети",
+    exampleRows: [
+      { label: "L1 прямой партнёр", value: "$500", accent: true },
+      { label: "L2", value: "$150" },
+      { label: "L3", value: "$70" },
+      { label: "L4", value: "$50" },
+      { label: "L5", value: "$30" },
+      { label: "Партнёрский пул (совокупно)", value: "$800" },
+      { label: "Доля AI Mark", value: "$200" },
+    ],
+    exampleFoot: "Прямой партнёр получает $500, не $800. 80% — это итог L1–L5, когда каждый уровень квалифицирован.",
     levels: [
-      { n: "L1", title: "Прямая продажа", body: "Клиент, которого вы привели лично. Базовая ставка 15%." },
-      { n: "L2", title: "Первый уровень сети", body: "Оплаченные продажи партнёров первого уровня. Базовая ставка 5%." },
-      { n: "L3", title: "Расширенная сеть", body: "Оплаченные продажи ещё на уровень глубже. Базовая ставка 3%." },
-      { n: "L4", title: "Глубина рынка", body: "Сеть за пределами прямых связей. Базовая ставка 2%." },
-      { n: "L5", title: "Максимальная глубина", body: "Самый глубокий уровень стандартной сетки. Базовая ставка 1%." },
+      { n: "L1", title: "Прямая продажа", body: "Клиент, которого вы привели лично.", rate: "50%" },
+      { n: "L2", title: "Первый уровень сети", body: "Оплаченные продажи партнёров первого уровня.", rate: "15%" },
+      { n: "L3", title: "Расширенная сеть", body: "Оплаченные продажи ещё на уровень глубже.", rate: "7%" },
+      { n: "L4", title: "Глубина рынка", body: "Сеть за пределами прямых связей.", rate: "5%" },
+      { n: "L5", title: "Максимальная глубина", body: "Самый глубокий уровень стандартной сетки.", rate: "3%" },
     ],
     commissionLabel: "Комиссия",
-    commissionNote: "База 15 / 5 / 3 / 2 / 1 от полученной суммы. Оплаченная продажа на $1000 даёт прямому партнёру $150.",
+    commissionNote: "L1 50% / L2 15% / L3 7% / L4 5% / L5 3% от полученной суммы. Совокупный пул сети 80%.",
     statusEyebrow: "Статус партнёра",
     statusTitle: "Четыре способа расти вместе с AI MARK.",
     statusLead: "Статус определяется коммерческой активностью и форматом отношений с компанией. Это бизнес-статус, а не платный ранг.",
@@ -257,7 +288,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
       { q: "Нужно ли покупать пакет для статуса партнёра?", a: "Программа строится вокруг продаж продуктов и услуг AI MARK, а не покупки позиции в сети. Финальные правила подключения фиксируются в Partner Agreement." },
       { q: "Нужно ли самому выполнять работу?", a: "Нет. Партнёр в основном строит отношения и продажи. AI MARK отвечает за согласованный продукт и исполнение." },
       { q: "Можно ли строить команду?", a: "Да. Стандартная модель поддерживает многоуровневую партнёрскую сеть, связанную с продажами клиентам, с максимальной глубиной пять уровней." },
-      { q: "Могут ли подписки давать повторяющуюся комиссию?", a: "Каждый квалифицированный платёж считается по правилу дня оплаты. Платежи в первые 90 дней после подключения идут по launch-ставкам 1,5×. Более поздние — по базовым. Launch не пожизненный." },
+      { q: "Могут ли подписки давать повторяющуюся комиссию?", a: "Каждый квалифицированный платёж считается по правилу дня оплаты. Окно launch 90 дней — только статусный флаг и не умножает ставки. Повторяющиеся платежи идут по той же сетке L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, с совокупным пулом 80% по квалифицированным уровням." },
       { q: "Можно ли стать Regional Partner?", a: "Да. Такой статус предназначен для партнёров, которые демонстрируют устойчивую коммерческую активность и способны системно развивать локальный рынок." },
     ],
     ctaEyebrow: "Старт",
@@ -332,10 +363,11 @@ export default async function PartnersPage({ params }: Props) {
             <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">{t.eyebrow}</p>
             <h1 className="mt-4 max-w-2xl font-editorial text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.title}</h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
+            <p className="mt-4 max-w-xl font-display text-lg font-semibold leading-snug text-paper sm:text-xl">{t.poolHeadline}</p>
             <ol className="mt-5 flex flex-wrap items-center gap-2">
               {(locale === "ru"
-                ? ["Личная продажа", "Продажи команды", "До 5 уровней", "Комиссия"]
-                : ["Personal sale", "Team sales", "Up to 5 levels", "Commission"]
+                ? ["Личная продажа", "Продажи команды", "До 5 уровней", "До 80%"]
+                : ["Personal sale", "Team sales", "Up to 5 levels", "Up to 80%"]
               ).map((step, i) => (
                 <li key={step} className="flex items-center gap-2">
                   {i > 0 ? <span className="font-mono text-xs text-warm">→</span> : null}
@@ -417,14 +449,43 @@ export default async function PartnersPage({ params }: Props) {
 
       <section id="network" className="scroll-mt-24 border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.networkEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.networkTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.networkLead}</p></div>
+          <div data-reveal>
+            <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.networkEyebrow}</p>
+            <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.networkTitle}</h2>
+            <p className="mt-4 max-w-3xl text-muted">{t.networkLead}</p>
+            <p className="mt-4 max-w-3xl font-display text-lg font-semibold text-paper">{t.poolHeadline}</p>
+            <p className="mt-2 max-w-3xl text-sm text-muted">{t.poolLead}</p>
+          </div>
           <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-ink-2">
             <div className="grid md:grid-cols-5">
-              {t.levels.map((level, i) => <div key={level.n} className="border-b border-line p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 sm:p-6" data-reveal style={reveal(i * 70)}><span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-warm">{level.n}</span><h3 className="mt-3 font-display text-sm font-semibold text-paper">{level.title}</h3><p className="mt-2 text-[11px] leading-relaxed text-muted">{level.body}</p></div>)}
+              {t.levels.map((level, i) => (
+                <div
+                  key={level.n}
+                  className={`border-b border-line p-5 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 sm:p-6 ${i === 0 ? "bg-mark/10 md:border-r-mark/40" : ""}`}
+                  data-reveal
+                  style={reveal(i * 70)}
+                >
+                  <span className={`font-mono text-[11px] font-semibold tracking-[0.18em] ${i === 0 ? "text-mark" : "text-warm"}`}>{level.n}</span>
+                  <p className={`mt-3 font-editorial ${i === 0 ? "text-4xl text-mark" : "text-2xl text-paper"}`}>{level.rate}</p>
+                  <h3 className="mt-3 font-display text-sm font-semibold text-paper">{level.title}</h3>
+                  <p className="mt-2 text-[11px] leading-relaxed text-muted">{level.body}</p>
+                </div>
+              ))}
             </div>
             <div className="border-t border-line bg-ink-3/30 px-6 py-5">
               <p className="font-mono text-[10px] tracking-wider text-muted uppercase">{t.commissionLabel}</p>
-              <p className="mt-2 text-xs leading-relaxed text-paper/80">{terms.note}</p>
+              <p className="mt-2 text-xs leading-relaxed text-paper/80">{t.commissionNote}</p>
+              <p className="mt-4 font-display text-sm font-semibold text-paper">{t.exampleTitle}</p>
+              <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+                {t.exampleRows.map((row) => (
+                  <div key={row.label} className={`flex items-baseline justify-between gap-3 rounded-lg border px-3 py-2 ${row.accent ? "border-mark/40 bg-mark/10" : "border-line bg-ink-2"}`}>
+                    <dt className="text-[11px] text-muted">{row.label}</dt>
+                    <dd className={`font-mono text-sm ${row.accent ? "text-mark" : "text-paper"}`}>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 text-xs leading-relaxed text-paper/80">{t.exampleFoot}</p>
+              <p className="mt-3 text-xs leading-relaxed text-muted">{terms.note}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">{terms.example}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">{terms.lock}</p>

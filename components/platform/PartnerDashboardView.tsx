@@ -7,6 +7,7 @@ import {
 import { ReferralPanel } from "@/components/platform/ReferralPanel";
 import { StatusBadge } from "@/components/platform/StatusBadge";
 import { cardClass } from "@/components/ui/classes";
+import { CommissionScheduleCard } from "@/components/platform/CommissionScheduleCard";
 import {
   NO_DATA,
   formatCount,
@@ -135,6 +136,8 @@ export function PartnerDashboardView({
           </ul>
         ) : null}
       </section>
+
+      <CommissionScheduleCard />
 
       <LaunchCard createdAt={partner.created_at} />
 
@@ -296,14 +299,14 @@ function LaunchCard({ createdAt }: { createdAt: string }) {
   return (
     <section aria-labelledby="schedule-heading" className={`p-5 sm:p-6 ${cardClass}`}>
       <h2 id="schedule-heading" className="text-sm font-semibold tracking-tight">
-        {launch ? "Launch schedule" : "Base schedule"}
+        {launch ? "Launch-period status" : "Launch-period ended"}
       </h2>
       <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
         {launch
-          ? `Qualifying payments before ${ends} use the launch schedule. The window starts at the partner record and lasts 90 days. It is not a calendar quarter and it is not lifetime.`
-          : `The 90-day launch window ended ${ends}. Qualifying payments after that date use the base schedule.`}
+          ? `Launch-period status is on until ${ends}. The window starts at the partner record and lasts 90 days. It is a ledger flag, not a commission multiplier, not a calendar quarter, and not lifetime.`
+          : `The 90-day launch-period flag ended ${ends}. Qualifying payments use the same Partner Commission Model rates.`}
         {" "}
-        The amounts above are the ledger totals. This card does not calculate them.
+        Launch status does not raise the 80% network pool. The amounts above are ledger totals. This card does not calculate them.
       </p>
     </section>
   );

@@ -503,6 +503,16 @@ export type Database = {
         Args: { p_payout_id: string; p_confirmed_by: string };
         Returns: string;
       };
+      /** Partner Commission Model v2: aggregate L1–L5 pool cap (0.80). */
+      partner_pool_cap: {
+        Args: Record<string, never>;
+        Returns: number;
+      };
+      /** AI Mark retained share of commissionable amount (0.20). Not net profit. */
+      ai_mark_retained_share: {
+        Args: Record<string, never>;
+        Returns: number;
+      };
     };
     Enums: {
       app_role: AppRole;

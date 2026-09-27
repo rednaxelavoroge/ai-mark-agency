@@ -4,7 +4,10 @@ Date: 2026-09-26
 Repo: `rednaxelavoroge/ai-mark-agency`  
 Live: https://ai-mark.agency  
 Base: `origin/main`  
-This document is the audit artifact. Economic parameters, L1–L5 rates, launch multiplier, 14-day hold, payout/reversal rules, Capital Partner, Legal/Trust Pack, and public product prices were not changed.
+This document is the audit artifact of the partner network surface. Economic
+parameters were later replaced by Partner Commission Model v2
+(`docs/partner-economic-model.md`): L1 50% / L2 15% / L3 7% / L4 5% / L5 3%,
+80% aggregate pool. This audit file was not rewritten as a rate table.
 
 ## 1. Executive summary
 

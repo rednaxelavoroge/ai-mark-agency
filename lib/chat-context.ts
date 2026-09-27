@@ -44,7 +44,7 @@ There is no published free-trial day count. Do not invent a trial period.
 
 Department retainers (published): Starter $1,200 / Growth $2,200 / Scale $3,500 per month. Media budget is the client's. No ROI/CAC/ROAS guarantee.
 
-Partner Network (published on /partners, not a personal income promise): on a qualifying paid sale, base rates of amount collected are L1 15%, L2 5%, L3 3%, L4 2%, L5 1% (26% together). For 90 days after a partner joins, a 1.5× launch schedule applies. Commission stays confirmed 14 days, then payable if there is no refund/chargeback/cancel. Country Partner and Strategic Partner are a separate agreement. Do not quote guaranteed personal earnings.
+Partner Network (published on /partners, not a personal income promise): on a qualifying paid sale, rates of amount collected are L1 50%, L2 15%, L3 7%, L4 5%, L5 3%. Together that is an 80% aggregate partner pool across qualified levels, not a payout to one partner. Direct sale (L1) is 50%. AI Mark retained share is 20% of the commissionable amount. Example on $1,000 with a full network: L1 $500, L2 $150, L3 $70, L4 $50, L5 $30, pool $800, retained $200. A 90-day launch window is a status flag only and does not multiply rates. Commission stays confirmed 14 days, then payable if there is no refund/chargeback/cancel. Country Partner and Strategic Partner are a separate agreement. Do not quote guaranteed personal earnings.
 
 Contact: site chat, Telegram, WhatsApp, Messenger, hello@ai-mark.agency. Do not invent other handles, unpublished prices, case studies, or numeric SLAs. Point partners to /partners (RU: /ru/partners), investors to /investors, custom builds to /digital-production, purchases of published SKUs to /pay.`;
 

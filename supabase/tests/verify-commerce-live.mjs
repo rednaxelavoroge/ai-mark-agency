@@ -471,12 +471,11 @@ try {
       JSON.stringify(entries?.map((e) => `${e.level}:${e.beneficiary_partner_id}`)),
     );
     const l1 = Number(entries?.find((e) => e.level === 1)?.amount ?? 0);
-    // The partner account was created minutes ago, so the 90-day launch window
-    // applies: the invoiced amount (the published $349 plan) at 15% x 1.5.
+    const expected = Math.round(Number(invoice?.expected_amount) * 0.5 * 100) / 100;
     check(
-      "the L1 amount is the published launch rate on the paid amount",
-      Math.abs(l1 - Math.round(Number(invoice?.expected_amount) * 0.15 * 1.5 * 100) / 100) < 0.01,
-      `L1=${l1}, expected=${Math.round(349.99 * 0.15 * 1.5 * 100) / 100}, entries=${JSON.stringify(entries?.map((e) => `${e.level}:${e.amount}:${e.commission_type}`))}`,
+      "the L1 amount is 50% of the paid commissionable amount (v2, no launch multiplier)",
+      Math.abs(l1 - expected) < 0.01,
+      `L1=${l1}, expected=${expected}, entries=${JSON.stringify(entries?.map((e) => `${e.level}:${e.amount}:${e.commission_type}`))}`,
     );
   }
 
