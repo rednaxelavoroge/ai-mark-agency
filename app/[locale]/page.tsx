@@ -299,7 +299,7 @@ export default async function HomePage({ params }: Props) {
 
               <div className="mt-6 pt-4 border-t border-line flex items-center justify-between">
                 <Link
-                  href={navHref(locale, p.href)}
+                  href={p.href}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-warm hover:text-paper transition-colors"
                 >
                   {isRu ? "Подробнее о продукте" : "Product details"}
