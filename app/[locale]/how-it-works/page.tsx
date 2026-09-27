@@ -82,7 +82,7 @@ export default async function HowItWorksPage({ params }: Props) {
       </div>
 
       {/* 4. AI-Native Operating Model (HITL) */}
-      <div className="mt-20 overflow-hidden rounded-3xl border border-line bg-ink">
+      <div id="operating-model" className="mt-20 scroll-mt-24 overflow-hidden rounded-3xl border border-line bg-ink">
         <div className="p-6 sm:p-12">
           <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
             {t.how.eyebrow}

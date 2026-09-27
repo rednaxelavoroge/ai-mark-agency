@@ -59,7 +59,7 @@ export default async function PricingPage({ params }: Props) {
   });
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+    <article id="commercial" className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-8">
         <BackButton locale={locale} targetHref="/" />
       </div>
@@ -291,7 +291,7 @@ export default async function PricingPage({ params }: Props) {
       </p>
 
       {/* Why Now / Philosophy Cards */}
-      <div className="mt-20 rounded-3xl border border-line bg-ink-2 p-6 sm:p-10" data-reveal>
+      <div id="why-now" className="mt-20 scroll-mt-24 rounded-3xl border border-line bg-ink-2 p-6 sm:p-10" data-reveal>
         <span className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
           {t.why.eyebrow}
         </span>
