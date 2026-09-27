@@ -12,6 +12,7 @@ import { PRODUCT_PATHS, productsHubPath } from "@/lib/products";
 import { partnerProgramTerms } from "@/content/partner-program";
 import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
+import { BackButton } from "@/components/BackButton";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -326,6 +327,7 @@ export default async function PartnersPage({ params }: Props) {
         <div className="ambient-drift-slow pointer-events-none absolute -bottom-40 left-0 h-[460px] w-[460px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,191,140,0.09),transparent_68%)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:py-24">
           <div data-reveal>
+            <BackButton locale={locale} className="mb-6" />
             <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">{t.eyebrow}</p>
             <h1 className="mt-4 max-w-2xl font-editorial text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.title}</h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>

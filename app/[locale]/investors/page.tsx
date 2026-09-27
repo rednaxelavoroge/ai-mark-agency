@@ -8,6 +8,8 @@ import { Flow } from "@/lib/markdown";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
 
+import { BackButton } from "@/components/BackButton";
+
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -44,7 +46,10 @@ export default async function InvestorsPage({ params }: Props) {
   const isRu = locale === "ru";
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <div className="mb-8">
+        <BackButton locale={locale} targetHref="/#investors" />
+      </div>
       <header className="max-w-3xl">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mark">
           {t.eyebrow}

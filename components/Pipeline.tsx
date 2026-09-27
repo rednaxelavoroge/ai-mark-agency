@@ -1,4 +1,6 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import { useRef, type CSSProperties } from "react";
 
 function Connector({ delay }: { delay: number }) {
   return (
@@ -7,7 +9,7 @@ function Connector({ delay }: { delay: number }) {
       width="46"
       height="12"
       viewBox="0 0 46 12"
-      className="hidden shrink-0 text-warm md:block"
+      className="hidden shrink-0 text-warm sm:block"
     >
       <line x1="2" y1="6" x2="44" y2="6" stroke="currentColor" strokeWidth="1" opacity="0.28" />
       <line
@@ -32,37 +34,75 @@ export function Pipeline({
   steps: string[];
   result?: string;
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const offset = direction === "left" ? -280 : 280;
+      scrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
+    }
+  };
+
   return (
-    <div data-reveal>
-      <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-        {steps.map((step, i) => (
-          <li key={step} className="flex min-w-0 items-center">
-            <span
-              data-reveal
-              style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
-              className="premium-card flex min-w-0 items-center gap-2 rounded-full px-3.5 py-2 text-sm"
-            >
-              <span className="font-mono text-[11px] text-warm">
-                {String(i + 1).padStart(2, "0")}
+    <div className="relative group/pipeline" data-reveal>
+      {/* Scroll Arrows */}
+      <div className="flex items-center justify-between mb-3 sm:hidden">
+        <span className="font-mono text-[10px] text-muted uppercase">Свайпайте вправо →</span>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            aria-label="Scroll left"
+            className="grid h-7 w-7 place-items-center rounded-full border border-line bg-ink-2 text-xs text-paper hover:bg-ink-3"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            aria-label="Scroll right"
+            className="grid h-7 w-7 place-items-center rounded-full border border-line bg-ink-2 text-xs text-paper hover:bg-ink-3"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+
+      {/* Main Track */}
+      <div
+        ref={scrollRef}
+        className="overflow-x-auto pb-3 pt-1 scroll-smooth no-scrollbar"
+      >
+        <ol className="flex min-w-max items-center pr-8">
+          {steps.map((step, i) => (
+            <li key={step} className="flex items-center">
+              <span
+                data-reveal
+                style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
+                className="premium-card flex items-center gap-2 rounded-full px-3.5 py-2 text-xs sm:text-sm transition-all hover:border-mark/40 hover:-translate-y-0.5"
+              >
+                <span className="font-mono text-[11px] text-warm font-semibold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-paper">{step}</span>
               </span>
-              <span className="min-w-0 text-pretty text-paper">{step}</span>
-            </span>
-            {i < steps.length - 1 ? <Connector delay={i * 70} /> : null}
-          </li>
-        ))}
-        {result ? (
-          <li className="flex items-center">
-            <Connector delay={steps.length * 70} />
-            <span
-              data-reveal
-              style={{ "--reveal-delay": `${steps.length * 70}ms` } as CSSProperties}
-              className="rounded-full bg-mark px-3.5 py-2 text-sm font-medium text-mark-ink shadow-sm"
-            >
-              {result}
-            </span>
-          </li>
-        ) : null}
-      </ol>
+              {i < steps.length - 1 ? <Connector delay={i * 70} /> : null}
+            </li>
+          ))}
+          {result ? (
+            <li className="flex items-center">
+              <Connector delay={steps.length * 70} />
+              <span
+                data-reveal
+                style={{ "--reveal-delay": `${steps.length * 70}ms` } as CSSProperties}
+                className="rounded-full bg-mark px-4 py-2 text-xs sm:text-sm font-semibold text-mark-ink shadow-sm"
+              >
+                {result}
+              </span>
+            </li>
+          ) : null}
+        </ol>
+      </div>
     </div>
   );
 }

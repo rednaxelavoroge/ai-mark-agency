@@ -9,6 +9,7 @@ import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
 import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
+import { BackButton } from "@/components/BackButton";
 
 export function ShowroomAIPageContent({
   locale,
@@ -32,6 +33,9 @@ export function ShowroomAIPageContent({
         <div className="pointer-events-none absolute -top-40 right-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.1),transparent_70%)]" />
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-6">
+            <BackButton locale={locale} targetHref="/#products" />
+          </div>
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
@@ -62,8 +66,8 @@ export function ShowroomAIPageContent({
               </p>
               <p className="mt-3 text-sm text-paper/90">
                 {ru
-                  ? "Ассистент отвечает и квалифицирует. Showroom продаёт и готовит сделку."
-                  : "The assistant answers and qualifies. Showroom sells and prepares the deal."}
+                  ? "Ассистент отвечает и квалифицирует. Showroom AI продаёт и готовит сделку."
+                  : "The assistant answers and qualifies. Showroom AI sells and prepares the deal."}
               </p>
 
               {/* CTAs */}
@@ -75,6 +79,15 @@ export function ShowroomAIPageContent({
                 >
                   {c.ctaConsult} →
                 </button>
+                <a
+                  href="https://showroom-ai.pro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-warm/40 bg-warm/10 px-5 py-3 text-sm font-semibold text-warm hover:bg-warm/20 transition-all"
+                >
+                  <span>showroom-ai.pro</span>
+                  <span>↗</span>
+                </a>
                 <a
                   href="#workflow"
                   className="inline-flex items-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
@@ -490,8 +503,8 @@ export function ShowroomAIPageContent({
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {locale === "ru"
-                ? "SHOWROOM AI ведёт разговор с клиентом, применяет ваши правила и детерминированный расчёт — и готовит сделку для отдела продаж."
-                : "SHOWROOM AI talks to customers, applies your catalog and business rules with deterministic pricing — and prepares the opportunity for your sales team."}
+                ? "Showroom AI ведёт разговор с клиентом, применяет ваши правила и детерминированный расчёт — и готовит сделку для отдела продаж."
+                : "Showroom AI talks to customers, applies your catalog and business rules with deterministic pricing — and prepares the opportunity for your sales team."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
@@ -501,12 +514,15 @@ export function ShowroomAIPageContent({
               >
                 {c.ctaConsult} →
               </button>
-              <Link
-                href={localePath(locale, "/products")}
-                className="rounded-full border border-line bg-ink-2 px-6 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
+              <a
+                href="https://showroom-ai.pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-warm/40 bg-warm/10 px-6 py-3 text-sm font-semibold text-warm hover:bg-warm/20 transition-all"
               >
-                {ru ? "Все продукты" : "All products"}
-              </Link>
+                <span>showroom-ai.pro ↗</span>
+              </a>
+              <BackButton locale={locale} targetHref="/#products" className="py-3 px-6 text-sm" />
             </div>
           </div>
         </div>

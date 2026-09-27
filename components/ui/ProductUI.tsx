@@ -403,7 +403,7 @@ function ShowroomMock() {
     <div className="grid h-full grid-cols-[56%_44%] bg-ink-3/30 text-paper">
       <div className="flex flex-col gap-2 border-r border-line/70 p-3">
         <div className="flex items-center justify-between">
-          <span className="font-display text-[11px] font-semibold">SHOWROOM AI Core</span>
+          <span className="font-display text-[11px] font-semibold">Showroom AI Core</span>
           <span className="flex items-center gap-1 font-mono text-[8px] text-mark">
             <Dot tone="emerald" /> v2.4
           </span>
@@ -596,8 +596,8 @@ function SaasMock() {
             </div>
           </div>
 
-          <div className="shrink-0 overflow-hidden rounded-lg border border-line/70 bg-ink-2">
-            <div className="grid grid-cols-[1.6fr_0.8fr_0.55fr_0.7fr_0.6fr] items-center gap-1 border-b border-line/70 px-2.5 py-1 font-mono text-[7px] tracking-wide text-muted">
+          <div className="shrink-0 overflow-x-auto rounded-lg border border-line/70 bg-ink-2">
+            <div className="grid min-w-[260px] grid-cols-[1.6fr_0.8fr_0.55fr_0.7fr_0.6fr] items-center gap-1 border-b border-line/70 px-2.5 py-1 font-mono text-[7px] tracking-wide text-muted">
               <span>WORKSPACE</span>
               <span>PLAN</span>
               <span className="text-right">SEATS</span>
@@ -782,8 +782,8 @@ function PortalMock() {
       </div>
 
       {/* Orders: stage progress + value, mirrors the shop card grid */}
-      <div className="overflow-hidden rounded-lg border border-line/70 bg-ink-2">
-        <div className="grid grid-cols-[0.6fr_1.5fr_0.6fr_0.7fr_0.7fr] items-center gap-1 border-b border-line/70 px-2.5 py-1 font-mono text-[7px] tracking-wide text-muted">
+      <div className="shrink-0 overflow-x-auto rounded-lg border border-line/70 bg-ink-2">
+        <div className="grid min-w-[260px] grid-cols-[0.6fr_1.5fr_0.6fr_0.7fr_0.7fr] items-center gap-1 border-b border-line/70 px-2.5 py-1 font-mono text-[7px] tracking-wide text-muted">
           <span>ORDER</span>
           <span>STAGE</span>
           <span className="text-right">ETA</span>
@@ -1074,7 +1074,7 @@ const MAP: Record<ProductVariant, () => ReactNode> = {
 const URL_MAP: Record<ProductVariant, string> = {
   aime: "app.ai-mark.agency/marketing",
   assistant: "app.ai-mark.agency/inbox",
-  showroom: "app.ai-mark.agency/showroom",
+  showroom: "app.showroom-ai.pro",
   saas: "app.ai-mark.agency/platform",
   portal: "app.ai-mark.agency/portal",
   ecommerce: "app.ai-mark.agency/catalog",

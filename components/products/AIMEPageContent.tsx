@@ -9,6 +9,7 @@ import { openLauncher } from "@/lib/contact";
 import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
+import { BackButton } from "@/components/BackButton";
 
 export function AIMEPageContent({
   locale,
@@ -29,6 +30,9 @@ export function AIMEPageContent({
         <div className="pointer-events-none absolute -top-40 right-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.1),transparent_70%)]" />
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-6">
+            <BackButton locale={locale} targetHref="/#products" />
+          </div>
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
@@ -522,12 +526,7 @@ export function AIMEPageContent({
               >
                 {c.ctaConsult} →
               </button>
-              <Link
-                href={localePath(locale, "/products")}
-                className="rounded-full border border-line bg-ink-2 px-6 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
-              >
-                {ru ? "Каталог продуктов" : "Product catalog"}
-              </Link>
+              <BackButton locale={locale} targetHref="/#products" className="py-3 px-6 text-sm" />
             </div>
           </div>
         </div>

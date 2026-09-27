@@ -10,6 +10,7 @@ import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
+import { BackButton } from "@/components/BackButton";
 
 export function AIBAPageContent({
   locale,
@@ -34,6 +35,9 @@ export function AIBAPageContent({
         <div className="pointer-events-none absolute -top-40 right-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.1),transparent_70%)]" />
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-6">
+            <BackButton locale={locale} targetHref="/#products" />
+          </div>
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
@@ -508,8 +512,8 @@ export function AIBAPageContent({
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {isRu
-                ? "AI Business Assistant отвечает по базе знаний, квалифицирует и передаёт диалог человеку. Расчёт и коммерческое предложение — задача SHOWROOM AI."
-                : "AI Business Assistant answers from the knowledge base, qualifies, and hands the conversation to a person. Calculation and the commercial proposal belong to SHOWROOM AI."}
+                ? "AI Business Assistant отвечает по базе знаний, квалифицирует и передаёт диалог человеку. Расчёт и коммерческое предложение — задача Showroom AI."
+                : "AI Business Assistant answers from the knowledge base, qualifies, and hands the conversation to a person. Calculation and the commercial proposal belong to Showroom AI."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
@@ -519,12 +523,7 @@ export function AIBAPageContent({
               >
                 {c.ctaConsult} →
               </button>
-              <Link
-                href={localePath(locale, "/products")}
-                className="rounded-full border border-line bg-ink-2 px-6 py-3 text-sm font-medium text-paper hover:bg-ink-3 transition-colors"
-              >
-                {isRu ? "Все продукты" : "All products"}
-              </Link>
+              <BackButton locale={locale} targetHref="/#products" className="py-3 px-6 text-sm" />
             </div>
           </div>
         </div>

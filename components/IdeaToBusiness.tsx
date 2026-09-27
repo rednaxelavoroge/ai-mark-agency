@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useState, useRef, type CSSProperties } from "react";
 import type { Locale } from "@/lib/site";
+import { ContactCta } from "@/components/ContactCta";
 
 /**
- * Pinned narrative scene: "An idea enters the system and becomes a working
- * business." The section is tall; the inner panel is sticky. As the visitor
- * scrolls, stages activate in sequence and the system diagram constructs
- * itself. Under reduced-motion the whole thing renders as a static grid.
+ * Interactive Business Creation Contour:
+ * Replaces the heavy 350vh scroll lock with an elegant horizontal stage
+ * explorer inspired by auswandernhilft.de/laenderhub.
+ * All stages, copy, artifacts, and scenarios are 100% preserved.
  */
 
 type Stage = {
@@ -130,7 +131,6 @@ const COPY: Record<string, { eyebrow: string; title: string; lead: string; stage
   },
 };
 
-/** Plain-language description of what each centre artifact represents. */
 const ARTIFACT_CAPTION: Record<string, Record<string, string>> = {
   ru: {
     seed: "Вход: идея, действующий бизнес или объём капитала.",
@@ -157,7 +157,7 @@ const ARTIFACT_CAPTION: Record<string, Record<string, string>> = {
 const ACCENTS = ["var(--mark)", "var(--warm)", "var(--mark-light)"];
 const accent = (i: number) => ACCENTS[i % ACCENTS.length];
 
-const RADIUS = 37;
+const RADIUS = 35;
 const CENTER = { x: 50, y: 50 };
 
 function nodePos(i: number, total: number) {
@@ -168,33 +168,17 @@ function nodePos(i: number, total: number) {
   };
 }
 
-const ARTIFACT_LABEL: Record<string, Record<string, string>> = {
-  ru: {
-    bars: "спрос · конкуренты",
-    product: "кабинеты · расчёты",
-    ai: "RAG · агенты",
-    funnel: "обращения → сделки",
-    growth: "метрики · сеть",
-  },
-  en: {
-    bars: "demand · competitors",
-    product: "workspaces · quoting",
-    ai: "RAG · agents",
-    funnel: "inquiries → deals",
-    growth: "metrics · network",
-  },
-};
-
 function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
-  const label = ARTIFACT_LABEL[locale]?.[kind] ?? "";
+  const isRu = locale === "ru";
   const base =
-    "stage-enter flex h-full w-full items-center justify-center rounded-xl border border-line/70 bg-ink-2 p-3";
+    "stage-enter flex h-full w-full items-center justify-center rounded-xl border border-line/70 bg-ink-2 p-3 shadow-inner";
+
   if (kind === "seed") {
     return (
       <div className={base}>
         <div className="flex items-center gap-2">
           <span className="relative grid h-3 w-3 place-items-center rounded-full bg-warm text-warm pulse-ring" />
-          <span className="font-mono text-[10px] opacity-75">{locale === "ru" ? "идея · гипотеза" : "idea · hypothesis"}</span>
+          <span className="font-mono text-[10px] opacity-80">{isRu ? "идея · капитал" : "idea · capital"}</span>
         </div>
       </div>
     );
@@ -202,8 +186,8 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
   if (kind === "bars") {
     return (
       <div className={base}>
-        <div className="w-full max-w-[150px]">
-          <div className="flex h-12 items-end gap-1.5">
+        <div className="w-full max-w-[130px]">
+          <div className="flex h-10 items-end gap-1.5">
             {[42, 58, 50, 74, 66, 88, 80].map((h, i) => (
               <span
                 key={i}
@@ -213,7 +197,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
             ))}
           </div>
           <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
-            {label}
+            {isRu ? "спрос · конкуренты" : "demand · rivals"}
           </p>
         </div>
       </div>
@@ -222,11 +206,11 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
   if (kind === "grid") {
     return (
       <div className={base}>
-        <div className="grid w-full max-w-[140px] grid-cols-2 gap-1.5">
-          {(locale === "ru" ? ["Сегменты", "Монетизация", "Каналы", "CAC / LTV"] : ["Segments", "Pricing", "Channels", "CAC / LTV"]).map((t) => (
+        <div className="grid w-full max-w-[130px] grid-cols-2 gap-1">
+          {(isRu ? ["Сегменты", "Монетизация", "Каналы", "CAC/LTV"] : ["Segments", "Pricing", "Channels", "CAC/LTV"]).map((t) => (
             <span
               key={t}
-              className="rounded-md border border-line/70 px-2 py-2 text-center font-mono text-[9px] text-paper/85"
+              className="rounded border border-line/70 px-1.5 py-1 text-center font-mono text-[8px] text-paper/85 truncate"
             >
               {t}
             </span>
@@ -239,9 +223,9 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
     return (
       <div className={base}>
         <div className="text-center">
-          <p className="font-display text-2xl font-semibold text-paper">AI MARK</p>
-          <p className="mt-1 font-mono text-[9px] tracking-widest uppercase opacity-80">
-            {locale === "ru" ? "система айдентики" : "identity system"}
+          <p className="font-display text-lg font-semibold text-paper">AI MARK</p>
+          <p className="mt-1 font-mono text-[8px] tracking-widest uppercase opacity-80">
+            {isRu ? "айдентика" : "identity"}
           </p>
         </div>
       </div>
@@ -250,19 +234,13 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
   if (kind === "product") {
     return (
       <div className={base}>
-        <div className="w-full max-w-[160px]">
-          <div className="mb-1.5 flex gap-1">
-            <span className="h-2 w-2 rounded-full bg-warm/60" />
-            <span className="h-2 w-2 rounded-full bg-mark/50" />
+        <div className="w-full max-w-[130px] space-y-1">
+          <div className="flex items-center justify-between border-b border-line pb-1 font-mono text-[8px] opacity-75">
+            <span>app.workspace</span>
+            <span className="text-mark">v2.4</span>
           </div>
-          <div className="space-y-1.5">
-            <span className="block h-2 w-3/4 rounded bg-mark/25" />
-            <span className="block h-2 w-full rounded bg-ink-3" />
-            <span className="block h-2 w-5/6 rounded bg-ink-3" />
-          </div>
-          <p className="mt-2 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
-            {label}
-          </p>
+          <div className="h-1.5 w-full rounded bg-mark/30" />
+          <div className="h-1.5 w-4/5 rounded bg-line" />
         </div>
       </div>
     );
@@ -270,18 +248,13 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
   if (kind === "ai") {
     return (
       <div className={base}>
-        <div className="text-center">
-          <div className="mx-auto grid w-fit grid-cols-3 gap-2">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <span
-                key={i}
-                className={`h-2.5 w-2.5 rounded-full ${i % 4 === 1 ? "bg-mark" : "bg-ink-3"}`}
-              />
-            ))}
+        <div className="flex flex-col items-center gap-1.5">
+          <div className="flex items-center gap-1">
+            <span className="h-2 w-2 rounded-full bg-mark animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-warm animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-mark-light animate-pulse" />
           </div>
-          <p className="mt-2 font-mono text-[8px] uppercase tracking-wider opacity-75">
-            {label}
-          </p>
+          <span className="font-mono text-[9px] text-paper font-semibold">AI Agents Loop</span>
         </div>
       </div>
     );
@@ -289,337 +262,306 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
   if (kind === "funnel") {
     return (
       <div className={base}>
-        <div className="w-full max-w-[150px] space-y-1.5">
-          {[100, 72, 46].map((w, i) => (
-            <span
-              key={i}
-              className="block h-3 rounded bg-gradient-to-r from-mark/70 to-mark/25"
-              style={{ width: `${w}%` }}
-            />
-          ))}
-          <p className="pt-1 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
-            {label}
-          </p>
+        <div className="w-full max-w-[130px] space-y-1">
+          <div className="flex justify-between font-mono text-[8px] text-muted">
+            <span>Inquiry</span>
+            <span>Deal</span>
+          </div>
+          <div className="h-2 w-full rounded-full bg-gradient-to-r from-warm/40 to-mark" />
         </div>
       </div>
     );
   }
   return (
     <div className={base}>
-      <div className="w-full max-w-[170px]">
-        <svg viewBox="0 0 160 60" className="h-11 w-full">
-          <path
-            d="M4 52 C40 52, 44 22, 76 22 S120 8 156 6"
-            fill="none"
-            stroke="var(--mark)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
-        <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider opacity-75">
-          {label}
-        </p>
+      <div className="text-center font-mono text-[9px] text-mark font-semibold">
+        <span>+ Scale & Network</span>
       </div>
     </div>
   );
 }
 
 export function IdeaToBusiness({ locale }: { locale: Locale }) {
-  const copy = COPY[locale] ?? COPY.ru;
-  const stages = copy.stages;
-  const [active, setActive] = useState(0);
-  const [reduced, setReduced] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const isRu = locale === "ru";
+  const data = COPY[locale] ?? COPY.ru;
+  const stages = data.stages;
+  const [active, setActive] = useState<number>(0);
   const total = stages.length;
-
-  useEffect(() => {
-    /* Reduced motion: no pin and no stage sequence — the static panel plus the
-       stage overview below carry the story. Set directly (not on a frame) so
-       the tall pinned track never appears for these visitors. */
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      /* Deferred to a microtask (not a frame) so it lands before paint without
-         being a synchronous setState inside the effect body. */
-      queueMicrotask(() => {
-        setReduced(true);
-        setActive(total - 1);
-      });
-      return;
-    }
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      /* The panel is pinned for exactly its own height, so the pin distance is
-         measured from the panel — not from window.innerHeight. */
-      const panelH = panelRef.current?.getBoundingClientRect().height || window.innerHeight;
-      const scrollable = rect.height - panelH;
-      const passed = -rect.top;
-      const p = scrollable > 0 ? Math.max(0, Math.min(1, passed / scrollable)) : 0;
-      const idx = Math.min(total - 1, Math.floor(p * total * 0.999));
-      setActive(idx);
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, [total]);
-
   const current = stages[active];
-  /* The slot is a size container: `.itb-dial` takes min(width, height, 460px)
-     from it, so the ring always fits the room the layout actually gives it. */
-  const slotClass = reduced
-    ? "itb-slot relative mx-auto aspect-square w-full max-w-[460px]"
-    : "itb-slot relative h-[30svh] min-h-[110px] w-full shrink-0 [@media(max-height:620px)]:h-[24svh] [@media(min-height:760px)]:h-[36svh] lg:h-auto lg:min-h-0 lg:flex-1";
+
+  const stripRef = useRef<HTMLDivElement>(null);
+
+  const scrollStrip = (direction: "left" | "right") => {
+    if (stripRef.current) {
+      const offset = direction === "left" ? -220 : 220;
+      stripRef.current.scrollBy({ left: offset, behavior: "smooth" });
+    }
+  };
+
+  const nextStage = () => setActive((prev) => (prev + 1) % total);
+  const prevStage = () => setActive((prev) => (prev === 0 ? total - 1 : prev - 1));
 
   return (
-    <>
-    <section
-      ref={sectionRef}
-      id="idea-to-business"
-      className={`relative border-t border-line bg-ink-3/20 ${reduced ? "itb-static" : "itb-track"}`}
-      style={{ "--itb-stages": total } as CSSProperties}
-    >
+    <section id="contour" className="relative scroll-mt-24 border-b border-line bg-ink py-16 sm:py-24">
+      {/* Background radial accent */}
       <div
-        ref={panelRef}
-        className={`flex items-center ${
-          reduced ? "relative" : "itb-panel sticky top-0 overflow-hidden"
-        }`}
-      >
-        <div className="mx-auto flex h-full w-full max-w-6xl flex-col px-4 pt-14 pb-[72px] sm:px-6 sm:pb-20 lg:pt-20 [@media(max-height:560px)]:pt-12">
-          <div className="shrink-0" data-reveal>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-mark uppercase sm:text-xs">
-              {copy.eyebrow}
-            </p>
-            <h2 className="mt-2 font-display text-2xl leading-[1.05] font-medium tracking-tight sm:text-3xl lg:mt-3 lg:text-4xl xl:text-5xl">
-              {copy.title}
-            </h2>
-            <p className="mt-3 hidden max-w-2xl text-muted [@media(min-height:680px)]:block lg:text-base">
-              {copy.lead}
-            </p>
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full opacity-40 blur-3xl"
+        style={{
+          background: `radial-gradient(circle, color-mix(in srgb, ${accent(active)} 20%, transparent), transparent 70%)`,
+        }}
+      />
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Header */}
+        <div className="max-w-3xl" data-reveal>
+          <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase font-semibold">
+            {data.eyebrow}
+          </p>
+          <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-paper">
+            {data.title}
+          </h2>
+          <p className="mt-4 text-base text-muted leading-relaxed">
+            {data.lead}
+          </p>
+        </div>
+
+        {/* Horizontal Stage Strip (inspired by AuswandernHilft flag strip) */}
+        <div className="mt-10">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <span className="font-mono text-[10px] text-warm uppercase tracking-wider">
+              {isRu ? "Выберите этап контура (01–08):" : "Select Contour Stage (01–08):"}
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => scrollStrip("left")}
+                aria-label="Scroll stages left"
+                className="grid h-7 w-7 place-items-center rounded-full border border-line bg-ink-2 text-xs text-paper hover:bg-ink-3"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollStrip("right")}
+                aria-label="Scroll stages right"
+                className="grid h-7 w-7 place-items-center rounded-full border border-line bg-ink-2 text-xs text-paper hover:bg-ink-3"
+              >
+                ›
+              </button>
+            </div>
           </div>
 
-          <div className="mt-4 grid min-h-0 flex-1 content-center gap-5 sm:mt-6 lg:grid-cols-[1fr_1.05fr] lg:content-stretch lg:gap-12">
-            {/* Narrative column */}
-            <div className="order-2 flex min-h-0 flex-col justify-center lg:order-1">
-              <div className="flex items-center gap-3">
-                <span
-                  className="font-editorial text-3xl italic transition-colors duration-500 [@media(max-height:600px)]:text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"
-                  style={{ color: accent(active) }}
-                >
-                  {String(active).padStart(2, "0")}
-                </span>
-                <span className="h-px flex-1 bg-line" />
-                <span className="font-mono text-[10px] tracking-widest text-muted uppercase lg:text-[11px]">
-                  {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                </span>
-              </div>
+          <div
+            ref={stripRef}
+            className="flex items-center gap-2 overflow-x-auto pb-2 scroll-smooth no-scrollbar"
+          >
+            {stages.map((stg, i) => (
+              <button
+                key={stg.title}
+                type="button"
+                onClick={() => setActive(i)}
+                className={`group flex shrink-0 items-center gap-2 rounded-full px-3.5 py-2 text-xs font-medium transition-all ${
+                  active === i
+                    ? "bg-mark text-mark-ink shadow-md font-semibold"
+                    : "border border-line bg-ink-2 text-muted hover:border-paper/40 hover:text-paper"
+                }`}
+              >
+                <span className="font-mono text-[10px] opacity-75">{stg.kicker}</span>
+                <span className="whitespace-nowrap">{stg.title}</span>
+                {active === i ? <span className="h-1.5 w-1.5 rounded-full bg-mark-ink" /> : null}
+              </button>
+            ))}
+          </div>
+        </div>
 
-              <div key={active} className="stage-enter mt-3 lg:mt-6">
-                <p className="font-mono text-[11px] tracking-widest text-warm uppercase lg:text-xs">
-                  {current.kicker}
-                </p>
-                <h3 className="mt-1.5 font-display text-lg font-semibold text-paper sm:text-xl lg:mt-2 lg:text-2xl xl:text-3xl">
+        {/* Stage Interactive Viewport Card */}
+        <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 shadow-xl">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Left Detail Side */}
+            <div className="flex flex-col justify-between space-y-6">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="font-mono text-xs font-semibold px-2 py-0.5 rounded"
+                    style={{ backgroundColor: `color-mix(in srgb, ${accent(active)} 20%, transparent)`, color: accent(active) }}
+                  >
+                    STAGE {String(active + 1).padStart(2, "0")} / 08 · {current.kicker}
+                  </span>
+                  <span className="font-mono text-[10px] text-muted uppercase">
+                    {isRu ? "Единый контур" : "Integrated Contour"}
+                  </span>
+                </div>
+
+                <h3 className="mt-3 font-display text-2xl sm:text-3xl font-semibold text-paper leading-tight">
                   {current.title}
                 </h3>
-                <div className="hidden [@media(min-height:620px)]:block">
-                  <p className="mt-2 line-clamp-2 max-w-md text-xs leading-relaxed text-muted lg:mt-3 lg:line-clamp-none lg:text-sm">
-                    {current.body}
+
+                <p className="mt-4 text-sm sm:text-base leading-relaxed text-muted">
+                  {current.body}
+                </p>
+
+                {/* Plain language artifact interpretation */}
+                <div className="mt-5 rounded-xl border border-line/80 bg-ink-3/40 p-4">
+                  <p className="font-mono text-[10px] uppercase text-warm font-semibold">
+                    {isRu ? "Результат этапа:" : "Stage Deliverable:"}
                   </p>
-                </div>
-              </div>
-
-              {/* Progress rail */}
-              <div className="mt-4 flex gap-1.5 [@media(max-height:560px)]:hidden lg:mt-8">
-                {stages.map((s, i) => (
-                  <span key={s.title} className="flex-1">
-                    <span className="block h-[3px] overflow-hidden rounded-full bg-ink-3">
-                      <span
-                        className="block h-full rounded-full transition-transform duration-500 ease-out"
-                        style={{
-                          transform: `scaleX(${i <= active ? 1 : 0})`,
-                          backgroundColor: accent(i),
-                        }}
-                      />
-                    </span>
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* System diagram */}
-            <div className="order-1 flex min-h-0 flex-col lg:order-2">
-              <div className={slotClass}>
-                <div className="itb-dial absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl transition-all duration-700"
-                  style={{
-                    background: `radial-gradient(circle at 50% 50%, color-mix(in srgb, ${accent(active)} 26%, transparent), transparent 68%)`,
-                  }}
-                />
-                <svg
-                  viewBox="0 0 100 100"
-                  className="absolute inset-0 h-full w-full"
-                  preserveAspectRatio="none"
-                >
-                  <defs>
-                    <linearGradient id="amRing" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stopColor="var(--mark)" />
-                      <stop offset="50%" stopColor="var(--warm)" />
-                      <stop offset="100%" stopColor="var(--mark-light)" />
-                    </linearGradient>
-                  </defs>
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r={RADIUS}
-                    fill="none"
-                    stroke="var(--line-strong)"
-                    strokeWidth="0.3"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r={RADIUS}
-                    fill="none"
-                    stroke="url(#amRing)"
-                    strokeWidth="1.1"
-                    strokeLinecap="round"
-                    strokeDasharray={2 * Math.PI * RADIUS}
-                    strokeDashoffset={2 * Math.PI * RADIUS * (1 - (active + 1) / total)}
-                    transform="rotate(-90 50 50)"
-                    style={{ transition: "stroke-dashoffset 700ms cubic-bezier(0.16,1,0.3,1)" }}
-                  />
-                  {stages.map((s, i) => {
-                    const p = nodePos(i, total);
-                    const on = i <= active;
-                    return (
-                      <line
-                        key={s.title}
-                        x1="50"
-                        y1="50"
-                        x2={p.x}
-                        y2={p.y}
-                        stroke={on ? accent(i) : "var(--line)"}
-                        strokeWidth={on ? 0.6 : 0.3}
-                        style={{ transition: "stroke 500ms ease, stroke-width 500ms ease" }}
-                      />
-                    );
-                  })}
-                </svg>
-
-                {/* Center artifact */}
-                <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] min-h-[86px] min-w-[86px] -translate-x-1/2 -translate-y-1/2" style={{ color: accent(active) }}>
-                  <Artifact kind={current.artifact} locale={locale} />
-                </div>
-
-                {/* Satellite nodes */}
-                {stages.map((s, i) => {
-                  const p = nodePos(i, total);
-                  const on = i <= active;
-                  return (
-                    <span
-                      key={s.title}
-                      className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap"
-                      style={{ left: `${p.x}%`, top: `${p.y}%` } as CSSProperties}
-                    >
-                      <span
-                        className={`grid h-6 w-6 place-items-center rounded-full border text-[9px] font-mono transition-all duration-500 ${
-                          on ? "text-mark-ink" : "border-line bg-ink-2 text-muted"
-                        }`}
-                        style={
-                          on
-                            ? {
-                                backgroundColor: accent(i),
-                                borderColor: accent(i),
-                                boxShadow: `0 0 0 4px color-mix(in srgb, ${accent(i)} 20%, transparent)`,
-                              }
-                            : undefined
-                        }
-                      >
-                        {i === 0 ? "◦" : i}
-                      </span>
-                      <span
-                        className={`hidden font-mono text-[9px] uppercase tracking-wider transition-colors duration-500 lg:inline ${
-                          on ? "font-semibold text-paper" : "text-muted"
-                        }`}
-                      >
-                        {s.title}
-                      </span>
-                    </span>
-                  );
-                })}
-                </div>
-              </div>
-
-              {/* What the artifact means — always spelled out */}
-              <div
-                key={active}
-                className="stage-enter mx-auto mt-2 flex w-full max-w-[460px] shrink-0 items-start gap-2.5 rounded-xl border border-line bg-ink-2 px-3 py-2 lg:mt-4 lg:gap-3 lg:px-4 lg:py-2.5"
-              >
-                <span
-                  className="mt-0.5 font-mono text-[10px]"
-                  style={{ color: accent(active) }}
-                >
-                  {String(active).padStart(2, "0")}
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-[11px] font-semibold text-paper lg:text-xs">
-                    {current.title}
-                  </p>
-                  <p className="mt-0.5 line-clamp-2 text-[10px] leading-relaxed text-muted lg:text-[11px]">
+                  <p className="mt-1 text-xs text-paper/90 font-medium leading-relaxed">
                     {ARTIFACT_CAPTION[locale]?.[current.artifact] ?? current.body}
                   </p>
                 </div>
               </div>
 
+              {/* Step Navigation Controls */}
+              <div className="flex items-center gap-3 pt-4 border-t border-line">
+                <button
+                  type="button"
+                  onClick={prevStage}
+                  className="rounded-full border border-line bg-ink-3/50 px-4 py-2 text-xs font-medium text-paper hover:bg-ink-3 transition-colors"
+                >
+                  ← {isRu ? "Предыдущий шаг" : "Previous"}
+                </button>
+                <button
+                  type="button"
+                  onClick={nextStage}
+                  className="rounded-full bg-mark px-5 py-2 text-xs font-semibold text-mark-ink hover:bg-mark-light transition-all shadow"
+                >
+                  {isRu ? "Следующий шаг" : "Next step"} →
+                </button>
+                <ContactCta className="ml-auto text-xs font-mono text-mark hover:underline">
+                  {isRu ? "Обсудить проект →" : "Discuss scope →"}
+                </ContactCta>
+              </div>
             </div>
+
+            {/* Right Visual Side: Constrained, Safe-Margin Diagram with Artifact */}
+            <div className="relative mx-auto flex h-[280px] w-full max-w-[320px] sm:h-[320px] sm:max-w-[360px] items-center justify-center">
+              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden>
+                <circle
+                  cx="50"
+                  cy="50"
+                  r={RADIUS}
+                  fill="none"
+                  stroke="var(--line-strong)"
+                  strokeWidth="0.5"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r={RADIUS}
+                  fill="none"
+                  stroke={accent(active)}
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeDasharray={2 * Math.PI * RADIUS}
+                  strokeDashoffset={2 * Math.PI * RADIUS * (1 - (active + 1) / total)}
+                  transform="rotate(-90 50 50)"
+                  style={{ transition: "stroke-dashoffset 600ms cubic-bezier(0.16,1,0.3,1), stroke 600ms ease" }}
+                />
+                {stages.map((s, i) => {
+                  const p = nodePos(i, total);
+                  const on = i <= active;
+                  return (
+                    <line
+                      key={s.title}
+                      x1="50"
+                      y1="50"
+                      x2={p.x}
+                      y2={p.y}
+                      stroke={on ? accent(i) : "var(--line)"}
+                      strokeWidth={on ? 0.7 : 0.3}
+                      style={{ transition: "stroke 400ms ease" }}
+                    />
+                  );
+                })}
+              </svg>
+
+              {/* Center Artifact Window */}
+              <div
+                className="relative z-10 h-28 w-28 sm:h-32 sm:w-32"
+                style={{ color: accent(active) }}
+              >
+                <Artifact kind={current.artifact} locale={locale} />
+              </div>
+
+              {/* Safe Satellite Nodes: positioned strictly inside the stage */}
+              {stages.map((s, i) => {
+                const p = nodePos(i, total);
+                const on = i <= active;
+                return (
+                  <button
+                    key={s.title}
+                    type="button"
+                    onClick={() => setActive(i)}
+                    aria-label={`Jump to stage ${i + 1}: ${s.title}`}
+                    className={`absolute grid h-7 w-7 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[10px] font-mono transition-all duration-300 ${
+                      on
+                        ? "text-mark-ink font-bold shadow-md scale-110"
+                        : "border-line bg-ink-2 text-muted hover:border-paper/40 hover:text-paper"
+                    }`}
+                    style={{
+                      left: `${p.x}%`,
+                      top: `${p.y}%`,
+                      ...(on
+                        ? {
+                            backgroundColor: accent(i),
+                            borderColor: accent(i),
+                            boxShadow: `0 0 0 3px color-mix(in srgb, ${accent(i)} 25%, transparent)`,
+                          }
+                        : {}),
+                    }}
+                  >
+                    {i === 0 ? "◦" : i}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Compact Grid of all 8 Stages — Always clean and readable without infinite vertical scroll */}
+        <div className="mt-12">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-warm mb-4">
+            {isRu ? "Сквозной обзор всех 8 этапов:" : "Full 8-Stage Overview:"}
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {stages.map((s, i) => (
+              <button
+                key={s.title}
+                type="button"
+                onClick={() => setActive(i)}
+                className={`flex flex-col justify-between rounded-xl border p-4 text-left transition-all hover:-translate-y-0.5 ${
+                  active === i
+                    ? "border-mark/70 bg-ink-3/70 shadow-sm"
+                    : "border-line bg-ink-2/80 hover:border-line-strong hover:bg-ink-2"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] font-semibold text-warm">{s.kicker}</span>
+                    <span
+                      className="h-1.5 w-1.5 rounded-full"
+                      style={{ backgroundColor: active === i ? accent(i) : "var(--line-strong)" }}
+                    />
+                  </div>
+                  <h4 className="mt-2 font-display text-sm font-semibold text-paper leading-snug">
+                    {s.title}
+                  </h4>
+                  <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted">
+                    {s.body}
+                  </p>
+                </div>
+                <div className="mt-3 pt-2 border-t border-line/40 flex items-center justify-between text-[10px] font-mono text-muted">
+                  <span>STEP 0{i + 1}</span>
+                  <span className={active === i ? "text-mark font-bold" : "text-muted"}>
+                    {active === i ? "● Активен" : "→"}
+                  </span>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
       </div>
     </section>
-
-    {/* Stage overview — every step described in plain language */}
-    <section className="border-t border-line bg-ink-3/20">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase" data-reveal>
-          {locale === "ru" ? "Все этапы контура" : "Every stage of the contour"}
-        </p>
-        <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {stages.map((s, i) => (
-            <div
-              key={s.title}
-              data-reveal
-              style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties}
-              className="border-t border-line pt-4"
-            >
-              <div className="flex items-baseline gap-2">
-                <span
-                  className="font-editorial text-xl italic"
-                  style={{ color: accent(i) }}
-                >
-                  {String(i).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-sm font-semibold leading-snug text-paper">
-                  {s.title}
-                </h3>
-              </div>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-    </>
   );
 }

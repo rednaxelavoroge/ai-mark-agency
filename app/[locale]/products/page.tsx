@@ -9,6 +9,7 @@ import { products } from "@/content/packages";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { productPagePath } from "@/lib/products";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
+import { BackButton } from "@/components/BackButton";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -44,7 +45,10 @@ export default async function ProductsHubPage({ params }: Props) {
   const isRu = locale === "ru";
 
   return (
-    <article className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <div className="mb-8">
+        <BackButton locale={locale} targetHref="/#products" />
+      </div>
       <div className="max-w-3xl">
         <p className="font-mono text-[11px] tracking-[0.22em] text-mark uppercase font-semibold">
           {t.products.eyebrow}
