@@ -345,8 +345,8 @@ export function HeroSystem({ locale, t }: HeroProps) {
               <span className="font-mono">
                 {isRu ? "Пример контура, не отчёт" : "Example of the loop, not a report"}
               </span>
-              <Link href={navHref(locale, "#pipeline")} className="text-mark font-medium hover:underline">
-                {isRu ? "Смотреть пайплайн →" : "View Pipeline →"}
+              <Link href={navHref(locale, "#idea-to-business")} className="text-mark font-medium hover:underline">
+                {isRu ? "Смотреть контур →" : "View Contour →"}
               </Link>
             </div>
           </div>

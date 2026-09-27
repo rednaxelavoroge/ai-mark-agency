@@ -48,7 +48,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 </Link>
               </li>
               <li>
-                <Link href={navHref(locale, "#pipeline")} className="hover:text-paper transition-colors">
+                <Link href={navHref(locale, "#idea-to-business")} className="hover:text-paper transition-colors">
                   {isRu ? "Сквозной процесс" : "End-to-End Pipeline"}
                 </Link>
               </li>

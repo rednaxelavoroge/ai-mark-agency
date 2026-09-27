@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
 import { BuyLink } from "@/components/BuyLink";
 import { LeadInquiry } from "@/components/LeadInquiry";
-import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
 import { IdeaToBusiness } from "@/components/IdeaToBusiness";
@@ -85,46 +84,10 @@ export default async function HomePage({ params }: Props) {
       {/* 2. PINNED NARRATIVE: the one full path */}
       <IdeaToBusiness locale={locale} />
 
-      {/* 3. WHAT WE DO: 5-PART CONNECTED OPERATING CONTOUR */}
-      <Section id="what-we-do" index="01" eyebrow={t.pillars.eyebrow} title={t.pillars.title}>
-        <div className="space-y-6">
-          <p className="max-w-2xl text-muted text-sm sm:text-base">
-            {isRu
-              ? "Пять функций одной инфраструктуры. Путь от идеи до бизнеса — в блоке выше; здесь — какая функция за что отвечает."
-              : "Five functions of one infrastructure. The path from idea to a working business is above; here is which function does which job."}
-          </p>
-          <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-            {t.pillars.items.map((item, idx) => (
-              <li
-                key={item.n}
-                data-reveal
-                style={{ "--reveal-delay": `${idx * 90}ms` } as CSSProperties}
-                className="group relative flex flex-col justify-between rounded-xl border border-line bg-ink-2 p-6 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-warm">{item.n}</span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-mark opacity-40 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <h3 className="mt-3 font-display text-base font-semibold leading-snug text-paper">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted">{item.body}</p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-line/50 flex items-center justify-between text-[10px] font-mono text-muted">
-                  <span>{isRu ? `Этап 0${idx + 1}` : `STAGE 0${idx + 1}`}</span>
-                  {idx < 4 ? <span className="text-warm">→</span> : <span className="text-mark font-bold">✓</span>}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Section>
-
-      {/* 3. BUSINESS CREATION */}
+      {/* 3. BUSINESS CREATION: TWO WAYS TO ENTER THE SYSTEM */}
       <Section
         id="business-creation"
-        index="02"
+        index="01"
         eyebrow={t.creation.eyebrow}
         title={t.creation.title}
         lead={t.creation.lead}
@@ -132,20 +95,10 @@ export default async function HomePage({ params }: Props) {
         <BusinessCreationVisual locale={locale} />
       </Section>
 
-      {/* 4. END-TO-END BUSINESS PATH (PIPELINE) */}
-      <Section id="pipeline" index="03" eyebrow={t.pipeline.eyebrow} title={t.pipeline.title}>
-        <p className="mb-4 max-w-2xl text-sm text-muted">
-          {isRu
-            ? "Это тот же путь, что в блоке выше, одной строкой. Войти можно на любом шаге."
-            : "The same path as above, in one line. You can join at any step."}
-        </p>
-        <Pipeline steps={t.pipeline.steps} />
-      </Section>
-
-      {/* 5. DIGITAL PRODUCTION */}
+      {/* 4. DIGITAL PRODUCTION */}
       <Section
         id="production"
-        index="04"
+        index="02"
         eyebrow={t.production.eyebrow}
         title={t.production.title}
         lead={t.production.lead}
@@ -154,10 +107,10 @@ export default async function HomePage({ params }: Props) {
         <DigitalProductionShowcase locale={locale} />
       </Section>
 
-      {/* 6. AI PRODUCTS */}
+      {/* 5. AI PRODUCTS */}
       <Section
         id="products"
-        index="05"
+        index="03"
         eyebrow={t.tech.eyebrow}
         title={t.tech.title}
         lead={t.tech.lead}
@@ -219,10 +172,10 @@ export default async function HomePage({ params }: Props) {
       {/* 8. MANIFESTO — editorial spread */}
       <Manifesto locale={locale} />
 
-      {/* 8. COMMERCIAL MODEL */}
+      {/* 6. COMMERCIAL MODEL */}
       <Section
         id="commercial"
-        index="06"
+        index="04"
         eyebrow={t.commercial.eyebrow}
         title={t.commercial.title}
         lead={t.commercial.lead}
@@ -348,10 +301,10 @@ export default async function HomePage({ params }: Props) {
         <p className="mt-6 text-xs text-muted font-mono">{t.commercial.footnote}</p>
       </Section>
 
-      {/* 9. PARTNER NETWORK */}
+      {/* 7. PARTNER NETWORK */}
       <Section
         id="partners"
-        index="07"
+        index="05"
         eyebrow={t.partners.eyebrow}
         title={t.partners.title}
         lead={t.partners.lead}
@@ -359,8 +312,8 @@ export default async function HomePage({ params }: Props) {
         <PartnerNetworkVisual locale={locale} />
       </Section>
 
-      {/* 10. WHY NOW */}
-      <Section id="why-now" index="08" eyebrow={t.why.eyebrow} title={t.why.title} lead={t.why.lead}>
+      {/* 8. WHY NOW */}
+      <Section id="why-now" index="06" eyebrow={t.why.eyebrow} title={t.why.title} lead={t.why.lead}>
         <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
           <div className="rounded-2xl border border-line bg-ink-2 p-6 sm:p-8" data-reveal>
             <span className="font-mono text-xs font-semibold tracking-wider text-muted uppercase">
@@ -401,10 +354,10 @@ export default async function HomePage({ params }: Props) {
         <p className="mt-8 max-w-3xl text-xs text-muted leading-relaxed">{t.why.close}</p>
       </Section>
 
-      {/* 11. INVESTORS SECTION */}
+      {/* 9. INVESTORS SECTION */}
       <Section
         id="investors"
-        index="09"
+        index="07"
         eyebrow={t.investors.eyebrow}
         title={t.investors.title}
         lead={t.investors.lead}
@@ -412,8 +365,8 @@ export default async function HomePage({ params }: Props) {
         <InvestorsSection locale={locale} />
       </Section>
 
-      {/* 12. DIRECT CONTACT / CTA */}
-      <Section id="contact" index="10" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
+      {/* 10. DIRECT CONTACT / CTA */}
+      <Section id="contact" index="08" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-6">
             <ContactCta className="inline-flex items-center rounded-full bg-mark px-5 py-2.5 text-sm font-semibold text-mark-ink shadow hover:bg-mark-light">
