@@ -9,7 +9,6 @@ import { openLauncher } from "@/lib/contact";
 import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
-import { ProductGlance } from "@/components/hub/ProductGlance";
 
 export function AIMEPageContent({
   locale,
@@ -112,8 +111,6 @@ export function AIMEPageContent({
           </div>
         </div>
       </section>
-
-      <ProductGlance locale={locale} id="aime" />
 
       {/* 2. SMM COMPARISON SECTION */}
       <section className="border-b border-line py-16 sm:py-20">

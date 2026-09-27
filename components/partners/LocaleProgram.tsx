@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { LeadInquiry } from "@/components/LeadInquiry";
-import { Explore } from "@/components/hub/Explore";
-import { HScroll } from "@/components/hub/HScroll";
 import { partnerProgramTerms } from "@/content/partner-program";
 import { getCopy } from "@/content/copy";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
@@ -33,7 +31,7 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
   return (
     <article>
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-mark uppercase">
             {copy.partners.eyebrow}
           </p>
@@ -68,10 +66,9 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <h2 className="font-editorial text-3xl tracking-tight text-paper">{copy.products.title}</h2>
           <p className="mt-3 max-w-2xl text-sm text-muted">{copy.products.lead}</p>
-          <div className="mt-8">
-            <HScroll cols={3} label={copy.products.title}>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {products.map((product) => (
-              <article key={product.id} role="listitem" className="rounded-xl border border-line bg-ink-2 p-4">
+              <article key={product.id} className="rounded-2xl border border-line bg-ink-2 p-6">
                 <h3 className="font-display text-lg font-semibold text-paper">{product.name}</h3>
                 <p className="mt-3 text-xs leading-relaxed text-muted">{product.who}</p>
                 <p className="mt-3 text-xs leading-relaxed text-paper/80">{product.offer}</p>
@@ -81,7 +78,6 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
                 </Link>
               </article>
             ))}
-            </HScroll>
           </div>
         </div>
       </section>
@@ -96,15 +92,13 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
               ))}
             </ul>
           </div>
-          <div className="rounded-xl border border-line bg-ink-2 p-4 text-xs leading-relaxed text-muted">
-            <Explore summary="L1–L5">
-              <p className="text-paper/90">{terms.note}</p>
-              <p className="mt-3">{terms.launch}</p>
-              <p className="mt-3">{terms.example}</p>
-              <p className="mt-3">{terms.lock}</p>
-              <p className="mt-3">{terms.payout}</p>
-              <p className="mt-3">{terms.country}</p>
-            </Explore>
+          <div className="rounded-2xl border border-line bg-ink-2 p-6 text-xs leading-relaxed text-muted">
+            <p className="text-paper/90">{terms.note}</p>
+            <p className="mt-3">{terms.launch}</p>
+            <p className="mt-3">{terms.example}</p>
+            <p className="mt-3">{terms.lock}</p>
+            <p className="mt-3">{terms.payout}</p>
+            <p className="mt-3">{terms.country}</p>
           </div>
         </div>
       </section>
