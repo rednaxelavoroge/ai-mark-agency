@@ -7,6 +7,7 @@ import { LeadInquiry } from "@/components/LeadInquiry";
 import { Pipeline } from "@/components/Pipeline";
 import { Section } from "@/components/Section";
 import { HeroSystem } from "@/components/HeroSystem";
+import { HubJump } from "@/components/HubJump";
 import { IdeaToBusiness } from "@/components/IdeaToBusiness";
 import { BusinessCreationVisual } from "@/components/BusinessCreationVisual";
 import { DigitalProductionShowcase } from "@/components/DigitalProductionShowcase";
@@ -78,6 +79,7 @@ export default async function HomePage({ params }: Props) {
     <>
       {/* 1. HERO SECTION */}
       <HeroSystem locale={locale} t={t} />
+      <HubJump locale={locale} t={t} />
 
       {/* What the company contains — before the long narrative */}
       <CapabilityBand locale={locale} />
@@ -179,7 +181,7 @@ export default async function HomePage({ params }: Props) {
           aria-hidden
           className="ambient-drift-slow pointer-events-none absolute -bottom-32 left-0 h-[480px] w-[480px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,191,140,0.08),transparent_70%)]"
         />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
           <div className="max-w-3xl" data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">
               {t.how.eyebrow}

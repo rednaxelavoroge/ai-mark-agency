@@ -28,7 +28,7 @@ export function Section({
   return (
     <section id={id} className="scroll-mt-24 border-t border-line">
       <div
-        className={`mx-auto px-4 py-16 sm:px-6 sm:py-20 ${
+        className={`mx-auto px-4 py-8 sm:px-6 sm:py-10 ${
           width === "wide" ? "max-w-[86rem]" : "max-w-6xl"
         }`}
       >
@@ -44,13 +44,13 @@ export function Section({
             </p>
             <span aria-hidden className="h-px flex-1 bg-line" />
           </div>
-          <h2 className="mt-4 max-w-3xl font-editorial text-3xl leading-[1.1] font-medium tracking-tight sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-3 max-w-3xl font-editorial text-2xl leading-[1.1] font-medium tracking-tight sm:text-3xl lg:text-4xl">
             {title}
           </h2>
-          {lead ? <p className="mt-4 max-w-2xl text-muted">{lead}</p> : null}
+          {lead ? <p className="mt-3 max-w-2xl text-sm text-muted">{lead}</p> : null}
         </div>
         <div
-          className="mt-10"
+          className="mt-6"
           data-reveal
           style={{ "--reveal-delay": "120ms" } as CSSProperties}
         >
