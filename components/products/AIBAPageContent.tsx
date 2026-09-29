@@ -11,6 +11,7 @@ import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
 import { BackButton } from "@/components/BackButton";
+import { brief } from "@/lib/brief";
 
 export function AIBAPageContent({
   locale,
@@ -271,7 +272,7 @@ export function AIBAPageContent({
               {c.howTitle}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              {c.howSub}
+              {brief(c.howSub)}
             </p>
           </div>
 
@@ -288,7 +289,7 @@ export function AIBAPageContent({
                   {st.title}
                 </h4>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
-                  {st.desc}
+                  {brief(st.desc)}
                 </p>
               </div>
             ))}

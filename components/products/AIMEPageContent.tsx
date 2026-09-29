@@ -10,6 +10,7 @@ import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { BackButton } from "@/components/BackButton";
+import { brief } from "@/lib/brief";
 
 export function AIMEPageContent({
   locale,
@@ -257,7 +258,7 @@ export function AIMEPageContent({
                   {st.title}
                 </h4>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
-                  {st.desc}
+                  {brief(st.desc)}
                 </p>
               </div>
             ))}
@@ -381,7 +382,7 @@ export function AIMEPageContent({
                     <span className="font-mono text-xs text-muted">{p.period}</span>
                   </div>
                   {p.note && <p className="mt-1 font-mono text-[10px] text-warm">{p.note}</p>}
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{p.desc}</p>
+                  <p className="mt-3 text-xs leading-relaxed text-muted">{brief(p.desc)}</p>
 
                   <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
                     {p.features.map((feat, i) => (
@@ -447,7 +448,7 @@ export function AIMEPageContent({
                   <span className="font-mono text-xs text-muted">{c.planAgency.period}</span>
                 </div>
                 <p className="mt-1 font-mono text-[10px] text-warm">{c.planAgency.note}</p>
-                <p className="mt-3 text-xs leading-relaxed text-muted">{c.planAgency.desc}</p>
+                <p className="mt-3 text-xs leading-relaxed text-muted">{brief(c.planAgency.desc)}</p>
 
                 <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
                   {c.planAgency.features.map((feat, i) => (

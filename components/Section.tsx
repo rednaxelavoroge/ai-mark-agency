@@ -15,6 +15,7 @@ export function Section({
   lead,
   index,
   width = "default",
+  tight = false,
   children,
 }: {
   id: string;
@@ -23,12 +24,13 @@ export function Section({
   lead?: string;
   index?: string;
   width?: "default" | "wide";
+  tight?: boolean;
   children: ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-24 border-t border-line">
       <div
-        className={`mx-auto px-4 py-16 sm:px-6 sm:py-20 ${
+        className={`mx-auto px-4 sm:px-6 ${tight ? "py-8 sm:py-10" : "py-16 sm:py-20"} ${
           width === "wide" ? "max-w-[86rem]" : "max-w-[1280px]"
         }`}
       >

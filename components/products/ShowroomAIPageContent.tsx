@@ -10,6 +10,7 @@ import { openLauncher } from "@/lib/contact";
 import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { BackButton } from "@/components/BackButton";
+import { brief } from "@/lib/brief";
 
 export function ShowroomAIPageContent({
   locale,
@@ -272,7 +273,7 @@ export function ShowroomAIPageContent({
                     {flow.name}
                   </h4>
                 </div>
-                <p className="mt-3 text-[11px] leading-relaxed text-muted">{flow.desc}</p>
+                <p className="mt-3 text-[11px] leading-relaxed text-muted">{brief(flow.desc)}</p>
               </div>
             ))}
           </div>
@@ -291,7 +292,7 @@ export function ShowroomAIPageContent({
               {c.capabilitiesTitle}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              {c.capabilitiesSub}
+              {brief(c.capabilitiesSub)}
             </p>
           </div>
 
@@ -299,13 +300,13 @@ export function ShowroomAIPageContent({
             {c.capabilities.map((cap) => (
               <div
                 key={cap.num}
-                className="rounded-2xl border border-line bg-ink-2 p-6 transition-all hover:border-line-strong hover:shadow-md"
+                className="rounded-2xl border border-line bg-ink-2 p-4"
               >
                 <span className="font-mono text-xs font-semibold text-warm">{cap.num}</span>
                 <h4 className="mt-3 font-display text-base font-semibold text-paper leading-snug">
                   {cap.title}
                 </h4>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{cap.desc}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{brief(cap.desc)}</p>
               </div>
             ))}
           </div>

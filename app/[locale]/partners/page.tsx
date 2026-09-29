@@ -15,6 +15,7 @@ import { partnerProgramTerms } from "@/content/partner-program";
 import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
 import { BackButton } from "@/components/BackButton";
+import { brief } from "@/lib/brief";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -388,10 +389,13 @@ export default async function PartnersPage({ params }: Props) {
             </div>
           </div>
           <div data-reveal style={reveal(120)} className="space-y-4">
+            <details className="mt-6 rounded-2xl border border-line">
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">{locale === "ru" ? "Схема сети" : "Network sketch"}</summary>
             <PartnerNetworkHeroVisual locale={locale} />
             <div data-motion className="rounded-[24px] border border-line bg-ink-2 p-4">
               <LevelRings />
             </div>
+            </details>
           </div>
         </div>
       </section>
@@ -400,15 +404,15 @@ export default async function PartnersPage({ params }: Props) {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.marketEyebrow}</p>
-            <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.marketTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted">{t.marketLead}</p>
+            <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.marketTitle}</h2>
+            <p className="mt-4 max-w-3xl text-muted">{brief(t.marketLead)}</p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.market.map((item, i) => (
               <article key={item.title} data-reveal style={reveal(i * 80)} className="rounded-2xl border border-line bg-ink-2 p-6 transition hover:-translate-y-1 hover:border-line-strong hover:shadow-md">
                 <div className="flex items-center justify-between"><span className="font-mono text-[10px] font-semibold tracking-[0.18em] text-warm">0{i + 1}</span><span className="h-1.5 w-1.5 rounded-full bg-mark" /></div>
                 <h3 className="mt-5 font-display text-base font-semibold text-paper">{item.title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{item.body}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{brief(item.body)}</p>
               </article>
             ))}
           </div>
@@ -423,7 +427,7 @@ export default async function PartnersPage({ params }: Props) {
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.productEyebrow}</p>
             <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.productTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted">{t.productLead}</p>
+            <p className="mt-4 max-w-3xl text-muted">{brief(t.productLead)}</p>
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {t.products.map((product, i) => (
@@ -431,7 +435,7 @@ export default async function PartnersPage({ params }: Props) {
                 <div>
                   <div className="flex items-center justify-between gap-3"><span className="font-mono text-[10px] font-semibold tracking-[0.14em] text-warm uppercase">{product.type}</span><span className="h-1.5 w-1.5 rounded-full bg-mark" /></div>
                   <h3 className="mt-3 font-display text-xl font-semibold text-paper">{product.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{product.body}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{brief(product.body)}</p>
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line/60 pt-4">
                     <span className="font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">{publishedPrices[i] || product.revenue}</span>
                     {product.href ? <Link href={localePath(locale, product.href)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productCta} →</Link> : <Link href={digitalProductionPath(locale)} className="rounded-full bg-mark px-4 py-2 text-xs font-semibold text-mark-ink transition hover:bg-mark-light">{t.productionCta} →</Link>}
@@ -445,9 +449,9 @@ export default async function PartnersPage({ params }: Props) {
 
       <section id="how-it-works" className="scroll-mt-24 border-b border-line bg-ink-2/20">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.howEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.modelTitle}</h2><p className="mt-4 max-w-2xl text-muted">{t.modelLead}</p></div>
+          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.howEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.modelTitle}</h2><p className="mt-4 max-w-2xl text-muted">{brief(t.modelLead)}</p></div>
           <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {t.steps.map((step) => <article key={step.n} className="bg-ink p-6 sm:p-7" data-reveal><span className="font-mono text-xs font-semibold text-warm">{step.n}</span><h3 className="mt-3 font-display text-base font-semibold text-paper">{step.title}</h3><p className="mt-2 text-xs leading-relaxed text-muted">{step.body}</p></article>)}
+            {t.steps.map((step) => <article key={step.n} className="bg-ink p-6 sm:p-7" data-reveal><span className="font-mono text-xs font-semibold text-warm">{step.n}</span><h3 className="mt-3 font-display text-base font-semibold text-paper">{step.title}</h3><p className="mt-2 text-xs leading-relaxed text-muted">{brief(step.body)}</p></article>)}
           </div>
         </div>
       </section>
@@ -457,9 +461,9 @@ export default async function PartnersPage({ params }: Props) {
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.networkEyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.networkTitle}</h2>
-            <p className="mt-4 max-w-3xl text-muted">{t.networkLead}</p>
+            <p className="mt-4 max-w-3xl text-muted">{brief(t.networkLead)}</p>
             <p className="mt-4 max-w-3xl font-display text-lg font-semibold text-paper">{t.poolHeadline}</p>
-            <p className="mt-2 max-w-3xl text-sm text-muted">{t.poolLead}</p>
+            <p className="mt-2 max-w-3xl text-sm text-muted">{brief(t.poolLead)}</p>
           </div>
           <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-ink-2">
             <div className="grid md:grid-cols-5">
@@ -473,7 +477,7 @@ export default async function PartnersPage({ params }: Props) {
                   <span className={`font-mono text-[11px] font-semibold tracking-[0.18em] ${i === 0 ? "text-mark" : "text-warm"}`}>{level.n}</span>
                   <p className={`mt-3 font-editorial ${i === 0 ? "text-4xl text-mark" : "text-2xl text-paper"}`}>{level.rate}</p>
                   <h3 className="mt-3 font-display text-sm font-semibold text-paper">{level.title}</h3>
-                  <p className="mt-2 text-[11px] leading-relaxed text-muted">{level.body}</p>
+                  <p className="mt-2 text-[11px] leading-relaxed text-muted">{brief(level.body)}</p>
                 </div>
               ))}
             </div>
@@ -508,9 +512,9 @@ export default async function PartnersPage({ params }: Props) {
 
       <section className="border-b border-line bg-ink-2/20">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.statusLead}</p></div>
+          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{brief(t.statusLead)}</p></div>
           <div className="mt-10 grid gap-5 lg:grid-cols-4">
-            {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex flex-col rounded-2xl border border-line bg-ink-2 p-5"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{status.body}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
+            {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex flex-col rounded-2xl border border-line bg-ink-2 p-5"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{brief(status.body)}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
           </div>
         </div>
       </section>
@@ -528,7 +532,7 @@ export default async function PartnersPage({ params }: Props) {
 
       <section className="border-b border-line bg-ink-2/20">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
+          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
           <div className="mt-8 grid gap-3 sm:grid-cols-2" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
         </div>
       </section>
@@ -548,7 +552,7 @@ export default async function PartnersPage({ params }: Props) {
         <LeadInquiry contact={published.contact} locale={locale} />
       </details>
 
-      <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
+      <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{brief(t.ctaTitle)}</h2><p className="mx-auto mt-4 max-w-2xl text-muted">{brief(t.ctaLead)}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
     </article>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { ProductUI } from "@/components/ui/ProductUI";
 import { getDigitalProductionCopy } from "@/content/digital-production";
+import { brief } from "@/lib/brief";
 import { navHref, type Locale } from "@/lib/site";
 import { productPagePath, productsHubPath } from "@/lib/products";
 import { Pipeline } from "@/components/Pipeline";
@@ -126,7 +127,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
                     </span>
                   </div>
                   <h3 className="mt-3 font-display text-lg font-semibold text-paper">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted">{item.forWhom}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">{brief(item.forWhom)}</p>
                   <ul className="mt-4 space-y-2 border-t border-line/60 pt-3">
                     {item.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2 text-[11px] leading-relaxed text-paper/85">
