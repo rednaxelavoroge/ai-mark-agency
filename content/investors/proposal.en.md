@@ -188,7 +188,7 @@ The price depends on the number of channels, the volume of work, the connected A
 
 End-to-end marketing support for companies that need an external AI marketing department.
 
-**Benchmark: $1,500–3,500+ / month**
+**Benchmark: $1,200–3,500+ / month**
 
 ### Digital Production
 

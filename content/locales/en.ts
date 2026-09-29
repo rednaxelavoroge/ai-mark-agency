@@ -210,7 +210,7 @@ export const copyEn: Copy = {
       title: "Several ways to work together. Retainers are one of them.",
       lead: "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
       skuNote:
-        "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
+        "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
       perMonth: "/mo",
       featured: "Most teams start here",
       retainerCta: "Request this department",
@@ -228,7 +228,7 @@ export const copyEn: Copy = {
         },
         {
           name: "AI Marketing Department",
-          price: "$1,500–3,500+",
+          price: "$1,200–3,500+",
           body: "Ongoing HITL marketing as a department: Starter, Growth, Scale. Media spend is yours and sits outside the retainer.",
         },
         {
