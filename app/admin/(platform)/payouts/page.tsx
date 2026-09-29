@@ -15,6 +15,7 @@ import {
   advanceDueLocks,
   confirmPartnerPayout,
   createPartnerPayout,
+  voidPartnerPayout,
 } from "./actions";
 
 export const metadata: Metadata = { title: "Payouts" };
@@ -70,7 +71,9 @@ export default async function AdminPayoutsPage({
       ? "Payout opened from payable entries."
       : first(params.confirmed)
         ? "Payout confirmed in the ledger. No money was sent."
-        : "";
+        : first(params.voided)
+          ? "Open payout voided. Its entries can be included in a later payout."
+          : "";
 
   return (
     <div className="grid gap-7">
@@ -206,12 +209,20 @@ export default async function AdminPayoutsPage({
             />,
             formatDateTime(payout.created_at),
             payout.status === "open" ? (
-              <form key={payout.id} action={confirmPartnerPayout}>
-                <input type="hidden" name="payout_id" value={payout.id} />
-                <button type="submit" className={secondaryButtonClass}>
-                  Confirm
-                </button>
-              </form>
+              <div key={payout.id} className="flex flex-wrap gap-2">
+                <form action={confirmPartnerPayout}>
+                  <input type="hidden" name="payout_id" value={payout.id} />
+                  <button type="submit" className={secondaryButtonClass}>
+                    Confirm
+                  </button>
+                </form>
+                <form action={voidPartnerPayout}>
+                  <input type="hidden" name="payout_id" value={payout.id} />
+                  <button type="submit" className={secondaryButtonClass}>
+                    Void
+                  </button>
+                </form>
+              </div>
             ) : (
               formatDateTime(payout.paid_at)
             ),

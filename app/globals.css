@@ -276,6 +276,7 @@ main {
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow: hidden;
 }
 
 @supports (height: 100svh) {
@@ -324,6 +325,22 @@ main {
 @media (max-width: 1023px) {
   .itb-track {
     --itb-step: 16vh;
+    height: auto;
+    min-height: calc(var(--itb-stages, 8) * var(--itb-step) + 100svh);
+  }
+
+  /* The pinned panel must not squash the dial onto the caption and the
+     stage copy. On a phone the stack keeps its own height, the caption
+     keeps a gap, and the copy sits below that gap. */
+  .itb-panel {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    align-items: flex-start;
+  }
+
+  .itb-dial {
+    width: min(78vw, 280px);
   }
 }
 

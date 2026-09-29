@@ -1,5 +1,6 @@
 import "server-only";
 
+import { normalizeBuyerEmail, optionalBuyerText } from "./buyer";
 import { payableSkuById } from "./catalog";
 import { amountWithCents, isInvoiceRef, newInvoiceRef } from "./invoice-ref";
 import {
@@ -22,7 +23,13 @@ export type CreateInvoiceInput = {
   asset: string;
   network: string;
   referralCode?: string | null;
+  buyerEmail: string;
+  buyerName?: string | null;
+  buyerCompany?: string | null;
 };
+
+const INVOICE_COLUMNS =
+  "id, public_ref, sku_id, product_ref, amount, expected_amount, ledger_currency, asset, network, treasury_address, memo, referral_code, status, tx_hash, sale_id, confirmed_by, confirmed_at, created_at, updated_at, buyer_email, buyer_name, buyer_company, billing_period_days, subscription_id";
 
 export type CreateInvoiceResult =
   | { ok: true; publicRef: string }
@@ -61,6 +68,13 @@ export async function createPaymentInvoice(
     return { ok: false, error: "Referral code is not in the published format." };
   }
 
+  const buyerEmail = normalizeBuyerEmail(input.buyerEmail);
+  if (!buyerEmail) {
+    return { ok: false, error: "Enter the buyer email. It is required for the subscription." };
+  }
+  const buyerName = optionalBuyerText(input.buyerName, 120);
+  const buyerCompany = optionalBuyerText(input.buyerCompany, 160);
+
   const admin = adminOrNull();
   if (!admin) {
     return { ok: false, error: "Payment invoices are not configured on this server." };
@@ -87,6 +101,10 @@ export async function createPaymentInvoice(
         treasury_address: address,
         memo: publicRef,
         referral_code: referral || null,
+        buyer_email: buyerEmail,
+        buyer_name: buyerName,
+        buyer_company: buyerCompany,
+        billing_period_days: sku.billingPeriodDays,
         status: "awaiting",
       })
       .select("public_ref")
@@ -114,9 +132,7 @@ export async function loadInvoiceByRef(
   if (!admin) return null;
   const result = await admin
     .from("payment_invoices")
-    .select(
-      "id, public_ref, sku_id, product_ref, amount, expected_amount, ledger_currency, asset, network, treasury_address, memo, referral_code, status, tx_hash, sale_id, confirmed_by, confirmed_at, created_at, updated_at",
-    )
+    .select(INVOICE_COLUMNS)
     .eq("public_ref", publicRef)
     .maybeSingle();
   if (result.error || !result.data) return null;
@@ -131,9 +147,7 @@ export async function listAdminInvoices(limit = 100): Promise<{
   if (!admin) return { rows: null, unreadable: true };
   const result = await admin
     .from("payment_invoices")
-    .select(
-      "id, public_ref, sku_id, product_ref, amount, expected_amount, ledger_currency, asset, network, treasury_address, memo, referral_code, status, tx_hash, sale_id, confirmed_by, confirmed_at, created_at, updated_at",
-    )
+    .select(INVOICE_COLUMNS)
     .order("created_at", { ascending: false })
     .limit(limit);
   if (result.error) {
@@ -205,7 +219,9 @@ export async function confirmInvoicePayment(
   if (partnerId && !/^AM-[0-9]{4,12}$/.test(partnerId)) {
     return { ok: false, error: "Partner ID must look like AM-001042." };
   }
-  if (!referral && !partnerId) {
+  // A renewal uses the code frozen on the subscription. A first payment still
+  // needs a code or a partner id; the database function enforces that.
+  if (!invoice.billing_period_days && !referral && !partnerId) {
     return {
       ok: false,
       error: "Enter a referral code or a partner id. The sale is attributed on the server.",
@@ -213,44 +229,19 @@ export async function confirmInvoicePayment(
   }
 
   const txHash = input.txHash.trim();
-  const recorded = await admin.rpc("record_sale", {
-    p_source: "treasury",
-    p_external_order_id: invoice.public_ref,
-    p_product_ref: invoice.product_ref,
-    p_amount: Number(invoice.expected_amount),
-    p_currency: invoice.ledger_currency,
+  const recorded = await admin.rpc("fulfill_paid_invoice", {
+    p_invoice_id: invoice.id,
+    p_tx_hash: txHash,
     p_paid_at: paidAt.toISOString(),
-    ...(referral ? { p_referral_code: referral } : {}),
-    ...(partnerId ? { p_partner_id: partnerId } : {}),
+    p_confirmed_by: input.adminUserId,
+    p_referral_code: referral || undefined,
+    p_partner_id: partnerId || undefined,
   });
   if (recorded.error || !recorded.data) {
     return { ok: false, error: recorded.error?.message ?? "The sale was not recorded." };
   }
-  const saleId = recorded.data;
-  const qualified = await admin.rpc("qualify_sale", { p_sale_id: saleId });
-  if (qualified.error) return { ok: false, error: qualified.error.message };
-  const posted = await admin.rpc("post_commission_entries", { p_sale_id: saleId });
-  if (posted.error) return { ok: false, error: posted.error.message };
-
-  const updated = await admin
-    .from("payment_invoices")
-    .update({
-      status: "confirmed",
-      tx_hash: txHash,
-      sale_id: saleId,
-      confirmed_by: input.adminUserId,
-      confirmed_at: new Date().toISOString(),
-    })
-    .eq("id", invoice.id)
-    .eq("status", "awaiting");
-
-  if (updated.error) {
-    // Sale already posted; surface the invoice write error so the operator
-    // can attach the hash without double-charging the customer.
-    return { ok: false, error: updated.error.message };
-  }
-
-  return { ok: true, saleId };
+  const payload = recorded.data as { sale_id?: string | null };
+  return { ok: true, saleId: payload.sale_id ?? invoice.sale_id ?? "" };
 }
 
 export async function attachTxToConfirmedInvoice(input: {

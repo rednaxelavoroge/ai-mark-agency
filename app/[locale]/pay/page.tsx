@@ -59,7 +59,9 @@ export default async function PayPage({ params, searchParams }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const ru = locale === "ru";
-  const ui = getCopy(locale).ui;
+  const copy = getCopy(locale);
+  const ui = copy.ui;
+  const pay = copy.pay;
   const paramsIn = await searchParams;
   const error = first(paramsIn.error);
   const attribution = await readReferralAttribution();
@@ -156,6 +158,43 @@ export default async function PayPage({ params, searchParams }: Props) {
       ) : (
         <form action={issuePaymentInvoice} className={`mt-8 grid gap-4 p-5 sm:p-6 ${cardClass}`}>
           <input type="hidden" name="locale" value={locale} />
+          <label className={labelClass}>
+            <span className="text-muted">{pay.email}</span>
+            <input
+              className={fieldClass}
+              type="email"
+              name="buyer_email"
+              required
+              maxLength={320}
+              autoComplete="email"
+              inputMode="email"
+            />
+          </label>
+          <p className="-mt-2 text-xs leading-relaxed text-muted">{pay.emailHint}</p>
+          <label className={labelClass}>
+            <span className="text-muted">
+              {pay.name} <span className="font-normal">({pay.optional})</span>
+            </span>
+            <input
+              className={fieldClass}
+              type="text"
+              name="buyer_name"
+              maxLength={120}
+              autoComplete="name"
+            />
+          </label>
+          <label className={labelClass}>
+            <span className="text-muted">
+              {pay.company} <span className="font-normal">({pay.optional})</span>
+            </span>
+            <input
+              className={fieldClass}
+              type="text"
+              name="buyer_company"
+              maxLength={160}
+              autoComplete="organization"
+            />
+          </label>
           <label className={labelClass}>
             <span className="text-muted">{ru ? "Продукт" : "Product"}</span>
             <select className={fieldClass} name="sku_id" required defaultValue={initialSkuId}>

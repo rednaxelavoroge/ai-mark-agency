@@ -28,6 +28,9 @@ export async function issuePaymentInvoice(formData: FormData): Promise<void> {
     asset: read(formData, "asset", 8).toUpperCase(),
     network: read(formData, "network", 16).toLowerCase(),
     referralCode: referral,
+    buyerEmail: read(formData, "buyer_email", 320),
+    buyerName: read(formData, "buyer_name", 120),
+    buyerCompany: read(formData, "buyer_company", 160),
   });
 
   if (!result.ok) {

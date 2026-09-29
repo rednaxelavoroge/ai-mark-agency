@@ -118,13 +118,17 @@ export default async function AdminInvoicesPage({
       <DataTable
         unreadable={invoices.unreadable}
         empty="No invoices."
-        columns={["Ref", "Product", "Send", "Rail", "Status", "Ref code", "Tx", "Created"]}
+        columns={["Ref", "Product", "Buyer", "Send", "Rail", "Status", "Ref code", "Tx", "Created"]}
         rows={(invoices.rows ?? []).map((invoice) => {
           const sku = payableSkuById(invoice.sku_id);
           const network = isPaymentNetwork(invoice.network) ? invoice.network : null;
+          const buyer = [invoice.buyer_email, invoice.buyer_name, invoice.buyer_company]
+            .filter(Boolean)
+            .join(" · ");
           return [
             invoice.public_ref,
             sku?.name ?? invoice.product_ref,
+            buyer || NO_DATA,
             `${invoice.expected_amount} ${invoice.asset}`,
             network ? NETWORK_LABELS[network] : invoice.network,
             invoice.status,

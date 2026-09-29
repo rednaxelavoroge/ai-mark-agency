@@ -519,6 +519,13 @@ export const copyZh: Copy = {
     "cardOption": '银行卡（Visa/Mastercard）— 即将推出',
     "cardsSoon": '银行卡 — 即将推出'
   },
+  "pay": {
+    "email": "电子邮箱",
+    "emailHint": "必填。订阅和收据使用这个地址。",
+    "name": "姓名",
+    "company": "公司",
+    "optional": "选填"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

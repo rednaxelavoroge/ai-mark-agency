@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BackButton } from "@/components/BackButton";
 import { ContactCta } from "@/components/ContactCta";
-import { BuyLink } from "@/components/BuyLink";
 import { getCopy } from "@/content/copy";
 import { packages } from "@/content/packages";
 import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
@@ -157,20 +156,16 @@ export default async function PricingPage({ params }: Props) {
                   </ul>
                 </div>
                 <div className="mt-8 space-y-2 pt-4 border-t border-line">
-                  <BuyLink
-                    locale={locale}
-                    skuId={pkg.id}
-                    label={
-                      isRu
-                        ? `Оплатить ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
-                        : `Pay ${formatUsd(pkg.priceUsd)}${t.commercial.perMonth}`
-                    }
+                  <Link
+                    href={navHref(locale, "/#contact")}
                     className={`block w-full rounded-xl py-3 text-center text-xs font-semibold transition-all ${
                       isFeatured
                         ? "bg-mark text-mark-ink hover:bg-mark-light shadow"
                         : "border border-line bg-ink-3 text-paper hover:bg-ink-3/80"
                     }`}
-                  />
+                  >
+                    {t.commercial.retainerCta}
+                  </Link>
                   <ContactCta
                     className="block w-full rounded-xl border border-transparent py-2 text-center text-[11px] text-muted hover:text-paper hover:bg-ink-3/40 transition-colors"
                   >

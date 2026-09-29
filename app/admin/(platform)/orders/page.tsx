@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader } from "@/components/platform/PageHeader";
-import { fieldClass, labelClass, primaryButtonClass } from "@/components/ui/classes";
+import { fieldClass, labelClass, primaryButtonClass, secondaryButtonClass } from "@/components/ui/classes";
 import { getAdminSales, requireAdmin } from "@/lib/auth/dal";
 import { NO_DATA, formatDateTime, formatStoredMoney } from "@/lib/partner/format";
-import { recordQualifyingSale } from "./actions";
+import { recordQualifyingSale, reverseQualifyingSale } from "./actions";
 
 export const metadata: Metadata = { title: "Orders" };
 
@@ -42,6 +42,11 @@ export default async function AdminOrdersPage({
       {recorded ? (
         <p className="text-sm text-paper" role="status">
           Sale recorded, qualified, and posted to the ledger.
+        </p>
+      ) : null}
+      {first(params.reversed) ? (
+        <p className="text-sm text-paper" role="status">
+          Sale reversed. Commission rows were written as reversals.
         </p>
       ) : null}
       {error ? (
@@ -105,11 +110,35 @@ export default async function AdminOrdersPage({
         </button>
       </form>
 
+      <form action={reverseQualifyingSale} className="grid max-w-xl gap-4">
+        <h2 className="text-sm font-semibold tracking-tight">Reverse a sale</h2>
+        <p className="text-xs leading-relaxed text-muted">
+          Calls reverse_sale_commissions. A refund, chargeback or cancellation
+          writes negative commission rows. It does not change a rate.
+        </p>
+        <label className={labelClass}>
+          <span className="text-muted">Sale id</span>
+          <input className={`${fieldClass} font-mono text-xs`} name="sale_id" required maxLength={40} />
+        </label>
+        <label className={labelClass}>
+          <span className="text-muted">Reason</span>
+          <select className={fieldClass} name="reason" required defaultValue="refund">
+            <option value="refund">Refund</option>
+            <option value="chargeback">Chargeback</option>
+            <option value="cancellation">Cancellation</option>
+          </select>
+        </label>
+        <button type="submit" className={`w-fit ${secondaryButtonClass}`}>
+          Reverse sale
+        </button>
+      </form>
+
       <DataTable
         unreadable={sales.unreadable}
         empty="No sales recorded."
-        columns={["Partner", "Product", "Amount", "Status", "Order", "Paid"]}
+        columns={["Sale", "Partner", "Product", "Amount", "Status", "Order", "Paid"]}
         rows={(sales.rows ?? []).map((sale) => [
+          <span key={sale.id} className="font-mono text-[10px]">{sale.id}</span>,
           sale.partner_id,
           sale.product_ref ?? NO_DATA,
           formatStoredMoney(sale.amount, sale.currency),
