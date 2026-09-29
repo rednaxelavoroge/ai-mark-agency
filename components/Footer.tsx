@@ -19,10 +19,11 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
             {/* Below 360px the 44px lockup is wider than the footer's text
                 column (the symbol + wordmark is a wide 7:1 raster), so it steps
                 down to 40px and stops pushing the page sideways. */}
-            <Link href={navHref(locale, "/")} className="inline-flex max-w-full items-center">
-              <BrandLogo className="h-10 min-[360px]:h-11 sm:h-14" />
+            <Link href={navHref(locale, "/")} className="inline-flex max-w-full flex-col items-start">
+              <BrandLogo className="h-8 sm:h-9" />
+              <span className="mt-2 text-[13px] font-semibold text-muted">Venture and Marketing</span>
             </Link>
-            <p className="mt-3 text-xs font-mono tracking-widest text-mark uppercase">
+            <p className="mt-3 text-[13px] font-semibold tracking-widest text-mark uppercase">
               AI-Native Venture &amp; Marketing Company
             </p>
             <p className="mt-2 text-sm text-muted max-w-sm">
@@ -126,6 +127,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                   {isRu ? "Оплата USDT / USDC" : "Pay USDT / USDC"}
                 </Link>
               </li>
+              <li className="text-[13px]">{t.ui.cardsSoon}</li>
               <li>
                 <Link href={navHref(locale, "/privacy")} className="hover:text-paper transition-colors">
                   {t.footer.privacy}

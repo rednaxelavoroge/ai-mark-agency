@@ -66,7 +66,7 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
   const axis = (pct: number) => `clamp(58px, ${pct}%, calc(100% - 58px))`;
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] border border-line bg-ink-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.35)]">
+    <div data-motion className="relative overflow-hidden rounded-[1.75rem] border border-line bg-ink-2 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.35)]">
       <div className="relative min-h-[460px] sm:min-h-[520px]">
         <div aria-hidden className="grid-field pointer-events-none absolute inset-0 opacity-70" />
         <div
@@ -81,17 +81,25 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
           preserveAspectRatio="none"
         >
           {nodes.map((node, i) => (
-            <line
-              key={i}
-              x1="50"
-              y1="50"
-              x2={node.x}
-              y2={node.y}
-              stroke="currentColor"
-              strokeWidth="0.22"
-              className="flow-dash"
-              style={{ animationDelay: String(i * 220) + "ms" }}
-            />
+            <g key={i}>
+              <line
+                x1="50"
+                y1="50"
+                x2={node.x}
+                y2={node.y}
+                stroke="currentColor"
+                strokeWidth="0.22"
+                className="flow-dash"
+                style={{ animationDelay: String(i * 220) + "ms" }}
+              />
+              <circle r="1.15" fill="#d4f27e">
+                <animateMotion
+                  dur={`${3.2 + i * 0.35}s`}
+                  repeatCount="indefinite"
+                  path={`M50,50 L${node.x},${node.y}`}
+                />
+              </circle>
+            </g>
           ))}
         </svg>
 

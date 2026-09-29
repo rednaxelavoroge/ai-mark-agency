@@ -3,48 +3,63 @@
 :root,
 [data-theme="light"] {
   color-scheme: light;
-  --ink: #faf8f5;
-  --ink-2: #ffffff;
-  --ink-3: #f3efe6;
-  --ink-card: #ffffff;
-  --paper: #161614;
-  --paper-soft: #282724;
-  --muted: #6b675e;
-  --line: rgba(22, 22, 20, 0.08);
-  --line-strong: rgba(22, 22, 20, 0.16);
-  --mark: #2d381b;
-  --mark-light: #435427;
-  --mark-ink: #faf8f5;
-  --warm: #b58d4a;
-  --warm-soft: rgba(181, 141, 74, 0.12);
-  /* Errors / destructive state. Used by the Partner Platform surfaces;
-     the public site does not reference it. */
-  --danger: #a8342a;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  /* Surfaces keep the historical names (`--ink` is the page, `--paper` is type)
+     so cabinets and public pages recolor together. Values follow the forest /
+     lime sample, with muted type darkened to clear 4.5:1 on #f3f4ed. */
+  --ink: #f3f4ed;
+  --ink-2: #fffefa;
+  --ink-3: #e9ede3;
+  --ink-card: #fffefa;
+  --paper: #17261f;
+  --paper-soft: #2c4034;
+  --muted: #3e5146;
+  --line: #dce2d8;
+  --line-strong: #c3cfc4;
+  --mark: #14291f;
+  --mark-light: #21392c;
+  --mark-ink: #f4f6ee;
+  --lime: #d4f27e;
+  --lime-2: #c5e56b;
+  --forest: #14291f;
+  --forest-2: #21392c;
+  --warm: #3f5c38;
+  --warm-soft: #e7eedf;
+  --danger: #8d2e28;
+  --shadow-sm: 0 5px 22px #14291f0d;
+  --shadow-md: 0 20px 60px #14291f14;
+  --shadow-lg: 0 28px 80px #10231d2e;
+  --ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --radius: 28px;
+  --max: 1280px;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --ink: #11120f;
-  --ink-2: #181a14;
-  --ink-3: #21241b;
-  --ink-card: #181a14;
-  --paper: #f5f2e8;
-  --paper-soft: #ddd8c8;
-  --muted: #9e9a8f;
-  --line: rgba(245, 242, 232, 0.09);
-  --line-strong: rgba(245, 242, 232, 0.18);
-  --mark: #c6d68b;
-  --mark-light: #d8e5a3;
-  --mark-ink: #12140e;
-  --warm: #d9bf8c;
-  --warm-soft: rgba(217, 191, 140, 0.15);
+  --ink: #0e1c16;
+  --ink-2: #14291f;
+  --ink-3: #1c3428;
+  --ink-card: #173026;
+  --paper: #f4f6ee;
+  --paper-soft: #d5e0d4;
+  --muted: #c5d1c4;
+  --line: rgba(244, 246, 238, 0.14);
+  --line-strong: rgba(244, 246, 238, 0.28);
+  --mark: #d4f27e;
+  --mark-light: #e3f6a4;
+  --mark-ink: #14291f;
+  --lime: #d4f27e;
+  --lime-2: #c5e56b;
+  --forest: #d4f27e;
+  --forest-2: #e3f6a4;
+  --warm: #d4f27e;
+  --warm-soft: rgba(212, 242, 126, 0.14);
   --danger: #f0a9a1;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 28px 80px rgba(0, 0, 0, 0.45);
+  --ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --radius: 28px;
+  --max: 1280px;
 }
 
 @theme inline {
@@ -61,8 +76,10 @@
   --color-warm: var(--warm);
   --color-danger: var(--danger);
   --font-sans: var(--font-manrope);
-  --font-display: var(--font-unbounded);
+  --font-display: var(--font-manrope);
   --font-editorial: var(--font-serif);
+  --color-lime: var(--lime);
+  --color-forest: var(--forest);
 }
 
 /* Approved AI MARK lockup (raster PNG, marked up by components/BrandLogo.tsx).
@@ -99,12 +116,9 @@
   display: block;
   height: 100%;
   width: auto;
+  /* Compact crop only (descriptor band removed). The HTML subtitle under the
+     lockup is the readable "Venture and Marketing" line. */
   aspect-ratio: 1844 / 261;
-}
-@media (min-width: 640px) {
-  .brand-logo {
-    aspect-ratio: 1844 / 327;
-  }
 }
 
 /* Editorial serif: used for large numerals and pull-statements */
@@ -170,8 +184,38 @@ html {
 body {
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans), var(--font-noto-ar), var(--font-noto-sc), var(--font-noto-jp), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.011em;
+}
+body.menu-open { overflow: hidden; }
+
+@media (max-width: 380px) {
+  header button[aria-haspopup="dialog"] span.font-mono,
+  header button[aria-haspopup="dialog"] svg {
+    display: none;
+  }
+  header button[aria-haspopup="dialog"] {
+    padding-inline: 8px;
+  }
+}
+
+:lang(ru) :is(h1, h2),
+:lang(uk) :is(h1, h2) {
+  letter-spacing: -0.05em;
+}
+
+:lang(ar) {
+  font-family: var(--font-noto-ar), var(--font-sans), sans-serif;
+}
+:lang(zh) {
+  font-family: var(--font-noto-sc), var(--font-sans), sans-serif;
+  letter-spacing: 0;
+}
+:lang(ja) {
+  font-family: var(--font-noto-jp), var(--font-sans), sans-serif;
+  letter-spacing: 0;
 }
 
 /* Guard against every horizontal-overflow bug class. `clip` (not hidden)
@@ -878,6 +922,8 @@ main {
   .shimmer::after,
   .flow-line,
   .flow-dash,
+  .am-anim,
+  .hero-cursor,
   .ui-bar,
   .ui-grow,
   .scanline,
@@ -910,4 +956,178 @@ main {
       transparent 100%
     );
   }
+  .stroke-draw { stroke-dashoffset: 0 !important; animation: none !important; }
+}
+
+/* ============================================================
+   Sample-matched surfaces. Public heroes, pills, and motion.
+   ============================================================ */
+.am-wrap {
+  width: min(var(--max), calc(100% - 48px));
+  margin-inline: auto;
+}
+@media (max-width: 430px) {
+  .am-wrap { width: calc(100% - 30px); }
+}
+
+.am-hero {
+  position: relative;
+  overflow: hidden;
+  color: #f4f6ee;
+  background: #10241c;
+}
+.am-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 16% 96%, #294c3638, transparent 36%),
+    linear-gradient(125deg, #10241c 0%, #1b3427 56%, #10231c 100%);
+  pointer-events: none;
+}
+.am-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.9fr);
+  gap: 40px;
+  align-items: center;
+  padding: 48px 0 28px;
+}
+.am-display {
+  margin: 18px 0 16px;
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 600;
+  font-size: clamp(40px, 6.4vw, 84px);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+.am-display em {
+  color: var(--lime);
+  font-style: normal;
+}
+.am-hero .lede {
+  max-width: 38rem;
+  color: #d5e0d4;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.7;
+}
+.hero-art-wrap {
+  position: relative;
+  min-height: 460px;
+}
+.hero-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 44% 44% 28px 28px;
+  background: #0c1c16;
+  box-shadow: var(--shadow-lg);
+}
+.hero-art-img {
+  object-fit: cover;
+  object-position: center 47%;
+  opacity: 0.95;
+  mix-blend-mode: screen;
+}
+.am-anim.hero-breathe {
+  animation: hero-breathe 12s ease-in-out infinite alternate;
+}
+@keyframes hero-breathe {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.07) translateY(-8px); }
+}
+.hero-ring {
+  position: absolute;
+  inset: 8% -8% 12% 4%;
+  border: 1px solid rgba(212, 242, 126, 0.45);
+  border-radius: 50%;
+  transform: rotate(-24deg);
+  pointer-events: none;
+}
+.hero-ring::before,
+.hero-ring::after {
+  content: "";
+  position: absolute;
+  inset: 12% 8%;
+  border: 1px solid rgba(212, 242, 126, 0.28);
+  border-radius: 50%;
+}
+.am-anim.hero-ring { animation: ring-spin 48s linear infinite; }
+@keyframes ring-spin { to { transform: rotate(336deg); } }
+.hero-cursor {
+  position: absolute;
+  z-index: 2;
+  width: 280px;
+  height: 280px;
+  margin: -140px 0 0 -140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 242, 126, 0.22), transparent 68%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.am-forest-hero {
+  position: relative;
+  overflow: hidden;
+  background: #14291f !important;
+  color: #f4f6ee;
+  border-color: transparent !important;
+}
+.am-forest-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(212, 242, 126, 0.08), transparent 42%),
+    linear-gradient(160deg, #10241c, #1b3427 60%, #10231c);
+  pointer-events: none;
+}
+.am-forest-hero > * { position: relative; z-index: 1; }
+.am-forest-hero .text-paper { color: #f4f6ee; }
+.am-forest-hero .text-muted { color: #d3ddd2; }
+.am-forest-hero .text-mark { color: #d4f27e; }
+.am-forest-hero .text-warm { color: #d4f27e; }
+.am-forest-hero .bg-mark { background: #d4f27e; }
+.am-forest-hero .text-mark-ink { color: #14291f; }
+.am-forest-hero .bg-ink-2 { background: rgba(255, 255, 255, 0.08); color: #f4f6ee; }
+.am-forest-hero .bg-ink-2\/60 { background: rgba(255, 255, 255, 0.08); }
+.am-forest-hero .border-line { border-color: rgba(255, 255, 255, 0.22); }
+.am-forest-hero .border-mark\/20 { border-color: rgba(212, 242, 126, 0.35); }
+
+.tilt-card {
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .tilt-card:hover {
+    transform: translateY(-6px) rotate(-1.25deg);
+    box-shadow: var(--shadow-md);
+  }
+  .tilt-card:nth-child(even):hover {
+    transform: translateY(-6px) rotate(1.25deg);
+  }
+}
+
+.stroke-draw {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 0;
+}
+[data-motion].is-inview .stroke-draw {
+  animation: stroke-draw 2.2s var(--ease) both;
+}
+@keyframes stroke-draw {
+  from { stroke-dashoffset: 140; }
+  to { stroke-dashoffset: 0; }
+}
+[data-motion]:not(.is-inview) .am-anim {
+  animation-play-state: paused;
+}
+
+@media (max-width: 1080px) {
+  .am-hero-grid { grid-template-columns: 1fr; }
+  .hero-art-wrap { min-height: 380px; }
+}
+@media (max-width: 760px) {
+  .am-display { font-size: clamp(36px, 11vw, 56px); }
+  .hero-art-wrap { min-height: 320px; }
 }

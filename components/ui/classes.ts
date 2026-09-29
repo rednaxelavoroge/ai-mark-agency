@@ -36,12 +36,12 @@ export const outlineButtonClass =
   "disabled:cursor-not-allowed disabled:opacity-60";
 
 export const secondaryButtonClass =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-line px-4 py-2 " +
-  "text-xs font-medium text-muted transition-colors hover:border-line-strong hover:text-paper " +
+  "inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-line px-4 py-2 " +
+  "text-sm font-medium text-muted transition-colors hover:border-line-strong hover:text-paper " +
   "disabled:cursor-not-allowed disabled:opacity-60";
 
 export const cardClass =
-  "rounded-2xl border border-line bg-ink-2 shadow-[var(--shadow-md)]";
+  "rounded-[24px] border border-line bg-ink-2 shadow-[var(--shadow-md)]";
 
 export const noticeErrorClass =
   "rounded-xl border border-danger/30 bg-danger/5 px-3.5 py-2.5 text-xs text-danger";

@@ -15,6 +15,7 @@ export function MotionRoot() {
       document
         .querySelectorAll<HTMLElement>("[data-reveal]")
         .forEach((el) => el.classList.add("is-revealed"));
+      document.querySelectorAll("svg").forEach((svg) => svg.pauseAnimations());
       return;
     }
 
@@ -37,11 +38,37 @@ export function MotionRoot() {
     };
 
     scan();
-    const mo = new MutationObserver(scan);
+
+    const reduceMotion = reduce;
+    const live = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        entry.target.classList.toggle("is-inview", entry.isIntersecting);
+        if (reduceMotion) continue;
+        entry.target.querySelectorAll("svg").forEach((svg) => {
+          if (entry.isIntersecting) svg.unpauseAnimations();
+          else svg.pauseAnimations();
+        });
+      }
+    }, { threshold: 0.08 });
+
+    const scanLive = () => {
+      document.querySelectorAll<HTMLElement>("[data-motion]").forEach((el) => {
+        if (el.dataset.motionBound === "1") return;
+        el.dataset.motionBound = "1";
+        live.observe(el);
+      });
+    };
+    scanLive();
+
+    const mo = new MutationObserver(() => {
+      scan();
+      scanLive();
+    });
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       io.disconnect();
+      live.disconnect();
       mo.disconnect();
     };
   }, []);

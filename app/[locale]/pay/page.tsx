@@ -15,6 +15,8 @@ import {
   treasuryAddress,
   type PaymentAsset,
 } from "@/lib/crypto/networks";
+import { getCopy } from "@/content/copy";
+import { FinanceFlow } from "@/components/visuals/ProductScenes";
 import { localePath, isLocale, type Locale } from "@/lib/site";
 import { readReferralAttribution } from "@/lib/referral/attribution";
 import { issuePaymentInvoice } from "./actions";
@@ -57,6 +59,7 @@ export default async function PayPage({ params, searchParams }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const ru = locale === "ru";
+  const ui = getCopy(locale).ui;
   const paramsIn = await searchParams;
   const error = first(paramsIn.error);
   const attribution = await readReferralAttribution();
@@ -82,6 +85,10 @@ export default async function PayPage({ params, searchParams }: Props) {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
+      <div className="mb-8" data-motion>
+        <FinanceFlow />
+      </div>
+
       <PageHeader
         eyebrow="AI MARK"
         title={ru ? "Оплата на кошелёк AI MARK" : "Pay to an AI MARK wallet"}
@@ -97,6 +104,18 @@ export default async function PayPage({ params, searchParams }: Props) {
           {error}
         </p>
       ) : null}
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <span className="inline-flex min-h-11 items-center rounded-full bg-mark px-4 text-sm font-semibold text-mark-ink">
+          USDT / USDC
+        </span>
+        <span
+          aria-disabled="true"
+          className="inline-flex min-h-11 cursor-not-allowed items-center rounded-full border border-line px-4 text-sm font-semibold text-muted opacity-70"
+        >
+          {ui.cardOption}
+        </span>
+      </div>
 
       {rails.length === 0 ? (
         <section className={`mt-8 p-5 sm:p-6 ${cardClass}`}>

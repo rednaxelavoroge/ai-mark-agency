@@ -287,11 +287,13 @@ export default async function PricingPage({ params }: Props) {
       </div>
 
       {/* Commercial Policy Note */}
-      <p className="mt-12 text-center font-mono text-[11px] text-muted">
+      <p className="mt-12 text-center text-[13px] text-muted">
         {t.commercial.footnote ||
           (isRu
             ? "USD. Продуктовые цены — в опубликованных коридорах на страницах продуктов. Ретейнеры отдела: Starter $1,200 / Growth $2,200 / Scale $3,500 в месяц по скоупу. ROI, CAC и ROAS не гарантируем."
             : "USD. Product prices are published on dedicated product pages. Retainers: Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. ROI, CAC, and ROAS are never guaranteed.")}
+        {" "}
+        {t.ui.cardsSoon}
       </p>
 
       {/* Why Now / Philosophy Cards */}

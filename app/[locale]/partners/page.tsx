@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { LeadInquiry } from "@/components/LeadInquiry";
 import { LocaleProgram } from "@/components/partners/LocaleProgram";
 import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual";
+import { LevelRings } from "@/components/visuals/ProductScenes";
 import { getCopy } from "@/content/copy";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
@@ -386,7 +387,12 @@ export default async function PartnersPage({ params }: Props) {
               {t.note.split(" · ").map((item) => <span key={item} className="font-mono text-[10px] tracking-wide text-muted">{item}</span>)}
             </div>
           </div>
-          <div data-reveal style={reveal(120)}><PartnerNetworkHeroVisual locale={locale} /></div>
+          <div data-reveal style={reveal(120)} className="space-y-4">
+            <PartnerNetworkHeroVisual locale={locale} />
+            <div data-motion className="rounded-[24px] border border-line bg-ink-2 p-4">
+              <LevelRings />
+            </div>
+          </div>
         </div>
       </section>
 
