@@ -6,355 +6,355 @@ export const cabinetVi: CabinetCopy = {
     "titleTemplate": "%s · Partner Platform"
   },
   "shell": {
-    "navLabel": "Mục partner",
+    "navLabel": "Phần đối tác",
     "signOut": "Đăng xuất",
     "signedIn": "Đã đăng nhập",
     "backToSite": "← ai-mark.agency",
     "ventureTagline": "Venture and Marketing",
-    "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme",
-    "backAriaLabel": "Back"
+    "themeLight": "Chuyển sang giao diện nhẹ nhàng",
+    "themeDark": "Chuyển sang chủ đề tối",
+    "backAriaLabel": "Mặt sau"
   },
   "nav": {
-    "dashboard": "Bảng điều khiển",
+    "dashboard": "Trang tổng quan",
     "customers": "Khách hàng",
-    "sales": "Doanh số",
-    "network": "Mạng lưới",
+    "sales": "Việc bán hàng",
+    "network": "Mạng",
     "commissions": "Hoa hồng",
-    "payouts": "Thanh toán",
+    "payouts": "Xuất chi",
     "resources": "Tài nguyên",
     "profile": "Hồ sơ"
   },
   "auth": {
     "ventureTagline": "Venture and Marketing",
     "login": {
-      "metadataTitle": "Sign in",
+      "metadataTitle": "Đăng nhập",
       "eyebrow": "Partner Platform",
-      "title": "Sign in",
-      "lead": "Your AI MARK partner dashboard: referral link, network, customers and commissions.",
-      "footerBefore": "Not a partner yet?",
-      "footerLink": "See the partner programme"
+      "title": "Đăng nhập",
+      "lead": "Trang tổng quan đối tác AI MARK của bạn: liên kết giới thiệu, mạng lưới, khách hàng và hoa hồng.",
+      "footerBefore": "Chưa phải là đối tác?",
+      "footerLink": "Xem chương trình đối tác"
     },
     "signup": {
-      "metadataTitle": "Create a partner account",
+      "metadataTitle": "Tạo tài khoản đối tác",
       "eyebrow": "Partner Platform",
-      "title": "Create a partner account",
+      "title": "Tạo tài khoản đối tác",
       "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
-      "footerBefore": "Programme rules are confirmed with you during onboarding, before you sell. Read the",
-      "privacyLink": "privacy notice",
+      "footerBefore": "Các quy tắc của chương trình sẽ được xác nhận với bạn trong quá trình giới thiệu, trước khi bạn bán. Đọc",
+      "privacyLink": "thông báo về quyền riêng tư",
       "footerAfter": "."
     },
     "setupNotice": {
-      "title": "Sign-in is temporarily unavailable.",
-      "body": "Write to us and we will help you in. The public website stays open."
+      "title": "Đăng nhập tạm thời không khả dụng.",
+      "body": "Hãy viết thư cho chúng tôi và chúng tôi sẽ giúp bạn. Trang web công cộng vẫn mở."
     },
     "callbackErrors": {
-      "missing_code": "That sign-in link is incomplete. Request a new one below.",
-      "exchange_failed": "That sign-in link has expired or was already used. Request a new one below.",
-      "provider_error": "The sign-in provider did not complete the request.",
-      "not_configured": "Sign-in is temporarily unavailable. Write to us and we will help you in."
+      "missing_code": "Liên kết đăng nhập đó chưa đầy đủ. Yêu cầu một cái mới dưới đây.",
+      "exchange_failed": "Liên kết đăng nhập đó đã hết hạn hoặc đã được sử dụng. Yêu cầu một cái mới dưới đây.",
+      "provider_error": "Nhà cung cấp dịch vụ đăng nhập không hoàn thành yêu cầu.",
+      "not_configured": "Đăng nhập tạm thời không khả dụng. Hãy viết thư cho chúng tôi và chúng tôi sẽ giúp bạn."
     },
-    "signedOutNotice": "You have been signed out.",
-    "genericSignInError": "We could not complete that sign-in. Please try again.",
+    "signedOutNotice": "Bạn đã đăng xuất.",
+    "genericSignInError": "Chúng tôi không thể hoàn tất việc đăng nhập đó. Vui lòng thử lại.",
     "form": {
-      "email": "Email",
-      "password": "Password",
+      "email": "E-mail",
+      "password": "Mật khẩu",
       "emailPlaceholder": "you@company.com",
-      "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
-      "fullName": "Full name",
+      "passwordPlaceholder": "•···········",
+      "passwordNewPlaceholder": "Ít nhất 8 ký tự",
+      "fullName": "Tên đầy đủ",
       "fullNamePlaceholder": "Alex Morgan",
-      "signIn": "Sign in",
-      "signInPending": "Signing in…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
-      "createAccount": "Create partner account",
-      "createAccountPending": "Creating account…",
+      "signIn": "Đăng nhập",
+      "signInPending": "Đang đăng nhập…",
+      "signUp": "Đăng nhập",
+      "signUpPending": "Đang đăng nhập…",
+      "createAccount": "Tạo tài khoản đối tác",
+      "createAccountPending": "Đang tạo tài khoản…",
       "orDivider": "or",
-      "continueGoogle": "Continue with Google",
-      "continueGooglePending": "Opening Google…",
-      "magicLinkLabel": "Email me a sign-in link",
-      "sendMagicLink": "Send magic link",
-      "sendMagicLinkPending": "Sending…",
-      "noAccountBefore": "No account yet?",
-      "noAccountLink": "Create a partner account",
-      "hasAccountBefore": "Already have an account?",
-      "hasAccountLink": "Sign in"
+      "continueGoogle": "Tiếp tục với Google",
+      "continueGooglePending": "Đang mở Google…",
+      "magicLinkLabel": "Gửi email cho tôi liên kết đăng nhập",
+      "sendMagicLink": "Gửi liên kết ma thuật",
+      "sendMagicLinkPending": "Đang gửi…",
+      "noAccountBefore": "Chưa có tài khoản?",
+      "noAccountLink": "Tạo tài khoản đối tác",
+      "hasAccountBefore": "Đã có tài khoản?",
+      "hasAccountLink": "Đăng nhập"
     }
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "Trang tổng quan",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "Khách hàng",
       "eyebrow": "Partner Platform",
-      "title": "Customers",
-      "lead": "People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
+      "title": "Khách hàng",
+      "lead": "Những người đã gửi biểu mẫu liên hệ trên trang web trong khi liên kết giới thiệu của bạn vẫn hợp lệ. Trò chuyện, Telegram, WhatsApp và email không có trong danh sách này. Khách hàng tiềm năng không phải là bán hàng và không phải là hoa hồng."
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "Việc bán hàng",
       "eyebrow": "Partner Platform",
-      "title": "Sales",
-      "lead": "Paid orders attributed to your referral code or partner id. Clicks and leads are not sales. Amounts are the amounts stored on the sale."
+      "title": "Việc bán hàng",
+      "lead": "Các đơn đặt hàng được thanh toán được quy cho mã giới thiệu hoặc id đối tác của bạn. Số nhấp chuột và khách hàng tiềm năng không phải là doanh số bán hàng. Số tiền là số tiền được lưu trữ khi bán."
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "Mạng",
       "eyebrow": "Partner Platform",
-      "title": "Network",
-      "lead": "Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
+      "title": "Mạng",
+      "lead": "Nhà tài trợ của bạn và số lượng đối tác đã đăng ký thông qua liên kết của bạn. Tên ở tuyến dưới không được liệt kê."
     },
     "commissions": {
-      "metadataTitle": "Commissions",
+      "metadataTitle": "Hoa hồng",
       "eyebrow": "Partner Platform",
-      "title": "Commissions",
-      "lead": "Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
+      "title": "Hoa hồng",
+      "lead": "Hoa hồng của bạn cho mỗi lần bán hàng đủ điều kiện. Lịch trình: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "Xuất chi",
       "eyebrow": "Partner Platform",
-      "title": "Payouts",
-      "lead": "Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
+      "title": "Xuất chi",
+      "lead": "Các khoản thanh toán được ghi lại cho bạn và địa chỉ USDC được lưu trên hồ sơ của bạn. AI MARK gửi khoản thanh toán đến địa chỉ đó."
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "Hồ sơ",
       "eyebrow": "Partner Platform",
-      "title": "Profile",
-      "lead": "Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
+      "title": "Hồ sơ",
+      "lead": "Các trường tài khoản và bản ghi đối tác được đọc từ hàng của riêng bạn. Chi tiết thanh toán là trường duy nhất bạn có thể thay đổi ở đây."
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "Tài nguyên",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
-      "metadataTitle": "Partner access",
+      "metadataTitle": "Quyền truy cập của đối tác",
       "eyebrow": "Partner Platform",
-      "title": "No partner access on this account",
-      "lead": "Your account is signed in, but it has no partner record attached yet.",
-      "footer": "Think this is wrong? Reply to any AI MARK email and we will link your partner record.",
-      "signedInBefore": "Signed in as",
-      "signedInAfter": "Partner records are issued by AI MARK; they are never created by the account owner."
+      "title": "Không có quyền truy cập của đối tác trên tài khoản này",
+      "lead": "Tài khoản của bạn đã được đăng nhập nhưng chưa có bản ghi đối tác nào được đính kèm.",
+      "footer": "Nghĩ rằng điều này là sai? Trả lời bất kỳ email AI MARK nào và chúng tôi sẽ liên kết hồ sơ đối tác của bạn.",
+      "signedInBefore": "Đã đăng nhập với tư cách",
+      "signedInAfter": "Hồ sơ đối tác được cấp bởi AI MARK; chúng không bao giờ được tạo bởi chủ tài khoản."
     }
   },
   "dashboard": {
     "welcomeTitle": "Welcome, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
-    "welcomeLeadAfter": "Your referral link is live. Sales, commission, and payouts appear here as they are recorded.",
-    "performanceTitle": "Performance",
-    "performanceLead": "Qualifying sales and commission appear after a customer pays. A dash means that figure is not available yet.",
-    "statQualifyingSales": "Qualifying sales",
-    "statCommission": "Commission",
-    "statReadyToPay": "Ready to pay",
-    "statPaid": "Paid",
-    "noCommissionsYet": "No commissions yet.",
+    "welcomeLeadBefore": "ID đối tác của bạn là",
+    "welcomeLeadAfter": "Liên kết giới thiệu của bạn đang hoạt động. Doanh số bán hàng, hoa hồng và các khoản thanh toán xuất hiện ở đây khi chúng được ghi lại.",
+    "performanceTitle": "Hiệu suất",
+    "performanceLead": "Doanh số bán hàng và hoa hồng đủ điều kiện xuất hiện sau khi khách hàng thanh toán. Dấu gạch ngang có nghĩa là con số đó chưa có sẵn.",
+    "statQualifyingSales": "Bán hàng đủ điều kiện",
+    "statCommission": "Nhiệm vụ",
+    "statReadyToPay": "Sẵn sàng trả tiền",
+    "statPaid": "Trả",
+    "noCommissionsYet": "Chưa có hoa hồng.",
     "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
-    "identityTitle": "Partner identity",
-    "identityLead": "Issued by AI MARK. Partner ID, referral code and status are immutable from your account.",
-    "labelPartnerId": "Partner ID",
-    "labelPartnerStatus": "Partner status",
-    "labelReferralCode": "Referral code",
-    "labelCountry": "Country",
-    "labelJoined": "Joined",
-    "labelLanguage": "Language",
-    "sponsorTitle": "Sponsor",
+    "identityTitle": "Danh tính đối tác",
+    "identityLead": "Được phát hành bởi AI MARK. ID đối tác, mã giới thiệu và trạng thái là bất biến đối với tài khoản của bạn.",
+    "labelPartnerId": "ID đối tác",
+    "labelPartnerStatus": "Trạng thái đối tác",
+    "labelReferralCode": "Mã giới thiệu",
+    "labelCountry": "Quốc gia",
+    "labelJoined": "Đã tham gia",
+    "labelLanguage": "Ngôn ngữ",
+    "sponsorTitle": "Nhà tài trợ",
     "sponsorConfirmed": "Confirmed {date}.",
-    "sponsorRecordedUnconfirmed": "Recorded, not yet confirmed by a qualifying sale.",
-    "sponsorFromReferralLink": " Recorded from a referral link at signup.",
-    "sponsorEmpty": "No sponsor recorded. Sponsor relationships are set by AI MARK from a referral link at signup, never by the partner, and are immutable once confirmed.",
-    "historyTitle": "Status history",
-    "historyLead": "Written by the database on every status change.",
-    "historyEmpty": "No entries yet.",
-    "hubTitle": "Demos, materials, knowledge, support",
-    "hubLead": "Product pages, brand files, published prices, and support channels are on Resources.",
-    "hubLinkDemos": "Demos and presentations",
-    "hubLinkKnowledge": "Product knowledge",
-    "hubLinkMaterials": "Brand files",
-    "hubLinkSupport": "Support",
-    "trackingFootnoteBefore": "How tracking works is on",
-    "trackingFootnoteLink": "Resources",
+    "sponsorRecordedUnconfirmed": "Đã ghi lại, chưa được xác nhận bởi một đợt bán hàng đủ điều kiện.",
+    "sponsorFromReferralLink": "Được ghi lại từ một liên kết giới thiệu khi đăng ký.",
+    "sponsorEmpty": "Không có nhà tài trợ được ghi lại. Mối quan hệ tài trợ được AI MARK thiết lập từ liên kết giới thiệu khi đăng ký, không bao giờ do đối tác thực hiện và không thể thay đổi sau khi được xác nhận.",
+    "historyTitle": "Lịch sử trạng thái",
+    "historyLead": "Được viết bởi cơ sở dữ liệu về mọi thay đổi trạng thái.",
+    "historyEmpty": "Chưa có mục nào.",
+    "hubTitle": "Demo, tài liệu, kiến ​​thức, hỗ trợ",
+    "hubLead": "Các trang sản phẩm, hồ sơ thương hiệu, giá công bố và các kênh hỗ trợ đều có trên Tài nguyên.",
+    "hubLinkDemos": "Demo và thuyết trình",
+    "hubLinkKnowledge": "Kiến thức sản phẩm",
+    "hubLinkMaterials": "Tập tin thương hiệu",
+    "hubLinkSupport": "Ủng hộ",
+    "trackingFootnoteBefore": "Cách thức hoạt động của tính năng theo dõi đang bật",
+    "trackingFootnoteLink": "Tài nguyên",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Launch-period status",
-    "launchEndedTitle": "Launch-period ended",
+    "launchActiveTitle": "Trạng thái thời gian ra mắt",
+    "launchEndedTitle": "Thời gian ra mắt đã kết thúc",
     "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
     "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
   },
   "referralPanel": {
-    "title": "Referral program",
-    "lead": "Visits through your link are recorded server-side and attribute a customer lead for 30 days. A partner who signs up through it is recorded as your referral. Sponsor relationships are set by AI MARK from the referral link only — never from your account, and never editable from the client.",
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statSignups": "Partner signups",
-    "footnote": "Clicks, leads, and partner signups. Commission and payouts are on the Commissions and Payouts pages."
+    "title": "Chương trình giới thiệu",
+    "lead": "Các lượt truy cập thông qua liên kết của bạn được ghi lại phía máy chủ và ghi nhận khách hàng tiềm năng trong 30 ngày. Đối tác đăng ký thông qua nó sẽ được ghi nhận là người giới thiệu của bạn. Mối quan hệ tài trợ được AI MARK thiết lập chỉ từ liên kết giới thiệu - không bao giờ từ tài khoản của bạn và không bao giờ có thể chỉnh sửa từ khách hàng.",
+    "statClicks": "Số nhấp chuột giới thiệu",
+    "statLeads": "Khách hàng tiềm năng được phân bổ",
+    "statSignups": "Đăng ký đối tác",
+    "footnote": "Số nhấp chuột, khách hàng tiềm năng và đăng ký đối tác. Hoa hồng và các khoản thanh toán nằm trên trang Hoa hồng và Thanh toán."
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
-    "lead": "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    "title": "Mô hình hoa hồng đối tác",
+    "lead": "Bán trực tiếp 50%. Lên tới 80% tổng phần thưởng đối tác trên mạng. 80% là tổng số tiền từ L1–L5 đủ điều kiện, không phải là khoản thanh toán của một đối tác. AI Mark chia sẻ giữ lại là 20% số tiền hoa hồng. Tổng số sổ cái ở trên là các giá trị được lưu trữ; thẻ này không tính lại thu nhập của bạn.",
     "levels": {
       "1": {
-        "title": "Direct sale",
-        "body": "The customer you personally introduce. This is 50% of the commissionable amount — not the whole 80% pool."
+        "title": "Bán trực tiếp",
+        "body": "Khách hàng do bạn đích thân giới thiệu. Đây là 50% số tiền hoa hồng - không phải toàn bộ nhóm 80%."
       },
       "2": {
-        "title": "First network",
-        "body": "Paid customer sales from your first-level partners."
+        "title": "Mạng đầu tiên",
+        "body": "Doanh số bán hàng được trả tiền từ các đối tác cấp đầu tiên của bạn."
       },
       "3": {
-        "title": "Extended network",
-        "body": "Paid sales one level deeper."
+        "title": "Mạng mở rộng",
+        "body": "Bán hàng phải trả tiền sâu hơn một cấp."
       },
       "4": {
-        "title": "Market depth",
-        "body": "The network beyond direct relationships."
+        "title": "Độ sâu thị trường",
+        "body": "Mạng lưới vượt ra ngoài các mối quan hệ trực tiếp."
       },
       "5": {
-        "title": "Maximum depth",
-        "body": "The deepest level of the standard schedule."
+        "title": "Độ sâu tối đa",
+        "body": "Mức độ sâu nhất của lịch trình tiêu chuẩn."
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "Bán hoa hồng 1.000 USD · mạng lưới đầy đủ",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "Tổng số nhóm mạng",
+      "retainedShare": "AI Mark giữ lại cổ phần"
     },
-    "exampleFootnote": "The direct partner receives $500, not $800. Total network pool 80%."
+    "exampleFootnote": "Đối tác trực tiếp nhận được 500 USD chứ không phải 800 USD. Tổng số mạng lưới 80%."
   },
   "dataTable": {
-    "unreadable": "This list could not be read.",
+    "unreadable": "Danh sách này không thể đọc được.",
     "customers": {
-      "empty": "No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty.",
+      "empty": "Không có khách hàng tiềm năng được phân bổ. Một hàng xuất hiện khi ai đó gửi biểu mẫu liên hệ trên trang web trong khi cookie giới thiệu của bạn vẫn hợp lệ. Một danh sách trống là trống rỗng.",
       "columns": [
-        "Name",
-        "Company",
-        "Email",
-        "Scenario",
-        "Page",
-        "When"
+        "Tên",
+        "Công ty",
+        "E-mail",
+        "Kịch bản",
+        "Trang",
+        "Khi"
       ]
     },
     "sales": {
-      "empty": "No sales yet. A row appears after AI MARK records a payment the customer actually made. An empty list is empty — it is not a zero estimate of revenue.",
+      "empty": "Chưa có doanh số bán hàng. Một hàng xuất hiện sau khi AI MARK ghi lại khoản thanh toán mà khách hàng thực sự đã thực hiện. Danh sách trống là danh sách trống — đó không phải là ước tính doanh thu bằng 0.",
       "columns": [
         "Product",
-        "Amount",
-        "Status",
-        "Paid",
-        "Confirmed",
-        "Locked",
-        "Order"
+        "Số lượng",
+        "Trạng thái",
+        "Trả",
+        "Đã xác nhận",
+        "Đã khóa",
+        "Đặt hàng"
       ]
     },
     "commissions": {
-      "empty": "No commissions yet. An entry appears after a qualifying sale.",
+      "empty": "Chưa có hoa hồng. Một mục xuất hiện sau khi bán hàng đủ điều kiện.",
       "columns": [
-        "Status",
-        "Type",
-        "Level",
-        "Amount",
-        "Rate",
-        "Base",
-        "Posted"
+        "Trạng thái",
+        "Kiểu",
+        "Mức độ",
+        "Số lượng",
+        "Tỷ lệ",
+        "Căn cứ",
+        "Đã đăng"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "Chưa có khoản thanh toán nào. AI MARK ghi lại khoản thanh toán khi hoa hồng đã sẵn sàng được trả.",
       "columns": [
-        "Status",
-        "Amount",
-        "Created",
-        "Confirmed",
-        "Paid"
+        "Trạng thái",
+        "Số lượng",
+        "Tạo",
+        "Đã xác nhận",
+        "Trả"
       ]
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statRegistrations": "Partner registrations",
-    "sponsorTitle": "Your sponsor",
-    "labelSponsorPartnerId": "Sponsor Partner ID",
-    "labelRecorded": "Recorded",
-    "labelConfirmed": "Confirmed",
-    "notConfirmed": "Not confirmed",
-    "labelSource": "Source",
-    "sponsorEmpty": "No sponsor recorded. A sponsor is set from a referral link at signup. You cannot assign one from this account.",
-    "statusTitle": "Your status",
-    "statusNone": "No partners have signed up through your link yet.",
-    "statusUnreadable": "Partner registrations could not be read.",
+    "statClicks": "Số nhấp chuột giới thiệu",
+    "statLeads": "Khách hàng tiềm năng được phân bổ",
+    "statRegistrations": "Đăng ký đối tác",
+    "sponsorTitle": "Nhà tài trợ của bạn",
+    "labelSponsorPartnerId": "ID đối tác tài trợ",
+    "labelRecorded": "Đã ghi âm",
+    "labelConfirmed": "Đã xác nhận",
+    "notConfirmed": "Chưa được xác nhận",
+    "labelSource": "Nguồn",
+    "sponsorEmpty": "Không có nhà tài trợ được ghi lại. Nhà tài trợ được đặt từ liên kết giới thiệu khi đăng ký. Bạn không thể chỉ định một tài khoản từ tài khoản này.",
+    "statusTitle": "Trạng thái của bạn",
+    "statusNone": "Chưa có đối tác nào đăng ký thông qua liên kết của bạn.",
+    "statusUnreadable": "Đăng ký đối tác không thể đọc được.",
     "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
   },
   "payouts": {
-    "destinationTitle": "Where a payout is sent",
-    "destinationLead": "The address you want payouts sent to.",
-    "destinationUnreadable": "Payout details could not be read.",
-    "editPayoutLink": "Edit payout details",
-    "flowTitle": "How a payout moves",
+    "destinationTitle": "Nơi gửi khoản thanh toán",
+    "destinationLead": "Địa chỉ bạn muốn gửi khoản thanh toán đến.",
+    "destinationUnreadable": "Không thể đọc chi tiết thanh toán.",
+    "editPayoutLink": "Chỉnh sửa chi tiết thanh toán",
+    "flowTitle": "Cách thanh toán di chuyển",
     "flowSteps": [
-      "1. A qualifying sale records your commission.",
-      "2. That commission is held for 14 days after the sale is confirmed.",
-      "3. After the hold, if the sale still stands, it is ready to pay.",
-      "4. AI MARK records the payout and sends it to your USDC address.",
-      "5. A refund or cancellation adjusts what is owed."
+      "1. Việc bán hàng đủ điều kiện sẽ ghi lại hoa hồng của bạn.",
+      "2. Khoản hoa hồng đó được giữ trong 14 ngày sau khi việc bán hàng được xác nhận.",
+      "3. Sau khi tạm dừng, nếu việc bán hàng vẫn tiếp tục thì bạn đã sẵn sàng thanh toán.",
+      "4. AI MARK ghi lại khoản thanh toán và gửi đến địa chỉ USDC của bạn.",
+      "5. Việc hoàn lại tiền hoặc hủy bỏ sẽ điều chỉnh những gì còn nợ."
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "statReady": "Sẵn sàng trả tiền",
+    "statPaid": "Trả",
+    "tableEmpty": "Chưa có khoản thanh toán nào. AI MARK ghi lại khoản thanh toán khi hoa hồng đã sẵn sàng được trả."
   },
   "profile": {
-    "savedNotice": "Payout details saved.",
-    "accountTitle": "Account",
-    "labelFullName": "Full name",
-    "labelEmail": "Email",
-    "labelPhone": "Phone",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
-    "labelRegion": "Region",
-    "labelAvatarUrl": "Avatar URL",
-    "labelAccountCreated": "Account created",
-    "partnerRecordTitle": "Partner record",
-    "partnerRecordLead": "Platform-owned. These values cannot be changed from a partner session by design.",
-    "labelStatus": "Status",
-    "labelPartnerSince": "Partner since",
-    "payoutTitle": "Payout details",
-    "payoutLead": "Partner payouts are USDC. Default network is Solana. This form stores the destination on your profile. It does not send tokens.",
-    "payoutUnreadable": "Payout details could not be read, so they cannot be saved from this page.",
-    "labelRecipientName": "Recipient name",
-    "labelPayoutAsset": "Payout asset",
-    "labelNetwork": "Network",
-    "labelUsdcAddress": "USDC address",
-    "usdcPlaceholder": "Solana address",
-    "labelNotes": "Notes (optional)",
-    "savePayout": "Save payout details",
-    "referralTitle": "Referral link",
-    "referralLead": "Issued with the account. The partner record above stays read-only."
+    "savedNotice": "Đã lưu chi tiết thanh toán.",
+    "accountTitle": "Tài khoản",
+    "labelFullName": "Tên đầy đủ",
+    "labelEmail": "E-mail",
+    "labelPhone": "Điện thoại",
+    "labelLanguage": "Ngôn ngữ",
+    "labelCountry": "Quốc gia",
+    "labelRegion": "Vùng đất",
+    "labelAvatarUrl": "URL hình đại diện",
+    "labelAccountCreated": "Đã tạo tài khoản",
+    "partnerRecordTitle": "Bản ghi đối tác",
+    "partnerRecordLead": "Thuộc sở hữu của nền tảng. Các giá trị này không thể thay đổi từ phiên đối tác theo thiết kế.",
+    "labelStatus": "Trạng thái",
+    "labelPartnerSince": "Đối tác kể từ",
+    "payoutTitle": "Chi tiết thanh toán",
+    "payoutLead": "Khoản thanh toán của đối tác là USDC. Mạng mặc định là Solana. Biểu mẫu này lưu trữ điểm đến trên hồ sơ của bạn. Nó không gửi mã thông báo.",
+    "payoutUnreadable": "Không thể đọc được chi tiết thanh toán nên không thể lưu chúng từ trang này.",
+    "labelRecipientName": "Tên người nhận",
+    "labelPayoutAsset": "Nội dung thanh toán",
+    "labelNetwork": "Mạng",
+    "labelUsdcAddress": "địa chỉ USDC",
+    "usdcPlaceholder": "Địa chỉ Solana",
+    "labelNotes": "Ghi chú (tùy chọn)",
+    "savePayout": "Lưu chi tiết thanh toán",
+    "referralTitle": "Liên kết giới thiệu",
+    "referralLead": "Được cấp cùng với tài khoản. Bản ghi đối tác ở trên vẫn ở chế độ chỉ đọc."
   },
   "copyReferralLink": {
-    "label": "Your referral link",
-    "copy": "Copy referral link",
-    "copied": "Copied",
-    "copiedStatus": "Referral link copied to your clipboard.",
-    "failedStatus": "Copying was blocked — select the link and copy it manually.",
-    "hint": "The link is live. Every visit is recorded and attributes a customer lead for 30 days; a partner who signs up through it is recorded as your referral. Add campaign parameters (for example ?utm_source=newsletter) to see where your clicks come from."
+    "label": "Liên kết giới thiệu của bạn",
+    "copy": "Sao chép liên kết giới thiệu",
+    "copied": "Đã sao chép",
+    "copiedStatus": "Đã sao chép liên kết giới thiệu vào khay nhớ tạm của bạn.",
+    "failedStatus": "Việc sao chép đã bị chặn — hãy chọn liên kết và sao chép thủ công.",
+    "hint": "Liên kết đang hoạt động. Mỗi lượt truy cập đều được ghi lại và phân bổ khách hàng tiềm năng trong 30 ngày; một đối tác đăng ký thông qua nó sẽ được ghi nhận là người giới thiệu của bạn. Thêm thông số chiến dịch (ví dụ ?utm_source=newsletter) để xem nhấp chuột của bạn đến từ đâu."
   },
   "copyLine": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Sao chép",
+    "copied": "Đã sao chép"
   },
   "copyText": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Sao chép",
+    "copied": "Đã sao chép"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "Cộng sự",
+    "growth": "Sự phát triển",
+    "regional": "Khu vực",
+    "strategic": "Chiến lược",
+    "suspended": "Cấm"
   },
-  "defaultPartnerName": "Partner"
-} as CabinetCopy;
+  "defaultPartnerName": "Cộng sự"
+};

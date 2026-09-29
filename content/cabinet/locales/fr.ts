@@ -6,14 +6,14 @@ export const cabinetFr: CabinetCopy = {
     "titleTemplate": "%s · Partner Platform"
   },
   "shell": {
-    "navLabel": "Sections partner",
-    "signOut": "Se déconnecter",
+    "navLabel": "Rubriques partenaires",
+    "signOut": "se déconnecter",
     "signedIn": "Connecté",
     "backToSite": "← ai-mark.agency",
     "ventureTagline": "Venture and Marketing",
-    "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme",
-    "backAriaLabel": "Back"
+    "themeLight": "Passer au thème clair",
+    "themeDark": "Passer au thème sombre",
+    "backAriaLabel": "Dos"
   },
   "nav": {
     "dashboard": "Tableau de bord",
@@ -28,333 +28,333 @@ export const cabinetFr: CabinetCopy = {
   "auth": {
     "ventureTagline": "Venture and Marketing",
     "login": {
-      "metadataTitle": "Sign in",
+      "metadataTitle": "Se connecter",
       "eyebrow": "Partner Platform",
-      "title": "Sign in",
-      "lead": "Your AI MARK partner dashboard: referral link, network, customers and commissions.",
-      "footerBefore": "Not a partner yet?",
-      "footerLink": "See the partner programme"
+      "title": "Se connecter",
+      "lead": "Votre tableau de bord partenaire AI MARK : lien de parrainage, réseau, clients et commissions.",
+      "footerBefore": "Pas encore partenaire ?",
+      "footerLink": "Voir le programme partenaire"
     },
     "signup": {
-      "metadataTitle": "Create a partner account",
+      "metadataTitle": "Créer un compte partenaire",
       "eyebrow": "Partner Platform",
-      "title": "Create a partner account",
-      "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
-      "footerBefore": "Programme rules are confirmed with you during onboarding, before you sell. Read the",
-      "privacyLink": "privacy notice",
+      "title": "Créer un compte partenaire",
+      "lead": "Un compte vous donne votre identifiant de partenaire, un code de parrainage et le tableau de bord du partenaire.",
+      "footerBefore": "Les règles du programme sont confirmées avec vous lors de l'intégration, avant votre vente. Lire le",
+      "privacyLink": "avis de confidentialité",
       "footerAfter": "."
     },
     "setupNotice": {
-      "title": "Sign-in is temporarily unavailable.",
-      "body": "Write to us and we will help you in. The public website stays open."
+      "title": "La connexion est temporairement indisponible.",
+      "body": "Écrivez-nous et nous vous aiderons. Le site Web public reste ouvert."
     },
     "callbackErrors": {
-      "missing_code": "That sign-in link is incomplete. Request a new one below.",
-      "exchange_failed": "That sign-in link has expired or was already used. Request a new one below.",
-      "provider_error": "The sign-in provider did not complete the request.",
-      "not_configured": "Sign-in is temporarily unavailable. Write to us and we will help you in."
+      "missing_code": "Ce lien de connexion est incomplet. Demandez-en un nouveau ci-dessous.",
+      "exchange_failed": "Ce lien de connexion a expiré ou a déjà été utilisé. Demandez-en un nouveau ci-dessous.",
+      "provider_error": "Le fournisseur de connexion n’a pas complété la demande.",
+      "not_configured": "La connexion est temporairement indisponible. Écrivez-nous et nous vous aiderons."
     },
-    "signedOutNotice": "You have been signed out.",
-    "genericSignInError": "We could not complete that sign-in. Please try again.",
+    "signedOutNotice": "Vous avez été déconnecté.",
+    "genericSignInError": "Nous n'avons pas pu finaliser cette connexion. Veuillez réessayer.",
     "form": {
-      "email": "Email",
-      "password": "Password",
+      "email": "E-mail",
+      "password": "Mot de passe",
       "emailPlaceholder": "you@company.com",
       "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
-      "fullName": "Full name",
+      "passwordNewPlaceholder": "Au moins 8 caractères",
+      "fullName": "Nom et prénom",
       "fullNamePlaceholder": "Alex Morgan",
-      "signIn": "Sign in",
-      "signInPending": "Signing in…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
-      "createAccount": "Create partner account",
-      "createAccountPending": "Creating account…",
+      "signIn": "Se connecter",
+      "signInPending": "Connexion…",
+      "signUp": "Se connecter",
+      "signUpPending": "Connexion…",
+      "createAccount": "Créer un compte partenaire",
+      "createAccountPending": "Création d'un compte…",
       "orDivider": "or",
-      "continueGoogle": "Continue with Google",
-      "continueGooglePending": "Opening Google…",
-      "magicLinkLabel": "Email me a sign-in link",
-      "sendMagicLink": "Send magic link",
-      "sendMagicLinkPending": "Sending…",
-      "noAccountBefore": "No account yet?",
-      "noAccountLink": "Create a partner account",
-      "hasAccountBefore": "Already have an account?",
-      "hasAccountLink": "Sign in"
+      "continueGoogle": "Continuer avec Google",
+      "continueGooglePending": "Ouverture de Google…",
+      "magicLinkLabel": "Envoyez-moi un lien de connexion par e-mail",
+      "sendMagicLink": "Envoyer un lien magique",
+      "sendMagicLinkPending": "Envoi…",
+      "noAccountBefore": "Pas encore de compte ?",
+      "noAccountLink": "Créer un compte partenaire",
+      "hasAccountBefore": "Vous avez déjà un compte ?",
+      "hasAccountLink": "Se connecter"
     }
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "Tableau de bord",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "Clients",
       "eyebrow": "Partner Platform",
-      "title": "Customers",
-      "lead": "People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
+      "title": "Clients",
+      "lead": "Les personnes qui ont soumis le formulaire de contact sur le site alors que votre lien de parrainage était encore valide. Le chat, le télégramme, WhatsApp et le courrier électronique ne font pas partie de cette liste. Un prospect n’est pas une vente et n’est pas une commission."
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "Ventes",
       "eyebrow": "Partner Platform",
-      "title": "Sales",
-      "lead": "Paid orders attributed to your referral code or partner id. Clicks and leads are not sales. Amounts are the amounts stored on the sale."
+      "title": "Ventes",
+      "lead": "Commandes payantes attribuées à votre code de parrainage ou identifiant de partenaire. Les clics et les leads ne sont pas des ventes. Les montants sont les montants stockés sur la vente."
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "Réseau",
       "eyebrow": "Partner Platform",
-      "title": "Network",
-      "lead": "Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
+      "title": "Réseau",
+      "lead": "Votre sponsor et combien de partenaires se sont inscrits via votre lien. Les noms dans la lignée descendante ne sont pas répertoriés."
     },
     "commissions": {
       "metadataTitle": "Commissions",
       "eyebrow": "Partner Platform",
       "title": "Commissions",
-      "lead": "Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
+      "lead": "Vos commissions pour chaque vente admissible. Calendrier : L1 50 % / L2 15 % / L3 7 % / L4 5 % / L5 3 %, pool réseau 80 %."
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "Paiements",
       "eyebrow": "Partner Platform",
-      "title": "Payouts",
-      "lead": "Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
+      "title": "Paiements",
+      "lead": "Paiements enregistrés pour vous et adresse USDC enregistrée sur votre profil. AI MARK envoie le paiement à cette adresse."
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "Profil",
       "eyebrow": "Partner Platform",
-      "title": "Profile",
-      "lead": "Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
+      "title": "Profil",
+      "lead": "Les champs de compte et d'enregistrement de partenaire sont lus à partir de votre propre ligne. Les détails du paiement sont les seuls champs que vous pouvez modifier ici."
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "Ressources",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
-      "metadataTitle": "Partner access",
+      "metadataTitle": "Accès partenaire",
       "eyebrow": "Partner Platform",
-      "title": "No partner access on this account",
-      "lead": "Your account is signed in, but it has no partner record attached yet.",
-      "footer": "Think this is wrong? Reply to any AI MARK email and we will link your partner record.",
-      "signedInBefore": "Signed in as",
-      "signedInAfter": "Partner records are issued by AI MARK; they are never created by the account owner."
+      "title": "Aucun accès partenaire sur ce compte",
+      "lead": "Votre compte est connecté, mais aucun enregistrement de partenaire n'est encore associé à celui-ci.",
+      "footer": "Vous pensez que c'est faux ? Répondez à n’importe quel e-mail AI MARK et nous relierons votre dossier de partenaire.",
+      "signedInBefore": "Connecté en tant que",
+      "signedInAfter": "Les enregistrements des partenaires sont émis par AI MARK ; ils ne sont jamais créés par le propriétaire du compte."
     }
   },
   "dashboard": {
     "welcomeTitle": "Welcome, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
-    "welcomeLeadAfter": "Your referral link is live. Sales, commission, and payouts appear here as they are recorded.",
+    "welcomeLeadBefore": "Votre identifiant de partenaire est",
+    "welcomeLeadAfter": "Votre lien de parrainage est en ligne. Les ventes, les commissions et les paiements apparaissent ici au fur et à mesure de leur enregistrement.",
     "performanceTitle": "Performance",
-    "performanceLead": "Qualifying sales and commission appear after a customer pays. A dash means that figure is not available yet.",
-    "statQualifyingSales": "Qualifying sales",
+    "performanceLead": "Les ventes et commissions éligibles apparaissent après le paiement d’un client. Un tiret signifie que ce chiffre n'est pas encore disponible.",
+    "statQualifyingSales": "Ventes admissibles",
     "statCommission": "Commission",
-    "statReadyToPay": "Ready to pay",
-    "statPaid": "Paid",
-    "noCommissionsYet": "No commissions yet.",
+    "statReadyToPay": "Prêt à payer",
+    "statPaid": "Payé",
+    "noCommissionsYet": "Pas de commissions pour l'instant.",
     "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
-    "identityTitle": "Partner identity",
-    "identityLead": "Issued by AI MARK. Partner ID, referral code and status are immutable from your account.",
-    "labelPartnerId": "Partner ID",
-    "labelPartnerStatus": "Partner status",
-    "labelReferralCode": "Referral code",
-    "labelCountry": "Country",
-    "labelJoined": "Joined",
-    "labelLanguage": "Language",
-    "sponsorTitle": "Sponsor",
+    "identityTitle": "Identité du partenaire",
+    "identityLead": "Publié par AI MARK. L'ID de partenaire, le code de parrainage et le statut sont immuables depuis votre compte.",
+    "labelPartnerId": "Identifiant du partenaire",
+    "labelPartnerStatus": "Statut de partenaire",
+    "labelReferralCode": "Code de référence",
+    "labelCountry": "Pays",
+    "labelJoined": "Rejoint",
+    "labelLanguage": "Langue",
+    "sponsorTitle": "Parrainer",
     "sponsorConfirmed": "Confirmed {date}.",
-    "sponsorRecordedUnconfirmed": "Recorded, not yet confirmed by a qualifying sale.",
-    "sponsorFromReferralLink": " Recorded from a referral link at signup.",
-    "sponsorEmpty": "No sponsor recorded. Sponsor relationships are set by AI MARK from a referral link at signup, never by the partner, and are immutable once confirmed.",
-    "historyTitle": "Status history",
-    "historyLead": "Written by the database on every status change.",
-    "historyEmpty": "No entries yet.",
-    "hubTitle": "Demos, materials, knowledge, support",
-    "hubLead": "Product pages, brand files, published prices, and support channels are on Resources.",
-    "hubLinkDemos": "Demos and presentations",
-    "hubLinkKnowledge": "Product knowledge",
-    "hubLinkMaterials": "Brand files",
-    "hubLinkSupport": "Support",
-    "trackingFootnoteBefore": "How tracking works is on",
-    "trackingFootnoteLink": "Resources",
+    "sponsorRecordedUnconfirmed": "Enregistré, non encore confirmé par une vente admissible.",
+    "sponsorFromReferralLink": "Enregistré à partir d'un lien de parrainage lors de l'inscription.",
+    "sponsorEmpty": "Aucun sponsor enregistré. Les relations avec le sponsor sont définies par AI MARK à partir d'un lien de parrainage lors de l'inscription, jamais par le partenaire, et sont immuables une fois confirmées.",
+    "historyTitle": "Historique du statut",
+    "historyLead": "Écrit par la base de données à chaque changement de statut.",
+    "historyEmpty": "Aucune entrée pour l'instant.",
+    "hubTitle": "Démos, matériels, connaissances, assistance",
+    "hubLead": "Les pages de produits, les fichiers de marque, les prix publiés et les canaux d'assistance se trouvent dans les ressources.",
+    "hubLinkDemos": "Démos et présentations",
+    "hubLinkKnowledge": "Connaissance des produits",
+    "hubLinkMaterials": "Fichiers de marque",
+    "hubLinkSupport": "Soutien",
+    "trackingFootnoteBefore": "Le fonctionnement du suivi est activé",
+    "trackingFootnoteLink": "Ressources",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Launch-period status",
-    "launchEndedTitle": "Launch-period ended",
+    "launchActiveTitle": "Statut de la période de lancement",
+    "launchEndedTitle": "Période de lancement terminée",
     "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
     "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
   },
   "referralPanel": {
-    "title": "Referral program",
-    "lead": "Visits through your link are recorded server-side and attribute a customer lead for 30 days. A partner who signs up through it is recorded as your referral. Sponsor relationships are set by AI MARK from the referral link only — never from your account, and never editable from the client.",
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statSignups": "Partner signups",
-    "footnote": "Clicks, leads, and partner signups. Commission and payouts are on the Commissions and Payouts pages."
+    "title": "Programme de parrainage",
+    "lead": "Les visites via votre lien sont enregistrées côté serveur et attribuent un prospect client pendant 30 jours. Un partenaire qui s’inscrit via celui-ci est enregistré comme votre référence. Les relations avec les sponsors sont définies par AI MARK à partir du lien de parrainage uniquement – ​​jamais depuis votre compte et jamais modifiables depuis le client.",
+    "statClicks": "Clics de parrainage",
+    "statLeads": "Pistes attribuées",
+    "statSignups": "Inscriptions de partenaires",
+    "footnote": "Clics, prospects et inscriptions de partenaires. Les commissions et les paiements se trouvent sur les pages Commissions et paiements."
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
-    "lead": "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    "title": "Modèle de commission partenaire",
+    "lead": "50% pour une vente directe. Jusqu'à 80 % de récompenses totales pour les partenaires sur l'ensemble du réseau. 80 % représente le pool global pour les niveaux 1 à L5 qualifiés, et non un paiement pour un seul partenaire. La part conservée par AI Mark représente 20 % du montant commissionnable. Les totaux du grand livre ci-dessus sont des valeurs stockées ; cette carte ne recalcule pas vos gains.",
     "levels": {
       "1": {
-        "title": "Direct sale",
-        "body": "The customer you personally introduce. This is 50% of the commissionable amount — not the whole 80% pool."
+        "title": "Vente directe",
+        "body": "Le client que vous présentez personnellement. Il s'agit de 50 % du montant commissionnable, et non de la totalité des 80 %."
       },
       "2": {
-        "title": "First network",
-        "body": "Paid customer sales from your first-level partners."
+        "title": "Premier réseau",
+        "body": "Ventes clients payantes de vos partenaires de premier niveau."
       },
       "3": {
-        "title": "Extended network",
-        "body": "Paid sales one level deeper."
+        "title": "Réseau étendu",
+        "body": "Ventes payantes un niveau plus profond."
       },
       "4": {
-        "title": "Market depth",
-        "body": "The network beyond direct relationships."
+        "title": "Profondeur du marché",
+        "body": "Le réseau au-delà des relations directes."
       },
       "5": {
-        "title": "Maximum depth",
-        "body": "The deepest level of the standard schedule."
+        "title": "Profondeur maximale",
+        "body": "Le niveau le plus profond du programme standard."
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "Vente avec commission de 1 000 $ · réseau complet",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "Pool de réseau total",
+      "retainedShare": "Part conservée par AI Mark"
     },
-    "exampleFootnote": "The direct partner receives $500, not $800. Total network pool 80%."
+    "exampleFootnote": "Le partenaire direct reçoit 500 $ et non 800 $. Pool de réseau total 80 %."
   },
   "dataTable": {
-    "unreadable": "This list could not be read.",
+    "unreadable": "Cette liste n'a pas pu être lue.",
     "customers": {
-      "empty": "No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty.",
+      "empty": "Aucune piste attribuée. Une ligne apparaît lorsque quelqu'un envoie le formulaire de contact sur le site alors que votre cookie de parrainage est toujours valide. Une liste vide est vide.",
       "columns": [
-        "Name",
-        "Company",
-        "Email",
-        "Scenario",
+        "Nom",
+        "Entreprise",
+        "E-mail",
+        "Scénario",
         "Page",
-        "When"
+        "Quand"
       ]
     },
     "sales": {
-      "empty": "No sales yet. A row appears after AI MARK records a payment the customer actually made. An empty list is empty — it is not a zero estimate of revenue.",
+      "empty": "Pas encore de ventes. Une ligne apparaît après qu'AI MARK ait enregistré un paiement réellement effectué par le client. Une liste vide est vide – il ne s’agit pas d’une estimation nulle des revenus.",
       "columns": [
-        "Product",
-        "Amount",
-        "Status",
-        "Paid",
-        "Confirmed",
-        "Locked",
-        "Order"
+        "Produit",
+        "Montant",
+        "Statut",
+        "Payé",
+        "Confirmé",
+        "Fermé",
+        "Commande"
       ]
     },
     "commissions": {
-      "empty": "No commissions yet. An entry appears after a qualifying sale.",
+      "empty": "Pas de commissions pour l'instant. Une entrée apparaît après une vente admissible.",
       "columns": [
-        "Status",
-        "Type",
-        "Level",
-        "Amount",
-        "Rate",
+        "Statut",
+        "Taper",
+        "Niveau",
+        "Montant",
+        "Taux",
         "Base",
-        "Posted"
+        "Publié"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "Aucun paiement pour l'instant. AI MARK enregistre un paiement lorsque la commission est prête à être payée.",
       "columns": [
-        "Status",
-        "Amount",
-        "Created",
-        "Confirmed",
-        "Paid"
+        "Statut",
+        "Montant",
+        "Créé",
+        "Confirmé",
+        "Payé"
       ]
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statRegistrations": "Partner registrations",
-    "sponsorTitle": "Your sponsor",
-    "labelSponsorPartnerId": "Sponsor Partner ID",
-    "labelRecorded": "Recorded",
-    "labelConfirmed": "Confirmed",
-    "notConfirmed": "Not confirmed",
+    "statClicks": "Clics de parrainage",
+    "statLeads": "Pistes attribuées",
+    "statRegistrations": "Inscriptions partenaires",
+    "sponsorTitle": "Votre parrain",
+    "labelSponsorPartnerId": "ID du partenaire sponsor",
+    "labelRecorded": "Enregistré",
+    "labelConfirmed": "Confirmé",
+    "notConfirmed": "Non confirmé",
     "labelSource": "Source",
-    "sponsorEmpty": "No sponsor recorded. A sponsor is set from a referral link at signup. You cannot assign one from this account.",
-    "statusTitle": "Your status",
-    "statusNone": "No partners have signed up through your link yet.",
-    "statusUnreadable": "Partner registrations could not be read.",
+    "sponsorEmpty": "Aucun sponsor enregistré. Un sponsor est défini à partir d’un lien de parrainage lors de l’inscription. Vous ne pouvez pas en attribuer un à partir de ce compte.",
+    "statusTitle": "Votre statut",
+    "statusNone": "Aucun partenaire ne s'est encore inscrit via votre lien.",
+    "statusUnreadable": "Les inscriptions des partenaires n'ont pas pu être lues.",
     "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
   },
   "payouts": {
-    "destinationTitle": "Where a payout is sent",
-    "destinationLead": "The address you want payouts sent to.",
-    "destinationUnreadable": "Payout details could not be read.",
-    "editPayoutLink": "Edit payout details",
-    "flowTitle": "How a payout moves",
+    "destinationTitle": "Où un paiement est envoyé",
+    "destinationLead": "L'adresse à laquelle vous souhaitez envoyer les paiements.",
+    "destinationUnreadable": "Les détails du paiement n'ont pas pu être lus.",
+    "editPayoutLink": "Modifier les détails du paiement",
+    "flowTitle": "Comment évolue un paiement",
     "flowSteps": [
-      "1. A qualifying sale records your commission.",
-      "2. That commission is held for 14 days after the sale is confirmed.",
-      "3. After the hold, if the sale still stands, it is ready to pay.",
-      "4. AI MARK records the payout and sends it to your USDC address.",
-      "5. A refund or cancellation adjusts what is owed."
+      "1. Une vente admissible enregistre votre commission.",
+      "2. Cette commission est conservée pendant 14 jours après la confirmation de la vente.",
+      "3. Après la retenue, si la vente est toujours valable, il est prêt à payer.",
+      "4. AI MARK enregistre le paiement et l'envoie à votre adresse USDC.",
+      "5. Un remboursement ou une annulation ajuste ce qui est dû."
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "statReady": "Prêt à payer",
+    "statPaid": "Payé",
+    "tableEmpty": "Aucun paiement pour l'instant. AI MARK enregistre un paiement lorsque la commission est prête à être payée."
   },
   "profile": {
-    "savedNotice": "Payout details saved.",
-    "accountTitle": "Account",
-    "labelFullName": "Full name",
-    "labelEmail": "Email",
-    "labelPhone": "Phone",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
-    "labelRegion": "Region",
-    "labelAvatarUrl": "Avatar URL",
-    "labelAccountCreated": "Account created",
-    "partnerRecordTitle": "Partner record",
-    "partnerRecordLead": "Platform-owned. These values cannot be changed from a partner session by design.",
-    "labelStatus": "Status",
-    "labelPartnerSince": "Partner since",
-    "payoutTitle": "Payout details",
-    "payoutLead": "Partner payouts are USDC. Default network is Solana. This form stores the destination on your profile. It does not send tokens.",
-    "payoutUnreadable": "Payout details could not be read, so they cannot be saved from this page.",
-    "labelRecipientName": "Recipient name",
-    "labelPayoutAsset": "Payout asset",
-    "labelNetwork": "Network",
-    "labelUsdcAddress": "USDC address",
-    "usdcPlaceholder": "Solana address",
-    "labelNotes": "Notes (optional)",
-    "savePayout": "Save payout details",
-    "referralTitle": "Referral link",
-    "referralLead": "Issued with the account. The partner record above stays read-only."
+    "savedNotice": "Détails du paiement enregistrés.",
+    "accountTitle": "Compte",
+    "labelFullName": "Nom et prénom",
+    "labelEmail": "E-mail",
+    "labelPhone": "Téléphone",
+    "labelLanguage": "Langue",
+    "labelCountry": "Pays",
+    "labelRegion": "Région",
+    "labelAvatarUrl": "URL de l'avatar",
+    "labelAccountCreated": "Compte créé",
+    "partnerRecordTitle": "Fiche partenaire",
+    "partnerRecordLead": "Propriété de la plateforme. De par leur conception, ces valeurs ne peuvent pas être modifiées à partir d'une session partenaire.",
+    "labelStatus": "Statut",
+    "labelPartnerSince": "Partenaire depuis",
+    "payoutTitle": "Détails du paiement",
+    "payoutLead": "Les paiements des partenaires sont en USDC. Le réseau par défaut est Solana. Ce formulaire stocke la destination sur votre profil. Il n'envoie pas de jetons.",
+    "payoutUnreadable": "Les détails du paiement n'ont pas pu être lus et ne peuvent donc pas être enregistrés à partir de cette page.",
+    "labelRecipientName": "Nom du destinataire",
+    "labelPayoutAsset": "Actif de paiement",
+    "labelNetwork": "Réseau",
+    "labelUsdcAddress": "Adresse USDC",
+    "usdcPlaceholder": "Adresse de Solana",
+    "labelNotes": "Remarques (facultatif)",
+    "savePayout": "Enregistrer les détails du paiement",
+    "referralTitle": "Lien de parrainage",
+    "referralLead": "Émis avec le compte. L'enregistrement partenaire ci-dessus reste en lecture seule."
   },
   "copyReferralLink": {
-    "label": "Your referral link",
-    "copy": "Copy referral link",
-    "copied": "Copied",
-    "copiedStatus": "Referral link copied to your clipboard.",
-    "failedStatus": "Copying was blocked — select the link and copy it manually.",
-    "hint": "The link is live. Every visit is recorded and attributes a customer lead for 30 days; a partner who signs up through it is recorded as your referral. Add campaign parameters (for example ?utm_source=newsletter) to see where your clicks come from."
+    "label": "Votre lien de parrainage",
+    "copy": "Copier le lien de parrainage",
+    "copied": "Copié",
+    "copiedStatus": "Lien de parrainage copié dans votre presse-papiers.",
+    "failedStatus": "La copie a été bloquée : sélectionnez le lien et copiez-le manuellement.",
+    "hint": "Le lien est en direct. Chaque visite est enregistrée et attribue un prospect client pendant 30 jours ; un partenaire qui s'inscrit via celui-ci est enregistré comme votre référence. Ajoutez des paramètres de campagne (par exemple ?utm_source=newsletter) pour voir d'où viennent vos clics."
   },
   "copyLine": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Copie",
+    "copied": "Copié"
   },
   "copyText": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Copie",
+    "copied": "Copié"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "Partenaire",
+    "growth": "Croissance",
+    "regional": "Régional",
+    "strategic": "Stratégique",
+    "suspended": "Suspendu"
   },
-  "defaultPartnerName": "Partner"
-} as CabinetCopy;
+  "defaultPartnerName": "Partenaire"
+};

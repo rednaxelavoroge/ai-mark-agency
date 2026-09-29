@@ -6,355 +6,355 @@ export const cabinetAr: CabinetCopy = {
     "titleTemplate": "%s · Partner Platform"
   },
   "shell": {
-    "navLabel": "أقسام الشريك",
+    "navLabel": "أقسام الشركاء",
     "signOut": "تسجيل الخروج",
-    "signedIn": "مسجل الدخول",
+    "signedIn": "تم تسجيل الدخول",
     "backToSite": "← ai-mark.agency",
     "ventureTagline": "Venture and Marketing",
-    "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme",
-    "backAriaLabel": "Back"
+    "themeLight": "التبديل إلى موضوع الضوء",
+    "themeDark": "التبديل إلى المظهر الداكن",
+    "backAriaLabel": "خلف"
   },
   "nav": {
-    "dashboard": "لوحة التحكم",
-    "customers": "العملاء",
-    "sales": "المبيعات",
-    "network": "الشبكة",
-    "commissions": "العمولات",
-    "payouts": "المدفوعات",
-    "resources": "الموارد",
-    "profile": "الملف"
+    "dashboard": "لوحة القيادة",
+    "customers": "عملاء",
+    "sales": "مبيعات",
+    "network": "شبكة",
+    "commissions": "اللجان",
+    "payouts": "الدفعات",
+    "resources": "موارد",
+    "profile": "حساب تعريفي"
   },
   "auth": {
     "ventureTagline": "Venture and Marketing",
     "login": {
-      "metadataTitle": "Sign in",
+      "metadataTitle": "تسجيل الدخول",
       "eyebrow": "Partner Platform",
-      "title": "Sign in",
-      "lead": "Your AI MARK partner dashboard: referral link, network, customers and commissions.",
-      "footerBefore": "Not a partner yet?",
-      "footerLink": "See the partner programme"
+      "title": "تسجيل الدخول",
+      "lead": "لوحة تحكم شريك AI MARK الخاصة بك: رابط الإحالة والشبكة والعملاء والعمولات.",
+      "footerBefore": "ليس شريكا بعد؟",
+      "footerLink": "شاهد برنامج الشريك"
     },
     "signup": {
-      "metadataTitle": "Create a partner account",
+      "metadataTitle": "إنشاء حساب شريك",
       "eyebrow": "Partner Platform",
-      "title": "Create a partner account",
-      "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
-      "footerBefore": "Programme rules are confirmed with you during onboarding, before you sell. Read the",
-      "privacyLink": "privacy notice",
+      "title": "إنشاء حساب شريك",
+      "lead": "يمنحك حساب واحد معرف الشريك الخاص بك ورمز الإحالة ولوحة تحكم الشريك.",
+      "footerBefore": "يتم تأكيد قواعد البرنامج معك أثناء الإعداد، قبل البيع. اقرأ",
+      "privacyLink": "إشعار الخصوصية",
       "footerAfter": "."
     },
     "setupNotice": {
-      "title": "Sign-in is temporarily unavailable.",
-      "body": "Write to us and we will help you in. The public website stays open."
+      "title": "تسجيل الدخول غير متاح مؤقتا.",
+      "body": "اكتب إلينا وسنساعدك. ويظل الموقع العام مفتوحًا."
     },
     "callbackErrors": {
-      "missing_code": "That sign-in link is incomplete. Request a new one below.",
-      "exchange_failed": "That sign-in link has expired or was already used. Request a new one below.",
-      "provider_error": "The sign-in provider did not complete the request.",
-      "not_configured": "Sign-in is temporarily unavailable. Write to us and we will help you in."
+      "missing_code": "رابط تسجيل الدخول هذا غير مكتمل. طلب واحدة جديدة أدناه.",
+      "exchange_failed": "انتهت صلاحية رابط تسجيل الدخول هذا أو تم استخدامه بالفعل. طلب واحدة جديدة أدناه.",
+      "provider_error": "لم يكمل موفر تسجيل الدخول الطلب.",
+      "not_configured": "تسجيل الدخول غير متاح مؤقتا. اكتب لنا وسنساعدك في ذلك."
     },
-    "signedOutNotice": "You have been signed out.",
-    "genericSignInError": "We could not complete that sign-in. Please try again.",
+    "signedOutNotice": "لقد تم تسجيل الخروج.",
+    "genericSignInError": "لم نتمكن من إكمال تسجيل الدخول هذا. يرجى المحاولة مرة أخرى.",
     "form": {
-      "email": "Email",
-      "password": "Password",
+      "email": "بريد إلكتروني",
+      "password": "كلمة المرور",
       "emailPlaceholder": "you@company.com",
       "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
-      "fullName": "Full name",
+      "passwordNewPlaceholder": "ما لا يقل عن 8 أحرف",
+      "fullName": "الاسم الكامل",
       "fullNamePlaceholder": "Alex Morgan",
-      "signIn": "Sign in",
-      "signInPending": "Signing in…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
-      "createAccount": "Create partner account",
-      "createAccountPending": "Creating account…",
+      "signIn": "تسجيل الدخول",
+      "signInPending": "تسجيل الدخول...",
+      "signUp": "تسجيل الدخول",
+      "signUpPending": "تسجيل الدخول...",
+      "createAccount": "إنشاء حساب شريك",
+      "createAccountPending": "جارٍ إنشاء الحساب…",
       "orDivider": "or",
-      "continueGoogle": "Continue with Google",
-      "continueGooglePending": "Opening Google…",
-      "magicLinkLabel": "Email me a sign-in link",
-      "sendMagicLink": "Send magic link",
-      "sendMagicLinkPending": "Sending…",
-      "noAccountBefore": "No account yet?",
-      "noAccountLink": "Create a partner account",
-      "hasAccountBefore": "Already have an account?",
-      "hasAccountLink": "Sign in"
+      "continueGoogle": "تواصل مع جوجل",
+      "continueGooglePending": "جارٍ فتح جوجل...",
+      "magicLinkLabel": "أرسل لي رابط تسجيل الدخول",
+      "sendMagicLink": "أرسل الرابط السحري",
+      "sendMagicLinkPending": "إرسال…",
+      "noAccountBefore": "ليس لديك حساب بعد؟",
+      "noAccountLink": "إنشاء حساب شريك",
+      "hasAccountBefore": "هل لديك حساب بالفعل؟",
+      "hasAccountLink": "تسجيل الدخول"
     }
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "لوحة القيادة",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "عملاء",
       "eyebrow": "Partner Platform",
-      "title": "Customers",
-      "lead": "People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
+      "title": "عملاء",
+      "lead": "الأشخاص الذين أرسلوا نموذج الاتصال على الموقع بينما كان رابط الإحالة الخاص بك لا يزال صالحًا. الدردشة، Telegram، WhatsApp والبريد الإلكتروني ليست هذه القائمة. الرصاص ليس بيعًا وليس عمولة."
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "مبيعات",
       "eyebrow": "Partner Platform",
-      "title": "Sales",
-      "lead": "Paid orders attributed to your referral code or partner id. Clicks and leads are not sales. Amounts are the amounts stored on the sale."
+      "title": "مبيعات",
+      "lead": "الطلبات المدفوعة المنسوبة إلى رمز الإحالة الخاص بك أو معرف الشريك. النقرات والعملاء المحتملين ليست مبيعات. المبالغ هي المبالغ المخزنة عند البيع."
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "شبكة",
       "eyebrow": "Partner Platform",
-      "title": "Network",
-      "lead": "Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
+      "title": "شبكة",
+      "lead": "كفيلك، وعدد الشركاء الذين قاموا بالتسجيل من خلال الرابط الخاص بك. لم يتم سرد الأسماء في دوونلين."
     },
     "commissions": {
-      "metadataTitle": "Commissions",
+      "metadataTitle": "اللجان",
       "eyebrow": "Partner Platform",
-      "title": "Commissions",
-      "lead": "Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
+      "title": "اللجان",
+      "lead": "عمولاتك لكل عملية بيع مؤهلة. الجدول الزمني: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%، تجمع الشبكة 80%."
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "الدفعات",
       "eyebrow": "Partner Platform",
-      "title": "Payouts",
-      "lead": "Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
+      "title": "الدفعات",
+      "lead": "يتم تسجيل العوائد لك، ويتم حفظ عنوان USDC في ملفك الشخصي. يرسل AI MARK الدفعة إلى هذا العنوان."
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "حساب تعريفي",
       "eyebrow": "Partner Platform",
-      "title": "Profile",
-      "lead": "Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
+      "title": "حساب تعريفي",
+      "lead": "تتم قراءة حقول الحساب وسجل الشريك من الصف الخاص بك. تفاصيل الدفع هي الحقول الوحيدة التي يمكنك تغييرها هنا."
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "موارد",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
-      "metadataTitle": "Partner access",
+      "metadataTitle": "وصول الشريك",
       "eyebrow": "Partner Platform",
-      "title": "No partner access on this account",
-      "lead": "Your account is signed in, but it has no partner record attached yet.",
-      "footer": "Think this is wrong? Reply to any AI MARK email and we will link your partner record.",
-      "signedInBefore": "Signed in as",
-      "signedInAfter": "Partner records are issued by AI MARK; they are never created by the account owner."
+      "title": "لا يوجد وصول شريك على هذا الحساب",
+      "lead": "لقد تم تسجيل الدخول إلى حسابك، ولكن لا يوجد به سجل شريك مرفق حتى الآن.",
+      "footer": "أعتقد أن هذا خطأ؟ قم بالرد على أي بريد إلكتروني من AI MARK وسنقوم بربط سجل الشريك الخاص بك.",
+      "signedInBefore": "تم تسجيل الدخول باسم",
+      "signedInAfter": "يتم إصدار سجلات الشركاء بواسطة AI MARK؛ ولا يتم إنشاؤها أبدًا بواسطة مالك الحساب."
     }
   },
   "dashboard": {
     "welcomeTitle": "Welcome, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
-    "welcomeLeadAfter": "Your referral link is live. Sales, commission, and payouts appear here as they are recorded.",
-    "performanceTitle": "Performance",
-    "performanceLead": "Qualifying sales and commission appear after a customer pays. A dash means that figure is not available yet.",
-    "statQualifyingSales": "Qualifying sales",
-    "statCommission": "Commission",
-    "statReadyToPay": "Ready to pay",
-    "statPaid": "Paid",
-    "noCommissionsYet": "No commissions yet.",
+    "welcomeLeadBefore": "معرف الشريك الخاص بك هو",
+    "welcomeLeadAfter": "رابط الإحالة الخاص بك هو العيش. تظهر المبيعات والعمولات والعوائد هنا أثناء تسجيلها.",
+    "performanceTitle": "أداء",
+    "performanceLead": "تظهر المبيعات والعمولات المؤهلة بعد أن يدفع العميل. الشرطة تعني أن هذا الرقم غير متوفر بعد.",
+    "statQualifyingSales": "تأهيل المبيعات",
+    "statCommission": "عمولة",
+    "statReadyToPay": "على استعداد للدفع",
+    "statPaid": "مدفوع",
+    "noCommissionsYet": "لا عمولات حتى الآن.",
     "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
-    "identityTitle": "Partner identity",
-    "identityLead": "Issued by AI MARK. Partner ID, referral code and status are immutable from your account.",
-    "labelPartnerId": "Partner ID",
-    "labelPartnerStatus": "Partner status",
-    "labelReferralCode": "Referral code",
-    "labelCountry": "Country",
-    "labelJoined": "Joined",
-    "labelLanguage": "Language",
-    "sponsorTitle": "Sponsor",
+    "identityTitle": "هوية الشريك",
+    "identityLead": "صادر عن AI MARK. معرف الشريك ورمز الإحالة والحالة غير قابلة للتغيير من حسابك.",
+    "labelPartnerId": "معرف الشريك",
+    "labelPartnerStatus": "حالة الشريك",
+    "labelReferralCode": "رمز الإحالة",
+    "labelCountry": "دولة",
+    "labelJoined": "انضم",
+    "labelLanguage": "لغة",
+    "sponsorTitle": "راعي",
     "sponsorConfirmed": "Confirmed {date}.",
-    "sponsorRecordedUnconfirmed": "Recorded, not yet confirmed by a qualifying sale.",
-    "sponsorFromReferralLink": " Recorded from a referral link at signup.",
-    "sponsorEmpty": "No sponsor recorded. Sponsor relationships are set by AI MARK from a referral link at signup, never by the partner, and are immutable once confirmed.",
-    "historyTitle": "Status history",
-    "historyLead": "Written by the database on every status change.",
-    "historyEmpty": "No entries yet.",
-    "hubTitle": "Demos, materials, knowledge, support",
-    "hubLead": "Product pages, brand files, published prices, and support channels are on Resources.",
-    "hubLinkDemos": "Demos and presentations",
-    "hubLinkKnowledge": "Product knowledge",
-    "hubLinkMaterials": "Brand files",
-    "hubLinkSupport": "Support",
-    "trackingFootnoteBefore": "How tracking works is on",
-    "trackingFootnoteLink": "Resources",
+    "sponsorRecordedUnconfirmed": "تم التسجيل، ولم يتم تأكيده بعد من خلال البيع المؤهل.",
+    "sponsorFromReferralLink": "تم التسجيل من رابط الإحالة عند التسجيل.",
+    "sponsorEmpty": "لم يتم تسجيل أي راعي. يتم تحديد علاقات الجهات الراعية بواسطة AI MARK من رابط إحالة عند التسجيل، وليس بواسطة الشريك مطلقًا، وتكون غير قابلة للتغيير بمجرد تأكيدها.",
+    "historyTitle": "تاريخ الحالة",
+    "historyLead": "كتبها قاعدة البيانات على كل تغيير الحالة.",
+    "historyEmpty": "لا توجد إدخالات حتى الآن.",
+    "hubTitle": "العروض التوضيحية والمواد والمعرفة والدعم",
+    "hubLead": "صفحات المنتج وملفات العلامة التجارية والأسعار المنشورة وقنوات الدعم موجودة على الموارد.",
+    "hubLinkDemos": "العروض التوضيحية والعروض التقديمية",
+    "hubLinkKnowledge": "معرفة المنتج",
+    "hubLinkMaterials": "ملفات العلامة التجارية",
+    "hubLinkSupport": "يدعم",
+    "trackingFootnoteBefore": "كيفية عمل التتبع قيد التشغيل",
+    "trackingFootnoteLink": "موارد",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Launch-period status",
-    "launchEndedTitle": "Launch-period ended",
+    "launchActiveTitle": "حالة فترة الإطلاق",
+    "launchEndedTitle": "انتهت فترة الإطلاق",
     "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
     "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
   },
   "referralPanel": {
-    "title": "Referral program",
-    "lead": "Visits through your link are recorded server-side and attribute a customer lead for 30 days. A partner who signs up through it is recorded as your referral. Sponsor relationships are set by AI MARK from the referral link only — never from your account, and never editable from the client.",
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statSignups": "Partner signups",
-    "footnote": "Clicks, leads, and partner signups. Commission and payouts are on the Commissions and Payouts pages."
+    "title": "برنامج الإحالة",
+    "lead": "يتم تسجيل الزيارات من خلال الرابط الخاص بك من جانب الخادم وإسناد عميل محتمل لمدة 30 يومًا. يتم تسجيل الشريك الذي يقوم بالتسجيل من خلاله على أنه إحالتك. يتم تعيين علاقات الجهات الراعية بواسطة AI MARK من رابط الإحالة فقط - وليس من حسابك أبدًا، ولا يمكن تحريرها من العميل أبدًا.",
+    "statClicks": "نقرات الإحالة",
+    "statLeads": "الخيوط المنسوبة",
+    "statSignups": "اشتراكات الشركاء",
+    "footnote": "النقرات والعملاء المحتملين واشتراكات الشركاء. العمولات والدفعات موجودة على صفحات العمولات والدفعات."
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
-    "lead": "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    "title": "نموذج عمولة الشريك",
+    "lead": "50% للبيع المباشر. ما يصل إلى 80% من إجمالي مكافآت الشركاء عبر الشبكة. 80% هي المجموعة الإجمالية عبر المستوى 1 إلى المستوى 5 المؤهل، وليس دفع تعويضات لشريك واحد. تبلغ حصة AI Mark المحتفظ بها 20% من مبلغ العمولة. إجماليات دفتر الأستاذ أعلاه هي قيم مخزنة؛ هذه البطاقة لا تقوم بإعادة حساب أرباحك.",
     "levels": {
       "1": {
-        "title": "Direct sale",
-        "body": "The customer you personally introduce. This is 50% of the commissionable amount — not the whole 80% pool."
+        "title": "البيع المباشر",
+        "body": "العميل الذي تقدمه شخصيًا. يمثل هذا 50% من مبلغ العمولة - وليس مجموع الـ 80%."
       },
       "2": {
-        "title": "First network",
-        "body": "Paid customer sales from your first-level partners."
+        "title": "الشبكة الأولى",
+        "body": "مبيعات العملاء المدفوعة من شركائك من المستوى الأول."
       },
       "3": {
-        "title": "Extended network",
-        "body": "Paid sales one level deeper."
+        "title": "شبكة موسعة",
+        "body": "المبيعات المدفوعة بمستوى أعمق."
       },
       "4": {
-        "title": "Market depth",
-        "body": "The network beyond direct relationships."
+        "title": "عمق السوق",
+        "body": "الشبكة تتجاوز العلاقات المباشرة."
       },
       "5": {
-        "title": "Maximum depth",
-        "body": "The deepest level of the standard schedule."
+        "title": "أقصى عمق",
+        "body": "أعمق مستوى للجدول القياسي."
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "بيع عمولة بقيمة 1000 دولار أمريكي · شبكة كاملة",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "إجمالي تجمع الشبكة",
+      "retainedShare": "احتفظت AI Mark بالحصة"
     },
-    "exampleFootnote": "The direct partner receives $500, not $800. Total network pool 80%."
+    "exampleFootnote": "يحصل الشريك المباشر على 500 دولار وليس 800 دولار. إجمالي تجمع الشبكة 80%."
   },
   "dataTable": {
-    "unreadable": "This list could not be read.",
+    "unreadable": "لا يمكن قراءة هذه القائمة.",
     "customers": {
-      "empty": "No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty.",
+      "empty": "لا توجد خيوط منسوبة. يظهر صف عندما يرسل شخص ما نموذج الاتصال على الموقع بينما لا يزال ملف تعريف ارتباط الإحالة الخاص بك صالحًا. قائمة فارغة فارغة.",
       "columns": [
-        "Name",
-        "Company",
-        "Email",
-        "Scenario",
-        "Page",
-        "When"
+        "اسم",
+        "شركة",
+        "بريد إلكتروني",
+        "سيناريو",
+        "صفحة",
+        "متى"
       ]
     },
     "sales": {
-      "empty": "No sales yet. A row appears after AI MARK records a payment the customer actually made. An empty list is empty — it is not a zero estimate of revenue.",
+      "empty": "لا مبيعات بعد. يظهر صف بعد قيام AI MARK بتسجيل الدفعة التي قام بها العميل بالفعل. القائمة الفارغة فارغة — فهي ليست تقديرًا صفريًا للإيرادات.",
       "columns": [
-        "Product",
-        "Amount",
-        "Status",
-        "Paid",
-        "Confirmed",
-        "Locked",
-        "Order"
+        "منتج",
+        "كمية",
+        "حالة",
+        "مدفوع",
+        "مؤكد",
+        "مغلق",
+        "طلب"
       ]
     },
     "commissions": {
-      "empty": "No commissions yet. An entry appears after a qualifying sale.",
+      "empty": "لا عمولات حتى الآن. يظهر الإدخال بعد البيع المؤهل.",
       "columns": [
-        "Status",
-        "Type",
-        "Level",
-        "Amount",
-        "Rate",
-        "Base",
-        "Posted"
+        "حالة",
+        "يكتب",
+        "مستوى",
+        "كمية",
+        "معدل",
+        "قاعدة",
+        "نشر"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "لا توجد دفعات حتى الآن. يسجل AI MARK دفع تعويضات عندما تكون العمولة جاهزة للدفع.",
       "columns": [
-        "Status",
-        "Amount",
-        "Created",
-        "Confirmed",
-        "Paid"
+        "حالة",
+        "كمية",
+        "مخلوق",
+        "مؤكد",
+        "مدفوع"
       ]
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statRegistrations": "Partner registrations",
-    "sponsorTitle": "Your sponsor",
-    "labelSponsorPartnerId": "Sponsor Partner ID",
-    "labelRecorded": "Recorded",
-    "labelConfirmed": "Confirmed",
-    "notConfirmed": "Not confirmed",
-    "labelSource": "Source",
-    "sponsorEmpty": "No sponsor recorded. A sponsor is set from a referral link at signup. You cannot assign one from this account.",
-    "statusTitle": "Your status",
-    "statusNone": "No partners have signed up through your link yet.",
-    "statusUnreadable": "Partner registrations could not be read.",
+    "statClicks": "نقرات الإحالة",
+    "statLeads": "الخيوط المنسوبة",
+    "statRegistrations": "تسجيلات الشركاء",
+    "sponsorTitle": "الراعي الخاص بك",
+    "labelSponsorPartnerId": "معرف الشريك الراعي",
+    "labelRecorded": "مسجلة",
+    "labelConfirmed": "مؤكد",
+    "notConfirmed": "لم يتم تأكيده",
+    "labelSource": "مصدر",
+    "sponsorEmpty": "لم يتم تسجيل أي راعي. يتم تعيين الراعي من رابط الإحالة عند التسجيل. لا يمكنك تعيين واحد من هذا الحساب.",
+    "statusTitle": "حالتك",
+    "statusNone": "لم يقم أي شركاء بالتسجيل من خلال الرابط الخاص بك حتى الآن.",
+    "statusUnreadable": "لا يمكن قراءة تسجيلات الشركاء.",
     "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
   },
   "payouts": {
     "destinationTitle": "Where a payout is sent",
-    "destinationLead": "The address you want payouts sent to.",
-    "destinationUnreadable": "Payout details could not be read.",
-    "editPayoutLink": "Edit payout details",
-    "flowTitle": "How a payout moves",
+    "destinationLead": "العنوان الذي تريد إرسال الدفعات إليه.",
+    "destinationUnreadable": "لا يمكن قراءة تفاصيل الدفع.",
+    "editPayoutLink": "تحرير تفاصيل الدفع",
+    "flowTitle": "كيف يتحرك دفع تعويضات",
     "flowSteps": [
-      "1. A qualifying sale records your commission.",
-      "2. That commission is held for 14 days after the sale is confirmed.",
-      "3. After the hold, if the sale still stands, it is ready to pay.",
-      "4. AI MARK records the payout and sends it to your USDC address.",
-      "5. A refund or cancellation adjusts what is owed."
+      "1. البيع المؤهل يسجل عمولتك.",
+      "2. يتم الاحتفاظ بهذه العمولة لمدة 14 يومًا بعد تأكيد البيع.",
+      "3. بعد التعليق، إذا كان البيع لا يزال قائمًا، فهو جاهز للدفع.",
+      "4. يقوم AI MARK بتسجيل المدفوعات وإرسالها إلى عنوان USDC الخاص بك.",
+      "5. استرداد الأموال أو الإلغاء يعدل ما هو مستحق."
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "statReady": "على استعداد للدفع",
+    "statPaid": "مدفوع",
+    "tableEmpty": "لا توجد دفعات حتى الآن. يسجل AI MARK دفع تعويضات عندما تكون العمولة جاهزة للدفع."
   },
   "profile": {
-    "savedNotice": "Payout details saved.",
-    "accountTitle": "Account",
-    "labelFullName": "Full name",
-    "labelEmail": "Email",
-    "labelPhone": "Phone",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
-    "labelRegion": "Region",
-    "labelAvatarUrl": "Avatar URL",
-    "labelAccountCreated": "Account created",
-    "partnerRecordTitle": "Partner record",
-    "partnerRecordLead": "Platform-owned. These values cannot be changed from a partner session by design.",
-    "labelStatus": "Status",
-    "labelPartnerSince": "Partner since",
-    "payoutTitle": "Payout details",
-    "payoutLead": "Partner payouts are USDC. Default network is Solana. This form stores the destination on your profile. It does not send tokens.",
-    "payoutUnreadable": "Payout details could not be read, so they cannot be saved from this page.",
-    "labelRecipientName": "Recipient name",
-    "labelPayoutAsset": "Payout asset",
-    "labelNetwork": "Network",
-    "labelUsdcAddress": "USDC address",
-    "usdcPlaceholder": "Solana address",
-    "labelNotes": "Notes (optional)",
-    "savePayout": "Save payout details",
-    "referralTitle": "Referral link",
-    "referralLead": "Issued with the account. The partner record above stays read-only."
+    "savedNotice": "تم حفظ تفاصيل الدفع.",
+    "accountTitle": "حساب",
+    "labelFullName": "الاسم الكامل",
+    "labelEmail": "بريد إلكتروني",
+    "labelPhone": "هاتف",
+    "labelLanguage": "لغة",
+    "labelCountry": "دولة",
+    "labelRegion": "منطقة",
+    "labelAvatarUrl": "عنوان URL للصورة الرمزية",
+    "labelAccountCreated": "تم إنشاء الحساب",
+    "partnerRecordTitle": "سجل الشريك",
+    "partnerRecordLead": "مملوكة للمنصة. لا يمكن تغيير هذه القيم من جلسة عمل شريك حسب التصميم.",
+    "labelStatus": "حالة",
+    "labelPartnerSince": "شريك منذ ذلك الحين",
+    "payoutTitle": "تفاصيل الدفع",
+    "payoutLead": "دفعات الشريك هي USDC. الشبكة الافتراضية هي سولانا. يقوم هذا النموذج بتخزين الوجهة في ملفك الشخصي. ولا يرسل الرموز.",
+    "payoutUnreadable": "لا يمكن قراءة تفاصيل الدفع، لذلك لا يمكن حفظها من هذه الصفحة.",
+    "labelRecipientName": "اسم المستلم",
+    "labelPayoutAsset": "أصول الدفع",
+    "labelNetwork": "شبكة",
+    "labelUsdcAddress": "عنوان USDC",
+    "usdcPlaceholder": "عنوان سولانا",
+    "labelNotes": "ملاحظات (اختياري)",
+    "savePayout": "حفظ تفاصيل الدفع",
+    "referralTitle": "رابط الإحالة",
+    "referralLead": "صدر مع الحساب. يبقى سجل الشريك أعلاه للقراءة فقط."
   },
   "copyReferralLink": {
-    "label": "Your referral link",
-    "copy": "Copy referral link",
-    "copied": "Copied",
-    "copiedStatus": "Referral link copied to your clipboard.",
-    "failedStatus": "Copying was blocked — select the link and copy it manually.",
-    "hint": "The link is live. Every visit is recorded and attributes a customer lead for 30 days; a partner who signs up through it is recorded as your referral. Add campaign parameters (for example ?utm_source=newsletter) to see where your clicks come from."
+    "label": "رابط الإحالة الخاص بك",
+    "copy": "انسخ رابط الإحالة",
+    "copied": "منقول",
+    "copiedStatus": "تم نسخ رابط الإحالة إلى الحافظة الخاصة بك.",
+    "failedStatus": "تم حظر النسخ — حدد الرابط وانسخه يدويًا.",
+    "hint": "الرابط حي. يتم تسجيل كل زيارة وإسناد عميل محتمل لمدة 30 يومًا؛ يتم تسجيل الشريك الذي قام بالتسجيل من خلاله على أنه إحالتك. أضف معلمات الحملة (على سبيل المثال ?utm_source=newsletter) لمعرفة مصدر النقرات."
   },
   "copyLine": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "ينسخ",
+    "copied": "منقول"
   },
   "copyText": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "ينسخ",
+    "copied": "منقول"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "شريك",
+    "growth": "نمو",
+    "regional": "إقليمي",
+    "strategic": "استراتيجي",
+    "suspended": "معلق"
   },
-  "defaultPartnerName": "Partner"
-} as CabinetCopy;
+  "defaultPartnerName": "شريك"
+};

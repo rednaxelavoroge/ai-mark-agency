@@ -6,14 +6,14 @@ export const cabinetId: CabinetCopy = {
     "titleTemplate": "%s · Partner Platform"
   },
   "shell": {
-    "navLabel": "Bagian partner",
+    "navLabel": "Bagian mitra",
     "signOut": "Keluar",
     "signedIn": "Masuk",
     "backToSite": "← ai-mark.agency",
     "ventureTagline": "Venture and Marketing",
-    "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme",
-    "backAriaLabel": "Back"
+    "themeLight": "Beralih ke tema terang",
+    "themeDark": "Beralih ke tema gelap",
+    "backAriaLabel": "Kembali"
   },
   "nav": {
     "dashboard": "Dasbor",
@@ -21,340 +21,340 @@ export const cabinetId: CabinetCopy = {
     "sales": "Penjualan",
     "network": "Jaringan",
     "commissions": "Komisi",
-    "payouts": "Pencairan",
+    "payouts": "Pembayaran",
     "resources": "Sumber daya",
     "profile": "Profil"
   },
   "auth": {
     "ventureTagline": "Venture and Marketing",
     "login": {
-      "metadataTitle": "Sign in",
+      "metadataTitle": "Masuk",
       "eyebrow": "Partner Platform",
-      "title": "Sign in",
-      "lead": "Your AI MARK partner dashboard: referral link, network, customers and commissions.",
-      "footerBefore": "Not a partner yet?",
-      "footerLink": "See the partner programme"
+      "title": "Masuk",
+      "lead": "Dasbor mitra AI MARK Anda: tautan rujukan, jaringan, pelanggan, dan komisi.",
+      "footerBefore": "Belum menjadi mitra?",
+      "footerLink": "Lihat program mitra"
     },
     "signup": {
-      "metadataTitle": "Create a partner account",
+      "metadataTitle": "Buat akun mitra",
       "eyebrow": "Partner Platform",
-      "title": "Create a partner account",
-      "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
-      "footerBefore": "Programme rules are confirmed with you during onboarding, before you sell. Read the",
-      "privacyLink": "privacy notice",
+      "title": "Buat akun mitra",
+      "lead": "Satu akun memberi Anda ID Mitra, kode rujukan, dan dasbor mitra.",
+      "footerBefore": "Aturan program dikonfirmasikan kepada Anda selama orientasi, sebelum Anda menjual. Baca",
+      "privacyLink": "pemberitahuan privasi",
       "footerAfter": "."
     },
     "setupNotice": {
-      "title": "Sign-in is temporarily unavailable.",
-      "body": "Write to us and we will help you in. The public website stays open."
+      "title": "Proses masuk untuk sementara tidak tersedia.",
+      "body": "Kirimkan surat kepada kami dan kami akan membantu Anda. Situs web publik tetap terbuka."
     },
     "callbackErrors": {
-      "missing_code": "That sign-in link is incomplete. Request a new one below.",
-      "exchange_failed": "That sign-in link has expired or was already used. Request a new one below.",
-      "provider_error": "The sign-in provider did not complete the request.",
-      "not_configured": "Sign-in is temporarily unavailable. Write to us and we will help you in."
+      "missing_code": "Tautan masuk tersebut tidak lengkap. Minta yang baru di bawah.",
+      "exchange_failed": "Tautan masuk tersebut telah kedaluwarsa atau sudah digunakan. Minta yang baru di bawah.",
+      "provider_error": "Penyedia proses masuk tidak menyelesaikan permintaan.",
+      "not_configured": "Proses masuk untuk sementara tidak tersedia. Kirimkan surat kepada kami dan kami akan membantu Anda."
     },
-    "signedOutNotice": "You have been signed out.",
-    "genericSignInError": "We could not complete that sign-in. Please try again.",
+    "signedOutNotice": "Anda telah keluar.",
+    "genericSignInError": "Kami tidak dapat menyelesaikan proses masuk tersebut. Silakan coba lagi.",
     "form": {
-      "email": "Email",
-      "password": "Password",
+      "email": "E-mail",
+      "password": "Kata sandi",
       "emailPlaceholder": "you@company.com",
       "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
-      "fullName": "Full name",
+      "passwordNewPlaceholder": "Setidaknya 8 karakter",
+      "fullName": "Nama lengkap",
       "fullNamePlaceholder": "Alex Morgan",
-      "signIn": "Sign in",
-      "signInPending": "Signing in…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
-      "createAccount": "Create partner account",
-      "createAccountPending": "Creating account…",
+      "signIn": "Masuk",
+      "signInPending": "Masuk…",
+      "signUp": "Masuk",
+      "signUpPending": "Masuk…",
+      "createAccount": "Buat akun mitra",
+      "createAccountPending": "Membuat akun…",
       "orDivider": "or",
-      "continueGoogle": "Continue with Google",
-      "continueGooglePending": "Opening Google…",
-      "magicLinkLabel": "Email me a sign-in link",
-      "sendMagicLink": "Send magic link",
-      "sendMagicLinkPending": "Sending…",
-      "noAccountBefore": "No account yet?",
-      "noAccountLink": "Create a partner account",
-      "hasAccountBefore": "Already have an account?",
-      "hasAccountLink": "Sign in"
+      "continueGoogle": "Lanjutkan dengan Google",
+      "continueGooglePending": "Membuka Google…",
+      "magicLinkLabel": "Emailkan saya tautan masuk",
+      "sendMagicLink": "Kirim tautan ajaib",
+      "sendMagicLinkPending": "Mengirim…",
+      "noAccountBefore": "Belum punya akun?",
+      "noAccountLink": "Buat akun mitra",
+      "hasAccountBefore": "Sudah punya akun?",
+      "hasAccountLink": "Masuk"
     }
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "Dasbor",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "Pelanggan",
       "eyebrow": "Partner Platform",
-      "title": "Customers",
-      "lead": "People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
+      "title": "Pelanggan",
+      "lead": "Orang yang mengirimkan formulir kontak di situs sementara link referral Anda masih valid. Obrolan, Telegram, WhatsApp, dan email bukan dalam daftar ini. Prospek bukanlah penjualan dan bukan komisi."
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "Penjualan",
       "eyebrow": "Partner Platform",
-      "title": "Sales",
-      "lead": "Paid orders attributed to your referral code or partner id. Clicks and leads are not sales. Amounts are the amounts stored on the sale."
+      "title": "Penjualan",
+      "lead": "Pesanan berbayar dikaitkan dengan kode referensi atau id mitra Anda. Klik dan prospek bukanlah penjualan. Jumlah adalah jumlah yang disimpan pada penjualan."
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "Jaringan",
       "eyebrow": "Partner Platform",
-      "title": "Network",
-      "lead": "Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
+      "title": "Jaringan",
+      "lead": "Sponsor Anda, dan berapa banyak mitra yang mendaftar melalui tautan Anda. Nama-nama di downline tidak tercantum."
     },
     "commissions": {
-      "metadataTitle": "Commissions",
+      "metadataTitle": "Komisi",
       "eyebrow": "Partner Platform",
-      "title": "Commissions",
-      "lead": "Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
+      "title": "Komisi",
+      "lead": "Komisi Anda untuk setiap penjualan yang memenuhi syarat. Jadwal: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, kumpulan jaringan 80%."
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "Pembayaran",
       "eyebrow": "Partner Platform",
-      "title": "Payouts",
-      "lead": "Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
+      "title": "Pembayaran",
+      "lead": "Pembayaran dicatat untuk Anda, dan alamat USDC disimpan di profil Anda. AI MARK mengirimkan pembayaran ke alamat itu."
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "Profil",
       "eyebrow": "Partner Platform",
-      "title": "Profile",
-      "lead": "Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
+      "title": "Profil",
+      "lead": "Bidang akun dan catatan mitra dibaca dari baris Anda sendiri. Detail pembayaran adalah satu-satunya kolom yang dapat Anda ubah di sini."
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "Sumber daya",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
-      "metadataTitle": "Partner access",
+      "metadataTitle": "Akses mitra",
       "eyebrow": "Partner Platform",
-      "title": "No partner access on this account",
-      "lead": "Your account is signed in, but it has no partner record attached yet.",
-      "footer": "Think this is wrong? Reply to any AI MARK email and we will link your partner record.",
-      "signedInBefore": "Signed in as",
-      "signedInAfter": "Partner records are issued by AI MARK; they are never created by the account owner."
+      "title": "Tidak ada akses mitra pada akun ini",
+      "lead": "Akun Anda sudah masuk, namun belum ada catatan mitra yang dilampirkan.",
+      "footer": "Menurutmu ini salah? Balas email AI MARK apa pun dan kami akan menautkan catatan mitra Anda.",
+      "signedInBefore": "Masuk sebagai",
+      "signedInAfter": "Catatan mitra dikeluarkan oleh AI MARK; mereka tidak pernah dibuat oleh pemilik akun."
     }
   },
   "dashboard": {
     "welcomeTitle": "Welcome, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
-    "welcomeLeadAfter": "Your referral link is live. Sales, commission, and payouts appear here as they are recorded.",
-    "performanceTitle": "Performance",
-    "performanceLead": "Qualifying sales and commission appear after a customer pays. A dash means that figure is not available yet.",
-    "statQualifyingSales": "Qualifying sales",
-    "statCommission": "Commission",
-    "statReadyToPay": "Ready to pay",
-    "statPaid": "Paid",
-    "noCommissionsYet": "No commissions yet.",
+    "welcomeLeadBefore": "ID Mitra Anda adalah",
+    "welcomeLeadAfter": "Tautan referensi Anda aktif. Penjualan, komisi, dan pembayaran muncul di sini saat dicatat.",
+    "performanceTitle": "Pertunjukan",
+    "performanceLead": "Penjualan dan komisi yang memenuhi syarat muncul setelah pelanggan membayar. Tanda hubung berarti angka tersebut belum tersedia.",
+    "statQualifyingSales": "Penjualan yang memenuhi syarat",
+    "statCommission": "Komisi",
+    "statReadyToPay": "Siap membayar",
+    "statPaid": "Dibayar",
+    "noCommissionsYet": "Belum ada komisi.",
     "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
-    "identityTitle": "Partner identity",
-    "identityLead": "Issued by AI MARK. Partner ID, referral code and status are immutable from your account.",
-    "labelPartnerId": "Partner ID",
-    "labelPartnerStatus": "Partner status",
-    "labelReferralCode": "Referral code",
-    "labelCountry": "Country",
-    "labelJoined": "Joined",
-    "labelLanguage": "Language",
+    "identityTitle": "Identitas pasangan",
+    "identityLead": "Dikeluarkan oleh AI MARK. ID Mitra, kode rujukan, dan status tidak dapat diubah dari akun Anda.",
+    "labelPartnerId": "ID Mitra",
+    "labelPartnerStatus": "Status mitra",
+    "labelReferralCode": "Kode referensi",
+    "labelCountry": "Negara",
+    "labelJoined": "Bergabung",
+    "labelLanguage": "Bahasa",
     "sponsorTitle": "Sponsor",
     "sponsorConfirmed": "Confirmed {date}.",
-    "sponsorRecordedUnconfirmed": "Recorded, not yet confirmed by a qualifying sale.",
-    "sponsorFromReferralLink": " Recorded from a referral link at signup.",
-    "sponsorEmpty": "No sponsor recorded. Sponsor relationships are set by AI MARK from a referral link at signup, never by the partner, and are immutable once confirmed.",
-    "historyTitle": "Status history",
-    "historyLead": "Written by the database on every status change.",
-    "historyEmpty": "No entries yet.",
-    "hubTitle": "Demos, materials, knowledge, support",
-    "hubLead": "Product pages, brand files, published prices, and support channels are on Resources.",
-    "hubLinkDemos": "Demos and presentations",
-    "hubLinkKnowledge": "Product knowledge",
-    "hubLinkMaterials": "Brand files",
-    "hubLinkSupport": "Support",
-    "trackingFootnoteBefore": "How tracking works is on",
-    "trackingFootnoteLink": "Resources",
+    "sponsorRecordedUnconfirmed": "Direkam, belum dikonfirmasi oleh penjualan yang memenuhi syarat.",
+    "sponsorFromReferralLink": "Direkam dari tautan rujukan saat mendaftar.",
+    "sponsorEmpty": "Tidak ada sponsor yang tercatat. Hubungan sponsor ditetapkan oleh AI MARK dari tautan rujukan saat pendaftaran, tidak pernah ditentukan oleh mitra, dan tidak dapat diubah setelah dikonfirmasi.",
+    "historyTitle": "Riwayat status",
+    "historyLead": "Ditulis oleh database pada setiap perubahan status.",
+    "historyEmpty": "Belum ada entri.",
+    "hubTitle": "Demo, materi, pengetahuan, dukungan",
+    "hubLead": "Halaman produk, file merek, harga yang dipublikasikan, dan saluran dukungan ada di Sumber Daya.",
+    "hubLinkDemos": "Demo dan presentasi",
+    "hubLinkKnowledge": "Pengetahuan produk",
+    "hubLinkMaterials": "File merek",
+    "hubLinkSupport": "Mendukung",
+    "trackingFootnoteBefore": "Cara kerja pelacakan aktif",
+    "trackingFootnoteLink": "Sumber daya",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Launch-period status",
-    "launchEndedTitle": "Launch-period ended",
+    "launchActiveTitle": "Status periode peluncuran",
+    "launchEndedTitle": "Periode peluncuran berakhir",
     "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
     "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
   },
   "referralPanel": {
-    "title": "Referral program",
-    "lead": "Visits through your link are recorded server-side and attribute a customer lead for 30 days. A partner who signs up through it is recorded as your referral. Sponsor relationships are set by AI MARK from the referral link only — never from your account, and never editable from the client.",
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statSignups": "Partner signups",
-    "footnote": "Clicks, leads, and partner signups. Commission and payouts are on the Commissions and Payouts pages."
+    "title": "Program rujukan",
+    "lead": "Kunjungan melalui tautan Anda dicatat di sisi server dan mengatribusikan prospek pelanggan selama 30 hari. Mitra yang mendaftar melaluinya dicatat sebagai referensi Anda. Hubungan sponsor ditetapkan oleh AI MARK hanya dari tautan rujukan — tidak pernah dari akun Anda, dan tidak pernah dapat diedit dari klien.",
+    "statClicks": "Klik rujukan",
+    "statLeads": "Prospek yang diatribusikan",
+    "statSignups": "Pendaftaran mitra",
+    "footnote": "Klik, prospek, dan pendaftaran mitra. Komisi dan pembayaran ada di halaman Komisi dan Pembayaran."
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
-    "lead": "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    "title": "Model Komisi Mitra",
+    "lead": "50% untuk penjualan langsung. Total imbalan mitra hingga 80% di seluruh jaringan. 80% adalah kumpulan agregat di seluruh L1–L5 yang memenuhi syarat, bukan pembayaran mitra tunggal. Bagian yang ditahan AI Mark adalah 20% dari jumlah komisi. Total buku besar di atas adalah nilai yang disimpan; kartu ini tidak menghitung ulang penghasilan Anda.",
     "levels": {
       "1": {
-        "title": "Direct sale",
-        "body": "The customer you personally introduce. This is 50% of the commissionable amount — not the whole 80% pool."
+        "title": "Penjualan langsung",
+        "body": "Pelanggan yang Anda perkenalkan secara pribadi. Ini adalah 50% dari jumlah komisi — bukan keseluruhan kumpulan 80%."
       },
       "2": {
-        "title": "First network",
-        "body": "Paid customer sales from your first-level partners."
+        "title": "Jaringan pertama",
+        "body": "Penjualan pelanggan berbayar dari mitra tingkat pertama Anda."
       },
       "3": {
-        "title": "Extended network",
-        "body": "Paid sales one level deeper."
+        "title": "Jaringan yang diperluas",
+        "body": "Penjualan berbayar satu tingkat lebih dalam."
       },
       "4": {
-        "title": "Market depth",
-        "body": "The network beyond direct relationships."
+        "title": "Kedalaman pasar",
+        "body": "Jaringan di luar hubungan langsung."
       },
       "5": {
-        "title": "Maximum depth",
-        "body": "The deepest level of the standard schedule."
+        "title": "Kedalaman maksimum",
+        "body": "Tingkat terdalam dari jadwal standar."
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "Penjualan dengan komisi $1.000 · jaringan lengkap",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "Total kumpulan jaringan",
+      "retainedShare": "AI Mark mempertahankan bagiannya"
     },
-    "exampleFootnote": "The direct partner receives $500, not $800. Total network pool 80%."
+    "exampleFootnote": "Mitra langsung menerima $500, bukan $800. Total kumpulan jaringan 80%."
   },
   "dataTable": {
-    "unreadable": "This list could not be read.",
+    "unreadable": "Daftar ini tidak dapat dibaca.",
     "customers": {
-      "empty": "No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty.",
+      "empty": "Tidak ada prospek yang diatribusikan. Baris muncul ketika seseorang mengirimkan formulir kontak di situs sementara cookie referensi Anda masih valid. Daftar kosong kosong.",
       "columns": [
-        "Name",
-        "Company",
-        "Email",
-        "Scenario",
-        "Page",
-        "When"
+        "Nama",
+        "Perusahaan",
+        "E-mail",
+        "Skenario",
+        "Halaman",
+        "Kapan"
       ]
     },
     "sales": {
-      "empty": "No sales yet. A row appears after AI MARK records a payment the customer actually made. An empty list is empty — it is not a zero estimate of revenue.",
+      "empty": "Belum ada penjualan. Sebuah baris muncul setelah AI MARK mencatat pembayaran yang sebenarnya dilakukan pelanggan. Daftar kosong itu kosong — ini bukan perkiraan pendapatan nol.",
       "columns": [
-        "Product",
-        "Amount",
+        "Produk",
+        "Jumlah",
         "Status",
-        "Paid",
-        "Confirmed",
-        "Locked",
-        "Order"
+        "Dibayar",
+        "Dikonfirmasi",
+        "Terkunci",
+        "Memesan"
       ]
     },
     "commissions": {
-      "empty": "No commissions yet. An entry appears after a qualifying sale.",
+      "empty": "Belum ada komisi. Entri muncul setelah penjualan yang memenuhi syarat.",
       "columns": [
         "Status",
-        "Type",
-        "Level",
-        "Amount",
-        "Rate",
-        "Base",
-        "Posted"
+        "Jenis",
+        "Tingkat",
+        "Jumlah",
+        "Kecepatan",
+        "Basis",
+        "Diposting"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "Belum ada pembayaran. AI MARK mencatat pembayaran ketika komisi siap dibayarkan.",
       "columns": [
         "Status",
-        "Amount",
-        "Created",
-        "Confirmed",
-        "Paid"
+        "Jumlah",
+        "Dibuat",
+        "Dikonfirmasi",
+        "Dibayar"
       ]
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statRegistrations": "Partner registrations",
-    "sponsorTitle": "Your sponsor",
-    "labelSponsorPartnerId": "Sponsor Partner ID",
-    "labelRecorded": "Recorded",
-    "labelConfirmed": "Confirmed",
-    "notConfirmed": "Not confirmed",
-    "labelSource": "Source",
-    "sponsorEmpty": "No sponsor recorded. A sponsor is set from a referral link at signup. You cannot assign one from this account.",
-    "statusTitle": "Your status",
-    "statusNone": "No partners have signed up through your link yet.",
-    "statusUnreadable": "Partner registrations could not be read.",
+    "statClicks": "Klik rujukan",
+    "statLeads": "Prospek yang diatribusikan",
+    "statRegistrations": "Pendaftaran mitra",
+    "sponsorTitle": "Sponsor Anda",
+    "labelSponsorPartnerId": "ID Mitra Sponsor",
+    "labelRecorded": "Tercatat",
+    "labelConfirmed": "Dikonfirmasi",
+    "notConfirmed": "Tidak dikonfirmasi",
+    "labelSource": "Sumber",
+    "sponsorEmpty": "Tidak ada sponsor yang tercatat. Sponsor ditetapkan dari tautan rujukan saat mendaftar. Anda tidak dapat menetapkannya dari akun ini.",
+    "statusTitle": "Statusmu",
+    "statusNone": "Belum ada mitra yang mendaftar melalui tautan Anda.",
+    "statusUnreadable": "Pendaftaran mitra tidak dapat dibaca.",
     "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
   },
   "payouts": {
-    "destinationTitle": "Where a payout is sent",
-    "destinationLead": "The address you want payouts sent to.",
-    "destinationUnreadable": "Payout details could not be read.",
-    "editPayoutLink": "Edit payout details",
-    "flowTitle": "How a payout moves",
+    "destinationTitle": "Ke mana pembayaran dikirim",
+    "destinationLead": "Alamat tujuan pengiriman pembayaran.",
+    "destinationUnreadable": "Detail pembayaran tidak dapat dibaca.",
+    "editPayoutLink": "Edit detail pembayaran",
+    "flowTitle": "Bagaimana pembayaran berpindah",
     "flowSteps": [
-      "1. A qualifying sale records your commission.",
-      "2. That commission is held for 14 days after the sale is confirmed.",
-      "3. After the hold, if the sale still stands, it is ready to pay.",
-      "4. AI MARK records the payout and sends it to your USDC address.",
-      "5. A refund or cancellation adjusts what is owed."
+      "1. Penjualan yang memenuhi syarat mencatat komisi Anda.",
+      "2. Komisi tersebut ditahan selama 14 hari setelah penjualan dikonfirmasi.",
+      "3. Setelah ditahan, jika penjualan masih berdiri, siap membayar.",
+      "4. AI MARK mencatat pembayaran dan mengirimkannya ke alamat USDC Anda.",
+      "5. Pengembalian dana atau pembatalan menyesuaikan yang terutang."
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "statReady": "Siap membayar",
+    "statPaid": "Dibayar",
+    "tableEmpty": "Belum ada pembayaran. AI MARK mencatat pembayaran ketika komisi siap dibayarkan."
   },
   "profile": {
-    "savedNotice": "Payout details saved.",
-    "accountTitle": "Account",
-    "labelFullName": "Full name",
-    "labelEmail": "Email",
-    "labelPhone": "Phone",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
-    "labelRegion": "Region",
-    "labelAvatarUrl": "Avatar URL",
-    "labelAccountCreated": "Account created",
-    "partnerRecordTitle": "Partner record",
-    "partnerRecordLead": "Platform-owned. These values cannot be changed from a partner session by design.",
+    "savedNotice": "Detail pembayaran disimpan.",
+    "accountTitle": "Akun",
+    "labelFullName": "Nama lengkap",
+    "labelEmail": "E-mail",
+    "labelPhone": "Telepon",
+    "labelLanguage": "Bahasa",
+    "labelCountry": "Negara",
+    "labelRegion": "Wilayah",
+    "labelAvatarUrl": "URL Avatar",
+    "labelAccountCreated": "Akun dibuat",
+    "partnerRecordTitle": "Catatan mitra",
+    "partnerRecordLead": "Milik platform. Nilai-nilai ini tidak dapat diubah dari sesi mitra karena desainnya.",
     "labelStatus": "Status",
-    "labelPartnerSince": "Partner since",
-    "payoutTitle": "Payout details",
-    "payoutLead": "Partner payouts are USDC. Default network is Solana. This form stores the destination on your profile. It does not send tokens.",
-    "payoutUnreadable": "Payout details could not be read, so they cannot be saved from this page.",
-    "labelRecipientName": "Recipient name",
-    "labelPayoutAsset": "Payout asset",
-    "labelNetwork": "Network",
-    "labelUsdcAddress": "USDC address",
-    "usdcPlaceholder": "Solana address",
-    "labelNotes": "Notes (optional)",
-    "savePayout": "Save payout details",
-    "referralTitle": "Referral link",
-    "referralLead": "Issued with the account. The partner record above stays read-only."
+    "labelPartnerSince": "Bermitra sejak itu",
+    "payoutTitle": "Detail pembayaran",
+    "payoutLead": "Pembayaran mitra adalah USDC. Jaringan defaultnya adalah Solana. Formulir ini menyimpan tujuan di profil Anda. Itu tidak mengirim token.",
+    "payoutUnreadable": "Detail pembayaran tidak dapat dibaca, sehingga tidak dapat disimpan dari halaman ini.",
+    "labelRecipientName": "Nama penerima",
+    "labelPayoutAsset": "Aset pembayaran",
+    "labelNetwork": "Jaringan",
+    "labelUsdcAddress": "Alamat USDC",
+    "usdcPlaceholder": "Alamat Solana",
+    "labelNotes": "Catatan (opsional)",
+    "savePayout": "Simpan detail pembayaran",
+    "referralTitle": "Tautan rujukan",
+    "referralLead": "Dikeluarkan dengan akun. Catatan mitra di atas tetap hanya dapat dibaca."
   },
   "copyReferralLink": {
-    "label": "Your referral link",
-    "copy": "Copy referral link",
-    "copied": "Copied",
-    "copiedStatus": "Referral link copied to your clipboard.",
-    "failedStatus": "Copying was blocked — select the link and copy it manually.",
-    "hint": "The link is live. Every visit is recorded and attributes a customer lead for 30 days; a partner who signs up through it is recorded as your referral. Add campaign parameters (for example ?utm_source=newsletter) to see where your clicks come from."
+    "label": "Tautan referensi Anda",
+    "copy": "Salin tautan rujukan",
+    "copied": "Disalin",
+    "copiedStatus": "Tautan rujukan disalin ke papan klip Anda.",
+    "failedStatus": "Penyalinan diblokir — pilih tautan dan salin secara manual.",
+    "hint": "Tautannya aktif. Setiap kunjungan dicatat dan dikaitkan dengan prospek pelanggan selama 30 hari; mitra yang mendaftar melaluinya dicatat sebagai referensi Anda. Tambahkan parameter kampanye (misalnya ?utm_source=newsletter) untuk melihat dari mana klik Anda berasal."
   },
   "copyLine": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Menyalin",
+    "copied": "Disalin"
   },
   "copyText": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Menyalin",
+    "copied": "Disalin"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "Mitra",
+    "growth": "Pertumbuhan",
+    "regional": "Daerah",
+    "strategic": "Strategis",
+    "suspended": "Tergantung"
   },
-  "defaultPartnerName": "Partner"
-} as CabinetCopy;
+  "defaultPartnerName": "Mitra"
+};

@@ -6,19 +6,19 @@ export const cabinetTr: CabinetCopy = {
     "titleTemplate": "%s · Partner Platform"
   },
   "shell": {
-    "navLabel": "Partner bölümleri",
-    "signOut": "Çıkış",
-    "signedIn": "Oturum açık",
+    "navLabel": "İş ortağı bölümleri",
+    "signOut": "oturumu Kapat",
+    "signedIn": "Oturum açıldı",
     "backToSite": "← ai-mark.agency",
     "ventureTagline": "Venture and Marketing",
-    "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme",
-    "backAriaLabel": "Back"
+    "themeLight": "Açık temaya geç",
+    "themeDark": "Koyu temaya geç",
+    "backAriaLabel": "Geri"
   },
   "nav": {
-    "dashboard": "Panel",
+    "dashboard": "Kontrol Paneli",
     "customers": "Müşteriler",
-    "sales": "Satışlar",
+    "sales": "Satış",
     "network": "Ağ",
     "commissions": "Komisyonlar",
     "payouts": "Ödemeler",
@@ -28,333 +28,333 @@ export const cabinetTr: CabinetCopy = {
   "auth": {
     "ventureTagline": "Venture and Marketing",
     "login": {
-      "metadataTitle": "Sign in",
+      "metadataTitle": "Oturum aç",
       "eyebrow": "Partner Platform",
-      "title": "Sign in",
-      "lead": "Your AI MARK partner dashboard: referral link, network, customers and commissions.",
-      "footerBefore": "Not a partner yet?",
-      "footerLink": "See the partner programme"
+      "title": "Oturum aç",
+      "lead": "AI MARK iş ortağı kontrol paneliniz: yönlendirme bağlantısı, ağ, müşteriler ve komisyonlar.",
+      "footerBefore": "Henüz ortak değil misiniz?",
+      "footerLink": "İş ortağı programına bakın"
     },
     "signup": {
-      "metadataTitle": "Create a partner account",
+      "metadataTitle": "İş ortağı hesabı oluşturun",
       "eyebrow": "Partner Platform",
-      "title": "Create a partner account",
-      "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
-      "footerBefore": "Programme rules are confirmed with you during onboarding, before you sell. Read the",
-      "privacyLink": "privacy notice",
+      "title": "İş ortağı hesabı oluşturun",
+      "lead": "Bir hesap size İş Ortağı Kimliğinizi, yönlendirme kodunu ve iş ortağı kontrol panelini verir.",
+      "footerBefore": "Program kuralları, satış öncesinde, katılım sırasında sizinle birlikte onaylanır. Okuyun",
+      "privacyLink": "gizlilik bildirimi",
       "footerAfter": "."
     },
     "setupNotice": {
-      "title": "Sign-in is temporarily unavailable.",
-      "body": "Write to us and we will help you in. The public website stays open."
+      "title": "Oturum açma işlemi geçici olarak kullanılamıyor.",
+      "body": "Bize yazın, size yardımcı olalım. Herkese açık web sitesi açık kalır."
     },
     "callbackErrors": {
-      "missing_code": "That sign-in link is incomplete. Request a new one below.",
-      "exchange_failed": "That sign-in link has expired or was already used. Request a new one below.",
-      "provider_error": "The sign-in provider did not complete the request.",
-      "not_configured": "Sign-in is temporarily unavailable. Write to us and we will help you in."
+      "missing_code": "Bu oturum açma bağlantısı eksik. Aşağıda yeni bir tane isteyin.",
+      "exchange_failed": "Bu oturum açma bağlantısının süresi dolmuş veya zaten kullanılmış. Aşağıda yeni bir tane isteyin.",
+      "provider_error": "Oturum açma sağlayıcısı isteği tamamlamadı.",
+      "not_configured": "Oturum açma işlemi geçici olarak kullanılamıyor. Bize yazın, size yardımcı olalım."
     },
-    "signedOutNotice": "You have been signed out.",
-    "genericSignInError": "We could not complete that sign-in. Please try again.",
+    "signedOutNotice": "Oturumunuz kapatıldı.",
+    "genericSignInError": "Bu oturum açma işlemini tamamlayamadık. Lütfen tekrar deneyin.",
     "form": {
-      "email": "Email",
-      "password": "Password",
+      "email": "E-posta",
+      "password": "Şifre",
       "emailPlaceholder": "you@company.com",
       "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
-      "fullName": "Full name",
+      "passwordNewPlaceholder": "En az 8 karakter",
+      "fullName": "Ad Soyad",
       "fullNamePlaceholder": "Alex Morgan",
-      "signIn": "Sign in",
-      "signInPending": "Signing in…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
-      "createAccount": "Create partner account",
-      "createAccountPending": "Creating account…",
+      "signIn": "Oturum aç",
+      "signInPending": "Oturum açılıyor…",
+      "signUp": "Oturum aç",
+      "signUpPending": "Oturum açılıyor…",
+      "createAccount": "İş ortağı hesabı oluştur",
+      "createAccountPending": "Hesap oluşturuluyor…",
       "orDivider": "or",
-      "continueGoogle": "Continue with Google",
-      "continueGooglePending": "Opening Google…",
-      "magicLinkLabel": "Email me a sign-in link",
-      "sendMagicLink": "Send magic link",
-      "sendMagicLinkPending": "Sending…",
-      "noAccountBefore": "No account yet?",
-      "noAccountLink": "Create a partner account",
-      "hasAccountBefore": "Already have an account?",
-      "hasAccountLink": "Sign in"
+      "continueGoogle": "Google ile devam et",
+      "continueGooglePending": "Google açılıyor…",
+      "magicLinkLabel": "Bana bir oturum açma bağlantısını e-postayla gönder",
+      "sendMagicLink": "Sihirli bağlantı gönder",
+      "sendMagicLinkPending": "Gönderiliyor…",
+      "noAccountBefore": "Henüz hesabınız yok mu?",
+      "noAccountLink": "İş ortağı hesabı oluşturun",
+      "hasAccountBefore": "Zaten bir hesabınız var mı?",
+      "hasAccountLink": "Oturum aç"
     }
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "Kontrol Paneli",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "Müşteriler",
       "eyebrow": "Partner Platform",
-      "title": "Customers",
-      "lead": "People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
+      "title": "Müşteriler",
+      "lead": "Yönlendirme bağlantınız hâlâ geçerliyken sitedeki iletişim formunu gönderen kişiler. Sohbet, Telegram, WhatsApp ve e-posta bu liste değildir. Olası satış bir satış değildir ve bir komisyon değildir."
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "Satış",
       "eyebrow": "Partner Platform",
-      "title": "Sales",
-      "lead": "Paid orders attributed to your referral code or partner id. Clicks and leads are not sales. Amounts are the amounts stored on the sale."
+      "title": "Satış",
+      "lead": "Yönlendirme kodunuz veya iş ortağı kimliğiniz ile ilişkilendirilen ücretli siparişler. Tıklamalar ve olası satışlar satış değildir. Tutarlar satışta saklanan tutarlardır."
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "Ağ",
       "eyebrow": "Partner Platform",
-      "title": "Network",
-      "lead": "Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
+      "title": "Ağ",
+      "lead": "Sponsorunuz ve bağlantınız aracılığıyla kaç ortağın kaydolduğu. Alt sıradaki isimler listelenmez."
     },
     "commissions": {
-      "metadataTitle": "Commissions",
+      "metadataTitle": "Komisyonlar",
       "eyebrow": "Partner Platform",
-      "title": "Commissions",
-      "lead": "Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
+      "title": "Komisyonlar",
+      "lead": "Her uygun satış için komisyonlarınız. Program: L1 %50 / L2 %15 / L3 %7 / L4 %5 / L5 %3, ağ havuzu %80."
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "Ödemeler",
       "eyebrow": "Partner Platform",
-      "title": "Payouts",
-      "lead": "Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
+      "title": "Ödemeler",
+      "lead": "Sizin adınıza kaydedilen ödemeler ve profilinize kaydedilen USDC adresi. AI MARK ödemeyi bu adrese gönderir."
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "Profil",
       "eyebrow": "Partner Platform",
-      "title": "Profile",
-      "lead": "Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
+      "title": "Profil",
+      "lead": "Hesap ve ortak kaydı alanları kendi satırınızdan okunur. Ödeme ayrıntıları burada değiştirebileceğiniz tek alanlardır."
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "Kaynaklar",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
-      "metadataTitle": "Partner access",
+      "metadataTitle": "İş ortağı erişimi",
       "eyebrow": "Partner Platform",
-      "title": "No partner access on this account",
-      "lead": "Your account is signed in, but it has no partner record attached yet.",
-      "footer": "Think this is wrong? Reply to any AI MARK email and we will link your partner record.",
-      "signedInBefore": "Signed in as",
-      "signedInAfter": "Partner records are issued by AI MARK; they are never created by the account owner."
+      "title": "Bu hesapta iş ortağı erişimi yok",
+      "lead": "Hesabınızda oturum açıldı ancak henüz eklenmiş bir iş ortağı kaydı yok.",
+      "footer": "Bunun yanlış olduğunu mu düşünüyorsun? Herhangi bir AI MARK e-postasını yanıtladığınızda iş ortağı kaydınızı bağlayacağız.",
+      "signedInBefore": "Şu şekilde oturum açıldı:",
+      "signedInAfter": "İş ortağı kayıtları AI MARK tarafından düzenlenir; asla hesap sahibi tarafından oluşturulmazlar."
     }
   },
   "dashboard": {
     "welcomeTitle": "Welcome, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
-    "welcomeLeadAfter": "Your referral link is live. Sales, commission, and payouts appear here as they are recorded.",
-    "performanceTitle": "Performance",
-    "performanceLead": "Qualifying sales and commission appear after a customer pays. A dash means that figure is not available yet.",
-    "statQualifyingSales": "Qualifying sales",
-    "statCommission": "Commission",
-    "statReadyToPay": "Ready to pay",
-    "statPaid": "Paid",
-    "noCommissionsYet": "No commissions yet.",
+    "welcomeLeadBefore": "İş Ortağı Kimliğiniz:",
+    "welcomeLeadAfter": "Yönlendirme bağlantınız yayında. Satışlar, komisyonlar ve ödemeler kaydedildikçe burada görünür.",
+    "performanceTitle": "Performans",
+    "performanceLead": "Nitelikli satışlar ve komisyon, müşteri ödeme yaptıktan sonra görünür. Çizgi, rakamın henüz mevcut olmadığı anlamına gelir.",
+    "statQualifyingSales": "Nitelikli satışlar",
+    "statCommission": "Komisyon",
+    "statReadyToPay": "Ödemeye hazır",
+    "statPaid": "Paralı",
+    "noCommissionsYet": "Henüz komisyon yok.",
     "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
-    "identityTitle": "Partner identity",
-    "identityLead": "Issued by AI MARK. Partner ID, referral code and status are immutable from your account.",
-    "labelPartnerId": "Partner ID",
-    "labelPartnerStatus": "Partner status",
-    "labelReferralCode": "Referral code",
-    "labelCountry": "Country",
-    "labelJoined": "Joined",
-    "labelLanguage": "Language",
+    "identityTitle": "İş ortağı kimliği",
+    "identityLead": "AI MARK tarafından verilmiştir. İş ortağı kimliği, yönlendirme kodu ve durum hesabınızda değiştirilemez.",
+    "labelPartnerId": "İş Ortağı Kimliği",
+    "labelPartnerStatus": "İş ortağı durumu",
+    "labelReferralCode": "Yönlendirme kodu",
+    "labelCountry": "Ülke",
+    "labelJoined": "Katıldı",
+    "labelLanguage": "Dil",
     "sponsorTitle": "Sponsor",
     "sponsorConfirmed": "Confirmed {date}.",
-    "sponsorRecordedUnconfirmed": "Recorded, not yet confirmed by a qualifying sale.",
-    "sponsorFromReferralLink": " Recorded from a referral link at signup.",
-    "sponsorEmpty": "No sponsor recorded. Sponsor relationships are set by AI MARK from a referral link at signup, never by the partner, and are immutable once confirmed.",
-    "historyTitle": "Status history",
-    "historyLead": "Written by the database on every status change.",
-    "historyEmpty": "No entries yet.",
-    "hubTitle": "Demos, materials, knowledge, support",
-    "hubLead": "Product pages, brand files, published prices, and support channels are on Resources.",
-    "hubLinkDemos": "Demos and presentations",
-    "hubLinkKnowledge": "Product knowledge",
-    "hubLinkMaterials": "Brand files",
-    "hubLinkSupport": "Support",
-    "trackingFootnoteBefore": "How tracking works is on",
-    "trackingFootnoteLink": "Resources",
+    "sponsorRecordedUnconfirmed": "Kaydedildi, henüz uygun bir satışla onaylanmadı.",
+    "sponsorFromReferralLink": "Kayıt sırasında bir yönlendirme bağlantısından kaydedildi.",
+    "sponsorEmpty": "Sponsor kaydedilmedi. Sponsor ilişkileri, asla iş ortağı tarafından değil, kayıt sırasında bir yönlendirme bağlantısından AI MARK tarafından belirlenir ve onaylandıktan sonra değiştirilemez.",
+    "historyTitle": "Durum geçmişi",
+    "historyLead": "Her durum değişikliğinde veritabanı tarafından yazılır.",
+    "historyEmpty": "Henüz giriş yok.",
+    "hubTitle": "Demolar, materyaller, bilgi, destek",
+    "hubLead": "Ürün sayfaları, marka dosyaları, yayınlanan fiyatlar ve destek kanalları Kaynaklarda bulunmaktadır.",
+    "hubLinkDemos": "Demolar ve sunumlar",
+    "hubLinkKnowledge": "Ürün bilgisi",
+    "hubLinkMaterials": "Marka dosyaları",
+    "hubLinkSupport": "Destek",
+    "trackingFootnoteBefore": "Takip nasıl çalışıyor?",
+    "trackingFootnoteLink": "Kaynaklar",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Launch-period status",
-    "launchEndedTitle": "Launch-period ended",
+    "launchActiveTitle": "Lansman dönemi durumu",
+    "launchEndedTitle": "Lansman dönemi sona erdi",
     "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
     "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
   },
   "referralPanel": {
-    "title": "Referral program",
-    "lead": "Visits through your link are recorded server-side and attribute a customer lead for 30 days. A partner who signs up through it is recorded as your referral. Sponsor relationships are set by AI MARK from the referral link only — never from your account, and never editable from the client.",
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statSignups": "Partner signups",
-    "footnote": "Clicks, leads, and partner signups. Commission and payouts are on the Commissions and Payouts pages."
+    "title": "Tavsiye programı",
+    "lead": "Bağlantınız üzerinden yapılan ziyaretler sunucu tarafında kaydedilir ve 30 gün boyunca bir müşteri adayıyla ilişkilendirilir. Bunun üzerinden kaydolan bir ortak, yönlendirmeniz olarak kaydedilir. Sponsor ilişkileri AI MARK tarafından yalnızca yönlendirme bağlantısından ayarlanır; hiçbir zaman hesabınızdan ve hiçbir zaman müşteri tarafından düzenlenemez.",
+    "statClicks": "Yönlendirme tıklamaları",
+    "statLeads": "İlişkilendirilen potansiyel müşteriler",
+    "statSignups": "İş ortağı kayıtları",
+    "footnote": "Tıklamalar, potansiyel müşteriler ve iş ortağı kayıtları. Komisyon ve ödemeler Komisyonlar ve Ödemeler sayfalarındadır."
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
-    "lead": "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    "title": "Ortak Komisyon Modeli",
+    "lead": "Doğrudan satış için %50. Ağ genelinde %80'e varan toplam iş ortağı ödülleri. %80'i, tek ortak ödemesi değil, nitelikli L1-L5 genelindeki toplam havuzdur. AI Mark'ın alıkonan payı komisyona tabi tutarın %20'sidir. Yukarıdaki genel muhasebe toplamları saklanan değerlerdir; bu kart kazancınızı yeniden hesaplamaz.",
     "levels": {
       "1": {
-        "title": "Direct sale",
-        "body": "The customer you personally introduce. This is 50% of the commissionable amount — not the whole 80% pool."
+        "title": "Doğrudan satış",
+        "body": "Kişisel olarak tanıttığınız müşteri. Bu, komisyona tabi tutarın %50'sidir; %80'lik havuzun tamamı değil."
       },
       "2": {
-        "title": "First network",
-        "body": "Paid customer sales from your first-level partners."
+        "title": "İlk ağ",
+        "body": "Birinci düzey ortaklarınızdan ücretli müşteri satışları."
       },
       "3": {
-        "title": "Extended network",
-        "body": "Paid sales one level deeper."
+        "title": "Genişletilmiş ağ",
+        "body": "Ücretli satışlar bir seviye daha derin."
       },
       "4": {
-        "title": "Market depth",
-        "body": "The network beyond direct relationships."
+        "title": "Pazar derinliği",
+        "body": "Doğrudan ilişkilerin ötesindeki ağ."
       },
       "5": {
-        "title": "Maximum depth",
-        "body": "The deepest level of the standard schedule."
+        "title": "Maksimum derinlik",
+        "body": "Standart programın en derin seviyesi."
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "1.000$ komisyonlu satış · tam ağ",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "Toplam ağ havuzu",
+      "retainedShare": "AI Mark'ın elinde tutulan payı"
     },
-    "exampleFootnote": "The direct partner receives $500, not $800. Total network pool 80%."
+    "exampleFootnote": "Doğrudan ortak 800$ değil 500$ alıyor. Toplam ağ havuzu %80."
   },
   "dataTable": {
-    "unreadable": "This list could not be read.",
+    "unreadable": "Bu liste okunamadı.",
     "customers": {
-      "empty": "No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty.",
+      "empty": "Atfedilen potansiyel müşteri yok. Yönlendirme çereziniz hala geçerliyken birisi sitedeki iletişim formunu gönderdiğinde bir satır görünür. Boş bir liste boş.",
       "columns": [
-        "Name",
-        "Company",
-        "Email",
-        "Scenario",
-        "Page",
-        "When"
+        "İsim",
+        "Şirket",
+        "E-posta",
+        "Senaryo",
+        "Sayfa",
+        "Ne zaman"
       ]
     },
     "sales": {
-      "empty": "No sales yet. A row appears after AI MARK records a payment the customer actually made. An empty list is empty — it is not a zero estimate of revenue.",
+      "empty": "Henüz satış yok. AI MARK, müşterinin fiilen yaptığı ödemeyi kaydettikten sonra bir satır görünür. Boş bir liste boştur; bu, sıfır bir gelir tahmini değildir.",
       "columns": [
-        "Product",
-        "Amount",
-        "Status",
-        "Paid",
-        "Confirmed",
-        "Locked",
-        "Order"
+        "Ürün",
+        "Miktar",
+        "Durum",
+        "Paralı",
+        "Onaylandı",
+        "Kilitli",
+        "Emir"
       ]
     },
     "commissions": {
-      "empty": "No commissions yet. An entry appears after a qualifying sale.",
+      "empty": "Henüz komisyon yok. Nitelikli bir satıştan sonra bir giriş görünür.",
       "columns": [
-        "Status",
-        "Type",
-        "Level",
-        "Amount",
-        "Rate",
-        "Base",
-        "Posted"
+        "Durum",
+        "Tip",
+        "Seviye",
+        "Miktar",
+        "Oran",
+        "Temel",
+        "Gönderildi"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "Henüz ödeme yok. AI MARK, komisyon ödemeye hazır olduğunda ödemeyi kaydeder.",
       "columns": [
-        "Status",
-        "Amount",
-        "Created",
-        "Confirmed",
-        "Paid"
+        "Durum",
+        "Miktar",
+        "Oluşturuldu",
+        "Onaylandı",
+        "Paralı"
       ]
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statRegistrations": "Partner registrations",
-    "sponsorTitle": "Your sponsor",
-    "labelSponsorPartnerId": "Sponsor Partner ID",
-    "labelRecorded": "Recorded",
-    "labelConfirmed": "Confirmed",
-    "notConfirmed": "Not confirmed",
-    "labelSource": "Source",
-    "sponsorEmpty": "No sponsor recorded. A sponsor is set from a referral link at signup. You cannot assign one from this account.",
-    "statusTitle": "Your status",
-    "statusNone": "No partners have signed up through your link yet.",
-    "statusUnreadable": "Partner registrations could not be read.",
+    "statClicks": "Yönlendirme tıklamaları",
+    "statLeads": "İlişkilendirilen potansiyel müşteriler",
+    "statRegistrations": "İş ortağı kayıtları",
+    "sponsorTitle": "Sponsorunuz",
+    "labelSponsorPartnerId": "Sponsor İş Ortağı Kimliği",
+    "labelRecorded": "Kaydedildi",
+    "labelConfirmed": "Onaylandı",
+    "notConfirmed": "Onaylanmadı",
+    "labelSource": "Kaynak",
+    "sponsorEmpty": "Sponsor kaydedilmedi. Kayıt sırasında bir yönlendirme bağlantısından bir sponsor belirlenir. Bu hesaptan bir tane atayamazsınız.",
+    "statusTitle": "Durumunuz",
+    "statusNone": "Henüz hiçbir ortak bağlantınız aracılığıyla kaydolmadı.",
+    "statusUnreadable": "İş ortağı kayıtları okunamadı.",
     "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
   },
   "payouts": {
-    "destinationTitle": "Where a payout is sent",
-    "destinationLead": "The address you want payouts sent to.",
-    "destinationUnreadable": "Payout details could not be read.",
-    "editPayoutLink": "Edit payout details",
-    "flowTitle": "How a payout moves",
+    "destinationTitle": "Ödeme nereye gönderilir?",
+    "destinationLead": "Ödemelerin gönderilmesini istediğiniz adres.",
+    "destinationUnreadable": "Ödeme ayrıntıları okunamadı.",
+    "editPayoutLink": "Ödeme ayrıntılarını düzenleyin",
+    "flowTitle": "Ödeme nasıl hareket eder?",
     "flowSteps": [
-      "1. A qualifying sale records your commission.",
-      "2. That commission is held for 14 days after the sale is confirmed.",
-      "3. After the hold, if the sale still stands, it is ready to pay.",
-      "4. AI MARK records the payout and sends it to your USDC address.",
-      "5. A refund or cancellation adjusts what is owed."
+      "1. Nitelikli bir satışta komisyonunuz kaydedilir.",
+      "2. Bu komisyon, satış onaylandıktan sonra 14 gün süreyle tutulur.",
+      "3. Bekletme sonrasında satış hala devam ediyorsa ödemeye hazırdır.",
+      "4. AI MARK ödemeyi kaydeder ve USDC adresinize gönderir.",
+      "5. Geri ödeme veya iptal, borçlu olunan miktarı ayarlar."
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "statReady": "Ödemeye hazır",
+    "statPaid": "Paralı",
+    "tableEmpty": "Henüz ödeme yok. AI MARK, komisyon ödemeye hazır olduğunda ödemeyi kaydeder."
   },
   "profile": {
-    "savedNotice": "Payout details saved.",
-    "accountTitle": "Account",
-    "labelFullName": "Full name",
-    "labelEmail": "Email",
-    "labelPhone": "Phone",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
-    "labelRegion": "Region",
-    "labelAvatarUrl": "Avatar URL",
-    "labelAccountCreated": "Account created",
-    "partnerRecordTitle": "Partner record",
-    "partnerRecordLead": "Platform-owned. These values cannot be changed from a partner session by design.",
-    "labelStatus": "Status",
-    "labelPartnerSince": "Partner since",
-    "payoutTitle": "Payout details",
-    "payoutLead": "Partner payouts are USDC. Default network is Solana. This form stores the destination on your profile. It does not send tokens.",
-    "payoutUnreadable": "Payout details could not be read, so they cannot be saved from this page.",
-    "labelRecipientName": "Recipient name",
-    "labelPayoutAsset": "Payout asset",
-    "labelNetwork": "Network",
-    "labelUsdcAddress": "USDC address",
-    "usdcPlaceholder": "Solana address",
-    "labelNotes": "Notes (optional)",
-    "savePayout": "Save payout details",
-    "referralTitle": "Referral link",
-    "referralLead": "Issued with the account. The partner record above stays read-only."
+    "savedNotice": "Ödeme ayrıntıları kaydedildi.",
+    "accountTitle": "Hesap",
+    "labelFullName": "Ad Soyad",
+    "labelEmail": "E-posta",
+    "labelPhone": "Telefon",
+    "labelLanguage": "Dil",
+    "labelCountry": "Ülke",
+    "labelRegion": "Bölge",
+    "labelAvatarUrl": "Avatar URL'si",
+    "labelAccountCreated": "Hesap oluşturuldu",
+    "partnerRecordTitle": "İş ortağı kaydı",
+    "partnerRecordLead": "Platformun mülkiyetindedir. Bu değerler tasarım gereği bir iş ortağı oturumundan değiştirilemez.",
+    "labelStatus": "Durum",
+    "labelPartnerSince": "Şu tarihten bu yana ortak",
+    "payoutTitle": "Ödeme ayrıntıları",
+    "payoutLead": "İş ortağı ödemeleri USDC'dir. Varsayılan ağ Solana'dır. Bu form, hedefi profilinizde saklar. Token göndermez.",
+    "payoutUnreadable": "Ödeme ayrıntıları okunamadığı için bu sayfadan kaydedilemiyor.",
+    "labelRecipientName": "Alıcı adı",
+    "labelPayoutAsset": "Ödeme varlığı",
+    "labelNetwork": "Ağ",
+    "labelUsdcAddress": "USDC adresi",
+    "usdcPlaceholder": "Solana adresi",
+    "labelNotes": "Notlar (isteğe bağlı)",
+    "savePayout": "Ödeme ayrıntılarını kaydet",
+    "referralTitle": "Yönlendirme bağlantısı",
+    "referralLead": "Hesapla birlikte verildi. Yukarıdaki iş ortağı kaydı salt okunur olarak kalır."
   },
   "copyReferralLink": {
-    "label": "Your referral link",
-    "copy": "Copy referral link",
-    "copied": "Copied",
-    "copiedStatus": "Referral link copied to your clipboard.",
-    "failedStatus": "Copying was blocked — select the link and copy it manually.",
-    "hint": "The link is live. Every visit is recorded and attributes a customer lead for 30 days; a partner who signs up through it is recorded as your referral. Add campaign parameters (for example ?utm_source=newsletter) to see where your clicks come from."
+    "label": "Yönlendirme bağlantınız",
+    "copy": "Yönlendirme bağlantısını kopyala",
+    "copied": "Kopyalandı",
+    "copiedStatus": "Tavsiye bağlantısı panonuza kopyalandı.",
+    "failedStatus": "Kopyalama engellendi; bağlantıyı seçin ve manuel olarak kopyalayın.",
+    "hint": "Bağlantı yayında. Her ziyaret kaydedilir ve 30 gün boyunca bir müşteri adayıyla ilişkilendirilir; bunun üzerinden kaydolan bir ortak, yönlendirmeniz olarak kaydedilir. Tıklamalarınızın nereden geldiğini görmek için kampanya parametreleri ekleyin (örneğin ?utm_source=newsletter)."
   },
   "copyLine": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Kopyala",
+    "copied": "Kopyalandı"
   },
   "copyText": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "Kopyala",
+    "copied": "Kopyalandı"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "Ortak",
+    "growth": "Büyüme",
+    "regional": "Bölgesel",
+    "strategic": "Stratejik",
+    "suspended": "Askıya alınmış"
   },
-  "defaultPartnerName": "Partner"
-} as CabinetCopy;
+  "defaultPartnerName": "Ortak"
+};

@@ -151,16 +151,16 @@ export const PARTNER_PRODUCT_LIMITS: Record<PartnerProductId, PartnerProductLimi
       "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
     ],
     "es": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "No es un programador de publicaciones. AIME ejecuta un ciclo de marketing hasta la aprobación humana.",
+      "El contenido se publica solo después de la aprobación humana en Telegram, a menos que se esté utilizando una ruta de publicación automática aprobada posteriormente.",
+      "AIME publica en Instagram, Facebook, Threads y aprobación de Telegram.",
+      "AIME no publicará precios, compromisos financieros, términos legales ni descuentos sin la aprobación humana explícita."
     ],
     "pt": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "Não é um agendador de postagem. AIME executa um ciclo de marketing até a aprovação humana.",
+      "O conteúdo só vai ao ar após aprovação humana no Telegram, a menos que um caminho de publicação automática aprovado posteriormente esteja em uso.",
+      "AIME publica com aprovação do Instagram, Facebook, Threads e Telegram.",
+      "A AIME não publicará preços, compromissos financeiros, termos legais ou descontos sem aprovação humana explícita."
     ],
     "ru": [
       "Не планировщик постов. AIME ведёт маркетинговый цикл до апрува человека.",
@@ -169,52 +169,52 @@ export const PARTNER_PRODUCT_LIMITS: Record<PartnerProductId, PartnerProductLimi
       "AIME не публикует цены, финансовые обещания, юридические условия и скидки без явного апрува человека."
     ],
     "ar": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "ليس جدولة آخر. تدير AIME دورة تسويقية تصل إلى موافقة الإنسان.",
+      "لا يتم نشر المحتوى إلا بعد موافقة الإنسان في Telegram، ما لم يتم استخدام مسار النشر التلقائي المعتمد لاحقًا.",
+      "تنشر AIME موافقة على Instagram وFacebook وThreads وTelegram.",
+      "لن تقوم AIME بنشر الأسعار أو الالتزامات المالية أو الشروط القانونية أو الخصومات دون موافقة بشرية صريحة."
     ],
     "zh": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "不是后期调度程序。 AIME 运行一个营销周期直至人工批准。",
+      "内容仅在 Telegram 中经过人工批准后才会上线，除非使用后来批准的自动发布路径。",
+      "AIME 发布内容需获得 Instagram、Facebook、Threads 和 Telegram 的批准。",
+      "未经明确的人工签字，AIME 不会发布定价、财务承诺、法律条款或折扣。"
     ],
     "id": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "Bukan penjadwal posting. AIME menjalankan siklus pemasaran hingga persetujuan manusia.",
+      "Konten ditayangkan hanya setelah persetujuan manusia di Telegram, kecuali jalur publikasi otomatis yang disetujui kemudian digunakan.",
+      "AIME menerbitkan dengan persetujuan Instagram, Facebook, Threads, dan Telegram.",
+      "AIME tidak akan mempublikasikan harga, komitmen keuangan, ketentuan hukum, atau diskon tanpa persetujuan manusia secara eksplisit."
     ],
     "vi": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "Không phải là một lịch trình bài viết. AIME thực hiện chu trình tiếp thị theo sự chấp thuận của con người.",
+      "Nội dung chỉ xuất hiện sau khi có sự chấp thuận của con người trong Telegram, trừ khi đường dẫn tự động xuất bản được phê duyệt sau này được sử dụng.",
+      "AIME xuất bản lên Instagram, Facebook, Threads và Telegram để được phê duyệt.",
+      "AIME sẽ không công bố giá cả, cam kết tài chính, điều khoản pháp lý hoặc chiết khấu mà không có sự phê duyệt rõ ràng của con người."
     ],
     "de": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "Kein Postplaner. AIME führt einen Marketingzyklus bis zur menschlichen Zustimmung durch.",
+      "Inhalte werden erst nach menschlicher Genehmigung in Telegram veröffentlicht, es sei denn, es wird ein später genehmigter automatischer Veröffentlichungspfad verwendet.",
+      "AIME veröffentlicht mit Genehmigung von Instagram, Facebook, Threads und Telegram.",
+      "AIME veröffentlicht keine Preise, finanziellen Verpflichtungen, rechtlichen Bedingungen oder Rabatte ohne ausdrückliche menschliche Genehmigung."
     ],
     "fr": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "Pas un planificateur de publication. AIME gère un cycle de commercialisation jusqu'à l'approbation humaine.",
+      "Le contenu n'est mis en ligne qu'après approbation humaine dans Telegram, à moins qu'un chemin de publication automatique approuvé ultérieurement ne soit utilisé.",
+      "AIME publie avec l'approbation d'Instagram, Facebook, Threads et Telegram.",
+      "AIME ne publiera pas de prix, d'engagements financiers, de conditions juridiques ou de remises sans l'approbation humaine explicite."
     ],
     "ja": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "ポストスケジューラではありません。 AIME は人間の承認までマーケティング サイクルを実行します。",
+      "後で承認された自動公開パスが使用されていない限り、コンテンツは Telegram で人間の承認後にのみ公開されます。",
+      "AIME は、Instagram、Facebook、Threads、および Telegram の承認に公開します。",
+      "AIME は、人間による明示的な承認がない限り、価格、金銭的約束、法的条件、または割引を公開しません。"
     ],
     "tr": [
-      "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
-      "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
-      "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off."
+      "Gönderi zamanlayıcı değil. AIME, insanların onayına kadar bir pazarlama döngüsü yürütür.",
+      "İçerik, daha sonra onaylanmış bir otomatik yayınlama yolu kullanılmadığı sürece, yalnızca Telegram'da insan onayının ardından yayına girer.",
+      "AIME, Instagram, Facebook, Threads ve Telegram onayıyla yayınlar.",
+      "AIME, açık bir insan onayı olmadan fiyatlandırmayı, mali taahhütleri, yasal şartları veya indirimleri yayınlamayacaktır."
     ]
   },
   "assistant": {
@@ -224,14 +224,14 @@ export const PARTNER_PRODUCT_LIMITS: Record<PartnerProductId, PartnerProductLimi
       "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
     ],
     "es": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "El asistente responde y califica. No calcula una propuesta comercial, eso es SHOWROOM AI.",
+      "Responde desde la base de conocimientos del cliente. Si un precio o artículo no está documentado, lo dice en lugar de inventarlo.",
+      "WhatsApp, Instagram y Messenger necesitan una cuenta Meta Business verificada."
     ],
     "pt": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "O assistente responde e se qualifica. Não calcula uma proposta comercial — isso é SHOWROOM AI.",
+      "Ele responde a partir da base de conhecimento do cliente. Se um preço ou item não estiver documentado, ele o diz em vez de inventá-lo.",
+      "WhatsApp, Instagram e Messenger precisam de uma conta Meta Business verificada."
     ],
     "ru": [
       "Ассистент отвечает и квалифицирует. Коммерческое предложение считает SHOWROOM AI.",
@@ -239,44 +239,44 @@ export const PARTNER_PRODUCT_LIMITS: Record<PartnerProductId, PartnerProductLimi
       "WhatsApp, Instagram и Messenger требуют верифицированный Meta Business аккаунт."
     ],
     "ar": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "يجيب المساعد ويتأهل. ولا يحسب العرض التجاري — أي SHOWROOM AI.",
+      "إنه يجيب من قاعدة معارف العميل. إذا لم يتم توثيق سعر أو سلعة ما، يتم ذكر ذلك بدلاً من اختراع واحد.",
+      "يحتاج WhatsApp وInstagram وMessenger إلى حساب Meta Business تم التحقق منه."
     ],
     "zh": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "助理回答并合格。它不计算商业提案——即 SHOWROOM AI。",
+      "它从客户的知识库中给出答案。如果价格或商品没有记录，它会这样说，而不是发明一个。",
+      "WhatsApp、Instagram 和 Messenger 需要经过验证的 Meta Business 帐户。"
     ],
     "id": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "Asisten menjawab dan memenuhi syarat. Itu tidak menghitung proposal komersial — yaitu SHOWROOM AI.",
+      "Ini menjawab dari basis pengetahuan pelanggan. Jika suatu harga atau barang tidak didokumentasikan, maka perusahaan akan menyatakan demikian daripada menciptakannya.",
+      "WhatsApp, Instagram, dan Messenger memerlukan akun Meta Business yang terverifikasi."
     ],
     "vi": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "Người trợ lý trả lời và xác nhận. Nó không tính toán một đề xuất thương mại - đó là SHOWROOM AI.",
+      "Nó trả lời từ cơ sở kiến ​​thức của khách hàng. Nếu giá cả hoặc mặt hàng không được ghi lại, nó sẽ ghi như vậy thay vì phát minh ra giá đó.",
+      "WhatsApp, Instagram và Messenger cần có tài khoản Meta Business đã được xác minh."
     ],
     "de": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "Der Assistent antwortet und qualifiziert. Es wird kein kommerzielles Angebot berechnet – das ist SHOWROOM AI.",
+      "Es antwortet aus der Wissensdatenbank des Kunden. Wenn ein Preis oder Artikel nicht dokumentiert ist, wird dies angegeben, anstatt einen solchen zu erfinden.",
+      "WhatsApp, Instagram und Messenger benötigen ein verifiziertes Meta Business-Konto."
     ],
     "fr": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "L'assistant répond et qualifie. Il ne calcule pas de proposition commerciale – c’est SHOWROOM AI.",
+      "Il répond à partir de la base de connaissances du client. Si un prix ou un article n’est pas documenté, il le dit au lieu d’en inventer un.",
+      "WhatsApp, Instagram et Messenger nécessitent un compte Meta Business vérifié."
     ],
     "ja": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "アシスタントが答えて資格を取得します。それは商業的な提案を計算するものではありません、それがSHOWROOM AIです。",
+      "お客様のナレッジベースから回答します。価格や商品が文書化されていない場合、それを発明するのではなく、そのように記載します。",
+      "WhatsApp、Instagram、Messenger には認証済みのメタ ビジネス アカウントが必要です。"
     ],
     "tr": [
-      "The assistant answers and qualifies. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-      "It answers from the customer's knowledge base. If a price or item is not documented, it says so instead of inventing one.",
-      "WhatsApp, Instagram, and Messenger need a verified Meta Business account."
+      "Asistan cevap verir ve nitelendirir. Ticari bir teklif hesaplamaz; yani SHOWROOM AI.",
+      "Müşterinin bilgi tabanından yanıt verir. Bir fiyat veya ürün belgelenmemişse, onu icat etmek yerine öyle yazıyor.",
+      "WhatsApp, Instagram ve Messenger'ın doğrulanmış bir Meta Business hesabına ihtiyacı vardır."
     ]
   },
   "showroom": {
@@ -286,14 +286,14 @@ export const PARTNER_PRODUCT_LIMITS: Record<PartnerProductId, PartnerProductLimi
       "That is not a promise that the customer's own rules are flawless."
     ],
     "es": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "No es un chatbot de soporte. SHOWROOM AI sirve para selección, reglas de precios y propuesta comercial.",
+      "El precio no se compensa en la conversación. El cálculo sigue las fórmulas establecidas por el cliente.",
+      "Esto no es una promesa de que las propias reglas del cliente sean perfectas."
     ],
     "pt": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "Não é um chatbot de suporte. SHOWROOM AI serve para seleção, regras de preços e proposta comercial.",
+      "O preço não é inventado na conversa. O cálculo segue as fórmulas definidas pelo cliente.",
+      "Isso não é uma promessa de que as regras do próprio cliente sejam perfeitas."
     ],
     "ru": [
       "Не чат поддержки. SHOWROOM AI — подбор, правила цены и коммерческое предложение.",
@@ -301,44 +301,44 @@ export const PARTNER_PRODUCT_LIMITS: Record<PartnerProductId, PartnerProductLimi
       "Это не обещание, что в правилах клиента нет ошибки."
     ],
     "ar": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "ليس دعم الدردشة. SHOWROOM AI مخصص للاختيار وقواعد التسعير والعرض التجاري.",
+      "لا يتم تعويض السعر في المحادثة. يتبع الحساب الصيغ التي يحددها العميل.",
+      "وهذا ليس وعدًا بأن قواعد العميل الخاصة لا تشوبها شائبة."
     ],
     "zh": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "不是支持聊天机器人。 SHOWROOM AI 用于选择、定价规则和商业提案。",
+      "价格不是在谈话中补足的。计算遵循客户设定的公式。",
+      "这并不是保证客户自己的规则完美无缺。"
     ],
     "id": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "Bukan chatbot dukungan. SHOWROOM AI untuk seleksi, aturan penetapan harga, dan proposal komersial.",
+      "Harga tidak dibuat-buat dalam percakapan. Perhitungan mengikuti rumus yang ditetapkan pelanggan.",
+      "Itu bukan berarti bahwa peraturan pelanggan itu sempurna."
     ],
     "vi": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "Không phải là một chatbot hỗ trợ. SHOWROOM AI dành cho việc lựa chọn, quy tắc định giá và đề xuất thương mại.",
+      "Giá không được tạo thành trong cuộc trò chuyện. Tính toán theo công thức khách hàng đặt ra.",
+      "Đó không phải là lời hứa rằng các quy tắc riêng của khách hàng là hoàn hảo."
     ],
     "de": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "Kein Support-Chatbot. SHOWROOM AI dient der Auswahl, Preisregeln und einem kommerziellen Angebot.",
+      "Der Preis wird im Gespräch nicht ausgehandelt. Die Berechnung folgt den vom Kunden festgelegten Formeln.",
+      "Das ist kein Versprechen, dass die eigenen Regeln des Kunden einwandfrei sind."
     ],
     "fr": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "Il ne s'agit pas d'un chatbot d'assistance. SHOWROOM AI est destiné à la sélection, aux règles de tarification et à la proposition commerciale.",
+      "Le prix n’est pas fixé dans la conversation. Le calcul suit les formules définies par le client.",
+      "Cela ne veut pas dire que les propres règles du client sont irréprochables."
     ],
     "ja": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "サポートチャットボットではありません。 SHOWROOM AIは、セレクション、価格設定ルール、商業提案を担当します。",
+      "会話の中で値段が決まるわけではありません。計算はお客様が設定した計算式に従います。",
+      "それは、顧客自身のルールが完璧であるという保証ではありません。"
     ],
     "tr": [
-      "Not a support chatbot. SHOWROOM AI is for selection, pricing rules, and a commercial proposal.",
-      "The price is not made up in the conversation. Calculation follows the formulas the customer set.",
-      "That is not a promise that the customer's own rules are flawless."
+      "Destek sohbet robotu değil. SHOWROOM AI seçim, fiyatlandırma kuralları ve ticari teklif içindir.",
+      "Fiyat görüşmede belirlenmemektedir. Hesaplama müşterinin belirlediği formüllere göre yapılır.",
+      "Bu, müşterinin kendi kurallarının kusursuz olduğuna dair bir söz değildir."
     ]
   }
 };

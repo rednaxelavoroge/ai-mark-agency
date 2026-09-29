@@ -6,21 +6,21 @@ export const cabinetJa: CabinetCopy = {
     "titleTemplate": "%s · Partner Platform"
   },
   "shell": {
-    "navLabel": "パートナーメニュー",
-    "signOut": "ログアウト",
-    "signedIn": "ログイン中",
+    "navLabel": "パートナーセクション",
+    "signOut": "サインアウト",
+    "signedIn": "サインインしました",
     "backToSite": "← ai-mark.agency",
     "ventureTagline": "Venture and Marketing",
-    "themeLight": "Switch to light theme",
-    "themeDark": "Switch to dark theme",
-    "backAriaLabel": "Back"
+    "themeLight": "ライトテーマに切り替える",
+    "themeDark": "ダークテーマに切り替える",
+    "backAriaLabel": "戻る"
   },
   "nav": {
     "dashboard": "ダッシュボード",
-    "customers": "顧客",
-    "sales": "売上",
+    "customers": "お客様",
+    "sales": "販売",
     "network": "ネットワーク",
-    "commissions": "コミッション",
+    "commissions": "手数料",
     "payouts": "支払い",
     "resources": "リソース",
     "profile": "プロフィール"
@@ -28,333 +28,333 @@ export const cabinetJa: CabinetCopy = {
   "auth": {
     "ventureTagline": "Venture and Marketing",
     "login": {
-      "metadataTitle": "Sign in",
+      "metadataTitle": "サインイン",
       "eyebrow": "Partner Platform",
-      "title": "Sign in",
-      "lead": "Your AI MARK partner dashboard: referral link, network, customers and commissions.",
-      "footerBefore": "Not a partner yet?",
-      "footerLink": "See the partner programme"
+      "title": "サインイン",
+      "lead": "AI MARK パートナー ダッシュボード: 紹介リンク、ネットワーク、顧客、手数料。",
+      "footerBefore": "まだパートナーではありませんか?",
+      "footerLink": "パートナープログラムを見る"
     },
     "signup": {
-      "metadataTitle": "Create a partner account",
+      "metadataTitle": "パートナーアカウントを作成する",
       "eyebrow": "Partner Platform",
-      "title": "Create a partner account",
-      "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
-      "footerBefore": "Programme rules are confirmed with you during onboarding, before you sell. Read the",
-      "privacyLink": "privacy notice",
+      "title": "パートナーアカウントを作成する",
+      "lead": "1 つのアカウントで、パートナー ID、紹介コード、パートナー ダッシュボードが提供されます。",
+      "footerBefore": "プログラム ルールは、販売前のオンボーディング中に確認されます。読んでください",
+      "privacyLink": "プライバシー通知",
       "footerAfter": "."
     },
     "setupNotice": {
-      "title": "Sign-in is temporarily unavailable.",
-      "body": "Write to us and we will help you in. The public website stays open."
+      "title": "サインインは一時的に利用できません。",
+      "body": "ご連絡いただければお手伝いいたします。公開ウェブサイトはオープンしたままです。"
     },
     "callbackErrors": {
-      "missing_code": "That sign-in link is incomplete. Request a new one below.",
-      "exchange_failed": "That sign-in link has expired or was already used. Request a new one below.",
-      "provider_error": "The sign-in provider did not complete the request.",
-      "not_configured": "Sign-in is temporarily unavailable. Write to us and we will help you in."
+      "missing_code": "そのサインイン リンクは不完全です。以下から新しいものをリクエストしてください。",
+      "exchange_failed": "そのサインイン リンクは期限切れか、すでに使用されています。以下から新しいものをリクエストしてください。",
+      "provider_error": "サインイン プロバイダーは要求を完了しませんでした。",
+      "not_configured": "サインインは一時的に利用できません。ご連絡ください。お手伝いさせていただきます。"
     },
-    "signedOutNotice": "You have been signed out.",
-    "genericSignInError": "We could not complete that sign-in. Please try again.",
+    "signedOutNotice": "サインアウトされました。",
+    "genericSignInError": "そのサインインを完了できませんでした。もう一度試してください。",
     "form": {
-      "email": "Email",
-      "password": "Password",
+      "email": "電子メール",
+      "password": "パスワード",
       "emailPlaceholder": "you@company.com",
       "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
-      "fullName": "Full name",
+      "passwordNewPlaceholder": "少なくとも 8 文字",
+      "fullName": "フルネーム",
       "fullNamePlaceholder": "Alex Morgan",
-      "signIn": "Sign in",
-      "signInPending": "Signing in…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
-      "createAccount": "Create partner account",
-      "createAccountPending": "Creating account…",
+      "signIn": "サインイン",
+      "signInPending": "サインイン中…",
+      "signUp": "サインイン",
+      "signUpPending": "サインイン中…",
+      "createAccount": "パートナーアカウントを作成する",
+      "createAccountPending": "アカウントを作成中…",
       "orDivider": "or",
-      "continueGoogle": "Continue with Google",
-      "continueGooglePending": "Opening Google…",
-      "magicLinkLabel": "Email me a sign-in link",
-      "sendMagicLink": "Send magic link",
-      "sendMagicLinkPending": "Sending…",
-      "noAccountBefore": "No account yet?",
-      "noAccountLink": "Create a partner account",
-      "hasAccountBefore": "Already have an account?",
-      "hasAccountLink": "Sign in"
+      "continueGoogle": "Google を続ける",
+      "continueGooglePending": "Googleを開いて…",
+      "magicLinkLabel": "サインインリンクをメールで送信してください",
+      "sendMagicLink": "マジックリンクを送信する",
+      "sendMagicLinkPending": "送信中…",
+      "noAccountBefore": "まだアカウントをお持ちですか?",
+      "noAccountLink": "パートナーアカウントを作成する",
+      "hasAccountBefore": "すでにアカウントをお持ちですか?",
+      "hasAccountLink": "サインイン"
     }
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "ダッシュボード",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "お客様",
       "eyebrow": "Partner Platform",
-      "title": "Customers",
-      "lead": "People who submitted the contact form on the site while your referral link was still valid. Chat, Telegram, WhatsApp and email are not this list. A lead is not a sale and is not a commission."
+      "title": "お客様",
+      "lead": "紹介リンクがまだ有効である間にサイトのお問い合わせフォームを送信した人。チャット、電報、WhatsApp、電子メールはこのリストには含まれません。リードは販売ではなく、手数料でもありません。"
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "販売",
       "eyebrow": "Partner Platform",
-      "title": "Sales",
-      "lead": "Paid orders attributed to your referral code or partner id. Clicks and leads are not sales. Amounts are the amounts stored on the sale."
+      "title": "販売",
+      "lead": "紹介コードまたはパートナー ID に起因する有料注文。クリックやリードは売上ではありません。金額は販売時に保管された金額です。"
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "ネットワーク",
       "eyebrow": "Partner Platform",
-      "title": "Network",
-      "lead": "Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
+      "title": "ネットワーク",
+      "lead": "スポンサーと、リンクを通じてサインアップしたパートナーの数。ダウンラインの名前はリストされていません。"
     },
     "commissions": {
-      "metadataTitle": "Commissions",
+      "metadataTitle": "手数料",
       "eyebrow": "Partner Platform",
-      "title": "Commissions",
-      "lead": "Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
+      "title": "手数料",
+      "lead": "対象となる各販売に対する手数料。スケジュール: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%、ネットワークプール 80%。"
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "支払い",
       "eyebrow": "Partner Platform",
-      "title": "Payouts",
-      "lead": "Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
+      "title": "支払い",
+      "lead": "支払いが記録され、USDC アドレスがプロフィールに保存されます。 AI MARK はそのアドレスに支払いを送信します。"
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "プロフィール",
       "eyebrow": "Partner Platform",
-      "title": "Profile",
-      "lead": "Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
+      "title": "プロフィール",
+      "lead": "取引先およびパートナー レコードのフィールドは、独自の行から読み取られます。ここで変更できるフィールドは支払いの詳細のみです。"
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "リソース",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
-      "metadataTitle": "Partner access",
+      "metadataTitle": "パートナーアクセス",
       "eyebrow": "Partner Platform",
-      "title": "No partner access on this account",
-      "lead": "Your account is signed in, but it has no partner record attached yet.",
-      "footer": "Think this is wrong? Reply to any AI MARK email and we will link your partner record.",
-      "signedInBefore": "Signed in as",
-      "signedInAfter": "Partner records are issued by AI MARK; they are never created by the account owner."
+      "title": "このアカウントにはパートナー アクセスがありません",
+      "lead": "アカウントはサインインしていますが、パートナー レコードがまだ添付されていません。",
+      "footer": "これは間違っていると思いますか? AI MARK メールにご返信いただければ、パートナー レコードをリンクさせていただきます。",
+      "signedInBefore": "としてサインインしました",
+      "signedInAfter": "パートナーレコードはAI MARKによって発行されます。これらはアカウント所有者によって作成されることはありません。"
     }
   },
   "dashboard": {
     "welcomeTitle": "Welcome, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
-    "welcomeLeadAfter": "Your referral link is live. Sales, commission, and payouts appear here as they are recorded.",
-    "performanceTitle": "Performance",
-    "performanceLead": "Qualifying sales and commission appear after a customer pays. A dash means that figure is not available yet.",
-    "statQualifyingSales": "Qualifying sales",
-    "statCommission": "Commission",
-    "statReadyToPay": "Ready to pay",
-    "statPaid": "Paid",
-    "noCommissionsYet": "No commissions yet.",
+    "welcomeLeadBefore": "あなたのパートナー ID は",
+    "welcomeLeadAfter": "あなたの紹介リンクは有効です。売上、コミッション、支払いが記録されるとここに表示されます。",
+    "performanceTitle": "パフォーマンス",
+    "performanceLead": "対象となる売上と手数料は、顧客の支払い後に表示されます。ダッシュは、その図がまだ利用できないことを意味します。",
+    "statQualifyingSales": "対象となる売上",
+    "statCommission": "手数料",
+    "statReadyToPay": "支払いの準備ができました",
+    "statPaid": "有料",
+    "noCommissionsYet": "まだコミッションはありません。",
     "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
-    "identityTitle": "Partner identity",
-    "identityLead": "Issued by AI MARK. Partner ID, referral code and status are immutable from your account.",
-    "labelPartnerId": "Partner ID",
-    "labelPartnerStatus": "Partner status",
-    "labelReferralCode": "Referral code",
-    "labelCountry": "Country",
-    "labelJoined": "Joined",
-    "labelLanguage": "Language",
-    "sponsorTitle": "Sponsor",
+    "identityTitle": "パートナーのアイデンティティ",
+    "identityLead": "アイマーク発行。パートナー ID、紹介コード、ステータスはアカウントから変更できません。",
+    "labelPartnerId": "パートナーID",
+    "labelPartnerStatus": "パートナーステータス",
+    "labelReferralCode": "紹介コード",
+    "labelCountry": "国",
+    "labelJoined": "参加しました",
+    "labelLanguage": "言語",
+    "sponsorTitle": "スポンサー",
     "sponsorConfirmed": "Confirmed {date}.",
-    "sponsorRecordedUnconfirmed": "Recorded, not yet confirmed by a qualifying sale.",
-    "sponsorFromReferralLink": " Recorded from a referral link at signup.",
-    "sponsorEmpty": "No sponsor recorded. Sponsor relationships are set by AI MARK from a referral link at signup, never by the partner, and are immutable once confirmed.",
-    "historyTitle": "Status history",
-    "historyLead": "Written by the database on every status change.",
-    "historyEmpty": "No entries yet.",
-    "hubTitle": "Demos, materials, knowledge, support",
-    "hubLead": "Product pages, brand files, published prices, and support channels are on Resources.",
-    "hubLinkDemos": "Demos and presentations",
-    "hubLinkKnowledge": "Product knowledge",
-    "hubLinkMaterials": "Brand files",
-    "hubLinkSupport": "Support",
-    "trackingFootnoteBefore": "How tracking works is on",
-    "trackingFootnoteLink": "Resources",
+    "sponsorRecordedUnconfirmed": "記録されていますが、対象となる販売によってまだ確認されていません。",
+    "sponsorFromReferralLink": "サインアップ時の紹介リンクから記録されます。",
+    "sponsorEmpty": "スポンサーの記録はありません。スポンサー関係は、パートナーによってではなく、サインアップ時に紹介リンクから AI MARK によって設定され、一度確認されると変更できません。",
+    "historyTitle": "ステータス履歴",
+    "historyLead": "ステータスが変化するたびにデータベースによって書き込まれます。",
+    "historyEmpty": "まだエントリーはありません。",
+    "hubTitle": "デモ、資料、知識、サポート",
+    "hubLead": "製品ページ、ブランド ファイル、公開価格、サポート チャネルはリソースにあります。",
+    "hubLinkDemos": "デモとプレゼンテーション",
+    "hubLinkKnowledge": "製品知識",
+    "hubLinkMaterials": "ブランドファイル",
+    "hubLinkSupport": "サポート",
+    "trackingFootnoteBefore": "追跡の仕組みはオンです",
+    "trackingFootnoteLink": "リソース",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Launch-period status",
-    "launchEndedTitle": "Launch-period ended",
+    "launchActiveTitle": "発売期間中のステータス",
+    "launchEndedTitle": "発売期間は終了しました",
     "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
     "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
   },
   "referralPanel": {
-    "title": "Referral program",
-    "lead": "Visits through your link are recorded server-side and attribute a customer lead for 30 days. A partner who signs up through it is recorded as your referral. Sponsor relationships are set by AI MARK from the referral link only — never from your account, and never editable from the client.",
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statSignups": "Partner signups",
-    "footnote": "Clicks, leads, and partner signups. Commission and payouts are on the Commissions and Payouts pages."
+    "title": "紹介プログラム",
+    "lead": "リンクを介した訪問はサーバー側で記録され、顧客見込み客として 30 日間記録されます。それを通じてサインアップしたパートナーは、あなたの紹介として記録されます。スポンサー関係は AI MARK によって紹介リンクのみから設定されます。アカウントからは設定されず、クライアントからは編集できません。",
+    "statClicks": "紹介クリック数",
+    "statLeads": "帰属されたリード",
+    "statSignups": "パートナーのサインアップ",
+    "footnote": "クリック数、リード数、パートナーの登録数。コミッションと支払いについては、コミッションと支払いのページをご覧ください。"
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
-    "lead": "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    "title": "パートナー手数料モデル",
+    "lead": "直販の場合は50％となります。ネットワーク全体で最大 80% の合計パートナー報酬。 80% は対象となる L1 ～ L5 の合計プールであり、単一パートナーへの支払いではありません。 AIマークの留保分は委託金額の20％となります。上記の元帳合計は保存された値です。このカードでは収益が再計算されません。",
     "levels": {
       "1": {
-        "title": "Direct sale",
-        "body": "The customer you personally introduce. This is 50% of the commissionable amount — not the whole 80% pool."
+        "title": "直販",
+        "body": "あなたが個人的に紹介した顧客。これはコミッション可能な金額の 50% であり、80% プール全体ではありません。"
       },
       "2": {
-        "title": "First network",
-        "body": "Paid customer sales from your first-level partners."
+        "title": "最初のネットワーク",
+        "body": "第一レベルのパートナーからの有料顧客販売。"
       },
       "3": {
-        "title": "Extended network",
-        "body": "Paid sales one level deeper."
+        "title": "拡張ネットワーク",
+        "body": "有料販売をもう一段階深くしました。"
       },
       "4": {
-        "title": "Market depth",
-        "body": "The network beyond direct relationships."
+        "title": "市場の厚み",
+        "body": "直接的な関係を超えたネットワーク。"
       },
       "5": {
-        "title": "Maximum depth",
-        "body": "The deepest level of the standard schedule."
+        "title": "最大深度",
+        "body": "標準スケジュールの最も深いレベル。"
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "1,000 ドルの委託販売 · フルネットワーク",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "合計ネットワークプール",
+      "retainedShare": "AIマーク保有シェア"
     },
-    "exampleFootnote": "The direct partner receives $500, not $800. Total network pool 80%."
+    "exampleFootnote": "直接のパートナーは 800 ドルではなく 500 ドルを受け取ります。合計ネットワーク プール 80%。"
   },
   "dataTable": {
-    "unreadable": "This list could not be read.",
+    "unreadable": "このリストを読み取れませんでした。",
     "customers": {
-      "empty": "No attributed leads. A row appears when someone sends the contact form on the site while your referral cookie is still valid. An empty list is empty.",
+      "empty": "帰属されたリードはありません。紹介 Cookie がまだ有効である間に誰かがサイトに問い合わせフォームを送信すると、行が表示されます。空のリストは空です。",
       "columns": [
-        "Name",
-        "Company",
-        "Email",
-        "Scenario",
-        "Page",
-        "When"
+        "名前",
+        "会社",
+        "電子メール",
+        "シナリオ",
+        "ページ",
+        "いつ"
       ]
     },
     "sales": {
-      "empty": "No sales yet. A row appears after AI MARK records a payment the customer actually made. An empty list is empty — it is not a zero estimate of revenue.",
+      "empty": "まだ販売はありません。 AI MARK が顧客が実際に行った支払いを記録した後に行が表示されます。空のリストは空です。収益の推定値がゼロではありません。",
       "columns": [
-        "Product",
-        "Amount",
-        "Status",
-        "Paid",
-        "Confirmed",
-        "Locked",
-        "Order"
+        "製品",
+        "額",
+        "状態",
+        "有料",
+        "確認済み",
+        "ロックされています",
+        "注文"
       ]
     },
     "commissions": {
-      "empty": "No commissions yet. An entry appears after a qualifying sale.",
+      "empty": "まだコミッションはありません。対象となるセールの後にエントリーが表示されます。",
       "columns": [
-        "Status",
-        "Type",
-        "Level",
-        "Amount",
-        "Rate",
-        "Base",
-        "Posted"
+        "状態",
+        "タイプ",
+        "レベル",
+        "額",
+        "レート",
+        "ベース",
+        "投稿しました"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "まだ支払いはありません。 AI MARK は、手数料を支払う準備ができたときに支払いを記録します。",
       "columns": [
-        "Status",
-        "Amount",
-        "Created",
-        "Confirmed",
-        "Paid"
+        "状態",
+        "額",
+        "作成されました",
+        "確認済み",
+        "有料"
       ]
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
-    "statRegistrations": "Partner registrations",
-    "sponsorTitle": "Your sponsor",
-    "labelSponsorPartnerId": "Sponsor Partner ID",
-    "labelRecorded": "Recorded",
-    "labelConfirmed": "Confirmed",
-    "notConfirmed": "Not confirmed",
-    "labelSource": "Source",
-    "sponsorEmpty": "No sponsor recorded. A sponsor is set from a referral link at signup. You cannot assign one from this account.",
-    "statusTitle": "Your status",
-    "statusNone": "No partners have signed up through your link yet.",
-    "statusUnreadable": "Partner registrations could not be read.",
+    "statClicks": "紹介クリック数",
+    "statLeads": "帰属されたリード",
+    "statRegistrations": "パートナー登録",
+    "sponsorTitle": "あなたのスポンサー",
+    "labelSponsorPartnerId": "スポンサーパートナーID",
+    "labelRecorded": "録音済み",
+    "labelConfirmed": "確認済み",
+    "notConfirmed": "未確認",
+    "labelSource": "ソース",
+    "sponsorEmpty": "スポンサーの記録はありません。スポンサーはサインアップ時の紹介リンクから設定されます。このアカウントから割り当てることはできません。",
+    "statusTitle": "あなたのステータス",
+    "statusNone": "あなたのリンクからサインアップしたパートナーはまだいません。",
+    "statusUnreadable": "パートナー登録を読み取れませんでした。",
     "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
   },
   "payouts": {
-    "destinationTitle": "Where a payout is sent",
-    "destinationLead": "The address you want payouts sent to.",
-    "destinationUnreadable": "Payout details could not be read.",
-    "editPayoutLink": "Edit payout details",
-    "flowTitle": "How a payout moves",
+    "destinationTitle": "支払いが送られる場所",
+    "destinationLead": "支払いを送信したいアドレス。",
+    "destinationUnreadable": "支払いの詳細を読み取ることができませんでした。",
+    "editPayoutLink": "支払いの詳細を編集する",
+    "flowTitle": "支払いの動き方",
     "flowSteps": [
-      "1. A qualifying sale records your commission.",
-      "2. That commission is held for 14 days after the sale is confirmed.",
-      "3. After the hold, if the sale still stands, it is ready to pay.",
-      "4. AI MARK records the payout and sends it to your USDC address.",
-      "5. A refund or cancellation adjusts what is owed."
+      "1. 対象となる販売では手数料が記録されます。",
+      "2. そのコミッションは、販売が確認されてから 14 日間保持されます。",
+      "3. 保留後も販売が継続している場合は、支払いの準備ができています。",
+      "4. AI MARK は支払いを記録し、USDC アドレスに送信します。",
+      "5. 返金またはキャンセルにより、未払い額が調整されます。"
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "statReady": "支払いの準備ができました",
+    "statPaid": "有料",
+    "tableEmpty": "まだ支払いはありません。 AI MARK は、手数料を支払う準備ができたときに支払いを記録します。"
   },
   "profile": {
-    "savedNotice": "Payout details saved.",
-    "accountTitle": "Account",
-    "labelFullName": "Full name",
-    "labelEmail": "Email",
-    "labelPhone": "Phone",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
-    "labelRegion": "Region",
-    "labelAvatarUrl": "Avatar URL",
-    "labelAccountCreated": "Account created",
-    "partnerRecordTitle": "Partner record",
-    "partnerRecordLead": "Platform-owned. These values cannot be changed from a partner session by design.",
-    "labelStatus": "Status",
-    "labelPartnerSince": "Partner since",
-    "payoutTitle": "Payout details",
-    "payoutLead": "Partner payouts are USDC. Default network is Solana. This form stores the destination on your profile. It does not send tokens.",
-    "payoutUnreadable": "Payout details could not be read, so they cannot be saved from this page.",
-    "labelRecipientName": "Recipient name",
-    "labelPayoutAsset": "Payout asset",
-    "labelNetwork": "Network",
-    "labelUsdcAddress": "USDC address",
-    "usdcPlaceholder": "Solana address",
-    "labelNotes": "Notes (optional)",
-    "savePayout": "Save payout details",
-    "referralTitle": "Referral link",
-    "referralLead": "Issued with the account. The partner record above stays read-only."
+    "savedNotice": "支払いの詳細が保存されました。",
+    "accountTitle": "アカウント",
+    "labelFullName": "フルネーム",
+    "labelEmail": "電子メール",
+    "labelPhone": "電話",
+    "labelLanguage": "言語",
+    "labelCountry": "国",
+    "labelRegion": "地域",
+    "labelAvatarUrl": "アバターURL",
+    "labelAccountCreated": "アカウントが作成されました",
+    "partnerRecordTitle": "パートナー記録",
+    "partnerRecordLead": "プラットフォーム所有。設計上、これらの値はパートナー セッションから変更できません。",
+    "labelStatus": "状態",
+    "labelPartnerSince": "以来のパートナー",
+    "payoutTitle": "支払いの詳細",
+    "payoutLead": "パートナーへの支払いは USDC です。デフォルトのネットワークは Solana です。このフォームには、プロフィール上の宛先が保存されます。トークンは送信されません。",
+    "payoutUnreadable": "支払いの詳細を読み取れなかったため、このページから保存できません。",
+    "labelRecipientName": "受信者名",
+    "labelPayoutAsset": "支払い資産",
+    "labelNetwork": "ネットワーク",
+    "labelUsdcAddress": "USDCアドレス",
+    "usdcPlaceholder": "ソラナの住所",
+    "labelNotes": "注記 (オプション)",
+    "savePayout": "支払いの詳細を保存する",
+    "referralTitle": "紹介リンク",
+    "referralLead": "アカウントと一緒に発行されます。上記のパートナー レコードは読み取り専用のままです。"
   },
   "copyReferralLink": {
-    "label": "Your referral link",
-    "copy": "Copy referral link",
-    "copied": "Copied",
-    "copiedStatus": "Referral link copied to your clipboard.",
-    "failedStatus": "Copying was blocked — select the link and copy it manually.",
-    "hint": "The link is live. Every visit is recorded and attributes a customer lead for 30 days; a partner who signs up through it is recorded as your referral. Add campaign parameters (for example ?utm_source=newsletter) to see where your clicks come from."
+    "label": "あなたの紹介リンク",
+    "copy": "紹介リンクをコピーする",
+    "copied": "コピーされました",
+    "copiedStatus": "紹介リンクがクリップボードにコピーされました。",
+    "failedStatus": "コピーはブロックされました — リンクを選択して手動でコピーします。",
+    "hint": "リンクはライブです。すべての訪問が記録され、30 日間の顧客見込み客が特定されます。それを通じてサインアップしたパートナーはあなたの紹介として記録されます。キャンペーン パラメータ (?utm_source=newsletter など) を追加して、クリックがどこから来たのかを確認します。"
   },
   "copyLine": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "コピー",
+    "copied": "コピーされました"
   },
   "copyText": {
-    "copy": "Copy",
-    "copied": "Copied"
+    "copy": "コピー",
+    "copied": "コピーされました"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "パートナー",
+    "growth": "成長",
+    "regional": "地域別",
+    "strategic": "戦略的",
+    "suspended": "一時停止中"
   },
-  "defaultPartnerName": "Partner"
-} as CabinetCopy;
+  "defaultPartnerName": "パートナー"
+};
