@@ -13,6 +13,10 @@ import {
   provisioningBackoffMinutes,
   provisioningConfigForProduct,
 } from "./config";
+import {
+  productPlanForSku,
+  provisioningPlanMissingReason,
+} from "./plans";
 
 type SubscriptionRow = {
   id: string;
@@ -45,6 +49,17 @@ export async function enqueueSubscriptionProvisioning(
   const productConfig = provisioningConfigForProduct(config.product);
   if (!productConfig) {
     await markManual(admin, config, input.invoiceRef, "provisioning URL not configured");
+    return;
+  }
+
+  const plan = productPlanForSku(config.product, config.sku);
+  if (!plan) {
+    await markManual(
+      admin,
+      config,
+      input.invoiceRef,
+      provisioningPlanMissingReason(config.product, config.sku),
+    );
     return;
   }
 
@@ -157,6 +172,8 @@ async function processSubscription(
     return false;
   }
 
+  const productPlan = productPlanForSku(sub.product, sub.sku);
+
   const pendingLogs = await admin
     .from("subscription_provisioning_log")
     .select("id, action, status, idempotency_key, invoice_ref")
@@ -185,9 +202,18 @@ async function processSubscription(
   for (const log of logs) {
     const invoiceRef = log.invoice_ref as string;
     if (log.action === "create") {
+      if (!productPlan) {
+        await markManual(
+          admin,
+          sub,
+          invoiceRef,
+          provisioningPlanMissingReason(sub.product, sub.sku),
+        );
+        return false;
+      }
       const body: TenantCreateBody = {
         email: sub.email,
-        plan: sub.sku,
+        plan: productPlan,
         invoice_no: invoiceRef,
         partner_code: sub.referral_code,
       };

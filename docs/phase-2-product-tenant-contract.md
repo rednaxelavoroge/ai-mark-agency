@@ -12,9 +12,9 @@ AI MARK calls each product’s tenant API after a treasury invoice is fulfilled 
 
 | Product | Base URL env | Secret env |
 |---------|--------------|------------|
-| AIME (`product_ref=aime`) | `AIME_PROVISIONING_URL` | `AIME_PROVISIONING_SECRET` |
-| Business Assistant (`assistant`) | `ASSISTANT_PROVISIONING_URL` | `ASSISTANT_PROVISIONING_SECRET` |
-| SHOWROOM AI (`showroom`) | `SHOWROOM_PROVISIONING_URL` | `SHOWROOM_PROVISIONING_SECRET` |
+| AIME (`product_ref=aime`) | `AIME_PROVISIONING_URL` (e.g. `https://panel.alex-dev.pro/api/provisioning`) | `AIME_PROVISIONING_SECRET` |
+| Business Assistant (`assistant`) | `ASSISTANT_PROVISIONING_URL` (e.g. `https://app.alex-dev.pro/api/provisioning`) | `ASSISTANT_PROVISIONING_SECRET` |
+| SHOWROOM AI (`showroom`) | — (no API yet; manual queue) | — |
 
 If a product’s URL is unset, provisioning is queued for manual activation.
 
@@ -29,13 +29,13 @@ Request body:
 ```json
 {
   "email": "buyer@example.com",
-  "plan": "aime-lite",
+  "plan": "lite",
   "invoice_no": "INV-20260929-ABCD",
   "partner_code": "alex42"
 }
 ```
 
-- `plan` — published SKU id from AI MARK (`PAYABLE_SKUS`)
+- `plan` — product API plan id (`lite` / `pro` for AIME, `entry` / `standard` for Assistant), mapped from AI MARK SKU in `lib/provisioning/plans.ts`
 - `partner_code` — frozen referral code from the subscription (nullable)
 
 Response `201` or `200`:

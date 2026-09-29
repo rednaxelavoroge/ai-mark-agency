@@ -18,6 +18,13 @@ export function idempotencyKey(invoiceRef: string, action: string): string {
   return `${invoiceRef}:${action}`;
 }
 
+/** Join provisioning base URL (may end with /api/provisioning) and path (/tenants, …). */
+export function joinProvisioningPath(baseUrl: string, path: string): string {
+  const base = baseUrl.trim().replace(/\/+$/, "");
+  const suffix = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${suffix}`;
+}
+
 export async function provisioningFetch<T>(
   baseUrl: string,
   secret: string,
@@ -28,7 +35,7 @@ export async function provisioningFetch<T>(
     body?: unknown;
   },
 ): Promise<ProvisioningHttpResult<T>> {
-  const url = `${baseUrl.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
+  const url = joinProvisioningPath(baseUrl, path);
   try {
     const res = await fetch(url, {
       method: options.method,
