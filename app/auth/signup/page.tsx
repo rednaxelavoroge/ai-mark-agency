@@ -30,7 +30,11 @@ export default async function SignupPage({
       lead="One account gives you your Partner ID, a referral code and the partner dashboard."
       footer={
         <p className="text-xs text-muted">
-          Programme rules are confirmed with you during onboarding, before you sell. Read the{" "}
+          Read the{" "}
+          <Link href="/en/partners/agreement" className="link-underline text-paper">
+            partner agreement
+          </Link>{" "}
+          and the{" "}
           <Link href="/privacy" className="link-underline text-paper">
             privacy notice
           </Link>

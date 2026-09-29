@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import {
+  PARTNER_AGREEMENT_COOKIE,
+  PARTNER_AGREEMENT_VERSION,
+} from "@/lib/partner/agreement";
 import { signInWithGoogle, signUpWithPassword } from "@/app/auth/actions";
 import {
   idleAuthState,
@@ -76,6 +80,7 @@ export function SignupForm({
   next: string;
   disabled: boolean;
 }) {
+  const [accepted, setAccepted] = useState(false);
   const [state, action, pending] = useActionState(
     signUpWithPassword,
     idleAuthState,
@@ -87,22 +92,41 @@ export function SignupForm({
 
   const failed = state.status === "error";
   const sent = state.status === "sent";
+  const blocked = disabled || !accepted;
+
+  useEffect(() => {
+    if (!accepted) return;
+    document.cookie = `${PARTNER_AGREEMENT_COOKIE}=${PARTNER_AGREEMENT_VERSION}; path=/; max-age=3600; SameSite=Lax`;
+  }, [accepted]);
 
   return (
     <div className="grid gap-6">
-      {/*
-        The existing Google action, not a second OAuth flow. It posts `next`
-        and, when a referral cookie is present, sends `ref=1` to /auth/callback.
-        Supabase creates the partner on the first round trip; a later one is a
-        normal sign-in. A disabled provider returns that action's own message.
-      */}
+      <label className="flex gap-3 text-xs leading-relaxed text-muted">
+        <input
+          type="checkbox"
+          className="mt-0.5"
+          checked={accepted}
+          onChange={(e) => setAccepted(e.target.checked)}
+          disabled={disabled}
+        />
+        <span>
+          I accept the{" "}
+          <Link href="/en/partners/agreement" className="link-underline text-paper">
+            partner agreement
+          </Link>
+          .
+        </span>
+      </label>
+
       <form action={googleAction} className="grid gap-3">
         <input type="hidden" name="next" value={next} />
+        <input type="hidden" name="signup" value="1" />
+        {accepted ? <input type="hidden" name="accept_agreement" value="1" /> : null}
 
         <button
           type="submit"
           className={outlineButtonClass}
-          disabled={disabled || googlePending || pending}
+          disabled={blocked || googlePending || pending}
         >
           <GoogleMark />
           {googlePending ? "Opening Google…" : "Continue with Google"}
@@ -121,6 +145,7 @@ export function SignupForm({
 
       <form action={action} className="grid gap-4">
         <input type="hidden" name="next" value={next} />
+        {accepted ? <input type="hidden" name="accept_agreement" value="1" /> : null}
 
         <label className={labelClass}>
           <span className="text-muted">Full name</span>
@@ -177,7 +202,7 @@ export function SignupForm({
         <button
           type="submit"
           className={primaryButtonClass}
-          disabled={disabled || pending || sent || googlePending}
+          disabled={blocked || pending || sent || googlePending}
         >
           {pending ? "Creating account…" : "Create partner account"}
         </button>
