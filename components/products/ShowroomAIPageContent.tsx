@@ -11,6 +11,7 @@ import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
+import { FeatureList } from "@/components/products/FeatureList";
 
 export function ShowroomAIPageContent({
   locale,
@@ -37,7 +38,7 @@ export function ShowroomAIPageContent({
           <div className="mb-6">
             <BackButton locale={locale} targetHref="/#products" />
           </div>
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="am-hero-split grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
                 <span className="h-1.5 w-1.5 rounded-full bg-mark animate-pulse" />
@@ -52,24 +53,28 @@ export function ShowroomAIPageContent({
               </h1>
 
               <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-                {c.subtitle}
+                {brief(c.subtitle)}
               </p>
-
-              <p className="mt-4 text-sm font-medium leading-relaxed text-paper">
-                {ru
-                  ? "Обращение → потребность → квалификация → подбор → расчёт → коммерческое предложение → менеджер"
-                  : "Inquiry → need → qualification → selection → calculation → commercial proposal → manager"}
-              </p>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-                {ru
-                  ? "Меньше ручной обработки обращений, быстрее переход от запроса к предложению. Менеджер подключается там, где нужна сложная или финальная коммуникация. AI не заменяет отдел продаж."
-                  : "Less manual handling of inquiries, and a shorter path from request to proposal. A manager joins where the conversation is complex or final. The AI does not replace the sales team."}
-              </p>
-              <p className="mt-3 text-sm text-paper/90">
-                {ru
-                  ? "Ассистент отвечает и квалифицирует. Showroom AI продаёт и готовит сделку."
-                  : "The assistant answers and qualifies. Showroom AI sells and prepares the deal."}
-              </p>
+              <details className="mt-3 rounded-xl border border-white/20">
+                <summary className="cursor-pointer list-none px-3 py-2 text-xs font-semibold text-[#f4f6ee]">
+                  {ru ? "Как устроена сделка" : "How a deal moves"}
+                </summary>
+                <p className="px-3 pb-2 text-sm font-medium leading-relaxed text-[#f4f6ee]">
+                  {ru
+                    ? "Обращение → потребность → квалификация → подбор → расчёт → коммерческое предложение → менеджер"
+                    : "Inquiry → need → qualification → selection → calculation → commercial proposal → manager"}
+                </p>
+                <p className="px-3 pb-2 text-sm leading-relaxed text-[#d3ddd2]">
+                  {ru
+                    ? "Меньше ручной обработки обращений, быстрее переход от запроса к предложению. Менеджер подключается там, где нужна сложная или финальная коммуникация. AI не заменяет отдел продаж."
+                    : "Less manual handling of inquiries, and a shorter path from request to proposal. A manager joins where the conversation is complex or final. The AI does not replace the sales team."}
+                </p>
+                <p className="px-3 pb-3 text-sm text-[#f4f6ee]">
+                  {ru
+                    ? "Ассистент отвечает и квалифицирует. Showroom AI продаёт и готовит сделку."
+                    : "The assistant answers and qualifies. Showroom AI sells and prepares the deal."}
+                </p>
+              </details>
 
               {/* CTAs */}
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -114,11 +119,7 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            <details className="rounded-2xl border border-white/20 bg-white/5">
-              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-[#f4f6ee]">
-                {ru ? "Схема интерфейса" : "Interface sketch"}
-              </summary>
-            <div className="am-hero-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 shadow-xl space-y-4 sm:p-6">
+            <div className="am-hero-visual am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-4 shadow-xl space-y-3">
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <span className="font-mono text-xs font-semibold text-paper uppercase">
                   {c.heroSpec.title}
@@ -150,7 +151,6 @@ export function ShowroomAIPageContent({
                 <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               </div>
             </div>
-            </details>
           </div>
         </div>
       </section>
@@ -296,7 +296,7 @@ export function ShowroomAIPageContent({
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="am-step-grid mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {c.capabilities.map((cap) => (
               <div
                 key={cap.num}
@@ -328,7 +328,7 @@ export function ShowroomAIPageContent({
                 {c.workflowSub}
               </p>
 
-              <div className="mt-6 space-y-3">
+              <div className="am-step-grid mt-4 grid grid-cols-2 gap-2">
                 {c.workflowSteps.map((ws) => (
                   <div
                     key={ws.num}
@@ -346,8 +346,11 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            {/* Deterministic & Multi-Tenant Details */}
-            <div className="space-y-6">
+            <details className="rounded-2xl border border-line">
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">
+                {ru ? "Расчёт и изоляция данных" : "Calculation and data isolation"}
+              </summary>
+            <div className="space-y-6 p-4">
               <div className="rounded-2xl border border-mark/30 bg-mark/5 p-6 sm:p-7">
                 <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider block mb-2">
                   🛡 {c.deterministicTitle}
@@ -378,6 +381,7 @@ export function ShowroomAIPageContent({
                 </div>
               </div>
             </div>
+            </details>
           </div>
         </div>
       </section>
@@ -397,11 +401,11 @@ export function ShowroomAIPageContent({
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
             {c.pricingTiers.map((tier) => (
               <div
                 key={tier.name}
-                className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:border-line-strong hover:shadow-lg"
+                className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-4 shadow-sm"
               >
                 <div>
                   <h3 className="font-display text-2xl font-semibold text-paper">{tier.name}</h3>
@@ -411,14 +415,7 @@ export function ShowroomAIPageContent({
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-muted">{tier.desc}</p>
 
-                  <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
-                    {tier.features.map((f, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <FeatureList items={tier.features} locale={locale} />
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-line">

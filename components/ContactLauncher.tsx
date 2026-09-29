@@ -155,6 +155,12 @@ function injectHideBubbleStyle() {
     html[data-teaser-seen] .aiba-root .aiba-greeting {
       display: none !important;
     }
+    /* Phones show only the launcher. The greeting must not auto-open. */
+    @media (max-width: 760px) {
+      .aiba-root .aiba-greeting {
+        display: none !important;
+      }
+    }
     /* Hosted widget footer links the BA product origin (alex-dev.pro). Hide it. */
     .aiba-root .aiba-footer { display: none !important; }
   `;

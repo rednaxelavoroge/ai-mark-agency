@@ -12,6 +12,7 @@ import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
+import { FeatureList } from "@/components/products/FeatureList";
 
 export function AIBAPageContent({
   locale,
@@ -39,7 +40,7 @@ export function AIBAPageContent({
           <div className="mb-6">
             <BackButton locale={locale} targetHref="/#products" />
           </div>
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="am-hero-split grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
                 <span className="h-1.5 w-1.5 rounded-full bg-mark animate-pulse" />
@@ -88,11 +89,7 @@ export function AIBAPageContent({
               </div>
             </div>
 
-            <details className="rounded-2xl border border-white/20 bg-white/5">
-              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-[#f4f6ee]">
-                {isRu ? "Схема интерфейса" : "Interface sketch"}
-              </summary>
-            <div className="am-hero-visual relative px-2 pb-4">
+            <div className="am-hero-visual am-page-visual relative overflow-hidden rounded-2xl">
               <ConstellationOverlays cardKind="handoff" locale={locale}>
                 <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-line pb-3">
@@ -139,7 +136,6 @@ export function AIBAPageContent({
                 </div>
               </ConstellationOverlays>
             </div>
-            </details>
           </div>
         </div>
       </section>
@@ -159,7 +155,7 @@ export function AIBAPageContent({
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="am-step-grid mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {c.channels.map((ch) => (
               <div
                 key={ch.type}
@@ -276,7 +272,7 @@ export function AIBAPageContent({
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="am-step-grid mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {c.steps.map((st) => (
               <div
                 key={st.num}
@@ -338,8 +334,11 @@ export function AIBAPageContent({
               </div>
             </div>
 
-            {/* CRM Connectors */}
-            <div>
+            <details className="rounded-2xl border border-line">
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">
+                {isRu ? "CRM и интеграции" : "CRM and integrations"}
+              </summary>
+            <div className="p-4">
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
                 {section("06", "CRM and integrations", "CRM и интеграции")}
               </span>
@@ -376,6 +375,7 @@ export function AIBAPageContent({
                 ))}
               </div>
             </div>
+            </details>
           </div>
         </div>
       </section>
@@ -395,11 +395,11 @@ export function AIBAPageContent({
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
             {c.plans.map((p) => (
               <div
                 key={p.id}
-                className={`flex flex-col justify-between rounded-2xl border p-6 sm:p-7 ${
+                className={`flex flex-col justify-between rounded-2xl border p-4 ${
                   p.badge
                     ? "border-mark/60 bg-ink-2 shadow-xl relative"
                     : "border-line bg-ink-2"
@@ -418,14 +418,7 @@ export function AIBAPageContent({
                   </div>
                   <p className="mt-1 font-mono text-[10px] text-warm">{p.note}</p>
 
-                  <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
-                    {p.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <FeatureList items={p.features} locale={locale} />
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-line">

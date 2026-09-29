@@ -401,13 +401,13 @@ export default async function PartnersPage({ params }: Props) {
       </section>
 
       <section id="market" className="scroll-mt-24 border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.marketEyebrow}</p>
             <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.marketTitle}</h2>
             <p className="mt-4 max-w-3xl text-muted">{brief(t.marketLead)}</p>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="am-step-grid mt-6 grid gap-3 grid-cols-2 lg:grid-cols-4">
             {t.market.map((item, i) => (
               <article key={item.title} data-reveal style={reveal(i * 80)} className="rounded-2xl border border-line bg-ink-2 p-6 transition hover:-translate-y-1 hover:border-line-strong hover:shadow-md">
                 <div className="flex items-center justify-between"><span className="font-mono text-[10px] font-semibold tracking-[0.18em] text-warm">0{i + 1}</span><span className="h-1.5 w-1.5 rounded-full bg-mark" /></div>
@@ -423,13 +423,13 @@ export default async function PartnersPage({ params }: Props) {
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.productEyebrow}</p>
             <h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.productTitle}</h2>
             <p className="mt-4 max-w-3xl text-muted">{brief(t.productLead)}</p>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="am-step-grid mt-6 grid gap-3 grid-cols-2">
             {t.products.map((product, i) => (
               <article key={product.name} data-reveal style={reveal(i * 90)} className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-6 sm:p-7">
                 <div>
@@ -448,16 +448,16 @@ export default async function PartnersPage({ params }: Props) {
       </section>
 
       <section id="how-it-works" className="scroll-mt-24 border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.howEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.modelTitle}</h2><p className="mt-4 max-w-2xl text-muted">{brief(t.modelLead)}</p></div>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="am-step-grid mt-6 grid gap-px overflow-hidden rounded-2xl border border-line bg-line grid-cols-2 lg:grid-cols-3">
             {t.steps.map((step) => <article key={step.n} className="bg-ink p-6 sm:p-7" data-reveal><span className="font-mono text-xs font-semibold text-warm">{step.n}</span><h3 className="mt-3 font-display text-base font-semibold text-paper">{step.title}</h3><p className="mt-2 text-xs leading-relaxed text-muted">{brief(step.body)}</p></article>)}
           </div>
         </div>
       </section>
 
       <section id="network" className="scroll-mt-24 border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.networkEyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.networkTitle}</h2>
@@ -466,7 +466,7 @@ export default async function PartnersPage({ params }: Props) {
             <p className="mt-2 max-w-3xl text-sm text-muted">{brief(t.poolLead)}</p>
           </div>
           <div className="mt-10 overflow-hidden rounded-2xl border border-line bg-ink-2">
-            <div className="grid md:grid-cols-5">
+            <div className="am-step-grid grid grid-cols-2 md:grid-cols-5">
               {t.levels.map((level, i) => (
                 <div
                   key={level.n}
@@ -511,33 +511,31 @@ export default async function PartnersPage({ params }: Props) {
       </section>
 
       <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{brief(t.statusLead)}</p></div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-4">
+          <div className="am-step-grid mt-6 grid gap-3 grid-cols-2 lg:grid-cols-4">
             {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex flex-col rounded-2xl border border-line bg-ink-2 p-5"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{brief(status.body)}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
           </div>
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {locale === "ru" ? "Инфраструктура и рынки" : "Infrastructure and markets"}
-        </summary>
       <section className="border-b border-line">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-8 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.kitEyebrow}</p><h2 className="mt-3 font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.kitTitle}</h2><p className="mt-4 text-muted">{t.kitLead}</p></div>
-          <div className="grid gap-3 sm:grid-cols-2" data-reveal style={reveal(120)}>{t.kit.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-[10px] font-bold text-mark-ink">{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
+          <div className="am-step-grid grid grid-cols-2 gap-3" data-reveal style={reveal(120)}>{t.kit.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-[10px] font-bold text-mark-ink">{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
         </div>
       </section>
 
-      <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <details className="border-b border-line bg-ink-2/20">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {locale === "ru" ? "Глобальное расширение" : "Global expansion"}
+        </summary>
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
+          <div className="am-step-grid mt-6 grid grid-cols-2 gap-3" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
         </div>
-      </section>
-
       </details>
+
       <section className="border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.faqEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.faqTitle}</h2></div>

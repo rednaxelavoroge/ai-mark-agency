@@ -1104,6 +1104,72 @@ main {
 .am-forest-hero .border-line { border-color: rgba(255, 255, 255, 0.22); }
 .am-forest-hero .border-mark\/20 { border-color: rgba(212, 242, 126, 0.35); }
 
+/* "Back to home" sits on the forest hero. Forest recolors .text-paper to
+   near-white while bg-ink-2/90 stays a light wash, so the label failed
+   contrast. Pin ink on paper for both themes. */
+.am-back,
+.am-forest-hero .am-back,
+.am-forest-hero .am-back span,
+[data-theme="dark"] .am-back,
+[data-theme="light"] .am-back {
+  background: #fffefa !important;
+  color: #14291f !important;
+  border-color: #14291f !important;
+}
+.am-back:hover,
+.am-forest-hero .am-back:hover {
+  background: #e7efe4 !important;
+  color: #14291f !important;
+}
+
+/* Sample page-visual: a visible hero frame, not a full dashboard. */
+.am-page-visual {
+  min-height: 340px;
+  max-height: 340px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+@media (max-width: 760px) {
+  .am-hero-split {
+    display: flex;
+    flex-direction: column;
+  }
+  .am-hero-split .am-page-visual {
+    order: -1;
+  }
+}
+
+/* Sample step-grid is two columns from 390px up. Tailwind sm:/md: prefixes
+   leave these lists as one tall column on a phone. */
+@media (max-width: 760px) {
+  .am-step-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .am-step-grid > * {
+    padding: 12px !important;
+    min-height: 0;
+  }
+  .am-step-grid h3,
+  .am-step-grid h4 {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.25;
+  }
+  .am-step-grid p {
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .am-price-grid {
+    gap: 10px !important;
+    margin-top: 1.25rem !important;
+  }
+  .am-price-grid > * {
+    padding: 14px !important;
+  }
+}
+
 /* Product mock inside the forest hero must stay a solid card. The hero
    recolors every .bg-ink-2 to a translucent wash, which turned the mock
    into an empty dark block on all three product pages. */
