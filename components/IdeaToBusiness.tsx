@@ -36,11 +36,9 @@ const ARTIFACT_LABEL_FALLBACK: Record<string, string> = {
 function Artifact({
   kind,
   sectionCopy,
-  locale,
 }: {
   kind: string;
   sectionCopy: IdeaToBusinessCopy;
-  locale: Locale;
 }) {
   const label =
     sectionCopy.artifactLabel[kind as keyof typeof sectionCopy.artifactLabel] ??
@@ -82,7 +80,7 @@ function Artifact({
     return (
       <div className={base}>
         <div className="grid w-full max-w-[140px] grid-cols-2 gap-1.5">
-          {(locale === "ru" ? ["Сегменты", "Монетизация", "Каналы", "CAC / LTV"] : ["Segments", "Pricing", "Channels", "CAC / LTV"]).map((t) => (
+          {sectionCopy.artifactGrid.map((t) => (
             <span
               key={t}
               className="rounded-md border border-line/70 px-2 py-2 text-center font-mono text-[9px] text-paper/85"
@@ -100,7 +98,7 @@ function Artifact({
         <div className="text-center">
           <p className="font-display text-2xl font-semibold text-paper">AI MARK</p>
           <p className="mt-1 font-mono text-[9px] tracking-widest uppercase opacity-80">
-            {locale === "ru" ? "система айдентики" : "identity system"}
+            {sectionCopy.artifactBrandSubtitle}
           </p>
         </div>
       </div>
@@ -393,7 +391,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
 
                 {/* Center artifact */}
                 <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] min-h-[86px] min-w-[86px] -translate-x-1/2 -translate-y-1/2" style={{ color: accent(active) }}>
-                  <Artifact kind={current.artifact} sectionCopy={copy} locale={locale} />
+                  <Artifact kind={current.artifact} sectionCopy={copy} />
                 </div>
 
                 {/* Satellite nodes — clean glowing badges around the dial ring, zero label collision */}

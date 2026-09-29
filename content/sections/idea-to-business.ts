@@ -16,6 +16,8 @@ export type IdeaToBusinessCopy = {
   artifactCaption: Record<string, string>;
   artifactLabel: Record<string, string>;
   artifactMicro: { seed: string };
+  artifactGrid: string[];
+  artifactBrandSubtitle: string;
 };
 
 export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
@@ -27,6 +29,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Segments","Pricing","Channels","CAC / LTV"],
+    "artifactBrandSubtitle": "identity system",
     "stages": [
       {
         "kicker": "Input",
@@ -103,6 +107,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Segmentos","Monetización","Canales","CAC / LTV"],
+    "artifactBrandSubtitle": "sistema de identidad",
     "stages": [
       {
         "kicker": "Input",
@@ -179,6 +185,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Segmentos","Monetização","Canais","CAC / LTV"],
+    "artifactBrandSubtitle": "sistema de identidade",
     "stages": [
       {
         "kicker": "Input",
@@ -255,6 +263,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "идея · гипотеза"
     },
+    "artifactGrid": ["Сегменты","Монетизация","Каналы","CAC / LTV"],
+    "artifactBrandSubtitle": "система айдентики",
     "stages": [
       {
         "kicker": "Вход",
@@ -331,6 +341,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["الشرائح","تحقيق الدخل","القنوات","CAC / LTV"],
+    "artifactBrandSubtitle": "نظام الهوية",
     "stages": [
       {
         "kicker": "Input",
@@ -407,6 +419,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["细分","变现","渠道","CAC / LTV"],
+    "artifactBrandSubtitle": "识别系统",
     "stages": [
       {
         "kicker": "Input",
@@ -483,6 +497,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Segmen","Monetisasi","Saluran","CAC / LTV"],
+    "artifactBrandSubtitle": "sistem identitas",
     "stages": [
       {
         "kicker": "Input",
@@ -559,6 +575,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Phân khúc","Monet hóa","Kênh","CAC / LTV"],
+    "artifactBrandSubtitle": "hệ thống nhận diện",
     "stages": [
       {
         "kicker": "Input",
@@ -635,6 +653,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
   "artifactMicro": {
     "seed": "Idee · Hypothese"
   },
+    "artifactGrid": ["Segmente","Monetarisierung","Kanäle","CAC / LTV"],
+    "artifactBrandSubtitle": "Identitätssystem",
   "stages": [
     {
       "kicker": "Einstieg",
@@ -711,6 +731,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Segments","Monétisation","Canaux","CAC / LTV"],
+    "artifactBrandSubtitle": "système d'identité",
     "stages": [
       {
         "kicker": "Input",
@@ -787,6 +809,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["セグメント","マネタイズ","チャネル","CAC / LTV"],
+    "artifactBrandSubtitle": "アイデンティティ体系",
     "stages": [
       {
         "kicker": "Input",
@@ -863,6 +887,8 @@ export const ideaToBusinessCopy: Record<Locale, IdeaToBusinessCopy> = {
     "artifactMicro": {
       "seed": "idea · hypothesis"
     },
+    "artifactGrid": ["Segmentler","Monetizasyon","Kanallar","CAC / LTV"],
+    "artifactBrandSubtitle": "kimlik sistemi",
     "stages": [
       {
         "kicker": "Input",
