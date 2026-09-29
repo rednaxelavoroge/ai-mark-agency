@@ -568,6 +568,13 @@ export const copyPt: Copy = {
     "company": "Empresa",
     "optional": "opcional"
   },
+  "pay": {
+    "email": "E-mail",
+    "emailHint": "Obrigatório. A assinatura e o recibo usam este endereço.",
+    "name": "Nome",
+    "company": "Empresa",
+    "optional": "opcional"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

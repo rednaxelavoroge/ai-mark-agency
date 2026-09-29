@@ -568,6 +568,13 @@ export const copyAr: Copy = {
     "company": "الشركة",
     "optional": "اختياري"
   },
+  "pay": {
+    "email": "البريد الإلكتروني",
+    "emailHint": "مطلوب. الاشتراك والإيصال يستخدمان هذا العنوان.",
+    "name": "الاسم",
+    "company": "الشركة",
+    "optional": "اختياري"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

@@ -568,6 +568,13 @@ export const copyVi: Copy = {
     "company": "Công ty",
     "optional": "không bắt buộc"
   },
+  "pay": {
+    "email": "Email",
+    "emailHint": "Bắt buộc. Gói đăng ký và biên nhận dùng địa chỉ này.",
+    "name": "Tên",
+    "company": "Công ty",
+    "optional": "không bắt buộc"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
