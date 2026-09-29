@@ -16,7 +16,6 @@ import {
   type PaymentAsset,
 } from "@/lib/crypto/networks";
 import { getCopy } from "@/content/copy";
-import { FinanceFlow } from "@/components/visuals/ProductScenes";
 import { localePath, isLocale, type Locale } from "@/lib/site";
 import { readReferralAttribution } from "@/lib/referral/attribution";
 import { issuePaymentInvoice } from "./actions";
@@ -85,10 +84,6 @@ export default async function PayPage({ params, searchParams }: Props) {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
-      <div className="mb-8" data-motion>
-        <FinanceFlow />
-      </div>
-
       <PageHeader
         eyebrow="AI MARK"
         title={ru ? "Оплата на кошелёк AI MARK" : "Pay to an AI MARK wallet"}
@@ -116,6 +111,34 @@ export default async function PayPage({ params, searchParams }: Props) {
           {ui.cardOption}
         </span>
       </div>
+
+      <section className="mt-8">
+        <h2 className="font-display text-xl font-semibold text-paper">
+          {ru ? "Опубликованные суммы" : "Published amounts"}
+        </h2>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          {PAYABLE_SKUS.map((sku) => (
+            <li key={sku.id} className={`px-4 py-3 ${cardClass}`}>
+              <p className="text-sm font-semibold text-paper">{sku.name}</p>
+              <p className="mt-1 font-mono text-sm text-mark">{formatUsdAmount(sku.amountUsd)} USD</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="font-display text-xl font-semibold text-paper">
+          {ru ? "Сети USDT и USDC" : "USDT and USDC networks"}
+        </h2>
+        <ol className="mt-4 grid gap-2 sm:grid-cols-2">
+          {PAYMENT_NETWORKS.map((network, index) => (
+            <li key={network} className={`px-4 py-3 text-sm ${cardClass}`}>
+              <span className="font-mono text-xs text-muted">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mt-1 block font-semibold text-paper">{NETWORK_LABELS[network]}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       {rails.length === 0 ? (
         <section className={`mt-8 p-5 sm:p-6 ${cardClass}`}>

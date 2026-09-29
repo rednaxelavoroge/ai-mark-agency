@@ -87,8 +87,11 @@ export function AIBAPageContent({
               </div>
             </div>
 
-            {/* Simulated Live Multi-Channel Inbox Scene */}
-            <div className="am-hero-visual relative pb-0 sm:pb-14">
+            <details className="rounded-2xl border border-white/20 bg-white/5">
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-[#f4f6ee]">
+                {isRu ? "Схема интерфейса" : "Interface sketch"}
+              </summary>
+            <div className="am-hero-visual relative px-2 pb-4">
               <ConstellationOverlays cardKind="handoff" locale={locale}>
                 <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-line pb-3">
@@ -135,12 +138,13 @@ export function AIBAPageContent({
                 </div>
               </ConstellationOverlays>
             </div>
+            </details>
           </div>
         </div>
       </section>
 
       {/* 2. CHANNELS SECTION */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -176,8 +180,12 @@ export function AIBAPageContent({
         </div>
       </section>
 
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {isRu ? "Автоматизация и панель" : "Automation and panel"}
+        </summary>
       {/* 3. WHAT WE AUTOMATE */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -206,7 +214,7 @@ export function AIBAPageContent({
       </section>
 
       {/* 4. CLIENT PANEL SHOWCASE WITH SCREENSHOT TABS */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -251,8 +259,9 @@ export function AIBAPageContent({
         </div>
       </section>
 
+      </details>
       {/* 5. HOW IT WORKS: 7-STEP WORKFLOW */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -288,7 +297,7 @@ export function AIBAPageContent({
       </section>
 
       {/* 6. HANDOFF BALANCE & CRM INTEGRATIONS */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Handoff Split */}
@@ -371,7 +380,7 @@ export function AIBAPageContent({
       </section>
 
       {/* 7. PRICING & TURNKEY SETUP */}
-      <section id="pricing" className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section id="pricing" className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -459,7 +468,7 @@ export function AIBAPageContent({
       </section>
 
       {/* 8. FAQ */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -501,10 +510,15 @@ export function AIBAPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} locale={locale} scenario="assistant" />
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {isRu ? "Оставить контакты" : "Leave your contacts"}
+        </summary>
+        <LeadInquiry contact={contact} locale={locale} scenario="assistant" />
+      </details>
 
       {/* 9. BOTTOM BANNER */}
-      <section className="py-16 sm:py-20">
+      <section className="py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">

@@ -1180,6 +1180,12 @@ main {
   .hero-art-wrap { min-height: 280px; }
 }
 
+/* Tailwind's section reset can beat the UA rule that hides closed <details>,
+   so a wrapped section stays in the scroll height. Force the closed state. */
+details:not([open]) > :not(summary) {
+  display: none !important;
+}
+
 /* Below-fold home blocks can skip layout/paint until scrolled near. */
 .home-defer {
   content-visibility: auto;

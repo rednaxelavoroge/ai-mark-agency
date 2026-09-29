@@ -8,7 +8,7 @@ import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual"
 import { LevelRings } from "@/components/visuals/ProductScenes";
 import { getCopy } from "@/content/copy";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
-import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
+import { type ProductVariant } from "@/components/ui/ProductUI";
 import { PRODUCT_PATHS } from "@/lib/products";
 import { digitalProductionPath } from "@/lib/digital-production";
 import { partnerProgramTerms } from "@/content/partner-program";
@@ -427,9 +427,8 @@ export default async function PartnersPage({ params }: Props) {
           </div>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {t.products.map((product, i) => (
-              <article key={product.name} data-reveal style={reveal(i * 90)} className="catalog-card peek-host group overflow-hidden rounded-2xl border border-line bg-ink-2 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-xl">
-                <div className="p-4 sm:p-5"><div className="overflow-hidden rounded-xl border border-line bg-ink-3/30"><ProductUI variant={product.variant} ratio="aspect-[16/8.8]" peek /></div></div>
-                <div className="border-t border-line p-6 sm:p-7">
+              <article key={product.name} data-reveal style={reveal(i * 90)} className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-6 sm:p-7">
+                <div>
                   <div className="flex items-center justify-between gap-3"><span className="font-mono text-[10px] font-semibold tracking-[0.14em] text-warm uppercase">{product.type}</span><span className="h-1.5 w-1.5 rounded-full bg-mark" /></div>
                   <h3 className="mt-3 font-display text-xl font-semibold text-paper">{product.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{product.body}</p>
@@ -491,12 +490,17 @@ export default async function PartnersPage({ params }: Props) {
                 ))}
               </dl>
               <p className="mt-3 text-xs leading-relaxed text-paper/80">{t.exampleFoot}</p>
-              <p className="mt-3 text-xs leading-relaxed text-muted">{terms.note}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.example}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.lock}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.payout}</p>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{terms.country}</p>
+              <details className="mt-3">
+                <summary className="cursor-pointer list-none text-sm font-semibold text-mark">
+                  {locale === "ru" ? "Условия сети" : "Network terms"}
+                </summary>
+                <p className="mt-3 text-xs leading-relaxed text-muted">{terms.note}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.example}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.lock}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.payout}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.country}</p>
+              </details>
             </div>
           </div>
         </div>
@@ -506,13 +510,17 @@ export default async function PartnersPage({ params }: Props) {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.statusLead}</p></div>
           <div className="mt-10 grid gap-5 lg:grid-cols-4">
-            {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex min-h-[250px] flex-col rounded-2xl border border-line bg-ink-2 p-6 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-md"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{status.body}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
+            {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex flex-col rounded-2xl border border-line bg-ink-2 p-5"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{status.body}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
           </div>
         </div>
       </section>
 
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {locale === "ru" ? "Инфраструктура и рынки" : "Infrastructure and markets"}
+        </summary>
       <section className="border-b border-line">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-8 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.kitEyebrow}</p><h2 className="mt-3 font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.kitTitle}</h2><p className="mt-4 text-muted">{t.kitLead}</p></div>
           <div className="grid gap-3 sm:grid-cols-2" data-reveal style={reveal(120)}>{t.kit.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mark text-[10px] font-bold text-mark-ink">{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
         </div>
@@ -521,21 +529,24 @@ export default async function PartnersPage({ params }: Props) {
       <section className="border-b border-line bg-ink-2/20">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl lg:text-5xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-line bg-ink-2" data-reveal><div aria-hidden className="grid-field absolute inset-0 opacity-60" /><div className="relative flex min-h-[360px] items-center justify-center p-8"><div className="relative h-64 w-full max-w-xl"><div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-mark/50 bg-ink/90 px-5 py-4 text-center shadow-xl backdrop-blur"><span className="font-mono text-[9px] tracking-[0.18em] text-warm">AI MARK</span><span className="mt-1 block font-display text-sm font-semibold text-paper">Global Partner Core</span><span className="mt-1 block text-[9px] text-muted">Countries · Verticals · Sales Channels</span></div>{["9% 30%","23% 68%","43% 18%","54% 51%","72% 27%","82% 67%","92% 43%"].map((p, i) => <span key={i} className="absolute h-2.5 w-2.5 rounded-full bg-mark shadow-[0_0_0_5px_rgba(198,214,139,0.08)]" style={{ left: p.split(" ")[0], top: p.split(" ")[1] }} />)}</div></div></div>
-            <div className="space-y-3" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
-          </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
         </div>
       </section>
 
+      </details>
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.faqEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.faqTitle}</h2></div>
           <div className="mt-8 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-ink-2">{t.faq.map((item) => <details key={item.q} className="group px-5 py-5 sm:px-7"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-display text-sm font-semibold text-paper"><span>{item.q}</span><span className="font-mono text-lg text-mark transition group-open:rotate-45">+</span></summary><p className="max-w-3xl pt-3 text-xs leading-relaxed text-muted">{item.a}</p></details>)}</div>
         </div>
       </section>
 
-      <LeadInquiry contact={published.contact} locale={locale} />
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {locale === "ru" ? "Оставить контакты" : "Leave your contacts"}
+        </summary>
+        <LeadInquiry contact={published.contact} locale={locale} />
+      </details>
 
       <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-4xl leading-tight tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.ctaTitle}</h2><p className="mx-auto mt-5 max-w-2xl text-muted">{t.ctaLead}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>
     </article>

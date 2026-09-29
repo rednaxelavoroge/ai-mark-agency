@@ -44,9 +44,14 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
               </Link>
             </div>
           </div>
-          <div className="min-w-0" data-reveal="scale">
-            <ProductUI variant="saas" ratio="aspect-[16/10] sm:aspect-[16/9] lg:h-[420px] lg:aspect-auto" />
-          </div>
+          <details className="rounded-2xl border border-line bg-ink-2">
+            <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">
+              {t.hero.badge}
+            </summary>
+            <div className="p-3">
+              <ProductUI variant="saas" ratio="aspect-[16/10]" />
+            </div>
+          </details>
         </div>
       </section>
 
@@ -111,12 +116,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
                 data-reveal
                 className="catalog-card peek-host group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-ink-2"
               >
-                <div className="p-4 sm:p-5">
-                  <div className="overflow-hidden rounded-xl border border-line bg-ink-3/30">
-                    <ProductUI variant={item.mock} ratio="aspect-[16/9]" peek />
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col border-t border-line p-5 sm:p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <div className="flex items-center justify-between gap-3">
                     <span className="font-mono text-[10px] font-semibold tracking-[0.14em] text-warm uppercase">
                       {String(i + 1).padStart(2, "0")}

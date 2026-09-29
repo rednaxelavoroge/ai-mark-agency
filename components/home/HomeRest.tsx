@@ -1,10 +1,6 @@
 import Link from "next/link";
-import { CapabilityBand } from "@/components/CapabilityBand";
-import { ContactCta } from "@/components/ContactCta";
-import { DigitalProductionHubCard } from "@/components/DigitalProductionHubCard";
 import { LeadInquiry } from "@/components/LeadInquiry";
 import { Section } from "@/components/Section";
-import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import type { Copy } from "@/content/copy";
 import { navHref, site, type Locale } from "@/lib/site";
 
@@ -21,7 +17,6 @@ type HubModule = {
 
 type FeaturedProduct = {
   id: string;
-  variant: ProductVariant;
   name: string;
   tag: string;
   price: string;
@@ -32,10 +27,9 @@ type FeaturedProduct = {
 };
 
 /**
- * Compact hub restored from 81c17bc: capability band, five cards that leave
- * the page, three product cards, then contact. Long narratives stay on
- * /how-it-works, /pricing, /products, /partners and /investors.
- * Surfaces use the forest/lime tokens from the public redesign.
+ * Home follows the Manus sample section order: three entry points, three
+ * product cards, team-vs-subscription, eight-stage path, contact, then
+ * partner / investor / pricing cards. Long UI mocks stay on the subpages.
  */
 export function HomeRest({
   locale,
@@ -50,88 +44,67 @@ export function HomeRest({
   featuredProducts: FeaturedProduct[];
   isRu: boolean;
 }) {
+  const entries = [
+    { href: "/products", kicker: "01", title: t.products.hubTitle, body: t.products.hubLead },
+    { href: "/digital-production", kicker: "02", title: t.production.title, body: t.production.lead },
+    { href: "/how-it-works", kicker: "03", title: t.creation.title, body: t.creation.lead },
+  ];
+  const tailOrder = ["/partners", "/investors", "/pricing"];
+  const tail = tailOrder
+    .map((href) => hubModules.find((m) => m.href === href))
+    .filter((m): m is HubModule => Boolean(m));
+
   return (
     <>
-      <CapabilityBand locale={locale} />
+      <section className="border-b border-line" aria-label={t.pipeline.title}>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-4 text-[13px] text-muted sm:px-6">
+          <span className="font-semibold text-paper">{t.pipeline.eyebrow}</span>
+          {t.pipeline.steps.map((step) => (
+            <span key={step}>{step}</span>
+          ))}
+        </div>
+      </section>
 
-      <Section
-        id="hub"
-        index="01"
-        eyebrow={isRu ? "Экосистема Хаба" : "Hub Ecosystem"}
-        title={isRu ? "Все направления компании в одном хабе." : "All Company Capabilities in One Hub."}
-        lead={
-          isRu
-            ? "Выберите интересующий раздел: от сквозного контура создания бизнеса и каталога готовых AI-продуктов до тарифов и партнёрской сети."
-            : "Select an area of interest: explore our end-to-end venture system, proprietary AI products, commercial retainers, or partner network."
-        }
-      >
-        <div className="home-defer grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {hubModules.map((m, i) => (
+      <Section id="start" index="01" eyebrow={t.pillars.eyebrow} title={t.pillars.title} lead={t.hero.extra}>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {entries.map((entry) => (
             <Link
-              key={m.num}
-              href={navHref(locale, m.href)}
-              className={`group flex flex-col justify-between rounded-[24px] border border-line bg-ink-2 p-6 transition-colors hover:border-line-strong ${
-                i === 0 ? "md:col-span-2 lg:col-span-2" : ""
-              }`}
+              key={entry.href}
+              href={navHref(locale, entry.href)}
+              className="flex flex-col rounded-[24px] border border-line bg-ink-2 p-6"
             >
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-semibold text-warm">{m.num}</span>
-                  <span className="rounded-full border border-line bg-ink-3/60 px-2.5 py-0.5 font-mono text-[10px] text-muted">
-                    {m.badge}
-                  </span>
-                </div>
-                <span className="mt-4 block font-mono text-[10px] uppercase tracking-wider text-mark">{m.tag}</span>
-                <h3 className="mt-1 font-sans text-xl font-semibold tracking-[-0.04em] text-paper sm:text-2xl">{m.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">{m.desc}</p>
-              </div>
-              <div className="mt-6 flex items-center justify-between border-t border-line/60 pt-4">
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-paper">
-                  {m.cta}
-                  <span aria-hidden>→</span>
-                </span>
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: m.accent }} />
-              </div>
+              <span className="font-mono text-xs font-semibold text-muted">{entry.kicker}</span>
+              <h3 className="mt-4 font-sans text-xl font-semibold tracking-[-0.04em]">{entry.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{entry.body}</p>
+              <span className="mt-6 text-sm font-semibold text-mark">→</span>
             </Link>
           ))}
         </div>
       </Section>
 
-      <Section id="products" index="02" eyebrow={t.tech.eyebrow} title={t.tech.title} lead={t.tech.lead}>
-        <div className="home-defer grid gap-4 lg:grid-cols-3">
+      <Section id="products" index="02" eyebrow={t.tech.eyebrow} title={t.tech.title} lead={t.products.lead}>
+        <div className="grid gap-4 lg:grid-cols-3">
           {featuredProducts.map((product) => (
-            <article
-              key={product.id}
-              className="catalog-card peek-host flex flex-col justify-between rounded-[24px] border border-line bg-ink-2 p-5 sm:p-6"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-mark/25 bg-mark/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-mark">
-                    <span className="h-1.5 w-1.5 rounded-full bg-mark" />
-                    {product.tag}
-                  </span>
-                  <span className="font-mono text-xs font-semibold text-paper">{product.price}</span>
-                </div>
-                <div className="mt-4 overflow-hidden rounded-xl border border-line bg-ink-3/40">
-                  <ProductUI variant={product.variant} ratio="aspect-[16/10]" peek />
-                </div>
-                <div className="mt-5 flex items-center justify-between">
-                  <h3 className="font-sans text-xl font-semibold tracking-[-0.04em] text-paper">{product.name}</h3>
-                  <span className="font-mono text-[10px] uppercase text-muted">{product.id}</span>
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{product.desc}</p>
-                <ul className="mt-4 space-y-2 border-t border-line/60 pt-3">
-                  {product.highlights.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-[13px] text-paper/90">
-                      <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-mark/15 text-[10px] font-bold text-mark">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <article key={product.id} className="flex flex-col rounded-[24px] border border-line bg-ink-2 p-5">
+              <div className="flex items-center justify-between gap-3 text-[13px]">
+                <span className="font-semibold text-mark">{product.tag}</span>
+                <span className="font-semibold">{product.price}</span>
               </div>
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-line/60 pt-4 text-sm font-semibold">
+              <h3 className="mt-3 font-sans text-xl font-semibold tracking-[-0.04em]">{product.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{product.desc}</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {product.highlights.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-mark" aria-hidden>
+                      ↗
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5 text-sm font-semibold">
                 <Link href={product.href} className="text-mark">
-                  {isRu ? "Подробнее о продукте" : "Product details"} →
+                  {isRu ? "Подробнее" : "Details"} →
                 </Link>
                 {product.externalUrl ? (
                   <a href={product.externalUrl} target="_blank" rel="noopener noreferrer" className="text-muted">
@@ -142,54 +115,90 @@ export function HomeRest({
             </article>
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <Link
-            href={navHref(locale, "/products")}
-            className="inline-flex min-h-12 items-center rounded-full border border-line bg-ink-2 px-6 text-sm font-semibold"
-          >
-            {isRu ? "Открыть полный каталог AI-продуктов" : "Open the AI products catalog"} →
-          </Link>
-        </div>
-        <div className="home-defer mt-12">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-mark">
-            {isRu ? "Отдельный сервис" : "A separate service"}
-          </p>
-          <h3 className="mt-2 font-sans text-2xl font-semibold tracking-[-0.04em]">
-            {isRu ? "Цифровое производство — не четвёртый SKU." : "Digital Production is not a fourth SKU."}
-          </h3>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-            {isRu
-              ? "Три карточки выше — готовые продукты. Ниже — кастомная сборка с нуля: сайты, платформы, кабинеты и AI-системы под задачу."
-              : "The three cards above are ready products. Below is a custom build from scratch: sites, platforms, cabinets and AI systems for a specific task."}
-          </p>
-          <div className="mt-6 max-w-3xl">
-            <DigitalProductionHubCard locale={locale} />
+      </Section>
+
+      <section className="border-t border-line bg-[#14291f] text-[#f4f6ee]">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#d5e0d4]">{t.commercial.eyebrow}</p>
+          <h2 className="mt-3 max-w-3xl font-sans text-3xl font-semibold tracking-[-0.05em]">{t.commercial.title}</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#d3ddd2]">{t.commercial.lead}</p>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            <article className="rounded-[24px] border border-white/15 p-6">
+              <h3 className="font-sans text-2xl font-semibold">{t.commercial.tiers[0]?.name ?? t.commercial.eyebrow}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#d3ddd2]">{t.commercial.tiers[0]?.body}</p>
+              <Link href={navHref(locale, "/pricing")} className="mt-6 inline-flex text-sm font-semibold text-[#d4f27e]">
+                {t.commercial.retainerCta} →
+              </Link>
+            </article>
+            <article className="rounded-[24px] border border-white/15 p-6">
+              <h3 className="font-sans text-2xl font-semibold">{t.production.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#d3ddd2]">{t.production.lead}</p>
+              <Link href={navHref(locale, "/digital-production")} className="mt-6 inline-flex text-sm font-semibold text-[#d4f27e]">
+                {isRu ? "О цифровом производстве" : "About digital production"} →
+              </Link>
+            </article>
           </div>
+        </div>
+      </section>
+
+      <Section id="stages" index="03" eyebrow={t.creation.eyebrow} title={t.creation.title} lead={t.creation.lead}>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {t.creation.steps.map((step, i) => (
+            <article key={step.title} className="rounded-2xl border border-line bg-ink-2 p-4">
+              <span className="font-mono text-xs text-mark">{String(i).padStart(2, "0")}</span>
+              <h3 className="mt-2 text-base font-semibold">{step.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{step.body}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-col gap-4 rounded-[24px] border border-line bg-ink-2 p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="font-sans text-xl font-semibold">{t.why.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{t.why.lead}</p>
+          </div>
+          <Link href={navHref(locale, "/how-it-works")} className="inline-flex min-h-11 items-center text-sm font-semibold text-mark">
+            {isRu ? "Все этапы" : "All stages"} →
+          </Link>
         </div>
       </Section>
 
-      <Section id="contact" index="03" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <ContactCta className="inline-flex h-12 w-fit items-center rounded-full bg-mark px-6 text-sm font-semibold text-mark-ink">
-            {isRu ? "Открыть чат с ассистентом" : "Open chat with the assistant"} →
-          </ContactCta>
-          <aside className="rounded-[24px] border border-line bg-ink-2 p-6 text-sm text-muted sm:p-8">
-            <p className="font-sans text-xl font-semibold text-paper">AI MARK</p>
-            <p className="mt-1 text-[13px] font-semibold uppercase tracking-[0.08em] text-mark">
-              AI-Native Venture &amp; Marketing Company
-            </p>
-            <p className="mt-2 font-mono text-xs">{site.email}</p>
-            <p className="mt-3 text-sm leading-relaxed">
-              {isRu
-                ? "Короткий разбор задачи: применимость AI, идея, подбор готового продукта или запуск партнёрской сети."
-                : "A short initial consultation: AI fit, product selection, or launching a partner distribution channel."}
-            </p>
-          </aside>
+      <section className="border-t border-line">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:grid-cols-3 sm:px-6">
+          {t.pillars.items.map((item) => (
+            <div key={item.title}>
+              <h3 className="text-base font-semibold">{item.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{item.body}</p>
+            </div>
+          ))}
         </div>
-        <div id="inquiry" className="home-defer mt-12 scroll-mt-24">
-          <LeadInquiry contact={t.contact} locale={locale} framed={false} compact />
-        </div>
+      </section>
+
+      <Section id="contact" index="04" eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead}>
+        <a className="inline-flex min-h-11 items-center text-sm font-semibold text-mark" href={`mailto:${site.email}`}>
+          {site.email} →
+        </a>
+        <details id="inquiry" className="mt-6 scroll-mt-24 rounded-[24px] border border-line bg-ink-2">
+          <summary className="cursor-pointer list-none px-5 py-4 text-sm font-semibold">
+            {t.contact.formCta}
+          </summary>
+          <div className="px-2 pb-2">
+            <LeadInquiry contact={t.contact} locale={locale} framed={false} compact />
+          </div>
+        </details>
       </Section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:px-6 lg:grid-cols-3">
+          {tail.map((card) => (
+            <Link key={card.href} href={navHref(locale, card.href)} className="rounded-[24px] border border-line bg-ink-2 p-6">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{card.tag}</p>
+              <h3 className="mt-3 font-sans text-xl font-semibold">{card.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{card.desc}</p>
+              <span className="mt-4 inline-flex text-sm font-semibold text-mark">{card.cta} →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </>
   );
 }

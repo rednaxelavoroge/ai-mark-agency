@@ -113,7 +113,10 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            {/* Runtime Status Spec Panel */}
+            <details className="rounded-2xl border border-white/20 bg-white/5">
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-[#f4f6ee]">
+                {ru ? "Схема интерфейса" : "Interface sketch"}
+              </summary>
             <div className="am-hero-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 shadow-xl space-y-4 sm:p-6">
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <span className="font-mono text-xs font-semibold text-paper uppercase">
@@ -146,12 +149,13 @@ export function ShowroomAIPageContent({
                 <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               </div>
             </div>
+            </details>
           </div>
         </div>
       </section>
 
       {/* 2. INDUSTRY CONFIGURATIONS */}
-      <section id="industries" className="border-b border-line py-16 sm:py-20">
+      <section id="industries" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -240,8 +244,12 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Сквозная архитектура" : "End-to-end architecture"}
+        </summary>
       {/* 3. ARCHITECTURE FLOW */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -271,8 +279,9 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
+      </details>
       {/* 4. CORE CAPABILITIES */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -304,7 +313,7 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 5. WORKFLOW & DETERMINISTIC GATE */}
-      <section id="workflow" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section id="workflow" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
@@ -373,7 +382,7 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 6. PRICING TIERS */}
-      <section id="pricing" className="border-b border-line py-16 sm:py-20">
+      <section id="pricing" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -448,7 +457,7 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 7. FAQ */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -490,10 +499,15 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} locale={locale} scenario="showroom" />
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Оставить контакты" : "Leave your contacts"}
+        </summary>
+        <LeadInquiry contact={contact} locale={locale} scenario="showroom" />
+      </details>
 
       {/* 8. BOTTOM BANNER */}
-      <section className="py-16 sm:py-20">
+      <section className="py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
