@@ -403,7 +403,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
           reduced ? "relative" : "itb-panel sticky top-0"
         }`}
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col px-4 pt-14 pb-16 sm:px-6 sm:pb-20 lg:h-full lg:pt-20 lg:pb-[72px] [@media(max-height:560px)]:pt-12">
+        <div className="mx-auto flex w-full max-w-6xl flex-col px-4 pt-20 pb-16 sm:px-6 sm:pb-20 lg:h-full lg:pb-[72px]">
           <div className="shrink-0" data-reveal>
             <p className="font-mono text-[11px] tracking-[0.2em] text-mark uppercase sm:text-xs">
               {copy.eyebrow}

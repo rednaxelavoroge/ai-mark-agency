@@ -37,7 +37,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b backdrop-blur-xl transition-all duration-300 ${
+      className={`site-header sticky top-0 z-40 border-b backdrop-blur-xl transition-all duration-300 ${
         scrolled
           ? "border-line bg-ink/95 shadow-[0_8px_28px_#14291f0f]"
           : "border-line/70 bg-ink/80"
@@ -49,7 +49,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           className="flex min-w-0 shrink-0 flex-col items-start py-2"
         >
           <BrandLogo className="h-[18px] min-[400px]:h-6 sm:h-7" />
-          <span className="mt-1 max-w-[7.25rem] text-[12px] font-semibold leading-tight tracking-[0.01em] text-muted min-[400px]:max-w-none min-[400px]:leading-none">
+          <span className="mt-1 max-w-[7.25rem] text-[12px] font-semibold leading-tight tracking-[0.01em] text-muted sm:max-w-[9.5rem] sm:leading-none xl:max-w-none">
             Venture and Marketing
           </span>
         </Link>
@@ -78,9 +78,9 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="ml-auto flex shrink-0 items-center gap-1 min-[1280px]:ml-3 sm:gap-2">
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <LanguageSelector locale={locale} />
-          <ContactCta className="inline-flex h-9 items-center rounded-full bg-mark px-2.5 text-sm font-semibold text-mark-ink min-[400px]:h-11 min-[400px]:px-4">
-            <span className="max-[399px]:sr-only">{t.nav.cta}</span>
-            <span className="min-[400px]:hidden" aria-hidden>
+          <ContactCta className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-mark text-sm font-semibold text-mark-ink sm:h-11 sm:w-auto sm:px-4">
+            <span className="max-sm:sr-only">{t.nav.cta}</span>
+            <span className="sm:hidden" aria-hidden>
               →
             </span>
           </ContactCta>

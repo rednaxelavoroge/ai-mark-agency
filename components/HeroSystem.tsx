@@ -120,14 +120,14 @@ export function HeroSystem({ locale, t }: HeroProps) {
               />
             </div>
             <div className="hero-ring am-anim" aria-hidden />
-            <div className="absolute bottom-4 left-4 right-4 z-[3] rounded-2xl border border-white/30 bg-[#193428]/90 p-3 text-[13px] text-[#e7eee4]">
+            <div className="absolute bottom-4 left-4 right-[4.5rem] z-[3] rounded-2xl border border-white/30 bg-[#193428]/90 p-3 text-[13px] text-[#e7eee4] min-[761px]:right-4">
               <p className="font-semibold text-[var(--lime)]">{captionKicker}</p>
               <p className="mt-1 leading-snug">{caption}</p>
             </div>
           </div>
         </div>
 
-        <div className="relative z-[1] mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/15 py-4 text-sm text-[#d5e0d4]">
+        <div className="relative z-[1] mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/15 py-4 pr-16 text-sm text-[#d5e0d4] min-[761px]:pr-0">
           <span className="font-semibold text-white">{pillarsLabel}</span>
           {pillars.map((item) => (
             <span key={item}>{item}</span>

@@ -340,7 +340,7 @@ main {
   }
 
   .itb-dial {
-    width: min(78vw, 280px);
+    width: min(70vw, 248px);
   }
 }
 
@@ -1192,7 +1192,11 @@ main {
     flex-direction: column;
   }
   .am-hero-split .am-page-visual {
-    order: -1;
+    /* The 340px crop painted the spec bar and channel chips over the mock.
+       Text stays first so the headline is not parked under the contact bubble. */
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
   }
 }
 
@@ -1319,6 +1323,16 @@ main {
 @media (max-width: 760px) {
   .am-display { font-size: clamp(36px, 11vw, 56px); }
   .hero-art-wrap { min-height: 280px; }
+  /* Blur is disabled on phones, so a translucent header lets the section
+     underneath show through the logo and the controls. */
+  .site-header {
+    background-color: var(--ink);
+  }
+  /* The contact bubble sits in the corner. This keeps the last block,
+     and a primary action at the end of a section, clear of it. */
+  main {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
 }
 
 /* Tailwind's section reset can beat the UA rule that hides closed <details>,
