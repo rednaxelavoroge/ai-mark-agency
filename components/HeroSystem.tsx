@@ -116,7 +116,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
                 fill
                 priority
                 sizes="(max-width: 1080px) 100vw, 640px"
-                className="hero-art-img"
+                className="hero-art-img am-anim hero-breathe"
               />
             </div>
             <div className="hero-ring am-anim" aria-hidden />

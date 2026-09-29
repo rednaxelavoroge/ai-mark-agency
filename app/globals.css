@@ -1040,8 +1040,8 @@ main {
   animation: hero-breathe 12s ease-in-out infinite alternate;
 }
 @keyframes hero-breathe {
-  from { transform: scale(1.02); }
-  to { transform: scale(1.07) translateY(-8px); }
+  from { transform: scale(1.02) translateY(0); }
+  to { transform: scale(1.075) translateY(-7px); }
 }
 .hero-ring {
   position: absolute;
@@ -1059,8 +1059,15 @@ main {
   border: 1px solid rgba(212, 242, 126, 0.28);
   border-radius: 50%;
 }
+.am-anim.hero-breathe,
+.am-anim.hero-ring {
+  will-change: transform;
+}
 .am-anim.hero-ring { animation: ring-spin 48s linear infinite; }
-@keyframes ring-spin { to { transform: rotate(336deg); } }
+@keyframes ring-spin {
+  from { transform: rotate(-24deg); }
+  to { transform: rotate(336deg); }
+}
 .hero-cursor {
   position: absolute;
   z-index: 2;
@@ -1233,7 +1240,7 @@ main {
   from { stroke-dashoffset: 140; }
   to { stroke-dashoffset: 0; }
 }
-[data-motion]:not(.is-inview) .am-anim {
+[data-motion]:not(.is-inview) .am-anim:not(.hero-breathe):not(.hero-ring) {
   animation-play-state: paused;
 }
 
@@ -1264,9 +1271,9 @@ details:not([open]) > :not(summary) {
 @media (pointer: coarse), (max-width: 760px) {
   .grain-overlay { display: none; }
   .hero-cursor { display: none !important; }
-  .hero-art-img { mix-blend-mode: normal; animation: none !important; }
-  .am-anim.hero-breathe,
-  .am-anim.hero-ring { animation: none !important; }
+  /* Keep the hero image breathing and the ring spinning: transform-only
+     keyframes, including on phones. Reduced motion turns .am-anim off. */
+  .hero-art-img { mix-blend-mode: normal; }
   .tilt-card,
   .tilt-card:hover,
   .tilt-card:nth-child(even):hover {
