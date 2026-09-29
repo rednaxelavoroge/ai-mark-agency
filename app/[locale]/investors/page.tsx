@@ -9,6 +9,7 @@ import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
 
 import { BackButton } from "@/components/BackButton";
+import { InvestorStreams } from "@/components/visuals/ProductScenes";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -68,6 +69,9 @@ export default async function InvestorsPage({ params }: Props) {
         </p>
         <div className="mt-6">
           <Flow steps={t.meta.split("→").map((step) => step.trim())} />
+        </div>
+        <div className="mt-6 max-w-xl">
+          <InvestorStreams />
         </div>
       </header>
 

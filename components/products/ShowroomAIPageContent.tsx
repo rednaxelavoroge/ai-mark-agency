@@ -10,6 +10,8 @@ import { openLauncher } from "@/lib/contact";
 import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { BackButton } from "@/components/BackButton";
+import { brief } from "@/lib/brief";
+import { FeatureList } from "@/components/products/FeatureList";
 
 export function ShowroomAIPageContent({
   locale,
@@ -36,7 +38,7 @@ export function ShowroomAIPageContent({
           <div className="mb-6">
             <BackButton locale={locale} targetHref="/#products" />
           </div>
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="am-hero-split grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
                 <span className="h-1.5 w-1.5 rounded-full bg-mark animate-pulse" />
@@ -51,24 +53,28 @@ export function ShowroomAIPageContent({
               </h1>
 
               <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-                {c.subtitle}
+                {brief(c.subtitle)}
               </p>
-
-              <p className="mt-4 text-sm font-medium leading-relaxed text-paper">
-                {ru
-                  ? "Обращение → потребность → квалификация → подбор → расчёт → коммерческое предложение → менеджер"
-                  : "Inquiry → need → qualification → selection → calculation → commercial proposal → manager"}
-              </p>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
-                {ru
-                  ? "Меньше ручной обработки обращений, быстрее переход от запроса к предложению. Менеджер подключается там, где нужна сложная или финальная коммуникация. AI не заменяет отдел продаж."
-                  : "Less manual handling of inquiries, and a shorter path from request to proposal. A manager joins where the conversation is complex or final. The AI does not replace the sales team."}
-              </p>
-              <p className="mt-3 text-sm text-paper/90">
-                {ru
-                  ? "Ассистент отвечает и квалифицирует. Showroom AI продаёт и готовит сделку."
-                  : "The assistant answers and qualifies. Showroom AI sells and prepares the deal."}
-              </p>
+              <details className="mt-3 rounded-xl border border-white/20">
+                <summary className="cursor-pointer list-none px-3 py-2 text-xs font-semibold text-[#f4f6ee]">
+                  {ru ? "Как устроена сделка" : "How a deal moves"}
+                </summary>
+                <p className="px-3 pb-2 text-sm font-medium leading-relaxed text-[#f4f6ee]">
+                  {ru
+                    ? "Обращение → потребность → квалификация → подбор → расчёт → коммерческое предложение → менеджер"
+                    : "Inquiry → need → qualification → selection → calculation → commercial proposal → manager"}
+                </p>
+                <p className="px-3 pb-2 text-sm leading-relaxed text-[#d3ddd2]">
+                  {ru
+                    ? "Меньше ручной обработки обращений, быстрее переход от запроса к предложению. Менеджер подключается там, где нужна сложная или финальная коммуникация. AI не заменяет отдел продаж."
+                    : "Less manual handling of inquiries, and a shorter path from request to proposal. A manager joins where the conversation is complex or final. The AI does not replace the sales team."}
+                </p>
+                <p className="px-3 pb-3 text-sm text-[#f4f6ee]">
+                  {ru
+                    ? "Ассистент отвечает и квалифицирует. Showroom AI продаёт и готовит сделку."
+                    : "The assistant answers and qualifies. Showroom AI sells and prepares the deal."}
+                </p>
+              </details>
 
               {/* CTAs */}
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -113,14 +119,14 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            {/* Runtime Status Spec Panel */}
-            <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
+            <div data-motion className="am-hero-visual am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-4 shadow-xl space-y-3">
+              <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <span className="font-mono text-xs font-semibold text-paper uppercase">
                   {c.heroSpec.title}
                 </span>
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] text-emerald-700">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <span className="illu-pulse h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   {c.heroSpec.status}
                 </span>
               </div>
@@ -141,17 +147,13 @@ export function ShowroomAIPageContent({
                   </div>
                 ))}
               </div>
-
-              <div className="mt-3 pb-0 sm:pb-12" data-reveal="scale">
-                <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. INDUSTRY CONFIGURATIONS */}
-      <section id="industries" className="border-b border-line py-16 sm:py-20">
+      <section id="industries" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -240,8 +242,12 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Сквозная архитектура" : "End-to-end architecture"}
+        </summary>
       {/* 3. ARCHITECTURE FLOW */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -264,15 +270,16 @@ export function ShowroomAIPageContent({
                     {flow.name}
                   </h4>
                 </div>
-                <p className="mt-3 text-[11px] leading-relaxed text-muted">{flow.desc}</p>
+                <p className="mt-3 text-[11px] leading-relaxed text-muted">{brief(flow.desc)}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      </details>
       {/* 4. CORE CAPABILITIES */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -282,21 +289,21 @@ export function ShowroomAIPageContent({
               {c.capabilitiesTitle}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              {c.capabilitiesSub}
+              {brief(c.capabilitiesSub)}
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="am-step-grid mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {c.capabilities.map((cap) => (
               <div
                 key={cap.num}
-                className="rounded-2xl border border-line bg-ink-2 p-6 transition-all hover:border-line-strong hover:shadow-md"
+                className="rounded-2xl border border-line bg-ink-2 p-4"
               >
                 <span className="font-mono text-xs font-semibold text-warm">{cap.num}</span>
                 <h4 className="mt-3 font-display text-base font-semibold text-paper leading-snug">
                   {cap.title}
                 </h4>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{cap.desc}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{brief(cap.desc)}</p>
               </div>
             ))}
           </div>
@@ -304,7 +311,7 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 5. WORKFLOW & DETERMINISTIC GATE */}
-      <section id="workflow" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section id="workflow" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
@@ -318,7 +325,7 @@ export function ShowroomAIPageContent({
                 {c.workflowSub}
               </p>
 
-              <div className="mt-6 space-y-3">
+              <div className="am-step-grid mt-4 grid grid-cols-2 gap-2">
                 {c.workflowSteps.map((ws) => (
                   <div
                     key={ws.num}
@@ -336,8 +343,11 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            {/* Deterministic & Multi-Tenant Details */}
-            <div className="space-y-6">
+            <details className="rounded-2xl border border-line">
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">
+                {ru ? "Расчёт и изоляция данных" : "Calculation and data isolation"}
+              </summary>
+            <div className="space-y-6 p-4">
               <div className="rounded-2xl border border-mark/30 bg-mark/5 p-6 sm:p-7">
                 <span className="font-mono text-xs font-semibold text-mark uppercase tracking-wider block mb-2">
                   🛡 {c.deterministicTitle}
@@ -368,12 +378,13 @@ export function ShowroomAIPageContent({
                 </div>
               </div>
             </div>
+            </details>
           </div>
         </div>
       </section>
 
       {/* 6. PRICING TIERS */}
-      <section id="pricing" className="border-b border-line py-16 sm:py-20">
+      <section id="pricing" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -387,11 +398,11 @@ export function ShowroomAIPageContent({
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
             {c.pricingTiers.map((tier) => (
               <div
                 key={tier.name}
-                className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7 shadow-sm transition-all hover:border-line-strong hover:shadow-lg"
+                className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-4 shadow-sm"
               >
                 <div>
                   <h3 className="font-display text-2xl font-semibold text-paper">{tier.name}</h3>
@@ -401,14 +412,7 @@ export function ShowroomAIPageContent({
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-muted">{tier.desc}</p>
 
-                  <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
-                    {tier.features.map((f, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <FeatureList items={tier.features} locale={locale} />
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-line">
@@ -448,7 +452,7 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 7. FAQ */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -473,7 +477,7 @@ export function ShowroomAIPageContent({
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="flex w-full items-center justify-between p-5 text-left text-sm font-semibold text-paper"
+                    className="flex w-full items-center justify-between p-5 text-start text-sm font-semibold text-paper"
                   >
                     <span>{faq.q}</span>
                     <span className="ml-4 font-mono text-muted text-base">{isOpen ? "−" : "+"}</span>
@@ -490,10 +494,15 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} locale={locale} scenario="showroom" />
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Оставить контакты" : "Leave your contacts"}
+        </summary>
+        <LeadInquiry contact={contact} locale={locale} scenario="showroom" />
+      </details>
 
       {/* 8. BOTTOM BANNER */}
-      <section className="py-16 sm:py-20">
+      <section className="py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">

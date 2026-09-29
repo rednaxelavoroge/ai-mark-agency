@@ -49,6 +49,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: getLanguageAlternates("/partners"),
     });
     entries.push({
+      url: absoluteUrl(locale, "/pricing"),
+      lastModified,
+      alternates: getLanguageAlternates("/pricing"),
+    });
+    entries.push({
+      url: absoluteUrl(locale, "/how-it-works"),
+      lastModified,
+      alternates: getLanguageAlternates("/how-it-works"),
+    });
+    entries.push({
       url: absoluteUrl(locale, "/pay"),
       lastModified,
       alternates: getLanguageAlternates("/pay"),

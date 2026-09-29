@@ -24,9 +24,12 @@ export function LiveNumber({
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse =
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 760px)").matches;
     const el = ref.current;
     if (!el) return;
-    if (reduce) {
+    if (reduce || coarse) {
       const id = requestAnimationFrame(() => setDisplay(value));
       return () => cancelAnimationFrame(id);
     }
@@ -84,9 +87,12 @@ export function LiveType({
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse =
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 760px)").matches;
     const el = ref.current;
     if (!el) return;
-    if (reduce) {
+    if (reduce || coarse) {
       const id = requestAnimationFrame(() => setN(text.length));
       return () => cancelAnimationFrame(id);
     }

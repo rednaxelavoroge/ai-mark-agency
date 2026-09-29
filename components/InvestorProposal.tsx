@@ -212,38 +212,49 @@ function CardGrid({ cards, idPrefix }: { cards: Card[]; idPrefix: string }) {
 }
 
 function Section({ section }: { section: InvestorSection }) {
-  const segments = segment(section.blocks);
+  const [lead, ...rest] = section.blocks;
+  const segments = segment(rest);
 
   return (
     <section
       id={section.id}
-      data-reveal
-      className="scroll-mt-24 rounded-2xl border border-line bg-ink-2 p-5 shadow-sm sm:p-7"
+      className="scroll-mt-24 rounded-2xl border border-line bg-ink-2 p-4 sm:p-5"
     >
-      <header className="flex items-start gap-4 border-b border-line pb-4">
+      <header className="flex items-start gap-3">
         <span className="mt-1 shrink-0 font-mono text-[11px] font-semibold tracking-wider text-warm">
           {section.number ? String(section.number).padStart(2, "0") : "—"}
         </span>
-        <h2 className="min-w-0 font-display text-lg font-semibold leading-snug text-paper sm:text-2xl">
+        <h2 className="min-w-0 font-display text-base font-semibold leading-snug text-paper">
           {renderInline(section.title)}
         </h2>
       </header>
-
-      <div className="mt-5 space-y-5">
-        {segments.map((seg, index) =>
-          seg.kind === "flow" ? (
-            <div key={`f${index}`} className="space-y-4">
-              <Blocks blocks={seg.blocks} idPrefix={`${section.id}-f${index}`} />
-            </div>
-          ) : (
-            <CardGrid
-              key={`g${index}`}
-              cards={seg.cards}
-              idPrefix={`${section.id}-g${index}`}
-            />
-          ),
-        )}
-      </div>
+      {lead ? (
+        <div className="mt-3 line-clamp-3 text-sm text-muted">
+          <Blocks blocks={[lead]} idPrefix={`${section.id}-lead`} />
+        </div>
+      ) : null}
+      {rest.length > 0 ? (
+        <details className="mt-3">
+          <summary className="cursor-pointer list-none text-sm font-semibold text-mark">
+            +
+          </summary>
+          <div className="mt-4 space-y-5">
+            {segments.map((seg, index) =>
+              seg.kind === "flow" ? (
+                <div key={`f${index}`} className="space-y-4">
+                  <Blocks blocks={seg.blocks} idPrefix={`${section.id}-f${index}`} />
+                </div>
+              ) : (
+                <CardGrid
+                  key={`g${index}`}
+                  cards={seg.cards}
+                  idPrefix={`${section.id}-g${index}`}
+                />
+              ),
+            )}
+          </div>
+        </details>
+      ) : null}
     </section>
   );
 }
@@ -259,7 +270,7 @@ export function InvestorProposalView({
 
   return (
     <div className="mt-14 grid gap-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
-      <aside className="lg:sticky lg:top-24 lg:self-start">
+      <aside className="hidden lg:sticky lg:top-24 lg:block lg:self-start">
         <div className="rounded-2xl border border-line bg-ink-2 p-4 sm:p-5">
           <div className="flex items-baseline justify-between gap-2">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-mark">

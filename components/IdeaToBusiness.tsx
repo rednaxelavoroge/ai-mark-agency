@@ -408,9 +408,9 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             <p className="font-mono text-[11px] tracking-[0.2em] text-mark uppercase sm:text-xs">
               {copy.eyebrow}
             </p>
-            <h2 className="mt-2 font-display text-2xl leading-[1.05] font-medium tracking-tight sm:text-3xl lg:mt-3 lg:text-4xl xl:text-5xl">
+            <h1 className="mt-2 font-display text-2xl leading-[1.05] font-medium tracking-tight sm:text-3xl lg:mt-3 lg:text-4xl xl:text-5xl">
               {copy.title}
-            </h2>
+            </h1>
             <p className="mt-3 hidden max-w-2xl text-muted [@media(min-height:680px)]:block lg:text-base">
               {copy.lead}
             </p>

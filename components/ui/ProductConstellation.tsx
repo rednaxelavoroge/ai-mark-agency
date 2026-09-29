@@ -97,7 +97,7 @@ export function ConstellationOverlays({
 }) {
   const ru = locale === "ru";
   return (
-    <div className="relative">
+    <div className="relative" data-motion>
       {children}
 
       {showPhone ? (

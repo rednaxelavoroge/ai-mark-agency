@@ -10,6 +10,8 @@ import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { BackButton } from "@/components/BackButton";
+import { brief } from "@/lib/brief";
+import { FeatureList } from "@/components/products/FeatureList";
 
 export function AIMEPageContent({
   locale,
@@ -33,7 +35,7 @@ export function AIMEPageContent({
           <div className="mb-6">
             <BackButton locale={locale} targetHref="/#products" />
           </div>
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="am-hero-split grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase">
                 <span className="h-1.5 w-1.5 rounded-full bg-mark animate-pulse" />
@@ -86,14 +88,11 @@ export function AIMEPageContent({
               </div>
             </div>
 
-            {/* Product UI visual preview */}
-            <div className="relative pb-0 sm:pb-14" data-reveal>
-              <div data-reveal="scale" data-reveal-delay="120">
-                <ProductConstellation variant="aime" locale={locale} />
-              </div>
+            <div data-motion className="am-hero-visual am-page-visual relative border border-line bg-ink-2">
+              <ProductConstellation variant="aime" locale={locale} />
 
               {/* Platform pills */}
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-2 px-3 pb-3">
                 {c.platforms.map((p) => (
                   <div
                     key={p.type}
@@ -116,8 +115,12 @@ export function AIMEPageContent({
         </div>
       </section>
 
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Сравнение и форматы" : "Comparison and formats"}
+        </summary>
       {/* 2. SMM COMPARISON SECTION */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -162,7 +165,7 @@ export function AIMEPageContent({
       </section>
 
       {/* 3. TWO USAGE TRACKS */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -222,8 +225,9 @@ export function AIMEPageContent({
         </div>
       </section>
 
+      </details>
       {/* 4. CLOSED-LOOP SMM WORKFLOW */}
-      <section className="border-b border-line py-16 sm:py-20">
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -237,7 +241,7 @@ export function AIMEPageContent({
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="am-step-grid mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {c.steps.map((st) => (
               <div
                 key={st.num}
@@ -250,7 +254,7 @@ export function AIMEPageContent({
                   {st.title}
                 </h4>
                 <p className="mt-2 text-xs leading-relaxed text-muted">
-                  {st.desc}
+                  {brief(st.desc)}
                 </p>
               </div>
             ))}
@@ -258,8 +262,12 @@ export function AIMEPageContent({
         </div>
       </section>
 
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Доступы и ограничения" : "Access and limits"}
+        </summary>
       {/* 5. META GRAPH API INFRASTRUCTURE & TRUST */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Meta Cards */}
@@ -330,8 +338,9 @@ export function AIMEPageContent({
         </div>
       </section>
 
+      </details>
       {/* 6. PRICING SECTION */}
-      <section id="pricing" className="border-b border-line py-16 sm:py-20">
+      <section id="pricing" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -346,12 +355,12 @@ export function AIMEPageContent({
           </div>
 
           {/* Pricing Grid */}
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
             {/* Direct Plans */}
             {c.plansDirect.map((p) => (
               <div
                 key={p.id}
-                className={`flex flex-col justify-between rounded-2xl border p-6 sm:p-7 ${
+                className={`flex flex-col justify-between rounded-2xl border p-4 ${
                   p.featured
                     ? "border-mark/60 bg-ink-2 shadow-xl relative"
                     : "border-line bg-ink-2"
@@ -369,16 +378,9 @@ export function AIMEPageContent({
                     <span className="font-mono text-xs text-muted">{p.period}</span>
                   </div>
                   {p.note && <p className="mt-1 font-mono text-[10px] text-warm">{p.note}</p>}
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{p.desc}</p>
+                  <p className="mt-3 text-xs leading-relaxed text-muted">{brief(p.desc)}</p>
 
-                  <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
-                    {p.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <FeatureList items={p.features} locale={locale} />
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-line">
@@ -420,7 +422,7 @@ export function AIMEPageContent({
             ))}
 
             {/* Agency Plan */}
-            <div className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-7">
+            <div className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-4">
               <div>
                 <span className="rounded bg-ink-3 px-2 py-0.5 font-mono text-[10px] text-warm uppercase">
                   {ru ? "Агентский формат" : "Agency format"}
@@ -435,16 +437,9 @@ export function AIMEPageContent({
                   <span className="font-mono text-xs text-muted">{c.planAgency.period}</span>
                 </div>
                 <p className="mt-1 font-mono text-[10px] text-warm">{c.planAgency.note}</p>
-                <p className="mt-3 text-xs leading-relaxed text-muted">{c.planAgency.desc}</p>
+                <p className="mt-3 text-xs leading-relaxed text-muted">{brief(c.planAgency.desc)}</p>
 
-                <ul className="mt-6 space-y-2 border-t border-line/60 pt-4 text-xs text-paper/90">
-                  {c.planAgency.features.map((feat, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-warm font-bold shrink-0">✓</span>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
+                <FeatureList items={c.planAgency.features} locale={locale} />
               </div>
 
               <div className="mt-8 pt-4 border-t border-line">
@@ -462,7 +457,7 @@ export function AIMEPageContent({
       </section>
 
       {/* 7. FAQ ACCORDION */}
-      <section className="border-b border-line bg-ink-3/20 py-16 sm:py-20">
+      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
@@ -487,7 +482,7 @@ export function AIMEPageContent({
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="flex w-full items-center justify-between p-5 text-left text-sm font-semibold text-paper"
+                    className="flex w-full items-center justify-between p-5 text-start text-sm font-semibold text-paper"
                   >
                     <span>{faq.q}</span>
                     <span className="ml-4 font-mono text-muted text-base">{isOpen ? "−" : "+"}</span>
@@ -504,10 +499,15 @@ export function AIMEPageContent({
         </div>
       </section>
 
-      <LeadInquiry contact={contact} locale={locale} scenario="aime" />
+      <details className="border-b border-line">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
+          {ru ? "Оставить контакты" : "Leave your contacts"}
+        </summary>
+        <LeadInquiry contact={contact} locale={locale} scenario="aime" />
+      </details>
 
       {/* 8. BOTTOM CTA BANNER */}
-      <section className="py-16 sm:py-20">
+      <section className="py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type CSSProperties } from "react";
+import { useRef } from "react";
 
 function Connector({ delay }: { delay: number }) {
   return (
@@ -9,7 +9,7 @@ function Connector({ delay }: { delay: number }) {
       width="46"
       height="12"
       viewBox="0 0 46 12"
-      className="hidden shrink-0 text-warm sm:block"
+      className="shrink-0 text-warm"
     >
       <line x1="2" y1="6" x2="44" y2="6" stroke="currentColor" strokeWidth="1" opacity="0.28" />
       <line
@@ -44,7 +44,7 @@ export function Pipeline({
   };
 
   return (
-    <div className="relative group/pipeline" data-reveal>
+    <div className="relative group/pipeline" data-motion data-reveal>
       {/* Scroll Arrows */}
       <div className="flex items-center justify-between mb-3 sm:hidden">
         <span className="font-mono text-[10px] text-muted uppercase">Свайпайте вправо →</span>
@@ -77,8 +77,6 @@ export function Pipeline({
           {steps.map((step, i) => (
             <li key={step} className="flex items-center">
               <span
-                data-reveal
-                style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
                 className="premium-card flex items-center gap-2 rounded-full px-3.5 py-2 text-xs sm:text-sm transition-all hover:border-mark/40 hover:-translate-y-0.5"
               >
                 <span className="font-mono text-[11px] text-warm font-semibold">
@@ -92,11 +90,7 @@ export function Pipeline({
           {result ? (
             <li className="flex items-center">
               <Connector delay={steps.length * 70} />
-              <span
-                data-reveal
-                style={{ "--reveal-delay": `${steps.length * 70}ms` } as CSSProperties}
-                className="rounded-full bg-mark px-4 py-2 text-xs sm:text-sm font-semibold text-mark-ink shadow-sm"
-              >
+              <span className="rounded-full bg-mark px-4 py-2 text-xs sm:text-sm font-semibold text-mark-ink shadow-sm">
                 {result}
               </span>
             </li>

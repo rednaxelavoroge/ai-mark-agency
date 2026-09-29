@@ -56,6 +56,10 @@ export default async function HowItWorksPage({ params }: Props) {
       {/* 1. Full IdeaToBusiness Dial with unconstrained sticky pinning */}
       <IdeaToBusiness locale={locale} />
 
+      <details className="mx-auto mt-8 max-w-6xl border-y border-line px-4 sm:px-6">
+        <summary className="cursor-pointer list-none py-4 text-sm font-semibold">
+          {isRu ? "Сборка, производство и принципы" : "Build, production and principles"}
+        </summary>
       {/* 2. Business Creation: Two Entries */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Section
@@ -110,9 +114,10 @@ export default async function HowItWorksPage({ params }: Props) {
       </div>
 
       {/* 5. Manifesto & Principles */}
-      <div className="mt-20 overflow-hidden rounded-3xl border border-line bg-ink-2/30">
+      <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-ink-2/30">
         <Manifesto locale={locale} />
       </div>
+      </details>
 
       {/* Bottom Action Card */}
       <div className="mt-20 rounded-3xl border border-warm/30 bg-warm-soft p-8 sm:p-12 text-center" data-reveal>

@@ -247,8 +247,8 @@ export const copyDe: Copy = {
   },
   "commercial": {
     "eyebrow": "Commercial model",
-    "title": "Several ways to work together. Retainers are one of them.",
-    "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
+    "title": "Mehrere Wege der Zusammenarbeit. Retainer sind einer davon.",
+    "lead": "Wählen Sie ein Produkt-SKU, einen Service-Sprint, eine betreute Abteilung oder eine individuelle Entwicklung. Die Preise unten sind Spannen, kein Ergebnisversprechen.",
     "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
     "perMonth": "/Monat",
     "featured": "Beliebteste Wahl",

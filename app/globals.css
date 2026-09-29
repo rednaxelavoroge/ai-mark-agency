@@ -209,6 +209,11 @@ body.menu-open { overflow: hidden; }
 :lang(ar) {
   font-family: var(--font-noto-ar), var(--font-sans), sans-serif;
 }
+/* English (and other LTR) sentences inside an RTL page keep their punctuation
+   at the end of the line instead of jumping to the start of the next line. */
+[dir="rtl"] :is(h1, h2, h3, p, li) {
+  unicode-bidi: plaintext;
+}
 :lang(zh) {
   font-family: var(--font-noto-sc), var(--font-sans), sans-serif;
   letter-spacing: 0;
@@ -490,13 +495,21 @@ main {
   stroke-dashoffset: var(--len, 1000);
 }
 [data-reveal].is-revealed .flow-line,
-.is-revealed .flow-line {
+.is-revealed .flow-line,
+[data-motion].is-inview .flow-line {
   animation: am-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: var(--reveal-delay, 0ms);
 }
 .flow-dash {
   stroke-dasharray: 6 8;
   animation: am-dash 6s linear infinite;
+}
+/* A short dash travelling the same path as the connector. */
+.flow-dot {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 4 42;
+  animation: am-dash 4.2s linear infinite;
 }
 
 /* Shimmer sweep used on premium cards / UI chrome */
@@ -525,7 +538,8 @@ main {
   transform-origin: bottom;
   transform: scaleY(0.12);
 }
-.is-revealed .ui-bar {
+.is-revealed .ui-bar,
+[data-motion].is-inview .ui-bar {
   animation: am-bar 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: var(--bar-delay, 0ms);
 }
@@ -533,9 +547,29 @@ main {
   transform-origin: left;
   transform: scaleX(0);
 }
-.is-revealed .ui-grow {
+.is-revealed .ui-grow,
+[data-motion].is-inview .ui-grow {
   animation: am-grow 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: var(--bar-delay, 0ms);
+}
+.illu-float {
+  animation: illu-float 7s ease-in-out infinite alternate;
+}
+.illu-pulse {
+  animation: illu-pulse 2.8s ease-in-out infinite;
+}
+.illu-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: am-spin-slow 36s linear infinite;
+}
+@keyframes illu-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+@keyframes illu-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 /* Simulated scan passing over a dashboard preview */
@@ -922,6 +956,10 @@ main {
   .shimmer::after,
   .flow-line,
   .flow-dash,
+  .flow-dot,
+  .illu-float,
+  .illu-pulse,
+  .illu-spin,
   .am-anim,
   .hero-cursor,
   .ui-bar,
@@ -1035,8 +1073,8 @@ main {
   animation: hero-breathe 12s ease-in-out infinite alternate;
 }
 @keyframes hero-breathe {
-  from { transform: scale(1.02); }
-  to { transform: scale(1.07) translateY(-8px); }
+  from { transform: scale(1.02) translateY(0); }
+  to { transform: scale(1.075) translateY(-7px); }
 }
 .hero-ring {
   position: absolute;
@@ -1054,8 +1092,15 @@ main {
   border: 1px solid rgba(212, 242, 126, 0.28);
   border-radius: 50%;
 }
+.am-anim.hero-breathe,
+.am-anim.hero-ring {
+  will-change: transform;
+}
 .am-anim.hero-ring { animation: ring-spin 48s linear infinite; }
-@keyframes ring-spin { to { transform: rotate(336deg); } }
+@keyframes ring-spin {
+  from { transform: rotate(-24deg); }
+  to { transform: rotate(336deg); }
+}
 .hero-cursor {
   position: absolute;
   z-index: 2;
@@ -1083,7 +1128,11 @@ main {
     linear-gradient(160deg, #10241c, #1b3427 60%, #10231c);
   pointer-events: none;
 }
-.am-forest-hero > * { position: relative; z-index: 1; }
+/* Stack page content above the ::before wash. Do not override Tailwind
+   `absolute`: a direct-child orb would otherwise become in-flow and leave
+   a large empty forest block above the hero copy (especially on mobile). */
+.am-forest-hero > * { z-index: 1; }
+.am-forest-hero > :not(.absolute) { position: relative; }
 .am-forest-hero .text-paper { color: #f4f6ee; }
 .am-forest-hero .text-muted { color: #d3ddd2; }
 .am-forest-hero .text-mark { color: #d4f27e; }
@@ -1094,6 +1143,111 @@ main {
 .am-forest-hero .bg-ink-2\/60 { background: rgba(255, 255, 255, 0.08); }
 .am-forest-hero .border-line { border-color: rgba(255, 255, 255, 0.22); }
 .am-forest-hero .border-mark\/20 { border-color: rgba(212, 242, 126, 0.35); }
+
+/* "Back to home" sits on the forest hero. Forest recolors .text-paper to
+   near-white while bg-ink-2/90 stays a light wash, so the label failed
+   contrast. Pin ink on paper for both themes. */
+.am-back,
+.am-forest-hero .am-back,
+.am-forest-hero .am-back span,
+[data-theme="dark"] .am-back,
+[data-theme="light"] .am-back {
+  background: #fffefa !important;
+  color: #14291f !important;
+  border-color: #14291f !important;
+}
+.am-back:hover,
+.am-forest-hero .am-back:hover {
+  background: #e7efe4 !important;
+  color: #14291f !important;
+}
+
+/* Sample page-visual: a visible hero frame, not a full dashboard. */
+.am-page-visual {
+  min-height: 340px;
+  max-height: 340px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+@media (max-width: 760px) {
+  .am-hero-split {
+    display: flex;
+    flex-direction: column;
+  }
+  .am-hero-split .am-page-visual {
+    order: -1;
+  }
+}
+
+/* Sample step-grid is two columns from 390px up. Tailwind sm:/md: prefixes
+   leave these lists as one tall column on a phone. */
+@media (max-width: 760px) {
+  .am-step-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .am-step-grid > * {
+    padding: 12px !important;
+    min-height: 0;
+  }
+  .am-step-grid h3,
+  .am-step-grid h4 {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.25;
+  }
+  .am-step-grid p {
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .am-price-grid {
+    gap: 10px !important;
+    margin-top: 1.25rem !important;
+  }
+  .am-price-grid > * {
+    padding: 14px !important;
+  }
+}
+
+/* Product mock inside the forest hero must stay a solid card. The hero
+   recolors every .bg-ink-2 to a translucent wash, which turned the mock
+   into an empty dark block on all three product pages. */
+.am-forest-hero .am-hero-visual {
+  background-color: transparent;
+  --ink: #f3f4ed;
+  --ink-2: #fffefa;
+  --ink-3: #e9ede3;
+  --paper: #17261f;
+  --muted: #3e5146;
+  --line: #dce2d8;
+  --mark: #14291f;
+  --mark-light: #21392c;
+  --mark-ink: #f4f6ee;
+  --warm: #3f5c38;
+  color: #17261f;
+}
+.am-forest-hero .am-hero-visual .text-paper { color: var(--paper); }
+.am-forest-hero .am-hero-visual .text-muted { color: var(--muted); }
+.am-forest-hero .am-hero-visual .text-mark { color: var(--mark); }
+.am-forest-hero .am-hero-visual .text-warm { color: var(--warm); }
+.am-forest-hero .am-hero-visual .bg-mark { background: var(--mark); }
+.am-forest-hero .am-hero-visual .text-mark-ink { color: var(--mark-ink); }
+.am-forest-hero .am-hero-visual.bg-ink-2,
+.am-forest-hero .am-hero-visual .bg-ink-2,
+.am-forest-hero .am-hero-visual .bg-ink-2\/60,
+.am-forest-hero .am-hero-visual .bg-ink-2\/95 { background: var(--ink-2); color: var(--paper); }
+.am-forest-hero .am-hero-visual .bg-ink-3,
+.am-forest-hero .am-hero-visual .bg-ink-3\/30,
+.am-forest-hero .am-hero-visual .bg-ink-3\/40,
+.am-forest-hero .am-hero-visual .bg-ink-3\/50,
+.am-forest-hero .am-hero-visual .bg-ink-3\/60 { background: var(--ink-3); }
+.am-forest-hero .am-hero-visual .border-line,
+.am-forest-hero .am-hero-visual .border-line\/70,
+.am-forest-hero .am-hero-visual .border-line\/60,
+.am-forest-hero .am-hero-visual .border-line\/50 { border-color: var(--line); }
+.am-forest-hero .am-hero-visual .border-mark\/20,
+.am-forest-hero .am-hero-visual .border-mark\/30 { border-color: color-mix(in srgb, var(--mark) 28%, transparent); }
 
 .tilt-card {
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
@@ -1109,17 +1263,35 @@ main {
 }
 
 .stroke-draw {
-  stroke-dasharray: 140;
-  stroke-dashoffset: 0;
+  stroke-dasharray: var(--len, 140);
+  stroke-dashoffset: var(--len, 140);
 }
-[data-motion].is-inview .stroke-draw {
+[data-motion].is-inview .stroke-draw,
+.is-revealed .stroke-draw {
   animation: stroke-draw 2.2s var(--ease) both;
+  animation-delay: var(--draw-delay, 0ms);
 }
 @keyframes stroke-draw {
-  from { stroke-dashoffset: 140; }
+  from { stroke-dashoffset: var(--len, 140); }
   to { stroke-dashoffset: 0; }
 }
-[data-motion]:not(.is-inview) .am-anim {
+/* Offscreen illustrations stay painted but do not tick. The home hero
+   breathe and ring are excluded so the LCP frame never waits on the observer. */
+[data-motion]:not(.is-inview) :is(
+  .am-anim:not(.hero-breathe):not(.hero-ring),
+  .flow-dash,
+  .flow-dot,
+  .illu-float,
+  .illu-pulse,
+  .illu-spin,
+  .float-soft,
+  .float-slow,
+  .stroke-draw,
+  .ui-bar,
+  .ui-grow,
+  .flow-line,
+  .pulse-ring::after
+) {
   animation-play-state: paused;
 }
 
@@ -1129,5 +1301,55 @@ main {
 }
 @media (max-width: 760px) {
   .am-display { font-size: clamp(36px, 11vw, 56px); }
-  .hero-art-wrap { min-height: 320px; }
+  .hero-art-wrap { min-height: 280px; }
+}
+
+/* Tailwind's section reset can beat the UA rule that hides closed <details>,
+   so a wrapped section stays in the scroll height. Force the closed state. */
+details:not([open]) > :not(summary) {
+  display: none !important;
+}
+
+/* Below-fold home blocks can skip layout/paint until scrolled near. */
+.home-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
+/* Phones: drop the effects that burn the GPU. Coarse pointers never see
+   hover tilt or the cursor light, and a full-screen turbulence grain plus
+   backdrop-filter on every scroll frame is what makes the page lag. */
+@media (pointer: coarse), (max-width: 760px) {
+  .grain-overlay { display: none; }
+  .hero-cursor { display: none !important; }
+  /* Keep the hero image breathing and the ring spinning: transform-only
+     keyframes, including on phones. Reduced motion turns .am-anim off. */
+  .hero-art-img { mix-blend-mode: normal; }
+  .tilt-card,
+  .tilt-card:hover,
+  .tilt-card:nth-child(even):hover {
+    transform: none !important;
+    transition: none !important;
+  }
+  .blur-2xl,
+  .blur-3xl { filter: none !important; }
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-xl {
+    --tw-backdrop-blur: ;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .ambient-drift,
+  .ambient-drift-slow,
+  .spin-slow,
+  .gradient-pan,
+  .shimmer::after,
+  .scanline,
+  .caret,
+  .marquee-track,
+  .stage-enter {
+    animation: none !important;
+  }
 }

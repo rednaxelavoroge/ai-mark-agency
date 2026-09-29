@@ -107,6 +107,8 @@ function injectHideBubbleStyle() {
       box-shadow: var(--shadow-lg) !important;
       font-size: 14px !important;
       line-height: 1.45 !important;
+      unicode-bidi: plaintext !important;
+      text-align: start !important;
     }
     /* Downward tail, so the bubble points at the launcher button. */
     .aiba-root .aiba-greeting::after {
@@ -152,6 +154,12 @@ function injectHideBubbleStyle() {
      */
     html[data-teaser-seen] .aiba-root .aiba-greeting {
       display: none !important;
+    }
+    /* Phones show only the launcher. The greeting must not auto-open. */
+    @media (max-width: 760px) {
+      .aiba-root .aiba-greeting {
+        display: none !important;
+      }
     }
     /* Hosted widget footer links the BA product origin (alex-dev.pro). Hide it. */
     .aiba-root .aiba-footer { display: none !important; }

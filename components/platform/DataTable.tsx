@@ -31,7 +31,7 @@ export function DataTable({
 
   return (
     <div className={`overflow-x-auto ${cardClass}`}>
-      <table className="w-full min-w-[40rem] text-left text-xs">
+      <table className="w-full min-w-[40rem] text-start text-xs">
         <thead>
           <tr className="border-b border-line text-[10px] tracking-[0.14em] text-muted uppercase">
             {columns.map((column) => (

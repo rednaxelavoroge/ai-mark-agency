@@ -16,13 +16,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const locale = raw as Locale;
-  const isRu = locale === "ru";
-  const title = isRu
-    ? `Тарифы и коммерческая модель · ${site.name}`
-    : `Pricing & Commercial Model · ${site.name}`;
-  const description = isRu
-    ? "Прозрачные тарифы на AI-маркетинг, подписки на proprietary AI-продукты и заказную разработку цифровых платформ."
-    : "Transparent retainer tiers for AI marketing, proprietary AI product subscriptions, and turnkey digital production.";
+  const metaByLocale: Partial<Record<Locale, { title: string; description: string }>> = {
+    ru: {
+      title: `Тарифы и коммерческая модель · ${site.name}`,
+      description:
+        "Прозрачные тарифы на AI-маркетинг, подписки на proprietary AI-продукты и заказную разработку цифровых платформ.",
+    },
+    de: {
+      title: `Preise und Geschäftsmodell · ${site.name}`,
+      description:
+        "Transparente Retainer für AI-Marketing, Abos der eigenen AI-Produkte und digitale Produktion nach Auftrag.",
+    },
+    ja: {
+      title: `料金と商業モデル · ${site.name}`,
+      description:
+        "AIマーケティングのリテイナー、自社AI製品のサブスクリプション、受託のデジタル制作の透明な料金です。",
+    },
+  };
+  const meta = metaByLocale[locale] ?? {
+    title: `Pricing & Commercial Model · ${site.name}`,
+    description:
+      "Transparent retainer tiers for AI marketing, proprietary AI product subscriptions, and turnkey digital production.",
+  };
+  const title = meta.title;
+  const description = meta.description;
 
   return {
     title: { absolute: title },

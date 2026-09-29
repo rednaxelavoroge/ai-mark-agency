@@ -222,7 +222,7 @@ export function PanelDemo({ locale, tabs }: { locale: Locale; tabs: PanelTab[] }
             key={tab.key}
             type="button"
             onClick={() => setActive(tab.key)}
-            className={`rounded-xl border px-4 py-3 text-left text-sm font-semibold transition-all ${
+            className={`rounded-xl border px-4 py-3 text-start text-sm font-semibold transition-all ${
               active === tab.key
                 ? "border-mark bg-mark/8 text-paper"
                 : "border-line bg-ink-2 text-muted hover:text-paper"
@@ -255,7 +255,7 @@ export function PanelDemo({ locale, tabs }: { locale: Locale; tabs: PanelTab[] }
                   key={tab.key}
                   type="button"
                   onClick={() => setActive(tab.key)}
-                  className={`block w-full rounded-md px-2.5 py-1.5 text-left font-mono text-[10px] transition-colors ${
+                  className={`block w-full rounded-md px-2.5 py-1.5 text-start font-mono text-[10px] transition-colors ${
                     active === tab.key ? "bg-white/10 text-white" : "text-white/55 hover:text-white/90"
                   }`}
                 >

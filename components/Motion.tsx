@@ -28,7 +28,7 @@ export function MotionRoot() {
           }
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      { rootMargin: "0px", threshold: 0 },
     );
 
     const scan = () => {
@@ -49,7 +49,7 @@ export function MotionRoot() {
           else svg.pauseAnimations();
         });
       }
-    }, { threshold: 0.08 });
+    }, { rootMargin: "80px", threshold: 0 });
 
     const scanLive = () => {
       document.querySelectorAll<HTMLElement>("[data-motion]").forEach((el) => {
@@ -67,6 +67,9 @@ export function MotionRoot() {
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      document.querySelectorAll<HTMLElement>("[data-motion]").forEach((el) => {
+        delete el.dataset.motionBound;
+      });
       io.disconnect();
       live.disconnect();
       mo.disconnect();
@@ -130,7 +133,10 @@ export function Parallax({
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !ref.current) return;
+    const coarse =
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 760px)").matches;
+    if (reduce || coarse || !ref.current) return;
     let raf = 0;
     const update = () => {
       raf = 0;

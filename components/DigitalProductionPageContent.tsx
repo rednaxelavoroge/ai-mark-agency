@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { ProductUI } from "@/components/ui/ProductUI";
 import { getDigitalProductionCopy } from "@/content/digital-production";
+import { brief } from "@/lib/brief";
 import { navHref, type Locale } from "@/lib/site";
 import { productPagePath, productsHubPath } from "@/lib/products";
 import { Pipeline } from "@/components/Pipeline";
@@ -13,7 +14,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
     <article>
       <section className="relative overflow-hidden border-b border-line">
         <div className="ambient-drift pointer-events-none absolute -right-20 -top-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(198,214,139,0.12),transparent_68%)]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:py-20">
+        <div className="am-hero-split mx-auto grid max-w-6xl items-center gap-6 px-4 py-8 sm:px-6 sm:py-16 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:py-20">
           <div data-reveal>
             <p className="font-mono text-[11px] font-semibold tracking-[0.22em] text-warm uppercase">
               {t.hero.label}
@@ -44,21 +45,21 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
               </Link>
             </div>
           </div>
-          <div className="min-w-0" data-reveal="scale">
-            <ProductUI variant="saas" ratio="aspect-[16/10] sm:aspect-[16/9] lg:h-[420px] lg:aspect-auto" />
+          <div data-motion className="am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2">
+            <ProductUI variant="saas" ratio="aspect-[16/10]" />
           </div>
         </div>
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.contrast.eyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">
               {t.contrast.title}
             </h2>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-4">
             <article
               data-reveal
               className="flex flex-col rounded-2xl border border-line bg-ink-2 p-6 sm:p-7"
@@ -96,7 +97,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
       </section>
 
       <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.builds.eyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">
@@ -104,19 +105,14 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
             </h2>
             <p className="mt-4 max-w-2xl text-muted">{t.builds.lead}</p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="am-step-grid mt-6 grid gap-3 grid-cols-2 xl:grid-cols-3">
             {t.builds.items.map((item, i) => (
               <article
                 key={item.title}
                 data-reveal
                 className="catalog-card peek-host group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-ink-2"
               >
-                <div className="p-4 sm:p-5">
-                  <div className="overflow-hidden rounded-xl border border-line bg-ink-3/30">
-                    <ProductUI variant={item.mock} ratio="aspect-[16/9]" peek />
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col border-t border-line p-5 sm:p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <div className="flex items-center justify-between gap-3">
                     <span className="font-mono text-[10px] font-semibold tracking-[0.14em] text-warm uppercase">
                       {String(i + 1).padStart(2, "0")}
@@ -126,7 +122,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
                     </span>
                   </div>
                   <h3 className="mt-3 font-display text-lg font-semibold text-paper">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted">{item.forWhom}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">{brief(item.forWhom)}</p>
                   <ul className="mt-4 space-y-2 border-t border-line/60 pt-3">
                     {item.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2 text-[11px] leading-relaxed text-paper/85">
@@ -145,7 +141,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.process.eyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">
@@ -161,7 +157,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
       </section>
 
       <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
           <div data-reveal>
             <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.scenarios.eyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">
@@ -169,7 +165,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
             </h2>
             <p className="mt-4 max-w-2xl text-muted">{t.scenarios.lead}</p>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="am-step-grid mt-6 grid gap-3 grid-cols-2">
             {t.scenarios.items.map((item, i) => (
               <article
                 key={item.title}
@@ -188,7 +184,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
       </section>
 
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
           <div
             data-reveal
             className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-6 sm:p-8"
@@ -224,7 +220,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <div className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 sm:py-24" data-reveal>
+        <div className="mx-auto max-w-5xl px-4 py-8 text-center sm:px-6 sm:py-12" data-reveal>
           <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.hero.label}</p>
           <h2 className="mt-3 font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">
             {t.hero.title}

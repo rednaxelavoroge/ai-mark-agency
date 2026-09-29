@@ -47,6 +47,7 @@ export function UIFrame({
 }) {
   return (
     <div
+      data-motion
       className={`overflow-hidden rounded-2xl border border-line bg-ink-2 shadow-lg ${className}`}
     >
       <div className="flex items-center gap-3 border-b border-line bg-ink-3/60 px-4 py-2.5">
@@ -248,11 +249,12 @@ function AimeMock() {
               key={i}
               className={`h-3.5 rounded-[3px] ${
                 i === 5
-                  ? "bg-warm/60"
+                  ? "illu-pulse bg-warm/60"
                   : i % 3 === 0
                     ? "bg-mark/35"
                     : "bg-ink-2 border border-line/60"
               }`}
+              style={i === 5 ? { animationDelay: "0.4s" } : undefined}
             />
           ))}
         </div>
@@ -442,6 +444,12 @@ function ShowroomMock() {
               stroke="var(--warm)"
               strokeWidth="1"
               opacity="0.6"
+            />
+            <path
+              className="flow-dot"
+              d="M2 26 C40 26, 40 8, 78 8 S120 26 156 26 S200 6 238 6"
+              stroke="var(--mark)"
+              strokeWidth="2.4"
             />
           </svg>
         </div>
