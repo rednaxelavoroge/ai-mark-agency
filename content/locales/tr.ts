@@ -561,6 +561,13 @@ export const copyTr: Copy = {
     "cardOption": 'Banka kartı (Visa/Mastercard) — yakında',
     "cardsSoon": 'Kartlar — yakında'
   },
+  "pay": {
+    "email": "E-posta",
+    "emailHint": "Zorunlu. Abonelik ve makbuz bu adresi kullanır.",
+    "name": "Ad",
+    "company": "Şirket",
+    "optional": "isteğe bağlı"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

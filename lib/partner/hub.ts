@@ -47,14 +47,14 @@ export type HubLabels = {
 const LABELS: Record<"en" | "ru", HubLabels> = {
   en: {
     title: "Partner Hub",
-    lead: "This page is the place to get demos, product facts, brand files, and support. It only lists what already exists on ai-mark.agency.",
+    lead: "Demos, product facts, brand files, and support for partners.",
     startTitle: "How to start",
     startLead:
-      "Your Partner ID and referral link are issued with the account. There is no separate training product and no Partner Agreement published on this site yet.",
+      "Your Partner ID and referral link are ready with the account. Programme rules are confirmed with you during onboarding, before you sell.",
     steps: [
       {
         title: "Copy your referral link",
-        body: "It is on Dashboard and Profile. The public form is /go/<your-code>.",
+        body: "It is on Dashboard and Profile. Share that link with the customer.",
       },
       {
         title: "Send a product page, not a guess",
@@ -62,79 +62,75 @@ const LABELS: Record<"en" | "ru", HubLabels> = {
       },
       {
         title: "A visitor is attributed for 30 days",
-        body: "The site stores a signed cookie. A later /go link from another partner replaces it.",
+        body: "A visitor who opens your link stays attributed to you for 30 days.",
       },
       {
         title: "A lead is the contact form",
-        body: "Customers → lists people who submitted the site form while your cookie was valid. The public AI chat widget is not written into that list.",
+        body: "Customers lists people who sent the site form while your link was active.",
       },
       {
         title: "A sale is a paid invoice",
-        body: "Self-serve SKUs go through /pay. An operator confirms the transfer, then the ledger posts commission.",
+        body: "The customer pays on the product checkout. Commission is recorded after that payment is confirmed.",
       },
       {
         title: "Payouts are recorded by AI MARK",
-        body: "Save a USDC destination on Profile. This screen does not send tokens. A partner cannot request a payout from the cabinet.",
+        body: "Save a USDC address on Profile. AI MARK records the payout and sends it there.",
       },
     ],
     demosTitle: "Demos and presentations",
     demosLead:
-      "There is no partner-only sandbox and no downloadable slide deck. The presentation is the live product page, with your referral link.",
+      "The presentation is the live product page, already carrying your referral link.",
     openPage: "Open product page with your link",
     openPay: "Open checkout with your link",
     liveChat: "Live AI Business Assistant widget on the public site (same widget visitors already see).",
-    panelDemo: "Interactive panel demo on the Assistant product page (example workspace, not a client result).",
-    noSandbox: "No logged-in AIME or SHOWROOM AI demo tenant is issued to partners.",
-    noDeck: "No PDF or PPT presentation file is in this repository.",
+    panelDemo: "Interactive panel demo on the Assistant product page.",
+    noSandbox: "Open the live product page with your referral link.",
+    noDeck: "Share the live product page as the presentation.",
     materialsTitle: "Marketing materials",
-    materialsLead:
-      "These are the approved brand files and link-preview images the site already uses. There are no campaign banners, social templates, or localised ads in production.",
-    materialsMissing:
-      "Do not invent creatives. If a customer needs a banner, that is a production request to AI MARK, not a file on this page.",
+    materialsLead: "Approved brand files and link-preview images, ready to download.",
+    materialsMissing: "These are the brand files published for partners.",
     download: "Download",
     knowledgeTitle: "Product knowledge",
-    knowledgeLead:
-      "Positioning, who it is for, list price, and limits — copied from the public product pages. Commission is not calculated here.",
+    knowledgeLead: "Positioning, audience, and list price from the public product pages.",
     who: "Who it's for",
     offer: "What it is",
     price: "List price",
     limits: "Limits (published)",
     supportTitle: "Support",
-    supportLead:
-      "There is no partner ticket queue. Use the same public channels as the rest of the site, and include your Partner ID.",
+    supportLead: "Write to us on the same channels as the rest of the site, and include your Partner ID.",
     includeId: "Include your Partner ID, the referral link you sent, and whether the issue is a click, a lead, a sale, or a payout.",
-    noTickets: "Partner Agreement terms are confirmed with AI MARK before you sell. They are not published on this site.",
+    noTickets: "Programme rules are confirmed with you during onboarding, before you sell.",
     trackingTitle: "What is tracked",
-    trackingLead: "Only these paths write a partner-attributed row. Anything else is not a tracked lead.",
+    trackingLead: "These are the moments that stay attached to your referral link.",
     tracking: [
       {
         title: "Referral click",
-        body: "/go/<code> records a click when the code exists. An unknown code still redirects and records nothing.",
+        body: "Opening your referral link records the visit.",
       },
       {
         title: "Contact lead",
-        body: "The public contact form writes a leads row. Chat, Telegram, WhatsApp, and email are not that row.",
+        body: "A person who sends the contact form while your link is active appears in Customers.",
       },
       {
         title: "Partner signup",
-        body: "A new partner account opened through your link records you as sponsor. You cannot set a sponsor yourself.",
+        body: "A new partner who joins through your link is recorded in your network.",
       },
       {
         title: "Paid sale",
-        body: "/pay stores the referral code on the invoice. Commission appears after an operator confirms payment.",
+        body: "A paid checkout keeps your referral code. Commission appears after the payment is confirmed.",
       },
     ],
   },
   ru: {
     title: "Partner Hub",
-    lead: "Здесь демо, факты о продуктах, файлы бренда и поддержка. В списке только то, что уже есть на ai-mark.agency.",
+    lead: "Демо, факты о продуктах, файлы бренда и поддержка для партнёров.",
     startTitle: "Как начать",
     startLead:
-      "Partner ID и referral-ссылка выдаются вместе с аккаунтом. Отдельного учебного курса нет. Partner Agreement на сайте ещё не опубликован.",
+      "Partner ID и referral-ссылка готовы вместе с аккаунтом. Правила программы подтверждаем с вами на подключении, до первых продаж.",
     steps: [
       {
         title: "Скопируйте referral-ссылку",
-        body: "Она на Dashboard и в Profile. Публичный адрес: /go/<ваш-код>.",
+        body: "Она на главной кабинета и в профиле. Эту ссылку и отправляйте клиенту.",
       },
       {
         title: "Отправляйте страницу продукта",
@@ -142,68 +138,62 @@ const LABELS: Record<"en" | "ru", HubLabels> = {
       },
       {
         title: "Посетитель атрибутируется 30 дней",
-        body: "Сайт ставит подписанную cookie. Новая ссылка другого партнёра её заменяет.",
+        body: "Посетитель, открывший вашу ссылку, остаётся за вами 30 дней.",
       },
       {
         title: "Лид — это форма на сайте",
-        body: "Customers показывает тех, кто отправил форму, пока действовала ваша cookie. Публичный AI-чат в этот список не пишется.",
+        body: "В разделе клиентов — те, кто отправил форму на сайте, пока действовала ваша ссылка.",
       },
       {
         title: "Продажа — оплаченный инвойс",
-        body: "Self-serve SKU идут через /pay. Оператор подтверждает перевод, затем ledger пишет комиссию.",
+        body: "Клиент оплачивает продукт на странице оплаты. Комиссия записывается после подтверждения платежа.",
       },
       {
         title: "Выплату записывает AI MARK",
-        body: "Сохраните USDC-адрес в Profile. Экран не отправляет токены. Запросить выплату из кабинета нельзя.",
+        body: "Сохраните USDC-адрес в профиле. AI MARK записывает выплату и отправляет её туда.",
       },
     ],
     demosTitle: "Демо и презентации",
-    demosLead:
-      "Отдельного партнёрского sandbox и скачиваемой презентации нет. Презентация — живая страница продукта с вашей referral-ссылкой.",
+    demosLead: "Презентация — живая страница продукта, уже с вашей referral-ссылкой.",
     openPage: "Открыть страницу продукта по вашей ссылке",
     openPay: "Открыть оплату по вашей ссылке",
     liveChat: "Живой виджет AI Business Assistant на публичном сайте (тот же, что видит посетитель).",
-    panelDemo: "Интерактивное демо панели на странице Assistant (пример рабочей области, не результат клиента).",
-    noSandbox: "Партнёру не выдаётся отдельный демо-тенант AIME или SHOWROOM AI.",
-    noDeck: "В репозитории нет файла презентации PDF или PPT.",
+    panelDemo: "Интерактивное демо панели на странице ассистента.",
+    noSandbox: "Откройте живую страницу продукта по своей ссылке.",
+    noDeck: "Живая страница продукта и есть презентация.",
     materialsTitle: "Рекламные материалы",
-    materialsLead:
-      "Это утверждённые файлы бренда и превью ссылок, которые уже использует сайт. Кампанийных баннеров, шаблонов для соцсетей и локализованной рекламы в production нет.",
-    materialsMissing:
-      "Не выдумывайте креативы. Баннер для клиента — запрос в AI MARK, а не файл на этой странице.",
+    materialsLead: "Утверждённые файлы бренда и превью ссылок — их можно скачать.",
+    materialsMissing: "Это файлы бренда, опубликованные для партнёров.",
     download: "Скачать",
     knowledgeTitle: "База знаний по продуктам",
-    knowledgeLead:
-      "Позиционирование, аудитория, цена прайса и ограничения — с публичных страниц продуктов. Комиссия здесь не считается.",
+    knowledgeLead: "Позиционирование, аудитория и цена с публичных страниц продуктов.",
     who: "Кому подходит",
     offer: "Что это",
     price: "Цена прайса",
     limits: "Ограничения (опубликованные)",
     supportTitle: "Поддержка",
-    supportLead:
-      "Отдельной партнёрской очереди тикетов нет. Те же публичные каналы, что на сайте. Указывайте Partner ID.",
+    supportLead: "Пишите в те же каналы, что и на сайте, и укажите Partner ID.",
     includeId:
       "Укажите Partner ID, какую ссылку отправили и это клик, лид, продажа или выплата.",
-    noTickets:
-      "Условия Partner Agreement подтверждаются с AI MARK до продаж. На сайте они не опубликованы.",
+    noTickets: "Правила программы подтверждаем с вами на подключении, до первых продаж.",
     trackingTitle: "Что отслеживается",
-    trackingLead: "Партнёрская запись появляется только на этих путях. Остальное — не tracked lead.",
+    trackingLead: "Вот моменты, которые остаются за вашей referral-ссылкой.",
     tracking: [
       {
         title: "Клик",
-        body: "/go/<code> пишет клик, если код существует. Неизвестный код всё равно редиректит и ничего не записывает.",
+        body: "Открытие вашей referral-ссылки записывает визит.",
       },
       {
         title: "Лид с формы",
-        body: "Публичная форма пишет строку в leads. Чат, Telegram, WhatsApp и email в эту таблицу не пишутся.",
+        body: "Человек, отправивший форму на сайте, пока действует ваша ссылка, появляется в клиентах.",
       },
       {
         title: "Регистрация партнёра",
-        body: "Новый партнёрский аккаунт по вашей ссылке записывает вас как sponsor. Назначить sponsor самому нельзя.",
+        body: "Новый партнёр, пришедший по вашей ссылке, записывается в вашу сеть.",
       },
       {
         title: "Оплаченная продажа",
-        body: "/pay сохраняет referral-код на инвойсе. Комиссия появляется после подтверждения оплаты оператором.",
+        body: "Оплаченный счёт сохраняет ваш referral-код. Комиссия появляется после подтверждения оплаты.",
       },
     ],
   },

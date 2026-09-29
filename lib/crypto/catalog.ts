@@ -1,23 +1,25 @@
-import { packages } from "@/content/packages";
-
 /**
  * Payable SKUs taken from published list prices only.
  *
  * Product pages: content/products/{aime,assistant,showroom}.ts
- * Department retainers: content/packages.ts
  *
+ * Department retainers (Starter / Growth / Scale) stay published on /pricing
+ * but are not self-serve. Their call to action is the contact form.
  * Custom / "по запросу" / Digital Production are not here — there is no
  * published number to charge.
  */
 
+/** Each self-serve product SKU is a 30-day subscription period. */
+export const SUBSCRIPTION_PERIOD_DAYS = 30;
+
 /**
  * The one payment path a buyer is sent to from anywhere on the site.
  *
- * Every "buy" call-to-action on a product page, a pricing card or the
- * department-retainer block links here with `?sku=<published sku id>`, so the
- * visitor never has to re-identify the product they just chose. It lives next
- * to the SKU list because the two must agree: a link may only ever preselect an
- * id that exists in `PAYABLE_SKUS`.
+ * Every "buy" call-to-action on a product page links here with
+ * `?sku=<published sku id>`, so the visitor never has to re-identify the
+ * product they just chose. Department retainers do not. It lives next to the
+ * SKU list because the two must agree: a link may only ever preselect an id
+ * that exists in `PAYABLE_SKUS`.
  */
 export const PAY_PAGE_PATH = "/pay";
 
@@ -35,42 +37,58 @@ export type PayableSku = {
   productRef: string;
   amountUsd: number;
   name: string;
+  /** Set for self-serve subscriptions. Null would mean a one-time charge. */
+  billingPeriodDays: number;
 };
 
 export const PAYABLE_SKUS: PayableSku[] = [
-  { id: "aime-lite", productRef: "aime", amountUsd: 199, name: "AIME Lite" },
-  { id: "aime-pro", productRef: "aime", amountUsd: 349, name: "AIME Pro" },
+  {
+    id: "aime-lite",
+    productRef: "aime",
+    amountUsd: 199,
+    name: "AIME Lite",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
+  },
+  {
+    id: "aime-pro",
+    productRef: "aime",
+    amountUsd: 349,
+    name: "AIME Pro",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
+  },
   {
     id: "assistant-entry",
     productRef: "assistant",
     amountUsd: 149,
     name: "AI Business Assistant Entry",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
   {
     id: "assistant-standard",
     productRef: "assistant",
     amountUsd: 249,
     name: "AI Business Assistant Standard",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
   {
     id: "showroom-standard",
     productRef: "showroom",
     amountUsd: 199,
     name: "SHOWROOM AI Standard",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
   {
     id: "showroom-business",
     productRef: "showroom",
     amountUsd: 299,
     name: "SHOWROOM AI Business",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
-  ...packages.map((pkg) => ({
-    id: pkg.id,
-    productRef: pkg.id,
-    amountUsd: pkg.priceUsd,
-    name: `Department retainer · ${pkg.id[0].toUpperCase()}${pkg.id.slice(1)}`,
-  })),
 ];
+
+export function isSubscriptionSku(sku: PayableSku | null | undefined): boolean {
+  return Boolean(sku && sku.billingPeriodDays > 0);
+}
 
 export function payableSkuById(id: string): PayableSku | null {
   return PAYABLE_SKUS.find((sku) => sku.id === id) ?? null;

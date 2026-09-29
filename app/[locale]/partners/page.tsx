@@ -122,7 +122,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     steps: [
       { n: "01", title: "Find a business", body: "Use your network, local market knowledge or existing customer base." },
       { n: "02", title: "Match the problem", body: "Choose the product or service that fits the business need." },
-      { n: "03", title: "Introduce AI MARK", body: "Use your referral link, a live product page, or a direct introduction. There is no partner sandbox and no slide deck." },
+      { n: "03", title: "Introduce AI MARK", body: "Send your referral link or a live product page, or make the introduction yourself." },
       { n: "04", title: "Close the sale", body: "The customer becomes an AI MARK customer through the tracked partner channel." },
       { n: "05", title: "AI MARK delivers", body: "Setup, implementation and service execution stay on the AI MARK side." },
       { n: "06", title: "Build your market", body: "Repeat, grow your customer base and develop an eligible partner network." },
@@ -164,7 +164,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     statusNote: "Status by performance",
     kitEyebrow: "Partner infrastructure",
     kitTitle: "What a partner can use today.",
-    kitLead: "Referral links, the Partner Dashboard, live product pages, brand files already on this site, and the public support channels. There is no partner sandbox, no PDF or PPT deck, no campaign creatives, no partner payout request, no automatic commission lock, no reversal screen, no ticket queue, and no training course. Chat, Telegram, WhatsApp, and email are not tracked leads.",
+    kitLead: "A personal referral link, the Partner Dashboard, live product pages, brand files, and support on Telegram, WhatsApp, Messenger, and email.",
     kit: [
       "Personal referral link and Partner ID",
       "Partner Dashboard with your own sales, commissions, and recorded payouts",
@@ -184,7 +184,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
       { q: "Do I have to buy a package to become a partner?", a: "The Partner Program is designed around selling AI MARK products and services, not purchasing a position in the network. Final onboarding rules are defined in the Partner Agreement." },
       { q: "Do I need to deliver the product myself?", a: "No. The partner focuses on relationships and sales opportunities. AI MARK remains responsible for the agreed product and delivery layer." },
       { q: "Can I build a team?", a: "Yes. The standard model supports a multi-level partner network linked to eligible customer sales, with a maximum depth of five levels." },
-      { q: "Can subscriptions create recurring commissions?", a: "Each qualifying payment follows the rule in force on the day it is paid. The 90-day launch window is a status flag only and does not multiply rates. Recurring payments use the same L1 50% / L2 15% / L3 7% / L4 5% / L5 3% schedule, with an 80% aggregate pool across qualified levels." },
+      { q: "Can subscriptions create recurring commissions?", a: "Each qualifying payment, including a renewal, uses the same schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, with an 80% aggregate pool across qualified levels. The first 90 days do not change those rates." },
       { q: "Can I become a Regional Partner?", a: "Yes. Regional status is intended for partners who demonstrate sustained commercial activity and can systematically develop a local market." },
     ],
     ctaEyebrow: "Start",
@@ -228,7 +228,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     steps: [
       { n: "01", title: "Находите бизнес", body: "Используете свои связи, знание локального рынка или существующую клиентскую базу." },
       { n: "02", title: "Находите задачу", body: "Подбираете продукт или сервис AI MARK под потребность компании." },
-      { n: "03", title: "Представляете AI MARK", body: "Используете referral-ссылку, живую страницу продукта или прямое знакомство. Отдельного sandbox и слайд-дека нет." },
+      { n: "03", title: "Представляете AI MARK", body: "Отправляете свою referral-ссылку или живую страницу продукта либо знакомите клиента лично." },
       { n: "04", title: "Закрываете продажу", body: "Клиент становится клиентом AI MARK через отслеживаемый канал партнёра." },
       { n: "05", title: "AI MARK выполняет", body: "Подключение, внедрение и исполнение согласованного продукта остаются на стороне AI MARK." },
       { n: "06", title: "Развиваете рынок", body: "Повторяете процесс, увеличиваете клиентскую базу и строите квалифицированную партнёрскую сеть." },
@@ -270,7 +270,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
     statusNote: "Статус по результату",
     kitEyebrow: "Партнёрская инфраструктура",
     kitTitle: "Что партнёру доступно сейчас.",
-    kitLead: "Referral-ссылка, Partner Dashboard, живые страницы продуктов, файлы бренда с сайта и публичные каналы поддержки. Нет партнёрского sandbox, PDF или PPT, кампанийных креативов, запроса выплаты из кабинета, автоматической блокировки комиссии, экрана reversal, тикетов и учебного курса. Чат, Telegram, WhatsApp и email не являются tracked lead.",
+    kitLead: "Персональная referral-ссылка, кабинет партнёра, живые страницы продуктов, файлы бренда и поддержка в Telegram, WhatsApp, Messenger и по email.",
     kit: [
       "Персональная referral-ссылка и Partner ID",
       "Partner Dashboard: свои продажи, комиссии и записанные выплаты",
@@ -290,7 +290,7 @@ const pageCopy: Partial<Record<Locale, PageCopy>> = {
       { q: "Нужно ли покупать пакет для статуса партнёра?", a: "Программа строится вокруг продаж продуктов и услуг AI MARK, а не покупки позиции в сети. Финальные правила подключения фиксируются в Partner Agreement." },
       { q: "Нужно ли самому выполнять работу?", a: "Нет. Партнёр в основном строит отношения и продажи. AI MARK отвечает за согласованный продукт и исполнение." },
       { q: "Можно ли строить команду?", a: "Да. Стандартная модель поддерживает многоуровневую партнёрскую сеть, связанную с продажами клиентам, с максимальной глубиной пять уровней." },
-      { q: "Могут ли подписки давать повторяющуюся комиссию?", a: "Каждый квалифицированный платёж считается по правилу дня оплаты. Окно launch 90 дней — только статусный флаг и не умножает ставки. Повторяющиеся платежи идут по той же сетке L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, с совокупным пулом 80% по квалифицированным уровням." },
+      { q: "Могут ли подписки давать повторяющуюся комиссию?", a: "Каждый квалифицированный платёж, включая продление, идёт по той же сетке: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, с совокупным пулом 80% по квалифицированным уровням. Первые 90 дней ставки не меняют." },
       { q: "Можно ли стать Regional Partner?", a: "Да. Такой статус предназначен для партнёров, которые демонстрируют устойчивую коммерческую активность и способны системно развивать локальный рынок." },
     ],
     ctaEyebrow: "Старт",

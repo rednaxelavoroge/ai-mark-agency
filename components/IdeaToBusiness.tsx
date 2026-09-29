@@ -400,10 +400,10 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
       <div
         ref={panelRef}
         className={`flex items-center ${
-          reduced ? "relative" : "itb-panel sticky top-0 overflow-hidden"
+          reduced ? "relative" : "itb-panel sticky top-0"
         }`}
       >
-        <div className="mx-auto flex h-full w-full max-w-6xl flex-col px-4 pt-14 pb-[72px] sm:px-6 sm:pb-20 lg:pt-20 [@media(max-height:560px)]:pt-12">
+        <div className="mx-auto flex w-full max-w-6xl flex-col px-4 pt-20 pb-16 sm:px-6 sm:pb-20 lg:h-full lg:pb-[72px]">
           <div className="shrink-0" data-reveal>
             <p className="font-mono text-[11px] tracking-[0.2em] text-mark uppercase sm:text-xs">
               {copy.eyebrow}
@@ -416,9 +416,9 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             </p>
           </div>
 
-          <div className="mt-4 grid min-h-0 flex-1 content-center gap-5 sm:mt-6 lg:grid-cols-[1fr_1.05fr] lg:content-stretch lg:gap-12">
+          <div className="mt-4 grid content-start gap-6 sm:mt-6 lg:min-h-0 lg:flex-1 lg:content-stretch lg:grid-cols-[1fr_1.05fr] lg:gap-12">
             {/* Narrative column */}
-            <div className="order-2 flex min-h-0 flex-col justify-center lg:order-1">
+            <div data-itb-copy className="order-2 flex min-h-0 flex-col justify-center lg:order-1">
               <div className="flex items-center gap-3">
                 <span
                   className="font-editorial text-3xl italic transition-colors duration-500 [@media(max-height:600px)]:text-2xl sm:text-4xl lg:text-5xl xl:text-6xl"
@@ -447,7 +447,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
               </div>
 
               {/* Progress rail */}
-              <div className="mt-4 flex gap-1.5 [@media(max-height:560px)]:hidden lg:mt-8">
+              <div className="mt-4 flex gap-1.5 pr-16 [@media(max-height:560px)]:hidden min-[761px]:pr-0 lg:mt-8">
                 {stages.map((s, i) => (
                   <button
                     key={s.title}
@@ -473,7 +473,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
             {/* System diagram */}
             <div className="order-1 flex min-h-0 flex-col lg:order-2">
               <div className={slotClass}>
-                <div className="itb-dial relative mx-auto">
+                <div data-itb-dial className="itb-dial relative mx-auto">
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-2xl transition-all duration-700"
@@ -581,8 +581,9 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
 
               {/* What the artifact means — always spelled out */}
               <div
-                key={active}
-                className="stage-enter mx-auto mt-2 flex w-full max-w-[460px] shrink-0 items-start gap-2.5 rounded-xl border border-line bg-ink-2 px-3 py-2 lg:mt-4 lg:gap-3 lg:px-4 lg:py-2.5"
+                key={`card-${active}`}
+                data-itb-card
+                className="itb-caption stage-enter relative z-10 mx-auto mt-4 flex w-full max-w-[460px] shrink-0 items-start gap-2.5 rounded-xl border border-line bg-ink-2 px-3 py-2 lg:mt-4 lg:gap-3 lg:px-4 lg:py-2.5"
               >
                 <span
                   className="mt-0.5 font-mono text-[10px]"

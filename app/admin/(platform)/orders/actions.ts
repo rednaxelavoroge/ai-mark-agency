@@ -103,3 +103,35 @@ export async function recordQualifyingSale(formData: FormData): Promise<void> {
   revalidatePath("/partner/commissions");
   redirect("/admin/orders?recorded=1");
 }
+
+const REVERSAL_REASONS = new Set(["refund", "chargeback", "cancellation"]);
+
+/** Writes reversal rows through reverse_sale_commissions. Does not edit rates. */
+export async function reverseQualifyingSale(formData: FormData): Promise<void> {
+  await requireAdmin("/admin/orders");
+  const saleId = readField(formData, "sale_id", 40);
+  const reason = readField(formData, "reason", 20);
+  if (!/^[0-9a-f-]{36}$/i.test(saleId)) fail("That sale id is not valid.");
+  if (!REVERSAL_REASONS.has(reason)) {
+    fail("Reason must be refund, chargeback or cancellation.");
+  }
+
+  let admin: ReturnType<typeof createSupabaseAdminClient>;
+  try {
+    admin = createSupabaseAdminClient();
+  } catch {
+    fail("Sale recording is not configured on this server.");
+  }
+  const result = await admin.rpc("reverse_sale_commissions", {
+    p_sale_id: saleId,
+    p_reason: reason,
+  });
+  if (result.error) fail(result.error.message);
+  revalidatePath("/admin/orders");
+  revalidatePath("/admin/commissions");
+  revalidatePath("/admin/payouts");
+  revalidatePath("/partner/sales");
+  revalidatePath("/partner/commissions");
+  revalidatePath("/partner/dashboard");
+  redirect("/admin/orders?reversed=1");
+}

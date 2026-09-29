@@ -561,6 +561,13 @@ export const copyJa: Copy = {
     "cardOption": '銀行カード（Visa/Mastercard）— 近日対応',
     "cardsSoon": 'カード — 近日'
   },
+  "pay": {
+    "email": "メール",
+    "emailHint": "必須。サブスクリプションと領収にこのアドレスを使います。",
+    "name": "氏名",
+    "company": "会社",
+    "optional": "任意"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

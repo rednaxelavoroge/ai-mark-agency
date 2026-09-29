@@ -561,6 +561,13 @@ export const copyId: Copy = {
     "cardOption": 'Kartu bank (Visa/Mastercard) — segera hadir',
     "cardsSoon": 'Kartu — segera'
   },
+  "pay": {
+    "email": "Email",
+    "emailHint": "Wajib. Langganan dan tanda terima memakai alamat ini.",
+    "name": "Nama",
+    "company": "Perusahaan",
+    "optional": "opsional"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

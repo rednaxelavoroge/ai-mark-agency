@@ -68,8 +68,8 @@ export function PartnerDashboardView({
           <>
             Your Partner ID is{" "}
             <span className="font-mono text-paper">{partner.partner_id}</span>.
-            Your referral link is live. Sales, commission and payout figures
-            come from the ledger.
+            Your referral link is live. Sales, commission, and payouts appear
+            here as they are recorded.
           </>
         }
         actions={<StatusBadge status={partner.status} />}
@@ -91,9 +91,8 @@ export function PartnerDashboardView({
             Performance
           </h2>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">
-            Qualifying sales and commission come from the ledger. An empty
-            ledger is zero. A dash means the figure could not be read, or that
-            the record does not exist yet. Nothing here is estimated.
+            Qualifying sales and commission appear after a customer pays. A
+            dash means that figure is not available yet.
           </p>
         </div>
 
@@ -111,10 +110,10 @@ export function PartnerDashboardView({
           <StatCard
             label="Commission"
             value={formatLedgerMoney(ledger.commissionNet, ledger.currency)}
-            hint={ledger.currency ?? (ledger.commissionNet === "0.00" ? "No currency yet" : NO_DATA)}
+            hint={ledger.currency ?? NO_DATA}
           />
           <StatCard
-            label="Payable"
+            label="Ready to pay"
             value={formatLedgerMoney(ledger.payableAmount, ledger.currency)}
           />
           <StatCard
@@ -123,7 +122,7 @@ export function PartnerDashboardView({
           />
         </div>
         {ledger.entryCount === 0 ? (
-          <p className="text-xs text-muted">No commission entries.</p>
+          <p className="text-xs text-muted">No commissions yet.</p>
         ) : null}
         {ledger.currencies && ledger.currencies.length > 1 ? (
           <ul className="grid gap-2 text-xs text-muted">
@@ -247,9 +246,8 @@ export function PartnerDashboardView({
           Demos, materials, knowledge, support
         </h2>
         <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
-          Product pages, brand files, published limits, and the public support
-          channels are on Resources. There is no partner-only sandbox, no
-          slide deck, and no ticket queue.
+          Product pages, brand files, published prices, and support channels
+          are on Resources.
         </p>
         <ul className="mt-4 grid gap-2 text-xs">
           <li>
@@ -276,8 +274,7 @@ export function PartnerDashboardView({
       </section>
 
       <p className="text-xs text-muted">
-        Sales, commissions and payouts list the ledger rows. How tracking works
-        is on{" "}
+        How tracking works is on{" "}
         <Link href="/partner/resources#tracking" className="link-underline text-paper">
           Resources
         </Link>
@@ -303,10 +300,8 @@ function LaunchCard({ createdAt }: { createdAt: string }) {
       </h2>
       <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
         {launch
-          ? `Launch-period status is on until ${ends}. The window starts at the partner record and lasts 90 days. It is a ledger flag, not a commission multiplier, not a calendar quarter, and not lifetime.`
-          : `The 90-day launch-period flag ended ${ends}. Qualifying payments use the same Partner Commission Model rates.`}
-        {" "}
-        Launch status does not raise the 80% network pool. The amounts above are ledger totals. This card does not calculate them.
+          ? `The launch window runs until ${ends}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.`
+          : `The 90-day launch window ended ${ends}. Qualifying payments use the same rates, and the network pool stays 80%.`}
       </p>
     </section>
   );

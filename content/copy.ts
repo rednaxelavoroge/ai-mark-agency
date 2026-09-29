@@ -202,6 +202,13 @@ export type Copy = {
     /** Short mention for pricing and the footer payment note. */
     cardsSoon: string;
   };
+  pay: {
+    email: string;
+    emailHint: string;
+    name: string;
+    company: string;
+    optional: string;
+  };
   privacy: {
     title: string;
     updated: string;

@@ -124,8 +124,8 @@ export function OperatingModelSection({ locale }: { locale: Locale }) {
           </h3>
           <p className="mt-2 text-xs text-muted">
             {isRu
-              ? "Обязательства и цены не публикуются без согласования человека."
-              : "Binding commitments and prices are not published without a person's approval."}
+              ? "Обязательства и цены публикуются после согласования человеком."
+              : "A person approves binding commitments and prices before they go live."}
           </p>
 
           <ul className="mt-6 space-y-2.5 text-xs text-paper/85">

@@ -481,6 +481,13 @@ export const copyEn: Copy = {
       cardOption: 'Bank card (Visa/Mastercard) — coming soon',
       cardsSoon: 'Cards — soon',
     },
+    pay: {
+      email: "Email",
+      emailHint: "Required. The subscription and the receipt use this address.",
+      name: "Name",
+      company: "Company",
+      optional: "optional",
+    },
     jsonLd: {
       description:
         "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure.",

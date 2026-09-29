@@ -54,6 +54,27 @@ export async function createPartnerPayout(formData: FormData): Promise<void> {
   redirect("/admin/payouts?created=1");
 }
 
+/** Voids an open payout so its commission entries can be paid later. Does not send tokens. */
+export async function voidPartnerPayout(formData: FormData): Promise<void> {
+  await requireAdmin("/admin/payouts");
+  const payoutId = readField(formData, "payout_id", 40);
+  if (!/^[0-9a-f-]{36}$/i.test(payoutId)) fail("That payout id is not valid.");
+
+  const admin = await adminClient();
+  const result = await admin
+    .from("payouts")
+    .update({ status: "void" })
+    .eq("id", payoutId)
+    .eq("status", "open")
+    .select("id");
+  if (result.error) fail(result.error.message);
+  if (!result.data?.length) fail("Only an open payout can be voided.");
+  revalidatePath("/admin/payouts");
+  revalidatePath("/partner/payouts");
+  revalidatePath("/partner/commissions");
+  redirect("/admin/payouts?voided=1");
+}
+
 /** Confirms an open payout. The paid amount is the amount already on the payout. */
 export async function confirmPartnerPayout(formData: FormData): Promise<void> {
   const auth = await requireAdmin("/admin/payouts");

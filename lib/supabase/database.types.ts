@@ -267,6 +267,11 @@ export type Database = {
           treasury_address: string;
           memo: string;
           referral_code: string | null;
+          buyer_email: string | null;
+          buyer_name: string | null;
+          buyer_company: string | null;
+          billing_period_days: number | null;
+          subscription_id: string | null;
           status: string;
           tx_hash: string | null;
           sale_id: string | null;
@@ -287,6 +292,11 @@ export type Database = {
           treasury_address: string;
           memo: string;
           referral_code?: string | null;
+          buyer_email?: string | null;
+          buyer_name?: string | null;
+          buyer_company?: string | null;
+          billing_period_days?: number | null;
+          subscription_id?: string | null;
           status?: string;
           tx_hash?: string | null;
           sale_id?: string | null;
@@ -297,9 +307,14 @@ export type Database = {
           status?: string;
           tx_hash?: string | null;
           sale_id?: string | null;
+          subscription_id?: string | null;
           confirmed_by?: string | null;
           confirmed_at?: string | null;
           referral_code?: string | null;
+          buyer_email?: string | null;
+          buyer_name?: string | null;
+          buyer_company?: string | null;
+          billing_period_days?: number | null;
         };
         Relationships: [];
       };
@@ -423,6 +438,37 @@ export type Database = {
         };
         Relationships: [];
       };
+      subscriptions: {
+        Row: {
+          id: string;
+          email: string;
+          sku: string;
+          product: string;
+          status: string;
+          active_until: string;
+          cancel_at_period_end: boolean;
+          referral_code: string | null;
+          partner_id: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          email: string;
+          sku: string;
+          product: string;
+          status?: string;
+          active_until: string;
+          cancel_at_period_end?: boolean;
+          referral_code?: string | null;
+          partner_id?: string | null;
+        };
+        Update: {
+          status?: string;
+          active_until?: string;
+          cancel_at_period_end?: boolean;
+        };
+        Relationships: [];
+      };
     };
     Views: { [_ in never]: never };
     Functions: {
@@ -486,6 +532,25 @@ export type Database = {
       post_commission_entries: {
         Args: { p_sale_id: string };
         Returns: number;
+      };
+      reverse_sale_commissions: {
+        Args: { p_sale_id: string; p_reason: string };
+        Returns: number;
+      };
+      /**
+       * Confirms one treasury invoice. Idempotent for the same invoice or tx
+       * hash. Renewals extend the subscription and post with the frozen code.
+       */
+      fulfill_paid_invoice: {
+        Args: {
+          p_invoice_id: string;
+          p_tx_hash: string;
+          p_paid_at: string;
+          p_confirmed_by: string;
+          p_referral_code?: string;
+          p_partner_id?: string;
+        };
+        Returns: Json;
       };
       advance_sponsor_lock: {
         Args: { p_sale_id?: string };

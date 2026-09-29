@@ -60,13 +60,13 @@ export const PARTNER_PRODUCT_LIMITS: Record<
     en: [
       "Not a post scheduler. AIME runs a marketing cycle up to human approval.",
       "Content goes live only after human approval in Telegram, unless a later approved auto-publish path is in use.",
-      "TikTok posting is not available today. Current publish path is Instagram, Facebook, and Threads.",
+      "AIME publishes to Instagram, Facebook, Threads, and Telegram approval.",
       "AIME will not publish pricing, financial commitments, legal terms, or discounts without explicit human sign-off.",
     ],
     ru: [
       "Не планировщик постов. AIME ведёт маркетинговый цикл до апрува человека.",
       "Публикация только после апрува в Telegram, пока не включён согласованный автопаблиш.",
-      "Публикация в TikTok сегодня недоступна. Сейчас Instagram, Facebook и Threads.",
+      "AIME публикует в Instagram, Facebook, Threads и через апрув в Telegram.",
       "AIME не публикует цены, финансовые обещания, юридические условия и скидки без явного апрува человека.",
     ],
   },

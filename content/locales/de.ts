@@ -546,6 +546,13 @@ export const copyDe: Copy = {
     "cardOption": 'Bankkarte (Visa/Mastercard) — demnächst',
     "cardsSoon": 'Karten — bald'
   },
+  "pay": {
+    "email": "E-Mail",
+    "emailHint": "Pflicht. Abo und Quittung nutzen diese Adresse.",
+    "name": "Name",
+    "company": "Unternehmen",
+    "optional": "optional"
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
