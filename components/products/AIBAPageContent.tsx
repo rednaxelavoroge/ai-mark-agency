@@ -88,7 +88,7 @@ export function AIBAPageContent({
             </div>
 
             {/* Simulated Live Multi-Channel Inbox Scene */}
-            <div className="relative pb-0 sm:pb-14">
+            <div className="am-hero-visual relative pb-0 sm:pb-14">
               <ConstellationOverlays cardKind="handoff" locale={locale}>
                 <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-line pb-3">

@@ -130,7 +130,10 @@ export function Parallax({
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !ref.current) return;
+    const coarse =
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 760px)").matches;
+    if (reduce || coarse || !ref.current) return;
     let raf = 0;
     const update = () => {
       raf = 0;

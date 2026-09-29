@@ -1104,6 +1104,45 @@ main {
 .am-forest-hero .border-line { border-color: rgba(255, 255, 255, 0.22); }
 .am-forest-hero .border-mark\/20 { border-color: rgba(212, 242, 126, 0.35); }
 
+/* Product mock inside the forest hero must stay a solid card. The hero
+   recolors every .bg-ink-2 to a translucent wash, which turned the mock
+   into an empty dark block on all three product pages. */
+.am-forest-hero .am-hero-visual {
+  background-color: transparent;
+  --ink: #f3f4ed;
+  --ink-2: #fffefa;
+  --ink-3: #e9ede3;
+  --paper: #17261f;
+  --muted: #3e5146;
+  --line: #dce2d8;
+  --mark: #14291f;
+  --mark-light: #21392c;
+  --mark-ink: #f4f6ee;
+  --warm: #3f5c38;
+  color: #17261f;
+}
+.am-forest-hero .am-hero-visual .text-paper { color: var(--paper); }
+.am-forest-hero .am-hero-visual .text-muted { color: var(--muted); }
+.am-forest-hero .am-hero-visual .text-mark { color: var(--mark); }
+.am-forest-hero .am-hero-visual .text-warm { color: var(--warm); }
+.am-forest-hero .am-hero-visual .bg-mark { background: var(--mark); }
+.am-forest-hero .am-hero-visual .text-mark-ink { color: var(--mark-ink); }
+.am-forest-hero .am-hero-visual.bg-ink-2,
+.am-forest-hero .am-hero-visual .bg-ink-2,
+.am-forest-hero .am-hero-visual .bg-ink-2\/60,
+.am-forest-hero .am-hero-visual .bg-ink-2\/95 { background: var(--ink-2); color: var(--paper); }
+.am-forest-hero .am-hero-visual .bg-ink-3,
+.am-forest-hero .am-hero-visual .bg-ink-3\/30,
+.am-forest-hero .am-hero-visual .bg-ink-3\/40,
+.am-forest-hero .am-hero-visual .bg-ink-3\/50,
+.am-forest-hero .am-hero-visual .bg-ink-3\/60 { background: var(--ink-3); }
+.am-forest-hero .am-hero-visual .border-line,
+.am-forest-hero .am-hero-visual .border-line\/70,
+.am-forest-hero .am-hero-visual .border-line\/60,
+.am-forest-hero .am-hero-visual .border-line\/50 { border-color: var(--line); }
+.am-forest-hero .am-hero-visual .border-mark\/20,
+.am-forest-hero .am-hero-visual .border-mark\/30 { border-color: color-mix(in srgb, var(--mark) 28%, transparent); }
+
 .tilt-card {
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
 }
@@ -1138,5 +1177,60 @@ main {
 }
 @media (max-width: 760px) {
   .am-display { font-size: clamp(36px, 11vw, 56px); }
-  .hero-art-wrap { min-height: 320px; }
+  .hero-art-wrap { min-height: 280px; }
+}
+
+/* Below-fold home blocks can skip layout/paint until scrolled near. */
+.home-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
+/* Phones: drop the effects that burn the GPU. Coarse pointers never see
+   hover tilt or the cursor light, and a full-screen turbulence grain plus
+   backdrop-filter on every scroll frame is what makes the page lag. */
+@media (pointer: coarse), (max-width: 760px) {
+  .grain-overlay { display: none; }
+  .hero-cursor { display: none !important; }
+  .hero-art-img { mix-blend-mode: normal; animation: none !important; }
+  .am-anim.hero-breathe,
+  .am-anim.hero-ring { animation: none !important; }
+  .tilt-card,
+  .tilt-card:hover,
+  .tilt-card:nth-child(even):hover {
+    transform: none !important;
+    transition: none !important;
+  }
+  .blur-2xl,
+  .blur-3xl { filter: none !important; }
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-xl {
+    --tw-backdrop-blur: ;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .ambient-drift,
+  .ambient-drift-slow,
+  .float-soft,
+  .float-slow,
+  .spin-slow,
+  .gradient-pan,
+  .shimmer::after,
+  .flow-dash,
+  .scanline,
+  .caret,
+  .marquee-track,
+  .pulse-ring::after,
+  .ui-bar,
+  .ui-grow,
+  .stage-enter,
+  .stroke-draw {
+    animation: none !important;
+  }
+  .ui-bar { transform: scaleY(var(--h, 0.6)); }
+  .ui-grow { transform: scaleX(1); }
+  .flow-line { stroke-dashoffset: 0; animation: none !important; }
+  .stroke-draw { stroke-dashoffset: 0 !important; }
 }

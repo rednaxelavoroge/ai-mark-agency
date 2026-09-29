@@ -114,7 +114,7 @@ export function ShowroomAIPageContent({
             </div>
 
             {/* Runtime Status Spec Panel */}
-            <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
+            <div className="am-hero-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 shadow-xl space-y-4 sm:p-6">
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <span className="font-mono text-xs font-semibold text-paper uppercase">
                   {c.heroSpec.title}
@@ -142,7 +142,7 @@ export function ShowroomAIPageContent({
                 ))}
               </div>
 
-              <div className="mt-3 pb-0 sm:pb-12" data-reveal="scale">
+              <div className="mt-3 pb-0 sm:pb-12">
                 <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               </div>
             </div>

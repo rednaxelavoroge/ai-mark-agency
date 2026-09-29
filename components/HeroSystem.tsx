@@ -12,7 +12,8 @@ function HeroCursor() {
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduce || !ref.current) return;
+    const narrow = window.matchMedia("(max-width: 760px)").matches;
+    if (!fine || reduce || narrow || !ref.current) return;
     const node = ref.current;
     let raf = 0;
     let x = 0;
@@ -154,6 +155,10 @@ export function HeroSystem({ locale, t }: HeroProps) {
   // Auto-advance stage every 6 seconds unless user manually interacts
   useEffect(() => {
     if (!isAutoPlaying) return;
+    const coarse =
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(max-width: 760px)").matches;
+    if (coarse) return;
     const interval = setInterval(() => {
       setActiveStage((prev) => (prev + 1) % stages.length);
     }, 6000);

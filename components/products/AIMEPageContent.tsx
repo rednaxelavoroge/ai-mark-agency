@@ -87,10 +87,8 @@ export function AIMEPageContent({
             </div>
 
             {/* Product UI visual preview */}
-            <div className="relative pb-0 sm:pb-14" data-reveal>
-              <div data-reveal="scale" data-reveal-delay="120">
-                <ProductConstellation variant="aime" locale={locale} />
-              </div>
+            <div className="am-hero-visual relative pb-0 sm:pb-14">
+              <ProductConstellation variant="aime" locale={locale} />
 
               {/* Platform pills */}
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
