@@ -196,6 +196,12 @@ export type Copy = {
     rights: string;
     poweredBy: string;
   };
+  ui: {
+    /** Disabled pay option. Not a checkout. */
+    cardOption: string;
+    /** Short mention for pricing and the footer payment note. */
+    cardsSoon: string;
+  };
   privacy: {
     title: string;
     updated: string;

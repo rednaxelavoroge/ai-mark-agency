@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Unbounded, Playfair_Display } from "next/font/google";
+import { Manrope, Unbounded, Playfair_Display, Noto_Sans_Arabic, Noto_Sans_SC, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
@@ -17,6 +17,24 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin", "cyrillic"],
   style: ["normal", "italic"],
+});
+
+const notoAr = Noto_Sans_Arabic({
+  variable: "--font-noto-ar",
+  subsets: ["arabic"],
+  weight: ["400", "600", "700"],
+});
+
+const notoSc = Noto_Sans_SC({
+  variable: "--font-noto-sc",
+  weight: ["400", "600", "700"],
+  preload: false,
+});
+
+const notoJp = Noto_Sans_JP({
+  variable: "--font-noto-jp",
+  weight: ["400", "600", "700"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -38,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang={site.defaultLocale}
       data-theme="light"
       style={{ colorScheme: "light" }}
-      className={`${manrope.variable} ${unbounded.variable} ${playfair.variable} h-full antialiased`}
+      className={`${manrope.variable} ${unbounded.variable} ${playfair.variable} ${notoAr.variable} ${notoSc.variable} ${notoJp.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />

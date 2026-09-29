@@ -24,8 +24,9 @@ export function AuthCard({
 }) {
   return (
     <div className="w-full max-w-md">
-      <Link href="/" className="inline-flex max-w-full items-center">
-        <BrandLogo className="h-7 sm:h-9" />
+      <Link href="/" className="inline-flex max-w-full flex-col items-start">
+        <BrandLogo className="h-7 sm:h-8" />
+        <span className="mt-1.5 text-[13px] font-semibold text-muted">Venture and Marketing</span>
       </Link>
 
       <p className={`mt-8 ${eyebrowClass}`}>{eyebrow}</p>

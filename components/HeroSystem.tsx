@@ -1,10 +1,42 @@
 "use client";
 
-import { useState, useEffect, type CSSProperties } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
 import type { Copy } from "@/content/copy";
+
+function HeroCursor() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || reduce || !ref.current) return;
+    const node = ref.current;
+    let raf = 0;
+    let x = 0;
+    let y = 0;
+    const paint = () => {
+      raf = 0;
+      const host = node.parentElement;
+      if (!host) return;
+      const rect = host.getBoundingClientRect();
+      node.style.transform = `translate(${x - rect.left}px, ${y - rect.top}px)`;
+    };
+    const onMove = (event: PointerEvent) => {
+      x = event.clientX;
+      y = event.clientY;
+      if (!raf) raf = requestAnimationFrame(paint);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+  return <div ref={ref} className="hero-cursor am-anim" aria-hidden />;
+}
 
 interface HeroProps {
   locale: Locale;
@@ -154,93 +186,76 @@ export function HeroSystem({ locale, t }: HeroProps) {
         "Growth",
       ];
 
+  const title = t.hero.title;
+  const accentAt = title.lastIndexOf(" ");
+  const titleLead = accentAt > 0 ? title.slice(0, accentAt) : title;
+  const titleAccent = accentAt > 0 ? title.slice(accentAt + 1) : "";
+
   return (
-    <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-ink-3/40 via-ink to-ink pb-16 pt-12 sm:pb-24 sm:pt-20">
-      {/* Background: ambient depth field */}
-      <div aria-hidden className="grid-field pointer-events-none absolute inset-0 opacity-60" />
-      <div className="ambient-drift pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.10),transparent_70%)]" />
-      <div className="ambient-drift-slow pointer-events-none absolute -bottom-20 left-10 h-[450px] w-[450px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(181,141,74,0.09),transparent_70%)]" />
-      <div className="pointer-events-none absolute left-1/3 top-1/4 h-[300px] w-[300px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.05),transparent_70%)] ambient-drift" />
-
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
-          {/* Left Column: Strategic Hero Copy */}
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-mark/20 bg-mark/5 px-3 py-1 text-[11px] font-mono tracking-widest text-mark uppercase" data-reveal>
-              <span className="relative h-1.5 w-1.5 rounded-full bg-mark text-mark pulse-ring" />
+    <section className="am-hero" data-motion>
+      <HeroCursor />
+      <div className="am-wrap">
+        <div className="am-hero-grid">
+          <div className="relative z-[2] py-4">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#d5e0d4]">
               {t.hero.eyebrow}
-            </div>
-
-            <h1 className="mt-5 font-display text-4xl leading-[1.08] font-medium tracking-tight text-paper sm:text-5xl lg:text-6xl" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties}>
-              {isRu ? (
-                <>
-                  От идеи до <span className="text-mark font-semibold">работающего бизнеса.</span>
-                </>
-              ) : (
-                <>
-                  From Idea to a <span className="text-mark font-semibold">Working Business.</span>
-                </>
-              )}
+            </p>
+            <h1 className="am-display" data-reveal>
+              {titleLead}{titleAccent ? " " : ""}
+              {titleAccent ? <em>{titleAccent}</em> : null}
             </h1>
-
-            <p className="mt-6 text-lg leading-relaxed text-muted sm:text-xl" data-reveal style={{ "--reveal-delay": "160ms" } as CSSProperties}>
-              {t.hero.lead}
-            </p>
-
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-paper/90" data-reveal style={{ "--reveal-delay": "200ms" } as CSSProperties}>
-              {isRu
-                ? "AI MARK объединяет AI-маркетинг, AI-продажи, клиентский сервис, автоматизацию, цифровую разработку, финансовые и Web3-решения, создание бизнеса и партнёрскую сеть в одной AI-native инфраструктуре."
-                : "AI MARK brings together AI marketing, AI sales, customer service, automation, digital production, financial and Web3 solutions, business creation, and a partner network in one AI-native infrastructure."}
-            </p>
-
-            <div className="mt-4 flex items-center gap-3 rounded-lg border border-line bg-ink-2/60 px-4 py-3 text-sm text-paper/90" data-reveal style={{ "--reveal-delay": "240ms" } as CSSProperties}>
-              <span className="text-warm font-mono text-xs font-semibold uppercase tracking-wider">
-                {isRu ? "Концепция" : "Concept"}:
-              </span>
-              <span>
-                {isRu
-                  ? "Не шаблонное агентство — а цифровая компания полного цикла с собственной AI-инфраструктурой."
-                  : "Not a marketing agency template — an AI-native operating company with proprietary products."}
-              </span>
-            </div>
-
-            {/* CTA row */}
-            <div className="mt-8 flex flex-wrap items-center gap-3" data-reveal style={{ "--reveal-delay": "320ms" } as CSSProperties}>
-              <ContactCta className="inline-flex items-center justify-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light hover:shadow-lg active:scale-95">
+            <p className="lede">{t.hero.lead}</p>
+            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#e7eee4]">{t.hero.extra}</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <ContactCta className="inline-flex min-h-[48px] items-center rounded-full bg-[var(--lime)] px-5 text-sm font-semibold text-[#14291f]">
                 {t.hero.primaryCta} →
               </ContactCta>
               <Link
                 href={navHref(locale, "/how-it-works")}
-                className="inline-flex items-center justify-center rounded-full border border-line bg-ink-2 px-5 py-3 text-sm font-medium text-paper transition-all hover:border-paper/40 hover:bg-ink-3 active:scale-95"
+                className="inline-flex min-h-[48px] items-center rounded-full border border-white/40 bg-white/10 px-5 text-sm font-semibold text-white"
               >
                 {t.hero.secondaryCta}
               </Link>
               <Link
-                href={navHref(locale, "/investors")}
-                className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
-              >
-                {t.hero.investorCta}
-              </Link>
-              <Link
                 href={navHref(locale, "/partners")}
-                className="inline-flex items-center justify-center rounded-full border border-warm/30 bg-warm-soft px-5 py-3 text-sm font-medium text-paper transition-all hover:border-warm/60 active:scale-95"
+                className="inline-flex min-h-[48px] items-center rounded-full border border-white/30 px-5 text-sm font-semibold text-white"
               >
                 {t.hero.partnerCta}
               </Link>
+              <Link
+                href={navHref(locale, "/investors")}
+                className="inline-flex min-h-[48px] items-center rounded-full border border-white/30 px-5 text-sm font-semibold text-white"
+              >
+                {t.hero.investorCta}
+              </Link>
             </div>
-
-            <p className="mt-6 text-xs text-muted" data-reveal style={{ "--reveal-delay": "400ms" } as CSSProperties}>
-              {t.hero.soft}
-            </p>
+            <p className="mt-6 max-w-xl text-[13px] leading-relaxed text-[#c5d0c4]">{t.hero.soft}</p>
           </div>
 
-          {/* Right Column: Interactive Transformation Engine */}
-          <div
-            className="shimmer float-slow rounded-2xl border border-line bg-ink-2 p-5 shadow-lg lg:p-6"
-            data-reveal
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-          >
+          <div className="hero-art-wrap">
+            <div className="hero-art">
+              <Image
+                src="/brand/ai-mark-hero.webp"
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 1080px) 100vw, 640px"
+                className="hero-art-img am-anim hero-breathe"
+              />
+            </div>
+            <div className="hero-ring am-anim" aria-hidden />
+            <div className="absolute bottom-4 left-4 right-4 z-[3] rounded-2xl border border-white/30 bg-[#193428]/90 p-3 text-[13px] text-[#e7eee4] backdrop-blur-md">
+              <p className="font-semibold text-[var(--lime)]">{current.num} · {current.name}</p>
+              <p className="mt-1 leading-snug">{current.description}</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="relative z-[1] mb-8 mt-2 rounded-[24px] border border-white/20 bg-[#fffefa] p-4 text-[#17261f]"
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
             <div className="flex items-center justify-between border-b border-line pb-4">
               <div className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-mark" />
@@ -351,17 +366,16 @@ export function HeroSystem({ locale, t }: HeroProps) {
             </div>
           </div>
         </div>
-      </div>
 
       {/* Transformation ribbon: idea → working business */}
-      <div className="relative mt-14 overflow-hidden border-y border-line bg-ink-2/40 py-4 sm:mt-20">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" />
+      <div className="relative overflow-hidden border-t border-white/15 py-4">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#10241c] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#10241c] to-transparent" />
         <div className="flex overflow-hidden">
           <div className="marquee-track flex shrink-0 items-center gap-6 pr-6">
             {[...ribbon, ...ribbon].map((step, i) => (
               <span key={i} className="flex shrink-0 items-center gap-6">
-                <span className="font-mono text-[11px] tracking-widest text-muted uppercase">
+                <span className="font-mono text-[13px] tracking-widest text-[#d5e0d4] uppercase">
                   {step}
                 </span>
                 <span aria-hidden className="text-warm">

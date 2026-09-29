@@ -542,6 +542,10 @@ export const copyDe: Copy = {
       "Hosting may be provided by Vercel. Email delivery may be provided by a transactional email vendor. Those processors see only what is required to deliver the service."
     ]
   },
+  "ui": {
+    "cardOption": 'Bankkarte (Visa/Mastercard) — demnächst',
+    "cardsSoon": 'Karten — bald'
+  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }

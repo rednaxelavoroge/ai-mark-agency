@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { InvestorStreams } from "@/components/visuals/ProductScenes";
 import { INVESTOR_PAGE_PATH } from "@/lib/investors";
 import { navHref, type Locale } from "@/lib/site";
 export function InvestorsSection({ locale }: { locale: Locale }) {
@@ -37,6 +38,9 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
 
   return (
     <div className="space-y-6">
+      <div data-motion>
+        <InvestorStreams />
+      </div>
       {/* 3 Fundamentals Cards */}
       <div className="grid gap-4 md:grid-cols-3">
         {fundamentals.map((f, i) => (

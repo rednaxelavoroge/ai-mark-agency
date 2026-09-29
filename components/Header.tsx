@@ -30,31 +30,36 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", open);
+    return () => document.body.classList.remove("menu-open");
+  }, [open]);
+
   return (
     <header
-      className={`sticky top-0 z-40 border-b backdrop-blur-md transition-all duration-300 ${
+      className={`sticky top-0 z-40 border-b backdrop-blur-xl transition-all duration-300 ${
         scrolled
-          ? "border-line bg-ink/90 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.35)]"
-          : "border-transparent bg-ink/70"
+          ? "border-line bg-ink/95 shadow-[0_8px_28px_#14291f0f]"
+          : "border-line/70 bg-ink/80"
       }`}
     >
-      {/* At 320px the row is genuinely tight, so the plate steps down to a
-          20px lockup there and back up at 360px. The right-hand controls keep
-          their own size: the brand plate is never squeezed into a letterboxed
-          version of the artwork, and the header never overlaps itself. */}
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-3">
+      <div className="mx-auto flex min-h-[68px] w-full max-w-[1280px] items-center gap-2 px-3 sm:gap-3 sm:px-6">
         <Link
           href={navHref(locale, "/")}
-          className="group flex min-w-0 shrink items-center"
+          className="flex min-w-0 shrink-0 flex-col items-start py-2"
         >
-          <BrandLogo className="h-5 shrink sm:h-7 lg:h-9 xl:h-10" />
+          <BrandLogo className="h-[18px] min-[400px]:h-6 sm:h-7" />
+          <span className="mt-1 max-w-[7.25rem] text-[12px] font-semibold leading-tight tracking-[0.01em] text-muted min-[400px]:max-w-none min-[400px]:leading-none">
+            Venture and Marketing
+          </span>
         </Link>
-        <nav className="hidden items-center gap-3 text-xs text-muted xl:flex">
+
+        <nav className="ml-auto hidden min-w-0 items-center justify-end gap-x-3 text-[13px] font-medium text-muted min-[1280px]:flex xl:gap-x-4">
           {t.nav.items.map((item) =>
             item.href === "#contact" ? (
               <ContactCta
                 key={item.href + item.label}
-                className="link-underline whitespace-nowrap text-muted transition-colors hover:text-paper"
+                className="whitespace-nowrap py-2 transition-colors hover:text-paper"
               >
                 {item.label}
               </ContactCta>
@@ -62,38 +67,46 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
               <Link
                 key={item.href + item.label}
                 href={navHref(locale, item.href)}
-                className="link-underline whitespace-nowrap transition-colors hover:text-paper"
+                className="whitespace-nowrap py-2 transition-colors hover:text-paper"
               >
                 {item.label}
               </Link>
             ),
           )}
         </nav>
-        <div className="flex items-center gap-1.5 sm:gap-3">
+
+        <div className="ml-auto flex shrink-0 items-center gap-1 min-[1280px]:ml-3 sm:gap-2">
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <LanguageSelector locale={locale} />
-          <ContactCta className="hidden rounded-full bg-mark px-3 py-1.5 text-xs font-semibold text-mark-ink sm:inline-flex sm:px-4 sm:text-sm">
-            {t.nav.cta}
+          <ContactCta className="inline-flex h-9 items-center rounded-full bg-mark px-2.5 text-sm font-semibold text-mark-ink min-[400px]:h-11 min-[400px]:px-4">
+            <span className="max-[399px]:sr-only">{t.nav.cta}</span>
+            <span className="min-[400px]:hidden" aria-hidden>
+              →
+            </span>
           </ContactCta>
           <button
             type="button"
-            className="grid h-7.5 w-7.5 place-items-center rounded-full border border-line text-xs xl:hidden sm:h-8 sm:w-8 sm:text-sm"
+            className="grid h-9 w-9 place-items-center rounded-full border border-line text-paper min-[400px]:h-11 min-[400px]:w-11 min-[1280px]:hidden"
             aria-expanded={open}
             aria-label={open ? t.nav.close : t.nav.menu}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? "×" : "☰"}
+            <span className="flex w-4 flex-col gap-[5px]" aria-hidden>
+              <span className={`block h-[1.5px] bg-current transition ${open ? "translate-y-[6.5px] rotate-45" : ""}`} />
+              <span className={`block h-[1.5px] bg-current transition ${open ? "opacity-0" : ""}`} />
+              <span className={`block h-[1.5px] bg-current transition ${open ? "-translate-y-[6.5px] -rotate-45" : ""}`} />
+            </span>
           </button>
         </div>
       </div>
       {open ? (
-        <nav className="border-t border-line bg-ink px-4 py-4 xl:hidden">
-          <ul className="mx-auto grid max-w-6xl gap-2 text-sm">
+        <nav className="border-t border-line bg-ink px-4 py-3 min-[1280px]:hidden">
+          <ul className="mx-auto grid w-full max-w-[1280px] gap-1 text-[15px]">
             {t.nav.items.map((item) => (
               <li key={item.href + item.label}>
                 {item.href === "#contact" ? (
                   <ContactCta
-                    className="block w-full rounded-lg px-2 py-2 text-left hover:bg-ink-3"
+                    className="block w-full rounded-xl px-2 py-3 text-left hover:bg-ink-3"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
@@ -101,7 +114,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
                 ) : (
                   <Link
                     href={navHref(locale, item.href)}
-                    className="block rounded-lg px-2 py-2 hover:bg-ink-3"
+                    className="block rounded-xl px-2 py-3 hover:bg-ink-3"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}
@@ -109,18 +122,6 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
                 )}
               </li>
             ))}
-            <li className="pt-2 border-t border-line flex items-center justify-between px-2">
-              <span className="text-xs text-muted">Language</span>
-              <LanguageSelector locale={locale} />
-            </li>
-            <li>
-              <ContactCta
-                className="mt-2 block w-full rounded-full bg-mark px-4 py-2.5 text-center text-sm font-semibold text-mark-ink"
-                onClick={() => setOpen(false)}
-              >
-                {t.nav.cta}
-              </ContactCta>
-            </li>
           </ul>
         </nav>
       ) : null}

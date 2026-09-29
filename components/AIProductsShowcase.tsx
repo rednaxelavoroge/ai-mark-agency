@@ -193,7 +193,8 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
               {current.name}
             </span>
             <span className="hidden sm:inline font-mono text-[11px] text-muted">
-              // {current.tagline}
+              {"// "}
+              {current.tagline}
             </span>
           </div>
           <span className="font-mono text-[10px] text-warm uppercase tracking-wider">

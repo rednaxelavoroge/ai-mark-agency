@@ -31,7 +31,7 @@ export function AIBAPageContent({
   return (
     <article className="min-h-screen bg-ink text-paper">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-ink-3/40 via-ink to-ink pb-16 pt-12 sm:pb-24 sm:pt-20">
+      <section className="am-forest-hero relative overflow-hidden border-b border-line pb-16 pt-12 sm:pb-24 sm:pt-20">
         <div className="pointer-events-none absolute -top-40 right-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.1),transparent_70%)]" />
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

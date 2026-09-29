@@ -45,7 +45,7 @@ export function CapabilityBand({ locale }: { locale: Locale }) {
     >
       <div aria-hidden className="grid-field pointer-events-none absolute inset-0 opacity-40" />
       <div className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-warm">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-mark">
           {ru ? "Одна система" : "One system"}
         </p>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
@@ -54,7 +54,7 @@ export function CapabilityBand({ locale }: { locale: Locale }) {
               <p className="font-display text-sm font-semibold text-paper">{group.label}</p>
               <ul className="mt-3 space-y-1.5">
                 {group.items.map((item) => (
-                  <li key={item} className="text-xs text-muted">
+                  <li key={item} className="text-sm text-muted">
                     {item}
                   </li>
                 ))}
