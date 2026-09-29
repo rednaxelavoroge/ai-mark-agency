@@ -151,8 +151,8 @@ export default async function PayPage({ params, searchParams }: Props) {
         <section className={`mt-8 p-5 sm:p-6 ${cardClass}`}>
           <p className="text-sm leading-relaxed text-muted">
             {ru
-              ? "Адреса казны ещё не заданы. Страница оплаты готова; инструкция не выдаётся, пока владелец не пропишет адреса в env."
-              : "Treasury addresses are not set yet. This page is ready; payment instructions are not issued until the owner sets the addresses in env."}
+              ? "Инструкция по оплате в криптовалюте подключается. Напишите нам — пришлём реквизиты по вашему счёту."
+              : "Crypto payment instructions are being connected. Write to us and we will send the details for your invoice."}
           </p>
         </section>
       ) : (
@@ -238,8 +238,8 @@ export default async function PayPage({ params, searchParams }: Props) {
           </label>
           <p className="text-xs leading-relaxed text-muted">
             {ru
-              ? "Сумма берётся из опубликованного прайса. К ней добавляются уникальные центы, чтобы сматчить перевод. Клиент sale не пишет."
-              : "The amount is the published list price. Unique cents are added so the transfer can be matched. The customer does not write a sale."}
+              ? "Сумма — опубликованная цена. К ней добавляются уникальные центы, чтобы мы узнали ваш перевод."
+              : "The amount is the published price, plus unique cents so we can recognise your transfer."}
           </p>
           <button type="submit" className={`w-fit ${primaryButtonClass}`}>
             {ru ? "Получить инструкцию" : "Get payment instructions"}
@@ -248,7 +248,7 @@ export default async function PayPage({ params, searchParams }: Props) {
       )}
 
       <p className="mt-8 text-xs text-muted">
-        {ru ? "После оплаты админ сверяет tx hash. Не отправляйте токены не на тот адрес и не в той сети." : "After you pay, an operator matches the transaction hash. Send only to the address and network on the instruction."}
+        {ru ? "После оплаты мы сверяем перевод. Отправляйте только на адрес и в сеть из инструкции." : "After you pay, we match the transfer. Send only to the address and network on the instruction."}
         {" "}
         <a className="link-underline" href={localePath(locale, "/")}>
           {ru ? "На главную" : "Home"}

@@ -42,23 +42,13 @@ export function AuthCard({
   );
 }
 
-/**
- * Explains why the platform cannot authenticate.
- *
- * The reason comes from `describeSupabaseConfigProblem()` rather than being
- * hardcoded here, so a dangerous misconfiguration (a secret key placed in a
- * NEXT_PUBLIC_ variable) is reported precisely instead of hiding behind a
- * generic "not configured".
- */
-export function SetupNotice({ problem }: { problem: string }) {
+/** Short notice when sign-in cannot start. Operator detail stays in the server log. */
+export function SetupNotice() {
   return (
     <div className="rounded-xl border border-danger/30 bg-danger/5 p-4 text-xs text-danger">
-      <p className="font-semibold">Supabase is not usable</p>
-      <p className="mt-1.5 leading-relaxed">{problem}</p>
-      <p className="mt-2 leading-relaxed">
-        See <code className="font-mono">.env.example</code> and{" "}
-        <code className="font-mono">supabase/README.md</code>. The public website
-        is unaffected.
+      <p className="font-semibold">Sign-in is temporarily unavailable.</p>
+      <p className="mt-1.5 leading-relaxed">
+        Write to us and we will help you in. The public website stays open.
       </p>
     </div>
   );

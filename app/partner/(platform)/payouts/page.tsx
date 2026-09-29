@@ -33,13 +33,13 @@ export default async function PartnerPayoutsPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Payouts"
-        lead="Payout rows recorded for you, the payable and paid totals from the ledger, and the USDC destination saved on your profile. This screen does not send tokens."
+        lead="Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
       />
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 className="text-sm font-semibold tracking-tight">Where a payout is sent</h2>
         <p className="mt-1 text-xs text-muted">
-          Saved on your profile. A blank destination is blank.
+          The address you want payouts sent to.
         </p>
         <div className="mt-4">
           {destination.unreadable ? (
@@ -59,29 +59,20 @@ export default async function PartnerPayoutsPage() {
       <section className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 className="text-sm font-semibold tracking-tight">How a payout moves</h2>
         <ol className="mt-4 grid gap-3 text-xs leading-relaxed text-muted">
-          <li>1. A qualifying sale posts a commission entry as confirmed.</li>
+          <li>1. A qualifying sale records your commission.</li>
           <li>
-            2. The entry stays confirmed for {LOCK_HOLD_DAYS} days after the sale
-            is confirmed. It is not paid during that hold.
+            2. That commission is held for {LOCK_HOLD_DAYS} days after the sale
+            is confirmed.
           </li>
-          <li>
-            3. If there is no refund, chargeback or cancellation, the entry
-            becomes payable.
-          </li>
-          <li>
-            4. AI MARK records a payout from payable entries. The payout is open,
-            then paid when it is confirmed.
-          </li>
-          <li>
-            5. A refund or chargeback adds a reversal row. It does not rewrite
-            the original amount.
-          </li>
+          <li>3. After the hold, if the sale still stands, it is ready to pay.</li>
+          <li>4. AI MARK records the payout and sends it to your USDC address.</li>
+          <li>5. A refund or cancellation adjusts what is owed.</li>
         </ol>
       </section>
 
       <div className="grid grid-cols-2 gap-3 sm:gap-4">
         <StatCard
-          label="Payable"
+          label="Ready to pay"
           value={formatLedgerMoney(ledger.payableAmount, ledger.currency)}
           hint={ledger.currency ?? NO_DATA}
         />
@@ -94,7 +85,7 @@ export default async function PartnerPayoutsPage() {
 
       <DataTable
         unreadable={payouts.unreadable}
-        empty="No payouts. Payable commission is not a payout until AI MARK records one. An empty list is empty."
+        empty="No payouts yet. AI MARK records a payout when commission is ready to pay."
         columns={["Status", "Amount", "Created", "Confirmed", "Paid"]}
         rows={(payouts.rows ?? []).map((payout) => [
           payout.status,

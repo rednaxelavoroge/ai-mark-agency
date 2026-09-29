@@ -16,12 +16,12 @@ export default async function PartnerCommissionsPage() {
       <PageHeader
         eyebrow="Partner Platform"
         title="Commissions"
-        lead="Ledger entries for your partner id. Status, rate and amount are stored values. This page does not recompute them. A reversal is its own row with a negative amount. The published schedule is L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, with an 80% aggregate network pool."
+        lead="Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
       />
       <CommissionScheduleCard />
       <DataTable
         unreadable={entries.unreadable}
-        empty="No commission entries. Nothing is estimated. An entry appears after a qualifying sale is posted to the ledger."
+        empty="No commissions yet. An entry appears after a qualifying sale."
         columns={["Status", "Type", "Level", "Amount", "Rate", "Base", "Posted"]}
         rows={(entries.rows ?? []).map((entry) => [
           entry.status,

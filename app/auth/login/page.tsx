@@ -15,7 +15,7 @@ const CALLBACK_ERRORS: Record<string, string> = {
   exchange_failed:
     "That sign-in link has expired or was already used. Request a new one below.",
   provider_error: "The sign-in provider did not complete the request.",
-  not_configured: "The Partner Platform is not connected to Supabase yet.",
+  not_configured: "Sign-in is temporarily unavailable. Write to us and we will help you in.",
 };
 
 function first(value: string | string[] | undefined): string | undefined {
@@ -30,6 +30,7 @@ export default async function LoginPage({
   const params = await searchParams;
   const next = safeNextPath(first(params.next));
   const configProblem = describeSupabaseConfigProblem();
+  if (configProblem) console.error("[auth] sign-in unavailable:", configProblem);
 
   const errorCode = first(params.error);
   const notice =
@@ -55,7 +56,7 @@ export default async function LoginPage({
       }
     >
       <div className="grid gap-5">
-        {configProblem ? <SetupNotice problem={configProblem} /> : null}
+        {configProblem ? <SetupNotice /> : null}
         {notice ? (
           <p
             role="status"

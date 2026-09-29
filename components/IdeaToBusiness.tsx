@@ -447,7 +447,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
               </div>
 
               {/* Progress rail */}
-              <div className="mt-4 flex gap-1.5 [@media(max-height:560px)]:hidden lg:mt-8">
+              <div className="mt-4 flex gap-1.5 pr-16 [@media(max-height:560px)]:hidden min-[761px]:pr-0 lg:mt-8">
                 {stages.map((s, i) => (
                   <button
                     key={s.title}

@@ -90,7 +90,7 @@ const en: DigitalProductionCopy = {
   builds: {
     eyebrow: "What we build",
     title: "Six shapes the work usually takes.",
-    lead: "Each engagement is scoped individually. There is no published package price on this page.",
+    lead: "Each engagement is scoped and priced for the project.",
     items: [
       {
         title: "Landings & sales sites",
@@ -231,7 +231,7 @@ const ru: DigitalProductionCopy = {
   builds: {
     eyebrow: "Что собираем",
     title: "Шесть форм, в которых эта работа обычно живёт.",
-    lead: "Каждый проект скоупится отдельно. На этой странице нет опубликованной пакетной цены.",
+    lead: "Каждый проект оценивается отдельно, под задачу.",
     items: [
       {
         title: "Лендинги и продающие сайты",

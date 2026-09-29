@@ -103,8 +103,6 @@ export default async function PartnerResourcesPage() {
             ) : null}
           </article>
         ))}
-        <p className="text-xs leading-relaxed text-muted">{labels.noSandbox}</p>
-        <p className="text-xs leading-relaxed text-muted">{labels.noDeck}</p>
       </section>
 
       <section id="knowledge" className="scroll-mt-24 grid gap-6">
@@ -188,7 +186,6 @@ export default async function PartnerResourcesPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-xs leading-relaxed text-muted">{labels.materialsMissing}</p>
       </section>
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>

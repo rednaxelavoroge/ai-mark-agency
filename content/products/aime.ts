@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/site";
 
 export interface AimePlatform {
-  type: "instagram" | "facebook" | "threads" | "tiktok";
+  type: "instagram" | "facebook" | "threads" | "tiktok" | "telegram";
   name: string;
   status: "ready" | "soon";
   badge: string | null;
@@ -115,7 +115,7 @@ export const aimeRu: AimeContent = {
     { type: "instagram", name: "Instagram", status: "ready", badge: null },
     { type: "facebook", name: "Facebook", status: "ready", badge: null },
     { type: "threads", name: "Threads", status: "ready", badge: null },
-    { type: "tiktok", name: "TikTok", status: "soon", badge: "В плане / аудит API" },
+    { type: "telegram", name: "Telegram", status: "ready", badge: "Апрув" },
   ],
   compareTitle: "Не пустой планировщик — цикл маркетинга с вашим апрувом",
   compareSub:
@@ -230,8 +230,8 @@ export const aimeRu: AimeContent = {
       desc: "Клиент сохраняет полное единоличное владение своими страницами и правами доступа. Сторонние портфолио не аккумулируют ваши доступы.",
     },
     {
-      title: "Планы по TikTok",
-      desc: "Интеграция с TikTok Content Posting API запланирована к подключению сразу после завершения официального вендорного аудита.",
+      title: "Апрув в Telegram",
+      desc: "Черновик поста приходит в ваш рабочий чат. Публикация идёт после вашего подтверждения.",
     },
   ],
   trustTitle: "Модель контроля: Автономия с защитой Hard-Floor",
@@ -341,8 +341,8 @@ export const aimeRu: AimeContent = {
       a: "Исключительно вам. Все доступы настраиваются через официальный Meta Graph API в вашем собственном Business Suite. Никаких передач личных паролей.",
     },
     {
-      q: "Поддерживается ли TikTok прямо сейчас?",
-      a: "На текущий момент ядро работает с экосистемой Meta (Instagram, Facebook, Threads). Публикация в TikTok запланирована и будет добавлена сразу после прохождения официального аудита TikTok Content Posting API.",
+      q: "Куда AIME публикует?",
+      a: "В Instagram, Facebook и Threads через официальный Meta Graph API. Черновик сначала приходит вам в Telegram на подтверждение.",
     },
     {
       q: "Сколько времени занимает подключение?",
@@ -373,7 +373,7 @@ export const aimeEn: AimeContent = {
     { type: "instagram", name: "Instagram", status: "ready", badge: null },
     { type: "facebook", name: "Facebook", status: "ready", badge: null },
     { type: "threads", name: "Threads", status: "ready", badge: null },
-    { type: "tiktok", name: "TikTok", status: "soon", badge: "Roadmap / API Audit" },
+    { type: "telegram", name: "Telegram", status: "ready", badge: "Approval" },
   ],
   compareTitle: "Not an empty scheduler — a marketing cycle with approval",
   compareSub:
@@ -488,8 +488,8 @@ export const aimeEn: AimeContent = {
       desc: "Clients retain absolute ownership and security credentials over their assets. Third parties never pool or commandeer your tokens.",
     },
     {
-      title: "TikTok Roadmap",
-      desc: "Direct TikTok Content Posting API integration is scheduled for rollout immediately following vendor compliance audit completion.",
+      title: "Approval in Telegram",
+      desc: "The draft arrives in your working chat. It goes live after you approve it.",
     },
   ],
   trustTitle: "Trust Architecture: Autonomy with Hard-Floor Guardrails",
@@ -599,8 +599,8 @@ export const aimeEn: AimeContent = {
       a: "The accounts stay yours. Everything connects via official Meta Graph APIs inside your own Business Suite. No personal passwords are shared.",
     },
     {
-      q: "Is TikTok supported today?",
-      a: "Currently, AIME focuses on the Meta ecosystem (Instagram, Facebook, Threads). Direct TikTok posting is on the roadmap and will launch following vendor compliance audit completion.",
+      q: "Where does AIME publish?",
+      a: "To Instagram, Facebook, and Threads through the official Meta Graph API. The draft comes to you in Telegram first, and goes live after you approve it.",
     },
     {
       q: "How long does onboarding take?",

@@ -21,6 +21,7 @@ export default async function SignupPage({
   const params = await searchParams;
   const next = safeNextPath(first(params.next));
   const configProblem = describeSupabaseConfigProblem();
+  if (configProblem) console.error("[auth] sign-up unavailable:", configProblem);
 
   return (
     <AuthCard
@@ -29,7 +30,7 @@ export default async function SignupPage({
       lead="One account gives you your Partner ID, a referral code and the partner dashboard."
       footer={
         <p className="text-xs text-muted">
-          Partner terms are not published on this site yet. Programme rules are confirmed during onboarding, before you sell. Read the{" "}
+          Programme rules are confirmed with you during onboarding, before you sell. Read the{" "}
           <Link href="/privacy" className="link-underline text-paper">
             privacy notice
           </Link>
@@ -38,7 +39,7 @@ export default async function SignupPage({
       }
     >
       <div className="grid gap-5">
-        {configProblem ? <SetupNotice problem={configProblem} /> : null}
+        {configProblem ? <SetupNotice /> : null}
         <SignupForm next={next} disabled={configProblem !== null} />
       </div>
     </AuthCard>
