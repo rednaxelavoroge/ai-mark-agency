@@ -45,7 +45,7 @@ export function DigitalProductionPageContent({ locale }: { locale: Locale }) {
               </Link>
             </div>
           </div>
-          <div className="am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2">
+          <div data-motion className="am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2">
             <ProductUI variant="saas" ratio="aspect-[16/10]" />
           </div>
         </div>

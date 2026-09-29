@@ -89,7 +89,7 @@ export function AIBAPageContent({
               </div>
             </div>
 
-            <div className="am-hero-visual am-page-visual relative overflow-hidden rounded-2xl">
+            <div data-motion className="am-hero-visual am-page-visual relative overflow-hidden rounded-2xl">
               <ConstellationOverlays cardKind="handoff" locale={locale}>
                 <div className="overflow-hidden rounded-2xl border border-line bg-ink-2 p-5 sm:p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-line pb-3">
@@ -106,13 +106,13 @@ export function AIBAPageContent({
               </div>
 
               {/* Message 1: Incoming customer */}
-              <div className="rounded-xl border border-line bg-ink-3/40 p-3 text-xs">
+              <div className="illu-float rounded-xl border border-line bg-ink-3/40 p-3 text-xs">
                 <span className="font-mono text-[10px] text-muted">{c.heroScene.customerMeta}</span>
                 <p className="mt-1 text-paper font-medium">{c.heroScene.customer}</p>
               </div>
 
               {/* Message 2: AI reply */}
-              <div className="rounded-xl border border-mark/30 bg-mark/5 p-3 text-xs">
+              <div className="illu-float rounded-xl border border-mark/30 bg-mark/5 p-3 text-xs" style={{ animationDelay: "0.4s" }}>
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] text-mark font-semibold">
                     🤖 {c.heroScene.aiLabel}
@@ -123,7 +123,7 @@ export function AIBAPageContent({
               </div>
 
               {/* Message 3: Human Intercept */}
-              <div className="rounded-xl border border-warm/40 bg-warm/5 p-3 text-xs">
+              <div className="illu-float rounded-xl border border-warm/40 bg-warm/5 p-3 text-xs" style={{ animationDelay: "0.8s" }}>
                 <span className="font-mono text-[10px] text-warm font-semibold">
                   👤 {c.heroScene.operatorMeta}
                 </span>

@@ -49,7 +49,7 @@ export function MotionRoot() {
           else svg.pauseAnimations();
         });
       }
-    }, { threshold: 0.08 });
+    }, { rootMargin: "80px", threshold: 0 });
 
     const scanLive = () => {
       document.querySelectorAll<HTMLElement>("[data-motion]").forEach((el) => {
@@ -67,6 +67,9 @@ export function MotionRoot() {
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      document.querySelectorAll<HTMLElement>("[data-motion]").forEach((el) => {
+        delete el.dataset.motionBound;
+      });
       io.disconnect();
       live.disconnect();
       mo.disconnect();

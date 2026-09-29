@@ -9,7 +9,7 @@ function Connector({ delay }: { delay: number }) {
       width="46"
       height="12"
       viewBox="0 0 46 12"
-      className="hidden shrink-0 text-warm sm:block"
+      className="shrink-0 text-warm"
     >
       <line x1="2" y1="6" x2="44" y2="6" stroke="currentColor" strokeWidth="1" opacity="0.28" />
       <line
@@ -44,7 +44,7 @@ export function Pipeline({
   };
 
   return (
-    <div className="relative group/pipeline" data-reveal>
+    <div className="relative group/pipeline" data-motion data-reveal>
       {/* Scroll Arrows */}
       <div className="flex items-center justify-between mb-3 sm:hidden">
         <span className="font-mono text-[10px] text-muted uppercase">Свайпайте вправо →</span>

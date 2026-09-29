@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/platform/PageHeader";
+import { FinanceFlow } from "@/components/visuals/ProductScenes";
 import { cardClass, fieldClass, labelClass, primaryButtonClass } from "@/components/ui/classes";
 import {
   PAYABLE_SKUS,
@@ -93,6 +94,10 @@ export default async function PayPage({ params, searchParams }: Props) {
             : "Pay an agreed invoice in USDT or USDC to an AI MARK wallet. The amount comes from the published price."
         }
       />
+
+      <div className="mt-6">
+        <FinanceFlow />
+      </div>
 
       {error ? (
         <p className="mt-6 text-sm text-danger" role="alert">

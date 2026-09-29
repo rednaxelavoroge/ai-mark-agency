@@ -90,15 +90,18 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
                 stroke="currentColor"
                 strokeWidth="0.22"
                 className="flow-dash"
-                style={{ animationDelay: String(i * 220) + "ms" }}
+                style={{ animationDelay: `${i * 220}ms` }}
               />
-              <circle r="1.15" fill="#d4f27e">
-                <animateMotion
-                  dur={`${3.2 + i * 0.35}s`}
-                  repeatCount="indefinite"
-                  path={`M50,50 L${node.x},${node.y}`}
-                />
-              </circle>
+              <line
+                x1="50"
+                y1="50"
+                x2={node.x}
+                y2={node.y}
+                stroke="#d4f27e"
+                strokeWidth="0.7"
+                className="flow-dot"
+                style={{ animationDelay: `${i * 0.35}s` }}
+              />
             </g>
           ))}
         </svg>
@@ -132,7 +135,7 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
             data-reveal="scale"
             className="relative grid h-32 w-32 place-items-center rounded-full border border-mark/60 bg-ink shadow-[0_0_70px_rgba(198,214,139,0.18)] sm:h-40 sm:w-40"
           >
-            <div className="absolute inset-3 rounded-full border border-mark/20" />
+            <div className="illu-pulse absolute inset-3 rounded-full border border-mark/20" />
             <div className="text-center">
               <span className="font-mono text-[9px] tracking-[0.2em] text-warm">
                 {labels.core}

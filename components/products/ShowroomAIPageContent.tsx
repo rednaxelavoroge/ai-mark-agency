@@ -119,13 +119,14 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            <div className="am-hero-visual am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-4 shadow-xl space-y-3">
+            <div data-motion className="am-hero-visual am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-4 shadow-xl space-y-3">
+              <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               <div className="flex items-center justify-between border-b border-line pb-3">
                 <span className="font-mono text-xs font-semibold text-paper uppercase">
                   {c.heroSpec.title}
                 </span>
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] text-emerald-700">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <span className="illu-pulse h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   {c.heroSpec.status}
                 </span>
               </div>
@@ -145,10 +146,6 @@ export function ShowroomAIPageContent({
                     </span>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-3 pb-0 sm:pb-12">
-                <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
               </div>
             </div>
           </div>

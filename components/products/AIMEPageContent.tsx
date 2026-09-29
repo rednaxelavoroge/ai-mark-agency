@@ -88,7 +88,7 @@ export function AIMEPageContent({
               </div>
             </div>
 
-            <div className="am-hero-visual am-page-visual relative border border-line bg-ink-2">
+            <div data-motion className="am-hero-visual am-page-visual relative border border-line bg-ink-2">
               <ProductConstellation variant="aime" locale={locale} />
 
               {/* Platform pills */}
