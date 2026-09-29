@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type CSSProperties } from "react";
+import { useRef } from "react";
 
 function Connector({ delay }: { delay: number }) {
   return (
@@ -77,8 +77,6 @@ export function Pipeline({
           {steps.map((step, i) => (
             <li key={step} className="flex items-center">
               <span
-                data-reveal
-                style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
                 className="premium-card flex items-center gap-2 rounded-full px-3.5 py-2 text-xs sm:text-sm transition-all hover:border-mark/40 hover:-translate-y-0.5"
               >
                 <span className="font-mono text-[11px] text-warm font-semibold">
@@ -92,11 +90,7 @@ export function Pipeline({
           {result ? (
             <li className="flex items-center">
               <Connector delay={steps.length * 70} />
-              <span
-                data-reveal
-                style={{ "--reveal-delay": `${steps.length * 70}ms` } as CSSProperties}
-                className="rounded-full bg-mark px-4 py-2 text-xs sm:text-sm font-semibold text-mark-ink shadow-sm"
-              >
+              <span className="rounded-full bg-mark px-4 py-2 text-xs sm:text-sm font-semibold text-mark-ink shadow-sm">
                 {result}
               </span>
             </li>

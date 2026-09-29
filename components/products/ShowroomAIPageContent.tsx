@@ -473,7 +473,7 @@ export function ShowroomAIPageContent({
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="flex w-full items-center justify-between p-5 text-left text-sm font-semibold text-paper"
+                    className="flex w-full items-center justify-between p-5 text-start text-sm font-semibold text-paper"
                   >
                     <span>{faq.q}</span>
                     <span className="ml-4 font-mono text-muted text-base">{isOpen ? "−" : "+"}</span>

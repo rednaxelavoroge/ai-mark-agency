@@ -277,7 +277,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
                     setActiveStage(i);
                     setIsAutoPlaying(false);
                   }}
-                  className={`flex flex-col items-start rounded-lg p-2 text-left transition-all ${
+                  className={`flex flex-col items-start rounded-lg p-2 text-start transition-all ${
                     activeStage === i
                       ? "bg-mark text-mark-ink shadow-sm"
                       : "bg-ink-3/60 text-muted hover:bg-ink-3 hover:text-paper"

@@ -106,7 +106,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
               <li key={item.href + item.label}>
                 {item.href === "#contact" ? (
                   <ContactCta
-                    className="block w-full rounded-xl px-2 py-3 text-left hover:bg-ink-3"
+                    className="block w-full rounded-xl px-2 py-3 text-start hover:bg-ink-3"
                     onClick={() => setOpen(false)}
                   >
                     {item.label}

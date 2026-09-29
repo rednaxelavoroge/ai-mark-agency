@@ -107,6 +107,8 @@ function injectHideBubbleStyle() {
       box-shadow: var(--shadow-lg) !important;
       font-size: 14px !important;
       line-height: 1.45 !important;
+      unicode-bidi: plaintext !important;
+      text-align: start !important;
     }
     /* Downward tail, so the bubble points at the launcher button. */
     .aiba-root .aiba-greeting::after {

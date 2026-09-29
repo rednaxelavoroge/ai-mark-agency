@@ -229,7 +229,7 @@ export function AIBAPageContent({
                 new CustomEvent("am:open-chat", { detail: { text: chatInvite } }),
               )
             }
-            className="mt-8 block w-full rounded-2xl border border-mark/30 bg-mark/5 p-5 text-left transition-all hover:-translate-y-0.5 hover:border-mark/60 hover:shadow-md"
+            className="mt-8 block w-full rounded-2xl border border-mark/30 bg-mark/5 p-5 text-start transition-all hover:-translate-y-0.5 hover:border-mark/60 hover:shadow-md"
           >
             <span className="font-mono text-[11px] tracking-wider text-mark uppercase">
               {isRu ? "Попробуйте ассистента" : "Try the assistant"}
@@ -484,7 +484,7 @@ export function AIBAPageContent({
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="flex w-full items-center justify-between p-5 text-left text-sm font-semibold text-paper"
+                    className="flex w-full items-center justify-between p-5 text-start text-sm font-semibold text-paper"
                   >
                     <span>{faq.q}</span>
                     <span className="ml-4 font-mono text-muted text-base">{isOpen ? "−" : "+"}</span>

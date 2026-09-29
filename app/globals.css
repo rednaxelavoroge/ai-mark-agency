@@ -209,6 +209,11 @@ body.menu-open { overflow: hidden; }
 :lang(ar) {
   font-family: var(--font-noto-ar), var(--font-sans), sans-serif;
 }
+/* English (and other LTR) sentences inside an RTL page keep their punctuation
+   at the end of the line instead of jumping to the start of the next line. */
+[dir="rtl"] :is(h1, h2, h3, p, li) {
+  unicode-bidi: plaintext;
+}
 :lang(zh) {
   font-family: var(--font-noto-sc), var(--font-sans), sans-serif;
   letter-spacing: 0;
@@ -1083,7 +1088,11 @@ main {
     linear-gradient(160deg, #10241c, #1b3427 60%, #10231c);
   pointer-events: none;
 }
-.am-forest-hero > * { position: relative; z-index: 1; }
+/* Stack page content above the ::before wash. Do not override Tailwind
+   `absolute`: a direct-child orb would otherwise become in-flow and leave
+   a large empty forest block above the hero copy (especially on mobile). */
+.am-forest-hero > * { z-index: 1; }
+.am-forest-hero > :not(.absolute) { position: relative; }
 .am-forest-hero .text-paper { color: #f4f6ee; }
 .am-forest-hero .text-muted { color: #d3ddd2; }
 .am-forest-hero .text-mark { color: #d4f27e; }
