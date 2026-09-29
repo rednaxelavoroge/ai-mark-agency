@@ -66,8 +66,8 @@ export const copyJa: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "プロジェクト相談",
     "secondaryCta": "仕組みを見る",
-    "investorCta": "投資家向け情報",
-    "partnerCta": "パートナー向け"
+    "partnerCta": "パートナー向け",
+    "investorCta": "投資家向け情報"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -558,8 +558,8 @@ export const copyJa: Copy = {
     ]
   },
   "ui": {
-    "cardOption": '銀行カード（Visa/Mastercard）— 近日対応',
-    "cardsSoon": 'カード — 近日'
+    "cardOption": "銀行カード（Visa/Mastercard）— 近日対応",
+    "cardsSoon": "カード — 近日"
   },
   "pay": {
     "email": "メール",
@@ -571,4 +571,4 @@ export const copyJa: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

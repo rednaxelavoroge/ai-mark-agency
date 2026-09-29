@@ -3,7 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function CabinetBack({ homeHref }: { homeHref: string }) {
+export function CabinetBack({
+  homeHref,
+  ariaLabel = "Back",
+}: {
+  homeHref: string;
+  ariaLabel?: string;
+}) {
   const pathname = usePathname() || "";
   if (pathname === homeHref) return null;
 
@@ -11,7 +17,7 @@ export function CabinetBack({ homeHref }: { homeHref: string }) {
     <Link
       href={homeHref}
       prefetch
-      aria-label="Back"
+      aria-label={ariaLabel}
       className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-sm text-paper"
     >
       ←

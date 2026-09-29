@@ -1,7 +1,9 @@
+"use client";
+
 import { CopyReferralLink } from "@/components/platform/CopyReferralLink";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { DetailList, StatCard } from "@/components/platform/PageHeader";
 import { cardClass } from "@/components/ui/classes";
-import { ATTRIBUTION_WINDOW_LABEL } from "@/lib/referral/cookie";
 import { formatCount, type PartnerReferralStats } from "@/lib/partner/format";
 
 /**
@@ -28,6 +30,10 @@ export function ReferralPanel({
   url: string;
   stats: PartnerReferralStats;
 }) {
+  const t = useCabinetCopy();
+  const r = t.referralPanel;
+  const d = t.dashboard;
+
   return (
     <section
       aria-labelledby="referral-heading"
@@ -37,47 +43,29 @@ export function ReferralPanel({
         id="referral-heading"
         className="text-sm font-semibold tracking-tight"
       >
-        Referral program
+        {r.title}
       </h2>
-      <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">
-        Visits through your link are recorded server-side and attribute a
-        customer lead for {ATTRIBUTION_WINDOW_LABEL}. A partner who signs up
-        through it is recorded as your referral. Sponsor relationships are set
-        by AI MARK from the referral link only — never from your account, and
-        never editable from the client.
-      </p>
+      <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">{r.lead}</p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-5">
         <div className="grid gap-5 lg:col-span-3">
           <DetailList
             items={[
-              { label: "Partner ID", value: partnerId, mono: true },
-              { label: "Referral code", value: referralCode, mono: true },
+              { label: d.labelPartnerId, value: partnerId, mono: true },
+              { label: d.labelReferralCode, value: referralCode, mono: true },
             ]}
           />
           <CopyReferralLink url={url} />
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:col-span-2 lg:grid-cols-1">
-          <StatCard
-            label="Referral clicks"
-            value={formatCount(stats.clicks)}
-          />
-          <StatCard
-            label="Attributed leads"
-            value={formatCount(stats.leads)}
-          />
-          <StatCard
-            label="Partner signups"
-            value={formatCount(stats.partnerSignups)}
-          />
+          <StatCard label={r.statClicks} value={formatCount(stats.clicks)} />
+          <StatCard label={r.statLeads} value={formatCount(stats.leads)} />
+          <StatCard label={r.statSignups} value={formatCount(stats.partnerSignups)} />
         </div>
       </div>
 
-      <p className="mt-5 text-[11px] leading-relaxed text-muted">
-        Clicks, leads, and partner signups. Commission and payouts are on the
-        Commissions and Payouts pages.
-      </p>
+      <p className="mt-5 text-[11px] leading-relaxed text-muted">{r.footnote}</p>
     </section>
   );
 }

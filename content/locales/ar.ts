@@ -66,8 +66,8 @@ export const copyAr: Copy = {
     "soft": "نساعدك على الانتقال من مجرد فكرة أو دراسة جدوى إلى مشروع متكامل يعمل ويدر عوائد مالية.",
     "primaryCta": "ناقش مشروعك",
     "secondaryCta": "كيف نعمل",
-    "investorCta": "للمستثمرين",
-    "partnerCta": "للشركاء"
+    "partnerCta": "للشركاء",
+    "investorCta": "للمستثمرين"
   },
   "pillars": {
     "eyebrow": "ما الذي نقدمه",
@@ -113,6 +113,30 @@ export const copyAr: Copy = {
       {
         "title": "الانطلاق من رأس المال",
         "body": "تحديد المجالات الأكثر ربحية، واختيار النماذج المثبتة، وبناء وتشغيل المشروع بنظام تسليم المفتاح."
+      },
+      {
+        "title": "Several concepts",
+        "body": "More than one model, so you choose with comparison, not with hope."
+      },
+      {
+        "title": "Choose the model",
+        "body": "Offer, economics sketch, and what must be true for it to operate."
+      },
+      {
+        "title": "Build the product",
+        "body": "The site, platform, or AI system the business actually runs on."
+      },
+      {
+        "title": "Launch",
+        "body": "Go live with tracking, offers, and a path for the first conversations."
+      },
+      {
+        "title": "Marketing & sales",
+        "body": "Content, ads, inbox, and quotes on the same loop."
+      },
+      {
+        "title": "Scale",
+        "body": "Optimize what already runs. Automate the repeatable parts. Keep humans on decisions."
       }
     ]
   },
@@ -125,7 +149,10 @@ export const copyAr: Copy = {
       "وكلاء الذكاء والمحتوى",
       "الإطلاق والحملات",
       "المبيعات والاستبقاء",
-      "التوسع العالمي"
+      "التوسع العالمي",
+      "Marketing",
+      "Sales",
+      "Growth"
     ]
   },
   "tech": {
@@ -242,6 +269,21 @@ export const copyAr: Copy = {
         "name": "Scale",
         "price": "$3,500",
         "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، SHOWROOM AI / AI Sales Agent ودعم فني مخصص 24/7."
+      },
+      {
+        "name": "Digital Production",
+        "price": "Custom",
+        "body": "Sites, apps, platforms, cabinets, integrations. Scoped after we see the operating need."
+      },
+      {
+        "name": "Business Creation",
+        "price": "Custom",
+        "body": "Research through model, build, launch, and the commercial loop. Individual scope."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "body": "Multi-brand, multi-market, or heavier production and department work under one agreement."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -516,8 +558,8 @@ export const copyAr: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'بطاقة بنكية (Visa/Mastercard) — قريبًا',
-    "cardsSoon": 'البطاقات — قريبًا'
+    "cardOption": "بطاقة بنكية (Visa/Mastercard) — قريبًا",
+    "cardsSoon": "البطاقات — قريبًا"
   },
   "pay": {
     "email": "البريد الإلكتروني",
@@ -529,4 +571,4 @@ export const copyAr: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

@@ -66,8 +66,8 @@ export const copyEs: Copy = {
     "soft": "Le ayudamos a pasar de una idea o un brief de investigación a una empresa desarrollada, lanzada y operando.",
     "primaryCta": "Consultar proyecto",
     "secondaryCta": "Cómo funciona",
-    "investorCta": "Para inversores",
-    "partnerCta": "Para socios"
+    "partnerCta": "Para socios",
+    "investorCta": "Para inversores"
   },
   "pillars": {
     "eyebrow": "Lo que construimos",
@@ -107,12 +107,36 @@ export const copyEs: Copy = {
     "withoutIdea": "Si no tiene una idea:",
     "steps": [
       {
-        "title": "Con una idea",
-        "body": "Auditoría de mercado, arquitectura del producto, desarrollo MVP, despliegue de IA y puesta en marcha comercial."
+        "title": "Investigación de mercado",
+        "body": "Demanda, competidores, restricciones y dónde puede encajar una oferta real."
       },
       {
-        "title": "Desde el capital",
-        "body": "Identificación de nichos de alta rentabilidad, selección de modelos validados y construcción integral llave en mano."
+        "title": "Oportunidades",
+        "body": "Lista corta de espacios donde vale la pena construir — con razones, no eslóganes."
+      },
+      {
+        "title": "Varios conceptos",
+        "body": "Más de un modelo para elegir con comparación, no con esperanza."
+      },
+      {
+        "title": "Elegir el modelo",
+        "body": "Oferta, boceto de economía y qué debe cumplirse para operar."
+      },
+      {
+        "title": "Construir el producto",
+        "body": "El sitio, la plataforma o el sistema de IA sobre el que opera el negocio."
+      },
+      {
+        "title": "Lanzamiento",
+        "body": "Salida en vivo con seguimiento, ofertas y camino a las primeras conversaciones."
+      },
+      {
+        "title": "Marketing y ventas",
+        "body": "Contenido, anuncios, bandeja de entrada y presupuestos en el mismo ciclo."
+      },
+      {
+        "title": "Escalar",
+        "body": "Optimizar lo que ya funciona. Automatizar lo repetible. Mantener decisiones humanas."
       }
     ]
   },
@@ -120,12 +144,15 @@ export const copyEs: Copy = {
     "eyebrow": "Flujo de trabajo",
     "title": "De la hipótesis al flujo de caja.",
     "steps": [
-      "Investigación y Modelo",
-      "Producto y Plataforma",
-      "Agentes de IA y Contenido",
-      "Lanzamiento y Campañas",
-      "Ventas y Retención",
-      "Escalabilidad"
+      "Idea / capital",
+      "Investigación de mercado",
+      "Modelo de negocio",
+      "Marca",
+      "Producto / plataforma",
+      "Infraestructura de IA",
+      "Marketing",
+      "Ventas",
+      "Crecimiento"
     ]
   },
   "tech": {
@@ -229,19 +256,34 @@ export const copyEs: Copy = {
     "custom": "A medida",
     "tiers": [
       {
-        "name": "Starter",
-        "price": "$1,200",
-        "body": "Para empresas que inician su automatización: configuración de 1 producto de IA y canal clave."
+        "name": "Productos de IA",
+        "price": "$149–349+",
+        "body": "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent como SKU — instalación y operación de su lado o con nosotros."
       },
       {
-        "name": "Growth",
-        "price": "$2,200",
-        "body": "Para negocios en aceleración: despliegue de AIME + AIBA y gestión activa de campañas."
+        "name": "Servicios de marketing con IA",
+        "price": "from $500+",
+        "body": "Trabajo de marketing acotado sin departamento retenido completo. Definido por brief, no por un paquete ficticio."
       },
       {
-        "name": "Scale",
-        "price": "$3,500",
-        "body": "Solución completa: infraestructura omnicanal, SHOWROOM AI / AI Sales Agent y soporte prioritario 24/7."
+        "name": "Departamento de marketing con IA",
+        "price": "$1,500–3,500+",
+        "body": "Marketing HITL continuo como departamento: Starter, Growth, Scale. El gasto en medios es suyo y queda fuera del retainer."
+      },
+      {
+        "name": "Producción digital",
+        "price": "A medida",
+        "body": "Sitios, apps, plataformas, cabinets, integraciones. Alcance tras ver la necesidad operativa."
+      },
+      {
+        "name": "Creación de negocios",
+        "price": "A medida",
+        "body": "Investigación, modelo, build, lanzamiento y ciclo comercial. Alcance individual."
+      },
+      {
+        "name": "Enterprise",
+        "price": "A medida",
+        "body": "Multi-marca, multi-mercado o producción y departamento más pesados bajo un acuerdo."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -516,8 +558,8 @@ export const copyEs: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Tarjeta bancaria (Visa/Mastercard) — próximamente',
-    "cardsSoon": 'Tarjetas — pronto'
+    "cardOption": "Tarjeta bancaria (Visa/Mastercard) — próximamente",
+    "cardsSoon": "Tarjetas — pronto"
   },
   "pay": {
     "email": "Correo",
@@ -529,4 +571,4 @@ export const copyEs: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

@@ -243,7 +243,6 @@ export default async function HomePage({ params }: Props) {
         t={t}
         hubModules={hubModules}
         featuredProducts={featuredProducts}
-        isRu={isRu}
       />
     </>
   );

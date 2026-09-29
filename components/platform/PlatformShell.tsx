@@ -4,7 +4,19 @@ import { signOut } from "@/app/auth/actions";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { secondaryButtonClass } from "@/components/ui/classes";
+import type { PlatformShellCopy } from "@/lib/partner/load-cabinet";
 import { CabinetBack, PlatformNav, type PlatformNavItem } from "./PlatformNav";
+
+const DEFAULT_SHELL: PlatformShellCopy = {
+  navLabel: "Sections",
+  signOut: "Sign out",
+  signedIn: "Signed in",
+  backToSite: "← ai-mark.agency",
+  ventureTagline: "Venture and Marketing",
+  themeLight: "Switch to light theme",
+  themeDark: "Switch to dark theme",
+  backAriaLabel: "Back",
+};
 
 /**
  * Application shell shared by the partner dashboard and the admin console.
@@ -19,6 +31,7 @@ export function PlatformShell({
   homeHref,
   badge,
   userEmail,
+  shell = DEFAULT_SHELL,
   children,
 }: {
   nav: PlatformNavItem[];
@@ -26,17 +39,19 @@ export function PlatformShell({
   homeHref: string;
   badge: string;
   userEmail: string | null;
+  shell?: PlatformShellCopy;
   children: ReactNode;
 }) {
+  const labels = { ...DEFAULT_SHELL, ...shell, navLabel: navLabel || shell.navLabel };
   return (
     <div className="min-h-svh bg-ink">
       <header className="border-b border-line bg-ink lg:hidden">
         <div className="flex items-center justify-between gap-2 px-3 py-2">
           <div className="flex min-w-0 items-center gap-2">
-            <CabinetBack homeHref={homeHref} />
+            <CabinetBack homeHref={homeHref} ariaLabel={labels.backAriaLabel} />
             <Link href={homeHref} prefetch className="flex min-w-0 flex-col items-start gap-1">
               <BrandLogo className="h-5 shrink-0" />
-              <span className="text-[12px] font-semibold leading-none text-muted">Venture and Marketing</span>
+              <span className="text-[12px] font-semibold leading-none text-muted">{labels.ventureTagline}</span>
               <span className="truncate rounded-full border border-line px-2 py-0.5 text-[10px] tracking-[0.14em] text-muted uppercase">
                 {badge}
               </span>
@@ -44,12 +59,12 @@ export function PlatformShell({
           </div>
           <div className="flex shrink-0 items-center gap-2">
             <ThemeToggle
-              lightLabel="Switch to light theme"
-              darkLabel="Switch to dark theme"
+              lightLabel={labels.themeLight}
+              darkLabel={labels.themeDark}
             />
             <form action={signOut}>
               <button type="submit" className={secondaryButtonClass}>
-                Sign out
+                {labels.signOut}
               </button>
             </form>
           </div>
@@ -60,25 +75,25 @@ export function PlatformShell({
         <aside className="sticky top-0 hidden h-svh w-60 shrink-0 self-start overflow-y-auto border-r border-line py-7 lg:block">
           <Link href={homeHref} prefetch className="inline-flex max-w-full flex-col items-start">
             <BrandLogo className="h-7" />
-            <span className="mt-1.5 text-[13px] font-semibold text-muted">Venture and Marketing</span>
+            <span className="mt-1.5 text-[13px] font-semibold text-muted">{labels.ventureTagline}</span>
           </Link>
 
           <p className="mt-4 rounded-full border border-line px-2.5 py-1 text-center text-[10px] tracking-[0.16em] text-muted uppercase">
             {badge}
           </p>
 
-          <PlatformNav items={nav} orientation="sidebar" label={navLabel} />
+          <PlatformNav items={nav} orientation="sidebar" label={labels.navLabel} />
 
           <div className="mt-8 border-t border-line pt-5">
             <p className="text-[10px] tracking-[0.16em] text-muted uppercase">
-              Signed in
+              {labels.signedIn}
             </p>
             <p className="mt-1.5 truncate text-xs text-paper" title={userEmail ?? undefined}>
               {userEmail ?? "—"}
             </p>
             <form action={signOut} className="mt-3">
               <button type="submit" className={secondaryButtonClass}>
-                Sign out
+                {labels.signOut}
               </button>
             </form>
             {/* The public homepage is a large static document, not a cabinet route. */}
@@ -87,7 +102,7 @@ export function PlatformShell({
               prefetch={false}
               className="link-underline mt-4 inline-block text-xs text-muted"
             >
-              ← ai-mark.agency
+              {labels.backToSite}
             </Link>
           </div>
         </aside>
@@ -97,7 +112,7 @@ export function PlatformShell({
 
       <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-ink/95 backdrop-blur-md lg:hidden">
         <div className="px-3 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-          <PlatformNav items={nav} orientation="bar" label={navLabel} />
+          <PlatformNav items={nav} orientation="bar" label={labels.navLabel} />
         </div>
       </div>
     </div>

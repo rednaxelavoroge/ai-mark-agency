@@ -11,16 +11,18 @@ export function DataTable({
   rows,
   empty,
   unreadable,
+  unreadableText = "This list could not be read.",
 }: {
   columns: string[];
   rows: ReactNode[][];
   empty: string;
   unreadable: boolean;
+  unreadableText?: string;
 }) {
   if (unreadable) {
     return (
       <p className="text-sm text-muted">
-        {NO_DATA} This list could not be read.
+        {NO_DATA} {unreadableText}
       </p>
     );
   }

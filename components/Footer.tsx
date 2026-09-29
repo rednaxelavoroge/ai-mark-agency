@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
@@ -8,69 +9,59 @@ import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
 
 export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
   const year = new Date().getFullYear();
-  const isRu = locale === "ru";
+  const chrome = getPublicChromeCopy(locale).footer;
 
   return (
     <footer className="border-t border-line bg-ink-2/60">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          {/* Col 1: Brand Info */}
           <div>
-            {/* Below 360px the 44px lockup is wider than the footer's text
-                column (the symbol + wordmark is a wide 7:1 raster), so it steps
-                down to 40px and stops pushing the page sideways. */}
             <Link href={navHref(locale, "/")} className="inline-flex max-w-full flex-col items-start">
               <BrandLogo className="h-8 sm:h-9" />
-              <span className="mt-2 text-[13px] font-semibold text-muted">Venture and Marketing</span>
+              <span className="mt-2 text-[13px] font-semibold text-muted">{chrome.ventureTagline}</span>
             </Link>
             <p className="mt-3 text-[13px] font-semibold tracking-widest text-mark uppercase">
-              AI-Native Venture &amp; Marketing Company
+              {chrome.taglineUpper}
             </p>
-            <p className="mt-2 text-sm text-muted max-w-sm">
-              {isRu
-                ? "От идеи до работающего бизнеса. Исследуем рынки, строим цифровые продукты, разворачиваем AI-инфраструктуру, запускаем маркетинг и продажи."
-                : "From Idea to Business. Researching markets, building digital products, deploying proprietary AI infrastructure, and scaling marketing and sales operations."}
-            </p>
+            <p className="mt-2 text-sm text-muted max-w-sm">{chrome.blurb}</p>
           </div>
 
-          {/* Col 2: Core Platform Contours */}
           <div>
             <p className="text-xs font-mono font-semibold tracking-wider text-warm uppercase">
-              {isRu ? "Контуры" : "Capabilities"}
+              {chrome.capabilities}
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               <li>
                 <Link href={navHref(locale, "/how-it-works#business-creation")} className="hover:text-paper transition-colors">
-                  {isRu ? "Создание бизнеса" : "Business Creation"}
+                  {chrome.businessCreation}
                 </Link>
               </li>
               <li>
                 <Link href={navHref(locale, DIGITAL_PRODUCTION_PATH)} className="hover:text-paper transition-colors">
-                  {isRu ? "Цифровое производство" : "Digital Production"}
+                  {chrome.digitalProduction}
                 </Link>
               </li>
               <li>
                 <Link href={navHref(locale, "/how-it-works#idea-to-business")} className="hover:text-paper transition-colors">
-                  {isRu ? "Сквозной процесс" : "End-to-End Pipeline"}
+                  {chrome.endToEndPipeline}
                 </Link>
               </li>
               <li>
                 <Link href={navHref(locale, "/how-it-works#operating-model")} className="hover:text-paper transition-colors">
-                  {isRu ? "Операционная AI-модель" : "AI Operating Model"}
+                  {chrome.aiOperatingModel}
                 </Link>
               </li>
               <li>
                 <Link href={navHref(locale, "/pricing#commercial")} className="hover:text-paper transition-colors">
-                  {isRu ? "Коммерческая модель" : "Commercial Model"}
+                  {chrome.commercialModel}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Proprietary AI Products */}
           <div>
             <p className="text-xs font-mono font-semibold tracking-wider text-warm uppercase">
-              {isRu ? "AI-продукты" : "AI Products"}
+              {chrome.aiProducts}
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               <li>
@@ -85,46 +76,45 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
               </li>
               <li>
                 <Link href={productPagePath(locale, "showroom")} className="hover:text-paper transition-colors">
-                  {isRu ? "Showroom AI — AI-продавец" : "Showroom AI — AI Sales Agent"}
+                  {chrome.showroomAi}
                 </Link>
               </li>
               <li>
                 <Link href={productsHubPath(locale)} className="text-mark hover:underline font-medium">
-                  {isRu ? "Все продукты →" : "All Products →"}
+                  {chrome.allProducts}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Venture & Network */}
           <div>
             <p className="text-xs font-mono font-semibold tracking-wider text-warm uppercase">
-              {isRu ? "Компания" : "Venture"}
+              {chrome.venture}
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               <li>
                 <Link href={navHref(locale, "/partners")} className="hover:text-paper transition-colors">
-                  {isRu ? "Партнёрская сеть" : "Partner Network"}
+                  {chrome.partnerNetwork}
                 </Link>
               </li>
               <li>
                 <Link href={navHref(locale, "/investors")} className="hover:text-paper transition-colors">
-                  {isRu ? "Инвесторам" : "Investors"}
+                  {chrome.investors}
                 </Link>
               </li>
               <li>
                 <Link href={navHref(locale, "/pricing#why-now")} className="hover:text-paper transition-colors">
-                  {isRu ? "Почему сейчас" : "Why Now"}
+                  {chrome.whyNow}
                 </Link>
               </li>
               <li>
                 <ContactCta className="hover:text-paper transition-colors">
-                  {isRu ? "Обсудить проект" : "Discuss a Project"}
+                  {chrome.discussProject}
                 </ContactCta>
               </li>
               <li>
                 <Link href={navHref(locale, "/pay")} className="hover:text-paper transition-colors">
-                  {isRu ? "Оплата USDT / USDC" : "Pay USDT / USDC"}
+                  {chrome.payCrypto}
                 </Link>
               </li>
               <li className="text-[13px]">{t.ui.cardsSoon}</li>
@@ -137,11 +127,12 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row text-xs text-muted">
-          <p>© {year} AI MARK. {isRu ? "Все права защищены." : "All rights reserved."}</p>
+          <p>
+            © {year} AI MARK. {chrome.rights}
+          </p>
           <div className="flex items-center gap-4">
-            <span>{isRu ? "От идеи до работающего бизнеса" : "From Idea to Business"}</span>
+            <span>{chrome.taglineShort}</span>
             <span>·</span>
             <span>ai-mark.agency</span>
           </div>

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ProductUI } from "@/components/ui/ProductUI";
 import { getDigitalProductionCopy } from "@/content/digital-production";
+import { getPublicChromeCopy } from "@/content/sections";
 import { digitalProductionPath } from "@/lib/digital-production";
 import type { Locale } from "@/lib/site";
 
 export function DigitalProductionHubCard({ locale }: { locale: Locale }) {
   const t = getDigitalProductionCopy(locale);
-  const isRu = locale === "ru";
-  const cta = isRu ? "Цифровое производство" : "Digital Production";
+  const cta = getPublicChromeCopy(locale).digitalProductionHubCard.cta;
 
   return (
     <article className="catalog-card peek-host group overflow-hidden rounded-2xl border border-line bg-ink-2 transition-all hover:-translate-y-1 hover:border-line-strong hover:shadow-xl">

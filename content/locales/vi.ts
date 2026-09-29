@@ -66,8 +66,8 @@ export const copyVi: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Trao đổi dự án",
     "secondaryCta": "Quy trình",
-    "investorCta": "Dành cho nhà đầu tư",
-    "partnerCta": "Dành cho đối tác"
+    "partnerCta": "Dành cho đối tác",
+    "investorCta": "Dành cho nhà đầu tư"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -558,8 +558,8 @@ export const copyVi: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Thẻ ngân hàng (Visa/Mastercard) — sắp ra mắt',
-    "cardsSoon": 'Thẻ — sắp có'
+    "cardOption": "Thẻ ngân hàng (Visa/Mastercard) — sắp ra mắt",
+    "cardsSoon": "Thẻ — sắp có"
   },
   "pay": {
     "email": "Email",
@@ -571,4 +571,4 @@ export const copyVi: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

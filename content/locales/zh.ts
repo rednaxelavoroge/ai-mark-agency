@@ -66,8 +66,8 @@ export const copyZh: Copy = {
     "soft": "无论您处于概念构思阶段还是手握资本，我们都能助您完成产品研发、商业上线与日常稳定运营。",
     "primaryCta": "预约项目探讨",
     "secondaryCta": "运作机制",
-    "investorCta": "面向投资者",
-    "partnerCta": "合作伙伴"
+    "partnerCta": "合作伙伴",
+    "investorCta": "面向投资者"
   },
   "pillars": {
     "eyebrow": "业务全景",
@@ -113,6 +113,30 @@ export const copyZh: Copy = {
       {
         "title": "基于资本驱动",
         "body": "发掘高毛利蓝海赛道、筛选已验证盈利模型，全流程交钥匙工程搭建并交付运营。"
+      },
+      {
+        "title": "Several concepts",
+        "body": "More than one model, so you choose with comparison, not with hope."
+      },
+      {
+        "title": "Choose the model",
+        "body": "Offer, economics sketch, and what must be true for it to operate."
+      },
+      {
+        "title": "Build the product",
+        "body": "The site, platform, or AI system the business actually runs on."
+      },
+      {
+        "title": "Launch",
+        "body": "Go live with tracking, offers, and a path for the first conversations."
+      },
+      {
+        "title": "Marketing & sales",
+        "body": "Content, ads, inbox, and quotes on the same loop."
+      },
+      {
+        "title": "Scale",
+        "body": "Optimize what already runs. Automate the repeatable parts. Keep humans on decisions."
       }
     ]
   },
@@ -125,7 +149,10 @@ export const copyZh: Copy = {
       "AI 智能体与内容",
       "上线与全域推广",
       "销售转化与复购",
-      "跨国规模化扩张"
+      "跨国规模化扩张",
+      "Marketing",
+      "Sales",
+      "Growth"
     ]
   },
   "tech": {
@@ -242,6 +269,21 @@ export const copyZh: Copy = {
         "name": "Scale 规模版",
         "price": "$3,500",
         "body": "企业级完整方案：全渠道自动化、SHOWROOM AI / AI Sales Agent 深度定制与 24/7 优先支持。"
+      },
+      {
+        "name": "Digital Production",
+        "price": "Custom",
+        "body": "Sites, apps, platforms, cabinets, integrations. Scoped after we see the operating need."
+      },
+      {
+        "name": "Business Creation",
+        "price": "Custom",
+        "body": "Research through model, build, launch, and the commercial loop. Individual scope."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "body": "Multi-brand, multi-market, or heavier production and department work under one agreement."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -516,8 +558,8 @@ export const copyZh: Copy = {
     ]
   },
   "ui": {
-    "cardOption": '银行卡（Visa/Mastercard）— 即将推出',
-    "cardsSoon": '银行卡 — 即将推出'
+    "cardOption": "银行卡（Visa/Mastercard）— 即将推出",
+    "cardsSoon": "银行卡 — 即将推出"
   },
   "pay": {
     "email": "电子邮箱",
@@ -529,4 +571,4 @@ export const copyZh: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

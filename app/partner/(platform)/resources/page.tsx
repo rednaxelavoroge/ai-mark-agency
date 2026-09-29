@@ -3,33 +3,31 @@ import { CopyText } from "@/components/platform/CopyText";
 import { PageHeader } from "@/components/platform/PageHeader";
 import { ReferralPanel } from "@/components/platform/ReferralPanel";
 import { cardClass } from "@/components/ui/classes";
-import { getOwnProfile, getPartnerReferralStats, requirePartner } from "@/lib/auth/dal";
-import { cabinetLocale } from "@/lib/partner/catalog";
+import { getPartnerReferralStats, requirePartner } from "@/lib/auth/dal";
+import { partnerBrandAssetName } from "@/lib/partner/facts";
 import { buildPartnerHub } from "@/lib/partner/hub";
-import { partnerHubLocale } from "@/lib/partner/facts";
+import { loadPartnerCabinet } from "@/lib/partner/load-cabinet";
 import { referralUrl } from "@/lib/partner/format";
 
-export const metadata: Metadata = { title: "Resources" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadPartnerCabinet();
+  return { title: copy.pages.resources.metadataTitle };
+}
 
 export default async function PartnerResourcesPage() {
-  const { auth, partner } = await requirePartner("/partner/resources");
-  const [profile, stats] = await Promise.all([
-    getOwnProfile(auth.userId),
+  const { partner } = await requirePartner("/partner/resources");
+  const [{ locale, copy }, stats] = await Promise.all([
+    loadPartnerCabinet(),
     getPartnerReferralStats(),
   ]);
-  const locale = cabinetLocale(profile?.language);
+  const page = copy.pages.resources;
   const hub = buildPartnerHub(locale, partner.referral_code);
   const labels = hub.labels;
   const kit = hub.kit;
-  const lang = partnerHubLocale(locale);
 
   return (
     <div className="grid gap-7">
-      <PageHeader
-        eyebrow="Partner Platform"
-        title={labels.title}
-        lead={labels.lead}
-      />
+      <PageHeader eyebrow={page.eyebrow} title={labels.title} lead={labels.lead} />
 
       <ReferralPanel
         partnerId={partner.partner_id}
@@ -158,12 +156,7 @@ export default async function PartnerResourcesPage() {
               </div>
             </dl>
             <div className="mt-5">
-              <CopyText
-                label={kit.labels.message}
-                value={product.message}
-                copyLabel="Copy"
-                copiedLabel="Copied"
-              />
+              <CopyText label={kit.labels.message} value={product.message} />
             </div>
           </article>
         ))}
@@ -178,7 +171,7 @@ export default async function PartnerResourcesPage() {
           {hub.assets.map((asset) => (
             <li key={asset.id} className="flex flex-wrap items-baseline justify-between gap-3 border-b border-line/70 pb-3 last:border-b-0 last:pb-0">
               <span className="text-sm">
-                {lang === "ru" ? asset.nameRu : asset.nameEn}
+                {partnerBrandAssetName(locale, asset.id)}
               </span>
               <a href={asset.href} download className="text-xs font-medium text-paper link-underline">
                 {labels.download}

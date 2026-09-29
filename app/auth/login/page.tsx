@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AuthCard, SetupNotice } from "@/components/auth/AuthCard";
+import { AuthCard } from "@/components/auth/AuthCard";
+import { SetupNotice } from "@/components/auth/SetupNotice";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { safeNextPath } from "@/lib/auth/redirects";
+import { loadAuthCabinet } from "@/lib/partner/load-cabinet";
 import { describeSupabaseConfigProblem } from "@/lib/supabase/config";
 
-export const metadata: Metadata = { title: "Sign in" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadAuthCabinet();
+  return { title: copy.auth.login.metadataTitle };
+}
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
-/** Messages for the `error` codes produced by /auth/callback. */
-const CALLBACK_ERRORS: Record<string, string> = {
-  missing_code: "That sign-in link is incomplete. Request a new one below.",
-  exchange_failed:
-    "That sign-in link has expired or was already used. Request a new one below.",
-  provider_error: "The sign-in provider did not complete the request.",
-  not_configured: "Sign-in is temporarily unavailable. Write to us and we will help you in.",
-};
-
 function first(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
+}
+
+function callbackMessage(
+  copy: Awaited<ReturnType<typeof loadAuthCabinet>>["copy"],
+  errorCode: string | undefined,
+  signedOut: string | undefined,
+): string | null {
+  if (signedOut === "1") return copy.auth.signedOutNotice;
+  if (!errorCode) return null;
+  const errors = copy.auth.callbackErrors;
+  return (
+    errors[errorCode as keyof typeof errors] ?? copy.auth.genericSignInError
+  );
 }
 
 export default async function LoginPage({
@@ -29,28 +38,24 @@ export default async function LoginPage({
 }) {
   const params = await searchParams;
   const next = safeNextPath(first(params.next));
+  const { copy } = await loadAuthCabinet();
+  const login = copy.auth.login;
   const configProblem = describeSupabaseConfigProblem();
   if (configProblem) console.error("[auth] sign-in unavailable:", configProblem);
 
-  const errorCode = first(params.error);
-  const notice =
-    first(params.signed_out) === "1"
-      ? "You have been signed out."
-      : errorCode
-        ? (CALLBACK_ERRORS[errorCode] ??
-          "We could not complete that sign-in. Please try again.")
-        : null;
+  const notice = callbackMessage(copy, first(params.error), first(params.signed_out));
 
   return (
     <AuthCard
-      eyebrow="Partner Platform"
-      title="Sign in"
-      lead="Your AI MARK partner dashboard: referral link, network, customers and commissions."
+      ventureTagline={copy.auth.ventureTagline}
+      eyebrow={login.eyebrow}
+      title={login.title}
+      lead={login.lead}
       footer={
         <p className="text-xs text-muted">
-          Not a partner yet?{" "}
+          {login.footerBefore}{" "}
           <Link href="/partners" className="link-underline text-paper">
-            See the partner programme
+            {login.footerLink}
           </Link>
         </p>
       }

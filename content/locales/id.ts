@@ -66,8 +66,8 @@ export const copyId: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Konsultasi Proyek",
     "secondaryCta": "Cara Kerja",
-    "investorCta": "Untuk Investor",
-    "partnerCta": "Untuk mitra"
+    "partnerCta": "Untuk mitra",
+    "investorCta": "Untuk Investor"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -558,8 +558,8 @@ export const copyId: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Kartu bank (Visa/Mastercard) — segera hadir',
-    "cardsSoon": 'Kartu — segera'
+    "cardOption": "Kartu bank (Visa/Mastercard) — segera hadir",
+    "cardsSoon": "Kartu — segera"
   },
   "pay": {
     "email": "Email",
@@ -571,4 +571,4 @@ export const copyId: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

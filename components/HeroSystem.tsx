@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 import type { Copy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { brief } from "@/lib/brief";
 
 function HeroCursor() {
@@ -50,33 +51,18 @@ interface HeroProps {
  * that structure.
  */
 export function HeroSystem({ locale, t }: HeroProps) {
-  const isRu = locale === "ru";
-  const isEn = locale === "en";
-
-  const lede = isRu
-    ? "AI MARK объединяет исследование рынка, цифровые продукты, AI-инфраструктуру и маркетинг — от первой гипотезы до запуска и роста."
-    : isEn
-      ? "AI MARK brings market research, digital products, AI infrastructure and marketing into one operating path — from a first hypothesis to launch and growth."
-      : brief(t.hero.lead);
-  const primary = isRu ? "Выбрать точку входа" : isEn ? "Find your starting point" : t.hero.primaryCta;
-  const secondary = isRu ? "Как устроен процесс" : isEn ? "See how it works" : t.hero.secondaryCta;
-  const footnote = isRu
-    ? "Единая система работы вместо набора разрозненных подрядчиков."
-    : isEn
-      ? "One connected system — not a bundle of disconnected vendors."
-      : brief(t.hero.soft || t.hero.extra);
-  const pillarsLabel = isRu ? "В единой системе" : isEn ? "The work moves across" : brief(t.pillars.eyebrow);
-  const pillars = isRu
-    ? ["Рынок и модель", "Цифровой продукт", "AI и рост"]
-    : isEn
-      ? ["Market & model", "Digital product", "AI & growth"]
+  const hero = getPublicChromeCopy(locale).heroExtra;
+  const lede = hero.lede || brief(t.hero.lead);
+  const primary = hero.primaryCta || t.hero.primaryCta;
+  const secondary = hero.secondaryCta || t.hero.secondaryCta;
+  const footnote = hero.footnote || brief(t.hero.soft || t.hero.extra);
+  const pillarsLabel = hero.pillarsLabel || brief(t.pillars.eyebrow);
+  const pillars =
+    hero.pillars.length > 0
+      ? hero.pillars
       : t.pillars.items.slice(0, 3).map((item) => item.title);
-  const captionKicker = isRu ? "РАБОЧИЙ КОНТУР" : "THE OPERATING LOOP";
-  const caption = isRu
-    ? "Исследовать, создать, согласовать, запустить — и продолжать учиться."
-    : isEn
-      ? "Research, build, approve, launch — then keep learning."
-      : brief(t.hero.lead);
+  const captionKicker = hero.captionKicker;
+  const caption = hero.caption;
 
   return (
     <section className="am-hero" data-motion>
@@ -112,7 +98,7 @@ export function HeroSystem({ locale, t }: HeroProps) {
             <div className="hero-art">
               <Image
                 src="/brand/ai-mark-hero.webp"
-                alt={isRu ? "Изумрудные стеклянные формы, соединённые световыми линиями" : "Emerald glass forms linked by lines of light"}
+                alt={hero.heroAlt}
                 fill
                 priority
                 sizes="(max-width: 1080px) 100vw, 640px"

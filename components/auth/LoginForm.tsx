@@ -7,6 +7,7 @@ import {
   signInWithGoogle,
   signInWithPassword,
 } from "@/app/auth/actions";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import {
   idleAuthState,
   type AuthActionState,
@@ -86,6 +87,7 @@ export function LoginForm({
   next: string;
   disabled: boolean;
 }) {
+  const f = useCabinetCopy().auth.form;
   const [passwordState, passwordAction, passwordPending] = useActionState(
     signInWithPassword,
     idleAuthState,
@@ -105,7 +107,7 @@ export function LoginForm({
         <input type="hidden" name="next" value={next} />
 
         <label className={labelClass}>
-          <span className="text-muted">Email</span>
+          <span className="text-muted">{f.email}</span>
           <input
             className={fieldClass}
             type="email"
@@ -113,12 +115,12 @@ export function LoginForm({
             autoComplete="email"
             required
             disabled={disabled}
-            placeholder="you@company.com"
+            placeholder={f.emailPlaceholder}
           />
         </label>
 
         <label className={labelClass}>
-          <span className="text-muted">Password</span>
+          <span className="text-muted">{f.password}</span>
           <input
             className={fieldClass}
             type="password"
@@ -126,7 +128,7 @@ export function LoginForm({
             autoComplete="current-password"
             required
             disabled={disabled}
-            placeholder="••••••••"
+            placeholder={f.passwordPlaceholder}
           />
         </label>
 
@@ -137,14 +139,14 @@ export function LoginForm({
           className={primaryButtonClass}
           disabled={disabled || passwordPending}
         >
-          {passwordPending ? "Signing in…" : "Sign in"}
+          {passwordPending ? f.signInPending : f.signIn}
         </button>
       </form>
 
       <div className="flex items-center gap-3" aria-hidden>
         <span className="h-px flex-1 bg-line" />
         <span className="text-[11px] tracking-[0.2em] text-muted uppercase">
-          or
+          {f.orDivider}
         </span>
         <span className="h-px flex-1 bg-line" />
       </div>
@@ -163,7 +165,7 @@ export function LoginForm({
           disabled={disabled || googlePending}
         >
           <GoogleMark />
-          {googlePending ? "Opening Google…" : "Continue with Google"}
+          {googlePending ? f.continueGooglePending : f.continueGoogle}
         </button>
 
         <Feedback state={googleState} form="google" />
@@ -173,7 +175,7 @@ export function LoginForm({
         <input type="hidden" name="next" value={next} />
 
         <label className={labelClass}>
-          <span className="text-muted">Email me a sign-in link</span>
+          <span className="text-muted">{f.magicLinkLabel}</span>
           <input
             className={fieldClass}
             type="email"
@@ -181,7 +183,7 @@ export function LoginForm({
             autoComplete="email"
             required
             disabled={disabled}
-            placeholder="you@company.com"
+            placeholder={f.emailPlaceholder}
           />
         </label>
 
@@ -192,17 +194,17 @@ export function LoginForm({
           className={outlineButtonClass}
           disabled={disabled || magicPending}
         >
-          {magicPending ? "Sending…" : "Send magic link"}
+          {magicPending ? f.sendMagicLinkPending : f.sendMagicLink}
         </button>
       </form>
 
       <p className="text-xs text-muted">
-        No account yet?{" "}
+        {f.noAccountBefore}{" "}
         <Link
           href={`/auth/signup?next=${encodeURIComponent(next)}`}
           className="link-underline text-paper"
         >
-          Create a partner account
+          {f.noAccountLink}
         </Link>
       </p>
     </div>

@@ -66,8 +66,8 @@ export const copyPt: Copy = {
     "soft": "Ajudamos você a ir de uma ideia ou tese de pesquisa a um negócio desenvolvido, lançado e faturando.",
     "primaryCta": "Falar sobre projeto",
     "secondaryCta": "Como funciona",
-    "investorCta": "Para investidores",
-    "partnerCta": "Para parceiros"
+    "partnerCta": "Para parceiros",
+    "investorCta": "Para investidores"
   },
   "pillars": {
     "eyebrow": "O que construímos",
@@ -113,6 +113,30 @@ export const copyPt: Copy = {
       {
         "title": "A partir do capital",
         "body": "Mapeamento de nichos rentáveis, seleção de modelos validados e construção completa turnkey."
+      },
+      {
+        "title": "Several concepts",
+        "body": "More than one model, so you choose with comparison, not with hope."
+      },
+      {
+        "title": "Choose the model",
+        "body": "Offer, economics sketch, and what must be true for it to operate."
+      },
+      {
+        "title": "Build the product",
+        "body": "The site, platform, or AI system the business actually runs on."
+      },
+      {
+        "title": "Launch",
+        "body": "Go live with tracking, offers, and a path for the first conversations."
+      },
+      {
+        "title": "Marketing & sales",
+        "body": "Content, ads, inbox, and quotes on the same loop."
+      },
+      {
+        "title": "Scale",
+        "body": "Optimize what already runs. Automate the repeatable parts. Keep humans on decisions."
       }
     ]
   },
@@ -125,7 +149,10 @@ export const copyPt: Copy = {
       "Agentes de IA e Conteúdo",
       "Lançamento e Campanhas",
       "Vendas e Retenção",
-      "Escala"
+      "Escala",
+      "Marketing",
+      "Sales",
+      "Growth"
     ]
   },
   "tech": {
@@ -242,6 +269,21 @@ export const copyPt: Copy = {
         "name": "Scale",
         "price": "$3,500",
         "body": "Ecossistema completo: atendimento multicanal, SHOWROOM AI / AI Sales Agent e suporte prioritário 24/7."
+      },
+      {
+        "name": "Digital Production",
+        "price": "Custom",
+        "body": "Sites, apps, platforms, cabinets, integrations. Scoped after we see the operating need."
+      },
+      {
+        "name": "Business Creation",
+        "price": "Custom",
+        "body": "Research through model, build, launch, and the commercial loop. Individual scope."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "body": "Multi-brand, multi-market, or heavier production and department work under one agreement."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -516,8 +558,8 @@ export const copyPt: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Cartão bancário (Visa/Mastercard) — em breve',
-    "cardsSoon": 'Cartões — em breve'
+    "cardOption": "Cartão bancário (Visa/Mastercard) — em breve",
+    "cardsSoon": "Cartões — em breve"
   },
   "pay": {
     "email": "E-mail",
@@ -529,4 +571,4 @@ export const copyPt: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

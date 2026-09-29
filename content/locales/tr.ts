@@ -66,8 +66,8 @@ export const copyTr: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Proje Görüşmesi",
     "secondaryCta": "Nasıl Çalışır",
-    "investorCta": "Yatırımcılar İçin",
-    "partnerCta": "Partnerler için"
+    "partnerCta": "Partnerler için",
+    "investorCta": "Yatırımcılar İçin"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -558,8 +558,8 @@ export const copyTr: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Banka kartı (Visa/Mastercard) — yakında',
-    "cardsSoon": 'Kartlar — yakında'
+    "cardOption": "Banka kartı (Visa/Mastercard) — yakında",
+    "cardsSoon": "Kartlar — yakında"
   },
   "pay": {
     "email": "E-posta",
@@ -571,4 +571,4 @@ export const copyTr: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;

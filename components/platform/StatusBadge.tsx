@@ -1,5 +1,8 @@
-import { partnerStatusLabel } from "@/lib/partner/format";
+"use client";
+
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { cardClass } from "@/components/ui/classes";
+import { partnerStatusLabelFromCopy } from "@/lib/partner/format";
 
 const STATUS_TONE: Record<string, string> = {
   suspended: "border-danger/40 bg-danger/5 text-danger",
@@ -11,6 +14,7 @@ const STATUS_TONE: Record<string, string> = {
 
 /** Partner lifecycle status as a pill. */
 export function StatusBadge({ status }: { status: string }) {
+  const t = useCabinetCopy();
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium ${
@@ -18,17 +22,12 @@ export function StatusBadge({ status }: { status: string }) {
       }`}
     >
       <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-current" />
-      {partnerStatusLabel(status)}
+      {partnerStatusLabelFromCopy(status, t)}
     </span>
   );
 }
 
-/**
- * Honest placeholder for a surface that a later phase will build.
- *
- * The brief forbids inventing numbers, so every not-yet-built area states what
- * it will contain instead of drawing a mock chart.
- */
+/** Honest placeholder for a surface that a later phase will build. */
 export function PlaceholderPanel({
   summary,
   planned,
@@ -43,9 +42,7 @@ export function PlaceholderPanel({
         Planned
       </span>
 
-      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-        {summary}
-      </p>
+      <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">{summary}</p>
 
       {planned?.length ? (
         <ul className="mt-5 grid max-w-2xl gap-2.5">

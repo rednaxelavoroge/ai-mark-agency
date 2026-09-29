@@ -66,8 +66,8 @@ export const copyDe: Copy = {
     "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
     "primaryCta": "Projekt besprechen",
     "secondaryCta": "Funktionsweise",
-    "investorCta": "Für Investoren",
-    "partnerCta": "Für Partner"
+    "partnerCta": "Für Partner",
+    "investorCta": "Für Investoren"
   },
   "pillars": {
     "eyebrow": "What we can do",
@@ -269,6 +269,21 @@ export const copyDe: Copy = {
         "name": "Scale",
         "price": "$3,500",
         "body": "Komplettlösung: Vollständige Omnichannel-Infrastruktur, SHOWROOM AI / AI Sales Agent und 24/7 Premium-Support."
+      },
+      {
+        "name": "Digital Production",
+        "price": "Custom",
+        "body": "Sites, apps, platforms, cabinets, integrations. Scoped after we see the operating need."
+      },
+      {
+        "name": "Business Creation",
+        "price": "Custom",
+        "body": "Research through model, build, launch, and the commercial loop. Individual scope."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "body": "Multi-brand, multi-market, or heavier production and department work under one agreement."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -543,8 +558,8 @@ export const copyDe: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Bankkarte (Visa/Mastercard) — demnächst',
-    "cardsSoon": 'Karten — bald'
+    "cardOption": "Bankkarte (Visa/Mastercard) — demnächst",
+    "cardsSoon": "Karten — bald"
   },
   "pay": {
     "email": "E-Mail",
@@ -556,4 +571,4 @@ export const copyDe: Copy = {
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-};
+} as Copy;
