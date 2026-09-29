@@ -62,46 +62,46 @@ export const copyId: Copy = {
     "eyebrow": "AI-Native Venture & Marketing Company",
     "title": "Dari ide menjadi bisnis yang berjalan nyata.",
     "lead": "Kami meriset pasar, merumuskan model bisnis, membangun produk digital, lalu mengoperasikan pemasaran dan penjualan — meningkatkan skala operasi dengan AI.",
-    "extra": "We create and scale digital businesses using our own AI infrastructure.",
-    "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
+    "extra": "Kami membangun dan menskalakan bisnis digital dengan infrastruktur AI sendiri.",
+    "soft": "Kami bisa membantu dari ide atau riset hingga sesuatu yang dibangun, diluncurkan, dan dioperasikan.",
     "primaryCta": "Konsultasi Proyek",
     "secondaryCta": "Cara Kerja",
     "partnerCta": "Untuk mitra",
     "investorCta": "Untuk Investor"
   },
   "pillars": {
-    "eyebrow": "What we can do",
-    "title": "Five parts of the same loop.",
+    "eyebrow": "Apa yang kami lakukan",
+    "title": "Lima bagian dari siklus yang sama.",
     "items": [
       {
         "n": "01",
-        "title": "Business creation",
-        "body": "From an idea, an existing company, or capital — we form a model the market can actually hold."
+        "title": "Pembuatan bisnis",
+        "body": "Dari ide, perusahaan yang ada, atau modal — kami bentuk model yang pasar bisa menampung."
       },
       {
         "n": "02",
-        "title": "Digital Production",
-        "body": "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on."
+        "title": "Produksi digital",
+        "body": "Situs, aplikasi, platform, portal, integrasi, dan sistem AI tempat bisnis berjalan."
       },
       {
         "n": "03",
-        "title": "AI Marketing",
-        "body": "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump."
+        "title": "Pemasaran AI",
+        "body": "Strategi, konten, kreatif, iklan, dan analitik sebagai siklus berkelanjutan."
       },
       {
         "n": "04",
-        "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
+        "title": "Penjualan AI",
+        "body": "Dari pertanyaan pertama hingga kualifikasi dan proposal — AI Business Assistant & SHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "Growth",
-        "body": "Analytics, optimization, automation, and scale on the same infrastructure."
+        "title": "Pertumbuhan",
+        "body": "Analitik, optimasi, otomatisasi, dan skala pada infrastruktur yang sama."
       }
     ]
   },
   "creation": {
-    "eyebrow": "Business Creation",
+    "eyebrow": "Pembuatan bisnis",
     "title": "Don't know which business to build? Start with the market.",
     "lead": "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
     "withoutIdea": "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
@@ -141,24 +141,24 @@ export const copyId: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "The path",
-    "title": "One sequence. Join at any step.",
+    "eyebrow": "Jalur",
+    "title": "Satu urutan. Masuk di langkah mana pun.",
     "steps": [
-      "Idea / capital",
-      "Market research",
-      "Business model",
+      "Ide / modal",
+      "Riset pasar",
+      "Model bisnis",
       "Brand",
-      "Product / platform",
-      "AI infrastructure",
-      "Marketing",
-      "Sales",
-      "Growth"
+      "Produk / platform",
+      "Infrastruktur AI",
+      "Pemasaran",
+      "Penjualan",
+      "Pertumbuhan"
     ]
   },
   "tech": {
-    "eyebrow": "Tech base",
-    "title": "Core AI infrastructure already built and used commercially.",
-    "lead": "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run."
+    "eyebrow": "Basis teknologi",
+    "title": "Infrastruktur AI inti sudah dibangun dan dipakai secara komersial.",
+    "lead": "Kami tidak menjual stack yang akan dirakit nanti. Tiga produk sudah dalam loop — sebagai OS delivery dan SKU yang bisa Anda jalankan."
   },
   "products": {
     "eyebrow": "AI Products",
@@ -193,7 +193,7 @@ export const copyId: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "Produksi digital",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -568,14 +568,7 @@ export const copyId: Copy = {
     "company": "Perusahaan",
     "optional": "opsional"
   },
-  "pay": {
-    "email": "Email",
-    "emailHint": "Wajib. Langganan dan tanda terima memakai alamat ini.",
-    "name": "Nama",
-    "company": "Perusahaan",
-    "optional": "opsional"
-  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-} as Copy;
+};

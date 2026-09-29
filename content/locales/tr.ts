@@ -62,46 +62,46 @@ export const copyTr: Copy = {
     "eyebrow": "AI-Native Venture & Marketing Company",
     "title": "Fikirden çalışan ve büyüyen bir işletmeye.",
     "lead": "Pazarı araştırıyor, iş modelini oluşturuyor, dijital ürünü geliştiriyor ve pazarlama ile satış süreçlerini yapay zeka ile otomatikleştiriyoruz.",
-    "extra": "We create and scale digital businesses using our own AI infrastructure.",
-    "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
+    "extra": "Kendi yapay zeka altyapımızla dijital işletmeler kurar ve ölçeklendiririz.",
+    "soft": "Bir fikir veya araştırma özetinden, kurulmuş ve işletilen bir sonuca kadar yardımcı oluruz.",
     "primaryCta": "Proje Görüşmesi",
     "secondaryCta": "Nasıl Çalışır",
     "partnerCta": "Partnerler için",
     "investorCta": "Yatırımcılar İçin"
   },
   "pillars": {
-    "eyebrow": "What we can do",
-    "title": "Five parts of the same loop.",
+    "eyebrow": "Ne yapıyoruz",
+    "title": "Aynı döngünün beş parçası.",
     "items": [
       {
         "n": "01",
-        "title": "Business creation",
-        "body": "From an idea, an existing company, or capital — we form a model the market can actually hold."
+        "title": "İş kurma",
+        "body": "Fikir, mevcut şirket veya sermayeden — pazarın taşıyabileceği bir model kurarız."
       },
       {
         "n": "02",
-        "title": "Digital Production",
-        "body": "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on."
+        "title": "Dijital üretim",
+        "body": "Siteler, uygulamalar, platformlar, portallar, entegrasyonlar ve AI sistemleri."
       },
       {
         "n": "03",
-        "title": "AI Marketing",
-        "body": "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump."
+        "title": "AI pazarlama",
+        "body": "Strateji, içerik, kreatif, reklam ve analitik sürekli bir döngüde."
       },
       {
         "n": "04",
-        "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
+        "title": "AI satış",
+        "body": "İlk talepten nitelendirmeye ve teklife — AI Business Assistant ve SHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "Growth",
-        "body": "Analytics, optimization, automation, and scale on the same infrastructure."
+        "title": "Büyüme",
+        "body": "Aynı altyapıda analitik, optimizasyon, otomasyon ve ölçek."
       }
     ]
   },
   "creation": {
-    "eyebrow": "Business Creation",
+    "eyebrow": "İş kurma",
     "title": "Don't know which business to build? Start with the market.",
     "lead": "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
     "withoutIdea": "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
@@ -141,24 +141,24 @@ export const copyTr: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "The path",
-    "title": "One sequence. Join at any step.",
+    "eyebrow": "Yol",
+    "title": "Tek bir sıra. Her adımda katılın.",
     "steps": [
-      "Idea / capital",
-      "Market research",
-      "Business model",
-      "Brand",
-      "Product / platform",
-      "AI infrastructure",
-      "Marketing",
-      "Sales",
-      "Growth"
+      "Fikir / sermaye",
+      "Pazar araştırması",
+      "İş modeli",
+      "Marka",
+      "Ürün / platform",
+      "AI altyapısı",
+      "Pazarlama",
+      "Satış",
+      "Büyüme"
     ]
   },
   "tech": {
-    "eyebrow": "Tech base",
-    "title": "Core AI infrastructure already built and used commercially.",
-    "lead": "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run."
+    "eyebrow": "Teknik temel",
+    "title": "Çekirdek AI altyapısı kuruldu ve ticari olarak kullanılıyor.",
+    "lead": "Sonra kuracağımız bir yığını satmıyoruz. Üç ürün bugün döngüde — hem delivery OS hem de çalıştırabileceğiniz SKU."
   },
   "products": {
     "eyebrow": "AI Products",
@@ -193,7 +193,7 @@ export const copyTr: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "Dijital üretim",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -568,14 +568,7 @@ export const copyTr: Copy = {
     "company": "Şirket",
     "optional": "isteğe bağlı"
   },
-  "pay": {
-    "email": "E-posta",
-    "emailHint": "Zorunlu. Abonelik ve makbuz bu adresi kullanır.",
-    "name": "Ad",
-    "company": "Şirket",
-    "optional": "isteğe bağlı"
-  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-} as Copy;
+};

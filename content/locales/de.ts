@@ -62,46 +62,46 @@ export const copyDe: Copy = {
     "eyebrow": "AI-Native Venture & Marketing Company",
     "title": "Von der Idee zum profitablen Unternehmen.",
     "lead": "Wir analysieren den Markt, entwickeln das Modell, bauen das digitale Produkt und steuern Vertrieb und Marketing — skaliert durch eigene KI-Infrastruktur.",
-    "extra": "We create and scale digital businesses using our own AI infrastructure.",
-    "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
+    "extra": "Wir schaffen und skalieren digitale Unternehmen auf eigener KI-Infrastruktur.",
+    "soft": "Wir begleiten Sie von einer Idee oder einer Research-Briefing bis zu etwas, das gebaut, gestartet und betrieben wird.",
     "primaryCta": "Projekt besprechen",
     "secondaryCta": "Funktionsweise",
     "partnerCta": "Für Partner",
     "investorCta": "Für Investoren"
   },
   "pillars": {
-    "eyebrow": "What we can do",
-    "title": "Five parts of the same loop.",
+    "eyebrow": "Was wir tun",
+    "title": "Fünf Teile derselben Schleife.",
     "items": [
       {
         "n": "01",
-        "title": "Business creation",
-        "body": "From an idea, an existing company, or capital — we form a model the market can actually hold."
+        "title": "Unternehmensgründung",
+        "body": "Von einer Idee, einem bestehenden Unternehmen oder Kapital — wir formen ein Modell, das der Markt tragen kann."
       },
       {
         "n": "02",
-        "title": "Digital Production",
-        "body": "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on."
+        "title": "Digitale Produktion",
+        "body": "Websites, Apps, Plattformen, Kundenportale, Integrationen und KI-Systeme, auf denen das Unternehmen läuft."
       },
       {
         "n": "03",
-        "title": "AI Marketing",
-        "body": "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump."
+        "title": "KI-Marketing",
+        "body": "Strategie, Content, Creatives, Ads und Analytics als kontinuierlicher Zyklus — kein monatlicher Stapel."
       },
       {
         "n": "04",
-        "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
+        "title": "KI-Vertrieb",
+        "body": "Vom ersten Kontakt über Qualifizierung und Angebot bis zur Kalkulation — AI Business Assistant und SHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "Growth",
-        "body": "Analytics, optimization, automation, and scale on the same infrastructure."
+        "title": "Wachstum",
+        "body": "Analytics, Optimierung, Automatisierung und Skalierung auf derselben Infrastruktur."
       }
     ]
   },
   "creation": {
-    "eyebrow": "Business Creation",
+    "eyebrow": "Unternehmensgründung",
     "title": "Don't know which business to build? Start with the market.",
     "lead": "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
     "withoutIdea": "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
@@ -141,24 +141,24 @@ export const copyDe: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "The path",
-    "title": "One sequence. Join at any step.",
+    "eyebrow": "Der Weg",
+    "title": "Eine Sequenz. Einstieg in jedem Schritt.",
     "steps": [
-      "Idea / capital",
-      "Market research",
-      "Business model",
-      "Brand",
-      "Product / platform",
-      "AI infrastructure",
+      "Idee / Kapital",
+      "Marktforschung",
+      "Geschäftsmodell",
+      "Marke",
+      "Produkt / Plattform",
+      "KI-Infrastruktur",
       "Marketing",
-      "Sales",
-      "Growth"
+      "Vertrieb",
+      "Wachstum"
     ]
   },
   "tech": {
-    "eyebrow": "Tech base",
-    "title": "Core AI infrastructure already built and used commercially.",
-    "lead": "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run."
+    "eyebrow": "Technische Basis",
+    "title": "Kern-KI-Infrastruktur — bereits gebaut und kommerziell im Einsatz.",
+    "lead": "Wir verkaufen keinen Stack, den wir später zusammenbauen wollen. Drei Produkte sitzen heute im Loop — als Betriebssystem der Delivery und als SKUs, die Sie betreiben können."
   },
   "products": {
     "eyebrow": "AI Products",
@@ -193,7 +193,7 @@ export const copyDe: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "Digitale Produktion",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -568,14 +568,7 @@ export const copyDe: Copy = {
     "company": "Unternehmen",
     "optional": "optional"
   },
-  "pay": {
-    "email": "E-Mail",
-    "emailHint": "Pflicht. Abo und Quittung nutzen diese Adresse.",
-    "name": "Name",
-    "company": "Unternehmen",
-    "optional": "optional"
-  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-} as Copy;
+};

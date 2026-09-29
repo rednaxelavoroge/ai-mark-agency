@@ -63,45 +63,45 @@ export const copyPt: Copy = {
     "title": "Da ideia a um negócio em operação.",
     "lead": "Pesquisamos o mercado, estruturamos o modelo, construímos o produto digital e operamos marketing e vendas — escalando a operação com IA.",
     "extra": "Criamos e escalamos negócios digitais utilizando nossa própria infraestrutura de IA.",
-    "soft": "Ajudamos você a ir de uma ideia ou tese de pesquisa a um negócio desenvolvido, lançado e faturando.",
+    "soft": "Ajudamos você a ir de uma ideia ou briefing de pesquisa a algo construído, lançado e operado.",
     "primaryCta": "Falar sobre projeto",
     "secondaryCta": "Como funciona",
     "partnerCta": "Para parceiros",
     "investorCta": "Para investidores"
   },
   "pillars": {
-    "eyebrow": "O que construímos",
-    "title": "Cinco elos do mesmo ciclo integrado.",
+    "eyebrow": "O que fazemos",
+    "title": "Cinco partes do mesmo ciclo.",
     "items": [
       {
         "n": "01",
         "title": "Criação de negócios",
-        "body": "A partir de uma ideia, empresa existente ou capital: estruturamos um modelo validado pelo mercado."
+        "body": "De uma ideia, empresa existente ou capital — formamos um modelo que o mercado consegue sustentar."
       },
       {
         "n": "02",
         "title": "Produção digital",
-        "body": "Sites, aplicativos, plataformas, painéis, integrações e sistemas de IA sobre os quais o negócio roda."
+        "body": "Sites, apps, plataformas, portais, integrações e sistemas de IA nos quais o negócio opera."
       },
       {
         "n": "03",
         "title": "Marketing com IA",
-        "body": "Estratégia, conteúdo, criativos, tráfego pago e métricas em ciclo contínuo, não em relatório mensal."
+        "body": "Estratégia, conteúdo, criativos, anúncios e analytics em ciclo contínuo — não um pacote mensal."
       },
       {
         "n": "04",
         "title": "Vendas com IA",
-        "body": "Do primeiro contato à qualificação, seleção, cálculo e proposta comercial: AI Business Assistant e SHOWROOM AI."
+        "body": "Do primeiro contato à qualificação, encaixe de solução e proposta — AI Business Assistant e SHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "Operações e escala",
-        "body": "Infraestrutura própria, agentes autônomos e supervisão humana (HITL) para crescer sem inchar a equipe."
+        "title": "Crescimento",
+        "body": "Analytics, otimização, automação e escala na mesma infraestrutura."
       }
     ]
   },
   "creation": {
-    "eyebrow": "Criação de empresas",
+    "eyebrow": "Criação de negócios",
     "title": "Dois caminhos para lançar um negócio.",
     "lead": "Trabalhamos tanto com fundadores que possuem uma ideia clara quanto com investidores que desejam aplicar capital em teses comprovadas.",
     "withoutIdea": "Se você não tem uma ideia definida:",
@@ -141,24 +141,24 @@ export const copyPt: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "Fluxo de execução",
-    "title": "Da hipótese ao fluxo de caixa real.",
+    "eyebrow": "O caminho",
+    "title": "Uma sequência. Entre em qualquer etapa.",
     "steps": [
-      "Pesquisa e Modelo",
-      "Produto e Plataforma",
-      "Agentes de IA e Conteúdo",
-      "Lançamento e Campanhas",
-      "Vendas e Retenção",
-      "Escala",
+      "Ideia / capital",
+      "Pesquisa de mercado",
+      "Modelo de negócio",
+      "Marca",
+      "Produto / plataforma",
+      "Infraestrutura de IA",
       "Marketing",
-      "Sales",
-      "Growth"
+      "Vendas",
+      "Crescimento"
     ]
   },
   "tech": {
-    "eyebrow": "Infraestrutura de tecnologia",
-    "title": "Stack proprietário de IA pronto para produção.",
-    "lead": "Sem demos frágeis. Cada solução roda em microsserviços auditados e integrados com as APIs oficiais do WhatsApp (Meta Cloud API), Telegram e OpenAI."
+    "eyebrow": "Base tecnológica",
+    "title": "Infraestrutura central de IA já construída e usada comercialmente.",
+    "lead": "Não vendemos um stack que vamos montar depois. Três produtos já estão no circuito — como sistema operacional de entrega e como SKUs que você pode operar."
   },
   "products": {
     "eyebrow": "Produtos proprietários de IA",
@@ -193,7 +193,7 @@ export const copyPt: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "Produção digital",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -568,14 +568,7 @@ export const copyPt: Copy = {
     "company": "Empresa",
     "optional": "opcional"
   },
-  "pay": {
-    "email": "E-mail",
-    "emailHint": "Obrigatório. A assinatura e o recibo usam este endereço.",
-    "name": "Nome",
-    "company": "Empresa",
-    "optional": "opcional"
-  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-} as Copy;
+};

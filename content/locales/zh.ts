@@ -62,46 +62,46 @@ export const copyZh: Copy = {
     "eyebrow": "AI-NATIVE VENTURE & MARKETING COMPANY",
     "title": "从商业创意到成熟盈利的企业。",
     "lead": "我们调研市场、构建商业模型、开发数字化产品，并运用 AI 全面接管营销与销售流程，实现业务的高效规模化增长。",
-    "extra": "依托专有 AI 基础设施，为您从零打造并规模化拓展数字化业务。",
-    "soft": "无论您处于概念构思阶段还是手握资本，我们都能助您完成产品研发、商业上线与日常稳定运营。",
+    "extra": "我们基于自研 AI 基础设施创建并扩展数字业务。",
+    "soft": "我们可以从想法或研究简报，一路做到可上线、可运营的业务。",
     "primaryCta": "预约项目探讨",
     "secondaryCta": "运作机制",
     "partnerCta": "合作伙伴",
     "investorCta": "面向投资者"
   },
   "pillars": {
-    "eyebrow": "业务全景",
-    "title": "五大核心闭环，驱动商业飞轮。",
+    "eyebrow": "我们能做什么",
+    "title": "五个环节，同一套闭环。",
     "items": [
       {
         "n": "01",
-        "title": "商业孵化",
-        "body": "从概念雏形、现有业务重塑到资本驱动投资：构建受市场真正验证且具备壁垒的模型。"
+        "title": "业务创建",
+        "body": "从想法、现有公司或资本出发 — 构建市场能够承载的模型。"
       },
       {
         "n": "02",
-        "title": "数字化开发",
-        "body": "高并发网站、移动端应用、业务中台、跨系统集成与支撑业务运转的 AI 智能系统。"
+        "title": "数字制作",
+        "body": "网站、应用、平台、客户门户、集成与 AI 系统，业务在此运行。"
       },
       {
         "n": "03",
-        "title": "AI 智能营销",
-        "body": "战略定位、深度内容、动态创意、广告投放与数据归因形成全自动日更闭环。"
+        "title": "AI 营销",
+        "body": "策略、内容、创意、投放与分析形成持续循环 — 而非每月堆内容。"
       },
       {
         "n": "04",
-        "title": "AI 自动化销售",
-        "body": "从第一次咨询到资格判断、方案匹配、计算和商业提案：AI Business Assistant 与 SHOWROOM AI。"
+        "title": "AI 销售",
+        "body": "从首次咨询到资格判断与方案 — AI Business Assistant 与 SHOWROOM AI。"
       },
       {
         "n": "05",
-        "title": "精细运营与扩张",
-        "body": "专有底层系统、自主运行智能体协同人机回环（HITL），无需膨胀团队即可高速扩张。"
+        "title": "增长",
+        "body": "在同一基础设施上做分析、优化、自动化与规模化。"
       }
     ]
   },
   "creation": {
-    "eyebrow": "企业孵化机制",
+    "eyebrow": "业务创建",
     "title": "启动数字化业务的两种高效路径。",
     "lead": "无论是拥有明确愿景的创业者，还是希望将闲置资本投入高回报成熟赛道的战略投资者，我们均提供成熟方案。",
     "withoutIdea": "如果您尚未确定具体方向：",
@@ -141,24 +141,24 @@ export const copyZh: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "推进流程",
-    "title": "从商业假设到稳定正向现金流。",
+    "eyebrow": "路径",
+    "title": "一条链路，可在任一步加入。",
     "steps": [
-      "市场调研与建模",
-      "产品与架构开发",
-      "AI 智能体与内容",
-      "上线与全域推广",
-      "销售转化与复购",
-      "跨国规模化扩张",
-      "Marketing",
-      "Sales",
-      "Growth"
+      "想法 / 资本",
+      "市场研究",
+      "商业模式",
+      "品牌",
+      "产品 / 平台",
+      "AI 基础设施",
+      "营销",
+      "销售",
+      "增长"
     ]
   },
   "tech": {
-    "eyebrow": "技术基石",
-    "title": "企业级可用、安全合规的专有 AI 技术栈。",
-    "lead": "拒绝不稳定的概念 Demo。所有方案均运行在合规微服务架构上，直连 Meta、Telegram 与 OpenAI 官方生产级 API。"
+    "eyebrow": "技术底座",
+    "title": "核心 AI 基础设施已构建并在商业中使用。",
+    "lead": "我们不会推销尚未组装的栈。三款产品已在闭环中 — 既是交付操作系统，也是你可运行的 SKU。"
   },
   "products": {
     "eyebrow": "自主研发 AI 产品矩阵",
@@ -193,7 +193,7 @@ export const copyZh: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "数字制作",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -568,14 +568,7 @@ export const copyZh: Copy = {
     "company": "公司",
     "optional": "选填"
   },
-  "pay": {
-    "email": "电子邮箱",
-    "emailHint": "必填。订阅和收据使用这个地址。",
-    "name": "姓名",
-    "company": "公司",
-    "optional": "选填"
-  },
   "jsonLd": {
     "description": "AI-native venture and marketing company. From idea to a working business: research, model, digital product, marketing, sales, and growth on existing AI infrastructure."
   }
-} as Copy;
+};
