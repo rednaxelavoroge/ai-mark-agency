@@ -483,7 +483,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "AI Sales Agent",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Matches catalog items, computes dynamic formulas, and outputs finished commercial quotes.",
           "highlights": [
             "Deterministic custom calculation formulas",
@@ -605,7 +605,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "AI Sales Agent",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Matches catalog items, computes dynamic formulas, and outputs finished commercial quotes.",
           "highlights": [
             "Deterministic custom calculation formulas",
@@ -753,7 +753,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "web",
+          "id": "portals",
           "name": "Portales y operaciones",
           "badge": "Empresa",
           "headline": "Portales de clientes, paneles operativos e integraciones de ERP",
@@ -766,7 +766,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "comercio electrónico",
+          "id": "ecommerce",
           "name": "Comercio electrónico y mercados",
           "badge": "Transaccional",
           "headline": "Showrooms digitales transaccionales, catálogos y sistemas de pedidos",
@@ -779,7 +779,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "ai-motores",
+          "id": "ai-engines",
           "name": "Motores de IA y automatización",
           "badge": "Proprietary (Propietario)",
           "headline": "Canalizaciones personalizadas de agentes de IA y flujos de trabajo empresariales autónomos",
@@ -865,7 +865,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "sector",
+          "id": "industry",
           "title": "Socio de la industria",
           "tag": "Mercados verticales",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -876,7 +876,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "agencia",
+          "id": "agency",
           "title": "Organismos asociados",
           "tag": "Infraestructura",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -887,7 +887,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "referimiento",
+          "id": "referral",
           "title": "Presentadores estratégicos y referidos",
           "tag": "Red",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -1079,7 +1079,7 @@ export const publicChromeCopy = {
           "badge": "sistema interactivo",
           "cta": "Explora las 8 etapas",
           "href": "/how-it-works",
-          "accent": "var(--marca)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -1089,7 +1089,7 @@ export const publicChromeCopy = {
           "badge": "Productos (core)",
           "cta": "EXPLORA NUESTROS PRODUCTOS",
           "href": "/products",
-          "accent": "var(--cálido)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -1099,7 +1099,7 @@ export const publicChromeCopy = {
           "badge": "Niveles transparentes",
           "cta": "Ver todos los precios",
           "href": "/pricing",
-          "accent": "var(--marca-luz)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -1109,7 +1109,7 @@ export const publicChromeCopy = {
           "badge": "Hasta 5 niveles",
           "cta": "Programa de socios",
           "href": "/partners",
-          "accent": "var(--marca)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -1119,14 +1119,14 @@ export const publicChromeCopy = {
           "badge": "Ronda de semillas",
           "cta": "Propuesta de inversión",
           "href": "/investors",
-          "accent": "var(--cálido)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
-          "id": "SALA DE EXPOSICIONES",
+          "id": "showroom",
           "tag": "Agente de ventas",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Coincide con los elementos del catálogo, calcula fórmulas dinámicas y genera cotizaciones comerciales terminadas.",
           "highlights": [
             "Fórmulas deterministas de cálculo personalizado",
@@ -1135,7 +1135,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Asistente",
+          "id": "assistant",
           "tag": "Bandeja de entrada y calificación",
           "price": "from $149/mo",
           "desc": "Asistente conversacional 24/7: fundamentos en el conocimiento de la empresa, califica clientes potenciales y entrega a operadores humanos.",
@@ -1146,7 +1146,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Aime",
+          "id": "aime",
           "tag": "Marketing autónomo",
           "price": "from $1,200/mo",
           "desc": "Ejecuta todo el flujo de trabajo de marketing: inteligencia de mercado, activos visuales y borradores sociales, hasta su aprobación.",
@@ -1246,9 +1246,9 @@ export const publicChromeCopy = {
       "showcaseLead": "El asistente responde y califica. La IA de la sala de exposición vende y prepara el trato. Tres productos patentados de IA.",
       "products": [
         {
-          "id": "SALA DE EXPOSICIONES",
+          "id": "showroom",
           "tag": "Agente de ventas",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Coincide con los elementos del catálogo, calcula fórmulas dinámicas y genera cotizaciones comerciales terminadas.",
           "highlights": [
             "Fórmulas deterministas de cálculo personalizado",
@@ -1257,7 +1257,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Asistente",
+          "id": "assistant",
           "tag": "Bandeja de entrada y calificación",
           "price": "from $149/mo",
           "desc": "Asistente conversacional 24/7: fundamentos en el conocimiento de la empresa, califica clientes potenciales y entrega a operadores humanos.",
@@ -1268,7 +1268,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Aime",
+          "id": "aime",
           "tag": "Marketing autónomo",
           "price": "from $1,200/mo",
           "desc": "Ejecuta todo el flujo de trabajo de marketing: inteligencia de mercado, activos visuales y borradores sociales, hasta su aprobación.",
@@ -1396,7 +1396,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "portais",
+          "id": "portals",
           "name": "Portais e operações",
           "badge": "Emprensa",
           "headline": "Portais de clientes, painéis operacionais e integrações de ERP",
@@ -1409,7 +1409,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "comércio eletrônico",
+          "id": "ecommerce",
           "name": "E-Commerce e Marketplaces",
           "badge": "Transacional",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -1422,7 +1422,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "motores de IA",
+          "id": "ai-engines",
           "name": "Motores e automação de IA",
           "badge": "Patenteado ",
           "headline": "Pipelines de agentes de IA personalizados e fluxos de trabalho de negócios autônomos",
@@ -1508,7 +1508,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "indústria",
+          "id": "industry",
           "title": "Parceiros da indústria;",
           "tag": "Verticais",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -1519,7 +1519,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "agência",
+          "id": "agency",
           "title": "http: // heads. medagencies. org http: // www. hevra. org",
           "tag": "Infraestruturas",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -1530,7 +1530,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "referência",
+          "id": "referral",
           "title": "Indicação e Apresentadores Estratégicos",
           "tag": "Rede",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -1722,7 +1722,7 @@ export const publicChromeCopy = {
           "badge": "Sistema Interativo",
           "cta": "Explore as 8 etapas",
           "href": "/how-it-works",
-          "accent": "var(--marca)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -1732,7 +1732,7 @@ export const publicChromeCopy = {
           "badge": "3 Produtos Principais",
           "cta": "Conheça todos os produtos",
           "href": "/products",
-          "accent": "var(--quente)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -1742,7 +1742,7 @@ export const publicChromeCopy = {
           "badge": "Camadas Transparentes",
           "cta": "Ver todos os preços",
           "href": "/pricing",
-          "accent": "var(--marca-luz)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -1752,7 +1752,7 @@ export const publicChromeCopy = {
           "badge": "Até 5 níveis",
           "cta": "Programa de Parceiros",
           "href": "/partners",
-          "accent": "var(--marca)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -1762,14 +1762,14 @@ export const publicChromeCopy = {
           "badge": "Rodada de Sementes",
           "cta": "Proposta de Investimento",
           "href": "/investors",
-          "accent": "var(--quente)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "Agente de Vendas",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Corresponde aos itens do catálogo, calcula fórmulas dinâmicas e gera cotações comerciais concluídas.",
           "highlights": [
             "Fórmulas de cálculo personalizadas determinísticas",
@@ -1778,7 +1778,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "assistente",
+          "id": "assistant",
           "tag": "Caixa de entrada e qualificação",
           "price": "from $149/mo",
           "desc": "Assistente de conversação 24 horas por dia, 7 dias por semana: fundamenta o conhecimento da empresa, qualifica leads e entrega a operadores humanos.",
@@ -1891,7 +1891,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "Agente de Vendas",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Corresponde aos itens do catálogo, calcula fórmulas dinâmicas e gera cotações comerciais concluídas.",
           "highlights": [
             "Fórmulas de cálculo personalizadas determinísticas",
@@ -1900,7 +1900,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "assistente",
+          "id": "assistant",
           "tag": "Caixa de entrada e qualificação",
           "price": "from $149/mo",
           "desc": "Assistente de conversação 24 horas por dia, 7 dias por semana: fundamenta o conhecimento da empresa, qualifica leads e entrega a operadores humanos.",
@@ -2039,7 +2039,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "порталы",
+          "id": "portals",
           "name": "Порталы и операции",
           "badge": "Предприятие",
           "headline": "Клиентские порталы, операционные панели и интеграция ERP",
@@ -2052,7 +2052,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "электронная коммерция",
+          "id": "ecommerce",
           "name": "Электронная коммерция и торговые площадки",
           "badge": "Транзакционный",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -2065,7 +2065,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "ИИ-двигатели",
+          "id": "ai-engines",
           "name": "Искусственный интеллект и автоматизация",
           "badge": "Собственный",
           "headline": "Пользовательские конвейеры агентов искусственного интеллекта и автономные бизнес-процессы",
@@ -2140,7 +2140,7 @@ export const publicChromeCopy = {
       "programCta": "Подробнее о партнерской программе",
       "partnerTypes": [
         {
-          "id": "региональный",
+          "id": "regional",
           "title": "Региональные партнеры",
           "tag": "Территория",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -2151,7 +2151,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "промышленность",
+          "id": "industry",
           "title": "Отраслевые партнеры",
           "tag": "Вертикали",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -2162,7 +2162,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "агентство",
+          "id": "agency",
           "title": "Партнеры агентства",
           "tag": "Инфраструктура",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -2173,7 +2173,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "направление",
+          "id": "referral",
           "title": "Реферальные и стратегические представители",
           "tag": "Сеть",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -2365,7 +2365,7 @@ export const publicChromeCopy = {
           "badge": "Интерактивный контур",
           "cta": "Открыть контур 01–08",
           "href": "/how-it-works",
-          "accent": "вар(--марк)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -2375,7 +2375,7 @@ export const publicChromeCopy = {
           "badge": "3 продукта · SaaS",
           "cta": "Смотреть продукты",
           "href": "/products",
-          "accent": "вар(--теплый)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -2385,7 +2385,7 @@ export const publicChromeCopy = {
           "badge": "Прозрачные тарифы",
           "cta": "Все тарифы и условия",
           "href": "/pricing",
-          "accent": "вар (--марк-свет)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -2395,7 +2395,7 @@ export const publicChromeCopy = {
           "badge": "До 5 уровней дохода",
           "cta": "Партнёрская программа",
           "href": "/partners",
-          "accent": "вар(--марк)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -2405,14 +2405,14 @@ export const publicChromeCopy = {
           "badge": "Seed-раунд",
           "cta": "Инвестиционный меморандум",
           "href": "/investors",
-          "accent": "вар(--теплый)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "AI-продавец",
-          "price": "от $349/мес",
+          "price": "от $199/мес",
           "desc": "Подбирает товары по каталогу, рассчитывает спецификации по формулам и формирует готовое КП.",
           "highlights": [
             "Отраслевые формулы расчёта без галлюцинаций",
@@ -2421,7 +2421,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "помощник",
+          "id": "assistant",
           "tag": "Инбокс и квалификация",
           "price": "от $149/мес",
           "desc": "Круглосуточный AI-ассистент: отвечает по базе знаний, квалифицирует лидов и передаёт диалог человеку.",
@@ -2534,7 +2534,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "AI-продавец",
-          "price": "от $349/мес",
+          "price": "от $199/мес",
           "desc": "Подбирает товары по каталогу, рассчитывает спецификации по формулам и формирует готовое КП.",
           "highlights": [
             "Отраслевые формулы расчёта без галлюцинаций",
@@ -2543,7 +2543,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "помощник",
+          "id": "assistant",
           "tag": "Инбокс и квалификация",
           "price": "от $149/мес",
           "desc": "Круглосуточный AI-ассистент: отвечает по базе знаний, квалифицирует лидов и передаёт диалог человеку.",
@@ -2682,7 +2682,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "بوابات",
+          "id": "portals",
           "name": "البوابات والعمليات",
           "badge": "مَشرُوع",
           "headline": "بوابات العملاء ولوحات المعلومات التشغيلية وتكامل تخطيط موارد المؤسسات (ERP).",
@@ -2695,7 +2695,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "التجارة الإلكترونية",
+          "id": "ecommerce",
           "name": "التجارة الإلكترونية والأسواق",
           "badge": "المعاملات",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -2708,7 +2708,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "محركات الذكاء الاصطناعي",
+          "id": "ai-engines",
           "name": "محركات الذكاء الاصطناعي والأتمتة",
           "badge": "الملكية",
           "headline": "خطوط أنابيب وكيل الذكاء الاصطناعي المخصصة وسير عمل الأعمال المستقلة",
@@ -2783,7 +2783,7 @@ export const publicChromeCopy = {
       "programCta": "المزيد عن برنامج الشركاء",
       "partnerTypes": [
         {
-          "id": "إقليمي",
+          "id": "regional",
           "title": "الشركاء الإقليميون",
           "tag": "إِقلِيم",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -2794,7 +2794,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "صناعة",
+          "id": "industry",
           "title": "شركاء الصناعة",
           "tag": "عمودي",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -2805,7 +2805,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "وكالة",
+          "id": "agency",
           "title": "شركاء الوكالة",
           "tag": "بنية تحتية",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -2816,7 +2816,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "الإحالة",
+          "id": "referral",
           "title": "الإحالة والمقدمون الاستراتيجيون",
           "tag": "شبكة",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -2964,13 +2964,13 @@ export const publicChromeCopy = {
       "formatLabel": "شكل",
       "discussProject": "مناقشة المشروع →",
       "aiProducts": "منتجات الذكاء الاصطناعي",
-      "aiMarketingServices": "AI Marketing Services",
-      "fromPrice": "from $500+",
+      "aiMarketingServices": "خدمات التسويق بالذكاء الاصطناعي",
+      "fromPrice": "من $500+",
       "byScope": "حسب النطاق",
       "digitalProductionLink": "الإنتاج الرقمي →",
       "customProposalTitle": "هل تحتاج إلى اقتراح مخصص أو نطاق مختلط؟",
       "openChat": "افتح الدردشة",
-      "commercialFootnote": "USD. Product prices are published on dedicated product pages. Retainers: Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. ROI, CAC, and ROAS are never guaranteed."
+      "commercialFootnote": "بالدولار الأمريكي. أسعار المنتجات منشورة على صفحات المنتجات. العقود الشهرية: Starter $1,200 / Growth $2,200 / Scale $3,500 شهرياً حسب النطاق. لا نضمن ROI أو CAC أو ROAS."
     },
     "partnersPage": {
       "heroSteps": [
@@ -3008,7 +3008,7 @@ export const publicChromeCopy = {
           "badge": "النظام التفاعلي",
           "cta": "اكتشف المراحل الثمانية",
           "href": "/how-it-works",
-          "accent": "فار (--علامة)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -3018,17 +3018,17 @@ export const publicChromeCopy = {
           "badge": "3 منتجات أساسية",
           "cta": "اكتشف المنتجات",
           "href": "/products",
-          "accent": "فار (- دافئ)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
           "tag": "النموذج التجاري",
           "title": "تنسيقات التسعير والمشاركة",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "عقود قسم التسويق من $1,200/شهر، اشتراكات SaaS من $149/شهر، وإنتاج مشاريع جاهز.",
           "badge": "طبقات شفافة",
           "cta": "عرض جميع الأسعار",
           "href": "/pricing",
-          "accent": "فار (--علامة الضوء)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -3038,7 +3038,7 @@ export const publicChromeCopy = {
           "badge": "ما يصل إلى 5 مستويات",
           "cta": "برنامج الشريك",
           "href": "/partners",
-          "accent": "فار (--علامة)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -3048,41 +3048,41 @@ export const publicChromeCopy = {
           "badge": "جولة البذور",
           "cta": "اقتراح الاستثمار",
           "href": "/investors",
-          "accent": "فار (- دافئ)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "وكيل مبيعات الذكاء الاصطناعي",
-          "price": "from $349/mo",
+          "price": "من $199/شهر",
           "desc": "يطابق عناصر الكتالوج، ويحسب الصيغ الديناميكية، ويخرج عروض الأسعار التجارية النهائية.",
           "highlights": [
             "صيغ حسابية مخصصة حتمية",
-            "Automated verified PDF quote generator",
-            "Seamless CRM sync & manager handoff"
+            "مولّد عروض PDF موثّق تلقائياً",
+            "مزامنة CRM سلسة وتسليم للمدير"
           ]
         },
         {
-          "id": "مساعد",
+          "id": "assistant",
           "tag": "البريد الوارد والتأهيل",
-          "price": "from $149/mo",
+          "price": "من $149/شهر",
           "desc": "مساعد محادثة يعمل على مدار 24 ساعة طوال أيام الأسبوع: أساسيات في معرفة الشركة، وتأهيل العملاء المتوقعين، وتقديم المساعدة للمشغلين البشريين.",
           "highlights": [
-            "Unified WhatsApp, Telegram, Direct & Web inbox",
-            "ترتكز بشكل صارم على قاعدة معارف الشركة",
+            "صندوق وارد موحّد: WhatsApp وTelegram وDirect والويب",
+            "مرتكز بشكل صارم على قاعدة معارف الشركة",
             "تسليم فوري للمشغل البشري بنقرة واحدة"
           ]
         },
         {
           "id": "aime",
           "tag": "التسويق المستقل",
-          "price": "from $1,200/mo",
+          "price": "من $1,200/شهر",
           "desc": "ينفذ سير العمل التسويقي الكامل: معلومات السوق، والأصول المرئية، والمسودات الاجتماعية - بموافقتك.",
           "highlights": [
-            "معلومات السوق وتخطيط المحتوى الخاص بالعلامة التجارية",
-            "Visual drafts & high-converting Reels scripts",
-            "Strict 1-click Telegram approval gate"
+            "معلومات السوق وتخطيط المحتوى وفق العلامة",
+            "مسودات مرئية وسيناريوهات Reels عالية التحويل",
+            "بوابة موافقة صارمة بنقرة واحدة في Telegram"
           ]
         }
       ]
@@ -3177,34 +3177,34 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "وكيل مبيعات الذكاء الاصطناعي",
-          "price": "from $349/mo",
+          "price": "من $199/شهر",
           "desc": "يطابق عناصر الكتالوج، ويحسب الصيغ الديناميكية، ويخرج عروض الأسعار التجارية النهائية.",
           "highlights": [
             "صيغ حسابية مخصصة حتمية",
-            "Automated verified PDF quote generator",
-            "Seamless CRM sync & manager handoff"
+            "مولّد عروض PDF موثّق تلقائياً",
+            "مزامنة CRM سلسة وتسليم للمدير"
           ]
         },
         {
-          "id": "مساعد",
+          "id": "assistant",
           "tag": "البريد الوارد والتأهيل",
-          "price": "from $149/mo",
+          "price": "من $149/شهر",
           "desc": "مساعد محادثة يعمل على مدار 24 ساعة طوال أيام الأسبوع: أساسيات في معرفة الشركة، وتأهيل العملاء المتوقعين، وتقديم المساعدة للمشغلين البشريين.",
           "highlights": [
-            "Unified WhatsApp, Telegram, Direct & Web inbox",
-            "ترتكز بشكل صارم على قاعدة معارف الشركة",
+            "صندوق وارد موحّد: WhatsApp وTelegram وDirect والويب",
+            "مرتكز بشكل صارم على قاعدة معارف الشركة",
             "تسليم فوري للمشغل البشري بنقرة واحدة"
           ]
         },
         {
           "id": "aime",
           "tag": "التسويق المستقل",
-          "price": "from $1,200/mo",
+          "price": "من $1,200/شهر",
           "desc": "ينفذ سير العمل التسويقي الكامل: معلومات السوق، والأصول المرئية، والمسودات الاجتماعية - بموافقتك.",
           "highlights": [
-            "معلومات السوق وتخطيط المحتوى الخاص بالعلامة التجارية",
-            "Visual drafts & high-converting Reels scripts",
-            "Strict 1-click Telegram approval gate"
+            "معلومات السوق وتخطيط المحتوى وفق العلامة",
+            "مسودات مرئية وسيناريوهات Reels عالية التحويل",
+            "بوابة موافقة صارمة بنقرة واحدة في Telegram"
           ]
         }
       ]
@@ -3325,7 +3325,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "门户网站",
+          "id": "portals",
           "name": "门户网站和运营",
           "badge": "企业",
           "headline": "客户门户、运营仪表板和 ERP 集成",
@@ -3338,7 +3338,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "电子商务",
+          "id": "ecommerce",
           "name": "电子商务和市场",
           "badge": "交易性",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -3351,7 +3351,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "人工智能引擎",
+          "id": "ai-engines",
           "name": "人工智能引擎和自动化",
           "badge": "所有权",
           "headline": "定制人工智能代理管道和自主业务工作流程",
@@ -3426,7 +3426,7 @@ export const publicChromeCopy = {
       "programCta": "有关合作伙伴计划的更多信息",
       "partnerTypes": [
         {
-          "id": "区域性的",
+          "id": "regional",
           "title": "区域合作伙伴",
           "tag": "领土",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -3437,7 +3437,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "行业",
+          "id": "industry",
           "title": "行业合作伙伴",
           "tag": "垂直领域",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -3448,7 +3448,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "机构",
+          "id": "agency",
           "title": "代理合作伙伴",
           "tag": "基础设施",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -3459,7 +3459,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "转介",
+          "id": "referral",
           "title": "推荐和战略介绍人",
           "tag": "网络",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -3651,7 +3651,7 @@ export const publicChromeCopy = {
           "badge": "互动系统",
           "cta": "探索 8 个阶段",
           "href": "/how-it-works",
-          "accent": "var(--标记)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -3661,7 +3661,7 @@ export const publicChromeCopy = {
           "badge": "3 核心产品",
           "cta": "探索产品",
           "href": "/products",
-          "accent": "var(--温暖)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -3671,7 +3671,7 @@ export const publicChromeCopy = {
           "badge": "透明层",
           "cta": "查看所有定价",
           "href": "/pricing",
-          "accent": "var(--标记灯)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -3681,7 +3681,7 @@ export const publicChromeCopy = {
           "badge": "最多 5 个级别",
           "cta": "合作伙伴计划",
           "href": "/partners",
-          "accent": "var(--标记)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -3691,14 +3691,14 @@ export const publicChromeCopy = {
           "badge": "种子轮",
           "cta": "投资建议",
           "href": "/investors",
-          "accent": "var(--温暖)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "人工智能销售代理",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "匹配目录项、计算动态公式并输出完成的商业报价。",
           "highlights": [
             "确定性自定义计算公式",
@@ -3707,7 +3707,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "助手",
+          "id": "assistant",
           "tag": "收件箱及资格",
           "price": "from $149/mo",
           "desc": "24/7 会话助理：以公司知识为基础，确定潜在客户资格，然后将工作交给人工操作员。",
@@ -3820,7 +3820,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "人工智能销售代理",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "匹配目录项、计算动态公式并输出完成的商业报价。",
           "highlights": [
             "确定性自定义计算公式",
@@ -3829,7 +3829,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "助手",
+          "id": "assistant",
           "tag": "收件箱及资格",
           "price": "from $149/mo",
           "desc": "24/7 会话助理：以公司知识为基础，确定潜在客户资格，然后将工作交给人工操作员。",
@@ -3968,7 +3968,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "portal",
+          "id": "portals",
           "name": "Portal & Operasi",
           "badge": "Perusahaan",
           "headline": "Portal Pelanggan, Dasbor Operasional & Integrasi ERP",
@@ -3981,7 +3981,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "e-niaga",
+          "id": "ecommerce",
           "name": "E-Commerce & Pasar",
           "badge": "Transaksional",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -3994,7 +3994,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "mesin ai",
+          "id": "ai-engines",
           "name": "Mesin & Otomatisasi AI",
           "badge": "Hak milik",
           "headline": "Saluran Agen AI Khusus & Alur Kerja Bisnis Otonom",
@@ -4080,7 +4080,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "industri",
+          "id": "industry",
           "title": "Mitra Industri",
           "tag": "Vertikal",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -4091,7 +4091,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "agen",
+          "id": "agency",
           "title": "Mitra Agensi",
           "tag": "Infrastruktur",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -4102,7 +4102,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "rujukan",
+          "id": "referral",
           "title": "Referensi & Pengenal Strategis",
           "tag": "Jaringan",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -4294,7 +4294,7 @@ export const publicChromeCopy = {
           "badge": "Sistem Interaktif",
           "cta": "Jelajahi 8 Tahapan",
           "href": "/how-it-works",
-          "accent": "var(--tandai)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -4304,7 +4304,7 @@ export const publicChromeCopy = {
           "badge": "3 Produk Inti",
           "cta": "Jelajahi Produk",
           "href": "/products",
-          "accent": "var(--hangat)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -4314,7 +4314,7 @@ export const publicChromeCopy = {
           "badge": "Tingkatan Transparan",
           "cta": "Lihat Semua Harga",
           "href": "/pricing",
-          "accent": "var(--tandai-cahaya)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -4324,7 +4324,7 @@ export const publicChromeCopy = {
           "badge": "Hingga 5 Tingkat",
           "cta": "Program Mitra",
           "href": "/partners",
-          "accent": "var(--tandai)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -4334,14 +4334,14 @@ export const publicChromeCopy = {
           "badge": "Benih Bulat",
           "cta": "Usulan Investasi",
           "href": "/investors",
-          "accent": "var(--hangat)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "Agen Penjualan AI",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Mencocokkan item katalog, menghitung rumus dinamis, dan menghasilkan kutipan komersial yang sudah jadi.",
           "highlights": [
             "Rumus penghitungan khusus deterministik",
@@ -4350,7 +4350,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "asisten",
+          "id": "assistant",
           "tag": "Kotak Masuk & Kualifikasi",
           "price": "from $149/mo",
           "desc": "Asisten percakapan 24/7: berdasarkan pengetahuan perusahaan, prospek yang memenuhi syarat, dan diserahkan kepada operator manusia.",
@@ -4463,7 +4463,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "Agen Penjualan AI",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Mencocokkan item katalog, menghitung rumus dinamis, dan menghasilkan kutipan komersial yang sudah jadi.",
           "highlights": [
             "Rumus penghitungan khusus deterministik",
@@ -4472,7 +4472,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "asisten",
+          "id": "assistant",
           "tag": "Kotak Masuk & Kualifikasi",
           "price": "from $149/mo",
           "desc": "Asisten percakapan 24/7: berdasarkan pengetahuan perusahaan, prospek yang memenuhi syarat, dan diserahkan kepada operator manusia.",
@@ -4611,7 +4611,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "cổng thông tin",
+          "id": "portals",
           "name": "Cổng thông tin & hoạt động",
           "badge": "Doanh nghiệp",
           "headline": "Cổng thông tin khách hàng, Bảng điều khiển hoạt động & Tích hợp ERP",
@@ -4624,7 +4624,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "thương mại điện tử",
+          "id": "ecommerce",
           "name": "Thương mại điện tử & thị trường",
           "badge": "giao dịch",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -4637,7 +4637,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "động cơ ai",
+          "id": "ai-engines",
           "name": "Công cụ AI & Tự động hóa",
           "badge": "độc quyền",
           "headline": "Quy trình tác nhân AI tùy chỉnh và quy trình làm việc kinh doanh tự động",
@@ -4712,7 +4712,7 @@ export const publicChromeCopy = {
       "programCta": "Thông tin thêm về chương trình đối tác",
       "partnerTypes": [
         {
-          "id": "khu vực",
+          "id": "regional",
           "title": "Đối tác khu vực",
           "tag": "Lãnh thổ",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -4723,7 +4723,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "ngành công nghiệp",
+          "id": "industry",
           "title": "Đối tác trong ngành",
           "tag": "ngành dọc",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -4734,7 +4734,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "hãng",
+          "id": "agency",
           "title": "Đối tác đại lý",
           "tag": "Cơ sở hạ tầng",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -4745,7 +4745,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "sự giới thiệu",
+          "id": "referral",
           "title": "Người giới thiệu & Người giới thiệu chiến lược",
           "tag": "Mạng",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -4947,7 +4947,7 @@ export const publicChromeCopy = {
           "badge": "3 sản phẩm cốt lõi",
           "cta": "Khám phá sản phẩm",
           "href": "/products",
-          "accent": "var(--ấm)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -4977,14 +4977,14 @@ export const publicChromeCopy = {
           "badge": "Vòng hạt giống",
           "cta": "Đề xuất đầu tư",
           "href": "/investors",
-          "accent": "var(--ấm)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "Đại lý bán hàng AI",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Khớp các mục trong danh mục, tính toán các công thức động và đưa ra các báo giá thương mại đã hoàn thành.",
           "highlights": [
             "Công thức tính toán tùy chỉnh xác định",
@@ -4993,7 +4993,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "trợ lý",
+          "id": "assistant",
           "tag": "Hộp thư đến & Chứng chỉ",
           "price": "from $149/mo",
           "desc": "Trợ lý đàm thoại 24/7: dựa trên kiến ​​thức về công ty, xác định khách hàng tiềm năng và giao cho người điều hành.",
@@ -5106,7 +5106,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "Đại lý bán hàng AI",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Khớp các mục trong danh mục, tính toán các công thức động và đưa ra các báo giá thương mại đã hoàn thành.",
           "highlights": [
             "Công thức tính toán tùy chỉnh xác định",
@@ -5115,7 +5115,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "trợ lý",
+          "id": "assistant",
           "tag": "Hộp thư đến & Chứng chỉ",
           "price": "from $149/mo",
           "desc": "Trợ lý đàm thoại 24/7: dựa trên kiến ​​thức về công ty, xác định khách hàng tiềm năng và giao cho người điều hành.",
@@ -5254,7 +5254,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Portale",
+          "id": "portals",
           "name": "Portale und Betrieb",
           "badge": "Unternehmen",
           "headline": "Kundenportale, operative Dashboards und ERP-Integrationen",
@@ -5267,7 +5267,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "E-Commerce",
+          "id": "ecommerce",
           "name": "E-Commerce und Marktplätze",
           "badge": "Transaktional",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -5280,7 +5280,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "KI-Motoren",
+          "id": "ai-engines",
           "name": "KI-Engines und Automatisierung",
           "badge": "Proprietär",
           "headline": "Benutzerdefinierte KI-Agent-Pipelines und autonome Geschäftsabläufe",
@@ -5366,7 +5366,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Industrie",
+          "id": "industry",
           "title": "Industriepartner",
           "tag": "Vertikale",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -5377,7 +5377,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Agentur",
+          "id": "agency",
           "title": "Agenturpartner",
           "tag": "Infrastruktur",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -5388,7 +5388,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "Verweisung",
+          "id": "referral",
           "title": "Empfehlung und strategische Einführung",
           "tag": "Netzwerk",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -5536,8 +5536,8 @@ export const publicChromeCopy = {
       "formatLabel": "Format",
       "discussProject": "Projekt besprechen →",
       "aiProducts": "KI-Produkte",
-      "aiMarketingServices": "AI Marketing Services",
-      "fromPrice": "from $500+",
+      "aiMarketingServices": "KI-Marketing-Services",
+      "fromPrice": "ab $500+",
       "byScope": "nach Umfang",
       "digitalProductionLink": "Digitale Produktion →",
       "customProposalTitle": "Benötigen Sie ein individuelles Angebot oder einen Hybridumfang?",
@@ -5627,34 +5627,34 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "KI-Vertriebsagent",
-          "price": "from $349/mo",
+          "price": "ab $199/Mo",
           "desc": "Gleicht Katalogartikel ab, berechnet dynamische Formeln und gibt fertige kommerzielle Angebote aus.",
           "highlights": [
-            "Deterministische benutzerdefinierte Berechnungsformeln",
-            "Automated verified PDF quote generator",
-            "Seamless CRM sync & manager handoff"
+            "Deterministische Berechnungsformeln nach Maß",
+            "Automatisierter PDF-Angebotsgenerator mit Prüfung",
+            "Nahtlose CRM-Synchronisation und Übergabe an Manager"
           ]
         },
         {
-          "id": "Assistent",
+          "id": "assistant",
           "tag": "Posteingang und Qualifikation",
-          "price": "from $149/mo",
+          "price": "ab $149/Mo",
           "desc": "Gesprächsassistent rund um die Uhr: Fundiert Unternehmenswissen, qualifiziert Leads und übergibt diese an menschliche Bediener.",
           "highlights": [
-            "Unified WhatsApp, Telegram, Direct & Web inbox",
+            "Ein Posteingang für WhatsApp, Telegram, Direct und Web",
             "Streng auf der Wissensbasis des Unternehmens verankert",
-            "Sofortige 1-Klick-Übergabe durch den Bediener"
+            "Sofortige Übergabe an den Operator mit einem Klick"
           ]
         },
         {
           "id": "aime",
           "tag": "Autonomes Marketing",
-          "price": "from $1,200/mo",
+          "price": "ab $1.200/Mo",
           "desc": "Führt den gesamten Marketing-Workflow aus: Marktinformationen, visuelle Assets und Social-Media-Entwürfe – bis zu Ihrer Genehmigung.",
           "highlights": [
             "Marktinformationen und markengerechte Content-Planung",
-            "Visual drafts & high-converting Reels scripts",
-            "Strict 1-click Telegram approval gate"
+            "Visuelle Entwürfe und überzeugende Reels-Skripte",
+            "Striktes Ein-Klick-Freigabetor in Telegram"
           ]
         }
       ]
@@ -5749,34 +5749,34 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "KI-Vertriebsagent",
-          "price": "from $349/mo",
+          "price": "ab $199/Mo",
           "desc": "Gleicht Katalogartikel ab, berechnet dynamische Formeln und gibt fertige kommerzielle Angebote aus.",
           "highlights": [
-            "Deterministische benutzerdefinierte Berechnungsformeln",
-            "Automated verified PDF quote generator",
-            "Seamless CRM sync & manager handoff"
+            "Deterministische Berechnungsformeln nach Maß",
+            "Automatisierter PDF-Angebotsgenerator mit Prüfung",
+            "Nahtlose CRM-Synchronisation und Übergabe an Manager"
           ]
         },
         {
-          "id": "Assistent",
+          "id": "assistant",
           "tag": "Posteingang und Qualifikation",
-          "price": "from $149/mo",
+          "price": "ab $149/Mo",
           "desc": "Gesprächsassistent rund um die Uhr: Fundiert Unternehmenswissen, qualifiziert Leads und übergibt diese an menschliche Bediener.",
           "highlights": [
-            "Unified WhatsApp, Telegram, Direct & Web inbox",
+            "Ein Posteingang für WhatsApp, Telegram, Direct und Web",
             "Streng auf der Wissensbasis des Unternehmens verankert",
-            "Sofortige 1-Klick-Übergabe durch den Bediener"
+            "Sofortige Übergabe an den Operator mit einem Klick"
           ]
         },
         {
           "id": "aime",
           "tag": "Autonomes Marketing",
-          "price": "from $1,200/mo",
+          "price": "ab $1.200/Mo",
           "desc": "Führt den gesamten Marketing-Workflow aus: Marktinformationen, visuelle Assets und Social-Media-Entwürfe – bis zu Ihrer Genehmigung.",
           "highlights": [
             "Marktinformationen und markengerechte Content-Planung",
-            "Visual drafts & high-converting Reels scripts",
-            "Strict 1-click Telegram approval gate"
+            "Visuelle Entwürfe und überzeugende Reels-Skripte",
+            "Striktes Ein-Klick-Freigabetor in Telegram"
           ]
         }
       ]
@@ -5897,7 +5897,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "portails",
+          "id": "portals",
           "name": "Portails et opérations",
           "badge": "Entreprise",
           "headline": "Portails clients, tableaux de bord opérationnels et intégrations ERP",
@@ -5910,7 +5910,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "commerce électronique",
+          "id": "ecommerce",
           "name": "Commerce électronique et marchés",
           "badge": "Transactionnel",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -5923,7 +5923,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "moteurs ai",
+          "id": "ai-engines",
           "name": "Moteurs IA et automatisation",
           "badge": "Propriétaire",
           "headline": "Pipelines d’agents IA personnalisés et flux de travail métier autonomes",
@@ -5998,7 +5998,7 @@ export const publicChromeCopy = {
       "programCta": "En savoir plus sur le programme partenaire",
       "partnerTypes": [
         {
-          "id": "régional",
+          "id": "regional",
           "title": "Partenaires régionaux",
           "tag": "Territoire",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -6009,7 +6009,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "industrie",
+          "id": "industry",
           "title": "Partenaires industriels",
           "tag": "Verticales",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -6020,7 +6020,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "agence",
+          "id": "agency",
           "title": "Agences partenaires",
           "tag": "Infrastructure",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -6031,7 +6031,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "référence",
+          "id": "referral",
           "title": "Référencement et introducteurs stratégiques",
           "tag": "Réseau",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -6223,7 +6223,7 @@ export const publicChromeCopy = {
           "badge": "Système interactif",
           "cta": "Explorez les 8 étapes",
           "href": "/how-it-works",
-          "accent": "var(--marque)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -6233,7 +6233,7 @@ export const publicChromeCopy = {
           "badge": "3 produits de base",
           "cta": "Explorer les produits",
           "href": "/products",
-          "accent": "var(--chaud)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -6253,7 +6253,7 @@ export const publicChromeCopy = {
           "badge": "Jusqu'à 5 niveaux",
           "cta": "Programme de partenariat",
           "href": "/partners",
-          "accent": "var(--marque)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -6263,14 +6263,14 @@ export const publicChromeCopy = {
           "badge": "Ronde de graines",
           "cta": "Proposition d'investissement",
           "href": "/investors",
-          "accent": "var(--chaud)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "Agent commercial IA",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Fait correspondre les éléments du catalogue, calcule des formules dynamiques et génère des devis commerciaux terminés.",
           "highlights": [
             "Formules de calcul personnalisées déterministes",
@@ -6392,7 +6392,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "Agent commercial IA",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Fait correspondre les éléments du catalogue, calcule des formules dynamiques et génère des devis commerciaux terminés.",
           "highlights": [
             "Formules de calcul personnalisées déterministes",
@@ -6540,7 +6540,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "ポータル",
+          "id": "portals",
           "name": "ポータルとオペレーション",
           "badge": "企業",
           "headline": "カスタマー ポータル、運用ダッシュボード、ERP 統合",
@@ -6553,7 +6553,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "eコマース",
+          "id": "ecommerce",
           "name": "電子商取引とマーケットプレイス",
           "badge": "トランザクション",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -6566,7 +6566,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "AIエンジン",
+          "id": "ai-engines",
           "name": "AI エンジンとオートメーション",
           "badge": "独自の",
           "headline": "カスタム AI エージェント パイプラインと自律型ビジネス ワークフロー",
@@ -6641,7 +6641,7 @@ export const publicChromeCopy = {
       "programCta": "パートナー プログラムの詳細",
       "partnerTypes": [
         {
-          "id": "地域的な",
+          "id": "regional",
           "title": "地域パートナー",
           "tag": "地域",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -6652,7 +6652,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "業界",
+          "id": "industry",
           "title": "業界パートナー",
           "tag": "垂直方向",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -6663,7 +6663,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "代理店",
+          "id": "agency",
           "title": "代理店パートナー",
           "tag": "インフラストラクチャー",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -6674,7 +6674,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "紹介",
+          "id": "referral",
           "title": "紹介者と戦略的紹介者",
           "tag": "ネットワーク",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -6866,7 +6866,7 @@ export const publicChromeCopy = {
           "badge": "インタラクティブシステム",
           "cta": "8 つのステージを探索する",
           "href": "/how-it-works",
-          "accent": "var(--マーク)"
+          "accent": "var(--mark)"
         },
         {
           "num": "02",
@@ -6876,7 +6876,7 @@ export const publicChromeCopy = {
           "badge": "3つの主力製品",
           "cta": "製品を調べる",
           "href": "/products",
-          "accent": "var(--暖かい)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -6886,7 +6886,7 @@ export const publicChromeCopy = {
           "badge": "透明な層",
           "cta": "すべての価格を見る",
           "href": "/pricing",
-          "accent": "var(--マーク-ライト)"
+          "accent": "var(--mark-light)"
         },
         {
           "num": "04",
@@ -6896,7 +6896,7 @@ export const publicChromeCopy = {
           "badge": "最大5レベル",
           "cta": "パートナープログラム",
           "href": "/partners",
-          "accent": "var(--マーク)"
+          "accent": "var(--mark)"
         },
         {
           "num": "05",
@@ -6906,14 +6906,14 @@ export const publicChromeCopy = {
           "badge": "シードラウンド",
           "cta": "投資提案",
           "href": "/investors",
-          "accent": "var(--暖かい)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "AI販売代理店",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "カタログ項目を照合し、動的な計算式を計算し、完成した商業見積を出力します。",
           "highlights": [
             "確定的なカスタム計算式",
@@ -6922,7 +6922,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "アシスタント",
+          "id": "assistant",
           "tag": "受信箱と資格",
           "price": "from $149/mo",
           "desc": "24 時間年中無休の会話アシスタント: 企業の知識に基づいて見込み客を評価し、人間のオペレーターに任せます。",
@@ -7035,7 +7035,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "AI販売代理店",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "カタログ項目を照合し、動的な計算式を計算し、完成した商業見積を出力します。",
           "highlights": [
             "確定的なカスタム計算式",
@@ -7044,7 +7044,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "アシスタント",
+          "id": "assistant",
           "tag": "受信箱と資格",
           "price": "from $149/mo",
           "desc": "24 時間年中無休の会話アシスタント: 企業の知識に基づいて見込み客を評価し、人間のオペレーターに任せます。",
@@ -7183,7 +7183,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "portallar",
+          "id": "portals",
           "name": "Portallar ve Operasyonlar",
           "badge": "Girişim",
           "headline": "Müşteri Portalları, Operasyonel Kontrol Panelleri ve ERP Entegrasyonları",
@@ -7196,7 +7196,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "e-ticaret",
+          "id": "ecommerce",
           "name": "E-Ticaret ve Pazaryerleri",
           "badge": "İşlemsel",
           "headline": "Transactional Digital Showrooms, Catalogs & Order Systems",
@@ -7209,7 +7209,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "yapay zeka motorları",
+          "id": "ai-engines",
           "name": "Yapay Zeka Motorları ve Otomasyon",
           "badge": "Tescilli",
           "headline": "Özel Yapay Zeka Aracısı İşlem Hatları ve Otonom İş Akışları",
@@ -7284,7 +7284,7 @@ export const publicChromeCopy = {
       "programCta": "İş ortağı programı hakkında daha fazla bilgi",
       "partnerTypes": [
         {
-          "id": "bölgesel",
+          "id": "regional",
           "title": "Bölgesel Ortaklar",
           "tag": "Bölge",
           "desc": "Expanding AI MARK presence in specific geographic jurisdictions, onboarding local enterprises and managing regional accounts.",
@@ -7295,7 +7295,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "endüstri",
+          "id": "industry",
           "title": "Endüstri Ortakları",
           "tag": "Dikeyler",
           "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
@@ -7306,7 +7306,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "ajans",
+          "id": "agency",
           "title": "Ajans Ortakları",
           "tag": "Altyapı",
           "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
@@ -7317,7 +7317,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "sevk",
+          "id": "referral",
           "title": "Yönlendirme ve Stratejik Tanıtıcılar",
           "tag": "Ağ",
           "desc": "Enterprise consultants, software advisors, and venture scouts connecting qualified corporate opportunities to AI MARK.",
@@ -7519,7 +7519,7 @@ export const publicChromeCopy = {
           "badge": "3 Temel Ürün",
           "cta": "Ürünleri Keşfedin",
           "href": "/products",
-          "accent": "var(--sıcak)"
+          "accent": "var(--warm)"
         },
         {
           "num": "03",
@@ -7549,14 +7549,14 @@ export const publicChromeCopy = {
           "badge": "Tohum Yuvarlak",
           "cta": "Yatırım Teklifi",
           "href": "/investors",
-          "accent": "var(--sıcak)"
+          "accent": "var(--warm)"
         }
       ],
       "featuredProducts": [
         {
           "id": "showroom",
           "tag": "AI Satış Temsilcisi",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Katalog öğelerini eşleştirir, dinamik formülleri hesaplar ve tamamlanmış ticari tekliflerin çıktısını alır.",
           "highlights": [
             "Deterministik özel hesaplama formülleri",
@@ -7565,7 +7565,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "asistan",
+          "id": "assistant",
           "tag": "Gelen Kutusu ve Nitelikler",
           "price": "from $149/mo",
           "desc": "7/24 konuşabilen asistan: şirket bilgisine dayanır, müşteri adaylarını nitelendirir ve insan operatörlere aktarır.",
@@ -7678,7 +7678,7 @@ export const publicChromeCopy = {
         {
           "id": "showroom",
           "tag": "AI Satış Temsilcisi",
-          "price": "from $349/mo",
+          "price": "from $199/mo",
           "desc": "Katalog öğelerini eşleştirir, dinamik formülleri hesaplar ve tamamlanmış ticari tekliflerin çıktısını alır.",
           "highlights": [
             "Deterministik özel hesaplama formülleri",
@@ -7687,7 +7687,7 @@ export const publicChromeCopy = {
           ]
         },
         {
-          "id": "asistan",
+          "id": "assistant",
           "tag": "Gelen Kutusu ve Nitelikler",
           "price": "from $149/mo",
           "desc": "7/24 konuşabilen asistan: şirket bilgisine dayanır, müşteri adaylarını nitelendirir ve insan operatörlere aktarır.",
@@ -7720,7 +7720,6 @@ export const publicChromeCopy = {
 } as const satisfies Record<Locale, unknown>;
 
 export type PublicChromeCopy = (typeof publicChromeCopy)["en"];
-
 export function getPublicChromeCopy(locale: Locale): PublicChromeCopy {
   return (publicChromeCopy[locale] ?? publicChromeCopy.en) as PublicChromeCopy;
 }
