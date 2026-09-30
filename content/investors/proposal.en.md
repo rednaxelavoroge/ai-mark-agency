@@ -172,23 +172,23 @@ Ready-made AI products on subscription.
 
 The current product model benchmark:
 
-**$149–349+ / month**
+**$149–349 / month**
 
 depending on the product and the level of usage.
 
-### AI Marketing Services
+### Turnkey AI marketing
 
-Marketing support delivered with our own AI infrastructure.
+Managed marketing support delivered with our own AI infrastructure.
 
-**Approximately from $500+ / month**
+**from $1,200 / month**
 
 The price depends on the number of channels, the volume of work, the connected AI products and the level of automation.
 
 ### AI Marketing Department
 
-End-to-end marketing support for companies that need an external AI marketing department.
+Full-function marketing for companies that need an external AI marketing department.
 
-**Benchmark: $1,200–3,500+ / month**
+**Benchmark: $2,200–3,500+ / month**
 
 ### Digital Production
 
