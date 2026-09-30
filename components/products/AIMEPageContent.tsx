@@ -499,9 +499,10 @@ export function AIMEPageContent({
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {ru ? "Оставить контакты" : "Leave your contacts"}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between">
+          <span>{ru ? "Оставить контакты" : "Leave your contacts"}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
         <LeadInquiry contact={contact} locale={locale} scenario="aime" />
       </details>

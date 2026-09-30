@@ -334,11 +334,12 @@ export function AIBAPageContent({
               </div>
             </div>
 
-            <details className="rounded-2xl border border-line">
-              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">
-                {isRu ? "CRM и интеграции" : "CRM and integrations"}
+            <details open className="group rounded-2xl border border-line">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-sm font-semibold text-paper hover:bg-ink-3/40 transition-colors rounded-t-2xl">
+                <span>{isRu ? "CRM и интеграции" : "CRM and integrations"}</span>
+                <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
               </summary>
-            <div className="p-4">
+            <div className="border-t border-line/60 p-5">
               <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
                 {section("06", "CRM and integrations", "CRM и интеграции")}
               </span>
@@ -504,9 +505,10 @@ export function AIBAPageContent({
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {isRu ? "Оставить контакты" : "Leave your contacts"}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between">
+          <span>{isRu ? "Оставить контакты" : "Leave your contacts"}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
         <LeadInquiry contact={contact} locale={locale} scenario="assistant" />
       </details>
