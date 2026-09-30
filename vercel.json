@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/cron/subscription-provisioning",
-      "schedule": "*/15 * * * *"
+      "schedule": "17 3 * * *"
     }
   ]
 }

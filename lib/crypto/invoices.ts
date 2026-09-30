@@ -261,12 +261,12 @@ export async function confirmInvoicePayment(
     const { enqueueSubscriptionProvisioning } = await import(
       "@/lib/provisioning/worker"
     );
-    void enqueueSubscriptionProvisioning({
+    await enqueueSubscriptionProvisioning({
       subscriptionId: payload.subscription_id as string,
       invoiceRef: invoice.public_ref,
       mode: hadSubscription ? "renewal" : "initial",
     });
-    void runProvisioningKick();
+    await runProvisioningKick();
   }
 
   return { ok: true, saleId };

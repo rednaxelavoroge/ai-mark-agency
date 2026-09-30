@@ -3,7 +3,9 @@ import { runProvisioningBatch } from "@/lib/provisioning/worker";
 export const dynamic = "force-dynamic";
 
 /**
- * Retries product tenant provisioning and processes subscription expiries.
+ * Daily catch-up: retries failed/pending product tenant provisioning and
+ * processes subscription expiries. Initial provisioning runs on payment
+ * confirm (see confirmInvoicePayment); this route is not the primary path.
  * Vercel Cron: Authorization: Bearer $CRON_SECRET
  */
 export async function GET(request: Request) {
