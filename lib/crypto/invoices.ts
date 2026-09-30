@@ -240,8 +240,46 @@ export async function confirmInvoicePayment(
   if (recorded.error || !recorded.data) {
     return { ok: false, error: recorded.error?.message ?? "The sale was not recorded." };
   }
-  const payload = recorded.data as { sale_id?: string | null };
-  return { ok: true, saleId: payload.sale_id ?? invoice.sale_id ?? "" };
+  const payload = recorded.data as {
+    sale_id?: string | null;
+    subscription_id?: string | null;
+    idempotent?: boolean;
+  };
+  const saleId = payload.sale_id ?? invoice.sale_id ?? "";
+
+  if (saleId && payload.idempotent !== true) {
+    const { notifyCommissionsForSale } = await import("@/lib/partner/notifications");
+    void notifyCommissionsForSale(saleId);
+  }
+
+  if (
+    invoice.billing_period_days &&
+    payload.subscription_id &&
+    payload.idempotent !== true
+  ) {
+    const hadSubscription = Boolean(invoice.subscription_id);
+    const { enqueueSubscriptionProvisioning } = await import(
+      "@/lib/provisioning/worker"
+    );
+    await enqueueSubscriptionProvisioning({
+      subscriptionId: payload.subscription_id as string,
+      invoiceRef: invoice.public_ref,
+      mode: hadSubscription ? "renewal" : "initial",
+    });
+    await runProvisioningKick();
+  }
+
+  return { ok: true, saleId };
+}
+
+/** Best-effort immediate attempt; cron retries with backoff. */
+async function runProvisioningKick(): Promise<void> {
+  try {
+    const { runProvisioningBatch } = await import("@/lib/provisioning/worker");
+    await runProvisioningBatch(4);
+  } catch (error) {
+    console.error("[provisioning] kick failed:", error);
+  }
 }
 
 export async function attachTxToConfirmedInvoice(input: {

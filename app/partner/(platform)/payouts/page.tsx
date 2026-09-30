@@ -3,7 +3,7 @@ import Link from "next/link";
 import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader, StatCard } from "@/components/platform/PageHeader";
 import { PayoutDestinationText } from "@/components/platform/PayoutDestination";
-import { cardClass } from "@/components/ui/classes";
+import { cardClass, primaryButtonClass } from "@/components/ui/classes";
 import {
   getOwnPayoutDetails,
   getPartnerLedgerStats,
@@ -17,14 +17,27 @@ import {
   formatLedgerMoney,
   formatStoredMoney,
 } from "@/lib/partner/format";
+import { canRequestPayout, PARTNER_PAYOUT_MIN_USD } from "@/lib/partner/payout";
+import { requestPartnerPayout } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { copy } = await loadPartnerCabinet();
   return { title: copy.pages.payouts.metadataTitle };
 }
 
-export default async function PartnerPayoutsPage() {
+type SearchParams = Record<string, string | string[] | undefined>;
+
+function first(value: string | string[] | undefined): string {
+  return Array.isArray(value) ? value[0] ?? "" : value ?? "";
+}
+
+export default async function PartnerPayoutsPage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
   const { auth } = await requirePartner("/partner/payouts");
+  const params = await searchParams;
   const [{ copy }, payouts, ledger, destination] = await Promise.all([
     loadPartnerCabinet(),
     getPartnerPayouts(),
@@ -33,11 +46,66 @@ export default async function PartnerPayoutsPage() {
   ]);
   const page = copy.pages.payouts;
   const pay = copy.payouts;
+  const req = pay.request;
   const table = copy.dataTable.payouts;
+
+  const hasOpen = (payouts.rows ?? []).some((p) => p.status === "open");
+  const hasDestination =
+    !destination.unreadable &&
+    Boolean(destination.recipient && destination.details);
+  const guard = canRequestPayout({
+    payableAmount: ledger.payableAmount,
+    currency: ledger.currency,
+    hasOpenPayout: hasOpen,
+    hasDestination,
+  });
+  const blockReason =
+    guard.ok === false
+      ? guard.reason === "open_payout"
+        ? req.openBlocked
+        : guard.reason === "missing_destination"
+          ? req.destBlocked
+          : guard.reason === "below_minimum"
+            ? req.belowMinimum
+            : null
+      : null;
+
+  const minNote = req.minimumNote.replace(
+    "{min}",
+    String(PARTNER_PAYOUT_MIN_USD),
+  );
 
   return (
     <div className="grid gap-7">
       <PageHeader eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
+
+      {first(params.requested) ? (
+        <p className="text-sm text-paper" role="status">{req.requestedNotice}</p>
+      ) : null}
+      {first(params.error) ? (
+        <p className="text-sm text-danger" role="alert">{first(params.error)}</p>
+      ) : null}
+
+      <section className={`p-5 sm:p-6 ${cardClass}`}>
+        <h2 className="text-sm font-semibold tracking-tight">{req.sectionTitle}</h2>
+        <p className="mt-1 text-xs text-muted">{minNote}</p>
+        <p className="mt-2 text-sm">
+          {req.availableLabel}:{" "}
+          <strong>{formatLedgerMoney(ledger.payableAmount, ledger.currency)}</strong>
+        </p>
+        {blockReason ? (
+          <p className="mt-2 text-xs text-muted">{blockReason}</p>
+        ) : null}
+        <form action={requestPartnerPayout} className="mt-4">
+          <button
+            type="submit"
+            className={primaryButtonClass}
+            disabled={!guard.ok || ledger.payableAmount === null}
+          >
+            {req.requestButton}
+          </button>
+        </form>
+      </section>
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 className="text-sm font-semibold tracking-tight">{pay.destinationTitle}</h2>

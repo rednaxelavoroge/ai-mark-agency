@@ -42,7 +42,9 @@ export const cabinetVi: CabinetCopy = {
       "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
       "footerBefore": "Các quy tắc của chương trình sẽ được xác nhận với bạn trong quá trình giới thiệu, trước khi bạn bán. Đọc",
       "privacyLink": "thông báo về quyền riêng tư",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "thỏa thuận đối tác",
+      "footerMiddle": "và"
     },
     "setupNotice": {
       "title": "Đăng nhập tạm thời không khả dụng.",
@@ -79,7 +81,10 @@ export const cabinetVi: CabinetCopy = {
       "noAccountBefore": "Chưa có tài khoản?",
       "noAccountLink": "Tạo tài khoản đối tác",
       "hasAccountBefore": "Đã có tài khoản?",
-      "hasAccountLink": "Đăng nhập"
+      "hasAccountLink": "Đăng nhập",
+      "acceptAgreementBefore": "Tôi chấp nhận ",
+      "acceptAgreementLink": "thỏa thuận đối tác",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetVi: CabinetCopy = {
     ],
     "statReady": "Sẵn sàng trả tiền",
     "statPaid": "Trả",
-    "tableEmpty": "Chưa có khoản thanh toán nào. AI MARK ghi lại khoản thanh toán khi hoa hồng đã sẵn sàng được trả."
+    "tableEmpty": "Chưa có khoản thanh toán nào. AI MARK ghi lại khoản thanh toán khi hoa hồng đã sẵn sàng được trả.",
+    "request": {
+      "sectionTitle": "Yêu cầu thanh toán",
+      "minimumNote": "Số dư tối thiểu có thể thanh toán: USD {min}.00",
+      "availableLabel": "Có thể thanh toán",
+      "requestButton": "Yêu cầu thanh toán",
+      "requestedNotice": "Đã gửi yêu cầu thanh toán.",
+      "openBlocked": "Bạn đã có yêu cầu thanh toán đang mở.",
+      "destBlocked": "Lưu chi tiết thanh toán trong Hồ sơ trước khi yêu cầu.",
+      "belowMinimum": "Số dư dưới ngưỡng tối thiểu."
+    }
   },
   "profile": {
     "savedNotice": "Đã lưu chi tiết thanh toán.",
@@ -357,4 +372,4 @@ export const cabinetVi: CabinetCopy = {
     "suspended": "Cấm"
   },
   "defaultPartnerName": "Cộng sự"
-};
+} as CabinetCopy;

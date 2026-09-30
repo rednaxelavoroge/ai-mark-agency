@@ -42,7 +42,9 @@ export const cabinetRu: CabinetCopy = {
       "lead": "Один аккаунт — Partner ID, referral-код и кабинет партнёра.",
       "footerBefore": "Правила программы подтверждаем на подключении, до первых продаж. Читайте",
       "privacyLink": "политику конфиденциальности",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "партнёрское соглашение",
+      "footerMiddle": "и"
     },
     "setupNotice": {
       "title": "Вход временно недоступен.",
@@ -79,7 +81,10 @@ export const cabinetRu: CabinetCopy = {
       "noAccountBefore": "Нет аккаунта?",
       "noAccountLink": "Создать аккаунт партнёра",
       "hasAccountBefore": "Уже есть аккаунт?",
-      "hasAccountLink": "Войти"
+      "hasAccountLink": "Войти",
+      "acceptAgreementBefore": "Я принимаю ",
+      "acceptAgreementLink": "партнёрское соглашение",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetRu: CabinetCopy = {
     ],
     "statReady": "Ready to pay",
     "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay."
+    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+    "request": {
+      "sectionTitle": "Запросить выплату",
+      "minimumNote": "Минимальная сумма к выплате: USD {min}.00",
+      "availableLabel": "Доступно к выплате",
+      "requestButton": "Запросить выплату",
+      "requestedNotice": "Запрос на выплату отправлен.",
+      "openBlocked": "У вас уже есть открытый запрос выплаты.",
+      "destBlocked": "Сначала сохраните реквизиты в профиле.",
+      "belowMinimum": "Сумма ниже минимального порога."
+    }
   },
   "profile": {
     "savedNotice": "Реквизиты выплат сохранены.",

@@ -42,7 +42,9 @@ export const cabinetTr: CabinetCopy = {
       "lead": "Bir hesap size İş Ortağı Kimliğinizi, yönlendirme kodunu ve iş ortağı kontrol panelini verir.",
       "footerBefore": "Program kuralları, satış öncesinde, katılım sırasında sizinle birlikte onaylanır. Okuyun",
       "privacyLink": "gizlilik bildirimi",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "ortaklık sözleşmesi",
+      "footerMiddle": "ve"
     },
     "setupNotice": {
       "title": "Oturum açma işlemi geçici olarak kullanılamıyor.",
@@ -79,7 +81,10 @@ export const cabinetTr: CabinetCopy = {
       "noAccountBefore": "Henüz hesabınız yok mu?",
       "noAccountLink": "İş ortağı hesabı oluşturun",
       "hasAccountBefore": "Zaten bir hesabınız var mı?",
-      "hasAccountLink": "Oturum aç"
+      "hasAccountLink": "Oturum aç",
+      "acceptAgreementBefore": "",
+      "acceptAgreementLink": "ortaklık sözleşmesini",
+      "acceptAgreementAfter": " kabul ediyorum."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetTr: CabinetCopy = {
     ],
     "statReady": "Ödemeye hazır",
     "statPaid": "Paralı",
-    "tableEmpty": "Henüz ödeme yok. AI MARK, komisyon ödemeye hazır olduğunda ödemeyi kaydeder."
+    "tableEmpty": "Henüz ödeme yok. AI MARK, komisyon ödemeye hazır olduğunda ödemeyi kaydeder.",
+    "request": {
+      "sectionTitle": "Ödeme talep et",
+      "minimumNote": "Minimum ödenebilir bakiye: USD {min}.00",
+      "availableLabel": "Ödenebilir tutar",
+      "requestButton": "Ödeme talep et",
+      "requestedNotice": "Ödeme talebi gönderildi.",
+      "openBlocked": "Zaten açık bir ödeme talebiniz var.",
+      "destBlocked": "Talep etmeden önce profilde ödeme bilgilerini kaydedin.",
+      "belowMinimum": "Bakiye minimum eşiğin altında."
+    }
   },
   "profile": {
     "savedNotice": "Ödeme ayrıntıları kaydedildi.",
@@ -357,4 +372,4 @@ export const cabinetTr: CabinetCopy = {
     "suspended": "Askıya alınmış"
   },
   "defaultPartnerName": "Ortak"
-};
+} as CabinetCopy;

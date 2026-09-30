@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { safeNextPath } from "@/lib/auth/redirects";
-import { attributePartnerSignup } from "@/lib/referral/attribution";
+import { PARTNER_AGREEMENT_COOKIE } from "@/lib/partner/agreement";
+import {
+  notifyPartnerWelcome,
+  notifySponsorNewReferral,
+  recordPartnerAgreementAcceptance,
+} from "@/lib/partner/notifications";
+import { attributePartnerSignup, readReferralAttribution } from "@/lib/referral/attribution";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import {
   createSupabaseServerClient,
@@ -56,7 +62,9 @@ export async function GET(request: NextRequest) {
   // the signed cookie is re-verified and the database refuses to attribute any
   // account that was not created moments ago.
   if (searchParams.get("ref") === "1") {
-    await attributeCallbackSignup(supabase);
+    await attributeCallbackSignup(supabase, request);
+  } else {
+    await completeOAuthSignup(supabase, request);
   }
 
   // The session cookies were written through next/headers during the exchange;
@@ -71,7 +79,10 @@ export async function GET(request: NextRequest) {
  * brand new partner. Never throws: a failed attribution is a log line, never a
  * failed sign-in.
  */
-async function attributeCallbackSignup(supabase: SupabaseServerClient) {
+async function attributeCallbackSignup(
+  supabase: SupabaseServerClient,
+  request: NextRequest,
+) {
   try {
     const { data, error } = await supabase.auth.getClaims();
     if (error || !data) return;
@@ -79,24 +90,52 @@ async function attributeCallbackSignup(supabase: SupabaseServerClient) {
     const userId = data.claims.sub;
     if (typeof userId !== "string" || userId.length === 0) return;
 
+    await maybeRecordAgreementFromCookie(userId, request);
+
     const status = await attributePartnerSignup({
       userId,
-      // The signed-in account here IS the new account, so there is no separate
-      // signed-in identity to compare against; the database still rejects a
-      // code that resolves back to this partner.
       activePartnerCode: null,
     });
 
     if (status === "attributed") {
       console.info("[auth] partner attributed to a referral link (email link)");
-      return;
+      const attribution = await readReferralAttribution();
+      if (attribution) void notifySponsorNewReferral(attribution.code);
+    } else if (status !== "no_referral" && status !== "tracking_disabled") {
+      console.warn(`[auth] referral attribution not applied: ${status}`);
     }
-    if (status === "no_referral" || status === "tracking_disabled") return;
 
-    console.warn(`[auth] referral attribution not applied: ${status}`);
+    void notifyPartnerWelcome(userId);
   } catch (attributionError) {
     console.error("[auth] referral attribution crashed:", attributionError);
   }
+}
+
+async function completeOAuthSignup(
+  supabase: SupabaseServerClient,
+  request: NextRequest,
+) {
+  try {
+    const { data, error } = await supabase.auth.getClaims();
+    if (error || !data) return;
+    const userId = data.claims.sub;
+    if (typeof userId !== "string" || userId.length === 0) return;
+    const agreed = request.cookies.get(PARTNER_AGREEMENT_COOKIE)?.value;
+    if (!agreed) return;
+    await maybeRecordAgreementFromCookie(userId, request);
+    void notifyPartnerWelcome(userId);
+  } catch (error) {
+    console.error("[auth] oauth signup completion failed:", error);
+  }
+}
+
+async function maybeRecordAgreementFromCookie(
+  userId: string,
+  request: NextRequest,
+): Promise<void> {
+  const agreed = request.cookies.get(PARTNER_AGREEMENT_COOKIE)?.value;
+  if (!agreed) return;
+  await recordPartnerAgreementAcceptance(userId);
 }
 
 /**

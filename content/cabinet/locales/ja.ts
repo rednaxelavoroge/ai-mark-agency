@@ -42,7 +42,9 @@ export const cabinetJa: CabinetCopy = {
       "lead": "1 つのアカウントで、パートナー ID、紹介コード、パートナー ダッシュボードが提供されます。",
       "footerBefore": "プログラム ルールは、販売前のオンボーディング中に確認されます。読んでください",
       "privacyLink": "プライバシー通知",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "パートナー契約",
+      "footerMiddle": "および"
     },
     "setupNotice": {
       "title": "サインインは一時的に利用できません。",
@@ -79,7 +81,10 @@ export const cabinetJa: CabinetCopy = {
       "noAccountBefore": "まだアカウントをお持ちですか?",
       "noAccountLink": "パートナーアカウントを作成する",
       "hasAccountBefore": "すでにアカウントをお持ちですか?",
-      "hasAccountLink": "サインイン"
+      "hasAccountLink": "サインイン",
+      "acceptAgreementBefore": "",
+      "acceptAgreementLink": "パートナー契約",
+      "acceptAgreementAfter": "に同意します。"
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetJa: CabinetCopy = {
     ],
     "statReady": "支払いの準備ができました",
     "statPaid": "有料",
-    "tableEmpty": "まだ支払いはありません。 AI MARK は、手数料を支払う準備ができたときに支払いを記録します。"
+    "tableEmpty": "まだ支払いはありません。 AI MARK は、手数料を支払う準備ができたときに支払いを記録します。",
+    "request": {
+      "sectionTitle": "支払いをリクエスト",
+      "minimumNote": "最低支払可能残高：USD {min}.00",
+      "availableLabel": "支払可能額",
+      "requestButton": "支払いをリクエスト",
+      "requestedNotice": "支払いリクエストを送信しました。",
+      "openBlocked": "未処理の支払いリクエストが既にあります。",
+      "destBlocked": "リクエスト前にプロフィールで支払い情報を保存してください。",
+      "belowMinimum": "残高が最低しきい値を下回っています。"
+    }
   },
   "profile": {
     "savedNotice": "支払いの詳細が保存されました。",
@@ -357,4 +372,4 @@ export const cabinetJa: CabinetCopy = {
     "suspended": "一時停止中"
   },
   "defaultPartnerName": "パートナー"
-};
+} as CabinetCopy;

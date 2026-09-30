@@ -42,7 +42,9 @@ export const cabinetZh: CabinetCopy = {
       "lead": "一个帐户即可为您提供合作伙伴 ID、推荐代码和合作伙伴仪表板。",
       "footerBefore": "在销售之前，我们会在入职期间与您确认计划规则。阅读",
       "privacyLink": "隐私声明",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "合作伙伴协议",
+      "footerMiddle": "和"
     },
     "setupNotice": {
       "title": "暂时无法登录。",
@@ -79,7 +81,10 @@ export const cabinetZh: CabinetCopy = {
       "noAccountBefore": "还没有帐户？",
       "noAccountLink": "创建合作伙伴帐户",
       "hasAccountBefore": "已经有帐户？",
-      "hasAccountLink": "登入"
+      "hasAccountLink": "登入",
+      "acceptAgreementBefore": "我接受",
+      "acceptAgreementLink": "合作伙伴协议",
+      "acceptAgreementAfter": "。"
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetZh: CabinetCopy = {
     ],
     "statReady": "准备付款",
     "statPaid": "有薪酬的",
-    "tableEmpty": "还没有付款。当佣金准备好支付时，AI MARK 会记录支付。"
+    "tableEmpty": "还没有付款。当佣金准备好支付时，AI MARK 会记录支付。",
+    "request": {
+      "sectionTitle": "申请付款",
+      "minimumNote": "最低可支付余额：USD {min}.00",
+      "availableLabel": "可支付金额",
+      "requestButton": "申请付款",
+      "requestedNotice": "付款申请已提交。",
+      "openBlocked": "您已有未处理的付款申请。",
+      "destBlocked": "请先在个人资料中保存付款信息。",
+      "belowMinimum": "余额低于最低门槛。"
+    }
   },
   "profile": {
     "savedNotice": "已保存付款详细信息。",
@@ -357,4 +372,4 @@ export const cabinetZh: CabinetCopy = {
     "suspended": "暂停"
   },
   "defaultPartnerName": "伙伴"
-};
+} as CabinetCopy;

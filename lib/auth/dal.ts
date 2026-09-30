@@ -68,7 +68,7 @@ export type PartnerAccount = {
 const HISTORY_LIMIT = 20;
 
 const PARTNER_COLUMNS =
-  "id, user_id, partner_id, referral_code, sponsor_partner_id, status, created_at, updated_at";
+  "id, user_id, partner_id, referral_code, sponsor_partner_id, status, agreement_accepted_at, agreement_version, created_at, updated_at";
 const PROFILE_COLUMNS =
   "id, full_name, email, phone, country, region, language, avatar_url, created_at, updated_at";
 const SPONSOR_COLUMNS =

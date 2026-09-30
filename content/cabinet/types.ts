@@ -48,6 +48,8 @@ export type CabinetCopy = {
       title: string;
       lead: string;
       footerBefore: string;
+      agreementLink: string;
+      footerMiddle: string;
       privacyLink: string;
       footerAfter: string;
     };
@@ -87,6 +89,9 @@ export type CabinetCopy = {
       noAccountLink: string;
       hasAccountBefore: string;
       hasAccountLink: string;
+      acceptAgreementBefore: string;
+      acceptAgreementLink: string;
+      acceptAgreementAfter: string;
     };
   };
   pages: {
@@ -240,6 +245,16 @@ export type CabinetCopy = {
     statusCount: string;
   };
   payouts: {
+    request: {
+      sectionTitle: string;
+      minimumNote: string;
+      availableLabel: string;
+      requestButton: string;
+      requestedNotice: string;
+      openBlocked: string;
+      destBlocked: string;
+      belowMinimum: string;
+    };
     destinationTitle: string;
     destinationLead: string;
     destinationUnreadable: string;

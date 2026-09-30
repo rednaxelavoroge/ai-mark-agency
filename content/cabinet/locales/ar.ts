@@ -42,7 +42,9 @@ export const cabinetAr: CabinetCopy = {
       "lead": "يمنحك حساب واحد معرف الشريك الخاص بك ورمز الإحالة ولوحة تحكم الشريك.",
       "footerBefore": "يتم تأكيد قواعد البرنامج معك أثناء الإعداد، قبل البيع. اقرأ",
       "privacyLink": "إشعار الخصوصية",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "اتفاقية الشريك",
+      "footerMiddle": "و"
     },
     "setupNotice": {
       "title": "تسجيل الدخول غير متاح مؤقتا.",
@@ -79,7 +81,10 @@ export const cabinetAr: CabinetCopy = {
       "noAccountBefore": "ليس لديك حساب بعد؟",
       "noAccountLink": "إنشاء حساب شريك",
       "hasAccountBefore": "هل لديك حساب بالفعل؟",
-      "hasAccountLink": "تسجيل الدخول"
+      "hasAccountLink": "تسجيل الدخول",
+      "acceptAgreementBefore": "أوافق على ",
+      "acceptAgreementLink": "اتفاقية الشريك",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetAr: CabinetCopy = {
     ],
     "statReady": "على استعداد للدفع",
     "statPaid": "مدفوع",
-    "tableEmpty": "لا توجد دفعات حتى الآن. يسجل AI MARK دفع تعويضات عندما تكون العمولة جاهزة للدفع."
+    "tableEmpty": "لا توجد دفعات حتى الآن. يسجل AI MARK دفع تعويضات عندما تكون العمولة جاهزة للدفع.",
+    "request": {
+      "sectionTitle": "طلب دفع",
+      "minimumNote": "الحد الأدنى للرصيد القابل للدفع: USD {min}.00",
+      "availableLabel": "متاح للدفع",
+      "requestButton": "طلب دفع",
+      "requestedNotice": "تم إرسال طلب الدفع.",
+      "openBlocked": "لديك بالفعل طلب دفع مفتوح.",
+      "destBlocked": "احفظ تفاصيل الدفع في الملف الشخصي قبل الطلب.",
+      "belowMinimum": "الرصيد أقل من الحد الأدنى."
+    }
   },
   "profile": {
     "savedNotice": "تم حفظ تفاصيل الدفع.",
@@ -357,4 +372,4 @@ export const cabinetAr: CabinetCopy = {
     "suspended": "معلق"
   },
   "defaultPartnerName": "شريك"
-};
+} as CabinetCopy;

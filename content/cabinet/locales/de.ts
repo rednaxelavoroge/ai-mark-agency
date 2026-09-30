@@ -42,7 +42,9 @@ export const cabinetDe: CabinetCopy = {
       "lead": "Mit einem Konto erhalten Sie Ihre Partner-ID, einen Empfehlungscode und das Partner-Dashboard.",
       "footerBefore": "Die Programmregeln werden beim Onboarding vor dem Verkauf mit Ihnen bestätigt. Lesen Sie die",
       "privacyLink": "Datenschutzhinweis",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "Partnervereinbarung",
+      "footerMiddle": "und die"
     },
     "setupNotice": {
       "title": "Die Anmeldung ist vorübergehend nicht möglich.",
@@ -79,7 +81,10 @@ export const cabinetDe: CabinetCopy = {
       "noAccountBefore": "Noch kein Konto?",
       "noAccountLink": "Erstellen Sie ein Partnerkonto",
       "hasAccountBefore": "Sie haben bereits ein Konto?",
-      "hasAccountLink": "anmelden"
+      "hasAccountLink": "anmelden",
+      "acceptAgreementBefore": "Ich akzeptiere die ",
+      "acceptAgreementLink": "Partnervereinbarung",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetDe: CabinetCopy = {
     ],
     "statReady": "Bereit zur Zahlung",
     "statPaid": "Bezahlt",
-    "tableEmpty": "Noch keine Auszahlungen. AI MARK erfasst eine Auszahlung, wenn die Provision zur Zahlung bereit ist."
+    "tableEmpty": "Noch keine Auszahlungen. AI MARK erfasst eine Auszahlung, wenn die Provision zur Zahlung bereit ist.",
+    "request": {
+      "sectionTitle": "Auszahlung anfordern",
+      "minimumNote": "Mindestauszahlungsbetrag: USD {min}.00",
+      "availableLabel": "Verfügbar zur Auszahlung",
+      "requestButton": "Auszahlung anfordern",
+      "requestedNotice": "Auszahlungsanfrage eingereicht.",
+      "openBlocked": "Sie haben bereits eine offene Auszahlungsanfrage.",
+      "destBlocked": "Speichern Sie zuerst die Auszahlungsdaten im Profil.",
+      "belowMinimum": "Guthaben liegt unter dem Mindestbetrag."
+    }
   },
   "profile": {
     "savedNotice": "Auszahlungsdetails gespeichert.",
@@ -357,4 +372,4 @@ export const cabinetDe: CabinetCopy = {
     "suspended": "Ausgesetzt"
   },
   "defaultPartnerName": "Partner"
-};
+} as CabinetCopy;

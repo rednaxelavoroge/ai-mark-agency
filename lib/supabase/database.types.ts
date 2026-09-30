@@ -82,6 +82,8 @@ export type Database = {
           referral_code: string;
           sponsor_partner_id: string | null;
           status: PartnerStatus;
+          agreement_accepted_at: string | null;
+          agreement_version: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -96,6 +98,8 @@ export type Database = {
         };
         Update: {
           status?: PartnerStatus;
+          agreement_accepted_at?: string | null;
+          agreement_version?: string | null;
           updated_at?: string;
         };
         Relationships: [];
@@ -449,6 +453,13 @@ export type Database = {
           cancel_at_period_end: boolean;
           referral_code: string | null;
           partner_id: string | null;
+          product_tenant_id: string | null;
+          provisioning_status: string;
+          provisioning_error: string | null;
+          provisioning_attempts: number;
+          provisioning_next_retry_at: string | null;
+          product_access_suspended: boolean;
+          last_provisioned_invoice_ref: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -466,6 +477,61 @@ export type Database = {
           status?: string;
           active_until?: string;
           cancel_at_period_end?: boolean;
+          product_tenant_id?: string | null;
+          provisioning_status?: string;
+          provisioning_error?: string | null;
+          provisioning_attempts?: number;
+          provisioning_next_retry_at?: string | null;
+          product_access_suspended?: boolean;
+          last_provisioned_invoice_ref?: string | null;
+        };
+        Relationships: [];
+      };
+      subscription_provisioning_log: {
+        Row: {
+          id: string;
+          subscription_id: string;
+          invoice_ref: string;
+          action: string;
+          status: string;
+          idempotency_key: string;
+          response_snapshot: Json | null;
+          error_message: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          subscription_id: string;
+          invoice_ref: string;
+          action: string;
+          status?: string;
+          idempotency_key: string;
+        };
+        Update: {
+          status?: string;
+          response_snapshot?: Json | null;
+          error_message?: string | null;
+        };
+        Relationships: [];
+      };
+      provisioning_manual_queue: {
+        Row: {
+          id: string;
+          subscription_id: string;
+          invoice_ref: string | null;
+          reason: string;
+          resolved_at: string | null;
+          resolved_by: string | null;
+          created_at: string;
+        };
+        Insert: {
+          subscription_id: string;
+          invoice_ref?: string | null;
+          reason: string;
+        };
+        Update: {
+          resolved_at?: string | null;
+          resolved_by?: string | null;
         };
         Relationships: [];
       };
@@ -566,6 +632,10 @@ export type Database = {
       };
       confirm_payout: {
         Args: { p_payout_id: string; p_confirmed_by: string };
+        Returns: string;
+      };
+      request_partner_payout: {
+        Args: { p_currency: string; p_requested_by: string };
         Returns: string;
       };
       /** Partner Commission Model v2: aggregate L1–L5 pool cap (0.80). */

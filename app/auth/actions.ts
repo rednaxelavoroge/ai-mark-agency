@@ -11,6 +11,11 @@ import {
   readReferralAttribution,
   type SignupAttributionStatus,
 } from "@/lib/referral/attribution";
+import {
+  notifyPartnerWelcome,
+  notifySponsorNewReferral,
+  recordPartnerAgreementAcceptance,
+} from "@/lib/partner/notifications";
 import { site } from "@/lib/site";
 import {
   isSupabaseConfigured,
@@ -181,13 +186,15 @@ async function attributeNewPartner(user: {
 
   if (status === "attributed") {
     console.info("[auth] partner attributed to a referral link");
-    return;
+    const attribution = await readReferralAttribution();
+    if (attribution) void notifySponsorNewReferral(attribution.code);
+  } else if (status !== "no_referral" && status !== "tracking_disabled") {
+    // Everything else is a rejection worth seeing in the logs: an invalid or
+    // suspended sponsor, self-referral, a duplicate edge, or a failed write.
+    console.warn(`[auth] referral attribution not applied: ${status}`);
   }
-  if (status === "no_referral" || status === "tracking_disabled") return;
 
-  // Everything else is a rejection worth seeing in the logs: an invalid or
-  // suspended sponsor, self-referral, a duplicate edge, or a failed write.
-  console.warn(`[auth] referral attribution not applied: ${status}`);
+  void notifyPartnerWelcome(user.id);
 }
 
 /** Email + password sign-in. */
@@ -247,6 +254,14 @@ export async function signInWithGoogle(
   if (!isSupabaseConfigured()) return notConfigured("google");
 
   const next = safeNextPath(formData.get("next"));
+  const isSignup = formData.get("signup") === "1";
+  if (isSignup && formData.get("accept_agreement") !== "1") {
+    return {
+      status: "error",
+      message: "Accept the partner agreement to continue with Google.",
+      form: "google",
+    };
+  }
 
   if (!(await isGoogleProviderEnabled())) {
     return {
@@ -361,6 +376,13 @@ export async function signUpWithPassword(
       form: "signup",
     };
   }
+  if (formData.get("accept_agreement") !== "1") {
+    return {
+      status: "error",
+      message: "Accept the partner agreement to create an account.",
+      form: "signup",
+    };
+  }
 
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.auth.signUp({
@@ -395,7 +417,10 @@ export async function signUpWithPassword(
 
   // Phase 4B: attribute the new partner to the referral link they followed,
   // server-side. This never throws and never changes the signup outcome.
-  if (data.user) await attributeNewPartner(data.user);
+  if (data.user) {
+    await recordPartnerAgreementAcceptance(data.user.id);
+    await attributeNewPartner(data.user);
+  }
 
   if (data.session) {
     // Email confirmation is switched OFF for this project: the account is

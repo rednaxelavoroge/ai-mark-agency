@@ -42,7 +42,9 @@ export const cabinetEs: CabinetCopy = {
       "lead": "Una cuenta le brinda su ID de socio, un código de referencia y el panel de socio.",
       "footerBefore": "Las reglas del programa se confirman con usted durante la incorporación, antes de vender. Lea el",
       "privacyLink": "aviso de privacidad",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "acuerdo de socio",
+      "footerMiddle": "y el"
     },
     "setupNotice": {
       "title": "El inicio de sesión no está disponible temporalmente.",
@@ -79,7 +81,10 @@ export const cabinetEs: CabinetCopy = {
       "noAccountBefore": "¿Aún no tienes cuenta?",
       "noAccountLink": "Crear una cuenta de socio",
       "hasAccountBefore": "¿Ya tienes una cuenta?",
-      "hasAccountLink": "Iniciar sesión"
+      "hasAccountLink": "Iniciar sesión",
+      "acceptAgreementBefore": "Acepto el ",
+      "acceptAgreementLink": "acuerdo de socio",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetEs: CabinetCopy = {
     ],
     "statReady": "Listo para pagar",
     "statPaid": "Pagado",
-    "tableEmpty": "Aún no hay pagos. AI MARK registra un pago cuando la comisión está lista para pagar."
+    "tableEmpty": "Aún no hay pagos. AI MARK registra un pago cuando la comisión está lista para pagar.",
+    "request": {
+      "sectionTitle": "Solicitar pago",
+      "minimumNote": "Saldo mínimo pagable: USD {min}.00",
+      "availableLabel": "Disponible para pagar",
+      "requestButton": "Solicitar pago",
+      "requestedNotice": "Solicitud de pago enviada.",
+      "openBlocked": "Ya tiene una solicitud de pago abierta.",
+      "destBlocked": "Guarde los datos de pago en el perfil antes de solicitar.",
+      "belowMinimum": "El saldo está por debajo del umbral mínimo."
+    }
   },
   "profile": {
     "savedNotice": "Detalles de pago guardados.",
@@ -357,4 +372,4 @@ export const cabinetEs: CabinetCopy = {
     "suspended": "Suspendido"
   },
   "defaultPartnerName": "Pareja"
-};
+} as CabinetCopy;

@@ -3,6 +3,10 @@
     {
       "path": "/api/cron/advance-sponsor-lock",
       "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron/subscription-provisioning",
+      "schedule": "17 3 * * *"
     }
   ]
 }

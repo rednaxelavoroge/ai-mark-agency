@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth/dal";
+import { sendPartnerPayoutEmail } from "@/lib/email/partner";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 function fail(message: string): never {
@@ -69,6 +70,7 @@ export async function voidPartnerPayout(formData: FormData): Promise<void> {
     .select("id");
   if (result.error) fail(result.error.message);
   if (!result.data?.length) fail("Only an open payout can be voided.");
+  await notifyPayoutStatus(admin, payoutId, "cancelled");
   revalidatePath("/admin/payouts");
   revalidatePath("/partner/payouts");
   revalidatePath("/partner/commissions");
@@ -87,8 +89,40 @@ export async function confirmPartnerPayout(formData: FormData): Promise<void> {
     p_confirmed_by: auth.userId,
   });
   if (result.error) fail(result.error.message);
+  await notifyPayoutStatus(admin, payoutId, "paid");
   revalidatePath("/admin/payouts");
   revalidatePath("/partner/payouts");
   revalidatePath("/partner/commissions");
   redirect("/admin/payouts?confirmed=1");
+}
+
+async function notifyPayoutStatus(
+  admin: ReturnType<typeof createSupabaseAdminClient>,
+  payoutId: string,
+  kind: "paid" | "cancelled",
+): Promise<void> {
+  const payout = await admin
+    .from("payouts")
+    .select("partner_id, amount, currency")
+    .eq("id", payoutId)
+    .maybeSingle();
+  if (!payout.data) return;
+  const partner = await admin
+    .from("partner_profiles")
+    .select("user_id")
+    .eq("partner_id", payout.data.partner_id)
+    .maybeSingle();
+  if (!partner.data) return;
+  const profile = await admin
+    .from("profiles")
+    .select("email, language")
+    .eq("id", partner.data.user_id)
+    .maybeSingle();
+  if (!profile.data?.email) return;
+  await sendPartnerPayoutEmail(kind, {
+    to: profile.data.email,
+    locale: profile.data.language ?? "en",
+    amount: String(payout.data.amount),
+    currency: payout.data.currency,
+  });
 }

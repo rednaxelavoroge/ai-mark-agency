@@ -42,7 +42,9 @@ export const cabinetId: CabinetCopy = {
       "lead": "Satu akun memberi Anda ID Mitra, kode rujukan, dan dasbor mitra.",
       "footerBefore": "Aturan program dikonfirmasikan kepada Anda selama orientasi, sebelum Anda menjual. Baca",
       "privacyLink": "pemberitahuan privasi",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "perjanjian mitra",
+      "footerMiddle": "dan"
     },
     "setupNotice": {
       "title": "Proses masuk untuk sementara tidak tersedia.",
@@ -79,7 +81,10 @@ export const cabinetId: CabinetCopy = {
       "noAccountBefore": "Belum punya akun?",
       "noAccountLink": "Buat akun mitra",
       "hasAccountBefore": "Sudah punya akun?",
-      "hasAccountLink": "Masuk"
+      "hasAccountLink": "Masuk",
+      "acceptAgreementBefore": "Saya menerima ",
+      "acceptAgreementLink": "perjanjian mitra",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetId: CabinetCopy = {
     ],
     "statReady": "Siap membayar",
     "statPaid": "Dibayar",
-    "tableEmpty": "Belum ada pembayaran. AI MARK mencatat pembayaran ketika komisi siap dibayarkan."
+    "tableEmpty": "Belum ada pembayaran. AI MARK mencatat pembayaran ketika komisi siap dibayarkan.",
+    "request": {
+      "sectionTitle": "Minta pembayaran",
+      "minimumNote": "Saldo minimum yang dapat dibayar: USD {min}.00",
+      "availableLabel": "Tersedia untuk dibayar",
+      "requestButton": "Minta pembayaran",
+      "requestedNotice": "Permintaan pembayaran dikirim.",
+      "openBlocked": "Anda sudah memiliki permintaan pembayaran terbuka.",
+      "destBlocked": "Simpan detail pembayaran di Profil sebelum meminta.",
+      "belowMinimum": "Saldo di bawah ambang minimum."
+    }
   },
   "profile": {
     "savedNotice": "Detail pembayaran disimpan.",
@@ -357,4 +372,4 @@ export const cabinetId: CabinetCopy = {
     "suspended": "Tergantung"
   },
   "defaultPartnerName": "Mitra"
-};
+} as CabinetCopy;

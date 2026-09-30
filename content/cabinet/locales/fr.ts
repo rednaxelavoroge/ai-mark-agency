@@ -42,7 +42,9 @@ export const cabinetFr: CabinetCopy = {
       "lead": "Un compte vous donne votre identifiant de partenaire, un code de parrainage et le tableau de bord du partenaire.",
       "footerBefore": "Les règles du programme sont confirmées avec vous lors de l'intégration, avant votre vente. Lire le",
       "privacyLink": "avis de confidentialité",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "accord partenaire",
+      "footerMiddle": "et l’"
     },
     "setupNotice": {
       "title": "La connexion est temporairement indisponible.",
@@ -79,7 +81,10 @@ export const cabinetFr: CabinetCopy = {
       "noAccountBefore": "Pas encore de compte ?",
       "noAccountLink": "Créer un compte partenaire",
       "hasAccountBefore": "Vous avez déjà un compte ?",
-      "hasAccountLink": "Se connecter"
+      "hasAccountLink": "Se connecter",
+      "acceptAgreementBefore": "J’accepte l’",
+      "acceptAgreementLink": "accord partenaire",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetFr: CabinetCopy = {
     ],
     "statReady": "Prêt à payer",
     "statPaid": "Payé",
-    "tableEmpty": "Aucun paiement pour l'instant. AI MARK enregistre un paiement lorsque la commission est prête à être payée."
+    "tableEmpty": "Aucun paiement pour l'instant. AI MARK enregistre un paiement lorsque la commission est prête à être payée.",
+    "request": {
+      "sectionTitle": "Demander un paiement",
+      "minimumNote": "Solde minimum payable : USD {min}.00",
+      "availableLabel": "Disponible à payer",
+      "requestButton": "Demander un paiement",
+      "requestedNotice": "Demande de paiement envoyée.",
+      "openBlocked": "Vous avez déjà une demande de paiement ouverte.",
+      "destBlocked": "Enregistrez les coordonnées de paiement dans le profil avant de demander.",
+      "belowMinimum": "Le solde est inférieur au seuil minimum."
+    }
   },
   "profile": {
     "savedNotice": "Détails du paiement enregistrés.",
@@ -357,4 +372,4 @@ export const cabinetFr: CabinetCopy = {
     "suspended": "Suspendu"
   },
   "defaultPartnerName": "Partenaire"
-};
+} as CabinetCopy;

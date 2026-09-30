@@ -42,7 +42,9 @@ export const cabinetPt: CabinetCopy = {
       "lead": "Uma conta fornece seu ID de parceiro, um código de referência e o painel do parceiro.",
       "footerBefore": "As regras do programa são confirmadas com você durante a integração, antes da venda. Leia o",
       "privacyLink": "aviso de privacidade",
-      "footerAfter": "."
+      "footerAfter": ".",
+      "agreementLink": "acordo de parceiro",
+      "footerMiddle": "e o"
     },
     "setupNotice": {
       "title": "O login está temporariamente indisponível.",
@@ -79,7 +81,10 @@ export const cabinetPt: CabinetCopy = {
       "noAccountBefore": "Ainda não tem conta?",
       "noAccountLink": "Crie uma conta de parceiro",
       "hasAccountBefore": "Já tem uma conta?",
-      "hasAccountLink": "Entrar"
+      "hasAccountLink": "Entrar",
+      "acceptAgreementBefore": "Aceito o ",
+      "acceptAgreementLink": "acordo de parceiro",
+      "acceptAgreementAfter": "."
     }
   },
   "pages": {
@@ -303,7 +308,17 @@ export const cabinetPt: CabinetCopy = {
     ],
     "statReady": "Pronto para pagar",
     "statPaid": "Pago",
-    "tableEmpty": "Ainda não há pagamentos. AI MARK registra um pagamento quando a comissão está pronta para ser paga."
+    "tableEmpty": "Ainda não há pagamentos. AI MARK registra um pagamento quando a comissão está pronta para ser paga.",
+    "request": {
+      "sectionTitle": "Solicitar pagamento",
+      "minimumNote": "Saldo mínimo pagável: USD {min}.00",
+      "availableLabel": "Disponível para pagar",
+      "requestButton": "Solicitar pagamento",
+      "requestedNotice": "Pedido de pagamento enviado.",
+      "openBlocked": "Já existe um pedido de pagamento aberto.",
+      "destBlocked": "Salve os dados de pagamento no perfil antes de solicitar.",
+      "belowMinimum": "O saldo está abaixo do limite mínimo."
+    }
   },
   "profile": {
     "savedNotice": "Detalhes de pagamento salvos.",
@@ -357,4 +372,4 @@ export const cabinetPt: CabinetCopy = {
     "suspended": "Suspenso"
   },
   "defaultPartnerName": "Parceiro"
-};
+} as CabinetCopy;

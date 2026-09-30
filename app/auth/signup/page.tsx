@@ -25,7 +25,7 @@ export default async function SignupPage({
 }) {
   const params = await searchParams;
   const next = safeNextPath(first(params.next));
-  const { copy } = await loadAuthCabinet();
+  const { copy, locale } = await loadAuthCabinet();
   const signup = copy.auth.signup;
   const configProblem = describeSupabaseConfigProblem();
   if (configProblem) console.error("[auth] sign-up unavailable:", configProblem);
@@ -39,6 +39,13 @@ export default async function SignupPage({
       footer={
         <p className="text-xs text-muted">
           {signup.footerBefore}{" "}
+          <Link
+            href={`/${locale}/partners/agreement`}
+            className="link-underline text-paper"
+          >
+            {signup.agreementLink}
+          </Link>{" "}
+          {signup.footerMiddle}{" "}
           <Link href="/privacy" className="link-underline text-paper">
             {signup.privacyLink}
           </Link>
@@ -48,7 +55,11 @@ export default async function SignupPage({
     >
       <div className="grid gap-5">
         {configProblem ? <SetupNotice /> : null}
-        <SignupForm next={next} disabled={configProblem !== null} />
+        <SignupForm
+          next={next}
+          disabled={configProblem !== null}
+          locale={locale}
+        />
       </div>
     </AuthCard>
   );
