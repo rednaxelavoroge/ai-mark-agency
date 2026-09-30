@@ -143,7 +143,7 @@ export const cabinetAr: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "مرحبًا، {name}",
     "welcomeLeadBefore": "معرف الشريك الخاص بك هو",
     "welcomeLeadAfter": "رابط الإحالة الخاص بك هو العيش. تظهر المبيعات والعمولات والعوائد هنا أثناء تسجيلها.",
     "performanceTitle": "أداء",
@@ -153,7 +153,7 @@ export const cabinetAr: CabinetCopy = {
     "statReadyToPay": "على استعداد للدفع",
     "statPaid": "مدفوع",
     "noCommissionsYet": "لا عمولات حتى الآن.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: العمولة {commission}، المستحق {payable}، المدفوع {paid}",
     "identityTitle": "هوية الشريك",
     "identityLead": "صادر عن AI MARK. معرف الشريك ورمز الإحالة والحالة غير قابلة للتغيير من حسابك.",
     "labelPartnerId": "معرف الشريك",
@@ -163,7 +163,7 @@ export const cabinetAr: CabinetCopy = {
     "labelJoined": "انضم",
     "labelLanguage": "لغة",
     "sponsorTitle": "راعي",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "تم التأكيد في {date}.",
     "sponsorRecordedUnconfirmed": "تم التسجيل، ولم يتم تأكيده بعد من خلال البيع المؤهل.",
     "sponsorFromReferralLink": "تم التسجيل من رابط الإحالة عند التسجيل.",
     "sponsorEmpty": "لم يتم تسجيل أي راعي. يتم تحديد علاقات الجهات الراعية بواسطة AI MARK من رابط إحالة عند التسجيل، وليس بواسطة الشريك مطلقًا، وتكون غير قابلة للتغيير بمجرد تأكيدها.",
@@ -181,8 +181,8 @@ export const cabinetAr: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "حالة فترة الإطلاق",
     "launchEndedTitle": "انتهت فترة الإطلاق",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "تستمر فترة الإطلاق حتى {date}، أي 90 يومًا من إنشاء حساب الشريك. تبقى النسب كما هي، ويبقى مجمّع الشبكة 80%.",
+    "launchEndedBody": "انتهت فترة الإطلاق البالغة 90 يومًا في {date}. تُطبَّق النسب نفسها على المدفوعات المؤهلة، ويبقى مجمّع الشبكة 80%."
   },
   "referralPanel": {
     "title": "برنامج الإحالة",
@@ -291,10 +291,10 @@ export const cabinetAr: CabinetCopy = {
     "statusTitle": "حالتك",
     "statusNone": "لم يقم أي شركاء بالتسجيل من خلال الرابط الخاص بك حتى الآن.",
     "statusUnreadable": "لا يمكن قراءة تسجيلات الشركاء.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "نُسب {count} من حسابات الشركاء إلى رابطك. لا تُعرض قائمة الأسماء."
   },
   "payouts": {
-    "destinationTitle": "Where a payout is sent",
+    "destinationTitle": "إلى أين تُرسل الدفعة",
     "destinationLead": "العنوان الذي تريد إرسال الدفعات إليه.",
     "destinationUnreadable": "لا يمكن قراءة تفاصيل الدفع.",
     "editPayoutLink": "تحرير تفاصيل الدفع",

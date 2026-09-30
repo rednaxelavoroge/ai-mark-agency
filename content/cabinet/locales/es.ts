@@ -143,7 +143,7 @@ export const cabinetEs: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "Bienvenido, {name}",
     "welcomeLeadBefore": "Su ID de socio es",
     "welcomeLeadAfter": "Su enlace de referencia está activo. Las ventas, comisiones y pagos aparecen aquí tal como se registran.",
     "performanceTitle": "Actuación",
@@ -153,7 +153,7 @@ export const cabinetEs: CabinetCopy = {
     "statReadyToPay": "Listo para pagar",
     "statPaid": "Pagado",
     "noCommissionsYet": "Aún no hay comisiones.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: comisión {commission}, por pagar {payable}, pagado {paid}",
     "identityTitle": "Identidad del socio",
     "identityLead": "Emitido por AI MARK. La identificación de socio, el código de referencia y el estado son inmutables en su cuenta.",
     "labelPartnerId": "ID de socio",
@@ -163,7 +163,7 @@ export const cabinetEs: CabinetCopy = {
     "labelJoined": "Unido",
     "labelLanguage": "Idioma",
     "sponsorTitle": "Patrocinador",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "Confirmado el {date}.",
     "sponsorRecordedUnconfirmed": "Grabado, aún no confirmado por una venta calificada.",
     "sponsorFromReferralLink": "Grabado desde un enlace de referencia al registrarse.",
     "sponsorEmpty": "No se registró ningún patrocinador. Las relaciones con los patrocinadores las establece AI MARK desde un enlace de referencia al registrarse, nunca por el socio, y son inmutables una vez confirmadas.",
@@ -181,8 +181,8 @@ export const cabinetEs: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Estado del período de lanzamiento",
     "launchEndedTitle": "El período de lanzamiento finalizó",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "El periodo de lanzamiento dura hasta el {date}: 90 días desde la creación de la cuenta de socio. Las tarifas no cambian y el fondo de la red sigue en el 80%.",
+    "launchEndedBody": "El periodo de lanzamiento de 90 días terminó el {date}. Los pagos que califican usan las mismas tarifas y el fondo de la red sigue en el 80%."
   },
   "referralPanel": {
     "title": "Programa de referencia",
@@ -262,12 +262,12 @@ export const cabinetEs: CabinetCopy = {
         "Nivel",
         "Cantidad",
         "Tasa",
-        "Base",
+        "Base de cálculo",
         "Al corriente"
       ]
     },
     "payouts": {
-      "empty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+      "empty": "Aún no hay pagos. AI MARK registra un pago cuando la comisión está lista para pagarse.",
       "columns": [
         "Estado",
         "Cantidad",
@@ -291,7 +291,7 @@ export const cabinetEs: CabinetCopy = {
     "statusTitle": "Tu estado",
     "statusNone": "Ningún socio se ha registrado a través de su enlace todavía.",
     "statusUnreadable": "No se pudieron leer los registros de socios.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "{count} cuentas de socio se atribuyeron a tu enlace. La lista de nombres no se muestra."
   },
   "payouts": {
     "destinationTitle": "Dónde se envía un pago",
@@ -371,5 +371,5 @@ export const cabinetEs: CabinetCopy = {
     "strategic": "Estratégico",
     "suspended": "Suspendido"
   },
-  "defaultPartnerName": "Pareja"
+  "defaultPartnerName": "Socio"
 } as CabinetCopy;

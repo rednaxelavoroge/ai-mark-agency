@@ -18,7 +18,7 @@ export default async function PartnerPlatformLayout({
   children: React.ReactNode;
 }) {
   const { auth, partner } = await requirePartner("/partner/dashboard");
-  const { copy } = await loadPartnerCabinet();
+  const { copy, locale } = await loadPartnerCabinet();
 
   return (
     <CabinetCopyProvider copy={copy}>
@@ -29,6 +29,8 @@ export default async function PartnerPlatformLayout({
         homeHref="/partner/dashboard"
         badge={partner.partner_id}
         userEmail={auth.email}
+        locale={locale}
+        languageLabel={copy.dashboard.labelLanguage}
       >
         {children}
       </PlatformShell>

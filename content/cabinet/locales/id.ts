@@ -143,7 +143,7 @@ export const cabinetId: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "Selamat datang, {name}",
     "welcomeLeadBefore": "ID Mitra Anda adalah",
     "welcomeLeadAfter": "Tautan referensi Anda aktif. Penjualan, komisi, dan pembayaran muncul di sini saat dicatat.",
     "performanceTitle": "Pertunjukan",
@@ -153,7 +153,7 @@ export const cabinetId: CabinetCopy = {
     "statReadyToPay": "Siap membayar",
     "statPaid": "Dibayar",
     "noCommissionsYet": "Belum ada komisi.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: komisi {commission}, siap dibayar {payable}, dibayar {paid}",
     "identityTitle": "Identitas pasangan",
     "identityLead": "Dikeluarkan oleh AI MARK. ID Mitra, kode rujukan, dan status tidak dapat diubah dari akun Anda.",
     "labelPartnerId": "ID Mitra",
@@ -163,7 +163,7 @@ export const cabinetId: CabinetCopy = {
     "labelJoined": "Bergabung",
     "labelLanguage": "Bahasa",
     "sponsorTitle": "Sponsor",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "Dikonfirmasi {date}.",
     "sponsorRecordedUnconfirmed": "Direkam, belum dikonfirmasi oleh penjualan yang memenuhi syarat.",
     "sponsorFromReferralLink": "Direkam dari tautan rujukan saat mendaftar.",
     "sponsorEmpty": "Tidak ada sponsor yang tercatat. Hubungan sponsor ditetapkan oleh AI MARK dari tautan rujukan saat pendaftaran, tidak pernah ditentukan oleh mitra, dan tidak dapat diubah setelah dikonfirmasi.",
@@ -181,8 +181,8 @@ export const cabinetId: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Status periode peluncuran",
     "launchEndedTitle": "Periode peluncuran berakhir",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "Periode peluncuran berlangsung hingga {date}, yaitu 90 hari sejak akun mitra dibuat. Tarif tetap sama dan pool jaringan tetap 80%.",
+    "launchEndedBody": "Periode peluncuran 90 hari berakhir pada {date}. Pembayaran yang memenuhi syarat memakai tarif yang sama dan pool jaringan tetap 80%."
   },
   "referralPanel": {
     "title": "Program rujukan",
@@ -291,7 +291,7 @@ export const cabinetId: CabinetCopy = {
     "statusTitle": "Statusmu",
     "statusNone": "Belum ada mitra yang mendaftar melalui tautan Anda.",
     "statusUnreadable": "Pendaftaran mitra tidak dapat dibaca.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "{count} akun mitra diatribusikan ke tautan Anda. Daftar nama tidak ditampilkan."
   },
   "payouts": {
     "destinationTitle": "Ke mana pembayaran dikirim",

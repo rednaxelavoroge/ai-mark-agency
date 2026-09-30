@@ -143,7 +143,7 @@ export const cabinetJa: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "ようこそ、{name}さん",
     "welcomeLeadBefore": "あなたのパートナー ID は",
     "welcomeLeadAfter": "あなたの紹介リンクは有効です。売上、コミッション、支払いが記録されるとここに表示されます。",
     "performanceTitle": "パフォーマンス",
@@ -153,7 +153,7 @@ export const cabinetJa: CabinetCopy = {
     "statReadyToPay": "支払いの準備ができました",
     "statPaid": "有料",
     "noCommissionsYet": "まだコミッションはありません。",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}：コミッション {commission}、支払予定 {payable}、支払済み {paid}",
     "identityTitle": "パートナーのアイデンティティ",
     "identityLead": "アイマーク発行。パートナー ID、紹介コード、ステータスはアカウントから変更できません。",
     "labelPartnerId": "パートナーID",
@@ -163,7 +163,7 @@ export const cabinetJa: CabinetCopy = {
     "labelJoined": "参加しました",
     "labelLanguage": "言語",
     "sponsorTitle": "スポンサー",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "{date} に確認済み。",
     "sponsorRecordedUnconfirmed": "記録されていますが、対象となる販売によってまだ確認されていません。",
     "sponsorFromReferralLink": "サインアップ時の紹介リンクから記録されます。",
     "sponsorEmpty": "スポンサーの記録はありません。スポンサー関係は、パートナーによってではなく、サインアップ時に紹介リンクから AI MARK によって設定され、一度確認されると変更できません。",
@@ -181,8 +181,8 @@ export const cabinetJa: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "発売期間中のステータス",
     "launchEndedTitle": "発売期間は終了しました",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "ローンチ期間は {date} までです（パートナーアカウント作成から90日間）。料率は変わらず、ネットワークプールは80%のままです。",
+    "launchEndedBody": "90日間のローンチ期間は {date} に終了しました。対象となる支払いには同じ料率が適用され、ネットワークプールは80%のままです。"
   },
   "referralPanel": {
     "title": "紹介プログラム",
@@ -291,7 +291,7 @@ export const cabinetJa: CabinetCopy = {
     "statusTitle": "あなたのステータス",
     "statusNone": "あなたのリンクからサインアップしたパートナーはまだいません。",
     "statusUnreadable": "パートナー登録を読み取れませんでした。",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "{count} 件のパートナーアカウントがあなたのリンク経由で登録されました。名前の一覧は表示されません。"
   },
   "payouts": {
     "destinationTitle": "支払いが送られる場所",
