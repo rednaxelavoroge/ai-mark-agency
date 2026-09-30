@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { fieldClass, secondaryButtonClass } from "@/components/ui/classes";
 
 export function CopyText({
@@ -11,9 +12,13 @@ export function CopyText({
 }: {
   label: string;
   value: string;
-  copiedLabel: string;
-  copyLabel: string;
+  copiedLabel?: string;
+  copyLabel?: string;
 }) {
+  const copy = useCabinetCopy();
+  const strings = copy.copyText;
+  const copiedText = copiedLabel ?? strings.copied;
+  const copyText = copyLabel ?? strings.copy;
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);
 
@@ -23,7 +28,7 @@ export function CopyText({
     };
   }, []);
 
-  const copy = useCallback(async () => {
+  const onCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
@@ -46,8 +51,8 @@ export function CopyText({
         onFocus={(event) => event.currentTarget.select()}
         className={`font-mono text-[11px] leading-relaxed ${fieldClass}`}
       />
-      <button type="button" onClick={copy} className={`w-fit ${secondaryButtonClass}`}>
-        {copied ? copiedLabel : copyLabel}
+      <button type="button" onClick={onCopy} className={`w-fit ${secondaryButtonClass}`}>
+        {copied ? copiedText : copyText}
       </button>
     </div>
   );

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ContactCta } from "@/components/ContactCta";
 import { InvestorProposalView, revealDelay } from "@/components/InvestorProposal";
 import { getInvestorsCopy } from "@/content/investors";
+import { getPublicChromeCopy } from "@/content/sections";
 import { INVESTOR_PAGE_PATH } from "@/lib/investors";
 import { Flow } from "@/lib/markdown";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
@@ -44,7 +45,7 @@ export default async function InvestorsPage({ params }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getInvestorsCopy(locale);
-  const isRu = locale === "ru";
+  const investorsPage = getPublicChromeCopy(locale).investorsPage;
 
   return (
     <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
@@ -141,9 +142,7 @@ export default async function InvestorsPage({ params }: Props) {
           </div>
         </div>
         <p className="mt-6 border-t border-warm/20 pt-4 text-[11px] leading-relaxed text-muted">
-          {isRu
-            ? "Документ является предварительным информационным предложением и не является публичной офертой, гарантией доходности или обещанием определённого финансового результата."
-            : "This document is a preliminary information proposal and is not a public offer, a guarantee of returns or a promise of any specific financial outcome."}
+          {investorsPage.disclaimer}
         </p>
       </section>
     </article>

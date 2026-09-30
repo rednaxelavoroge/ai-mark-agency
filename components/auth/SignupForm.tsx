@@ -7,6 +7,7 @@ import {
   PARTNER_AGREEMENT_VERSION,
 } from "@/lib/partner/agreement";
 import { signInWithGoogle, signUpWithPassword } from "@/app/auth/actions";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import {
   idleAuthState,
   type AuthActionState,
@@ -19,6 +20,7 @@ import {
   outlineButtonClass,
   primaryButtonClass,
 } from "@/components/ui/classes";
+import type { Locale } from "@/lib/site";
 
 /**
  * Google's official four-colour "G", the mark Google requires next to a
@@ -76,11 +78,14 @@ function GoogleFeedback({ state }: { state: AuthActionState }) {
 export function SignupForm({
   next,
   disabled,
+  locale,
 }: {
   next: string;
   disabled: boolean;
+  locale: Locale;
 }) {
   const [accepted, setAccepted] = useState(false);
+  const f = useCabinetCopy().auth.form;
   const [state, action, pending] = useActionState(
     signUpWithPassword,
     idleAuthState,
@@ -110,11 +115,14 @@ export function SignupForm({
           disabled={disabled}
         />
         <span>
-          I accept the{" "}
-          <Link href="/en/partners/agreement" className="link-underline text-paper">
-            partner agreement
+          {f.acceptAgreementBefore}
+          <Link
+            href={`/${locale}/partners/agreement`}
+            className="link-underline text-paper"
+          >
+            {f.acceptAgreementLink}
           </Link>
-          .
+          {f.acceptAgreementAfter}
         </span>
       </label>
 
@@ -129,7 +137,7 @@ export function SignupForm({
           disabled={blocked || googlePending || pending}
         >
           <GoogleMark />
-          {googlePending ? "Opening Google…" : "Continue with Google"}
+          {googlePending ? f.continueGooglePending : f.continueGoogle}
         </button>
 
         <GoogleFeedback state={googleState} />
@@ -138,7 +146,7 @@ export function SignupForm({
       <div className="flex items-center gap-3" aria-hidden>
         <span className="h-px flex-1 bg-line" />
         <span className="text-[11px] tracking-[0.2em] text-muted uppercase">
-          or
+          {f.orDivider}
         </span>
         <span className="h-px flex-1 bg-line" />
       </div>
@@ -148,7 +156,7 @@ export function SignupForm({
         {accepted ? <input type="hidden" name="accept_agreement" value="1" /> : null}
 
         <label className={labelClass}>
-          <span className="text-muted">Full name</span>
+          <span className="text-muted">{f.fullName}</span>
           <input
             className={fieldClass}
             type="text"
@@ -157,12 +165,12 @@ export function SignupForm({
             maxLength={120}
             required
             disabled={disabled}
-            placeholder="Alex Morgan"
+            placeholder={f.fullNamePlaceholder}
           />
         </label>
 
         <label className={labelClass}>
-          <span className="text-muted">Email</span>
+          <span className="text-muted">{f.email}</span>
           <input
             className={fieldClass}
             type="email"
@@ -171,12 +179,12 @@ export function SignupForm({
             maxLength={320}
             required
             disabled={disabled}
-            placeholder="you@company.com"
+            placeholder={f.emailPlaceholder}
           />
         </label>
 
         <label className={labelClass}>
-          <span className="text-muted">Password</span>
+          <span className="text-muted">{f.password}</span>
           <input
             className={fieldClass}
             type="password"
@@ -185,7 +193,7 @@ export function SignupForm({
             minLength={8}
             required
             disabled={disabled}
-            placeholder="At least 8 characters"
+            placeholder={f.passwordNewPlaceholder}
           />
         </label>
 
@@ -204,16 +212,16 @@ export function SignupForm({
           className={primaryButtonClass}
           disabled={blocked || pending || sent || googlePending}
         >
-          {pending ? "Creating account…" : "Create partner account"}
+          {pending ? f.createAccountPending : f.createAccount}
         </button>
 
         <p className="text-xs text-muted">
-          Already have an account?{" "}
+          {f.hasAccountBefore}{" "}
           <Link
             href={`/auth/login?next=${encodeURIComponent(next)}`}
             className="link-underline text-paper"
           >
-            Sign in
+            {f.hasAccountLink}
           </Link>
         </p>
       </form>

@@ -12,6 +12,7 @@ import {
   type MdBlock,
 } from "@/lib/markdown";
 import type { Locale } from "@/lib/site";
+import { getPublicChromeCopy } from "@/content/sections";
 
 type Card = { head: string; blocks: MdBlock[] };
 type Segment =
@@ -277,7 +278,7 @@ export function InvestorProposalView({
               {copy.contentsLabel}
             </span>
             <span className="font-mono text-[10px] text-muted">
-              {sections.length} {locale === "ru" ? "разделов" : "sections"}
+              {sections.length} {getPublicChromeCopy(locale).investorsPage.sectionsCountLabel}
             </span>
           </div>
           <nav className="mt-3 max-h-[19rem] overflow-y-auto pr-1 lg:max-h-[calc(100vh-11rem)]">

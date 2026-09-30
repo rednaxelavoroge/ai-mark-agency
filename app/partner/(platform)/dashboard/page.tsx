@@ -8,21 +8,13 @@ import {
   getStatusHistory,
   requirePartner,
 } from "@/lib/auth/dal";
+import { loadPartnerCabinet } from "@/lib/partner/load-cabinet";
 
-export const metadata: Metadata = { title: "Dashboard" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadPartnerCabinet();
+  return { title: copy.pages.dashboard.metadataTitle };
+}
 
-/**
- * Partner Dashboard.
- *
- * Authorise first, then read: `requirePartner()` runs the server-side role and
- * partner-record check, and `getPartnerAccount()` reads through the partner's
- * own Supabase session so Row Level Security bounds every row to this partner.
- * The rendering itself lives in PartnerDashboardView.
- *
- * Phase 4B adds `getPartnerReferralStats()`, which calls a counts-only
- * SECURITY DEFINER rollup — the referral tables themselves are not readable
- * across partners, and a sponsor still cannot enumerate their downline.
- */
 export default async function PartnerDashboardPage() {
   const { auth, partner } = await requirePartner("/partner/dashboard");
   const [profile, sponsor, history, stats, ledger] = await Promise.all([

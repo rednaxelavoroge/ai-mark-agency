@@ -62,46 +62,46 @@ export const copyJa: Copy = {
     "eyebrow": "AI-Native Venture & Marketing Company",
     "title": "アイデアから持続可能な事業の立ち上げまで。",
     "lead": "市場調査、ビジネスモデル検証、デジタルプロダクト開発、そしてAIによるマーケティングと営業の自動化を通じて、ビジネスの急成長を実現します。",
-    "extra": "We create and scale digital businesses using our own AI infrastructure.",
-    "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
+    "extra": "自社のAIインフラでデジタルビジネスを立ち上げ、スケールします。",
+    "soft": "アイデアやリサーチブリーフから、構築・ローンチ・運用まで伴走します。",
     "primaryCta": "プロジェクト相談",
     "secondaryCta": "仕組みを見る",
-    "investorCta": "投資家向け情報",
-    "partnerCta": "パートナー向け"
+    "partnerCta": "パートナー向け",
+    "investorCta": "投資家向け情報"
   },
   "pillars": {
-    "eyebrow": "What we can do",
-    "title": "Five parts of the same loop.",
+    "eyebrow": "できること",
+    "title": "同じループの5つの機能。",
     "items": [
       {
         "n": "01",
-        "title": "Business creation",
-        "body": "From an idea, an existing company, or capital — we form a model the market can actually hold."
+        "title": "ビジネス創出",
+        "body": "アイデア・既存企業・資本から、市場が支えられるモデルを組み立てます。"
       },
       {
         "n": "02",
-        "title": "Digital Production",
-        "body": "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on."
+        "title": "デジタル制作",
+        "body": "サイト、アプリ、プラットフォーム、ポータル、連携、AIシステム。"
       },
       {
         "n": "03",
-        "title": "AI Marketing",
-        "body": "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump."
+        "title": "AIマーケティング",
+        "body": "戦略、コンテンツ、クリエイティブ、広告、分析を継続的なサイクルで。"
       },
       {
         "n": "04",
-        "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
+        "title": "AIセールス",
+        "body": "最初の問い合わせから提案まで — AI Business Assistant と SHOWROOM AI。"
       },
       {
         "n": "05",
-        "title": "Growth",
-        "body": "Analytics, optimization, automation, and scale on the same infrastructure."
+        "title": "グロース",
+        "body": "同じインフラ上で分析・最適化・自動化・スケール。"
       }
     ]
   },
   "creation": {
-    "eyebrow": "Business Creation",
+    "eyebrow": "ビジネス創出",
     "title": "Don't know which business to build? Start with the market.",
     "lead": "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
     "withoutIdea": "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
@@ -141,24 +141,24 @@ export const copyJa: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "The path",
-    "title": "One sequence. Join at any step.",
+    "eyebrow": "道筋",
+    "title": "ひとつの連続。どの段階からでも参加できます。",
     "steps": [
-      "Idea / capital",
-      "Market research",
-      "Business model",
-      "Brand",
-      "Product / platform",
-      "AI infrastructure",
-      "Marketing",
-      "Sales",
-      "Growth"
+      "アイデア / 資本",
+      "市場調査",
+      "ビジネスモデル",
+      "ブランド",
+      "プロダクト / プラットフォーム",
+      "AIインフラ",
+      "マーケティング",
+      "セールス",
+      "グロース"
     ]
   },
   "tech": {
-    "eyebrow": "Tech base",
-    "title": "Core AI infrastructure already built and used commercially.",
-    "lead": "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run."
+    "eyebrow": "技術基盤",
+    "title": "中核のAIインフラはすでに構築され、商用運用されています。",
+    "lead": "後から組み立てるスタックは売りません。3つのプロダクトが今日のループにあります。"
   },
   "products": {
     "eyebrow": "AI Products",
@@ -193,7 +193,7 @@ export const copyJa: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "デジタル制作",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -249,7 +249,7 @@ export const copyJa: Copy = {
     "eyebrow": "Commercial model",
     "title": "協業の形はいくつかあります。リテイナーはその一つです。",
     "lead": "製品SKU、サービススプリント、継続する部門、または個別開発から選べます。以下の価格は幅であり、成果の約束ではありません。",
-    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/mo",
     "featured": "Most teams start here",
     "retainerCta": "Request this department",
@@ -267,7 +267,7 @@ export const copyJa: Copy = {
       },
       {
         "name": "AI Marketing Department",
-        "price": "$1,500–3,500+",
+        "price": "$1,200–3,500+",
         "body": "Ongoing HITL marketing as a department: Starter, Growth, Scale. Media spend is yours and sits outside the retainer."
       },
       {
@@ -558,8 +558,8 @@ export const copyJa: Copy = {
     ]
   },
   "ui": {
-    "cardOption": '銀行カード（Visa/Mastercard）— 近日対応',
-    "cardsSoon": 'カード — 近日'
+    "cardOption": "銀行カード（Visa/Mastercard）— 近日対応",
+    "cardsSoon": "カード — 近日"
   },
   "pay": {
     "email": "メール",

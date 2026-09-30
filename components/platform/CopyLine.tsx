@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { fieldClass, secondaryButtonClass } from "@/components/ui/classes";
 
 export function CopyLine({
@@ -10,6 +11,8 @@ export function CopyLine({
   label: string;
   value: string;
 }) {
+  const copy = useCabinetCopy();
+  const strings = copy.copyLine;
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);
 
@@ -19,7 +22,7 @@ export function CopyLine({
     };
   }, []);
 
-  const copy = useCallback(async () => {
+  const onCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
@@ -42,8 +45,8 @@ export function CopyLine({
           onFocus={(event) => event.currentTarget.select()}
           className={`font-mono text-xs ${fieldClass}`}
         />
-        <button type="button" onClick={copy} className={secondaryButtonClass}>
-          {copied ? "Copied" : "Copy"}
+        <button type="button" onClick={onCopy} className={secondaryButtonClass}>
+          {copied ? strings.copied : strings.copy}
         </button>
       </div>
     </label>

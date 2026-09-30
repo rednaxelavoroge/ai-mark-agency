@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/site";
+import { getPublicChromeCopy } from "@/content/sections";
 
 const VISIBLE = 3;
 
@@ -12,7 +13,7 @@ export function FeatureList({
 }) {
   const head = items.slice(0, VISIBLE);
   const rest = items.slice(VISIBLE);
-  const label = locale === "ru" ? "Все возможности" : "All features";
+  const label = getPublicChromeCopy(locale).productPage.allFeatures;
 
   return (
     <div className="mt-3 border-t border-line/60 pt-3">

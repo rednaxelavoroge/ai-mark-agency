@@ -62,46 +62,46 @@ export const copyVi: Copy = {
     "eyebrow": "AI-Native Venture & Marketing Company",
     "title": "Từ ý tưởng đến doanh nghiệp hoạt động thực tế.",
     "lead": "Chúng tôi nghiên cứu thị trường, hoàn thiện mô hình, lập trình sản phẩm số và tự động hóa quy trình tiếp thị & bán hàng bằng AI.",
-    "extra": "We create and scale digital businesses using our own AI infrastructure.",
-    "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
+    "extra": "Chúng tôi tạo và mở rộng doanh nghiệp số trên hạ tầng AI riêng.",
+    "soft": "Chúng tôi có thể đưa bạn từ ý tưởng hoặc brief nghiên cứu đến thứ được xây, ra mắt và vận hành.",
     "primaryCta": "Trao đổi dự án",
     "secondaryCta": "Quy trình",
-    "investorCta": "Dành cho nhà đầu tư",
-    "partnerCta": "Dành cho đối tác"
+    "partnerCta": "Dành cho đối tác",
+    "investorCta": "Dành cho nhà đầu tư"
   },
   "pillars": {
-    "eyebrow": "What we can do",
-    "title": "Five parts of the same loop.",
+    "eyebrow": "Chúng tôi làm gì",
+    "title": "Năm phần trong cùng một vòng lặp.",
     "items": [
       {
         "n": "01",
-        "title": "Business creation",
-        "body": "From an idea, an existing company, or capital — we form a model the market can actually hold."
+        "title": "Tạo doanh nghiệp",
+        "body": "Từ ý tưởng, công ty hiện có hoặc vốn — chúng tôi dựng mô hình thị trường có thể gánh được."
       },
       {
         "n": "02",
-        "title": "Digital Production",
-        "body": "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on."
+        "title": "Sản xuất số",
+        "body": "Website, app, nền tảng, portal, tích hợp và hệ thống AI doanh nghiệp chạy trên đó."
       },
       {
         "n": "03",
-        "title": "AI Marketing",
-        "body": "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump."
+        "title": "Marketing AI",
+        "body": "Chiến lược, nội dung, creative, quảng cáo và phân tích theo chu kỳ liên tục."
       },
       {
         "n": "04",
-        "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
+        "title": "Bán hàng AI",
+        "body": "Từ câu hỏi đầu tiên đến đánh giá và đề xuất — AI Business Assistant & SHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "Growth",
-        "body": "Analytics, optimization, automation, and scale on the same infrastructure."
+        "title": "Tăng trưởng",
+        "body": "Phân tích, tối ưu, tự động hóa và mở rộng trên cùng hạ tầng."
       }
     ]
   },
   "creation": {
-    "eyebrow": "Business Creation",
+    "eyebrow": "Tạo doanh nghiệp",
     "title": "Don't know which business to build? Start with the market.",
     "lead": "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
     "withoutIdea": "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
@@ -141,24 +141,24 @@ export const copyVi: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "The path",
-    "title": "One sequence. Join at any step.",
+    "eyebrow": "Lộ trình",
+    "title": "Một chuỗi. Tham gia ở bất kỳ bước nào.",
     "steps": [
-      "Idea / capital",
-      "Market research",
-      "Business model",
-      "Brand",
-      "Product / platform",
-      "AI infrastructure",
+      "Ý tưởng / vốn",
+      "Nghiên cứu thị trường",
+      "Mô hình kinh doanh",
+      "Thương hiệu",
+      "Sản phẩm / nền tảng",
+      "Hạ tầng AI",
       "Marketing",
-      "Sales",
-      "Growth"
+      "Bán hàng",
+      "Tăng trưởng"
     ]
   },
   "tech": {
-    "eyebrow": "Tech base",
-    "title": "Core AI infrastructure already built and used commercially.",
-    "lead": "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run."
+    "eyebrow": "Nền tảng công nghệ",
+    "title": "Hạ tầng AI lõi đã được xây và dùng thương mại.",
+    "lead": "Chúng tôi không bán một stack sẽ lắp sau. Ba sản phẩm đã trong vòng — vừa là hệ điều hành delivery, vừa là SKU bạn có thể chạy."
   },
   "products": {
     "eyebrow": "AI Products",
@@ -193,7 +193,7 @@ export const copyVi: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "Sản xuất số",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -249,7 +249,7 @@ export const copyVi: Copy = {
     "eyebrow": "Commercial model",
     "title": "Several ways to work together. Retainers are one of them.",
     "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
-    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/mo",
     "featured": "Most teams start here",
     "retainerCta": "Request this department",
@@ -267,7 +267,7 @@ export const copyVi: Copy = {
       },
       {
         "name": "AI Marketing Department",
-        "price": "$1,500–3,500+",
+        "price": "$1,200–3,500+",
         "body": "Ongoing HITL marketing as a department: Starter, Growth, Scale. Media spend is yours and sits outside the retainer."
       },
       {
@@ -558,8 +558,8 @@ export const copyVi: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Thẻ ngân hàng (Visa/Mastercard) — sắp ra mắt',
-    "cardsSoon": 'Thẻ — sắp có'
+    "cardOption": "Thẻ ngân hàng (Visa/Mastercard) — sắp ra mắt",
+    "cardsSoon": "Thẻ — sắp có"
   },
   "pay": {
     "email": "Email",

@@ -7,6 +7,7 @@ import { LocaleProgram } from "@/components/partners/LocaleProgram";
 import { PartnerNetworkHeroVisual } from "@/components/PartnerNetworkHeroVisual";
 import { LevelRings } from "@/components/visuals/ProductScenes";
 import { getCopy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
 import { type ProductVariant } from "@/components/ui/ProductUI";
 import { PRODUCT_PATHS } from "@/lib/products";
@@ -347,6 +348,7 @@ export default async function PartnersPage({ params }: Props) {
   const t = dedicated;
   const terms = partnerProgramTerms[locale];
   const published = getCopy(locale);
+  const partnersChrome = getPublicChromeCopy(locale).partnersPage;
   const publishedPrices = [
     published.products.items.aime.price,
     published.products.items.assistant.price,
@@ -367,10 +369,7 @@ export default async function PartnersPage({ params }: Props) {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
             <p className="mt-4 max-w-xl font-display text-lg font-semibold leading-snug text-paper sm:text-xl">{t.poolHeadline}</p>
             <ol className="mt-5 flex flex-wrap items-center gap-2">
-              {(locale === "ru"
-                ? ["Личная продажа", "Продажи команды", "До 5 уровней", "До 80%"]
-                : ["Personal sale", "Team sales", "Up to 5 levels", "Up to 80%"]
-              ).map((step, i) => (
+              {partnersChrome.heroSteps.map((step, i) => (
                 <li key={step} className="flex items-center gap-2">
                   {i > 0 ? <span className="font-mono text-xs text-warm">→</span> : null}
                   <span className="rounded-full border border-line bg-ink-2 px-3 py-1.5 text-sm text-paper">{step}</span>
@@ -390,7 +389,7 @@ export default async function PartnersPage({ params }: Props) {
           </div>
           <div data-reveal style={reveal(120)} className="space-y-4">
             <details className="mt-6 rounded-2xl border border-line">
-              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">{locale === "ru" ? "Схема сети" : "Network sketch"}</summary>
+              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">{partnersChrome.networkSketch}</summary>
             <PartnerNetworkHeroVisual locale={locale} />
             <div data-motion className="rounded-[24px] border border-line bg-ink-2 p-4">
               <LevelRings />
@@ -496,7 +495,7 @@ export default async function PartnersPage({ params }: Props) {
               <p className="mt-3 text-xs leading-relaxed text-paper/80">{t.exampleFoot}</p>
               <details className="mt-3">
                 <summary className="cursor-pointer list-none text-sm font-semibold text-mark">
-                  {locale === "ru" ? "Условия сети" : "Network terms"}
+                  {partnersChrome.networkTerms}
                 </summary>
                 <p className="mt-3 text-xs leading-relaxed text-muted">{terms.note}</p>
                 <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
@@ -528,7 +527,7 @@ export default async function PartnersPage({ params }: Props) {
 
       <details className="border-b border-line bg-ink-2/20">
         <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {locale === "ru" ? "Глобальное расширение" : "Global expansion"}
+          {partnersChrome.globalExpansion}
         </summary>
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
@@ -545,7 +544,7 @@ export default async function PartnersPage({ params }: Props) {
 
       <details className="border-b border-line">
         <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {locale === "ru" ? "Оставить контакты" : "Leave your contacts"}
+          {partnersChrome.leaveContacts}
         </summary>
         <LeadInquiry contact={published.contact} locale={locale} />
       </details>

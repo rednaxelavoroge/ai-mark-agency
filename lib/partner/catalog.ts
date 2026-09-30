@@ -168,9 +168,15 @@ const LABELS: Record<Locale, SalesKitLabels> = {
   },
 };
 
-export function cabinetLocale(language: string | null | undefined): Locale {
-  if (language && isLocale(language)) return language;
-  return "en";
+import type { CabinetCopy } from "@/content/cabinet/types";
+import { resolveCabinetLocale } from "@/lib/partner/resolve-cabinet-locale";
+
+/** @deprecated Prefer resolveCabinetLocale(profileLanguage, localeCookie). */
+export function cabinetLocale(
+  language: string | null | undefined,
+  localeCookie?: string | null,
+): Locale {
+  return resolveCabinetLocale(language, localeCookie);
 }
 
 export function salesKitLabels(locale: Locale): SalesKitLabels {

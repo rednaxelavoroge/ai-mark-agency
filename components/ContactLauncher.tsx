@@ -10,35 +10,9 @@ import {
 } from "@/lib/contact";
 import { isWidgetMessageUrl, withChatContext } from "@/lib/chat-context";
 import { site, type Locale } from "@/lib/site";
+import { getPublicChromeCopy } from "@/content/sections";
 
-const COPY = {
-  ru: {
-    open: "Связаться",
-    close: "Закрыть",
-    title: "Чем можем помочь?",
-    aiLabel: "Чат с AI-ассистентом",
-    aiHint: "Отвечает мгновенно, круглосуточно",
-    messengerHint: "Написать в чат",
-    emailLabel: "Email",
-    emailHint: "hello@ai-mark.agency",
-    greeting:
-      "Здравствуйте! Я AI Business Assistant AI MARK. Расскажите, что нужно — маркетинг, продажи или продукт.",
-    placeholder: "Напишите сообщение…",
-  },
-  en: {
-    open: "Contact us",
-    close: "Close",
-    title: "How can we help?",
-    aiLabel: "Chat with our AI assistant",
-    aiHint: "Answers instantly, day or night",
-    messengerHint: "Chat with us",
-    emailLabel: "Email",
-    emailHint: "hello@ai-mark.agency",
-    greeting:
-      "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
-    placeholder: "Type a message…",
-  },
-} as const;
+const launcherCopy = (locale: Locale) => getPublicChromeCopy(locale).contactLauncher;
 
 /**
  * Channel order is fixed and deliberate: the AI chat is the first and primary
@@ -231,7 +205,7 @@ function hidePanel() {
  * dismiss button keeps its own markup.
  */
 function applyTeaserChrome(locale: Locale) {
-  const t = locale === "ru" ? COPY.ru : COPY.en;
+  const t = launcherCopy(locale);
   const text = document.querySelector<HTMLElement>(".aiba-root .aiba-greeting > div");
   if (text && text.textContent !== t.greeting) text.textContent = t.greeting;
 }
@@ -365,7 +339,7 @@ function installChatContextGate() {
 
 
 function applyLocaleChrome(locale: Locale) {
-  const t = locale === "ru" ? COPY.ru : COPY.en;
+  const t = launcherCopy(locale);
   // The panel header is painted from the workspace config at
   // `app.alex-dev.pro` (`title: "AlexDev"`), which is a dashboard setting we
   // cannot change from this repo — and a public "AlexDev" label is not
@@ -524,7 +498,7 @@ function MessengerIcon({ name }: { name: MessengerKey }) {
 }
 
 export function ContactLauncher({ locale }: { locale: Locale }) {
-  const t = locale === "ru" ? COPY.ru : COPY.en;
+  const t = launcherCopy(locale);
   const [menuOpen, setMenuOpen] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);

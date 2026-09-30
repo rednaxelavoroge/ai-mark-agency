@@ -3,8 +3,11 @@ import Link from "next/link";
 import { InvestorStreams } from "@/components/visuals/ProductScenes";
 import { INVESTOR_PAGE_PATH } from "@/lib/investors";
 import { navHref, type Locale } from "@/lib/site";
+import { getPublicChromeCopy } from "@/content/sections";
+
 export function InvestorsSection({ locale }: { locale: Locale }) {
   const isRu = locale === "ru";
+  const s = getPublicChromeCopy(locale).investorsSection;
 
   const capitalUses = isRu
     ? [
@@ -56,7 +59,7 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="font-mono text-[10px] text-mark uppercase tracking-wider">
-                  {isRu ? "Устойчивость" : "Value Driver"}
+                  {s.valueDriver}
                 </span>
               </div>
               <h4 className="mt-3 font-display text-base font-semibold text-paper leading-snug">
@@ -75,12 +78,10 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
             <span className="font-mono text-[10px] font-semibold text-warm uppercase tracking-widest">
-              {isRu ? "Seed-раунд & Коммерческое масштабирование" : "Seed Round & Commercial Scaling"}
+              {s.seedTitle}
             </span>
             <p className="mt-1 font-display text-sm sm:text-base font-medium text-paper">
-              {isRu
-                ? "Компания открыта к инвестициям на этапе масштабирования готовой технологической базы. Структура сделки и условия обсуждаются индивидуально."
-                : "The company is open to growth capital during its commercial scaling phase. Deal structure and terms are discussed individually."}
+              {s.seedLead}
             </p>
           </div>
 
@@ -89,7 +90,7 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
               href={navHref(locale, INVESTOR_PAGE_PATH)}
               className="inline-flex items-center gap-1.5 rounded-full bg-mark px-5 py-3 text-xs font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all whitespace-nowrap"
             >
-              {isRu ? "Полное инвестиционное предложение" : "Full investment proposal"}
+              {s.fullProposal}
               <span className="btn-arrow" aria-hidden>
                 →
               </span>

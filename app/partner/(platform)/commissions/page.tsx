@@ -3,26 +3,32 @@ import { CommissionScheduleCard } from "@/components/platform/CommissionSchedule
 import { DataTable } from "@/components/platform/DataTable";
 import { PageHeader } from "@/components/platform/PageHeader";
 import { getPartnerCommissions, requirePartner } from "@/lib/auth/dal";
+import { loadPartnerCabinet } from "@/lib/partner/load-cabinet";
 import { NO_DATA, formatDateTime, formatStoredMoney } from "@/lib/partner/format";
 
-export const metadata: Metadata = { title: "Commissions" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadPartnerCabinet();
+  return { title: copy.pages.commissions.metadataTitle };
+}
 
 export default async function PartnerCommissionsPage() {
   await requirePartner("/partner/commissions");
-  const entries = await getPartnerCommissions();
+  const [{ copy }, entries] = await Promise.all([
+    loadPartnerCabinet(),
+    getPartnerCommissions(),
+  ]);
+  const page = copy.pages.commissions;
+  const table = copy.dataTable.commissions;
 
   return (
     <div className="grid gap-7">
-      <PageHeader
-        eyebrow="Partner Platform"
-        title="Commissions"
-        lead="Your commissions for each qualifying sale. Schedule: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, network pool 80%."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
       <CommissionScheduleCard />
       <DataTable
         unreadable={entries.unreadable}
-        empty="No commissions yet. An entry appears after a qualifying sale."
-        columns={["Status", "Type", "Level", "Amount", "Rate", "Base", "Posted"]}
+        unreadableText={copy.dataTable.unreadable}
+        empty={table.empty}
+        columns={table.columns}
         rows={(entries.rows ?? []).map((entry) => [
           entry.status,
           entry.commission_type,

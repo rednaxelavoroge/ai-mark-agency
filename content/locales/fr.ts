@@ -62,46 +62,46 @@ export const copyFr: Copy = {
     "eyebrow": "AI-Native Venture & Marketing Company",
     "title": "De l'idée à l'entreprise opérationnelle.",
     "lead": "Nous analysons le marché, structurons le modèle, concevons le produit numérique et orchestrons les ventes et le marketing — propulsés par l'IA.",
-    "extra": "We create and scale digital businesses using our own AI infrastructure.",
-    "soft": "We can help you move from an idea or a research brief to something built, launched, and operated.",
+    "extra": "Nous créons et faisons évoluer des entreprises digitales sur notre propre infrastructure IA.",
+    "soft": "Nous pouvons vous accompagner d'une idée ou d'un brief de recherche jusqu'à quelque chose de construit, lancé et exploité.",
     "primaryCta": "Échanger sur un projet",
     "secondaryCta": "Méthode",
-    "investorCta": "Pour les investisseurs",
-    "partnerCta": "Pour les partenaires"
+    "partnerCta": "Pour les partenaires",
+    "investorCta": "Pour les investisseurs"
   },
   "pillars": {
-    "eyebrow": "What we can do",
-    "title": "Five parts of the same loop.",
+    "eyebrow": "Ce que nous faisons",
+    "title": "Cinq parties de la même boucle.",
     "items": [
       {
         "n": "01",
-        "title": "Business creation",
-        "body": "From an idea, an existing company, or capital — we form a model the market can actually hold."
+        "title": "Création d'entreprise",
+        "body": "À partir d'une idée, d'une entreprise existante ou de capital — nous formons un modèle que le marché peut porter."
       },
       {
         "n": "02",
-        "title": "Digital Production",
-        "body": "Sites, apps, platforms, cabinets, integrations, and AI systems that the business runs on."
+        "title": "Production digitale",
+        "body": "Sites, apps, plateformes, portails, intégrations et systèmes IA sur lesquels l'entreprise fonctionne."
       },
       {
         "n": "03",
-        "title": "AI Marketing",
-        "body": "Strategy, content, creatives, ads, and analytics as a continuous cycle — not a monthly dump."
+        "title": "Marketing IA",
+        "body": "Stratégie, contenu, créations, publicités et analytics en cycle continu — pas un empilement mensuel."
       },
       {
         "n": "04",
-        "title": "AI Sales",
-        "body": "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI."
+        "title": "Ventes IA",
+        "body": "De la première demande à la qualification, l'adéquation de l'offre et la proposition — AI Business Assistant et SHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "Growth",
-        "body": "Analytics, optimization, automation, and scale on the same infrastructure."
+        "title": "Croissance",
+        "body": "Analytics, optimisation, automatisation et montée en charge sur la même infrastructure."
       }
     ]
   },
   "creation": {
-    "eyebrow": "Business Creation",
+    "eyebrow": "Création d'entreprise",
     "title": "Don't know which business to build? Start with the market.",
     "lead": "Come with an idea, an existing business, capital, or without a concrete idea. We start from demand, not from a slogan.",
     "withoutIdea": "If you do not have an idea yet, we can propose several concepts from the market, your capital, interests, and resources. That is a structured shortlist — not a guaranteed profitable business.",
@@ -141,24 +141,24 @@ export const copyFr: Copy = {
     ]
   },
   "pipeline": {
-    "eyebrow": "The path",
-    "title": "One sequence. Join at any step.",
+    "eyebrow": "Le parcours",
+    "title": "Une séquence. Rejoignez à n'importe quelle étape.",
     "steps": [
-      "Idea / capital",
-      "Market research",
-      "Business model",
-      "Brand",
-      "Product / platform",
-      "AI infrastructure",
+      "Idée / capital",
+      "Étude de marché",
+      "Modèle économique",
+      "Marque",
+      "Produit / plateforme",
+      "Infrastructure IA",
       "Marketing",
-      "Sales",
-      "Growth"
+      "Ventes",
+      "Croissance"
     ]
   },
   "tech": {
-    "eyebrow": "Tech base",
-    "title": "Core AI infrastructure already built and used commercially.",
-    "lead": "We do not pitch a stack we plan to assemble later. Three products sit in the loop today — as the operating system for delivery, and as SKUs you can run."
+    "eyebrow": "Base technique",
+    "title": "Infrastructure IA centrale déjà construite et utilisée commercialement.",
+    "lead": "Nous ne vendons pas une stack que nous assemblerons plus tard. Trois produits sont déjà dans la boucle — comme OS de delivery et comme SKU que vous pouvez exploiter."
   },
   "products": {
     "eyebrow": "AI Products",
@@ -193,7 +193,7 @@ export const copyFr: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "Production digitale",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -249,7 +249,7 @@ export const copyFr: Copy = {
     "eyebrow": "Commercial model",
     "title": "Several ways to work together. Retainers are one of them.",
     "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
-    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/mo",
     "featured": "Most teams start here",
     "retainerCta": "Request this department",
@@ -267,7 +267,7 @@ export const copyFr: Copy = {
       },
       {
         "name": "AI Marketing Department",
-        "price": "$1,500–3,500+",
+        "price": "$1,200–3,500+",
         "body": "Ongoing HITL marketing as a department: Starter, Growth, Scale. Media spend is yours and sits outside the retainer."
       },
       {
@@ -558,8 +558,8 @@ export const copyFr: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'Carte bancaire (Visa/Mastercard) — bientôt',
-    "cardsSoon": 'Cartes — bientôt'
+    "cardOption": "Carte bancaire (Visa/Mastercard) — bientôt",
+    "cardsSoon": "Cartes — bientôt"
   },
   "pay": {
     "email": "E-mail",

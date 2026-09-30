@@ -62,46 +62,46 @@ export const copyAr: Copy = {
     "eyebrow": "AI-NATIVE VENTURE & MARKETING COMPANY",
     "title": "من الفكرة إلى شركة تعمل على أرض الواقع.",
     "lead": "ندرس السوق، ونبني نموذج العمل، ونطور المنتج الرقمي، ثم ندير التسويق والمبيعات — ونوسع نطاق العمل بالكامل باستخدام الذكاء الاصطناعي.",
-    "extra": "نؤسس ونوسع الأعمال الرقمية بالاعتماد على بنيتنا التحتية المتقدمة للذكاء الاصطناعي.",
-    "soft": "نساعدك على الانتقال من مجرد فكرة أو دراسة جدوى إلى مشروع متكامل يعمل ويدر عوائد مالية.",
+    "extra": "ننشئ ونوسّع أعمالًا رقمية على بنيتنا التحتية للذكاء الاصطناعي.",
+    "soft": "نساعدك من فكرة أو موجز بحث إلى شيء مُبنى ومُطلق ومُدار.",
     "primaryCta": "ناقش مشروعك",
     "secondaryCta": "كيف نعمل",
-    "investorCta": "للمستثمرين",
-    "partnerCta": "للشركاء"
+    "partnerCta": "للشركاء",
+    "investorCta": "للمستثمرين"
   },
   "pillars": {
-    "eyebrow": "ما الذي نقدمه",
-    "title": "خمس مراحل مترابطة لدورة نمو متكاملة.",
+    "eyebrow": "ما الذي نفعله",
+    "title": "خمس وظائف. بنية تحتية واحدة.",
     "items": [
       {
         "n": "01",
-        "title": "تأسيس الأعمال",
-        "body": "سواء كنت تملك فكرة أو شركة قائمة أو رأس مال للاستثمار: نبني نموذجاً يحقق طلباً حقيقياً في السوق."
+        "title": "إنشاء الأعمال",
+        "body": "من فكرة أو شركة قائمة أو رأس مال — نبني نموذجًا يستطيع السوق استيعابه."
       },
       {
         "n": "02",
         "title": "الإنتاج الرقمي",
-        "body": "مواقع إلكترونية، تطبيقات، منصات، لوحات تحكم، وأنظمة ذكاء اصطناعي متطورة يعتمد عليها العمل."
+        "body": "مواقع وتطبيقات ومنصات وبوابات وتكاملات وأنظمة ذكاء اصطناعي يعمل عليها العمل."
       },
       {
         "n": "03",
         "title": "التسويق بالذكاء الاصطناعي",
-        "body": "استراتيجية، محتوى، تصاميم، حملات إعلانية مدفوعة وتحليلات مستمرة على مدار الساعة."
+        "body": "استراتيجية ومحتوى وإعلانات وتحليلات في دورة مستمرة — وليس دفعة شهرية."
       },
       {
         "n": "04",
-        "title": "المبيعات الذكية",
-        "body": "من أول رسالة إلى التأهيل واختيار الحل والحساب والعرض التجاري: AI Business Assistant وSHOWROOM AI."
+        "title": "المبيعات بالذكاء الاصطناعي",
+        "body": "من أول استفسار إلى التأهيل والعرض — AI Business Assistant وSHOWROOM AI."
       },
       {
         "n": "05",
-        "title": "العمليات والتوسع",
-        "body": "بنية تحتية سحابية، عملاء أذكياء مستقلون وإشراف بشري احترافي لتحقيق التوسع دون أعباء إضافية."
+        "title": "النمو",
+        "body": "تحليلات وتحسين وأتمتة وتوسع على نفس البنية."
       }
     ]
   },
   "creation": {
-    "eyebrow": "تأسيس المشاريع",
+    "eyebrow": "إنشاء الأعمال",
     "title": "مساران متكاملان لإطلاق مشروعك التجاري.",
     "lead": "نعمل مع رواد الأعمال أصحاب الأفكار المبتكرة ومع المستثمرين الباحثين عن فرص مجدية لرؤوس أموالهم.",
     "withoutIdea": "إذا لم تكن تمتلك فكرة محددة:",
@@ -113,25 +113,52 @@ export const copyAr: Copy = {
       {
         "title": "الانطلاق من رأس المال",
         "body": "تحديد المجالات الأكثر ربحية، واختيار النماذج المثبتة، وبناء وتشغيل المشروع بنظام تسليم المفتاح."
+      },
+      {
+        "title": "Several concepts",
+        "body": "More than one model, so you choose with comparison, not with hope."
+      },
+      {
+        "title": "Choose the model",
+        "body": "Offer, economics sketch, and what must be true for it to operate."
+      },
+      {
+        "title": "Build the product",
+        "body": "The site, platform, or AI system the business actually runs on."
+      },
+      {
+        "title": "Launch",
+        "body": "Go live with tracking, offers, and a path for the first conversations."
+      },
+      {
+        "title": "Marketing & sales",
+        "body": "Content, ads, inbox, and quotes on the same loop."
+      },
+      {
+        "title": "Scale",
+        "body": "Optimize what already runs. Automate the repeatable parts. Keep humans on decisions."
       }
     ]
   },
   "pipeline": {
-    "eyebrow": "مسار العمل",
-    "title": "من مرحلة الفرضية إلى التدفق النقدي الفعلي.",
+    "eyebrow": "المسار",
+    "title": "تسلسل واحد. انضم في أي خطوة.",
     "steps": [
-      "البحث والنموذج",
-      "المنتج والمنصة",
-      "وكلاء الذكاء والمحتوى",
-      "الإطلاق والحملات",
-      "المبيعات والاستبقاء",
-      "التوسع العالمي"
+      "فكرة / رأس مال",
+      "بحث السوق",
+      "نموذج العمل",
+      "العلامة",
+      "المنتج / المنصة",
+      "بنية الذكاء الاصطناعي",
+      "التسويق",
+      "المبيعات",
+      "النمو"
     ]
   },
   "tech": {
-    "eyebrow": "البنية التحتية التقنية",
-    "title": "أنظمة ذكاء اصطناعي جاهزة للاستخدام التجاري الفوري.",
-    "lead": "حلول مستقرة تعمل عبر خوادم سحابية آمنة ومربوطة بالواجهات الرسمية لـ WhatsApp Cloud API و Telegram و OpenAI."
+    "eyebrow": "الأساس التقني",
+    "title": "بنية ذكاء اصطناعي أساسية مبنية ومستخدمة تجاريًا.",
+    "lead": "لا نبيع مكدسًا سنبنيه لاحقًا. ثلاثة منتجات في الحلقة اليوم — كنظام تشغيل للتنفيذ وكمنتجات يمكنك تشغيلها."
   },
   "products": {
     "eyebrow": "منتجات الذكاء الاصطناعي الخاصة بنا",
@@ -166,7 +193,7 @@ export const copyAr: Copy = {
     }
   },
   "production": {
-    "eyebrow": "Digital Production",
+    "eyebrow": "الإنتاج الرقمي",
     "title": "We build the digital infrastructure of the business.",
     "lead": "Production is how Business Creation becomes real. We are not a web studio looking for unrelated brochure sites.",
     "note": "Part of the same company that will market and sell what we build — when you want that loop.",
@@ -222,7 +249,7 @@ export const copyAr: Copy = {
     "eyebrow": "Commercial model",
     "title": "Several ways to work together. Retainers are one of them.",
     "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
-    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,500–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/ شهرياً",
     "featured": "الأكثر طلباً",
     "retainerCta": "ابدأ الآن",
@@ -242,6 +269,21 @@ export const copyAr: Copy = {
         "name": "Scale",
         "price": "$3,500",
         "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، SHOWROOM AI / AI Sales Agent ودعم فني مخصص 24/7."
+      },
+      {
+        "name": "Digital Production",
+        "price": "Custom",
+        "body": "Sites, apps, platforms, cabinets, integrations. Scoped after we see the operating need."
+      },
+      {
+        "name": "Business Creation",
+        "price": "Custom",
+        "body": "Research through model, build, launch, and the commercial loop. Individual scope."
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "body": "Multi-brand, multi-market, or heavier production and department work under one agreement."
       }
     ],
     "footnote": "USD. Product list prices stay in the published bands on each product page. Department retainers are Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. We do not guarantee ROI, CAC, or ROAS."
@@ -516,8 +558,8 @@ export const copyAr: Copy = {
     ]
   },
   "ui": {
-    "cardOption": 'بطاقة بنكية (Visa/Mastercard) — قريبًا',
-    "cardsSoon": 'البطاقات — قريبًا'
+    "cardOption": "بطاقة بنكية (Visa/Mastercard) — قريبًا",
+    "cardsSoon": "البطاقات — قريبًا"
   },
   "pay": {
     "email": "البريد الإلكتروني",

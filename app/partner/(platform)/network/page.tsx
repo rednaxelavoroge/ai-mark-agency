@@ -3,89 +3,88 @@ import { CommissionScheduleCard } from "@/components/platform/CommissionSchedule
 import { DetailList, PageHeader, StatCard } from "@/components/platform/PageHeader";
 import { cardClass } from "@/components/ui/classes";
 import { getPartnerReferralStats, getSponsorEdge, requirePartner } from "@/lib/auth/dal";
+import { formatCabinetString } from "@/lib/partner/copy-format";
+import { loadPartnerCabinet } from "@/lib/partner/load-cabinet";
 import {
   NO_DATA,
   formatCount,
   formatDate,
-  partnerStatusLabel,
+  partnerStatusLabelFromCopy,
 } from "@/lib/partner/format";
 
-export const metadata: Metadata = { title: "Network" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadPartnerCabinet();
+  return { title: copy.pages.network.metadataTitle };
+}
 
 export default async function PartnerNetworkPage() {
   const { partner } = await requirePartner("/partner/network");
-  const [sponsor, stats] = await Promise.all([
+  const [{ copy }, sponsor, stats] = await Promise.all([
+    loadPartnerCabinet(),
     getSponsorEdge(partner.partner_id),
     getPartnerReferralStats(),
   ]);
+  const page = copy.pages.network;
+  const net = copy.network;
+
+  const statusDetail =
+    stats.partnerSignups === 0
+      ? net.statusNone
+      : stats.partnerSignups === null
+        ? net.statusUnreadable
+        : formatCabinetString(net.statusCount, {
+            count: formatCount(stats.partnerSignups) ?? String(stats.partnerSignups),
+          });
 
   return (
     <div className="grid gap-7">
-      <PageHeader
-        eyebrow="Partner Platform"
-        title="Network"
-        lead="Your sponsor, and how many partners signed up through your link. Names in the downline are not listed."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Referral clicks" value={formatCount(stats.clicks)} />
-        <StatCard label="Attributed leads" value={formatCount(stats.leads)} />
-        <StatCard
-          label="Partner registrations"
-          value={formatCount(stats.partnerSignups)}
-        />
+        <StatCard label={net.statClicks} value={formatCount(stats.clicks)} />
+        <StatCard label={net.statLeads} value={formatCount(stats.leads)} />
+        <StatCard label={net.statRegistrations} value={formatCount(stats.partnerSignups)} />
       </div>
 
       <CommissionScheduleCard />
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
-        <h2 className="text-sm font-semibold tracking-tight">Your sponsor</h2>
+        <h2 className="text-sm font-semibold tracking-tight">{net.sponsorTitle}</h2>
         {sponsor ? (
           <div className="mt-5">
             <DetailList
               items={[
                 {
-                  label: "Sponsor Partner ID",
+                  label: net.labelSponsorPartnerId,
                   value: sponsor.sponsor_partner_id,
                   mono: true,
                 },
                 {
-                  label: "Recorded",
+                  label: net.labelRecorded,
                   value: formatDate(sponsor.created_at),
                 },
                 {
-                  label: "Confirmed",
+                  label: net.labelConfirmed,
                   value: sponsor.confirmed_at
                     ? formatDate(sponsor.confirmed_at)
-                    : "Not confirmed",
+                    : net.notConfirmed,
                 },
                 {
-                  label: "Source",
+                  label: net.labelSource,
                   value: sponsor.attribution_source ?? NO_DATA,
                 },
               ]}
             />
           </div>
         ) : (
-          <p className="mt-4 text-sm leading-relaxed text-muted">
-            No sponsor recorded. A sponsor is set from a referral link at
-            signup. You cannot assign one from this account.
-          </p>
+          <p className="mt-4 text-sm leading-relaxed text-muted">{net.sponsorEmpty}</p>
         )}
       </section>
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
-        <h2 className="text-sm font-semibold tracking-tight">Your status</h2>
-        <p className="mt-3 text-sm">
-          {partnerStatusLabel(partner.status)}
-        </p>
-        <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted">
-          {stats.partnerSignups === 0
-            ? "No partners have signed up through your link yet."
-            : stats.partnerSignups === null
-              ? "Partner registrations could not be read."
-              : `${formatCount(stats.partnerSignups)} partner accounts were attributed to your link. The list of names is not shown.`}
-        </p>
+        <h2 className="text-sm font-semibold tracking-tight">{net.statusTitle}</h2>
+        <p className="mt-3 text-sm">{partnerStatusLabelFromCopy(partner.status, copy)}</p>
+        <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted">{statusDetail}</p>
       </section>
     </div>
   );

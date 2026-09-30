@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { getPublicChromeCopy } from "@/content/sections";
+import { formatCabinetString } from "@/lib/partner/copy-format";
 import type { Locale } from "@/lib/site";
 
 interface ConsultationModalProps {
@@ -18,7 +20,7 @@ export function ConsultationModal({
   productName,
   defaultScenario = "product",
 }: ConsultationModalProps) {
-  const isRu = locale === "ru";
+  const m = getPublicChromeCopy(locale).consultationModal;
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -69,11 +71,7 @@ export function ConsultationModal({
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
     } catch {
-      setErrorMessage(
-        isRu
-          ? "Ошибка отправки. Пожалуйста, проверьте данные или напишите на hello@ai-mark.agency"
-          : "Failed to send. Please check your info or contact hello@ai-mark.agency"
-      );
+      setErrorMessage(m.submitError);
     } finally {
       setSubmitting(false);
     }
@@ -94,7 +92,7 @@ export function ConsultationModal({
           type="button"
           onClick={onClose}
           className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-lg border border-line bg-ink-3 text-sm text-muted hover:text-paper transition-colors"
-          aria-label="Close"
+          aria-label={m.closeAria}
         >
           ✕
         </button>
@@ -105,19 +103,17 @@ export function ConsultationModal({
               ✓
             </div>
             <h3 className="mt-4 font-display text-lg font-semibold text-paper">
-              {isRu ? "Заявка успешно отправлена" : "Request Received Successfully"}
+              {m.successTitle}
             </h3>
             <p className="mt-2 text-xs text-muted leading-relaxed max-w-sm mx-auto">
-              {isRu
-                ? `Спасибо! Наша команда свяжется с вами в течение 15–30 минут для согласования подключения ${productName}.`
-                : `Thank you! Our engineering team will reach out within 15–30 minutes to coordinate deployment for ${productName}.`}
+              {formatCabinetString(m.successBody, { productName })}
             </p>
             <button
               type="button"
               onClick={onClose}
               className="mt-6 inline-flex rounded-full bg-mark px-6 py-2.5 text-xs font-semibold text-mark-ink"
             >
-              {isRu ? "Закрыть" : "Close"}
+              {m.close}
             </button>
           </div>
         ) : (
@@ -126,35 +122,31 @@ export function ConsultationModal({
               AI MARK // {productName}
             </span>
             <h3 className="mt-1 font-display text-xl font-semibold text-paper">
-              {isRu ? "Запрос на подключение" : "Deployment Request"}
+              {m.requestTitle}
             </h3>
-            <p className="mt-1 text-xs text-muted">
-              {isRu
-                ? "Заполните короткую форму для расчёта конфигурации и демонстрации."
-                : "Fill out the brief form below to schedule a direct product walkthrough."}
-            </p>
+            <p className="mt-1 text-xs text-muted">{m.requestLead}</p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3.5">
               <div className="grid gap-3 sm:grid-cols-2">
                 <label className="block text-xs font-medium text-paper/85">
-                  {isRu ? "Ваше имя *" : "Your Name *"}
+                  {m.nameLabel}
                   <input
                     required
                     maxLength={100}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder={isRu ? "Алексей" : "Alex"}
+                    placeholder={m.namePlaceholder}
                     className={`${fieldCls} mt-1`}
                   />
                 </label>
                 <label className="block text-xs font-medium text-paper/85">
-                  {isRu ? "Компания / Бренд *" : "Company / Brand *"}
+                  {m.companyLabel}
                   <input
                     required
                     maxLength={120}
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    placeholder={isRu ? "ООО или Название проекта" : "Company or project name"}
+                    placeholder={m.companyPlaceholder}
                     className={`${fieldCls} mt-1`}
                   />
                 </label>
@@ -180,23 +172,19 @@ export function ConsultationModal({
                     maxLength={100}
                     value={form.messenger}
                     onChange={(e) => setForm({ ...form, messenger: e.target.value })}
-                    placeholder="@username или телефон"
+                    placeholder={m.messengerPlaceholder}
                     className={`${fieldCls} mt-1`}
                   />
                 </label>
               </div>
 
               <label className="block text-xs font-medium text-paper/85">
-                {isRu ? "Задачи, объём или комментарий" : "Goals, scope or comments"}
+                {m.goalsLabel}
                 <textarea
                   rows={3}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder={
-                    isRu
-                      ? "Опишите специфику ниши, текущий объём обращений или контента..."
-                      : "Briefly specify your niche, current inquiry or content volume..."
-                  }
+                  placeholder={m.goalsPlaceholder}
                   className={`${fieldCls} mt-1 resize-none`}
                 />
               </label>
@@ -208,21 +196,13 @@ export function ConsultationModal({
               )}
 
               <div className="pt-2 flex items-center justify-between gap-3">
-                <p className="text-[10px] text-muted">
-                  {isRu ? "Конфиденциально · Без спама" : "Strict NDA · Zero spam"}
-                </p>
+                <p className="text-[10px] text-muted">{m.privacyNote}</p>
                 <button
                   type="submit"
                   disabled={submitting}
                   className="rounded-full bg-mark px-6 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all disabled:opacity-50"
                 >
-                  {submitting
-                    ? isRu
-                      ? "Отправка..."
-                      : "Sending..."
-                    : isRu
-                    ? "Отправить заявку"
-                    : "Submit Request"}
+                  {submitting ? m.sending : m.submit}
                 </button>
               </div>
             </form>
