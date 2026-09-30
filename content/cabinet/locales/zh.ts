@@ -143,7 +143,7 @@ export const cabinetZh: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "欢迎，{name}",
     "welcomeLeadBefore": "您的合作伙伴 ID 是",
     "welcomeLeadAfter": "您的推荐链接已上线。销售、佣金和付款按记录时显示在此处。",
     "performanceTitle": "表现",
@@ -153,7 +153,7 @@ export const cabinetZh: CabinetCopy = {
     "statReadyToPay": "准备付款",
     "statPaid": "有薪酬的",
     "noCommissionsYet": "还没有佣金。",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}：佣金 {commission}，待支付 {payable}，已支付 {paid}",
     "identityTitle": "合作伙伴身份",
     "identityLead": "由AI MARK发行。合作伙伴 ID、推荐代码和状态在您的帐户中是不可更改的。",
     "labelPartnerId": "合作伙伴ID",
@@ -163,7 +163,7 @@ export const cabinetZh: CabinetCopy = {
     "labelJoined": "已加入",
     "labelLanguage": "语言",
     "sponsorTitle": "赞助",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "已于 {date} 确认。",
     "sponsorRecordedUnconfirmed": "已记录，尚未通过合格销售确认。",
     "sponsorFromReferralLink": "从注册时的推荐链接记录。",
     "sponsorEmpty": "没有赞助商记录。赞助商关系由 AI MARK 在注册时通过推荐链接设置，而不是由合作伙伴设置，并且一旦确认就不可更改。",
@@ -181,8 +181,8 @@ export const cabinetZh: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "启动期间状态",
     "launchEndedTitle": "启动期结束",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "启动期持续到 {date}，即自合作伙伴账户创建起 90 天。费率不变，网络奖金池仍为 80%。",
+    "launchEndedBody": "90 天启动期已于 {date} 结束。符合条件的付款适用相同费率，网络奖金池仍为 80%。"
   },
   "referralPanel": {
     "title": "推荐计划",
@@ -202,7 +202,7 @@ export const cabinetZh: CabinetCopy = {
       },
       "2": {
         "title": "第一网络",
-        "body": "Paid customer sales from your first-level partners."
+        "body": "您的一级合作伙伴带来的付费客户销售。"
       },
       "3": {
         "title": "扩展网络",
@@ -291,7 +291,7 @@ export const cabinetZh: CabinetCopy = {
     "statusTitle": "你的状态",
     "statusNone": "尚未有合作伙伴通过您的链接注册。",
     "statusUnreadable": "无法读取合作伙伴注册信息。",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "有 {count} 个合作伙伴账户归属于您的链接。名单不予显示。"
   },
   "payouts": {
     "destinationTitle": "付款发送地点",

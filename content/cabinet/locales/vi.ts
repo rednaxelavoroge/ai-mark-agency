@@ -39,7 +39,7 @@ export const cabinetVi: CabinetCopy = {
       "metadataTitle": "Tạo tài khoản đối tác",
       "eyebrow": "Partner Platform",
       "title": "Tạo tài khoản đối tác",
-      "lead": "One account gives you your Partner ID, a referral code and the partner dashboard.",
+      "lead": "Một tài khoản cho bạn Partner ID, mã giới thiệu và bảng điều khiển đối tác.",
       "footerBefore": "Các quy tắc của chương trình sẽ được xác nhận với bạn trong quá trình giới thiệu, trước khi bạn bán. Đọc",
       "privacyLink": "thông báo về quyền riêng tư",
       "footerAfter": ".",
@@ -143,7 +143,7 @@ export const cabinetVi: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "Chào mừng, {name}",
     "welcomeLeadBefore": "ID đối tác của bạn là",
     "welcomeLeadAfter": "Liên kết giới thiệu của bạn đang hoạt động. Doanh số bán hàng, hoa hồng và các khoản thanh toán xuất hiện ở đây khi chúng được ghi lại.",
     "performanceTitle": "Hiệu suất",
@@ -153,7 +153,7 @@ export const cabinetVi: CabinetCopy = {
     "statReadyToPay": "Sẵn sàng trả tiền",
     "statPaid": "Trả",
     "noCommissionsYet": "Chưa có hoa hồng.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: hoa hồng {commission}, chờ trả {payable}, đã trả {paid}",
     "identityTitle": "Danh tính đối tác",
     "identityLead": "Được phát hành bởi AI MARK. ID đối tác, mã giới thiệu và trạng thái là bất biến đối với tài khoản của bạn.",
     "labelPartnerId": "ID đối tác",
@@ -163,7 +163,7 @@ export const cabinetVi: CabinetCopy = {
     "labelJoined": "Đã tham gia",
     "labelLanguage": "Ngôn ngữ",
     "sponsorTitle": "Nhà tài trợ",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "Đã xác nhận ngày {date}.",
     "sponsorRecordedUnconfirmed": "Đã ghi lại, chưa được xác nhận bởi một đợt bán hàng đủ điều kiện.",
     "sponsorFromReferralLink": "Được ghi lại từ một liên kết giới thiệu khi đăng ký.",
     "sponsorEmpty": "Không có nhà tài trợ được ghi lại. Mối quan hệ tài trợ được AI MARK thiết lập từ liên kết giới thiệu khi đăng ký, không bao giờ do đối tác thực hiện và không thể thay đổi sau khi được xác nhận.",
@@ -181,8 +181,8 @@ export const cabinetVi: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Trạng thái thời gian ra mắt",
     "launchEndedTitle": "Thời gian ra mắt đã kết thúc",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "Giai đoạn ra mắt kéo dài đến {date}, tức 90 ngày kể từ khi tạo tài khoản đối tác. Tỷ lệ giữ nguyên và quỹ mạng lưới vẫn là 80%.",
+    "launchEndedBody": "Giai đoạn ra mắt 90 ngày đã kết thúc ngày {date}. Các khoản thanh toán đủ điều kiện dùng cùng tỷ lệ và quỹ mạng lưới vẫn là 80%."
   },
   "referralPanel": {
     "title": "Chương trình giới thiệu",
@@ -245,7 +245,7 @@ export const cabinetVi: CabinetCopy = {
     "sales": {
       "empty": "Chưa có doanh số bán hàng. Một hàng xuất hiện sau khi AI MARK ghi lại khoản thanh toán mà khách hàng thực sự đã thực hiện. Danh sách trống là danh sách trống — đó không phải là ước tính doanh thu bằng 0.",
       "columns": [
-        "Product",
+        "Sản phẩm",
         "Số lượng",
         "Trạng thái",
         "Trả",
@@ -291,7 +291,7 @@ export const cabinetVi: CabinetCopy = {
     "statusTitle": "Trạng thái của bạn",
     "statusNone": "Chưa có đối tác nào đăng ký thông qua liên kết của bạn.",
     "statusUnreadable": "Đăng ký đối tác không thể đọc được.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "{count} tài khoản đối tác được ghi nhận qua liên kết của bạn. Danh sách tên không được hiển thị."
   },
   "payouts": {
     "destinationTitle": "Nơi gửi khoản thanh toán",

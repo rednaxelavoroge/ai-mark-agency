@@ -59,17 +59,17 @@ export const cabinetRu: CabinetCopy = {
     "signedOutNotice": "Вы вышли из аккаунта.",
     "genericSignInError": "Не удалось завершить вход. Попробуйте снова.",
     "form": {
-      "email": "Email",
+      "email": "Эл. почта",
       "password": "Пароль",
       "emailPlaceholder": "you@company.com",
       "passwordPlaceholder": "••••••••",
-      "passwordNewPlaceholder": "At least 8 characters",
+      "passwordNewPlaceholder": "Не меньше 8 символов",
       "fullName": "Имя",
       "fullNamePlaceholder": "Alex Morgan",
       "signIn": "Войти",
       "signInPending": "Вход…",
-      "signUp": "Sign in",
-      "signUpPending": "Signing in…",
+      "signUp": "Войти",
+      "signUpPending": "Входим…",
       "createAccount": "Создать аккаунт партнёра",
       "createAccountPending": "Создание…",
       "orDivider": "or",
@@ -89,47 +89,47 @@ export const cabinetRu: CabinetCopy = {
   },
   "pages": {
     "dashboard": {
-      "metadataTitle": "Dashboard",
+      "metadataTitle": "Главная",
       "eyebrow": "Partner Platform"
     },
     "customers": {
-      "metadataTitle": "Customers",
+      "metadataTitle": "Клиенты",
       "eyebrow": "Partner Platform",
       "title": "Клиенты",
       "lead": "Люди, отправившие форму на сайте, пока действовала ваша referral-ссылка. Чат, Telegram, WhatsApp и email сюда не попадают. Лид — не продажа и не комиссия."
     },
     "sales": {
-      "metadataTitle": "Sales",
+      "metadataTitle": "Продажи",
       "eyebrow": "Partner Platform",
       "title": "Продажи",
       "lead": "Оплаченные заказы с вашим referral-кодом или Partner ID. Клики и лиды — не продажи. Суммы — как записаны в продаже."
     },
     "network": {
-      "metadataTitle": "Network",
+      "metadataTitle": "Сеть",
       "eyebrow": "Partner Platform",
       "title": "Сеть",
       "lead": "Ваш спонсор и сколько партнёров зарегистрировалось по вашей ссылке. Имена в даунлайне не показываются."
     },
     "commissions": {
-      "metadataTitle": "Commissions",
+      "metadataTitle": "Комиссии",
       "eyebrow": "Partner Platform",
       "title": "Комиссии",
       "lead": "Комиссии по каждой квалифицированной продаже. Сетка: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, пул сети 80%."
     },
     "payouts": {
-      "metadataTitle": "Payouts",
+      "metadataTitle": "Выплаты",
       "eyebrow": "Partner Platform",
       "title": "Выплаты",
       "lead": "Записанные выплаты и USDC-адрес в профиле. AI MARK отправляет выплату на этот адрес."
     },
     "profile": {
-      "metadataTitle": "Profile",
+      "metadataTitle": "Профиль",
       "eyebrow": "Partner Platform",
       "title": "Профиль",
       "lead": "Поля аккаунта и партнёрской записи — только чтение. Менять можно только реквизиты выплат."
     },
     "resources": {
-      "metadataTitle": "Resources",
+      "metadataTitle": "Материалы",
       "eyebrow": "Partner Platform"
     },
     "noAccess": {
@@ -138,13 +138,13 @@ export const cabinetRu: CabinetCopy = {
       "title": "Нет доступа партнёра для этого аккаунта",
       "lead": "Вы вошли, но к аккаунту не привязана партнёрская запись.",
       "footer": "Ошибка? Ответьте на любое письмо AI MARK — привяжем запись партнёра.",
-      "signedInBefore": "Signed in as",
+      "signedInBefore": "Вы вошли как",
       "signedInAfter": "Записи партнёра выдаёт AI MARK; владелец аккаунта не создаёт их сам."
     }
   },
   "dashboard": {
     "welcomeTitle": "Добро пожаловать, {name}",
-    "welcomeLeadBefore": "Your Partner ID is",
+    "welcomeLeadBefore": "Ваш Partner ID:",
     "welcomeLeadAfter": "Referral-ссылка активна. Продажи, комиссии и выплаты появляются здесь по мере записи.",
     "performanceTitle": "Показатели",
     "performanceLead": "Квалифицированные продажи и комиссия — после оплаты клиентом. Прочерк — данных пока нет.",
@@ -153,7 +153,7 @@ export const cabinetRu: CabinetCopy = {
     "statReadyToPay": "К выплате",
     "statPaid": "Выплачено",
     "noCommissionsYet": "Комиссий пока нет.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: комиссия {commission}, к выплате {payable}, выплачено {paid}",
     "identityTitle": "Идентичность партнёра",
     "identityLead": "Выдано AI MARK. Partner ID, referral-код и статус из аккаунта не меняются.",
     "labelPartnerId": "Partner ID",
@@ -163,7 +163,7 @@ export const cabinetRu: CabinetCopy = {
     "labelJoined": "Подключён",
     "labelLanguage": "Язык",
     "sponsorTitle": "Спонсор",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "Подтверждено {date}.",
     "sponsorRecordedUnconfirmed": "Записан, ещё не подтверждён квалифицированной продажей.",
     "sponsorFromReferralLink": " Записан по referral-ссылке при регистрации.",
     "sponsorEmpty": "Спонсор не записан. Связь задаёт AI MARK по referral-ссылке при регистрации, не партнёр; после подтверждения не меняется.",
@@ -193,7 +193,7 @@ export const cabinetRu: CabinetCopy = {
     "footnote": "Клики, лиды и регистрации партнёров. Комиссии и выплаты — на страницах «Комиссии» и «Выплаты»."
   },
   "commissionSchedule": {
-    "title": "Partner Commission Model",
+    "title": "Модель партнёрских комиссий",
     "lead": "50% за прямую продажу. До 80% суммарно партнёрам по сети. 80% — агрегированный пул L1–L5, не выплата одному партнёру. Доля AI Mark — 20% от commissionable amount. Цифры в ledger — сохранённые значения; карточка не пересчитывает ваш доход.",
     "levels": {
       "1": {
@@ -217,15 +217,15 @@ export const cabinetRu: CabinetCopy = {
         "body": "Самый глубокий уровень стандартной сетки."
       }
     },
-    "exampleHeading": "$1,000 commissionable sale · full network",
+    "exampleHeading": "Продажа на $1 000 с комиссией · вся сеть",
     "exampleRows": {
       "l1": "L1",
       "l2": "L2",
       "l3": "L3",
       "l4": "L4",
       "l5": "L5",
-      "totalPool": "Total network pool",
-      "retainedShare": "AI Mark retained share"
+      "totalPool": "Общий пул сети",
+      "retainedShare": "Доля AI Mark"
     },
     "exampleFootnote": "Прямой партнёр получает $500, не $800. Total network pool 80%."
   },
@@ -236,7 +236,7 @@ export const cabinetRu: CabinetCopy = {
       "columns": [
         "Имя",
         "Компания",
-        "Email",
+        "Эл. почта",
         "Сценарий",
         "Страница",
         "Когда"
@@ -278,8 +278,8 @@ export const cabinetRu: CabinetCopy = {
     }
   },
   "network": {
-    "statClicks": "Referral clicks",
-    "statLeads": "Attributed leads",
+    "statClicks": "Переходы по ссылке",
+    "statLeads": "Привлечённые лиды",
     "statRegistrations": "Регистрации партнёров",
     "sponsorTitle": "Ваш спонсор",
     "labelSponsorPartnerId": "Partner ID спонсора",
@@ -306,9 +306,9 @@ export const cabinetRu: CabinetCopy = {
       "4. AI MARK записывает выплату и отправляет USDC на ваш адрес.",
       "5. Возврат или отмена корректируют задолженность."
     ],
-    "statReady": "Ready to pay",
-    "statPaid": "Paid",
-    "tableEmpty": "No payouts yet. AI MARK records a payout when commission is ready to pay.",
+    "statReady": "Готово к выплате",
+    "statPaid": "Выплачено",
+    "tableEmpty": "Выплат пока нет. AI MARK записывает выплату, когда комиссия готова к выплате.",
     "request": {
       "sectionTitle": "Запросить выплату",
       "minimumNote": "Минимальная сумма к выплате: USD {min}.00",
@@ -324,16 +324,16 @@ export const cabinetRu: CabinetCopy = {
     "savedNotice": "Реквизиты выплат сохранены.",
     "accountTitle": "Аккаунт",
     "labelFullName": "Имя",
-    "labelEmail": "Email",
+    "labelEmail": "Эл. почта",
     "labelPhone": "Телефон",
-    "labelLanguage": "Language",
-    "labelCountry": "Country",
+    "labelLanguage": "Язык",
+    "labelCountry": "Страна",
     "labelRegion": "Регион",
     "labelAvatarUrl": "URL аватара",
     "labelAccountCreated": "Аккаунт создан",
     "partnerRecordTitle": "Партнёрская запись",
     "partnerRecordLead": "Принадлежит платформе. Из сессии партнёра не меняется.",
-    "labelStatus": "Status",
+    "labelStatus": "Статус",
     "labelPartnerSince": "Партнёр с",
     "payoutTitle": "Реквизиты выплат",
     "payoutLead": "Выплаты партнёрам — USDC. Сеть по умолчанию — Solana. Форма сохраняет адрес в профиле. Токены не отправляет.",
@@ -365,11 +365,11 @@ export const cabinetRu: CabinetCopy = {
     "copied": "Скопировано"
   },
   "partnerStatus": {
-    "partner": "Partner",
-    "growth": "Growth",
-    "regional": "Regional",
-    "strategic": "Strategic",
-    "suspended": "Suspended"
+    "partner": "Партнёр",
+    "growth": "Рост",
+    "regional": "Региональный",
+    "strategic": "Стратегический",
+    "suspended": "Приостановлен"
   },
   "defaultPartnerName": "Партнёр"
 } as CabinetCopy;

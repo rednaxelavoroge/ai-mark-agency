@@ -143,7 +143,7 @@ export const cabinetPt: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "Bem-vindo, {name}",
     "welcomeLeadBefore": "Seu ID de parceiro é",
     "welcomeLeadAfter": "Seu link de indicação está ativo. Vendas, comissões e pagamentos aparecem aqui à medida que são registrados.",
     "performanceTitle": "Desempenho",
@@ -153,7 +153,7 @@ export const cabinetPt: CabinetCopy = {
     "statReadyToPay": "Pronto para pagar",
     "statPaid": "Pago",
     "noCommissionsYet": "Ainda não há comissões.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: comissão {commission}, a pagar {payable}, pago {paid}",
     "identityTitle": "Identidade do parceiro",
     "identityLead": "Emitido por AI MARK. O ID do parceiro, o código de referência e o status são imutáveis ​​na sua conta.",
     "labelPartnerId": "ID do parceiro",
@@ -163,7 +163,7 @@ export const cabinetPt: CabinetCopy = {
     "labelJoined": "Ingressou",
     "labelLanguage": "Linguagem",
     "sponsorTitle": "Patrocinador",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "Confirmado em {date}.",
     "sponsorRecordedUnconfirmed": "Gravado, ainda não confirmado por uma venda qualificada.",
     "sponsorFromReferralLink": "Gravado a partir de um link de referência na inscrição.",
     "sponsorEmpty": "Nenhum patrocinador registrado. Os relacionamentos com patrocinadores são definidos pela AI MARK a partir de um link de referência no momento da inscrição, nunca pelo parceiro, e são imutáveis ​​uma vez confirmados.",
@@ -181,8 +181,8 @@ export const cabinetPt: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Status do período de lançamento",
     "launchEndedTitle": "Período de lançamento encerrado",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "O período de lançamento vai até {date}: 90 dias a partir da criação da conta de parceiro. As taxas não mudam e o fundo da rede continua em 80%.",
+    "launchEndedBody": "O período de lançamento de 90 dias terminou em {date}. Pagamentos elegíveis usam as mesmas taxas e o fundo da rede continua em 80%."
   },
   "referralPanel": {
     "title": "Programa de referência",
@@ -262,7 +262,7 @@ export const cabinetPt: CabinetCopy = {
         "Nível",
         "Quantia",
         "Avaliar",
-        "Base",
+        "Base de cálculo",
         "Postado"
       ]
     },
@@ -291,7 +291,7 @@ export const cabinetPt: CabinetCopy = {
     "statusTitle": "Seu status",
     "statusNone": "Nenhum parceiro se inscreveu através do seu link ainda.",
     "statusUnreadable": "Não foi possível ler os registros de parceiros.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "{count} contas de parceiro foram atribuídas ao seu link. A lista de nomes não é exibida."
   },
   "payouts": {
     "destinationTitle": "Para onde um pagamento é enviado",

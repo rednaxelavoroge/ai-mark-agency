@@ -143,7 +143,7 @@ export const cabinetTr: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "Hoş geldiniz, {name}",
     "welcomeLeadBefore": "İş Ortağı Kimliğiniz:",
     "welcomeLeadAfter": "Yönlendirme bağlantınız yayında. Satışlar, komisyonlar ve ödemeler kaydedildikçe burada görünür.",
     "performanceTitle": "Performans",
@@ -153,7 +153,7 @@ export const cabinetTr: CabinetCopy = {
     "statReadyToPay": "Ödemeye hazır",
     "statPaid": "Paralı",
     "noCommissionsYet": "Henüz komisyon yok.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency}: komisyon {commission}, ödenecek {payable}, ödendi {paid}",
     "identityTitle": "İş ortağı kimliği",
     "identityLead": "AI MARK tarafından verilmiştir. İş ortağı kimliği, yönlendirme kodu ve durum hesabınızda değiştirilemez.",
     "labelPartnerId": "İş Ortağı Kimliği",
@@ -163,7 +163,7 @@ export const cabinetTr: CabinetCopy = {
     "labelJoined": "Katıldı",
     "labelLanguage": "Dil",
     "sponsorTitle": "Sponsor",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "{date} tarihinde onaylandı.",
     "sponsorRecordedUnconfirmed": "Kaydedildi, henüz uygun bir satışla onaylanmadı.",
     "sponsorFromReferralLink": "Kayıt sırasında bir yönlendirme bağlantısından kaydedildi.",
     "sponsorEmpty": "Sponsor kaydedilmedi. Sponsor ilişkileri, asla iş ortağı tarafından değil, kayıt sırasında bir yönlendirme bağlantısından AI MARK tarafından belirlenir ve onaylandıktan sonra değiştirilemez.",
@@ -181,8 +181,8 @@ export const cabinetTr: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Lansman dönemi durumu",
     "launchEndedTitle": "Lansman dönemi sona erdi",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "Lansman dönemi {date} tarihine kadar sürer: ortak hesabının açılmasından itibaren 90 gün. Oranlar aynı kalır ve ağ havuzu %80 olarak kalır.",
+    "launchEndedBody": "90 günlük lansman dönemi {date} tarihinde sona erdi. Uygun ödemeler aynı oranları kullanır ve ağ havuzu %80 olarak kalır."
   },
   "referralPanel": {
     "title": "Tavsiye programı",
@@ -291,7 +291,7 @@ export const cabinetTr: CabinetCopy = {
     "statusTitle": "Durumunuz",
     "statusNone": "Henüz hiçbir ortak bağlantınız aracılığıyla kaydolmadı.",
     "statusUnreadable": "İş ortağı kayıtları okunamadı.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "Bağlantınıza {count} ortak hesabı atfedildi. İsim listesi gösterilmez."
   },
   "payouts": {
     "destinationTitle": "Ödeme nereye gönderilir?",

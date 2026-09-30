@@ -143,7 +143,7 @@ export const cabinetFr: CabinetCopy = {
     }
   },
   "dashboard": {
-    "welcomeTitle": "Welcome, {name}",
+    "welcomeTitle": "Bienvenue, {name}",
     "welcomeLeadBefore": "Votre identifiant de partenaire est",
     "welcomeLeadAfter": "Votre lien de parrainage est en ligne. Les ventes, les commissions et les paiements apparaissent ici au fur et à mesure de leur enregistrement.",
     "performanceTitle": "Performance",
@@ -153,7 +153,7 @@ export const cabinetFr: CabinetCopy = {
     "statReadyToPay": "Prêt à payer",
     "statPaid": "Payé",
     "noCommissionsYet": "Pas de commissions pour l'instant.",
-    "currencyBreakdown": "{currency}: commission {commission}, payable {payable}, paid {paid}",
+    "currencyBreakdown": "{currency} : commission {commission}, à payer {payable}, payé {paid}",
     "identityTitle": "Identité du partenaire",
     "identityLead": "Publié par AI MARK. L'ID de partenaire, le code de parrainage et le statut sont immuables depuis votre compte.",
     "labelPartnerId": "Identifiant du partenaire",
@@ -163,7 +163,7 @@ export const cabinetFr: CabinetCopy = {
     "labelJoined": "Rejoint",
     "labelLanguage": "Langue",
     "sponsorTitle": "Parrainer",
-    "sponsorConfirmed": "Confirmed {date}.",
+    "sponsorConfirmed": "Confirmé le {date}.",
     "sponsorRecordedUnconfirmed": "Enregistré, non encore confirmé par une vente admissible.",
     "sponsorFromReferralLink": "Enregistré à partir d'un lien de parrainage lors de l'inscription.",
     "sponsorEmpty": "Aucun sponsor enregistré. Les relations avec le sponsor sont définies par AI MARK à partir d'un lien de parrainage lors de l'inscription, jamais par le partenaire, et sont immuables une fois confirmées.",
@@ -181,8 +181,8 @@ export const cabinetFr: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Statut de la période de lancement",
     "launchEndedTitle": "Période de lancement terminée",
-    "launchActiveBody": "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
-    "launchEndedBody": "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%."
+    "launchActiveBody": "La période de lancement dure jusqu’au {date} : 90 jours à partir de la création du compte partenaire. Les taux restent les mêmes et le pool réseau reste à 80 %.",
+    "launchEndedBody": "La période de lancement de 90 jours s’est terminée le {date}. Les paiements éligibles utilisent les mêmes taux et le pool réseau reste à 80 %."
   },
   "referralPanel": {
     "title": "Programme de parrainage",
@@ -238,7 +238,7 @@ export const cabinetFr: CabinetCopy = {
         "Entreprise",
         "E-mail",
         "Scénario",
-        "Page",
+        "Page d’origine",
         "Quand"
       ]
     },
@@ -262,7 +262,7 @@ export const cabinetFr: CabinetCopy = {
         "Niveau",
         "Montant",
         "Taux",
-        "Base",
+        "Assiette",
         "Publié"
       ]
     },
@@ -291,7 +291,7 @@ export const cabinetFr: CabinetCopy = {
     "statusTitle": "Votre statut",
     "statusNone": "Aucun partenaire ne s'est encore inscrit via votre lien.",
     "statusUnreadable": "Les inscriptions des partenaires n'ont pas pu être lues.",
-    "statusCount": "{count} partner accounts were attributed to your link. The list of names is not shown."
+    "statusCount": "{count} comptes partenaires ont été attribués à votre lien. La liste des noms n’est pas affichée."
   },
   "payouts": {
     "destinationTitle": "Où un paiement est envoyé",

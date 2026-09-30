@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import type { Locale } from "@/lib/site";
+import { CabinetLanguageSelect } from "./CabinetLanguageSelect";
 import { signOut } from "@/app/auth/actions";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -32,6 +34,8 @@ export function PlatformShell({
   badge,
   userEmail,
   shell = DEFAULT_SHELL,
+  locale,
+  languageLabel = "Language",
   children,
 }: {
   nav: PlatformNavItem[];
@@ -40,6 +44,9 @@ export function PlatformShell({
   badge: string;
   userEmail: string | null;
   shell?: PlatformShellCopy;
+  /** When set, the cabinet shows a language selector. */
+  locale?: Locale;
+  languageLabel?: string;
   children: ReactNode;
 }) {
   const labels = { ...DEFAULT_SHELL, ...shell, navLabel: navLabel || shell.navLabel };
@@ -58,6 +65,7 @@ export function PlatformShell({
             </Link>
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            {locale ? <CabinetLanguageSelect locale={locale} label={languageLabel} /> : null}
             <ThemeToggle
               lightLabel={labels.themeLight}
               darkLabel={labels.themeDark}
@@ -91,6 +99,11 @@ export function PlatformShell({
             <p className="mt-1.5 truncate text-xs text-paper" title={userEmail ?? undefined}>
               {userEmail ?? "—"}
             </p>
+            {locale ? (
+              <div className="mt-3">
+                <CabinetLanguageSelect locale={locale} label={languageLabel} />
+              </div>
+            ) : null}
             <form action={signOut} className="mt-3">
               <button type="submit" className={secondaryButtonClass}>
                 {labels.signOut}

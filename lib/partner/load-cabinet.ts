@@ -1,8 +1,8 @@
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { cache } from "react";
 import { getCabinetCopy, type CabinetCopy } from "@/content/cabinet";
 import { getAuthContext, getOwnProfile } from "@/lib/auth/dal";
-import { LOCALE_COOKIE } from "@/lib/locale-negotiate";
+import { LOCALE_COOKIE, LOCALE_SOURCE_COOKIE } from "@/lib/locale-negotiate";
 import type { PlatformNavItem } from "@/components/platform/PlatformNav";
 import type { Locale } from "@/lib/site";
 import { resolveCabinetLocale } from "@/lib/partner/resolve-cabinet-locale";
@@ -16,17 +16,21 @@ export type PartnerCabinetContext = {
 export const loadPartnerCabinet = cache(async (): Promise<PartnerCabinetContext> => {
   const cookieStore = await cookies();
   const localeCookie = cookieStore.get(LOCALE_COOKIE)?.value ?? null;
+  const localeSource = cookieStore.get(LOCALE_SOURCE_COOKIE)?.value ?? null;
+  const acceptLanguage = (await headers()).get("accept-language");
   const auth = await getAuthContext();
   const profile = auth ? await getOwnProfile(auth.userId) : null;
-  const locale = resolveCabinetLocale(profile?.language, localeCookie);
+  const locale = resolveCabinetLocale(profile?.language, localeCookie, localeSource, acceptLanguage);
   return { locale, copy: getCabinetCopy(locale) };
 });
 
-/** Auth routes have no profile yet — cookie (then English) only. */
+/** Auth routes have no profile yet — cookie, then browser language, then English. */
 export const loadAuthCabinet = cache(async (): Promise<PartnerCabinetContext> => {
   const cookieStore = await cookies();
   const localeCookie = cookieStore.get(LOCALE_COOKIE)?.value ?? null;
-  const locale = resolveCabinetLocale(undefined, localeCookie);
+  const localeSource = cookieStore.get(LOCALE_SOURCE_COOKIE)?.value ?? null;
+  const acceptLanguage = (await headers()).get("accept-language");
+  const locale = resolveCabinetLocale(undefined, localeCookie, localeSource, acceptLanguage);
   return { locale, copy: getCabinetCopy(locale) };
 });
 
