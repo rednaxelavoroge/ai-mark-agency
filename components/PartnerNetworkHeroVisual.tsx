@@ -16,37 +16,207 @@ import type { Locale } from "@/lib/site";
 
 type Props = { locale: Locale };
 
+type HeroLabels = {
+  core: string;
+  partner: string;
+  business: string;
+  market: string;
+  sale: string;
+  localSales: string;
+  marketGrowth: string;
+  realCustomer: string;
+  newMarket: string;
+  customerRevenue: string;
+  depth: string;
+  global: string;
+  tagline: string;
+};
+
+const LABELS: Record<Locale, HeroLabels> = {
+  en: {
+    core: "AI MARK CORE",
+    partner: "PARTNER",
+    business: "BUSINESS",
+    market: "MARKET",
+    sale: "SALE",
+    localSales: "Local sales",
+    marketGrowth: "Market growth",
+    realCustomer: "Real customer",
+    newMarket: "New market",
+    customerRevenue: "Customer revenue",
+    depth: "5-LEVEL NETWORK",
+    global: "GLOBAL / AI-NATIVE",
+    tagline: "Products · AI · Delivery",
+  },
+  ru: {
+    core: "AI MARK CORE",
+    partner: "ПАРТНЁР",
+    business: "БИЗНЕС",
+    market: "РЫНОК",
+    sale: "ПРОДАЖА",
+    localSales: "Локальные продажи",
+    marketGrowth: "Развитие рынка",
+    realCustomer: "Реальный клиент",
+    newMarket: "Новый рынок",
+    customerRevenue: "Выручка клиента",
+    depth: "СЕТЬ 5 УРОВНЕЙ",
+    global: "ГЛОБАЛЬНО / AI-NATIVE",
+    tagline: "Продукты · AI · Поставка",
+  },
+  es: {
+    core: "AI MARK CORE",
+    partner: "PARTNER",
+    business: "EMPRESA",
+    market: "MERCADO",
+    sale: "VENTA",
+    localSales: "Ventas locales",
+    marketGrowth: "Crecimiento de mercado",
+    realCustomer: "Cliente real",
+    newMarket: "Nuevo mercado",
+    customerRevenue: "Ingresos de clientes",
+    depth: "RED DE 5 NIVELES",
+    global: "GLOBAL / AI-NATIVE",
+    tagline: "Productos · IA · Entrega",
+  },
+  pt: {
+    core: "AI MARK CORE",
+    partner: "PARCEIRO",
+    business: "EMPRESA",
+    market: "MERCADO",
+    sale: "VENDA",
+    localSales: "Vendas locais",
+    marketGrowth: "Crescimento de mercado",
+    realCustomer: "Cliente real",
+    newMarket: "Novo mercado",
+    customerRevenue: "Receita de clientes",
+    depth: "REDE DE 5 NÍVEIS",
+    global: "GLOBAL / AI-NATIVE",
+    tagline: "Produtos · IA · Entrega",
+  },
+  de: {
+    core: "AI MARK CORE",
+    partner: "PARTNER",
+    business: "UNTERNEHMEN",
+    market: "MARKT",
+    sale: "VERKAUF",
+    localSales: "Lokale Verkäufe",
+    marketGrowth: "Marktwachstum",
+    realCustomer: "Echter Kunde",
+    newMarket: "Neuer Markt",
+    customerRevenue: "Kundenumsatz",
+    depth: "5-STUFEN-NETZWERK",
+    global: "GLOBAL / AI-NATIVE",
+    tagline: "Produkte · KI · Bereitstellung",
+  },
+  fr: {
+    core: "AI MARK CORE",
+    partner: "PARTENAIRE",
+    business: "ENTREPRISE",
+    market: "MARCHÉ",
+    sale: "VENTE",
+    localSales: "Ventes locales",
+    marketGrowth: "Croissance du marché",
+    realCustomer: "Vrai client",
+    newMarket: "Nouveau marché",
+    customerRevenue: "Revenus clients",
+    depth: "RÉSEAU À 5 NIVEAUX",
+    global: "MONDIAL / AI-NATIVE",
+    tagline: "Produits · IA · Livraison",
+  },
+  zh: {
+    core: "AI MARK CORE",
+    partner: "合作伙伴",
+    business: "企业客户",
+    market: "目标市场",
+    sale: "业务成交",
+    localSales: "本地销售",
+    marketGrowth: "市场拓展",
+    realCustomer: "真实客户",
+    newMarket: "新兴市场",
+    customerRevenue: "客户营收",
+    depth: "5级合作网络",
+    global: "全球化 / AI-NATIVE",
+    tagline: "核心产品 · 落地AI · 交付标准",
+  },
+  ar: {
+    core: "AI MARK CORE",
+    partner: "شريك",
+    business: "شركة",
+    market: "سوق",
+    sale: "بيع",
+    localSales: "مبيعات محلية",
+    marketGrowth: "نمو السوق",
+    realCustomer: "عميل حقيقي",
+    newMarket: "سوق جديدة",
+    customerRevenue: "إيرادات العملاء",
+    depth: "شبكة من 5 مستويات",
+    global: "عالمي / AI-NATIVE",
+    tagline: "منتجات · ذكاء اصطناعي · تنفيذ",
+  },
+  ja: {
+    core: "AI MARK CORE",
+    partner: "パートナー",
+    business: "企業顧客",
+    market: "ターゲット市場",
+    sale: "販売成約",
+    localSales: "地域販売",
+    marketGrowth: "市場拡大",
+    realCustomer: "実顧客",
+    newMarket: "新規市場",
+    customerRevenue: "顧客収益",
+    depth: "5段階ネットワーク",
+    global: "グローバル / AI-NATIVE",
+    tagline: "製品 · AI · 確実な納品",
+  },
+  tr: {
+    core: "AI MARK CORE",
+    partner: "ORTAK",
+    business: "İŞLETME",
+    market: "PAZAR",
+    sale: "SATIŞ",
+    localSales: "Yerel satışlar",
+    marketGrowth: "Pazar büyümesi",
+    realCustomer: "Gerçek müşteri",
+    newMarket: "Yeni pazar",
+    customerRevenue: "Müşteri geliri",
+    depth: "5 SEVİYELİ AĞ",
+    global: "KÜRESEL / AI-NATIVE",
+    tagline: "Ürünler · Yapay Zekâ · Teslimat",
+  },
+  id: {
+    core: "AI MARK CORE",
+    partner: "MITRA",
+    business: "BISNIS",
+    market: "PASAR",
+    sale: "PENJUALAN",
+    localSales: "Penjualan lokal",
+    marketGrowth: "Pertumbuhan pasar",
+    realCustomer: "Klien nyata",
+    newMarket: "Pasar baru",
+    customerRevenue: "Pendapatan klien",
+    depth: "JARINGAN 5 LEVEL",
+    global: "GLOBAL / AI-NATIVE",
+    tagline: "Produk · AI · Pengiriman",
+  },
+  vi: {
+    core: "AI MARK CORE",
+    partner: "ĐỐI TÁC",
+    business: "DOANH NGHIỆP",
+    market: "THỊ TRƯỜNG",
+    sale: "BÁN HÀNG",
+    localSales: "Doanh số địa phương",
+    marketGrowth: "Phát triển thị trường",
+    realCustomer: "Khách hàng thực",
+    newMarket: "Thị trường mới",
+    customerRevenue: "Doanh thu khách hàng",
+    depth: "MẠNG LƯỚI 5 CẤP ĐỘ",
+    global: "TOÀN CẦU / AI-NATIVE",
+    tagline: "Sản phẩm · AI · Triển khai",
+  },
+};
+
 export function PartnerNetworkHeroVisual({ locale }: Props) {
-  const ru = locale === "ru";
-  const labels = ru
-    ? {
-        core: "AI MARK CORE",
-        partner: "ПАРТНЁР",
-        business: "БИЗНЕС",
-        market: "РЫНОК",
-        sale: "ПРОДАЖА",
-        localSales: "Локальные продажи",
-        marketGrowth: "Развитие рынка",
-        realCustomer: "Реальный клиент",
-        newMarket: "Новый рынок",
-        customerRevenue: "Выручка клиента",
-        depth: "СЕТЬ 5 УРОВНЕЙ",
-        global: "ГЛОБАЛЬНО / AI-NATIVE",
-      }
-    : {
-        core: "AI MARK CORE",
-        partner: "PARTNER",
-        business: "BUSINESS",
-        market: "MARKET",
-        sale: "SALE",
-        localSales: "Local sales",
-        marketGrowth: "Market growth",
-        realCustomer: "Real customer",
-        newMarket: "New market",
-        customerRevenue: "Customer revenue",
-        depth: "5-LEVEL NETWORK",
-        global: "GLOBAL / AI-NATIVE",
-      };
+  const labels = LABELS[locale] ?? LABELS.en;
 
   const nodes = [
     { x: 18, y: 28, title: labels.partner, sub: labels.localSales },
@@ -144,7 +314,7 @@ export function PartnerNetworkHeroVisual({ locale }: Props) {
                 AI MARK
               </span>
               <span className="mt-1 block text-[9px] text-muted">
-                Products · AI · Delivery
+                {labels.tagline}
               </span>
             </div>
           </div>
