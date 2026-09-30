@@ -164,6 +164,8 @@ export type ConfirmInvoiceInput = {
   adminUserId: string;
   referralCode?: string;
   partnerId?: string;
+  /** Buyer's site locale when known (auto-confirm from the pay page); used for the onboarding email. */
+  locale?: string;
 };
 
 export type ConfirmInvoiceResult =
@@ -265,6 +267,7 @@ export async function confirmInvoicePayment(
       subscriptionId: payload.subscription_id as string,
       invoiceRef: invoice.public_ref,
       mode: hadSubscription ? "renewal" : "initial",
+      locale: input.locale,
     });
     await runProvisioningKick();
   }

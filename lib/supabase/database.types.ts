@@ -506,6 +506,7 @@ export type Database = {
           action: string;
           status?: string;
           idempotency_key: string;
+          response_snapshot?: Json | null;
         };
         Update: {
           status?: string;

@@ -1,4 +1,5 @@
 import { runProvisioningBatch } from "@/lib/provisioning/worker";
+import { autoConfirmOpenInvoices } from "@/lib/crypto/auto-confirm";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +17,13 @@ export async function GET(request: Request) {
   }
 
   try {
+    // Catch-up for buyers who closed the payment page before the transfer landed.
+    const payments = await autoConfirmOpenInvoices().catch((error: unknown) => {
+      console.error("[cron] auto-confirm failed:", error);
+      return { checked: 0, confirmed: 0, errors: 1 };
+    });
     const result = await runProvisioningBatch(20);
-    return Response.json({ ok: true, ...result });
+    return Response.json({ ok: true, payments, ...result });
   } catch (error) {
     const message = error instanceof Error ? error.message : "cron failed";
     return Response.json({ ok: false, error: message }, { status: 500 });

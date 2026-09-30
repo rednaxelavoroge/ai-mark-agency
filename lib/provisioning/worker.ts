@@ -37,6 +37,8 @@ export type ProvisioningEnqueueInput = {
   invoiceRef: string;
   /** First paid invoice for this subscription vs renewal. */
   mode: "initial" | "renewal";
+  /** Buyer locale for the onboarding email, when known. */
+  locale?: string;
 };
 
 export async function enqueueSubscriptionProvisioning(
@@ -91,6 +93,7 @@ export async function enqueueSubscriptionProvisioning(
       invoiceRef: input.invoiceRef,
       action: "magic_link",
       idempotencyKey: idempotencyKey(input.invoiceRef, "magic_link"),
+      snapshot: input.locale ? { locale: input.locale } : undefined,
     });
   }
 }
@@ -176,7 +179,7 @@ async function processSubscription(
 
   const pendingLogs = await admin
     .from("subscription_provisioning_log")
-    .select("id, action, status, idempotency_key, invoice_ref")
+    .select("id, action, status, idempotency_key, invoice_ref, response_snapshot")
     .eq("subscription_id", sub.id)
     .eq("status", "pending")
     .order("created_at", { ascending: true });
@@ -266,10 +269,12 @@ async function processSubscription(
           .select("language")
           .eq("email", sub.email)
           .maybeSingle();
+        const hinted = (log.response_snapshot as { locale?: string } | null)?.locale;
         const mail = buyerOnboardingEmail({
-          locale: localeRow.data?.language ?? "en",
+          locale: hinted ?? localeRow.data?.language ?? "en",
           productRef: sub.product,
           magicUrl: url,
+          email: sub.email,
         });
         await sendEmail({ to: sub.email, subject: mail.subject, html: mail.html });
       }
@@ -427,6 +432,7 @@ async function ensureLogRow(
     invoiceRef: string;
     action: string;
     idempotencyKey: string;
+    snapshot?: { locale: string };
   },
 ): Promise<void> {
   await admin.from("subscription_provisioning_log").upsert(
@@ -436,7 +442,58 @@ async function ensureLogRow(
       action: input.action,
       status: "pending",
       idempotency_key: input.idempotencyKey,
+      ...(input.snapshot ? { response_snapshot: input.snapshot } : {}),
     },
     { onConflict: "idempotency_key", ignoreDuplicates: true },
   );
+}
+
+/**
+ * Buyer self-service: send a fresh single-use sign-in link for every active
+ * product the email owns. Silent on unknown emails (caller returns generic ok).
+ */
+export async function resendBuyerAccessLinks(input: {
+  email: string;
+  locale: string;
+}): Promise<number> {
+  const email = input.email.trim().toLowerCase();
+  if (!email) return 0;
+  const admin = createSupabaseAdminClient();
+  const { data } = await admin
+    .from("subscriptions")
+    .select("id, email, product, status, active_until, product_tenant_id, product_access_suspended")
+    .ilike("email", email)
+    .in("status", ["onboarding", "active"])
+    .not("product_tenant_id", "is", null)
+    .eq("product_access_suspended", false);
+  let sent = 0;
+  for (const row of data ?? []) {
+    if (row.active_until && new Date(row.active_until as string).getTime() < Date.now()) continue;
+    const config = provisioningConfigForProduct(row.product as string);
+    if (!config || !row.product_tenant_id) continue;
+    const link = await provisioningFetch<{ url?: string }>(
+      config.baseUrl,
+      config.secret,
+      `/tenants/${encodeURIComponent(row.product_tenant_id as string)}/magic-link`,
+      {
+        method: "POST",
+        idempotencyKey: `resend:${row.id}:${Date.now()}`,
+        body: {},
+      },
+    );
+    const url = link.ok ? link.data?.url : undefined;
+    if (!url) {
+      console.error("[resend-access] magic-link failed", row.id, link.ok ? "no url" : link.error);
+      continue;
+    }
+    const mail = buyerOnboardingEmail({
+      locale: input.locale,
+      productRef: row.product as string,
+      magicUrl: url,
+      email: row.email as string,
+    });
+    await sendEmail({ to: row.email as string, subject: mail.subject, html: mail.html });
+    sent += 1;
+  }
+  return sent;
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/platform/PageHeader";
 import { CopyLine } from "@/components/platform/CopyLine";
+import { PaymentWatcher } from "@/components/pay/PaymentWatcher";
 import { cardClass } from "@/components/ui/classes";
 import { formatUsdAmount, payableSkuById } from "@/lib/crypto/catalog";
 import { loadInvoiceByRef } from "@/lib/crypto/invoices";
@@ -70,6 +71,8 @@ export default async function PayInstructionPage({ params }: Props) {
         />
         <CopyLine label={pay.treasuryAddress} value={invoice.treasury_address} />
         <CopyLine label={pay.memo} value={invoice.memo} />
+
+        <PaymentWatcher publicRef={invoice.public_ref} locale={locale} initialStatus={invoice.status} />
 
         <p className="text-xs leading-relaxed text-muted">{pay.footnote}</p>
       </section>
