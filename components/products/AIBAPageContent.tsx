@@ -177,9 +177,10 @@ export function AIBAPageContent({
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {isRu ? "Автоматизация и панель" : "Automation and panel"}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{isRu ? "Автоматизация и панель" : "Automation and panel"}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
       {/* 3. WHAT WE AUTOMATE */}
       <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">

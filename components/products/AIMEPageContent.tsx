@@ -117,9 +117,10 @@ export function AIMEPageContent({
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {ru ? "Сравнение и форматы" : "Comparison and formats"}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{ru ? "Сравнение и форматы" : "Comparison and formats"}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
       {/* 2. SMM COMPARISON SECTION */}
       <section className="border-b border-line py-8 sm:py-10">
@@ -264,9 +265,10 @@ export function AIMEPageContent({
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {ru ? "Доступы и ограничения" : "Access and limits"}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{ru ? "Доступы и ограничения" : "Access and limits"}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
       {/* 5. META GRAPH API INFRASTRUCTURE & TRUST */}
       <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">

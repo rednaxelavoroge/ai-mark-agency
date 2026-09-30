@@ -55,9 +55,10 @@ export default async function HowItWorksPage({ params }: Props) {
       {/* 1. Full IdeaToBusiness Dial with unconstrained sticky pinning */}
       <IdeaToBusiness locale={locale} />
 
-      <details className="mx-auto mt-8 max-w-6xl border-y border-line px-4 sm:px-6">
-        <summary className="cursor-pointer list-none py-4 text-sm font-semibold">
-          {h.teamEyebrow} · {h.teamTitle}
+      <details open className="mx-auto mt-8 max-w-6xl border-y border-line px-4 sm:px-6 group">
+        <summary className="flex cursor-pointer list-none items-center justify-between py-4 text-sm font-semibold text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{h.teamEyebrow} · {h.teamTitle}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
       {/* 2. Business Creation: Two Entries */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">

@@ -208,11 +208,12 @@ export function HomeRest({
         <a className="inline-flex min-h-11 items-center text-sm font-semibold text-mark" href={`mailto:${site.email}`}>
           {site.email} →
         </a>
-        <details id="inquiry" className="mt-6 scroll-mt-24 rounded-[24px] border border-line bg-ink-2">
-          <summary className="cursor-pointer list-none px-5 py-4 text-sm font-semibold">
-            {t.contact.formCta}
+        <details open id="inquiry" className="mt-6 scroll-mt-24 rounded-[24px] border border-line bg-ink-2 group">
+          <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-sm font-semibold text-paper hover:bg-ink-3/40 transition-colors rounded-t-[24px]">
+            <span>{t.contact.formCta}</span>
+            <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
           </summary>
-          <div className="px-2 pb-2">
+          <div className="border-t border-line/60 px-2 pb-2 pt-2">
             <LeadInquiry contact={t.contact} locale={locale} framed={false} compact />
           </div>
         </details>

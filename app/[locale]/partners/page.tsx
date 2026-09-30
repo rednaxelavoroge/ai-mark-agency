@@ -387,13 +387,26 @@ export default async function PartnersPage({ params }: Props) {
               {t.note.split(" · ").map((item) => <span key={item} className="font-mono text-[10px] tracking-wide text-muted">{item}</span>)}
             </div>
           </div>
-          <div data-reveal style={reveal(120)} className="space-y-4">
-            <details className="mt-6 rounded-2xl border border-line">
-              <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold">{partnersChrome.networkSketch}</summary>
-            <PartnerNetworkHeroVisual locale={locale} />
-            <div data-motion className="rounded-[24px] border border-line bg-ink-2 p-4">
-              <LevelRings />
-            </div>
+          <div data-reveal style={reveal(120)}>
+            <details open className="group mt-6 rounded-2xl border border-line bg-ink-2/30">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-sm font-semibold text-paper hover:bg-ink-3/40 transition-colors rounded-t-2xl">
+                <span>{partnersChrome.networkSketch}</span>
+                <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
+              </summary>
+              <div className="border-t border-line/60 p-4 sm:p-5 space-y-6">
+                <PartnerNetworkHeroVisual locale={locale} />
+                <div data-motion className="rounded-2xl border border-line bg-ink-2 p-5 shadow-sm">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line/60 pb-3 mb-4">
+                    <span className="font-mono text-[11px] font-semibold text-warm uppercase tracking-wider">
+                      {partnersChrome.heroSteps[2]}
+                    </span>
+                    <span className="font-mono text-xs font-semibold text-mark">
+                      {partnersChrome.heroSteps[3]}
+                    </span>
+                  </div>
+                  <LevelRings />
+                </div>
+              </div>
             </details>
           </div>
         </div>
@@ -493,16 +506,19 @@ export default async function PartnersPage({ params }: Props) {
                 ))}
               </dl>
               <p className="mt-3 text-xs leading-relaxed text-paper/80">{t.exampleFoot}</p>
-              <details className="mt-3">
-                <summary className="cursor-pointer list-none text-sm font-semibold text-mark">
-                  {partnersChrome.networkTerms}
+              <details open className="group mt-4 rounded-xl border border-line bg-ink-2/40 p-4">
+                <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-mark">
+                  <span>{partnersChrome.networkTerms}</span>
+                  <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
                 </summary>
-                <p className="mt-3 text-xs leading-relaxed text-muted">{terms.note}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.launch}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.example}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.lock}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.payout}</p>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{terms.country}</p>
+                <div className="mt-3 space-y-2 border-t border-line/50 pt-3 text-xs leading-relaxed text-muted">
+                  <p>{terms.note}</p>
+                  <p>{terms.launch}</p>
+                  <p>{terms.example}</p>
+                  <p>{terms.lock}</p>
+                  <p>{terms.payout}</p>
+                  <p>{terms.country}</p>
+                </div>
               </details>
             </div>
           </div>
@@ -525,11 +541,12 @@ export default async function PartnersPage({ params }: Props) {
         </div>
       </section>
 
-      <details className="border-b border-line bg-ink-2/20">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {partnersChrome.globalExpansion}
+      <details open className="border-b border-line bg-ink-2/20 group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{partnersChrome.globalExpansion}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 border-t border-line/60">
           <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.globalEyebrow}</p><h2 className="mt-3 max-w-4xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.globalTitle}</h2><p className="mt-4 max-w-3xl text-muted">{t.globalLead}</p></div>
           <div className="am-step-grid mt-6 grid grid-cols-2 gap-3" data-reveal style={reveal(120)}>{t.global.map((item, i) => <div key={item} className="flex items-start gap-3 rounded-xl border border-line bg-ink-2 p-4"><span className="mt-0.5 font-mono text-[10px] font-semibold text-warm">0{i + 1}</span><span className="text-xs leading-relaxed text-paper/90">{item}</span></div>)}</div>
         </div>
@@ -542,11 +559,14 @@ export default async function PartnersPage({ params }: Props) {
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {partnersChrome.leaveContacts}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{partnersChrome.leaveContacts}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
-        <LeadInquiry contact={published.contact} locale={locale} />
+        <div className="border-t border-line/60">
+          <LeadInquiry contact={published.contact} locale={locale} />
+        </div>
       </details>
 
       <section className="border-b border-line"><div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 sm:py-28" data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.ctaEyebrow}</p><h2 className="mt-3 font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{brief(t.ctaTitle)}</h2><p className="mx-auto mt-4 max-w-2xl text-muted">{brief(t.ctaLead)}</p><p className="mx-auto mt-3 max-w-xl text-xs text-muted">{terms.join}</p><Link href={PARTNER_SIGNUP_HREF} className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light">{t.ctaButton}<span className="btn-arrow" aria-hidden>→</span></Link></div></section>

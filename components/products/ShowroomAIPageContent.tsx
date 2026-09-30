@@ -55,9 +55,10 @@ export function ShowroomAIPageContent({
               <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
                 {brief(c.subtitle)}
               </p>
-              <details className="mt-3 rounded-xl border border-white/20">
-                <summary className="cursor-pointer list-none px-3 py-2 text-xs font-semibold text-[#f4f6ee]">
-                  {ru ? "Как устроена сделка" : "How a deal moves"}
+              <details open className="mt-3 rounded-xl border border-white/20 group">
+                <summary className="flex cursor-pointer list-none items-center justify-between px-3.5 py-2.5 text-xs font-semibold text-[#f4f6ee] hover:bg-white/5 transition-colors rounded-t-xl">
+                  <span>{ru ? "Как устроена сделка" : "How a deal moves"}</span>
+                  <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
                 </summary>
                 <p className="px-3 pb-2 text-sm font-medium leading-relaxed text-[#f4f6ee]">
                   {ru
@@ -242,9 +243,10 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      <details className="border-b border-line">
-        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6">
-          {ru ? "Сквозная архитектура" : "End-to-end architecture"}
+      <details open className="border-b border-line group">
+        <summary className="mx-auto max-w-6xl cursor-pointer list-none px-4 py-4 text-sm font-semibold sm:px-6 flex items-center justify-between text-paper hover:bg-ink-3/40 transition-colors">
+          <span>{ru ? "Сквозная архитектура" : "End-to-end architecture"}</span>
+          <span className="font-mono text-muted text-xs transition-transform duration-200 group-open:rotate-180">▼</span>
         </summary>
       {/* 3. ARCHITECTURE FLOW */}
       <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
