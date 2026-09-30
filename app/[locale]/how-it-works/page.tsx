@@ -10,6 +10,7 @@ import { DigitalProductionShowcase } from "@/components/DigitalProductionShowcas
 import { OperatingModelSection } from "@/components/OperatingModelSection";
 import { Manifesto } from "@/components/Manifesto";
 import { getCopy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { digitalProductionPath } from "@/lib/digital-production";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 
@@ -19,13 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const locale = raw as Locale;
-  const isRu = locale === "ru";
-  const title = isRu
-    ? `Как идея становится бизнесом · Сквозной контур · ${site.name}`
-    : `How an Idea Becomes a Business · Venture System · ${site.name}`;
-  const description = isRu
-    ? "Сквозной управляемый контур трансформации: от идеи и юнит-экономики до AI-инфраструктуры, продукта и масштабирования."
-    : "The end-to-end transformation system: from idea and unit economics to AI infrastructure, product, and scale.";
+  const idea = getPublicChromeCopy(locale);
+  const title = `${idea.homeRest.stagesTitle} · ${site.name}`;
+  const description = idea.homeRest.stagesLead;
 
   return {
     title: { absolute: title },
@@ -45,7 +42,9 @@ export default async function HowItWorksPage({ params }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getCopy(locale);
-  const isRu = locale === "ru";
+  const chrome = getPublicChromeCopy(locale);
+  const h = chrome.homeRest;
+  const dp = chrome.digitalProductionHubCard;
 
   return (
     <div>
@@ -58,7 +57,7 @@ export default async function HowItWorksPage({ params }: Props) {
 
       <details className="mx-auto mt-8 max-w-6xl border-y border-line px-4 sm:px-6">
         <summary className="cursor-pointer list-none py-4 text-sm font-semibold">
-          {isRu ? "Сборка, производство и принципы" : "Build, production and principles"}
+          {h.teamEyebrow} · {h.teamTitle}
         </summary>
       {/* 2. Business Creation: Two Entries */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -89,7 +88,7 @@ export default async function HowItWorksPage({ params }: Props) {
               href={digitalProductionPath(locale)}
               className="inline-flex items-center gap-2 rounded-full bg-mark px-5 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light"
             >
-              {isRu ? "Страница цифрового производства" : "Digital Production page"} →
+              {dp.cta} →
             </Link>
           </div>
         </Section>
@@ -122,19 +121,16 @@ export default async function HowItWorksPage({ params }: Props) {
       {/* Bottom Action Card */}
       <div className="mt-20 rounded-3xl border border-warm/30 bg-warm-soft p-8 sm:p-12 text-center" data-reveal>
         <span className="font-mono text-[10px] font-semibold tracking-widest text-warm uppercase">
-          {isRu ? "Следующий шаг" : "Next Step"}
+          {h.contactEyebrow}
         </span>
         <h3 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
-          {isRu ? "Обсудим задачу вашего бизнеса?" : "Ready to discuss your business challenge?"}
+          {h.contactTitle}
         </h3>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-muted">
-          {isRu
-            ? "Разберём текущую стадию: идея, готовый продукт или внедрение AI-агентов в существующие процессы."
-            : "We'll review your current stage: an idea, an existing product, or integrating AI agents into operations."}
+        <p className="mx-auto mt-3 max-w-xl text-sm text-muted">{h.contactLead}
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
           <ContactCta className="inline-flex items-center gap-2 rounded-full bg-mark px-6 py-3 text-xs sm:text-sm font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all">
-            {isRu ? "Открыть чат с ассистентом" : "Open chat with assistant"} →
+            {chrome.pricingPage.openChat} →
           </ContactCta>
           <BackButton locale={locale} targetHref="/" />
         </div>

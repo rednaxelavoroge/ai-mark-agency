@@ -15,18 +15,20 @@ export function AuthCard({
   lead,
   children,
   footer,
+  ventureTagline = "Venture and Marketing",
 }: {
   eyebrow: string;
   title: string;
   lead: string;
   children: ReactNode;
   footer?: ReactNode;
+  ventureTagline?: string;
 }) {
   return (
     <div className="w-full max-w-md">
       <Link href="/" className="inline-flex max-w-full flex-col items-start">
         <BrandLogo className="h-7 sm:h-8" />
-        <span className="mt-1.5 text-[13px] font-semibold text-muted">Venture and Marketing</span>
+        <span className="mt-1.5 text-[13px] font-semibold text-muted">{ventureTagline}</span>
       </Link>
 
       <p className={`mt-8 ${eyebrowClass}`}>{eyebrow}</p>
@@ -38,18 +40,6 @@ export function AuthCard({
       <div className={`mt-6 p-5 sm:p-6 ${cardClass}`}>{children}</div>
 
       {footer ? <div className="mt-5">{footer}</div> : null}
-    </div>
-  );
-}
-
-/** Short notice when sign-in cannot start. Operator detail stays in the server log. */
-export function SetupNotice() {
-  return (
-    <div className="rounded-xl border border-danger/30 bg-danger/5 p-4 text-xs text-danger">
-      <p className="font-semibold">Sign-in is temporarily unavailable.</p>
-      <p className="mt-1.5 leading-relaxed">
-        Write to us and we will help you in. The public website stays open.
-      </p>
     </div>
   );
 }

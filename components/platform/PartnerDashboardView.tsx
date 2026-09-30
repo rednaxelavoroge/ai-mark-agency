@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   DetailList,
@@ -6,8 +8,10 @@ import {
 } from "@/components/platform/PageHeader";
 import { ReferralPanel } from "@/components/platform/ReferralPanel";
 import { StatusBadge } from "@/components/platform/StatusBadge";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { cardClass } from "@/components/ui/classes";
 import { CommissionScheduleCard } from "@/components/platform/CommissionScheduleCard";
+import { formatCabinetString } from "@/lib/partner/copy-format";
 import {
   NO_DATA,
   formatCount,
@@ -15,7 +19,7 @@ import {
   formatDateTime,
   formatLedgerMoney,
   launchWindow,
-  partnerStatusLabel,
+  partnerStatusLabelFromCopy,
   referralUrl,
   type PartnerLedgerStats,
   type PartnerReferralStats,
@@ -56,20 +60,22 @@ export function PartnerDashboardView({
   ledger,
   email,
 }: PartnerDashboardData) {
-  const displayName = profile?.full_name ?? email ?? "Partner";
+  const t = useCabinetCopy();
+  const d = t.dashboard;
+  const displayName = profile?.full_name ?? email ?? t.defaultPartnerName;
   const language = profile?.language ? profile.language.toUpperCase() : NO_DATA;
+  const statusLabel = (status: string) => partnerStatusLabelFromCopy(status, t);
 
   return (
     <div className="grid gap-7">
       <PageHeader
-        eyebrow="Partner Platform"
-        title={`Welcome, ${displayName}`}
+        eyebrow={t.pages.dashboard.eyebrow}
+        title={formatCabinetString(d.welcomeTitle, { name: displayName })}
         lead={
           <>
-            Your Partner ID is{" "}
-            <span className="font-mono text-paper">{partner.partner_id}</span>.
-            Your referral link is live. Sales, commission, and payouts appear
-            here as they are recorded.
+            {d.welcomeLeadBefore}{" "}
+            <span className="font-mono text-paper">{partner.partner_id}</span>.{" "}
+            {d.welcomeLeadAfter}
           </>
         }
         actions={<StatusBadge status={partner.status} />}
@@ -88,11 +94,10 @@ export function PartnerDashboardView({
             id="metrics-heading"
             className="text-sm font-semibold tracking-tight"
           >
-            Performance
+            {d.performanceTitle}
           </h2>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">
-            Qualifying sales and commission appear after a customer pays. A
-            dash means that figure is not available yet.
+            {d.performanceLead}
           </p>
         </div>
 
@@ -100,7 +105,7 @@ export function PartnerDashboardView({
             block below the fold on a phone. */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
           <StatCard
-            label="Qualifying sales"
+            label={d.statQualifyingSales}
             value={
               ledger.qualifyingSales === null
                 ? NO_DATA
@@ -108,28 +113,32 @@ export function PartnerDashboardView({
             }
           />
           <StatCard
-            label="Commission"
+            label={d.statCommission}
             value={formatLedgerMoney(ledger.commissionNet, ledger.currency)}
             hint={ledger.currency ?? NO_DATA}
           />
           <StatCard
-            label="Ready to pay"
+            label={d.statReadyToPay}
             value={formatLedgerMoney(ledger.payableAmount, ledger.currency)}
           />
           <StatCard
-            label="Paid"
+            label={d.statPaid}
             value={formatLedgerMoney(ledger.paidAmount, ledger.currency)}
           />
         </div>
         {ledger.entryCount === 0 ? (
-          <p className="text-xs text-muted">No commissions yet.</p>
+          <p className="text-xs text-muted">{d.noCommissionsYet}</p>
         ) : null}
         {ledger.currencies && ledger.currencies.length > 1 ? (
           <ul className="grid gap-2 text-xs text-muted">
             {ledger.currencies.map((row) => (
               <li key={row.currency ?? "none"}>
-                {row.currency ?? NO_DATA}: commission {row.commissionNet}, payable{" "}
-                {row.payableAmount}, paid {row.paidAmount}
+                {formatCabinetString(d.currencyBreakdown, {
+                  currency: row.currency ?? NO_DATA,
+                  commission: row.commissionNet,
+                  payable: row.payableAmount,
+                  paid: row.paidAmount,
+                })}
               </li>
             ))}
           </ul>
@@ -146,25 +155,22 @@ export function PartnerDashboardView({
           className={`p-5 sm:p-6 lg:col-span-3 ${cardClass}`}
         >
           <h2 id="identity-heading" className="text-sm font-semibold tracking-tight">
-            Partner identity
+            {d.identityTitle}
           </h2>
-          <p className="mt-1 text-xs text-muted">
-            Issued by AI MARK. Partner ID, referral code and status are
-            immutable from your account.
-          </p>
+          <p className="mt-1 text-xs text-muted">{d.identityLead}</p>
 
           <div className="mt-6">
             <DetailList
               items={[
-                { label: "Partner ID", value: partner.partner_id, mono: true },
+                { label: d.labelPartnerId, value: partner.partner_id, mono: true },
                 {
-                  label: "Partner status",
-                  value: partnerStatusLabel(partner.status),
+                  label: d.labelPartnerStatus,
+                  value: statusLabel(partner.status),
                 },
-                { label: "Referral code", value: partner.referral_code, mono: true },
-                { label: "Country", value: profile?.country ?? NO_DATA },
-                { label: "Joined", value: formatDate(partner.created_at) },
-                { label: "Language", value: language },
+                { label: d.labelReferralCode, value: partner.referral_code, mono: true },
+                { label: d.labelCountry, value: profile?.country ?? NO_DATA },
+                { label: d.labelJoined, value: formatDate(partner.created_at) },
+                { label: d.labelLanguage, value: language },
               ]}
             />
           </div>
@@ -175,7 +181,7 @@ export function PartnerDashboardView({
           className={`p-5 sm:p-6 lg:col-span-2 ${cardClass}`}
         >
           <h2 id="sponsor-heading" className="text-sm font-semibold tracking-tight">
-            Sponsor
+            {d.sponsorTitle}
           </h2>
 
           {sponsor ? (
@@ -183,19 +189,17 @@ export function PartnerDashboardView({
               <p className="mt-4 font-mono text-sm">{sponsor.sponsor_partner_id}</p>
               <p className="mt-2 text-xs leading-relaxed text-muted">
                 {sponsor.confirmed_at
-                  ? `Confirmed ${formatDate(sponsor.confirmed_at)}.`
-                  : "Recorded, not yet confirmed by a qualifying sale."}
+                  ? formatCabinetString(d.sponsorConfirmed, {
+                      date: formatDate(sponsor.confirmed_at),
+                    })
+                  : d.sponsorRecordedUnconfirmed}
                 {sponsor.attribution_source === "referral_link"
-                  ? " Recorded from a referral link at signup."
+                  ? d.sponsorFromReferralLink
                   : ""}
               </p>
             </>
           ) : (
-            <p className="mt-4 text-xs leading-relaxed text-muted">
-              No sponsor recorded. Sponsor relationships are set by AI MARK from
-              a referral link at signup, never by the partner, and are immutable
-              once confirmed.
-            </p>
+            <p className="mt-4 text-xs leading-relaxed text-muted">{d.sponsorEmpty}</p>
           )}
         </section>
       </div>
@@ -205,14 +209,12 @@ export function PartnerDashboardView({
         className={`p-5 sm:p-6 ${cardClass}`}
       >
         <h2 id="history-heading" className="text-sm font-semibold tracking-tight">
-          Status history
+          {d.historyTitle}
         </h2>
-        <p className="mt-1 text-xs text-muted">
-          Written by the database on every status change.
-        </p>
+        <p className="mt-1 text-xs text-muted">{d.historyLead}</p>
 
         {history.length === 0 ? (
-          <p className="mt-5 text-xs text-muted">No entries yet.</p>
+          <p className="mt-5 text-xs text-muted">{d.historyEmpty}</p>
         ) : (
           <ol className="mt-5 grid gap-4">
             {history.map((entry) => (
@@ -224,8 +226,8 @@ export function PartnerDashboardView({
                 <div className="min-w-0">
                   <p className="text-sm">
                     {entry.old_status
-                      ? `${partnerStatusLabel(entry.old_status)} → ${partnerStatusLabel(entry.new_status)}`
-                      : partnerStatusLabel(entry.new_status)}
+                      ? `${statusLabel(entry.old_status)} → ${statusLabel(entry.new_status)}`
+                      : statusLabel(entry.new_status)}
                   </p>
                   <p className="mt-0.5 text-[11px] text-muted">
                     {formatDateTime(entry.created_at)}
@@ -243,48 +245,47 @@ export function PartnerDashboardView({
         className={`p-5 sm:p-6 ${cardClass}`}
       >
         <h2 id="hub-heading" className="text-sm font-semibold tracking-tight">
-          Demos, materials, knowledge, support
+          {d.hubTitle}
         </h2>
-        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
-          Product pages, brand files, published prices, and support channels
-          are on Resources.
-        </p>
+        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">{d.hubLead}</p>
         <ul className="mt-4 grid gap-2 text-xs">
           <li>
             <Link href="/partner/resources#demos" className="link-underline text-paper">
-              Demos and presentations
+              {d.hubLinkDemos}
             </Link>
           </li>
           <li>
             <Link href="/partner/resources#knowledge" className="link-underline text-paper">
-              Product knowledge
+              {d.hubLinkKnowledge}
             </Link>
           </li>
           <li>
             <Link href="/partner/resources#materials" className="link-underline text-paper">
-              Brand files
+              {d.hubLinkMaterials}
             </Link>
           </li>
           <li>
             <Link href="/partner/resources#support" className="link-underline text-paper">
-              Support
+              {d.hubLinkSupport}
             </Link>
           </li>
         </ul>
       </section>
 
       <p className="text-xs text-muted">
-        How tracking works is on{" "}
+        {d.trackingFootnoteBefore}{" "}
         <Link href="/partner/resources#tracking" className="link-underline text-paper">
-          Resources
+          {d.trackingFootnoteLink}
         </Link>
-        .
+        {d.trackingFootnoteAfter}
       </p>
     </div>
   );
 }
 
 function LaunchCard({ createdAt }: { createdAt: string }) {
+  const t = useCabinetCopy();
+  const d = t.dashboard;
   const schedule = launchWindow(createdAt);
   if (!schedule) {
     return null;
@@ -296,12 +297,12 @@ function LaunchCard({ createdAt }: { createdAt: string }) {
   return (
     <section aria-labelledby="schedule-heading" className={`p-5 sm:p-6 ${cardClass}`}>
       <h2 id="schedule-heading" className="text-sm font-semibold tracking-tight">
-        {launch ? "Launch-period status" : "Launch-period ended"}
+        {launch ? d.launchActiveTitle : d.launchEndedTitle}
       </h2>
       <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
-        {launch
-          ? `The launch window runs until ${ends}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.`
-          : `The 90-day launch window ended ${ends}. Qualifying payments use the same rates, and the network pool stays 80%.`}
+        {formatCabinetString(launch ? d.launchActiveBody : d.launchEndedBody, {
+          date: ends,
+        })}
       </p>
     </section>
   );

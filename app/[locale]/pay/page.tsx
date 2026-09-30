@@ -17,6 +17,7 @@ import {
   type PaymentAsset,
 } from "@/lib/crypto/networks";
 import { getCopy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { localePath, isLocale, type Locale } from "@/lib/site";
 import { readReferralAttribution } from "@/lib/referral/attribution";
 import { issuePaymentInvoice } from "./actions";
@@ -59,6 +60,7 @@ export default async function PayPage({ params, searchParams }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const ru = locale === "ru";
+  const payChrome = getPublicChromeCopy(locale).payPage;
   const copy = getCopy(locale);
   const ui = copy.ui;
   const pay = copy.pay;
@@ -89,12 +91,8 @@ export default async function PayPage({ params, searchParams }: Props) {
     <div className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
       <PageHeader
         eyebrow="AI MARK"
-        title={ru ? "Оплата на кошелёк AI MARK" : "Pay to an AI MARK wallet"}
-        lead={
-          ru
-            ? "Оплата согласованного счёта в USDT или USDC на кошелёк AI MARK. Сумма берётся из опубликованного прайса."
-            : "Pay an agreed invoice in USDT or USDC to an AI MARK wallet. The amount comes from the published price."
-        }
+        title={payChrome.title}
+        lead={payChrome.lead}
       />
 
       <div className="mt-6">
@@ -196,7 +194,7 @@ export default async function PayPage({ params, searchParams }: Props) {
             />
           </label>
           <label className={labelClass}>
-            <span className="text-muted">{ru ? "Продукт" : "Product"}</span>
+            <span className="text-muted">{payChrome.product}</span>
             <select className={fieldClass} name="sku_id" required defaultValue={initialSkuId}>
               {PAYABLE_SKUS.map((sku) => (
                 <option key={sku.id} value={sku.id}>

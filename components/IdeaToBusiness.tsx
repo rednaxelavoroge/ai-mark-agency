@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { Locale } from "@/lib/site";
+import { getIdeaToBusinessCopy, type IdeaToBusinessCopy } from "@/content/sections";
 
 /**
  * Pinned narrative scene: "An idea enters the system and becomes a working
@@ -9,150 +10,6 @@ import type { Locale } from "@/lib/site";
  * scrolls, stages activate in sequence and the system diagram constructs
  * itself. Under reduced-motion the whole thing renders as a static grid.
  */
-
-type Stage = {
-  kicker: string;
-  title: string;
-  body: string;
-  artifact: string;
-};
-
-const COPY: Record<string, { eyebrow: string; title: string; lead: string; stages: Stage[] }> = {
-  ru: {
-    eyebrow: "Сквозной контур",
-    title: "Как идея становится работающим бизнесом.",
-    lead: "Не набор подрядчиков, а один управляемый контур: рынок, модель, продукт, AI, спрос.",
-    stages: [
-      {
-        kicker: "Вход",
-        title: "Идея или капитал",
-        body: "Начинаем с гипотезы, действующего бизнеса или объёма капитала — фиксируем цель.",
-        artifact: "seed",
-      },
-      {
-        kicker: "01",
-        title: "Исследование рынка",
-        body: "Спрос, конкуренты, барьеры входа и юнит-экономика на объективных данных.",
-        artifact: "bars",
-      },
-      {
-        kicker: "02",
-        title: "Бизнес-модель",
-        body: "Собираем модель: сегменты, монетизация, каналы, стоимость привлечения.",
-        artifact: "grid",
-      },
-      {
-        kicker: "03",
-        title: "Бренд",
-        body: "Позиционирование, айдентика и голос — система, а не логотип-заплатка.",
-        artifact: "brand",
-      },
-      {
-        kicker: "04",
-        title: "Цифровой продукт",
-        body: "Платформа, кабинеты, расчёты и интеграции, на которых бизнес ведёт операции.",
-        artifact: "product",
-      },
-      {
-        kicker: "05",
-        title: "AI-инфраструктура",
-        body: "Собственные AI-агенты встроены в операции: контент, инбокс продаж, расчёты.",
-        artifact: "ai",
-      },
-      {
-        kicker: "06",
-        title: "Маркетинг и продажи",
-        body: "Спрос, квалификация и сделки — на той же инфраструктуре, а не в разрозненных сервисах.",
-        artifact: "funnel",
-      },
-      {
-        kicker: "07",
-        title: "Рост",
-        body: "Аналитика, оптимизация и партнёрская сеть масштабируют уже работающую модель.",
-        artifact: "growth",
-      },
-    ],
-  },
-  en: {
-    eyebrow: "Continuous contour",
-    title: "How an idea becomes a working business.",
-    lead: "Not a stack of contractors — one governed contour: market, model, product, AI, demand.",
-    stages: [
-      {
-        kicker: "Input",
-        title: "Idea or capital",
-        body: "We start from a hypothesis, an operating company, or a capital range — and fix the goal.",
-        artifact: "seed",
-      },
-      {
-        kicker: "01",
-        title: "Market research",
-        body: "Demand, competitors, barriers to entry and unit economics grounded in real data.",
-        artifact: "bars",
-      },
-      {
-        kicker: "02",
-        title: "Business model",
-        body: "We assemble the model: segments, monetization, channels, cost of acquisition.",
-        artifact: "grid",
-      },
-      {
-        kicker: "03",
-        title: "Brand",
-        body: "Positioning, identity and voice — a system, not a logo patched on afterward.",
-        artifact: "brand",
-      },
-      {
-        kicker: "04",
-        title: "Digital product",
-        body: "Platform, workspaces, calculations and integrations the business actually runs on.",
-        artifact: "product",
-      },
-      {
-        kicker: "05",
-        title: "AI infrastructure",
-        body: "Proprietary AI agents embedded into operations: content, sales inbox, quoting.",
-        artifact: "ai",
-      },
-      {
-        kicker: "06",
-        title: "Marketing & sales",
-        body: "Demand capture, qualification and deals on the same infra — not scattered tools.",
-        artifact: "funnel",
-      },
-      {
-        kicker: "07",
-        title: "Growth",
-        body: "Analytics, optimization and the partner network scale an already working model.",
-        artifact: "growth",
-      },
-    ],
-  },
-};
-
-/** Plain-language description of what each centre artifact represents. */
-const ARTIFACT_CAPTION: Record<string, Record<string, string>> = {
-  ru: {
-    seed: "Вход: идея, действующий бизнес или объём капитала.",
-    bars: "Аналитика рынка: спрос, конкуренты и юнит-экономика.",
-    grid: "Модель: сегменты, монетизация, каналы и стоимость привлечения.",
-    brand: "Айдентика: позиционирование, голос и визуальная система.",
-    product: "Цифровой продукт: кабинеты, расчёты, интеграции и данные.",
-    ai: "AI-агенты в операциях: контент, инбокс продаж, расчёты по каталогу.",
-    funnel: "Продажи: поток обращений, квалификация и сделки.",
-    growth: "Рост: метрики, оптимизация и партнёрская сеть.",
-  },
-  en: {
-    seed: "Input: an idea, an operating company, or a capital range.",
-    bars: "Market analytics: demand, competitors and unit economics.",
-    grid: "Model: segments, monetization, channels and cost of acquisition.",
-    brand: "Identity: positioning, voice and the visual system.",
-    product: "Digital product: workspaces, calculations, integrations and data.",
-    ai: "AI agents in operations: content, sales inbox, catalog quoting.",
-    funnel: "Sales: inquiry flow, qualification and closed deals.",
-    growth: "Growth: metrics, optimization and the partner network.",
-  },
-};
 
 const ACCENTS = ["var(--mark)", "var(--warm)", "var(--mark-light)"];
 const accent = (i: number) => ACCENTS[i % ACCENTS.length];
@@ -168,25 +25,25 @@ function nodePos(i: number, total: number) {
   };
 }
 
-const ARTIFACT_LABEL: Record<string, Record<string, string>> = {
-  ru: {
-    bars: "спрос · конкуренты",
-    product: "кабинеты · расчёты",
-    ai: "RAG · агенты",
-    funnel: "обращения → сделки",
-    growth: "метрики · сеть",
-  },
-  en: {
-    bars: "demand · competitors",
-    product: "workspaces · quoting",
-    ai: "RAG · agents",
-    funnel: "inquiries → deals",
-    growth: "metrics · network",
-  },
+const ARTIFACT_LABEL_FALLBACK: Record<string, string> = {
+  bars: "demand · competitors",
+  product: "workspaces · quoting",
+  ai: "RAG · agents",
+  funnel: "inquiries → deals",
+  growth: "metrics · network",
 };
 
-function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
-  const label = ARTIFACT_LABEL[locale]?.[kind] ?? "";
+function Artifact({
+  kind,
+  sectionCopy,
+}: {
+  kind: string;
+  sectionCopy: IdeaToBusinessCopy;
+}) {
+  const label =
+    sectionCopy.artifactLabel[kind as keyof typeof sectionCopy.artifactLabel] ??
+    ARTIFACT_LABEL_FALLBACK[kind] ??
+    "";
   const base =
     "stage-enter flex h-full w-full items-center justify-center rounded-xl border border-line/70 bg-ink-2 p-3";
   if (kind === "seed") {
@@ -194,7 +51,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
       <div className={base}>
         <div className="flex items-center gap-2">
           <span className="relative grid h-3 w-3 place-items-center rounded-full bg-warm text-warm pulse-ring" />
-          <span className="font-mono text-[10px] opacity-75">{locale === "ru" ? "идея · гипотеза" : "idea · hypothesis"}</span>
+          <span className="font-mono text-[10px] opacity-75">{sectionCopy.artifactMicro.seed}</span>
         </div>
       </div>
     );
@@ -223,7 +80,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
     return (
       <div className={base}>
         <div className="grid w-full max-w-[140px] grid-cols-2 gap-1.5">
-          {(locale === "ru" ? ["Сегменты", "Монетизация", "Каналы", "CAC / LTV"] : ["Segments", "Pricing", "Channels", "CAC / LTV"]).map((t) => (
+          {sectionCopy.artifactGrid.map((t) => (
             <span
               key={t}
               className="rounded-md border border-line/70 px-2 py-2 text-center font-mono text-[9px] text-paper/85"
@@ -241,7 +98,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
         <div className="text-center">
           <p className="font-display text-2xl font-semibold text-paper">AI MARK</p>
           <p className="mt-1 font-mono text-[9px] tracking-widest uppercase opacity-80">
-            {locale === "ru" ? "система айдентики" : "identity system"}
+            {sectionCopy.artifactBrandSubtitle}
           </p>
         </div>
       </div>
@@ -325,7 +182,7 @@ function Artifact({ kind, locale }: { kind: string; locale: Locale }) {
 }
 
 export function IdeaToBusiness({ locale }: { locale: Locale }) {
-  const copy = COPY[locale] ?? COPY.ru;
+  const copy = getIdeaToBusinessCopy(locale);
   const stages = copy.stages;
   const [active, setActive] = useState(0);
   const [reduced, setReduced] = useState(false);
@@ -534,7 +391,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
 
                 {/* Center artifact */}
                 <div className="absolute left-1/2 top-1/2 h-[34%] w-[34%] min-h-[86px] min-w-[86px] -translate-x-1/2 -translate-y-1/2" style={{ color: accent(active) }}>
-                  <Artifact kind={current.artifact} locale={locale} />
+                  <Artifact kind={current.artifact} sectionCopy={copy} />
                 </div>
 
                 {/* Satellite nodes — clean glowing badges around the dial ring, zero label collision */}
@@ -583,7 +440,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
               <div
                 key={`card-${active}`}
                 data-itb-card
-                className="itb-caption stage-enter relative z-10 mx-auto mt-4 flex w-full max-w-[460px] shrink-0 items-start gap-2.5 rounded-xl border border-line bg-ink-2 px-3 py-2 lg:mt-4 lg:gap-3 lg:px-4 lg:py-2.5"
+                className="itb-caption stage-enter relative z-10 mx-auto mt-4 hidden w-full max-w-[460px] shrink-0 items-start gap-2.5 rounded-xl border border-line bg-ink-2 px-3 py-2 lg:mt-4 lg:flex lg:gap-3 lg:px-4 lg:py-2.5"
               >
                 <span
                   className="mt-0.5 font-mono text-[10px]"
@@ -596,7 +453,8 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
                     {current.title}
                   </p>
                   <p className="mt-0.5 line-clamp-2 text-[10px] leading-relaxed text-muted lg:text-[11px]">
-                    {ARTIFACT_CAPTION[locale]?.[current.artifact] ?? current.body}
+                    {copy.artifactCaption[current.artifact as keyof typeof copy.artifactCaption] ??
+                      current.body}
                   </p>
                 </div>
               </div>
@@ -611,7 +469,7 @@ export function IdeaToBusiness({ locale }: { locale: Locale }) {
     <section className="border-t border-line bg-ink-3/20">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
         <p className="font-mono text-xs tracking-[0.2em] text-mark uppercase" data-reveal>
-          {locale === "ru" ? "Все этапы контура" : "Every stage of the contour"}
+          {copy.stagesOverviewTitle}
         </p>
         <div className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
           {stages.map((s, i) => (

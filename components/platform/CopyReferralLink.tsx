@@ -1,19 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { fieldClass, primaryButtonClass } from "@/components/ui/classes";
 
 type CopyState = "idle" | "copied" | "failed";
 
-/**
- * Shows the partner's referral link and copies it to the clipboard.
- *
- * The link is real: `/go/<code>` resolves server-side, records the click and
- * attributes a lead or a new partner to this code. Everything the visitor
- * carries is a signed, HTTP-only first-party cookie — the URL itself only ever
- * contains the public referral code.
- */
 export function CopyReferralLink({ url }: { url: string }) {
+  const copy = useCabinetCopy();
+  const strings = copy.copyReferralLink;
   const [state, setState] = useState<CopyState>("idle");
   const timer = useRef<number | undefined>(undefined);
 
@@ -23,7 +18,7 @@ export function CopyReferralLink({ url }: { url: string }) {
     };
   }, []);
 
-  const copy = useCallback(async () => {
+  const onCopy = useCallback(async () => {
     let copied = false;
 
     try {
@@ -36,7 +31,6 @@ export function CopyReferralLink({ url }: { url: string }) {
     }
 
     if (!copied) {
-      // Fallback for non-secure contexts (plain http) and older browsers.
       try {
         const area = document.createElement("textarea");
         area.value = url;
@@ -62,7 +56,7 @@ export function CopyReferralLink({ url }: { url: string }) {
   return (
     <div className="grid gap-3">
       <label className="grid gap-1.5" htmlFor="referral-link">
-        <span className="text-sm text-muted">Your referral link</span>
+        <span className="text-sm text-muted">{strings.label}</span>
         <input
           id="referral-link"
           readOnly
@@ -75,27 +69,19 @@ export function CopyReferralLink({ url }: { url: string }) {
       <div className="flex flex-wrap items-center gap-3">
         <button
           type="button"
-          onClick={copy}
+          onClick={onCopy}
           className={`w-full sm:w-auto ${primaryButtonClass}`}
         >
-          {state === "copied" ? "Copied" : "Copy referral link"}
+          {state === "copied" ? strings.copied : strings.copy}
         </button>
 
         <p role="status" aria-live="polite" className="text-xs text-muted">
-          {state === "copied" ? "Referral link copied to your clipboard." : null}
-          {state === "failed"
-            ? "Copying was blocked — select the link and copy it manually."
-            : null}
+          {state === "copied" ? strings.copiedStatus : null}
+          {state === "failed" ? strings.failedStatus : null}
         </p>
       </div>
 
-      <p className="text-[11px] leading-relaxed text-muted">
-        The link is live. Every visit is recorded and attributes a customer lead
-        for 30 days; a partner who signs up through it is recorded as your
-        referral. Add campaign parameters (for example{" "}
-        <span className="font-mono">?utm_source=newsletter</span>) to see where
-        your clicks come from.
-      </p>
+      <p className="text-[11px] leading-relaxed text-muted">{strings.hint}</p>
     </div>
   );
 }

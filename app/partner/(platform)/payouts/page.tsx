@@ -10,40 +10,43 @@ import {
   getPartnerPayouts,
   requirePartner,
 } from "@/lib/auth/dal";
+import { loadPartnerCabinet } from "@/lib/partner/load-cabinet";
 import {
-  LOCK_HOLD_DAYS,
   NO_DATA,
   formatDateTime,
   formatLedgerMoney,
   formatStoredMoney,
 } from "@/lib/partner/format";
 
-export const metadata: Metadata = { title: "Payouts" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadPartnerCabinet();
+  return { title: copy.pages.payouts.metadataTitle };
+}
 
 export default async function PartnerPayoutsPage() {
   const { auth } = await requirePartner("/partner/payouts");
-  const [payouts, ledger, destination] = await Promise.all([
+  const [{ copy }, payouts, ledger, destination] = await Promise.all([
+    loadPartnerCabinet(),
     getPartnerPayouts(),
     getPartnerLedgerStats(),
     getOwnPayoutDetails(auth.userId),
   ]);
+  const page = copy.pages.payouts;
+  const pay = copy.payouts;
+  const table = copy.dataTable.payouts;
 
   return (
     <div className="grid gap-7">
-      <PageHeader
-        eyebrow="Partner Platform"
-        title="Payouts"
-        lead="Payouts recorded for you, and the USDC address saved on your profile. AI MARK sends the payout to that address."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
-        <h2 className="text-sm font-semibold tracking-tight">Where a payout is sent</h2>
-        <p className="mt-1 text-xs text-muted">
-          The address you want payouts sent to.
-        </p>
+        <h2 className="text-sm font-semibold tracking-tight">{pay.destinationTitle}</h2>
+        <p className="mt-1 text-xs text-muted">{pay.destinationLead}</p>
         <div className="mt-4">
           {destination.unreadable ? (
-            <p className="text-sm text-muted">{NO_DATA} Payout details could not be read.</p>
+            <p className="text-sm text-muted">
+              {NO_DATA} {pay.destinationUnreadable}
+            </p>
           ) : (
             <PayoutDestinationText
               recipient={destination.recipient}
@@ -51,33 +54,31 @@ export default async function PartnerPayoutsPage() {
             />
           )}
         </div>
-        <Link href="/partner/profile" className="mt-4 inline-block text-xs font-medium text-paper link-underline">
-          Edit payout details
+        <Link
+          href="/partner/profile"
+          className="mt-4 inline-block text-xs font-medium text-paper link-underline"
+        >
+          {pay.editPayoutLink}
         </Link>
       </section>
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
-        <h2 className="text-sm font-semibold tracking-tight">How a payout moves</h2>
+        <h2 className="text-sm font-semibold tracking-tight">{pay.flowTitle}</h2>
         <ol className="mt-4 grid gap-3 text-xs leading-relaxed text-muted">
-          <li>1. A qualifying sale records your commission.</li>
-          <li>
-            2. That commission is held for {LOCK_HOLD_DAYS} days after the sale
-            is confirmed.
-          </li>
-          <li>3. After the hold, if the sale still stands, it is ready to pay.</li>
-          <li>4. AI MARK records the payout and sends it to your USDC address.</li>
-          <li>5. A refund or cancellation adjusts what is owed.</li>
+          {pay.flowSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
         </ol>
       </section>
 
       <div className="grid grid-cols-2 gap-3 sm:gap-4">
         <StatCard
-          label="Ready to pay"
+          label={pay.statReady}
           value={formatLedgerMoney(ledger.payableAmount, ledger.currency)}
           hint={ledger.currency ?? NO_DATA}
         />
         <StatCard
-          label="Paid"
+          label={pay.statPaid}
           value={formatLedgerMoney(ledger.paidAmount, ledger.currency)}
           hint={ledger.currency ?? NO_DATA}
         />
@@ -85,8 +86,9 @@ export default async function PartnerPayoutsPage() {
 
       <DataTable
         unreadable={payouts.unreadable}
-        empty="No payouts yet. AI MARK records a payout when commission is ready to pay."
-        columns={["Status", "Amount", "Created", "Confirmed", "Paid"]}
+        unreadableText={copy.dataTable.unreadable}
+        empty={table.empty}
+        columns={table.columns}
         rows={(payouts.rows ?? []).map((payout) => [
           payout.status,
           formatStoredMoney(payout.amount, payout.currency),

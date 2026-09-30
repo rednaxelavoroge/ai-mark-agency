@@ -45,7 +45,7 @@ const EN: InvestorsPageCopy = {
     },
     {
       label: "AI Marketing Department",
-      value: "$1,500–3,500+",
+      value: "$1,200–3,500+",
       unit: "/ month",
       note: "End-to-end function",
     },
@@ -89,7 +89,7 @@ const RU: InvestorsPageCopy = {
     },
     {
       label: "AI-маркетинг-отдел",
-      value: "$1,500–3,500+",
+      value: "$1,200–3,500+",
       unit: "/ месяц",
       note: "Комплексная функция",
     },

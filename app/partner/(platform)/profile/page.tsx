@@ -9,10 +9,14 @@ import {
   parsePayoutDetails,
 } from "@/lib/crypto/payout-destination";
 import { NETWORK_LABELS, PAYOUT_NETWORKS } from "@/lib/crypto/networks";
-import { NO_DATA, formatDate, referralUrl } from "@/lib/partner/format";
+import { loadPartnerCabinet } from "@/lib/partner/load-cabinet";
+import { NO_DATA, formatDate, referralUrl, partnerStatusLabelFromCopy } from "@/lib/partner/format";
 import { savePayoutDetails } from "./actions";
 
-export const metadata: Metadata = { title: "Profile" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadPartnerCabinet();
+  return { title: copy.pages.profile.metadataTitle };
+}
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -20,39 +24,31 @@ function first(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value[0] ?? "" : value ?? "";
 }
 
-/**
- * Account and partner-record fields are read-only.
- *
- * The payout block is the one thing the partner writes: a recipient name and
- * free-text destination, on their own profile row. It is not identity
- * verification and it does not send money.
- */
 export default async function PartnerProfilePage({
   searchParams,
 }: {
   searchParams: Promise<SearchParams>;
 }) {
   const { auth, partner } = await requirePartner("/partner/profile");
-  const [profile, payout, params] = await Promise.all([
+  const [{ copy }, profile, payout, params] = await Promise.all([
+    loadPartnerCabinet(),
     getOwnProfile(auth.userId),
     getOwnPayoutDetails(auth.userId),
     searchParams,
   ]);
+  const page = copy.pages.profile;
+  const prof = copy.profile;
   const parsedPayout = parsePayoutDetails(payout.details);
   const error = first(params.error);
   const saved = first(params.saved);
 
   return (
     <div className="grid gap-7">
-      <PageHeader
-        eyebrow="Partner Platform"
-        title="Profile"
-        lead="Account and partner-record fields are read from your own row. Payout details are the only fields you can change here."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} lead={page.lead} />
 
       {saved ? (
         <p className="text-sm text-paper" role="status">
-          Payout details saved.
+          {prof.savedNotice}
         </p>
       ) : null}
       {error ? (
@@ -64,23 +60,23 @@ export default async function PartnerProfilePage({
       <div className="grid gap-6 lg:grid-cols-2">
         <section aria-labelledby="account-heading" className={`p-5 sm:p-6 ${cardClass}`}>
           <h2 id="account-heading" className="text-sm font-semibold tracking-tight">
-            Account
+            {prof.accountTitle}
           </h2>
           <div className="mt-6">
             <DetailList
               items={[
-                { label: "Full name", value: profile?.full_name ?? NO_DATA },
-                { label: "Email", value: profile?.email ?? auth.email ?? NO_DATA },
-                { label: "Phone", value: profile?.phone ?? NO_DATA },
+                { label: prof.labelFullName, value: profile?.full_name ?? NO_DATA },
+                { label: prof.labelEmail, value: profile?.email ?? auth.email ?? NO_DATA },
+                { label: prof.labelPhone, value: profile?.phone ?? NO_DATA },
                 {
-                  label: "Language",
+                  label: prof.labelLanguage,
                   value: profile?.language ? profile.language.toUpperCase() : NO_DATA,
                 },
-                { label: "Country", value: profile?.country ?? NO_DATA },
-                { label: "Region", value: profile?.region ?? NO_DATA },
-                { label: "Avatar URL", value: profile?.avatar_url ?? NO_DATA },
+                { label: prof.labelCountry, value: profile?.country ?? NO_DATA },
+                { label: prof.labelRegion, value: profile?.region ?? NO_DATA },
+                { label: prof.labelAvatarUrl, value: profile?.avatar_url ?? NO_DATA },
                 {
-                  label: "Account created",
+                  label: prof.labelAccountCreated,
                   value: formatDate(profile?.created_at ?? partner.created_at),
                 },
               ]}
@@ -90,19 +86,23 @@ export default async function PartnerProfilePage({
 
         <section aria-labelledby="partner-heading" className={`p-5 sm:p-6 ${cardClass}`}>
           <h2 id="partner-heading" className="text-sm font-semibold tracking-tight">
-            Partner record
+            {prof.partnerRecordTitle}
           </h2>
-          <p className="mt-1 text-xs text-muted">
-            Platform-owned. These values cannot be changed from a partner
-            session by design.
-          </p>
+          <p className="mt-1 text-xs text-muted">{prof.partnerRecordLead}</p>
           <div className="mt-6">
             <DetailList
               items={[
-                { label: "Partner ID", value: partner.partner_id, mono: true },
-                { label: "Referral code", value: partner.referral_code, mono: true },
-                { label: "Status", value: partner.status },
-                { label: "Partner since", value: formatDate(partner.created_at) },
+                { label: copy.dashboard.labelPartnerId, value: partner.partner_id, mono: true },
+                {
+                  label: copy.dashboard.labelReferralCode,
+                  value: partner.referral_code,
+                  mono: true,
+                },
+                {
+                  label: prof.labelStatus,
+                  value: partnerStatusLabelFromCopy(partner.status, copy),
+                },
+                { label: prof.labelPartnerSince, value: formatDate(partner.created_at) },
               ]}
             />
           </div>
@@ -111,21 +111,17 @@ export default async function PartnerProfilePage({
 
       <section aria-labelledby="payout-heading" className={`p-5 sm:p-6 ${cardClass}`}>
         <h2 id="payout-heading" className="text-sm font-semibold tracking-tight">
-          Payout details
+          {prof.payoutTitle}
         </h2>
-        <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">
-          Partner payouts are USDC. Default network is Solana. This form
-          stores the destination on your profile. It does not send tokens.
-        </p>
+        <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted">{prof.payoutLead}</p>
         {payout.unreadable ? (
           <p className="mt-5 text-sm text-muted">
-            {NO_DATA} Payout details could not be read, so they cannot be saved
-            from this page.
+            {NO_DATA} {prof.payoutUnreadable}
           </p>
         ) : (
           <form action={savePayoutDetails} className="mt-5 grid max-w-xl gap-4">
             <label className={labelClass}>
-              <span className="text-muted">Recipient name</span>
+              <span className="text-muted">{prof.labelRecipientName}</span>
               <input
                 className={fieldClass}
                 name="payout_recipient"
@@ -135,11 +131,11 @@ export default async function PartnerProfilePage({
               />
             </label>
             <label className={labelClass}>
-              <span className="text-muted">Payout asset</span>
+              <span className="text-muted">{prof.labelPayoutAsset}</span>
               <input className={fieldClass} value={PAYOUT_ASSET} readOnly />
             </label>
             <label className={labelClass}>
-              <span className="text-muted">Network</span>
+              <span className="text-muted">{prof.labelNetwork}</span>
               <select
                 className={fieldClass}
                 name="payout_network"
@@ -154,18 +150,18 @@ export default async function PartnerProfilePage({
               </select>
             </label>
             <label className={labelClass}>
-              <span className="text-muted">USDC address</span>
+              <span className="text-muted">{prof.labelUsdcAddress}</span>
               <input
                 className={`${fieldClass} font-mono text-xs`}
                 name="payout_address"
                 maxLength={128}
                 defaultValue={parsedPayout?.address ?? ""}
-                placeholder="Solana address"
+                placeholder={prof.usdcPlaceholder}
                 autoComplete="off"
               />
             </label>
             <label className={labelClass}>
-              <span className="text-muted">Notes (optional)</span>
+              <span className="text-muted">{prof.labelNotes}</span>
               <textarea
                 className={`${fieldClass} min-h-20`}
                 name="payout_notes"
@@ -174,17 +170,15 @@ export default async function PartnerProfilePage({
               />
             </label>
             <button type="submit" className={`w-fit ${primaryButtonClass}`}>
-              Save payout details
+              {prof.savePayout}
             </button>
           </form>
         )}
       </section>
 
       <section className={`p-5 sm:p-6 ${cardClass}`}>
-        <h2 className="text-sm font-semibold tracking-tight">Referral link</h2>
-        <p className="mt-1 text-xs text-muted">
-          Issued with the account. The partner record above stays read-only.
-        </p>
+        <h2 className="text-sm font-semibold tracking-tight">{prof.referralTitle}</h2>
+        <p className="mt-1 text-xs text-muted">{prof.referralLead}</p>
         <div className="mt-5">
           <CopyReferralLink url={referralUrl(partner.referral_code)} />
         </div>

@@ -1,23 +1,16 @@
+import { CabinetCopyProvider } from "@/components/platform/CabinetCopyProvider";
+import {
+  loadPartnerCabinet,
+  partnerNavFromCopy,
+  shellCopyFromCabinet,
+} from "@/lib/partner/load-cabinet";
 import type { Metadata } from "next";
 import { PlatformShell } from "@/components/platform/PlatformShell";
-import type { PlatformNavItem } from "@/components/platform/PlatformNav";
 import { requirePartner } from "@/lib/auth/dal";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
-
-/** Order matches the Phase 4A route map. */
-const PARTNER_NAV: PlatformNavItem[] = [
-  { href: "/partner/dashboard", label: "Dashboard" },
-  { href: "/partner/customers", label: "Customers" },
-  { href: "/partner/sales", label: "Sales" },
-  { href: "/partner/network", label: "Network" },
-  { href: "/partner/commissions", label: "Commissions" },
-  { href: "/partner/payouts", label: "Payouts" },
-  { href: "/partner/resources", label: "Resources" },
-  { href: "/partner/profile", label: "Profile" },
-];
 
 export default async function PartnerPlatformLayout({
   children,
@@ -25,16 +18,20 @@ export default async function PartnerPlatformLayout({
   children: React.ReactNode;
 }) {
   const { auth, partner } = await requirePartner("/partner/dashboard");
+  const { copy } = await loadPartnerCabinet();
 
   return (
-    <PlatformShell
-      nav={PARTNER_NAV}
-      navLabel="Partner sections"
-      homeHref="/partner/dashboard"
-      badge={partner.partner_id}
-      userEmail={auth.email}
-    >
-      {children}
-    </PlatformShell>
+    <CabinetCopyProvider copy={copy}>
+      <PlatformShell
+        nav={partnerNavFromCopy(copy)}
+        navLabel={copy.shell.navLabel}
+        shell={shellCopyFromCabinet(copy)}
+        homeHref="/partner/dashboard"
+        badge={partner.partner_id}
+        userEmail={auth.email}
+      >
+        {children}
+      </PlatformShell>
+    </CabinetCopyProvider>
   );
 }

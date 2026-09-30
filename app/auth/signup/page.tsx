@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AuthCard, SetupNotice } from "@/components/auth/AuthCard";
+import { AuthCard } from "@/components/auth/AuthCard";
+import { SetupNotice } from "@/components/auth/SetupNotice";
 import { SignupForm } from "@/components/auth/SignupForm";
 import { safeNextPath } from "@/lib/auth/redirects";
+import { loadAuthCabinet } from "@/lib/partner/load-cabinet";
 import { describeSupabaseConfigProblem } from "@/lib/supabase/config";
 
-export const metadata: Metadata = { title: "Create a partner account" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { copy } = await loadAuthCabinet();
+  return { title: copy.auth.signup.metadataTitle };
+}
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -20,21 +25,24 @@ export default async function SignupPage({
 }) {
   const params = await searchParams;
   const next = safeNextPath(first(params.next));
+  const { copy } = await loadAuthCabinet();
+  const signup = copy.auth.signup;
   const configProblem = describeSupabaseConfigProblem();
   if (configProblem) console.error("[auth] sign-up unavailable:", configProblem);
 
   return (
     <AuthCard
-      eyebrow="Partner Platform"
-      title="Create a partner account"
-      lead="One account gives you your Partner ID, a referral code and the partner dashboard."
+      ventureTagline={copy.auth.ventureTagline}
+      eyebrow={signup.eyebrow}
+      title={signup.title}
+      lead={signup.lead}
       footer={
         <p className="text-xs text-muted">
-          Programme rules are confirmed with you during onboarding, before you sell. Read the{" "}
+          {signup.footerBefore}{" "}
           <Link href="/privacy" className="link-underline text-paper">
-            privacy notice
+            {signup.privacyLink}
           </Link>
-          .
+          {signup.footerAfter}
         </p>
       }
     >

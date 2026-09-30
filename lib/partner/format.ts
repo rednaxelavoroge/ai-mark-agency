@@ -1,3 +1,4 @@
+import type { CabinetCopy } from "@/content/cabinet/types";
 import { PARTNER_STATUS_LABELS } from "@/lib/auth/roles";
 import { site } from "@/lib/site";
 
@@ -28,6 +29,14 @@ export function referralUrl(code: string): string {
 
 export function partnerStatusLabel(status: string): string {
   return PARTNER_STATUS_LABELS[status] ?? status;
+}
+
+export function partnerStatusLabelFromCopy(
+  status: string,
+  copy: CabinetCopy,
+): string {
+  const labels = copy.partnerStatus;
+  return labels[status as keyof typeof labels] ?? status;
 }
 
 /**

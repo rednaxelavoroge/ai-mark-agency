@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getPublicChromeCopy } from "@/content/sections";
 import { navHref, type Locale } from "@/lib/site";
 
 interface BackButtonProps {
@@ -16,9 +17,8 @@ export function BackButton({
   label,
   className = "",
 }: BackButtonProps) {
-  const isRu = locale === "ru";
-  const defaultLabel = isRu ? "Вернуться на главную" : "Back to Home";
-  const text = label || defaultLabel;
+  const chrome = getPublicChromeCopy(locale).backButton;
+  const text = label || chrome.defaultLabel;
 
   return (
     <Link

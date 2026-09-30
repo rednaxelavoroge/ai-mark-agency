@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BackButton } from "@/components/BackButton";
 import { ContactCta } from "@/components/ContactCta";
 import { getCopy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { packages } from "@/content/packages";
 import { absoluteUrl, isLocale, navHref, site, type Locale } from "@/lib/site";
 import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
@@ -62,7 +63,7 @@ export default async function PricingPage({ params }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getCopy(locale);
-  const isRu = locale === "ru";
+  const p = getPublicChromeCopy(locale).pricingPage;
 
   const otherTiers = t.commercial.tiers.filter((tier) => {
     const n = tier.name.toLowerCase();
@@ -97,16 +98,14 @@ export default async function PricingPage({ params }: Props) {
       <div className="mt-12 space-y-4">
         <div className="flex items-center justify-between">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-warm">
-            {isRu ? "Пакеты отдела маркетинга" : "Marketing Department Retainers"}
+            {p.retainersHeading}
           </span>
           <span className="text-xs text-muted font-mono">
-            {isRu ? "Оплата за выбранный план" : "Recurring monthly scope"}
+            {p.retainersSub}
           </span>
         </div>
         <p className="text-xs text-muted max-w-2xl">
-          {isRu
-            ? "Постоянный HITL-маркетинг: AI генерирует, человек утверждает. Медиабюджет оплачивается отдельно."
-            : "Ongoing human-in-the-loop marketing: AI generates drafts, senior human signs off. Ad spend billed separately."}
+          {p.retainersNote}
         </p>
 
         <div className="grid gap-6 md:grid-cols-3 pt-2">
@@ -131,7 +130,7 @@ export default async function PricingPage({ params }: Props) {
                     </h3>
                     {isFeatured ? (
                       <span className="rounded-full bg-mark px-2.5 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase tracking-wide">
-                        {t.commercial.featured || (isRu ? "Чаще начинают отсюда" : "Popular")}
+                        {t.commercial.featured || p.popular}
                       </span>
                     ) : null}
                   </div>
@@ -140,7 +139,7 @@ export default async function PricingPage({ params }: Props) {
                       {formatUsd(pkg.priceUsd)}
                     </span>
                     <span className="text-xs text-muted font-mono">
-                      {t.commercial.perMonth || (isRu ? "/мес" : "/mo")}
+                      {t.commercial.perMonth || p.perMonth}
                     </span>
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-muted min-h-[36px]">
@@ -169,7 +168,7 @@ export default async function PricingPage({ params }: Props) {
                   <ContactCta
                     className="block w-full rounded-xl border border-transparent py-2 text-center text-[11px] text-muted hover:text-paper hover:bg-ink-3/40 transition-colors"
                   >
-                    {isRu ? "Другой скоуп — обсудить" : "Custom scope — discuss"}
+                    {p.customScope}
                   </ContactCta>
                 </div>
               </div>
@@ -181,12 +180,10 @@ export default async function PricingPage({ params }: Props) {
       {/* Row 2: Other Formats of Collaboration */}
       <div className="mt-16 space-y-4">
         <span className="font-mono text-xs font-semibold uppercase tracking-wider text-warm">
-          {isRu ? "Другие форматы сотрудничества" : "Other Collaboration Formats"}
+          {p.otherFormats}
         </span>
         <p className="text-xs text-muted max-w-2xl">
-          {isRu
-            ? "Подписка на AI-продукты (примерно $149–349+/мес) — это не ретейнер AI-маркетингового отдела ($1,500–3,500+/мес)."
-            : "Product SaaS subscriptions ($149–349+/mo) are distinct from full marketing retainers ($1,500–3,500+/mo)."}
+          {t.commercial.skuNote}
         </p>
 
         <div className="grid gap-4 md:grid-cols-3 pt-2">
@@ -200,7 +197,7 @@ export default async function PricingPage({ params }: Props) {
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] text-warm uppercase tracking-wider">
-                      {isRu ? "Формат" : "Format"}
+                      {p.formatLabel}
                     </span>
                     <span className="font-mono text-xs font-semibold text-paper">
                       {tier.price}
@@ -215,7 +212,7 @@ export default async function PricingPage({ params }: Props) {
                 </div>
                 <div className="mt-5">
                   <ContactCta className="block w-full rounded-lg border border-line bg-ink-3 py-2 text-center text-xs font-medium text-paper hover:bg-ink-3/80 transition-all">
-                    {isRu ? "Обсудить проект →" : "Discuss project →"}
+                    {p.discussProject}
                   </ContactCta>
                 </div>
               </div>
@@ -229,12 +226,10 @@ export default async function PricingPage({ params }: Props) {
                     <span className="font-mono text-xs font-semibold text-paper">$149–$349/mo</span>
                   </div>
                   <h4 className="mt-2 font-display text-base font-semibold text-paper">
-                    {isRu ? "AI-продукты" : "AI Products"}
+                    {p.aiProducts}
                   </h4>
                   <p className="mt-2 text-xs leading-relaxed text-muted">
-                    {isRu
-                      ? "AIME, Business Assistant, SHOWROOM AI — AI-продавец как продуктовые SKU — у себя или с нашей поставкой."
-                      : "AIME, Business Assistant, and SHOWROOM AI as self-serve SaaS products or managed deployments."}
+                    {t.products.hubLead}
                   </p>
                 </div>
                 <div className="mt-5">
@@ -242,7 +237,7 @@ export default async function PricingPage({ params }: Props) {
                     href={navHref(locale, "/products")}
                     className="block w-full rounded-lg border border-line bg-ink-3 py-2 text-center text-xs font-medium text-paper hover:bg-ink-3/80 transition-all"
                   >
-                    {isRu ? "Смотреть продукты →" : "View products →"}
+                    {getPublicChromeCopy(locale).footer.allProducts}
                   </Link>
                 </div>
               </div>
@@ -251,20 +246,18 @@ export default async function PricingPage({ params }: Props) {
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] text-warm uppercase tracking-wider">Service</span>
-                    <span className="font-mono text-xs font-semibold text-paper">{isRu ? "от $500+" : "from $500+"}</span>
+                    <span className="font-mono text-xs font-semibold text-paper">{p.fromPrice}</span>
                   </div>
                   <h4 className="mt-2 font-display text-base font-semibold text-paper">
-                    {isRu ? "AI-маркетинговые услуги" : "AI Marketing Services"}
+                    {p.aiMarketingServices}
                   </h4>
                   <p className="mt-2 text-xs leading-relaxed text-muted">
-                    {isRu
-                      ? "Маркетинг по скоупу без полного штатного отдела. Определяется брифом, не выдуманным пакетом."
-                      : "Scoped marketing sprints without a full dedicated department. Defined by brief, not arbitrary packages."}
+                    {t.commercial.lead}
                   </p>
                 </div>
                 <div className="mt-5">
                   <ContactCta className="block w-full rounded-lg border border-line bg-ink-3 py-2 text-center text-xs font-medium text-paper hover:bg-ink-3/80 transition-all">
-                    {isRu ? "Обсудить проект →" : "Discuss project →"}
+                    {p.discussProject}
                   </ContactCta>
                 </div>
               </div>
@@ -273,15 +266,13 @@ export default async function PricingPage({ params }: Props) {
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] text-warm uppercase tracking-wider">Custom</span>
-                    <span className="font-mono text-xs font-semibold text-paper">{isRu ? "по скоупу" : "by scope"}</span>
+                    <span className="font-mono text-xs font-semibold text-paper">{p.byScope}</span>
                   </div>
                   <h4 className="mt-2 font-display text-base font-semibold text-paper">
                     Digital Production &amp; Ventures
                   </h4>
                   <p className="mt-2 text-xs leading-relaxed text-muted">
-                    {isRu
-                      ? "Сайты, приложения, платформы и совместный запуск венчуров. Скоуп — после понимания операционной модели."
-                      : "Web apps, internal portals, custom engines, and co-founded ventures scoped to real economics."}
+                    {t.production.lead}
                   </p>
                 </div>
                 <div className="mt-5">
@@ -289,7 +280,7 @@ export default async function PricingPage({ params }: Props) {
                     href={navHref(locale, DIGITAL_PRODUCTION_PATH)}
                     className="block w-full rounded-lg border border-line bg-ink-3 py-2 text-center text-xs font-medium text-paper hover:bg-ink-3/80 transition-all"
                   >
-                    {isRu ? "Цифровое производство →" : "Digital Production →"}
+                    {p.digitalProductionLink}
                   </Link>
                 </div>
               </div>
@@ -300,10 +291,7 @@ export default async function PricingPage({ params }: Props) {
 
       {/* Commercial Policy Note */}
       <p className="mt-12 text-center text-[13px] text-muted">
-        {t.commercial.footnote ||
-          (isRu
-            ? "USD. Продуктовые цены — в опубликованных коридорах на страницах продуктов. Ретейнеры отдела: Starter $1,200 / Growth $2,200 / Scale $3,500 в месяц по скоупу. ROI, CAC и ROAS не гарантируем."
-            : "USD. Product prices are published on dedicated product pages. Retainers: Starter $1,200 / Growth $2,200 / Scale $3,500 per month by scope. ROI, CAC, and ROAS are never guaranteed.")}
+        {t.commercial.footnote || p.commercialFootnote}
         {" "}
         {t.ui.cardsSoon}
       </p>
@@ -355,16 +343,14 @@ export default async function PricingPage({ params }: Props) {
       {/* Bottom CTA Card */}
       <div className="mt-16 rounded-3xl border border-warm/30 bg-warm-soft p-8 sm:p-10 text-center" data-reveal>
         <h3 className="font-display text-xl sm:text-2xl font-semibold text-paper">
-          {isRu ? "Нужен индивидуальный расчёт или комбинированный скоуп?" : "Need a custom proposal or hybrid scope?"}
+          {p.customProposalTitle}
         </h3>
         <p className="mx-auto mt-2 max-w-xl text-xs sm:text-sm text-muted">
-          {isRu
-            ? "Свяжитесь с нами — наш AI Business Assistant ответит мгновенно или передаст задачу оператору."
-            : "Get in touch — our AI Business Assistant answers instantly or routes to a senior operator."}
+          {t.contact.lead}
         </p>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
           <ContactCta className="inline-flex items-center gap-2 rounded-full bg-mark px-6 py-2.5 text-xs sm:text-sm font-semibold text-mark-ink hover:bg-mark-light shadow-md transition-all">
-            {isRu ? "Открыть чат" : "Open chat"} →
+            {p.openChat} →
           </ContactCta>
           <BackButton locale={locale} targetHref="/" />
         </div>

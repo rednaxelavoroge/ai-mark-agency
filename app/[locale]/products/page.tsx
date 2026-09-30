@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { BuyLink } from "@/components/BuyLink";
 import { getCopy } from "@/content/copy";
+import { getPublicChromeCopy } from "@/content/sections";
 import { products } from "@/content/packages";
 import { ProductUI, type ProductVariant } from "@/components/ui/ProductUI";
 import { productPagePath } from "@/lib/products";
@@ -42,7 +43,7 @@ export default async function ProductsHubPage({ params }: Props) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const t = getCopy(locale);
-  const isRu = locale === "ru";
+  const pp = getPublicChromeCopy(locale).productPage;
 
   return (
     <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
@@ -93,11 +94,7 @@ export default async function ProductsHubPage({ params }: Props) {
             </span>
           ))}
         </div>
-        <p className="mt-4 text-xs text-muted">
-          {isRu
-            ? "Три продукта. Три разные задачи. Ассистент отвечает и квалифицирует. Showroom продаёт и готовит сделку. AIME ведёт маркетинг до вашего апрува."
-            : "Three products. Three different jobs. The assistant answers and qualifies. Showroom sells and prepares the deal. AIME runs marketing up to your approval."}
-        </p>
+        <p className="mt-4 text-xs text-muted">{t.products.lead}</p>
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-3">
@@ -170,7 +167,7 @@ export default async function ProductsHubPage({ params }: Props) {
                     SKU; the buyer picks (and sees) the exact plan on /pay. */}
                 <BuyLink
                   locale={locale}
-                  label={isRu ? "Оплатить USDT / USDC" : "Pay USDT / USDC"}
+                  label={pp.payUsdt}
                   className="mt-2 block w-full rounded-full border border-line bg-ink-3/40 px-4 py-2.5 text-center text-xs font-medium text-paper transition-colors hover:border-line-strong hover:bg-ink-3"
                 />
               </div>
@@ -182,12 +179,9 @@ export default async function ProductsHubPage({ params }: Props) {
       <div className="mt-12 rounded-2xl border border-line bg-ink-3/30 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h3 className="font-display text-base font-semibold text-paper">
-            {isRu ? "Нужна помощь с выбором архитектуры?" : "Need guidance choosing product architecture?"}
+            {pp.architectureHelpTitle}
           </h3>
-          <p className="mt-1 text-xs text-muted">
-            {isRu
-              ? "Мы поможем оценить сценарий вашей компании и подобрать точную конфигурацию."
-              : "We'll review your company workflow and formulate the precise stack configuration."}
+          <p className="mt-1 text-xs text-muted">{pp.architectureHelpLead}
           </p>
         </div>
         <ContactCta className="inline-flex rounded-full bg-mark px-6 py-2.5 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all whitespace-nowrap">
