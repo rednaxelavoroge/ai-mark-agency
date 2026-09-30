@@ -323,35 +323,35 @@ export const copyFr: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "Partenaires",
+    "title": "Le réseau international de partenaires est notre levier d'expansion.",
+    "lead": "Nul besoin d'ouvrir une agence dans chaque pays pour développer un marché. Les partenaires apportent les clients, représentent les solutions et ancrent la présence locale.",
+    "model": "Présence internationale sans déployer d'infrastructure physique dans chaque pays. Les commissions sont fixées au cas par cas — nous ne faisons pas de promesses de revenus irréalistes.",
+    "earn": "Un partenaire peut :",
+    "cta": "Échanger sur un partenariat",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "Régional",
+        "body": "Représenter l'entreprise sur une zone géographique. Réseau local, même socle opérationnel."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "Sectoriel",
+        "body": "Développer un secteur que vous maîtrisez : BTP, automobile, retail et plus encore."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "Apporteur d'affaires",
+        "body": "Présenter des clients. Nous assurons l'onboarding et le support. Commission selon accord."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "Agence",
+        "body": "Déployer nos produits pour vos clients ou intégrer notre stack dans vos prestations."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "Apporter des clients",
+      "Représenter les solutions d'IA",
+      "Développer le marché local",
+      "Percevoir des commissions selon les termes convenus"
     ]
   },
   "why": {

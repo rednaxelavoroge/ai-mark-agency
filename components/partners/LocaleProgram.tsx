@@ -7,6 +7,21 @@ import { buildSalesKit } from "@/lib/partner/catalog";
 import { productPagePath } from "@/lib/products";
 import type { Locale } from "@/lib/site";
 
+const STEPS_BY_LOCALE: Record<Locale, string[]> = {
+  en: ["Personal sale", "Team sales", "Up to 5 levels", "Commission"],
+  ru: ["Личные продажи", "Командные продажи", "До 5 уровней", "Комиссия"],
+  es: ["Venta directa", "Ventas de equipo", "Hasta 5 niveles", "Comisión"],
+  pt: ["Venda direta", "Vendas em equipe", "Até 5 níveis", "Comissão"],
+  de: ["Direktverkauf", "Teamverkäufe", "Bis zu 5 Stufen", "Provision"],
+  fr: ["Vente directe", "Ventes d'équipe", "Jusqu'à 5 niveaux", "Commission"],
+  zh: ["直接销售", "团队销售", "最高5级", "佣金收益"],
+  ar: ["مبيعات مباشرة", "مبيعات الفريق", "حتى 5 مستويات", "عمولة"],
+  id: ["Penjualan langsung", "Penjualan tim", "Hingga 5 level", "Komisi"],
+  vi: ["Bán hàng trực tiếp", "Bán hàng theo nhóm", "Lên đến 5 cấp độ", "Hoa hồng"],
+  ja: ["直接販売", "チーム販売", "最大5段階", "報酬コミッション"],
+  tr: ["Doğrudan satış", "Ekip satışları", "5 kademeye kadar", "Komisyon"],
+};
+
 /**
  * Public partner page for locales that do not have the long EN/RU essay.
  * Facts come from the published locale copy and the approved program terms.
@@ -14,6 +29,7 @@ import type { Locale } from "@/lib/site";
 export function LocaleProgram({ locale }: { locale: Locale }) {
   const copy = getCopy(locale);
   const terms = partnerProgramTerms[locale];
+  const steps = STEPS_BY_LOCALE[locale] ?? STEPS_BY_LOCALE.en;
   const kit = buildSalesKit(locale, "code");
   const products = (["aime", "assistant", "showroom"] as const).map((id) => {
     const item = copy.products.items[id];
@@ -42,7 +58,7 @@ export function LocaleProgram({ locale }: { locale: Locale }) {
             {copy.partners.lead}
           </p>
           <ol className="mt-5 flex flex-wrap items-center gap-2">
-            {["Personal sale", "Team sales", "Up to 5 levels", "Up to 80%"].map((step, i) => (
+            {steps.map((step, i) => (
               <li key={step} className="flex items-center gap-2">
                 {i > 0 ? <span className="font-mono text-xs text-warm">→</span> : null}
                 <span className="rounded-full border border-line bg-ink-2 px-3 py-1.5 text-sm text-paper">{step}</span>

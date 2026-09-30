@@ -323,35 +323,35 @@ export const copyTr: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "Ortaklar",
+    "title": "Uluslararası ortaklık ağı, pazarda büyüme ve varlığımızı ölçekleme yöntemimizdir.",
+    "lead": "Pazarı geliştirmek için her ülkede devasa ofisler açmaya gerek yoktur. Ortaklar müşteri getirir, çözümleri tanıtır ve yerel varlık oluşturur.",
+    "model": "Her ülkede ayrı altyapı kurmadan uluslararası varlık. Komisyonlar vaka bazında belirlenir — gerçek dışı kazanç vaatlerinde bulunmayız.",
+    "earn": "Bir ortak şunları yapabilir:",
+    "cta": "Ortaklığı görüşün",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "Bölgesel Temsilci",
+        "body": "Belirli bir coğrafyada şirketi temsil etme. Yerel ilişkiler, aynı kurumsal işletim sistemi."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "Sektörel Entegratör",
+        "body": "Zaten uzman olduğunuz bir sektöre odaklanma — inşaat, otomotiv, perakende ve benzeri."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "Yönlendirme Ortağı",
+        "body": "Potansiyel müşteri tanıştırma. Entegrasyon ve desteği biz sağlarız. Anlaşmalı komisyon ödenir."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "Ajans",
+        "body": "Ürünlerimizi kendi müşteri portföyünüze uygulama veya altyapımızla hizmet sunma."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "Müşteri getirmek",
+      "Yapay zeka çözümlerini temsil etmek",
+      "Yerel pazarı geliştirmek",
+      "Anlaşılan şartlarda sürekli komisyon kazanmak"
     ]
   },
   "why": {

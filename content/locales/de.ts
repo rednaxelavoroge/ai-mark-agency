@@ -323,35 +323,35 @@ export const copyDe: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "Partner",
+    "title": "Ein internationales Partnernetzwerk ist unser Weg zur Skalierung.",
+    "lead": "Wir benötigen kein eigenes Büro in jeder Region, um Märkte zu erschließen. Partner bringen Kunden, repräsentieren die Lösungen und bauen lokale Präsenz auf.",
+    "model": "Internationale Präsenz ohne eigene Infrastruktur in jedem Land aufzubauen. Provisionen werden individuell vereinbart — wir versprechen keine festen Erträge.",
+    "earn": "Ein Partner kann:",
+    "cta": "Partnerschaft besprechen",
     "types": [
       {
         "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "body": "Repräsentieren Sie das Unternehmen in Ihrer Region. Lokale Beziehungen, dasselbe Betriebssystem."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "Branchenspezifisch",
+        "body": "Bringen Sie eine Branche ein, die Sie verstehen — Bauwesen, Automotive, Handel und mehr."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "Empfehlung",
+        "body": "Stellen Sie Kunden vor. Wir übernehmen Onboarding und Support. Provision nach Vereinbarung."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "Agentur",
+        "body": "Betreiben Sie die Produkte für Ihre Kunden oder vertreiben Sie Projekte auf unserem Stack."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "Kunden gewinnen",
+      "KI-Lösungen präsentieren",
+      "Lokalen Markt entwickeln",
+      "Provisionen zu vereinbarten Konditionen erhalten"
     ]
   },
   "why": {

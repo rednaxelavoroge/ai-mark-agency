@@ -505,7 +505,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Autonomous Marketing",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Executes the full marketing workflow: market intelligence, visual assets, and social drafts — up to your approval.",
           "highlights": [
             "Market intelligence & on-brand content planning",
@@ -627,7 +627,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Autonomous Marketing",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Executes the full marketing workflow: market intelligence, visual assets, and social drafts — up to your approval.",
           "highlights": [
             "Market intelligence & on-brand content planning",
@@ -1148,7 +1148,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Marketing autónomo",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Ejecuta todo el flujo de trabajo de marketing: inteligencia de mercado, activos visuales y borradores sociales, hasta su aprobación.",
           "highlights": [
             "Inteligencia de mercado y planificación de contenido dentro de la marca",
@@ -1270,7 +1270,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Marketing autónomo",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Ejecuta todo el flujo de trabajo de marketing: inteligencia de mercado, activos visuales y borradores sociales, hasta su aprobación.",
           "highlights": [
             "Inteligencia de mercado y planificación de contenido dentro de la marca",
@@ -1791,7 +1791,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Marketing Autónomo",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Executa todo o fluxo de trabalho de marketing: inteligência de mercado, recursos visuais e rascunhos sociais — até a sua aprovação.",
           "highlights": [
             "Inteligência de mercado e planeamento de conteúdo on-brand",
@@ -1913,7 +1913,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Marketing Autónomo",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Executa todo o fluxo de trabalho de marketing: inteligência de mercado, recursos visuais e rascunhos sociais — até a sua aprovação.",
           "highlights": [
             "Inteligência de mercado e planeamento de conteúdo on-brand",
@@ -2434,7 +2434,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Автономный маркетинг",
-          "price": "от $1,200/мес",
+          "price": "от $199/мес",
           "desc": "Ведёт полный маркетинговый цикл: анализ конкурентов, тексты, визуалы и посты — строго до вашего апрува.",
           "highlights": [
             "Анализ рынка и контент-план под ваш бренд",
@@ -2556,7 +2556,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Автономный маркетинг",
-          "price": "от $1,200/мес",
+          "price": "от $199/мес",
           "desc": "Ведёт полный маркетинговый цикл: анализ конкурентов, тексты, визуалы и посты — строго до вашего апрува.",
           "highlights": [
             "Анализ рынка и контент-план под ваш бренд",
@@ -3077,7 +3077,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "التسويق المستقل",
-          "price": "من $1,200/شهر",
+          "price": "من $199/شهر",
           "desc": "ينفذ سير العمل التسويقي الكامل: معلومات السوق، والأصول المرئية، والمسودات الاجتماعية - بموافقتك.",
           "highlights": [
             "معلومات السوق وتخطيط المحتوى وفق العلامة",
@@ -3199,7 +3199,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "التسويق المستقل",
-          "price": "من $1,200/شهر",
+          "price": "من $199/شهر",
           "desc": "ينفذ سير العمل التسويقي الكامل: معلومات السوق، والأصول المرئية، والمسودات الاجتماعية - بموافقتك.",
           "highlights": [
             "معلومات السوق وتخطيط المحتوى وفق العلامة",
@@ -3720,7 +3720,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "自主营销",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "执行完整的营销工作流程：市场情报、视觉资产和社交草稿 - 直至您批准。",
           "highlights": [
             "市场情报和品牌内容规划",
@@ -3842,7 +3842,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "自主营销",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "执行完整的营销工作流程：市场情报、视觉资产和社交草稿 - 直至您批准。",
           "highlights": [
             "市场情报和品牌内容规划",
@@ -4363,7 +4363,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Pemasaran Otonom",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Jalankan alur kerja pemasaran penuh: intelijen pasar, aset visual, dan rancangan sosial — hingga persetujuan Anda.",
           "highlights": [
             "Intelijen pasar & perencanaan konten merek",
@@ -4485,7 +4485,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Pemasaran Otonom",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Jalankan alur kerja pemasaran penuh: intelijen pasar, aset visual, dan rancangan sosial — hingga persetujuan Anda.",
           "highlights": [
             "Intelijen pasar & perencanaan konten merek",
@@ -5006,7 +5006,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Tiếp thị tự động",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Thực hiện toàn bộ quy trình tiếp thị: thông tin thị trường, nội dung trực quan và bản nháp trên mạng xã hội — tùy theo sự chấp thuận của bạn.",
           "highlights": [
             "Thông tin thị trường & lập kế hoạch nội dung thương hiệu",
@@ -5128,7 +5128,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Tiếp thị tự động",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Thực hiện toàn bộ quy trình tiếp thị: thông tin thị trường, nội dung trực quan và bản nháp trên mạng xã hội — tùy theo sự chấp thuận của bạn.",
           "highlights": [
             "Thông tin thị trường & lập kế hoạch nội dung thương hiệu",
@@ -5649,7 +5649,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Autonomes Marketing",
-          "price": "ab $1.200/Mo",
+          "price": "ab $199/Mo",
           "desc": "Führt den gesamten Marketing-Workflow aus: Marktinformationen, visuelle Assets und Social-Media-Entwürfe – bis zu Ihrer Genehmigung.",
           "highlights": [
             "Marktinformationen und markengerechte Content-Planung",
@@ -5771,7 +5771,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Autonomes Marketing",
-          "price": "ab $1.200/Mo",
+          "price": "ab $199/Mo",
           "desc": "Führt den gesamten Marketing-Workflow aus: Marktinformationen, visuelle Assets und Social-Media-Entwürfe – bis zu Ihrer Genehmigung.",
           "highlights": [
             "Marktinformationen und markengerechte Content-Planung",
@@ -6292,7 +6292,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Marketing autonome",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Exécute l'intégralité du flux de travail marketing : informations de marché, ressources visuelles et projets sociaux, jusqu'à votre approbation.",
           "highlights": [
             "Intelligence de marché et planification du contenu de la marque",
@@ -6414,7 +6414,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Marketing autonome",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Exécute l'intégralité du flux de travail marketing : informations de marché, ressources visuelles et projets sociaux, jusqu'à votre approbation.",
           "highlights": [
             "Intelligence de marché et planification du contenu de la marque",
@@ -6935,7 +6935,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "自律的なマーケティング",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "市場インテリジェンス、ビジュアル アセット、ソーシャル ドラフトなど、完全なマーケティング ワークフローを承認に応じて実行します。",
           "highlights": [
             "市場インテリジェンスとブランド上のコンテンツ計画",
@@ -7057,7 +7057,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "自律的なマーケティング",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "市場インテリジェンス、ビジュアル アセット、ソーシャル ドラフトなど、完全なマーケティング ワークフローを承認に応じて実行します。",
           "highlights": [
             "市場インテリジェンスとブランド上のコンテンツ計画",
@@ -7578,7 +7578,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Otonom Pazarlama",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Onayınıza bağlı olarak pazarlama iş akışının tamamını yürütür: pazar bilgileri, görsel varlıklar ve sosyal taslaklar.",
           "highlights": [
             "Pazar istihbaratı ve markaya özel içerik planlaması",
@@ -7700,7 +7700,7 @@ export const publicChromeCopy = {
         {
           "id": "aime",
           "tag": "Otonom Pazarlama",
-          "price": "from $1,200/mo",
+          "price": "from $199/mo",
           "desc": "Onayınıza bağlı olarak pazarlama iş akışının tamamını yürütür: pazar bilgileri, görsel varlıklar ve sosyal taslaklar.",
           "highlights": [
             "Pazar istihbaratı ve markaya özel içerik planlaması",

@@ -323,35 +323,35 @@ export const copyZh: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "合作伙伴",
+    "title": "全球合作伙伴网络是实现规模化扩张的核心路径。",
+    "lead": "我们无需在每个国家设立重资产分公司。合作伙伴带来本地客户、推广落地解决方案并深耕区域市场。",
+    "model": "无需在每个国家自建本地团队即可实现全球业务覆盖。合作佣金按项目协商，不提供虚假收益承诺。",
+    "earn": "合作伙伴权益：",
+    "cta": "洽谈商务合作",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "区域独家代理",
+        "body": "在特定国家或地理区域代表公司开展业务。依托本地人脉，共享标准化业务中台。"
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "垂直行业整合商",
+        "body": "深耕您已熟悉的细分垂直行业——如建筑工程、汽车销售、零售消费等。"
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "引荐推荐人",
+        "body": "引荐潜在客户。由我方负责交付与运维，依约结算高额分成佣金。"
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "代运营/转售机构",
+        "body": "为您的现有客户部署 AI 软件，或基于我们的技术底座转售数字化方案。"
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "带来商业客户",
+      "代表推广 AI 解决方案",
+      "拓展本地化市场",
+      "按既定条款赚取持续佣金"
     ]
   },
   "why": {

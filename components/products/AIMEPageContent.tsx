@@ -12,6 +12,7 @@ import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
 import { FeatureList } from "@/components/products/FeatureList";
+import { getAimeRetainers } from "@/content/products/aime-retainers";
 
 export function AIMEPageContent({
   locale,
@@ -21,6 +22,7 @@ export function AIMEPageContent({
   contact: Copy["contact"];
 }) {
   const c = getAimeCopy(locale);
+  const retainers = getAimeRetainers(locale);
   const ru = locale === "ru";
   const section = (n: string, en: string, ruLabel: string) => `${n} // ${ru ? ruLabel : en}`;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -456,12 +458,95 @@ export function AIMEPageContent({
         </div>
       </section>
 
-      {/* 7. FAQ ACCORDION */}
-      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
+      {/* 7. TURNKEY MARKETING DEPARTMENT RETAINERS */}
+      <section id="retainers" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-10 sm:py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
+              {section("07", "Turnkey department", "Отдел маркетинга под ключ")}
+            </span>
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-semibold text-paper">
+              {retainers.meta.title}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted max-w-2xl mx-auto">
+              {retainers.meta.subtitle}
+            </p>
+          </div>
+
+          {/* Retainers Grid */}
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {retainers.tiers.map((tier) => (
+              <div
+                key={tier.id}
+                className={`flex flex-col justify-between rounded-2xl border p-5 sm:p-6 transition-all ${
+                  tier.featured
+                    ? "relative border-mark/70 bg-ink-2 shadow-xl shadow-mark/5"
+                    : "border-line bg-ink-2 hover:border-line-strong"
+                }`}
+              >
+                {tier.featured && (
+                  <span className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase tracking-wide">
+                    {retainers.featuredLabel}
+                  </span>
+                )}
+                <div>
+                  <h3 className="font-display text-2xl font-semibold text-paper">{tier.name}</h3>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="font-display text-4xl font-bold text-paper tracking-tight">
+                      {tier.priceFormatted}
+                    </span>
+                    <span className="font-mono text-xs text-muted">{tier.period}</span>
+                  </div>
+                  <p className="mt-3 text-xs leading-relaxed text-muted min-h-[36px]">
+                    {tier.summary}
+                  </p>
+
+                  <ul className="mt-6 space-y-2.5 border-t border-line/60 pt-5 text-xs text-paper/90">
+                    {tier.points.map((pt, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-mark font-bold shrink-0">✓</span>
+                        <span className="leading-snug">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-line space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => openLauncher()}
+                    className={`w-full rounded-full py-3 text-center text-xs font-semibold transition-all ${
+                      tier.featured
+                        ? "bg-mark text-mark-ink hover:bg-mark-light shadow"
+                        : "border border-line bg-ink-3/40 text-paper hover:bg-ink-3"
+                    }`}
+                  >
+                    {tier.cta} →
+                  </button>
+                  <a
+                    href="#inquiry"
+                    className="block text-center text-[11px] text-muted hover:text-paper transition-colors py-1"
+                  >
+                    {retainers.meta.briefLink}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footnote */}
+          <p className="mt-8 text-center font-mono text-xs text-muted">
+            {retainers.meta.footnote}
+          </p>
+        </div>
+      </section>
+
+      {/* 8. FAQ ACCORDION */}
+      <section className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
             <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {section("07", "Questions", "Вопросы и ответы")}
+              {section("08", "Questions", "Вопросы и ответы")}
             </span>
             <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
               {c.faqTitle}

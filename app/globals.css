@@ -321,6 +321,12 @@ main {
   position: relative;
 }
 
+@media (max-width: 1023px) {
+  .itb-dial {
+    width: min(100%, 300px, 34vh);
+  }
+}
+
 /* One stage should not cost a marathon of scrolling: 16vh gives instant, crisp feedback */
 @media (max-width: 1023px) {
   .itb-track {

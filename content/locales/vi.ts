@@ -323,35 +323,35 @@ export const copyVi: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "Đối tác",
+    "title": "Mạng lưới đối tác quốc tế là cách chúng tôi mở rộng quy mô hiện diện.",
+    "lead": "Không cần thiết lập văn phòng cồng kềnh tại mỗi quốc gia để mở rộng thị trường. Các đối tác kết nối khách hàng, đại diện các giải pháp AI và phát triển thị trường bản địa.",
+    "model": "Hiện diện quốc tế mà không phải tự xây dựng hạ tầng tại từng quốc gia. Mức hoa hồng được thỏa thuận theo từng trường hợp — không đưa ra cam kết thu nhập viển vông.",
+    "earn": "Đối tác có thể:",
+    "cta": "Thảo luận hợp tác",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "Đại diện Khu vực",
+        "body": "Đại diện cho công ty tại một khu vực địa lý cụ thể. Mạng lưới quan hệ địa phương kết hợp hạ tầng chung."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "Tích hợp Ngành",
+        "body": "Phát triển một ngành dọc bạn am hiểu — xây dựng, ô tô, bán lẻ và các lĩnh vực tương tự."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "Đối tác Giới thiệu",
+        "body": "Giới thiệu khách hàng tiềm năng. Chúng tôi phụ trách tích hợp và hỗ trợ. Hoa hồng theo thỏa thuận."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "Đại lý / Agency",
+        "body": "Vận hành các sản phẩm AI cho tệp khách hàng của bạn, hoặc phân phối lại dịch vụ trên nền tảng của chúng tôi."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "Kết nối khách hàng",
+      "Đại diện các giải pháp AI",
+      "Phát triển thị trường địa phương",
+      "Hưởng hoa hồng đều đặn theo điều khoản thỏa thuận"
     ]
   },
   "why": {

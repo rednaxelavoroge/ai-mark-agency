@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
@@ -66,9 +65,17 @@ export function LanguageSelector({
       })
     : allLocales;
 
-  const handleSelectLocale = (targetCode: Locale) => {
+  const handleSelectLocale = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetCode: Locale,
+    targetHref: string,
+  ) => {
+    e.preventDefault();
     persistLocale(targetCode);
     setOpen(false);
+    if (typeof window !== "undefined") {
+      window.location.assign(targetHref);
+    }
   };
 
   // Close on outside click for desktop popover & mobile drawer backdrop
@@ -215,13 +222,14 @@ export function LanguageSelector({
               </p>
             ) : (
               filteredLocales.map((item) => {
+                const targetHref = counterpartLocaleHref(pathname, item.code);
                 const isActive = item.code === locale;
                 return (
-                  <Link
+                  <a
                     key={item.code}
-                    href={counterpartLocaleHref(pathname, item.code)}
+                    href={targetHref}
                     hrefLang={item.code}
-                    onClick={() => handleSelectLocale(item.code)}
+                    onClick={(e) => handleSelectLocale(e, item.code, targetHref)}
                     className={`flex items-center justify-between rounded-xl px-2.5 py-2 text-xs transition-colors ${
                       isActive
                         ? "bg-mark/15 font-semibold text-mark-light"
@@ -251,7 +259,7 @@ export function LanguageSelector({
                         {item.code}
                       </span>
                     )}
-                  </Link>
+                  </a>
                 );
               })
             )}
@@ -357,13 +365,14 @@ export function LanguageSelector({
                     </p>
                   ) : (
                     filteredLocales.map((item) => {
+                      const targetHref = counterpartLocaleHref(pathname, item.code);
                       const isActive = item.code === locale;
                       return (
-                        <Link
+                        <a
                           key={item.code}
-                          href={counterpartLocaleHref(pathname, item.code)}
+                          href={targetHref}
                           hrefLang={item.code}
-                          onClick={() => handleSelectLocale(item.code)}
+                          onClick={(e) => handleSelectLocale(e, item.code, targetHref)}
                           className={`flex min-h-[44px] items-center justify-between rounded-xl px-3 py-2 text-sm transition-colors ${
                             isActive
                               ? "bg-mark/15 font-semibold text-mark-light border border-mark/30"
@@ -398,7 +407,7 @@ export function LanguageSelector({
                               {item.code}
                             </span>
                           )}
-                        </Link>
+                        </a>
                       );
                     })
                   )}

@@ -323,35 +323,35 @@ export const copyJa: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "パートナー",
+    "title": "国際パートナーネットワークにより、グローバル展開を加速します。",
+    "lead": "市場を開拓するために各国にオフィスを構える必要はありません。パートナーが顧客を開拓し、AIソリューションを提案し、現地でのプレゼンスを確立します。",
+    "model": "各国に自前拠点を置くことなく国際展開を実現。コミッションは案件ごとに決定され、誇大な収益保証は行いません。",
+    "earn": "パートナーの役割・権利：",
+    "cta": "パートナーシップの相談",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "地域代理店",
+        "body": "特定地域で当社ビジネスを代表。現地のネットワークと当社の運用基盤を融合。"
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "業界インテグレーター",
+        "body": "建設、自動車、小売など、既に熟知している業界バーティカルに展開。"
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "紹介パートナー",
+        "body": "見込み顧客を紹介。導入と運用支援は当社が担当し、契約コミッションを還元。"
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "代理店・リセラー",
+        "body": "自社クライアント向けに製品を導入、または当社スタックで受託開発・運用。"
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "クライアントの獲得",
+      "AIソリューションの提案・提供",
+      "地域市場の開拓",
+      "合意条件に基づく継続的なコミッション獲得"
     ]
   },
   "why": {

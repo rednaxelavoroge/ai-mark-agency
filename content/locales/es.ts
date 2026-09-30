@@ -323,35 +323,35 @@ export const copyEs: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "Socios",
+    "title": "La red internacional de socios es nuestra forma de escalar presencia.",
+    "lead": "No necesitamos una oficina en cada región para desarrollar un mercado. Los socios atraen clientes, presentan soluciones y construyen presencia local.",
+    "model": "Presencia internacional sin crear infraestructura propia en cada país. Las comisiones se acuerdan caso por caso; no prometemos ingresos garantizados.",
+    "earn": "Un socio puede:",
+    "cta": "Hablar de colaboración",
     "types": [
       {
         "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "body": "Representar a la empresa en una zona geográfica. Relaciones locales, mismo sistema operativo."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "Sectorial",
+        "body": "Desarrollar un sector que ya domina: construcción, automotriz, retail u otros."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "Referidos",
+        "body": "Presentar clientes. Nosotros nos encargamos de la integración y el soporte. Comisión según acuerdo."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "Agencias",
+        "body": "Implementar nuestros productos para su cartera de clientes o revender servicios con nuestra tecnología."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "Atraer clientes",
+      "Representar las soluciones de IA",
+      "Desarrollar el mercado local",
+      "Obtener comisiones en condiciones acordadas"
     ]
   },
   "why": {

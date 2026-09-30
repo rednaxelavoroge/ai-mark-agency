@@ -20,15 +20,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = raw as Locale;
   const t = getInvestorsCopy(locale);
 
+  const langAlternates: Record<string, string> = {};
+  for (const loc of site.locales) {
+    langAlternates[loc] = absoluteUrl(loc, INVESTOR_PAGE_PATH);
+  }
+
   return {
     title: { absolute: `${t.eyebrow} · ${site.name}` },
     description: t.subtitle,
     alternates: {
       canonical: absoluteUrl(locale, INVESTOR_PAGE_PATH),
-      languages: {
-        en: absoluteUrl("en", INVESTOR_PAGE_PATH),
-        ru: absoluteUrl("ru", INVESTOR_PAGE_PATH),
-      },
+      languages: langAlternates,
     },
     openGraph: {
       title: `${t.eyebrow} · ${site.name}`,
@@ -50,7 +52,7 @@ export default async function InvestorsPage({ params }: Props) {
   return (
     <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-8">
-        <BackButton locale={locale} targetHref="/#investors" />
+        <BackButton locale={locale} targetHref="/" />
       </div>
       <header className="max-w-3xl">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-mark">

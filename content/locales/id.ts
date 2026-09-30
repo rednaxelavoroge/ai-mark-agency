@@ -323,35 +323,35 @@ export const copyId: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "Mitra",
+    "title": "Jaringan mitra internasional adalah cara kami memperluas jangkauan pasar.",
+    "lead": "Kami tidak perlu membuka kantor fisik di setiap negara untuk memperluas pasar. Mitra mendatangkan klien, mewakili solusi AI, dan membangun kehadiran lokal.",
+    "model": "Kehadiran internasional tanpa harus membangun infrastruktur sendiri di setiap negara. Komisi disepakati berdasarkan kasus per kasus — kami tidak menjanjikan angka pendapatan yang muluk-muluk.",
+    "earn": "Seorang mitra dapat:",
+    "cta": "Diskusikan kemitraan",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "Perwakilan Regional",
+        "body": "Mewakili perusahaan di wilayah geografis Anda. Hubungan lokal, sistem operasi standar yang sama."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "Integrator Industri",
+        "body": "Mengembangkan sektor yang sudah Anda kuasai — konstruksi, otomotif, ritel, dan lainnya."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "Mitra Rujukan",
+        "body": "Memperkenalkan klien potensial. Kami menangani orientasi dan dukungan teknis. Komisi sesuai kesepakatan."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "Agensi",
+        "body": "Menjalankan produk AI kami untuk portofolio klien Anda, atau menjual kembali layanan dengan infrastruktur kami."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "Mendatangkan klien",
+      "Mewakili solusi AI",
+      "Mengembangkan pasar lokal",
+      "Mendapatkan komisi sesuai ketentuan yang disepakati"
     ]
   },
   "why": {

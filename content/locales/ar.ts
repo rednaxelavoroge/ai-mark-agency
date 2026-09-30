@@ -323,35 +323,35 @@ export const copyAr: Copy = {
     }
   },
   "partners": {
-    "eyebrow": "Partners",
-    "title": "An international partner network is how we scale presence.",
-    "lead": "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
-    "model": "International presence without building our own infrastructure in every country. Commission is agreed case by case — we do not quote a promised income.",
-    "earn": "A partner can:",
-    "cta": "Talk partnership",
+    "eyebrow": "الشركاء",
+    "title": "شبكة الشركاء الدولية هي وسيلتنا للتوسع والانتشار.",
+    "lead": "لا نحتاج إلى فتح مكتب في كل بلد لتطوير السوق. يقوم الشركاء بجلب العملاء، وتمثيل الحلول، وبناء حضور محلي قوي.",
+    "model": "حضور دولي دون الحاجة لبناء بنية تحتية خاصة في كل دولة. يتم الاتفاق على العمولات لكل حالة على حدة — ولا نطلق وعوداً غير واقعية بالأرباح.",
+    "earn": "يمكن للشريك:",
+    "cta": "مناقشة الشراكة",
     "types": [
       {
-        "title": "Regional",
-        "body": "Represent the company in a geography. Local relationships, same operating system."
+        "title": "شريك إقليمي",
+        "body": "تمثيل الشركة في منطقة جغرافية محددة. علاقات محلية مع نفس النظام التشغيلي."
       },
       {
-        "title": "Industry",
-        "body": "Bring a vertical you already understand — construction, auto, retail, and similar."
+        "title": "شريك قطاعي",
+        "body": "تطوير قطاع تفهمه بالفعل — كالبناء والتشييد، والسيارات، والتجزئة وغيرها."
       },
       {
-        "title": "Referral",
-        "body": "Introduce a client. We onboard. Commission as agreed."
+        "title": "شريك إحالة",
+        "body": "تقديم العملاء المحتملين. نتولى نحن الإعداد والدعم. وتُصرف العمولة حسب الاتفاق."
       },
       {
-        "title": "Agency",
-        "body": "Run the products for your book of clients, or resell delivery with our stack."
+        "title": "وكالات",
+        "body": "تشغيل منتجاتنا لقاعدة عملائك، أو إعادة بيع الحلول بالاعتماد على بنيتنا التكنولوجية."
       }
     ],
     "can": [
-      "Bring clients",
-      "Represent the solutions",
-      "Grow a market",
-      "Earn commission on agreed terms"
+      "جلب العملاء",
+      "تمثيل حلول الذكاء الاصطناعي",
+      "تطوير السوق المحلي",
+      "كسب عمولات وفقاً للشروط المتفق عليها"
     ]
   },
   "why": {
