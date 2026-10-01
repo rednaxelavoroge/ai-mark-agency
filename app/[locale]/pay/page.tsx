@@ -8,7 +8,11 @@ import {
   formatUsdAmount,
   payableSkuIdFromParam,
 } from "@/lib/crypto/catalog";
-import { cryptoPriceUsd, listPriceUsd } from "@/lib/pricing/crypto-checkout";
+import {
+  CRYPTO_CHECKOUT_DISCOUNT_BPS,
+  cryptoPriceUsd,
+  listPriceUsd,
+} from "@/lib/pricing/crypto-checkout";
 import {
   NETWORK_LABELS,
   PAYMENT_ASSETS,
@@ -135,7 +139,7 @@ export default async function PayPage({ params, searchParams }: Props) {
                 <p className="mt-0.5 font-mono text-sm text-mark">
                   {ru ? "USDT/USDC" : "USDT/USDC"}: {formatUsdAmount(crypto)}
                   <span className="ml-1 font-sans text-[10px] font-normal text-muted">
-                    {ru ? "−8%" : "−8%"}
+                    −{CRYPTO_CHECKOUT_DISCOUNT_BPS / 100}%
                   </span>
                 </p>
               </li>

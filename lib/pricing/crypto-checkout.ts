@@ -1,9 +1,9 @@
 /**
  * Published checkout pricing: list (card) price is the catalog amount;
- * USDT/USDC payers receive an 8% discount off list.
+ * USDT/USDC payers receive a 4% discount off list.
  */
 
-export const CRYPTO_CHECKOUT_DISCOUNT_BPS = 800;
+export const CRYPTO_CHECKOUT_DISCOUNT_BPS = 400;
 
 const BPS_DENOM = 10_000;
 
@@ -15,7 +15,7 @@ export function listPriceUsd(amountUsd: number): number {
   return amountUsd;
 }
 
-/** Crypto treasury price: list minus 8%, rounded to cents (half away from zero). */
+/** Crypto treasury price: list minus 4%, rounded to cents (half away from zero). */
 export function cryptoPriceUsd(amountUsd: number): number {
   const list = listPriceUsd(amountUsd);
   const discounted = (list * (BPS_DENOM - CRYPTO_CHECKOUT_DISCOUNT_BPS)) / BPS_DENOM;
