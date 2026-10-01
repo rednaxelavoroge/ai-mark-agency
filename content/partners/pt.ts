@@ -59,14 +59,14 @@ export const copyPt: PartnerPageCopy = {
   ],
   exampleFoot: "O parceiro direto recebe $500, e não $800. 80% é o montante acumulado entre L1 e L5 quando todos os níveis estão qualificados.",
 
-  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleTitle: "A mesma venda de $1.000 a partir do mês 4 (renovação)",
   renewalExampleRows: [
-    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "Parceiro direto L1", value: "$200", accent: true },
     { label: "L2", value: "$50" },
-    { label: "Partner pool (aggregate)", value: "$250" },
-    { label: "AI Mark retained share", value: "$750" },
+    { label: "Pool de parceiros (agregado)", value: "$250" },
+    { label: "Parte retida da AI Mark", value: "$750" },
   ],
-  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  renewalExampleFoot: "Renovações não repetem a grelha launch bonus de cinco níveis.",
   launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Venda direta", body: "O cliente apresentado e convertido diretamente por si.", rate: "50%" },
@@ -114,7 +114,7 @@ export const copyPt: PartnerPageCopy = {
     { q: "É obrigatório adquirir um pacote inicial para ser parceiro?", a: "Não. O programa orienta-se à venda real de produtos e serviços AI MARK a empresas, não à compra de posições. A adesão é gratuita." },
     { q: "Preciso de assumir a execução técnica do projeto?", a: "Não. O parceiro constrói o relacionamento e fecha o negócio. A AI MARK responsabiliza-se pela implementação, entrega e estabilidade técnica." },
     { q: "Posso criar e gerir uma equipa de parceiros?", a: "Sim. O modelo padrão comporta uma estrutura de afiliados até 5 níveis de profundidade, baseada no faturamento real de clientes." },
-    { q: "Os produtos por subscrição geram comissões recorrentes?", a: "Sim. Cada renovação paga qualificada segue a tabela padrão: L1 50%, L2 15%, L3 7%, L4 5%, L5 3%, num pool agregado de 80%. O período inicial de 90 dias não altera estas taxas." },
+    { q: "Os produtos por subscrição geram comissões recorrentes?", a: "Sim. Meses 1–3 usam launch bonus (até 31.12.2026) ou a grelha inicial padrão a partir de 01.01.2027. A partir do mês 4, renovações apenas L1 20% + L2 5%." },
     { q: "Como aceder ao estatuto de Regional ou Strategic Partner?", a: "O estatuto Regional baseia-se em volume de vendas e liderança territorial. Alianças Estratégicas e Country Partner são celebradas sob contrato específico." },
   ],
   ctaEyebrow: "Início",

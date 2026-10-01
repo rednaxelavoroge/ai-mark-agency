@@ -59,14 +59,14 @@ export const copyEs: PartnerPageCopy = {
   ],
   exampleFoot: "El partner directo recibe $500, no $800. El 80% es el total acumulado entre L1 y L5 cuando todos los niveles están cualificados.",
 
-  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleTitle: "La misma venta de $1.000 desde el mes 4 (renovación)",
   renewalExampleRows: [
-    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "Partner directo L1", value: "$200", accent: true },
     { label: "L2", value: "$50" },
-    { label: "Partner pool (aggregate)", value: "$250" },
-    { label: "AI Mark retained share", value: "$750" },
+    { label: "Pool de partners (agregado)", value: "$250" },
+    { label: "Parte retenida de AI Mark", value: "$750" },
   ],
-  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  renewalExampleFoot: "Las renovaciones no repiten la cuadrícula launch bonus de cinco niveles.",
   launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Venta directa", body: "El cliente presentado y cerrado personalmente por ti.", rate: "50%" },
@@ -114,7 +114,7 @@ export const copyEs: PartnerPageCopy = {
     { q: "¿Tengo que comprar un paquete inicial para ser partner?", a: "No. El programa se basa en la venta de productos y servicios reales de AI MARK a empresas, no en comprar posiciones en una red. El registro es gratuito." },
     { q: "¿Debo encargarme de la ejecución técnica?", a: "No. El partner se enfoca en las relaciones y el cierre comercial. AI MARK es responsable de la implementación, entrega y soporte del producto." },
     { q: "¿Puedo construir un equipo de partners?", a: "Sí. El modelo estándar admite una red multinivel vinculada a los ingresos de clientes, con hasta 5 niveles de profundidad." },
-    { q: "¿Las suscripciones generan comisiones recurrentes?", a: "Sí. Cada cobro cualificado, incluidas las renovaciones, utiliza la misma tabla: L1 50%, L2 15%, L3 7%, L4 5%, L5 3%, con un pool agregado del 80%. Los primeros 90 días no alteran estas tasas." },
+    { q: "¿Las suscripciones generan comisiones recurrentes?", a: "Sí. Los meses 1–3 usan launch bonus (hasta 31.12.2026) o la cuadrícula inicial estándar desde el 01.01.2027. Desde el mes 4, renovaciones solo L1 20% + L2 5%." },
     { q: "¿Cómo acceder al estatus de Regional o Strategic Partner?", a: "El estatus Regional se otorga por volumen comercial acreditado y liderazgo local. Las alianzas Estratégicas y Country Partner se formalizan mediante acuerdo bilateral." },
   ],
   ctaEyebrow: "Inicio",

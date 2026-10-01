@@ -150,7 +150,7 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
     signup: "创建合伙人账户",
     recurringQ: "订阅会产生持续佣金吗？",
     recurringA:
-      "每一笔合格付款，包括续费，都使用同一套比例：L1 50% / L2 15% / L3 7% / L4 5% / L5 3%，合格层级汇总池为 80%。前 90 天不改变这些比例。",
+      "每一笔合格付款，包括续费，都使用同一套比例：L1 50% / L2 15% / L3 7% / L4 5% / L5 3%，合格层级汇总池为 80%。第 1–3 月适用 launch bonus 或 2027-01-01 起的标准网格；第 4 月起续费仅 L1 20% + L2 5%。",
   },
   id: {
     note: "Tarif penjualan yang lolos kualifikasi — penjualan yang benar-benar dibayar pelanggan — adalah L1 50%, L2 15%, L3 7%, L4 5%, dan L5 3%. Jumlahnya pool mitra agregat 80% di seluruh jaringan tingkat yang memenuhi syarat, bukan pembayaran ke satu mitra. Bagian yang ditahan AI Mark adalah 20% dari jumlah yang dapat dikomisi.",
@@ -255,7 +255,7 @@ export const partnerProgramTerms: Record<Locale, PartnerProgramTerms> = {
     signup: "パートナーアカウントを作成",
     recurringQ: "サブスクリプションは継続報酬になりますか？",
     recurringA:
-      "更新を含む適格な支払いは同じ表です。L1 50% / L2 15% / L3 7% / L4 5% / L5 3%、適格レベル全体の合算プールは 80% です。最初の 90 日は率を変えません。",
+      "更新を含む適格な支払いは同じ表です。L1 50% / L2 15% / L3 7% / L4 5% / L5 3%、適格レベル全体の合算プールは 80% です。1–3か月目は launch bonus または 2027年1月1日からの標準グリッド。4か月目以降の更新は L1 20% + L2 5% のみ。",
   },
   tr: {
     note: "Nitelikli satışta — müşterinin gerçekten ödediği satışta — oranlar L1 %50, L2 %15, L3 %7, L4 %5 ve L5 %3'tür. Toplam, nitelikli seviyeler ağındaki %80 toplu partner havuzudur; tek bir partnere ödeme değildir. AI Mark'ın alıkoyduğu pay, komisyona konu tutarın %20'sidir.",

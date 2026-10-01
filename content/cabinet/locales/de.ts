@@ -179,10 +179,10 @@ export const cabinetDe: CabinetCopy = {
     "trackingFootnoteBefore": "Wie das Tracking funktioniert, erfahren Sie hier",
     "trackingFootnoteLink": "Ressourcen",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Status der Einführungsperiode",
-    "launchEndedTitle": "Die Einführungsphase ist beendet",
-    "launchActiveBody": "Die Startphase läuft bis {date}: 90 Tage ab Erstellung des Partnerkontos. Die Sätze bleiben gleich, der Netzwerkpool bleibt bei 80 %.",
-    "launchEndedBody": "Die 90-tägige Startphase endete am {date}. Qualifizierte Zahlungen nutzen dieselben Sätze, der Netzwerkpool bleibt bei 80 %."
+    "launchActiveTitle": "Launch bonus aktiv",
+    "launchEndedTitle": "Launch bonus beendet",
+    "launchActiveBody": "Launch bonus · bis 31.12.2026: bis zu 80 % Pool in den ersten 3 Monatszahlungen jedes Kunden. Ab Monat 4: Verlängerungen L1 20 % + L2 5 %. Standard ab 01.01.2027 auf der öffentlichen Partnerseite.",
+    "launchEndedBody": "Das Launch-bonus-Fenster endete am 31.12.2026. Neue Verkäufe nutzen den Standard (50 %-Pool in Monaten 1–3; Verlängerungen L1 20 % + L2 5 %)."
   },
   "referralPanel": {
     "title": "Empfehlungsprogramm",

@@ -179,10 +179,10 @@ export const cabinetId: CabinetCopy = {
     "trackingFootnoteBefore": "Cara kerja pelacakan aktif",
     "trackingFootnoteLink": "Sumber daya",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Status periode peluncuran",
-    "launchEndedTitle": "Periode peluncuran berakhir",
-    "launchActiveBody": "Periode peluncuran berlangsung hingga {date}, yaitu 90 hari sejak akun mitra dibuat. Tarif tetap sama dan pool jaringan tetap 80%.",
-    "launchEndedBody": "Periode peluncuran 90 hari berakhir pada {date}. Pembayaran yang memenuhi syarat memakai tarif yang sama dan pool jaringan tetap 80%."
+    "launchActiveTitle": "Launch bonus aktif",
+    "launchEndedTitle": "Launch bonus berakhir",
+    "launchActiveBody": "Launch bonus · hingga 31.12.2026: hingga 80% pool pada 3 pembayaran bulanan pertama setiap klien. Dari bulan ke-4, perpanjangan L1 20% + L2 5%. Kisi standar dari 01.01.2027 ada di halaman mitra publik.",
+    "launchEndedBody": "Launch bonus berakhir 31.12.2026. Penjualan baru memakai jadwal standar (pool 50% pada bulan 1–3; perpanjangan L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Program rujukan",
@@ -194,7 +194,7 @@ export const cabinetId: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Model Komisi Mitra",
-    "lead": "50% untuk penjualan langsung. Total imbalan mitra hingga 80% di seluruh jaringan. 80% adalah kumpulan agregat di seluruh L1–L5 yang memenuhi syarat, bukan pembayaran mitra tunggal. Bagian yang ditahan AI Mark adalah 20% dari jumlah komisi. Total buku besar di atas adalah nilai yang disimpan; kartu ini tidak menghitung ulang penghasilan Anda.",
+    "lead": "Launch bonus hingga 31.12.2026 pada bulan 1–3 klien: L1 50% … L5 3% (pool 80%). Bulan 4+: L1 20% + L2 5%. Dari 01.01.2027, bulan 1–3: L1 35% / L2 10% / L3 5% (pool 50%). Total ledger adalah nilai tersimpan; kartu ini tidak menghitung ulang pendapatan Anda.",
     "levels": {
       "1": {
         "title": "Penjualan langsung",

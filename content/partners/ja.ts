@@ -59,14 +59,14 @@ export const copyJa: PartnerPageCopy = {
   ],
   exampleFoot: "直接販売を行ったパートナーの受取額は500ドルです（800ドルではありません）。80%は全階層が適格となった場合のネットワーク全体合計です。",
 
-  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleTitle: "4か月目以降の同じ $1,000 売上（更新）",
   renewalExampleRows: [
-    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L1 直紹介パートナー", value: "$200", accent: true },
     { label: "L2", value: "$50" },
-    { label: "Partner pool (aggregate)", value: "$250" },
-    { label: "AI Mark retained share", value: "$750" },
+    { label: "パートナープール（合計）", value: "$250" },
+    { label: "AI Mark 留保分", value: "$750" },
   ],
-  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  renewalExampleFoot: "更新では5段階の launch bonus グリッドは適用されません。",
   launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "直接販売", body: "あなたが直接開拓し、成約に至った顧客からの売上。", rate: "50%" },
@@ -114,7 +114,7 @@ export const copyJa: PartnerPageCopy = {
     { q: "パートナーになるために初期購入費用はかかりますか？", a: "いいえ。本プログラムは実在する企業への実用的なAI製品・サービスの販売を目的としており、地位の購入等は一切ありません。無料で参加できます。" },
     { q: "パートナー自身が技術開発や納品作業を行う必要はありますか？", a: "いいえ。パートナーの役割は顧客開拓と関係構築です。システムの導入・開発・運用保守はすべてAI MARKが担当します。" },
     { q: "自分のチームやパートナーネットワークを構築できますか？", a: "はい。実際の顧客決済実績に連動した最大5段階のマルチティア提携モデルを標準でサポートしています。" },
-    { q: "サブスクリプション製品の更新時にも継続して報酬が発生しますか？", a: "はい。更新決済を含むすべての適格な支払いに同一の料率（L1 50%、L2 15%、L3 7%、L4 5%、L5 3%）が適用されます。初めの90日間で料率が下がることはありません。" },
+    { q: "サブスクリプション製品の更新時にも継続して報酬が発生しますか？", a: "はい。1–3か月目は launch bonus（2026年12月31日まで）または2027年1月1日からの標準初回グリッド。4か月目以降の更新は L1 20% + L2 5% のみ。" },
     { q: "Regional PartnerやStrategic Partnerになるにはどうすればよいですか？", a: "地域パートナーは継続的な販売実績と市場への影響力に基づいて認定されます。戦略提携や国別独占契約は個別契約にて協議します。" },
   ],
   ctaEyebrow: "スタート",

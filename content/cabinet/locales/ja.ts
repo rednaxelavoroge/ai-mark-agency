@@ -179,10 +179,10 @@ export const cabinetJa: CabinetCopy = {
     "trackingFootnoteBefore": "追跡の仕組みはオンです",
     "trackingFootnoteLink": "リソース",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "発売期間中のステータス",
-    "launchEndedTitle": "発売期間は終了しました",
-    "launchActiveBody": "ローンチ期間は {date} までです（パートナーアカウント作成から90日間）。料率は変わらず、ネットワークプールは80%のままです。",
-    "launchEndedBody": "90日間のローンチ期間は {date} に終了しました。対象となる支払いには同じ料率が適用され、ネットワークプールは80%のままです。"
+    "launchActiveTitle": "Launch bonus 適用中",
+    "launchEndedTitle": "Launch bonus 終了",
+    "launchActiveBody": "Launch bonus · 2026年12月31日まで：各クライアントの最初の3か月の支払いで最大80%プール。4か月目以降の更新は L1 20% + L2 5%。2027年1月1日からの標準グリッドは公開パートナーページに記載。",
+    "launchEndedBody": "Launch bonus は 2026年12月31日に終了しました。新規売上は標準スケジュール（1–3か月目50%プール、更新 L1 20% + L2 5%）です。"
   },
   "referralPanel": {
     "title": "紹介プログラム",
@@ -194,7 +194,7 @@ export const cabinetJa: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "パートナー手数料モデル",
-    "lead": "直販の場合は50％となります。ネットワーク全体で最大 80% の合計パートナー報酬。 80% は対象となる L1 ～ L5 の合計プールであり、単一パートナーへの支払いではありません。 AIマークの留保分は委託金額の20％となります。上記の元帳合計は保存された値です。このカードでは収益が再計算されません。",
+    "lead": "Launch bonus（2026年12月31日まで）のクライアント1–3か月目：L1 50% … L5 3%（80%プール）。4か月目以降：L1 20% + L2 5%。2027年1月1日から1–3か月目：L1 35% / L2 10% / L3 5%（50%プール）。ledgerの合計は保存値です。このカードは収益を再計算しません。",
     "levels": {
       "1": {
         "title": "直販",
