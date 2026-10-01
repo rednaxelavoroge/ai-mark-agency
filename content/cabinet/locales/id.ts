@@ -182,7 +182,7 @@ export const cabinetId: CabinetCopy = {
     "launchActiveTitle": "Launch bonus aktif",
     "launchEndedTitle": "Launch bonus berakhir",
     "launchActiveBody": "Launch bonus · hingga 31.12.2026: hingga 80% pool pada 3 pembayaran bulanan pertama setiap klien. Dari bulan ke-4, perpanjangan L1 20% + L2 5%. Kisi standar dari 01.01.2027 ada di halaman mitra publik.",
-    "launchEndedBody": "Launch bonus berakhir 31.12.2026. Penjualan baru memakai jadwal standar (pool 50% pada bulan 1–3; perpanjangan L1 20% + L2 5%)."
+    "launchEndedBody": "Launch bonus berakhir 31.12.2026. Penjualan baru memakai jadwal standar (pool 50% pada pembayaran pertama; perpanjangan L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Program rujukan",
@@ -194,7 +194,7 @@ export const cabinetId: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Model Komisi Mitra",
-    "lead": "Launch bonus hingga 31.12.2026 pada bulan 1–3 klien: L1 50% … L5 3% (pool 80%). Bulan 4+: L1 20% + L2 5%. Dari 01.01.2027, bulan 1–3: L1 35% / L2 10% / L3 5% (pool 50%). Total ledger adalah nilai tersimpan; kartu ini tidak menghitung ulang pendapatan Anda.",
+    "lead": "Launch bonus hingga 31.12.2026 pada pembayaran pertama klien: L1 50% … L5 3% (pool 80%). Dari pembayaran ke-2: L1 20% + L2 5%. Dari 01.01.2027, pembayaran pertama: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (pool 50%). Total ledger adalah nilai tersimpan; kartu ini tidak menghitung ulang pendapatan Anda.",
     "levels": {
       "1": {
         "title": "Penjualan langsung",

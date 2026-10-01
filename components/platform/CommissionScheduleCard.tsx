@@ -83,7 +83,7 @@ export function CommissionScheduleCard() {
         </dl>
         <p className="mt-3 text-[11px] leading-relaxed text-muted">{c.exampleFootnote}</p>
         <p className="mt-5 font-mono text-[10px] tracking-wider text-muted uppercase">
-          {"$1,000 · month 4+ renewal"}
+          {"$1,000 · renewal (2nd payment onward)"}
         </p>
         <dl className="mt-3 grid gap-2 sm:grid-cols-2">
           <div className="flex items-baseline justify-between gap-3 text-xs">

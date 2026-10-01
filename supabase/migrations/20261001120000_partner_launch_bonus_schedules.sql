@@ -1,8 +1,8 @@
 -- Partner launch bonus schedules (owner-approved 2026-10-01)
 --
--- Launch bonus until 2026-12-31: months 1–3 of a client → L1 50 / L2 15 / L3 7 / L4 5 / L5 3 (80% pool).
--- From client month 4+: renewals → L1 20% + L2 5% (25% pool).
--- Standard from 2027-01-01 (shown now): months 1–3 → L1 35 / L2 10 / L3 5 (50% pool); renewals unchanged.
+-- Launch bonus until 2026-12-31: client's FIRST payment only → L1 50 / L2 15 / L3 7 / L4 5 / L5 3 (80% pool).
+-- From 2nd payment onward (renewals): L1 20% + L2 5% (25% pool), both periods.
+-- Standard from 2027-01-01 first payment: L1 35 / L2 8 / L3 4 / L4 2 / L5 1 (50% pool); five levels forever.
 --
 -- Builds on 20260927170000_partner_commission_model_v2.sql (flat 80% grid). v2 rules are closed;
 -- historical commission_entries are not rewritten.
@@ -44,10 +44,10 @@ values
   (4, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
   (5, 0.03::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
   (1, 0.35::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (2, 0.10::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (3, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (4, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (5, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (2, 0.08::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (3, 0.04::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (4, 0.02::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (5, 0.01::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
   (1, 0.20::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
   (2, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
   (3, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
@@ -89,7 +89,7 @@ begin
       message = 'client payment index must be a positive integer';
   end if;
 
-  if p_client_payment_index >= 4 then
+  if p_client_payment_index >= 2 then
     return 'renewal';
   end if;
 

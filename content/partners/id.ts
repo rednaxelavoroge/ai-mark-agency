@@ -114,7 +114,7 @@ export const copyId: PartnerPageCopy = {
     { q: "Apakah saya harus membeli paket pemula untuk menjadi mitra?", a: "Tidak. Program ini murni berfokus pada penjualan produk dan layanan AI MARK kepada bisnis nyata, bukan membeli posisi dalam jaringan. Pendaftaran 100% gratis." },
     { q: "Apakah saya harus menangani implementasi teknis sendiri?", a: "Tidak. Mitra fokus pada hubungan dan penutupan penjualan. AI MARK bertanggung jawab atas penerapan, pengiriman, dan pemeliharaan teknis produk." },
     { q: "Bisakah saya membangun tim dan jaringan mitra sendiri?", a: "Bisa. Model standar mendukung struktur afiliasi multi-tier hingga 5 tingkat kedalaman yang terikat langsung pada pendapatan pelanggan riil." },
-    { q: "Apakah produk langganan memberikan komisi berkelanjutan?", a: "Ya. Bulan 1–3 memakai launch bonus (hingga 31.12.2026) atau kisi awal standar dari 01.01.2027. Dari bulan ke-4, perpanjangan hanya L1 20% + L2 5%." },
+    { q: "Apakah produk langganan memberikan komisi berkelanjutan?", a: "Ya. Pembayaran pertama memakai launch bonus (hingga 31.12.2026) atau kisi awal standar dari 01.01.2027. Dari pembayaran ke-2, perpanjangan hanya L1 20% + L2 5%." },
     { q: "Bagaimana cara menjadi Regional atau Strategic Partner?", a: "Status Regional diberikan berdasarkan volume transaksi terverifikasi dan posisi pasar. Kemitraan strategis dan Country Partner disepakati lewat perjanjian bilateral khusus." },
   ],
   ctaEyebrow: "Mulai Sekarang",

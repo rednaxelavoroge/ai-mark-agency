@@ -182,7 +182,7 @@ export const cabinetPt: CabinetCopy = {
     "launchActiveTitle": "Launch bonus ativo",
     "launchEndedTitle": "Launch bonus encerrado",
     "launchActiveBody": "Launch bonus · até 31.12.2026: até 80% de pool nos primeiros 3 pagamentos mensais de cada cliente. A partir do mês 4, renovações L1 20% + L2 5%. A grelha padrão a partir de 01.01.2027 está na página pública de parceiros.",
-    "launchEndedBody": "O launch bonus terminou em 31.12.2026. Novas vendas usam a grelha padrão (pool 50% nos meses 1–3; renovações L1 20% + L2 5%)."
+    "launchEndedBody": "O launch bonus terminou em 31.12.2026. Novas vendas usam a grelha padrão (pool 50% nos primer pago; renovações L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Programa de referência",
@@ -194,7 +194,7 @@ export const cabinetPt: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Modelo de comissão de parceiro",
-    "lead": "Launch bonus até 31.12.2026 nos meses 1–3 do cliente: L1 50% … L5 3% (pool 80%). Mês 4+: L1 20% + L2 5%. A partir de 01.01.2027, meses 1–3: L1 35% / L2 10% / L3 5% (pool 50%). Os totais do ledger são valores guardados; este cartão não recalcula o seu rendimento.",
+    "lead": "Launch bonus até 31.12.2026 no primeiro pagamento do cliente: L1 50% … L5 3% (pool 80%). A partir do 2.º pagamento: L1 20% + L2 5%. A partir de 01.01.2027, primeiro pagamento: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (pool 50%). Os totais do ledger são valores guardados; este cartão não recalcula o seu rendimento.",
     "levels": {
       "1": {
         "title": "Venda direta",

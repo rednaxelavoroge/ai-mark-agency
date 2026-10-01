@@ -7,7 +7,7 @@ export const copyEn: PartnerPageCopy = {
   eyebrow: "AI MARK Partner Network",
   title: "Build the AI market in your country.",
   lead: "Sell real AI products and digital solutions to businesses in your market. AI MARK provides the technology, product delivery and partner infrastructure. You build the relationships and the sales.",
-  note: "Launch bonus until 31 Dec 2026 · Up to 80% on a client's first 3 months · Free to join",
+  note: "Launch bonus until 31 Dec 2026 · Up to 80% on the client's first payment · Free to join",
   primary: "Become a Partner",
   secondary: "See how it works",
   marketEyebrow: "The market",
@@ -45,9 +45,9 @@ export const copyEn: PartnerPageCopy = {
   networkEyebrow: "Partner network",
   networkTitle: "Personal sales first. Network sales next.",
   networkLead: "The network is built around paid customer sales, not registrations. Five levels share the amount the customer actually paid. 80% is the aggregate partner pool across qualified levels — not a single-partner payout.",
-  poolHeadline: "Launch bonus: up to 80% on months 1–3. Renewals from month 4: L1 20% + L2 5%.",
+  poolHeadline: "Launch bonus: up to 80% on the first payment. Renewals: L1 20% + L2 5%.",
   poolLead:
-    "Until 31.12.2026, a client's first three monthly payments use L1 50% / L2 15% / L3 7% / L4 5% / L5 3% (80% pool). From month 4, renewals pay L1 20% + L2 5%. From 01.01.2027, months 1–3 use the standard 50% pool (L1 35% / L2 10% / L3 5%).",
+    "Until 31.12.2026, the client's first qualifying payment uses L1 50% / L2 15% / L3 7% / L4 5% / L5 3% (80% pool). From the 2nd payment onward, renewals pay L1 20% + L2 5%. From 01.01.2027, the first payment uses the standard 50% pool on all five levels (L1 35% / L2 8% / L3 4% / L4 2% / L5 1%).",
   launchBonusBadge: "Launch bonus · until 31.12.2026",
   exampleTitle: "On a $1,000 commissionable sale with a full network",
   exampleRows: [
@@ -60,7 +60,7 @@ export const copyEn: PartnerPageCopy = {
     { label: "AI Mark retained share", value: "$200" },
   ],
   exampleFoot: "The direct partner receives $500, not $800. 80% is the total across L1–L5 when every level is qualified.",
-  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleTitle: "Same $1,000 renewal payment (from the 2nd payment onward)",
   renewalExampleRows: [
     { label: "L1 direct partner", value: "$200", accent: true },
     { label: "L2", value: "$50" },
@@ -77,7 +77,7 @@ export const copyEn: PartnerPageCopy = {
   ],
   commissionLabel: "Commission",
   commissionNote:
-    "Months 1–3 (launch bonus until 31.12.2026): L1 50% / L2 15% / L3 7% / L4 5% / L5 3%. Month 4+ renewals: L1 20% + L2 5%. Standard from 01.01.2027 for months 1–3: L1 35% / L2 10% / L3 5%.",
+    "First payment (launch bonus until 31.12.2026): L1 50% / L2 15% / L3 7% / L4 5% / L5 3%. Renewals from the 2nd payment: L1 20% + L2 5%. Standard first payment from 01.01.2027: L1 35% / L2 8% / L3 4% / L4 2% / L5 1%.",
   statusEyebrow: "Partner status",
   statusTitle: "Four ways to grow with AI MARK.",
   statusLead: "Status reflects commercial activity and relationship depth. It is a business status, not a paid rank.",
@@ -117,7 +117,7 @@ export const copyEn: PartnerPageCopy = {
     { q: "Can I build a partner team?", a: "Yes. The standard model supports a multi-tier affiliate structure tied to customer revenue, up to 5 levels deep." },
     {
       q: "Do subscription products generate recurring commissions?",
-      a: "Yes. Months 1–3 use the launch bonus grid (until 31 Dec 2026) or the standard initial grid from 1 Jan 2027. From month 4, renewals pay L1 20% + L2 5% only.",
+      a: "Yes. The first payment uses the launch bonus grid (until 31 Dec 2026) or the standard initial grid from 1 Jan 2027. From the 2nd payment onward, renewals pay L1 20% + L2 5% only.",
     },
     { q: "How do I become a Regional or Strategic Partner?", a: "Regional status is granted based on verified commercial volume and market leadership. Strategic and Country partnerships involve dedicated bilateral agreements." },
   ],

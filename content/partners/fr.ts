@@ -114,7 +114,7 @@ export const copyFr: PartnerPageCopy = {
     { q: "Faut-il acheter un pack de démarrage pour devenir partenaire ?", a: "Non. Le programme récompense la vente de produits et services réels aux entreprises, et non l'achat de positions. L'accès est gratuit." },
     { q: "Dois-je gérer la livraison technique du projet ?", a: "Non. Le partenaire gère la relation et le closing. AI MARK assure l'implémentation, la livraison et le suivi technique." },
     { q: "Puis-je constituer une équipe de partenaires ?", a: "Oui. Le modèle standard permet d'animer une équipe d'affiliés jusqu'à 5 niveaux de profondeur, adossée au chiffre d'affaires réel." },
-    { q: "Les abonnements génèrent-ils des commissions récurrentes ?", a: "Oui. Mois 1–3 : launch bonus (jusqu’au 31.12.2026) ou grille initiale standard dès le 01.01.2027. À partir du mois 4 : L1 20 % + L2 5 % seulement." },
+    { q: "Les abonnements génèrent-ils des commissions récurrentes ?", a: "Oui. Le premier paiement : launch bonus (jusqu’au 31.12.2026) ou grille initiale standard dès le 01.01.2027. À partir du 2e paiement : L1 20 % + L2 5 % seulement." },
     { q: "Comment obtenir le statut de Regional ou Strategic Partner ?", a: "Le statut régional est attribué selon le volume d'affaires et la présence locale. Les partenariats stratégiques s'établissent sur contrat sur mesure." },
   ],
   ctaEyebrow: "Démarrage",

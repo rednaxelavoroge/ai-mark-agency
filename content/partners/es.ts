@@ -59,7 +59,7 @@ export const copyEs: PartnerPageCopy = {
   ],
   exampleFoot: "El partner directo recibe $500, no $800. El 80% es el total acumulado entre L1 y L5 cuando todos los niveles están cualificados.",
 
-  renewalExampleTitle: "La misma venta de $1.000 desde el mes 4 (renovación)",
+  renewalExampleTitle: "La misma venta de $1.000 en renovación (desde el 2.º pago)",
   renewalExampleRows: [
     { label: "Partner directo L1", value: "$200", accent: true },
     { label: "L2", value: "$50" },
@@ -114,7 +114,7 @@ export const copyEs: PartnerPageCopy = {
     { q: "¿Tengo que comprar un paquete inicial para ser partner?", a: "No. El programa se basa en la venta de productos y servicios reales de AI MARK a empresas, no en comprar posiciones en una red. El registro es gratuito." },
     { q: "¿Debo encargarme de la ejecución técnica?", a: "No. El partner se enfoca en las relaciones y el cierre comercial. AI MARK es responsable de la implementación, entrega y soporte del producto." },
     { q: "¿Puedo construir un equipo de partners?", a: "Sí. El modelo estándar admite una red multinivel vinculada a los ingresos de clientes, con hasta 5 niveles de profundidad." },
-    { q: "¿Las suscripciones generan comisiones recurrentes?", a: "Sí. Los meses 1–3 usan launch bonus (hasta 31.12.2026) o la cuadrícula inicial estándar desde el 01.01.2027. Desde el mes 4, renovaciones solo L1 20% + L2 5%." },
+    { q: "¿Las suscripciones generan comisiones recurrentes?", a: "Sí. El primer pago usa launch bonus (hasta 31.12.2026) o la cuadrícula inicial estándar desde el 01.01.2027. Desde el 2.º pago, renovaciones solo L1 20% + L2 5%." },
     { q: "¿Cómo acceder al estatus de Regional o Strategic Partner?", a: "El estatus Regional se otorga por volumen comercial acreditado y liderazgo local. Las alianzas Estratégicas y Country Partner se formalizan mediante acuerdo bilateral." },
   ],
   ctaEyebrow: "Inicio",

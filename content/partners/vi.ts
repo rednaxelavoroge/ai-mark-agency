@@ -114,7 +114,7 @@ export const copyVi: PartnerPageCopy = {
     { q: "Tôi có cần mua gói sản phẩm ban đầu để trở thành đối tác không?", a: "Không. Chương trình xây dựng xoay quanh việc kinh doanh sản phẩm và giải pháp thực tế của AI MARK cho doanh nghiệp, không bán vị trí hay yêu cầu phí gia nhập. Đăng ký hoàn toàn miễn phí." },
     { q: "Tôi có phải tự tay thực hiện việc lập trình và triển khai kỹ thuật không?", a: "Không. Đối tác tập trung vào việc tạo dựng mối quan hệ và bán hàng. AI MARK chịu trách nhiệm triển khai, cài đặt và bảo đảm vận hành kỹ thuật." },
     { q: "Tôi có thể xây dựng đội ngũ đối tác cấp dưới không?", a: "Có. Mô hình tiêu chuẩn hỗ trợ cơ cấu liên kết đa cấp độ dựa trên doanh thu khách hàng thực tế, với độ sâu lên tới 5 tầng." },
-    { q: "Các sản phẩm thuê bao định kỳ có mang lại hoa hồng tái tục không?", a: "Có. Tháng 1–3 dùng launch bonus (đến 31.12.2026) hoặc lưới chuẩn từ 01.01.2027. Từ tháng 4, gia hạn chỉ L1 20% + L2 5%." },
+    { q: "Các sản phẩm thuê bao định kỳ có mang lại hoa hồng tái tục không?", a: "Có. Khoản thanh toán đầu dùng launch bonus (đến 31.12.2026) hoặc lưới chuẩn từ 01.01.2027. Từ khoản thứ 2, gia hạn chỉ L1 20% + L2 5%." },
     { q: "Làm thế nào để trở thành Regional hay Strategic Partner?", a: "Cấp Regional được xét duyệt dựa trên doanh số thực tế đã được xác minh và vị thế dẫn dắt. Đối tác Chiến lược và Đại diện Quốc gia được thiết lập theo hợp đồng kinh tế riêng biệt." },
   ],
   ctaEyebrow: "Khởi Đầu Ngay",

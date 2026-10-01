@@ -488,7 +488,7 @@ eq "v2 L1 is \$500 at rate 0.50 (initial type)" "500.00:0.500000:initial"
 # Renewal month (payment index 4): L1 20% + L2 5% only.
 svc "select public.record_sale('invoice', 'ord-v2-renewal', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-05 00:00:00+00', null, '$PID_L1');"
 V2_RENEWAL="$OUT"
-svc "select public.qualify_sale('$V2_RENEWAL'); select public.post_commission_entries('$V2_RENEWAL', 4);" >/dev/null
+svc "select public.qualify_sale('$V2_RENEWAL'); select public.post_commission_entries('$V2_RENEWAL', 2);" >/dev/null
 run_sql "select string_agg(amount::text, ',' order by level) || '|' || max(commission_type)
            from public.commission_entries
           where sale_id = '$V2_RENEWAL' and commission_type in ('base', 'launch', 'initial', 'renewal');"

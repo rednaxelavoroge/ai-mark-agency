@@ -181,8 +181,8 @@ export const cabinetDe: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Launch bonus aktiv",
     "launchEndedTitle": "Launch bonus beendet",
-    "launchActiveBody": "Launch bonus · bis 31.12.2026: bis zu 80 % Pool in den ersten 3 Monatszahlungen jedes Kunden. Ab Monat 4: Verlängerungen L1 20 % + L2 5 %. Standard ab 01.01.2027 auf der öffentlichen Partnerseite.",
-    "launchEndedBody": "Das Launch-bonus-Fenster endete am 31.12.2026. Neue Verkäufe nutzen den Standard (50 %-Pool in Monaten 1–3; Verlängerungen L1 20 % + L2 5 %)."
+    "launchActiveBody": "Launch bonus · bis 31.12.2026: bis zu 80 % Pool in den ersten 3 Monatszahlungen jedes Kunden. Ab der 2. Zahlung: Verlängerungen L1 20 % + L2 5 %. Standard ab 01.01.2027 auf der öffentlichen Partnerseite.",
+    "launchEndedBody": "Das Launch-bonus-Fenster endete am 31.12.2026. Neue Verkäufe nutzen den Standard (50 %-Pool beim ersten Zahlungseingang; Verlängerungen L1 20 % + L2 5 %)."
   },
   "referralPanel": {
     "title": "Empfehlungsprogramm",

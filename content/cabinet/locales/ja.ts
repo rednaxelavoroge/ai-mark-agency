@@ -181,8 +181,8 @@ export const cabinetJa: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Launch bonus 適用中",
     "launchEndedTitle": "Launch bonus 終了",
-    "launchActiveBody": "Launch bonus · 2026年12月31日まで：各クライアントの最初の3か月の支払いで最大80%プール。4か月目以降の更新は L1 20% + L2 5%。2027年1月1日からの標準グリッドは公開パートナーページに記載。",
-    "launchEndedBody": "Launch bonus は 2026年12月31日に終了しました。新規売上は標準スケジュール（1–3か月目50%プール、更新 L1 20% + L2 5%）です。"
+    "launchActiveBody": "Launch bonus · 2026年12月31日まで：各クライアントの最初の3か月の支払いで最大80%プール。2回目以降の更新は L1 20% + L2 5%。2027年1月1日からの標準グリッドは公開パートナーページに記載。",
+    "launchEndedBody": "Launch bonus は 2026年12月31日に終了しました。新規売上は標準スケジュール（初回支払い50%プール、更新 L1 20% + L2 5%）です。"
   },
   "referralPanel": {
     "title": "紹介プログラム",
@@ -194,7 +194,7 @@ export const cabinetJa: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "パートナー手数料モデル",
-    "lead": "Launch bonus（2026年12月31日まで）のクライアント1–3か月目：L1 50% … L5 3%（80%プール）。4か月目以降：L1 20% + L2 5%。2027年1月1日から1–3か月目：L1 35% / L2 10% / L3 5%（50%プール）。ledgerの合計は保存値です。このカードは収益を再計算しません。",
+    "lead": "Launch bonus（2026年12月31日まで）のクライアント初回支払い：L1 50% … L5 3%（80%プール）。2回目以降：L1 20% + L2 5%。2027年1月1日から初回支払い：L1 35% / L2 8% / L3 4% / L4 2% / L5 1%（50%プール）。ledgerの合計は保存値です。このカードは収益を再計算しません。",
     "levels": {
       "1": {
         "title": "直販",

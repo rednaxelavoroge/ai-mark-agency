@@ -17,11 +17,11 @@ export const PARTNER_COMMISSION_MODEL_VERSION = "launch-bonus-v1" as const;
 /** Owner-approved launch bonus window (inclusive end date for marketing). */
 export const LAUNCH_BONUS_END_DATE = "2026-12-31";
 
-/** Sales paid on/after this instant use the standard initial grid (months 1–3). */
+/** Sales paid on/after this instant use the standard first-payment grid. */
 export const STANDARD_SCHEDULE_EFFECTIVE_FROM = "2027-01-01T00:00:00.000Z";
 
-/** Client subscription payment index: months 1–3 vs renewal (4+). */
-export const INITIAL_PAYMENT_MONTHS = 3;
+/** Renewals start from the client's 2nd qualifying payment onward. */
+export const RENEWAL_PAYMENT_INDEX_FROM = 2;
 
 export type CommissionSchedulePhase =
   | "launch_initial"
@@ -42,10 +42,10 @@ export const LEVEL_RATE_BPS_LAUNCH_INITIAL = Object.freeze({
 
 export const LEVEL_RATE_BPS_STANDARD_INITIAL = Object.freeze({
   1: 3500,
-  2: 1000,
-  3: 500,
-  4: 0,
-  5: 0,
+  2: 800,
+  3: 400,
+  4: 200,
+  5: 100,
 } as const);
 
 export const LEVEL_RATE_BPS_RENEWAL = Object.freeze({
@@ -88,7 +88,7 @@ export function resolveSchedulePhase(
   if (!Number.isInteger(clientPaymentIndex) || clientPaymentIndex < 1) {
     throw new Error("client payment index must be a positive integer");
   }
-  if (clientPaymentIndex >= INITIAL_PAYMENT_MONTHS + 1) {
+  if (clientPaymentIndex >= RENEWAL_PAYMENT_INDEX_FROM) {
     return "renewal";
   }
   const standardFrom = new Date(STANDARD_SCHEDULE_EFFECTIVE_FROM);
@@ -124,7 +124,7 @@ export function formatRatePercent(bps: number): string {
   return `${whole}.${fracStr}%`;
 }
 
-/** Labels for the launch-bonus initial grid (months 1–3 before 2027). */
+/** Labels for the launch-bonus first-payment grid (sales before 2027-01-01). */
 export const LEVEL_RATE_LABELS_LAUNCH_INITIAL = Object.freeze({
   1: formatRatePercent(LEVEL_RATE_BPS_LAUNCH_INITIAL[1]),
   2: formatRatePercent(LEVEL_RATE_BPS_LAUNCH_INITIAL[2]),
@@ -265,6 +265,22 @@ export const EXAMPLE_RENEWAL_USD = Object.freeze({
   l2: formatMinorUnits(EXAMPLE_RENEWAL_BREAKDOWN.levels[1].amountMinor),
   pool: formatMinorUnits(EXAMPLE_RENEWAL_BREAKDOWN.partnerPoolMinor),
   retained: formatMinorUnits(EXAMPLE_RENEWAL_BREAKDOWN.retainedMinor),
+} as const);
+
+export const EXAMPLE_STANDARD_BREAKDOWN = allocatePartnerPool(
+  EXAMPLE_SALE_MINOR,
+  "standard_initial",
+);
+
+export const EXAMPLE_STANDARD_USD = Object.freeze({
+  sale: formatMinorUnits(EXAMPLE_SALE_MINOR),
+  l1: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.levels[0].amountMinor),
+  l2: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.levels[1].amountMinor),
+  l3: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.levels[2].amountMinor),
+  l4: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.levels[3].amountMinor),
+  l5: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.levels[4].amountMinor),
+  pool: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.partnerPoolMinor),
+  retained: formatMinorUnits(EXAMPLE_STANDARD_BREAKDOWN.retainedMinor),
 } as const);
 
 /** v2 flat grid (closed 2026-10-01); kept for migration audit strings. */

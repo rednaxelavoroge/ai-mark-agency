@@ -114,7 +114,7 @@ export const copyTr: PartnerPageCopy = {
     { q: "Ortak olmak için bir başlangıç paketi satın almam gerekir mi?", a: "Hayır. Program ağ içinde pozisyon satın almaya değil, işletmelere gerçek AI MARK ürün ve hizmetlerini satmaya dayanır. Katılım tamamen ücretsizdir." },
     { q: "Teknik teslimatı ve geliştirmeyi kendim mi yapmalıyım?", a: "Hayır. Ortak ilişkileri kurar ve satışı gerçekleştirir. AI MARK ürünün kurulumu, geliştirilmesi ve teknik desteğinden sorumludur." },
     { q: "Kendi ortak ekibimi kurabilir miyim?", a: "Evet. Standart model, gerçek müşteri ödemelerine bağlı olarak 5 kademe derinliğe kadar çok seviyeli ortaklık yapısını destekler." },
-    { q: "Abonelik ürünleri düzenli komisyon sağlar mı?", a: "Evet. Ay 1–3 launch bonus (31.12.2026’ya kadar) veya 01.01.2027’den standart başlangıç tablosu. 4. aydan itibaren yenilemeler yalnızca L1 %20 + L2 %5." },
+    { q: "Abonelik ürünleri düzenli komisyon sağlar mı?", a: "Evet. İlk ödeme launch bonus (31.12.2026’ya kadar) veya 01.01.2027’den standart başlangıç tablosu. 2. ödemeden itibaren yenilemeler yalnızca L1 %20 + L2 %5." },
     { q: "Nasıl Regional veya Strategic Partner olabilirim?", a: "Bölgesel statü kanıtlanmış satış hacmine göre verilir. Stratejik ve Ülke ortaklıkları bağımsız ikili anlaşmalarla düzenlenir." },
   ],
   ctaEyebrow: "Başlangıç",

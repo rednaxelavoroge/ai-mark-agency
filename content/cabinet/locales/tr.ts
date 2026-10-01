@@ -181,8 +181,8 @@ export const cabinetTr: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Launch bonus aktif",
     "launchEndedTitle": "Launch bonus sona erdi",
-    "launchActiveBody": "Launch bonus · 31.12.2026’ya kadar: her müşterinin ilk 3 aylık ödemesinde en fazla %80 havuz. 4. aydan itibaren yenilemeler L1 %20 + L2 %5. 01.01.2027 itibarıyla standart tablo kamu ortak sayfasında.",
-    "launchEndedBody": "Launch bonus 31.12.2026’da bitti. Yeni satışlar standart takvimi kullanır (1–3. ay %50 havuz; yenilemeler L1 %20 + L2 %5)."
+    "launchActiveBody": "Launch bonus · 31.12.2026’ya kadar: her müşterinin ilk 3 aylık ödemesinde en fazla %80 havuz. 2. ödemedan itibaren yenilemeler L1 %20 + L2 %5. 01.01.2027 itibarıyla standart tablo kamu ortak sayfasında.",
+    "launchEndedBody": "Launch bonus 31.12.2026’da bitti. Yeni satışlar standart takvimi kullanır (ilk ödeme %50 havuz; yenilemeler L1 %20 + L2 %5)."
   },
   "referralPanel": {
     "title": "Tavsiye programı",

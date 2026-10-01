@@ -181,8 +181,8 @@ export const cabinetFr: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Launch bonus actif",
     "launchEndedTitle": "Launch bonus terminé",
-    "launchActiveBody": "Launch bonus · jusqu’au 31.12.2026 : jusqu’à 80 % de pool sur les 3 premiers paiements mensuels de chaque client. À partir du mois 4, renouvellements L1 20 % + L2 5 %. Grille standard dès le 01.01.2027 sur la page partenaires publique.",
-    "launchEndedBody": "Le launch bonus s’est terminé le 31.12.2026. Les nouvelles ventes suivent la grille standard (pool 50 % sur les mois 1–3 ; renouvellements L1 20 % + L2 5 %)."
+    "launchActiveBody": "Launch bonus · jusqu’au 31.12.2026 : jusqu’à 80 % de pool sur les 3 premiers paiements mensuels de chaque client. À partir du 2e paiement, renouvellements L1 20 % + L2 5 %. Grille standard dès le 01.01.2027 sur la page partenaires publique.",
+    "launchEndedBody": "Le launch bonus s’est terminé le 31.12.2026. Les nouvelles ventes suivent la grille standard (pool 50 % sur le premier paiement ; renouvellements L1 20 % + L2 5 %)."
   },
   "referralPanel": {
     "title": "Programme de parrainage",

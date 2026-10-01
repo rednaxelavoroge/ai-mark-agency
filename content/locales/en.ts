@@ -289,7 +289,7 @@ export const copyEn: Copy = {
       title: "An international partner network is how we scale presence.",
       lead: "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
       model:
-        "International presence without building our own infrastructure in every country. Launch bonus until 31 Dec 2026: up to 80% on a client's first 3 months; renewals from month 4 pay L1 20% + L2 5%. See /partners for the full schedule.",
+        "International presence without building our own infrastructure in every country. Launch bonus until 31 Dec 2026: up to 80% on a client's first payment; renewals from the 2nd payment pay L1 20% + L2 5%. See /partners for the full schedule.",
       earn: "A partner can:",
       cta: "Talk partnership",
       types: [

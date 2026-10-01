@@ -181,8 +181,8 @@ export const cabinetVi: CabinetCopy = {
     "trackingFootnoteAfter": ".",
     "launchActiveTitle": "Launch bonus đang áp dụng",
     "launchEndedTitle": "Launch bonus đã kết thúc",
-    "launchActiveBody": "Launch bonus · đến 31.12.2026: tối đa 80% quỹ cho 3 khoản thanh toán hàng tháng đầu của mỗi khách. Từ tháng 4, gia hạn L1 20% + L2 5%. Lưới chuẩn từ 01.01.2027 trên trang đối tác công khai.",
-    "launchEndedBody": "Launch bonus kết thúc 31.12.2026. Doanh số mới dùng lịch chuẩn (quỹ 50% tháng 1–3; gia hạn L1 20% + L2 5%)."
+    "launchActiveBody": "Launch bonus · đến 31.12.2026: tối đa 80% quỹ cho 3 khoản thanh toán hàng tháng đầu của mỗi khách. Từ khoản thứ 2, gia hạn L1 20% + L2 5%. Lưới chuẩn từ 01.01.2027 trên trang đối tác công khai.",
+    "launchEndedBody": "Launch bonus kết thúc 31.12.2026. Doanh số mới dùng lịch chuẩn (quỹ 50% khoản thanh toán đầu; gia hạn L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Chương trình giới thiệu",
@@ -194,7 +194,7 @@ export const cabinetVi: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Mô hình hoa hồng đối tác",
-    "lead": "Launch bonus đến 31.12.2026 cho tháng 1–3 của khách: L1 50% … L5 3% (quỹ 80%). Từ tháng 4: L1 20% + L2 5%. Từ 01.01.2027, tháng 1–3: L1 35% / L2 10% / L3 5% (quỹ 50%). Tổng ledger là giá trị đã lưu; thẻ này không tính lại thu nhập của bạn.",
+    "lead": "Launch bonus đến 31.12.2026 cho khoản thanh toán đầu của khách: L1 50% … L5 3% (quỹ 80%). Từ khoản thứ 2: L1 20% + L2 5%. Từ 01.01.2027, khoản đầu: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (quỹ 50%). Tổng ledger là giá trị đã lưu; thẻ này không tính lại thu nhập của bạn.",
     "levels": {
       "1": {
         "title": "Bán trực tiếp",
