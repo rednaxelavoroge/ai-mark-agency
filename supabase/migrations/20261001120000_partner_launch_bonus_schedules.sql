@@ -36,24 +36,6 @@ update public.commission_rules
    and schedule_phase is null
    and active_from = timestamptz '2026-09-27 00:00:00+00';
 
-insert into public.commission_rules (level, base_rate, launch_multiplier, active_from, schedule_phase)
-values
-  (1, 0.50::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
-  (2, 0.15::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
-  (3, 0.07::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
-  (4, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
-  (5, 0.03::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
-  (1, 0.35::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (2, 0.08::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (3, 0.04::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (4, 0.02::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (5, 0.01::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
-  (1, 0.20::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
-  (2, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
-  (3, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
-  (4, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
-  (5, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal');
-
 create or replace function public.partner_pool_cap_for_phase(p_phase text)
 returns numeric
 language sql
@@ -150,6 +132,25 @@ begin
   return new;
 end;
 $$;
+
+insert into public.commission_rules (level, base_rate, launch_multiplier, active_from, schedule_phase)
+values
+  (1, 0.50::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
+  (2, 0.15::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
+  (3, 0.07::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
+  (4, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
+  (5, 0.03::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'launch_initial'),
+  (1, 0.35::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (2, 0.08::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (3, 0.04::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (4, 0.02::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (5, 0.01::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'standard_initial'),
+  (1, 0.20::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
+  (2, 0.05::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
+  (3, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
+  (4, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal'),
+  (5, 0.00::numeric(12, 6), 1.0::numeric(12, 6), timestamptz '2026-10-01 00:00:00+00', 'renewal');
+
 
 create or replace function public.post_commission_entries(
   p_sale_id uuid,
