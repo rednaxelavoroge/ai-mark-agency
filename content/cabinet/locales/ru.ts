@@ -179,10 +179,10 @@ export const cabinetRu: CabinetCopy = {
     "trackingFootnoteBefore": "Как работает атрибуция — в",
     "trackingFootnoteLink": "Материалах",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Статус launch-периода",
-    "launchEndedTitle": "Launch-период завершён",
-    "launchActiveBody": "Launch-окно до {date}. 90 дней с создания аккаунта партнёра. Ставки те же, пул сети 80%.",
-    "launchEndedBody": "90-дневное launch-окно закончилось {date}. Ставки те же, пул сети 80%."
+    "launchActiveTitle": "Launch bonus активен",
+    "launchEndedTitle": "Launch bonus завершён",
+    "launchActiveBody": "Launch bonus · до 31.12.2026: до 80% пула на первый платёж каждого клиента. Со 2-го платежа продления: L1 20% + L2 5%. Стандарт с 01.01.2027 — на публичной странице партнёров.",
+    "launchEndedBody": "Окно launch bonus закончилось 31.12.2026. Новые продажи идут по стандартной сетке (пул 50% на первый платёж; продления L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Referral-программа",
@@ -194,7 +194,7 @@ export const cabinetRu: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Модель партнёрских комиссий",
-    "lead": "50% за прямую продажу. До 80% суммарно партнёрам по сети. 80% — агрегированный пул L1–L5, не выплата одному партнёру. Доля AI Mark — 20% от commissionable amount. Цифры в ledger — сохранённые значения; карточка не пересчитывает ваш доход.",
+    "lead": "Launch bonus до 31.12.2026 на первый платёж клиента: L1 50% … L5 3% (пул 80%). Со 2-го платежа: L1 20% + L2 5%. С 01.01.2027 первый платёж: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (пул 50%). Цифры в ledger — сохранённые значения; карточка не пересчитывает доход.",
     "levels": {
       "1": {
         "title": "Прямая продажа",

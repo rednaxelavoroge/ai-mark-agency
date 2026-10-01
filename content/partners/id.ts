@@ -58,6 +58,16 @@ export const copyId: PartnerPageCopy = {
     { label: "Bagian ditahan AI Mark", value: "$200" },
   ],
   exampleFoot: "Mitra langsung menerima $500, bukan $800. 80% adalah total akumulasi dari L1 hingga L5 saat semua level memenuhi kualifikasi.",
+
+  renewalExampleTitle: "Penjualan $1.000 yang sama dari bulan ke-4 (perpanjangan)",
+  renewalExampleRows: [
+    { label: "Mitra langsung L1", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Pool mitra (agregat)", value: "$250" },
+    { label: "Bagian AI Mark yang ditahan", value: "$750" },
+  ],
+  renewalExampleFoot: "Perpanjangan tidak mengulang kisi launch bonus lima tingkat penuh.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Penjualan langsung", body: "Pelanggan yang Anda perkenalkan dan transaksikan secara langsung.", rate: "50%" },
     { n: "L2", title: "Jaringan tingkat pertama", body: "Penjualan dari pelanggan mitra tingkat pertama yang Anda sponsori.", rate: "15%" },
@@ -104,7 +114,7 @@ export const copyId: PartnerPageCopy = {
     { q: "Apakah saya harus membeli paket pemula untuk menjadi mitra?", a: "Tidak. Program ini murni berfokus pada penjualan produk dan layanan AI MARK kepada bisnis nyata, bukan membeli posisi dalam jaringan. Pendaftaran 100% gratis." },
     { q: "Apakah saya harus menangani implementasi teknis sendiri?", a: "Tidak. Mitra fokus pada hubungan dan penutupan penjualan. AI MARK bertanggung jawab atas penerapan, pengiriman, dan pemeliharaan teknis produk." },
     { q: "Bisakah saya membangun tim dan jaringan mitra sendiri?", a: "Bisa. Model standar mendukung struktur afiliasi multi-tier hingga 5 tingkat kedalaman yang terikat langsung pada pendapatan pelanggan riil." },
-    { q: "Apakah produk langganan memberikan komisi berkelanjutan?", a: "Ya. Setiap pembayaran perpanjangan yang memenuhi syarat mengikuti skema yang sama: L1 50%, L2 15%, L3 7%, L4 5%, L5 3%, dengan pool total 80%. Periode 90 hari pertama tidak mengubah persentase ini." },
+    { q: "Apakah produk langganan memberikan komisi berkelanjutan?", a: "Ya. Pembayaran pertama memakai launch bonus (hingga 31.12.2026) atau kisi awal standar dari 01.01.2027. Dari pembayaran ke-2, perpanjangan hanya L1 20% + L2 5%." },
     { q: "Bagaimana cara menjadi Regional atau Strategic Partner?", a: "Status Regional diberikan berdasarkan volume transaksi terverifikasi dan posisi pasar. Kemitraan strategis dan Country Partner disepakati lewat perjanjian bilateral khusus." },
   ],
   ctaEyebrow: "Mulai Sekarang",

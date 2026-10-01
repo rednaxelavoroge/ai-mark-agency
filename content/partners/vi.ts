@@ -58,6 +58,16 @@ export const copyVi: PartnerPageCopy = {
     { label: "Phần giữ lại của AI Mark", value: "$200" },
   ],
   exampleFoot: "Đối tác trực tiếp nhận $500, không phải $800. 80% là tổng giá trị tối đa trên toàn bộ mạng lưới từ L1 đến L5 khi tất cả các cấp đều đủ tiêu chuẩn.",
+
+  renewalExampleTitle: "Cùng giao dịch $1.000 từ tháng thứ 4 (gia hạn)",
+  renewalExampleRows: [
+    { label: "Đối tác trực tiếp L1", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Quỹ đối tác (tổng hợp)", value: "$250" },
+    { label: "Phần AI Mark giữ lại", value: "$750" },
+  ],
+  renewalExampleFoot: "Gia hạn không lặp lại lưới launch bonus đủ năm cấp.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Bán hàng trực tiếp", body: "Khách hàng do chính bạn giới thiệu và trực tiếp hoàn tất thỏa thuận.", rate: "50%" },
     { n: "L2", title: "Mạng lưới cấp 1", body: "Doanh số thanh toán từ khách hàng của các đối tác cấp 1 do bạn bảo trợ.", rate: "15%" },
@@ -104,7 +114,7 @@ export const copyVi: PartnerPageCopy = {
     { q: "Tôi có cần mua gói sản phẩm ban đầu để trở thành đối tác không?", a: "Không. Chương trình xây dựng xoay quanh việc kinh doanh sản phẩm và giải pháp thực tế của AI MARK cho doanh nghiệp, không bán vị trí hay yêu cầu phí gia nhập. Đăng ký hoàn toàn miễn phí." },
     { q: "Tôi có phải tự tay thực hiện việc lập trình và triển khai kỹ thuật không?", a: "Không. Đối tác tập trung vào việc tạo dựng mối quan hệ và bán hàng. AI MARK chịu trách nhiệm triển khai, cài đặt và bảo đảm vận hành kỹ thuật." },
     { q: "Tôi có thể xây dựng đội ngũ đối tác cấp dưới không?", a: "Có. Mô hình tiêu chuẩn hỗ trợ cơ cấu liên kết đa cấp độ dựa trên doanh thu khách hàng thực tế, với độ sâu lên tới 5 tầng." },
-    { q: "Các sản phẩm thuê bao định kỳ có mang lại hoa hồng tái tục không?", a: "Có. Mọi khoản thanh toán gia hạn hợp lệ đều áp dụng cùng một bảng tỷ lệ: L1 50%, L2 15%, L3 7%, L4 5%, L5 3% (tổng quỹ 80%). Giai đoạn 90 ngày đầu không làm giảm tỷ lệ này." },
+    { q: "Các sản phẩm thuê bao định kỳ có mang lại hoa hồng tái tục không?", a: "Có. Khoản thanh toán đầu dùng launch bonus (đến 31.12.2026) hoặc lưới chuẩn từ 01.01.2027. Từ khoản thứ 2, gia hạn chỉ L1 20% + L2 5%." },
     { q: "Làm thế nào để trở thành Regional hay Strategic Partner?", a: "Cấp Regional được xét duyệt dựa trên doanh số thực tế đã được xác minh và vị thế dẫn dắt. Đối tác Chiến lược và Đại diện Quốc gia được thiết lập theo hợp đồng kinh tế riêng biệt." },
   ],
   ctaEyebrow: "Khởi Đầu Ngay",

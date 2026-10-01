@@ -2,6 +2,7 @@ import "server-only";
 
 import { normalizeBuyerEmail, optionalBuyerText } from "./buyer";
 import { payableSkuById } from "./catalog";
+import { cryptoPriceUsd } from "@/lib/pricing/crypto-checkout";
 import { amountWithCents, isInvoiceRef, newInvoiceRef } from "./invoice-ref";
 import {
   isPaymentAsset,
@@ -86,7 +87,7 @@ export async function createPaymentInvoice(
   for (let attempt = 0; attempt < 12; attempt += 1) {
     const publicRef = newInvoiceRef();
     const cents = 1 + Math.floor(Math.random() * 99);
-    const expected = amountWithCents(sku.amountUsd, cents);
+    const expected = amountWithCents(cryptoPriceUsd(sku.amountUsd), cents);
     const inserted = await admin
       .from("payment_invoices")
       .insert({

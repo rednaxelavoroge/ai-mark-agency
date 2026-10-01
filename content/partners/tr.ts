@@ -58,6 +58,16 @@ export const copyTr: PartnerPageCopy = {
     { label: "AI Mark tutulan payı", value: "$200" },
   ],
   exampleFoot: "Doğrudan ortak $500 alır, $800 değil. %80, her kademe nitelikli olduğunda L1–L5 genelindeki toplam orandır.",
+
+  renewalExampleTitle: "4. aydan itibaren aynı 1.000 $ satış (yenileme)",
+  renewalExampleRows: [
+    { label: "L1 doğrudan ortak", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Ortak havuzu (toplam)", value: "$250" },
+    { label: "AI Mark tutulan payı", value: "$750" },
+  ],
+  renewalExampleFoot: "Yenilemeler beş kademeli launch bonus tablosunu tekrarlamaz.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Doğrudan satış", body: "Bizzat tanıştırdığınız ve satışını gerçekleştirdiğiniz müşteri.", rate: "%50" },
     { n: "L2", title: "İlk ağ seviyesi", body: "Birinci kademe ortaklarınızın müşterilerinden gelen ödemeler.", rate: "%15" },
@@ -104,7 +114,7 @@ export const copyTr: PartnerPageCopy = {
     { q: "Ortak olmak için bir başlangıç paketi satın almam gerekir mi?", a: "Hayır. Program ağ içinde pozisyon satın almaya değil, işletmelere gerçek AI MARK ürün ve hizmetlerini satmaya dayanır. Katılım tamamen ücretsizdir." },
     { q: "Teknik teslimatı ve geliştirmeyi kendim mi yapmalıyım?", a: "Hayır. Ortak ilişkileri kurar ve satışı gerçekleştirir. AI MARK ürünün kurulumu, geliştirilmesi ve teknik desteğinden sorumludur." },
     { q: "Kendi ortak ekibimi kurabilir miyim?", a: "Evet. Standart model, gerçek müşteri ödemelerine bağlı olarak 5 kademe derinliğe kadar çok seviyeli ortaklık yapısını destekler." },
-    { q: "Abonelik ürünleri düzenli komisyon sağlar mı?", a: "Evet. Yenilemeler dahil her uygun ödeme aynı bareme tabidir: L1 %50, L2 %15, L3 %7, L4 %5, L5 %3 (toplam %80 havuz). İlk 90 gün bu oranları değiştirmez." },
+    { q: "Abonelik ürünleri düzenli komisyon sağlar mı?", a: "Evet. İlk ödeme launch bonus (31.12.2026’ya kadar) veya 01.01.2027’den standart başlangıç tablosu. 2. ödemeden itibaren yenilemeler yalnızca L1 %20 + L2 %5." },
     { q: "Nasıl Regional veya Strategic Partner olabilirim?", a: "Bölgesel statü kanıtlanmış satış hacmine göre verilir. Stratejik ve Ülke ortaklıkları bağımsız ikili anlaşmalarla düzenlenir." },
   ],
   ctaEyebrow: "Başlangıç",

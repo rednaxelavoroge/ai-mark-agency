@@ -45,8 +45,9 @@ export const copyDe: PartnerPageCopy = {
   networkEyebrow: "Partner-Netzwerk",
   networkTitle: "Zuerst persönliche Verkäufe. Danach Netzwerkumsätze.",
   networkLead: "Das Netzwerk basiert auf real bezahlten Kundenumsätzen, nicht auf reinen Registrierungen. Fünf Stufen teilen den Betrag, den der Kunde tatsächlich bezahlt hat. 80 % ist der kumulierte Partnerpool über qualifizierte Stufen — keine Einzelauszahlung an einen Partner.",
-  poolHeadline: "50 % für Direktverkäufe. Bis zu 80 % Partnerpool über das gesamte Netzwerk.",
-  poolLead: "Stufe 1 (L1) erhält 50 % der provisionsfähigen Basis. Die weiteren Stufen teilen sich 30 %. Zusammen ergibt das einen 80 % Netzwerkpool. Der einbehaltene Anteil von AI Mark beträgt 20 %.",
+  poolHeadline: "Launch bonus: bis zu 80 % beim ersten Zahlungseingang. Verlängerungen: L1 20 % + L2 5 %.",
+  poolLead:
+    "Bis 31.12.2026 gilt beim ersten qualifizierten Zahlungseingang des Kunden: L1 50 % / L2 15 % / L3 7 % / L4 5 % / L5 3 % (80 %-Pool). Ab der 2. Zahlung: L1 20 % + L2 5 %. Ab 01.01.2027 erster Zahlungseingang: L1 35 % / L2 8 % / L3 4 % / L4 2 % / L5 1 % (50 %-Pool, alle fünf Stufen).",
   exampleTitle: "Bei einem provisionsfähigen Verkauf von 1.000 $ in einem 5-Stufen-Netzwerk",
   exampleRows: [
     { label: "L1 Direktpartner", value: "500 $", accent: true },
@@ -58,6 +59,16 @@ export const copyDe: PartnerPageCopy = {
     { label: "AI Mark Anteil", value: "200 $" },
   ],
   exampleFoot: "Der Direktpartner erhält 500 $, nicht 800 $. 80 % ist die Gesamtsumme über die Stufen L1 bis L5, wenn jede Stufe qualifiziert ist.",
+
+  renewalExampleTitle: "Derselbe Verkauf über $1.000 bei Verlängerung (ab 2. Zahlung)",
+  renewalExampleRows: [
+    { label: "L1 Direktpartner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner-Pool (aggregiert)", value: "$250" },
+    { label: "Einbehaltener Anteil AI Mark", value: "$750" },
+  ],
+  renewalExampleFoot: "Verlängerungen wiederholen nicht die volle fünfstufige Launch-bonus-Gitter.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Direktverkauf", body: "Kunden, die Sie persönlich ansprechen und gewinnen.", rate: "50 %" },
     { n: "L2", title: "Erste Netzwerkstufe", body: "Bezahlte Kundenverkäufe Ihrer direkten Partner der ersten Stufe.", rate: "15 %" },
@@ -66,7 +77,8 @@ export const copyDe: PartnerPageCopy = {
     { n: "L5", title: "Maximale Tiefe", body: "Die tiefste Stufe der standardmäßigen Partnervergütung.", rate: "3 %" },
   ],
   commissionLabel: "Provision",
-  commissionNote: "L1 50 % / L2 15 % / L3 7 % / L4 5 % / L5 3 % auf den eingenommenen Betrag. Gesamtpool des Netzwerks 80 %.",
+  commissionNote:
+    "Erste Zahlung (Launch bonus bis 31.12.2026): L1 50 % / L2 15 % / L3 7 % / L4 5 % / L5 3 %. Verlängerungen ab der 2. Zahlung: L1 20 % + L2 5 %. Standard erste Zahlung ab 01.01.2027: L1 35 % / L2 8 % / L3 4 % / L4 2 % / L5 1 %.",
   statusEyebrow: "Partnerstatus",
   statusTitle: "Vier Wachstumsstufen mit AI MARK.",
   statusLead: "Der Status spiegelt die tatsächliche Geschäftsaktivität und Beziehungstiefe wider. Es ist ein Leistungsstatus, kein kaufbarer Rang.",
@@ -104,7 +116,7 @@ export const copyDe: PartnerPageCopy = {
     { q: "Muss ich ein Starterpaket kaufen, um Partner zu werden?", a: "Nein. Das Programm basiert auf dem Verkauf echter AI MARK Produkte und Lösungen an Unternehmen, nicht auf dem Kauf von Netzwerkpositionen. Kostenlose Registrierung." },
     { q: "Muss ich die technische Umsetzung selbst übernehmen?", a: "Nein. Der Partner konzentriert sich auf Kundenbeziehungen und den Verkauf. AI MARK übernimmt Bereitstellung, Entwicklung und technischen Support." },
     { q: "Kann ich ein eigenes Partnerteam aufbauen?", a: "Ja. Das Standardmodell unterstützt eine mehrstufige Partnerstruktur auf Basis realer Kundenzahlungen mit bis zu 5 Stufen Tiefe." },
-    { q: "Erzeugen Abonnements wiederkehrende Provisionen?", a: "Ja. Jede qualifizierte Verlängerungszahlung folgt demselben Schema: L1 50 %, L2 15 %, L3 7 %, L4 5 %, L5 3 % (80 % Gesamtpool). Die ersten 90 Tage ändern diese Sätze nicht." },
+    { q: "Erzeugen Abonnements wiederkehrende Provisionen?", a: "Ja. Die erste Zahlung nutzt Launch bonus (bis 31.12.2026) oder ab 01.01.2027 die Standard-Erstgrid. Ab der 2. Zahlung nur L1 20 % + L2 5 %." },
     { q: "Wie werde ich Regional oder Strategic Partner?", a: "Der regionale Status wird auf Basis nachgewiesener Umsätze und lokaler Marktpräsenz vergeben. Strategische Partnerschaften werden bilateral vereinbart." },
   ],
   ctaEyebrow: "Start",

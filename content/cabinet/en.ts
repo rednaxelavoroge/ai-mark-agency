@@ -180,12 +180,12 @@ export const cabinetEn: CabinetCopy = {
     trackingFootnoteBefore: "How tracking works is on",
     trackingFootnoteLink: "Resources",
     trackingFootnoteAfter: ".",
-    launchActiveTitle: "Launch-period status",
-    launchEndedTitle: "Launch-period ended",
+    launchActiveTitle: "Launch bonus active",
+    launchEndedTitle: "Launch bonus ended",
     launchActiveBody:
-      "The launch window runs until {date}. It lasts 90 days from when the partner account was created. Rates stay the same, and the network pool stays 80%.",
+      "Launch bonus · until 31.12.2026: up to 80% pool on each client's first qualifying payment. From the 2nd payment onward, renewals pay L1 20% + L2 5%. Standard grid from 01.01.2027 is shown on the public partner page.",
     launchEndedBody:
-      "The 90-day launch window ended {date}. Qualifying payments use the same rates, and the network pool stays 80%.",
+      "The launch bonus window ended 31.12.2026. New sales use the standard schedule (50% pool on the first payment; renewals L1 20% + L2 5%).",
   },
   referralPanel: {
     title: "Referral program",
@@ -198,7 +198,8 @@ export const cabinetEn: CabinetCopy = {
   },
   commissionSchedule: {
     title: "Partner Commission Model",
-    lead: "50% for a direct sale. Up to 80% total partner rewards across the network. 80% is the aggregate pool across qualified L1–L5, not a single-partner payout. AI Mark retained share is 20% of the commissionable amount. Ledger totals above are stored values; this card does not recompute your earnings.",
+    lead:
+      "Launch bonus until 31.12.2026 on the client's first payment: L1 50% … L5 3% (80% pool). From the 2nd payment onward: L1 20% + L2 5%. From 01.01.2027, first payment: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (50% pool). Ledger totals are stored values; this card does not recompute your earnings.",
     levels: {
       "1": {
         title: "Direct sale",
@@ -221,7 +222,7 @@ export const cabinetEn: CabinetCopy = {
         body: "The deepest level of the standard schedule.",
       },
     },
-    exampleHeading: "$1,000 commissionable sale · full network",
+    exampleHeading: "$1,000 commissionable sale · full network (first payment)",
     exampleRows: {
       l1: "L1",
       l2: "L2",

@@ -179,10 +179,10 @@ export const cabinetTr: CabinetCopy = {
     "trackingFootnoteBefore": "Takip nasıl çalışıyor?",
     "trackingFootnoteLink": "Kaynaklar",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Lansman dönemi durumu",
-    "launchEndedTitle": "Lansman dönemi sona erdi",
-    "launchActiveBody": "Lansman dönemi {date} tarihine kadar sürer: ortak hesabının açılmasından itibaren 90 gün. Oranlar aynı kalır ve ağ havuzu %80 olarak kalır.",
-    "launchEndedBody": "90 günlük lansman dönemi {date} tarihinde sona erdi. Uygun ödemeler aynı oranları kullanır ve ağ havuzu %80 olarak kalır."
+    "launchActiveTitle": "Launch bonus aktif",
+    "launchEndedTitle": "Launch bonus sona erdi",
+    "launchActiveBody": "Launch bonus · 31.12.2026’ya kadar: her müşterinin ilk 3 aylık ödemesinde en fazla %80 havuz. 2. ödemedan itibaren yenilemeler L1 %20 + L2 %5. 01.01.2027 itibarıyla standart tablo kamu ortak sayfasında.",
+    "launchEndedBody": "Launch bonus 31.12.2026’da bitti. Yeni satışlar standart takvimi kullanır (ilk ödeme %50 havuz; yenilemeler L1 %20 + L2 %5)."
   },
   "referralPanel": {
     "title": "Tavsiye programı",

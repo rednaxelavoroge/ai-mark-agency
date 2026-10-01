@@ -58,6 +58,16 @@ export const copyFr: PartnerPageCopy = {
     { label: "Part conservée par AI Mark", value: "200 $" },
   ],
   exampleFoot: "Le partenaire direct reçoit 500 $, et non 800 $. 80 % est le montant global cumulé de L1 à L5 lorsque tous les niveaux sont qualifiés.",
+
+  renewalExampleTitle: "Même vente à 1 000 $ à partir du mois 4 (renouvellement)",
+  renewalExampleRows: [
+    { label: "Partenaire direct L1", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Pool partenaires (agrégé)", value: "$250" },
+    { label: "Part retenue AI Mark", value: "$750" },
+  ],
+  renewalExampleFoot: "Les renouvellements ne répètent pas la grille launch bonus à cinq niveaux.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Vente directe", body: "Le client que vous présentez et concluez personnellement.", rate: "50 %" },
     { n: "L2", title: "Premier réseau", body: "Ventes réglées par les clients de vos partenaires de premier niveau.", rate: "15 %" },
@@ -104,7 +114,7 @@ export const copyFr: PartnerPageCopy = {
     { q: "Faut-il acheter un pack de démarrage pour devenir partenaire ?", a: "Non. Le programme récompense la vente de produits et services réels aux entreprises, et non l'achat de positions. L'accès est gratuit." },
     { q: "Dois-je gérer la livraison technique du projet ?", a: "Non. Le partenaire gère la relation et le closing. AI MARK assure l'implémentation, la livraison et le suivi technique." },
     { q: "Puis-je constituer une équipe de partenaires ?", a: "Oui. Le modèle standard permet d'animer une équipe d'affiliés jusqu'à 5 niveaux de profondeur, adossée au chiffre d'affaires réel." },
-    { q: "Les abonnements génèrent-ils des commissions récurrentes ?", a: "Oui. Chaque renouvellement éligible respecte le barème : L1 50 %, L2 15 %, L3 7 %, L4 5 %, L5 3 %, pour un pool global de 80 %. Les 90 premiers jours ne modifient pas ces taux." },
+    { q: "Les abonnements génèrent-ils des commissions récurrentes ?", a: "Oui. Le premier paiement : launch bonus (jusqu’au 31.12.2026) ou grille initiale standard dès le 01.01.2027. À partir du 2e paiement : L1 20 % + L2 5 % seulement." },
     { q: "Comment obtenir le statut de Regional ou Strategic Partner ?", a: "Le statut régional est attribué selon le volume d'affaires et la présence locale. Les partenariats stratégiques s'établissent sur contrat sur mesure." },
   ],
   ctaEyebrow: "Démarrage",

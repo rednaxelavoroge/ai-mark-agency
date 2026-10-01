@@ -58,6 +58,16 @@ export const copyPt: PartnerPageCopy = {
     { label: "Retenção da AI Mark", value: "$200" },
   ],
   exampleFoot: "O parceiro direto recebe $500, e não $800. 80% é o montante acumulado entre L1 e L5 quando todos os níveis estão qualificados.",
+
+  renewalExampleTitle: "A mesma venda de $1.000 na renovação (a partir do 2.º pagamento)",
+  renewalExampleRows: [
+    { label: "Parceiro direto L1", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Pool de parceiros (agregado)", value: "$250" },
+    { label: "Parte retida da AI Mark", value: "$750" },
+  ],
+  renewalExampleFoot: "Renovações não repetem a grelha launch bonus de cinco níveis.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Venda direta", body: "O cliente apresentado e convertido diretamente por si.", rate: "50%" },
     { n: "L2", title: "Primeira rede", body: "Vendas pagas de clientes dos seus parceiros de primeiro nível.", rate: "15%" },
@@ -104,7 +114,7 @@ export const copyPt: PartnerPageCopy = {
     { q: "É obrigatório adquirir um pacote inicial para ser parceiro?", a: "Não. O programa orienta-se à venda real de produtos e serviços AI MARK a empresas, não à compra de posições. A adesão é gratuita." },
     { q: "Preciso de assumir a execução técnica do projeto?", a: "Não. O parceiro constrói o relacionamento e fecha o negócio. A AI MARK responsabiliza-se pela implementação, entrega e estabilidade técnica." },
     { q: "Posso criar e gerir uma equipa de parceiros?", a: "Sim. O modelo padrão comporta uma estrutura de afiliados até 5 níveis de profundidade, baseada no faturamento real de clientes." },
-    { q: "Os produtos por subscrição geram comissões recorrentes?", a: "Sim. Cada renovação paga qualificada segue a tabela padrão: L1 50%, L2 15%, L3 7%, L4 5%, L5 3%, num pool agregado de 80%. O período inicial de 90 dias não altera estas taxas." },
+    { q: "Os produtos por subscrição geram comissões recorrentes?", a: "Sim. O primeiro pagamento usa launch bonus (até 31.12.2026) ou a grelha inicial padrão a partir de 01.01.2027. A partir do 2.º pagamento, renovações apenas L1 20% + L2 5%." },
     { q: "Como aceder ao estatuto de Regional ou Strategic Partner?", a: "O estatuto Regional baseia-se em volume de vendas e liderança territorial. Alianças Estratégicas e Country Partner são celebradas sob contrato específico." },
   ],
   ctaEyebrow: "Início",

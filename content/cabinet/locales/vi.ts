@@ -179,10 +179,10 @@ export const cabinetVi: CabinetCopy = {
     "trackingFootnoteBefore": "Cách thức hoạt động của tính năng theo dõi đang bật",
     "trackingFootnoteLink": "Tài nguyên",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Trạng thái thời gian ra mắt",
-    "launchEndedTitle": "Thời gian ra mắt đã kết thúc",
-    "launchActiveBody": "Giai đoạn ra mắt kéo dài đến {date}, tức 90 ngày kể từ khi tạo tài khoản đối tác. Tỷ lệ giữ nguyên và quỹ mạng lưới vẫn là 80%.",
-    "launchEndedBody": "Giai đoạn ra mắt 90 ngày đã kết thúc ngày {date}. Các khoản thanh toán đủ điều kiện dùng cùng tỷ lệ và quỹ mạng lưới vẫn là 80%."
+    "launchActiveTitle": "Launch bonus đang áp dụng",
+    "launchEndedTitle": "Launch bonus đã kết thúc",
+    "launchActiveBody": "Launch bonus · đến 31.12.2026: tối đa 80% quỹ cho 3 khoản thanh toán hàng tháng đầu của mỗi khách. Từ khoản thứ 2, gia hạn L1 20% + L2 5%. Lưới chuẩn từ 01.01.2027 trên trang đối tác công khai.",
+    "launchEndedBody": "Launch bonus kết thúc 31.12.2026. Doanh số mới dùng lịch chuẩn (quỹ 50% khoản thanh toán đầu; gia hạn L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Chương trình giới thiệu",
@@ -194,7 +194,7 @@ export const cabinetVi: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Mô hình hoa hồng đối tác",
-    "lead": "Bán trực tiếp 50%. Lên tới 80% tổng phần thưởng đối tác trên mạng. 80% là tổng số tiền từ L1–L5 đủ điều kiện, không phải là khoản thanh toán của một đối tác. AI Mark chia sẻ giữ lại là 20% số tiền hoa hồng. Tổng số sổ cái ở trên là các giá trị được lưu trữ; thẻ này không tính lại thu nhập của bạn.",
+    "lead": "Launch bonus đến 31.12.2026 cho khoản thanh toán đầu của khách: L1 50% … L5 3% (quỹ 80%). Từ khoản thứ 2: L1 20% + L2 5%. Từ 01.01.2027, khoản đầu: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (quỹ 50%). Tổng ledger là giá trị đã lưu; thẻ này không tính lại thu nhập của bạn.",
     "levels": {
       "1": {
         "title": "Bán trực tiếp",

@@ -179,10 +179,10 @@ export const cabinetPt: CabinetCopy = {
     "trackingFootnoteBefore": "Como funciona o rastreamento está ativado",
     "trackingFootnoteLink": "Recursos",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Status do período de lançamento",
-    "launchEndedTitle": "Período de lançamento encerrado",
-    "launchActiveBody": "O período de lançamento vai até {date}: 90 dias a partir da criação da conta de parceiro. As taxas não mudam e o fundo da rede continua em 80%.",
-    "launchEndedBody": "O período de lançamento de 90 dias terminou em {date}. Pagamentos elegíveis usam as mesmas taxas e o fundo da rede continua em 80%."
+    "launchActiveTitle": "Launch bonus ativo",
+    "launchEndedTitle": "Launch bonus encerrado",
+    "launchActiveBody": "Launch bonus · até 31.12.2026: até 80% de pool nos primeiros 3 pagamentos mensais de cada cliente. A partir do mês 4, renovações L1 20% + L2 5%. A grelha padrão a partir de 01.01.2027 está na página pública de parceiros.",
+    "launchEndedBody": "O launch bonus terminou em 31.12.2026. Novas vendas usam a grelha padrão (pool 50% nos primer pago; renovações L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Programa de referência",
@@ -194,7 +194,7 @@ export const cabinetPt: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Modelo de comissão de parceiro",
-    "lead": "50% para venda direta. Até 80% do total de recompensas para parceiros em toda a rede. 80% é o pool agregado entre níveis qualificados de 1 a 5, e não um pagamento de parceiro único. A participação retida da AI Mark é de 20% do valor comissionável. Os totais contábeis acima são valores armazenados; este cartão não recalcula seus ganhos.",
+    "lead": "Launch bonus até 31.12.2026 no primeiro pagamento do cliente: L1 50% … L5 3% (pool 80%). A partir do 2.º pagamento: L1 20% + L2 5%. A partir de 01.01.2027, primeiro pagamento: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (pool 50%). Os totais do ledger são valores guardados; este cartão não recalcula o seu rendimento.",
     "levels": {
       "1": {
         "title": "Venda direta",

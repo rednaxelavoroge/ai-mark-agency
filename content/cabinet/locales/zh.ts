@@ -179,10 +179,10 @@ export const cabinetZh: CabinetCopy = {
     "trackingFootnoteBefore": "跟踪的工作原理已开启",
     "trackingFootnoteLink": "资源",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "启动期间状态",
-    "launchEndedTitle": "启动期结束",
-    "launchActiveBody": "启动期持续到 {date}，即自合作伙伴账户创建起 90 天。费率不变，网络奖金池仍为 80%。",
-    "launchEndedBody": "90 天启动期已于 {date} 结束。符合条件的付款适用相同费率，网络奖金池仍为 80%。"
+    "launchActiveTitle": "Launch bonus 进行中",
+    "launchEndedTitle": "Launch bonus 已结束",
+    "launchActiveBody": "Launch bonus · 至 2026-12-31：每位客户前 3 个月付款最高 80% 奖金池。第 2 笔付款起续费 L1 20% + L2 5%。2027-01-01 起的标准网格见公开合作伙伴页面。",
+    "launchEndedBody": "Launch bonus 已于 2026-12-31 结束。新销售采用标准网格（首次付款 50% 池；续费 L1 20% + L2 5%）。"
   },
   "referralPanel": {
     "title": "推荐计划",
@@ -194,7 +194,7 @@ export const cabinetZh: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "合作伙伴佣金模式",
-    "lead": "直接销售50%。全网络合作伙伴奖励总额高达 80%。 80% 是合格的 L1-L5 的总金额，而不是单一合作伙伴的支出。 AI Mark 保留份额为佣金金额的 20%。以上账本总计为存储值；该卡不会重新计算您的收入。",
+    "lead": "Launch bonus 至 2026-12-31，客户首次付款：L1 50% … L5 3%（80% 池）。第 2 笔付款起：L1 20% + L2 5%。2027-01-01 起首次付款：L1 35% / L2 8% / L3 4% / L4 2% / L5 1%（50% 池）。账本总额为已存数值；本卡不重新计算您的收入。",
     "levels": {
       "1": {
         "title": "直销",

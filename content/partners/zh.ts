@@ -58,6 +58,16 @@ export const copyZh: PartnerPageCopy = {
     { label: "AI Mark 平台保留份额", value: "$200" },
   ],
   exampleFoot: "直推伙伴实际获得 $500，而非 $800。80% 是当 L1 至 L5 每一层均满足资格时的全网总奖金池上限。",
+
+  renewalExampleTitle: "第 4 月起同样的 $1,000 销售（续费）",
+  renewalExampleRows: [
+    { label: "L1 直推合作伙伴", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "合作伙伴奖金池（合计）", value: "$250" },
+    { label: "AI Mark 留存份额", value: "$750" },
+  ],
+  renewalExampleFoot: "续费不再适用完整的五级 launch bonus 网格。",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "直接销售", body: "您亲自发掘并促成签约付款的企业客户。", rate: "50%" },
     { n: "L2", title: "第一级伙伴网络", body: "您直接引荐的第一级合作伙伴所促成的客户付款流水。", rate: "15%" },
@@ -104,7 +114,7 @@ export const copyZh: PartnerPageCopy = {
     { q: "成为合作伙伴需要购买入门礼包或会员包吗？", a: "不需要。该计划完全围绕帮助实体企业导入真正的 AI 解决方案并产生实付流水展开，严禁出售加盟资格。加入完全免费。" },
     { q: "我需要亲自负责技术研发与产品交付吗？", a: "不需要。伙伴的核心工作是商务接洽与信任建立。AI MARK 专业团队全面承担系统部署、产品上线与后期技术保障。" },
     { q: "我可以组建自己的伙伴业务团队吗？", a: "可以。标准政策支持基于客户实际付费流水的最高 5 级推荐奖励结构，透明公平。" },
-    { q: "客户续费订阅可以持续获得佣金提成吗？", a: "可以。客户在系统中的每一笔合资格续费，均严格按照 L1 50%、L2 15%、L3 7%、L4 5%、L5 3%（全网 80% 奖金池）结算。前 90 天不设费率下调。" },
+    { q: "客户续费订阅可以持续获得佣金提成吗？", a: "可以。首次付款适用 launch bonus（至 2026-12-31）或 2027-01-01 起的标准首期网格。第 2 笔付款起续费仅 L1 20% + L2 5%。" },
     { q: "如何晋升为 Regional 或 Strategic Partner？", a: "区域级（Regional）伙伴依据稳定的成交总额与本地行业影响力评审授予。战略合作与国家级代理遵循独立的商业合同条款。" },
   ],
   ctaEyebrow: "立即启航",

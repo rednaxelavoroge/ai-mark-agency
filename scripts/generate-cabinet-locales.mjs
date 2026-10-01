@@ -116,7 +116,8 @@ const PATCHES = {
       },
       commissions: {
         title: "Комиссии",
-        lead: "Комиссии по каждой квалифицированной продаже. Сетка: L1 50% / L2 15% / L3 7% / L4 5% / L5 3%, пул сети 80%.",
+        lead:
+          "Launch bonus до 31.12.2026 (первый платёж): L1 50% … L5 3%, пул 80%. Со 2-го платежа: L1 20% + L2 5%. С 01.01.2027 первый платёж: L1 35% / L2 8% / L3 4% / L4 2% / L5 1%.",
       },
       payouts: {
         title: "Выплаты",
@@ -171,12 +172,12 @@ const PATCHES = {
       hubLinkSupport: "Поддержка",
       trackingFootnoteBefore: "Как работает атрибуция — в",
       trackingFootnoteLink: "Материалах",
-      launchActiveTitle: "Статус launch-периода",
-      launchEndedTitle: "Launch-период завершён",
+      launchActiveTitle: "Launch bonus активен",
+      launchEndedTitle: "Launch bonus завершён",
       launchActiveBody:
-        "Launch-окно до {date}. 90 дней с создания аккаунта партнёра. Ставки те же, пул сети 80%.",
+        "Launch bonus · до 31.12.2026: до 80% пула на первые 3 месяца оплат клиента. С 4-го месяца: L1 20% + L2 5%.",
       launchEndedBody:
-        "90-дневное launch-окно закончилось {date}. Ставки те же, пул сети 80%.",
+        "Launch bonus завершился 31.12.2026. Новые продажи — стандартная сетка (50% на первый платёж; продления L1 20% + L2 5%).",
     },
     referralPanel: {
       title: "Referral-программа",

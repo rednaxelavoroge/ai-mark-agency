@@ -464,41 +464,38 @@ svc_eq "posting the v2 sale again does not duplicate" "5" "select public.post_co
 
 run_sql "select string_agg(amount::text, ',' order by level)
            from public.commission_entries
-          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch', 'initial', 'renewal');"
 eq "v2 L1-L5 on \$1000 is 500, 150, 70, 50, 30" "500.00,150.00,70.00,50.00,30.00"
 
 run_sql "select sum(amount)::numeric(20,2) from public.commission_entries
-          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch', 'initial', 'renewal');"
 eq "v2 partner pool on \$1000 is 800" "800.00"
 
 run_sql "select (1000::numeric(20,2) - sum(amount))::numeric(20,2)
            from public.commission_entries
-          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch', 'initial', 'renewal');"
 eq "v2 AI Mark retained share on \$1000 is 200" "200.00"
 
 run_sql "select (sum(amount) <= round(1000::numeric * public.partner_pool_cap(), 2))::text
            from public.commission_entries
-          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch');"
+          where sale_id = '$V2_SALE' and commission_type in ('base', 'launch', 'initial', 'renewal');"
 eq "v2 posted pool is not greater than 80%" "true"
 
 run_sql "select amount::text || ':' || rate::text || ':' || commission_type
            from public.commission_entries where sale_id = '$V2_SALE' and level = 1;"
-eq "v2 L1 is \$500 at rate 0.50 after the 90-day window (base type)" "500.00:0.500000:base"
+eq "v2 L1 is \$500 at rate 0.50 (initial type)" "500.00:0.500000:initial"
 
-# Launch-period flag on a v2-dated sale: same rates, never 1.5x.
-run_sql "update public.partner_profiles
-            set created_at = timestamptz '2026-09-20 00:00:00+00'
-          where partner_id = '$PID_L1';"
-svc "select public.record_sale('invoice', 'ord-v2-launch', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-05 00:00:00+00', null, '$PID_L1');"
-V2_LAUNCH="$OUT"
-svc "select public.qualify_sale('$V2_LAUNCH'); select public.post_commission_entries('$V2_LAUNCH');" >/dev/null
+# Renewal month (payment index 4): L1 20% + L2 5% only.
+svc "select public.record_sale('invoice', 'ord-v2-renewal', 'aime', 1000::numeric, 'USD', timestamptz '2026-10-05 00:00:00+00', null, '$PID_L1');"
+V2_RENEWAL="$OUT"
+svc "select public.qualify_sale('$V2_RENEWAL'); select public.post_commission_entries('$V2_RENEWAL', 2);" >/dev/null
 run_sql "select string_agg(amount::text, ',' order by level) || '|' || max(commission_type)
            from public.commission_entries
-          where sale_id = '$V2_LAUNCH' and commission_type in ('base', 'launch');"
-eq "v2 launch flag does not multiply: 500,150,70,50,30 typed launch" "500.00,150.00,70.00,50.00,30.00|launch"
-run_sql "select (sum(amount) <= 800.00)::text from public.commission_entries
-          where sale_id = '$V2_LAUNCH' and commission_type in ('base', 'launch');"
-eq "v2 launch sale cannot pay more than \$800 on a \$1000 commissionable amount" "true"
+          where sale_id = '$V2_RENEWAL' and commission_type in ('base', 'launch', 'initial', 'renewal');"
+eq "renewal month posts 200,50 typed renewal" "200.00,50.00|renewal"
+run_sql "select (sum(amount) <= 250.00)::text from public.commission_entries
+          where sale_id = '$V2_RENEWAL' and commission_type in ('base', 'launch', 'initial', 'renewal');"
+eq "renewal sale cannot pay more than \$250 on a \$1000 commissionable amount" "true"
 
 run_sql "select string_agg(amount::text, ',' order by level)
            from public.commission_entries

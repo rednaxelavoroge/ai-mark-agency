@@ -179,10 +179,10 @@ export const cabinetEs: CabinetCopy = {
     "trackingFootnoteBefore": "Cómo funciona el seguimiento",
     "trackingFootnoteLink": "Recursos",
     "trackingFootnoteAfter": ".",
-    "launchActiveTitle": "Estado del período de lanzamiento",
-    "launchEndedTitle": "El período de lanzamiento finalizó",
-    "launchActiveBody": "El periodo de lanzamiento dura hasta el {date}: 90 días desde la creación de la cuenta de socio. Las tarifas no cambian y el fondo de la red sigue en el 80%.",
-    "launchEndedBody": "El periodo de lanzamiento de 90 días terminó el {date}. Los pagos que califican usan las mismas tarifas y el fondo de la red sigue en el 80%."
+    "launchActiveTitle": "Launch bonus activo",
+    "launchEndedTitle": "Launch bonus finalizado",
+    "launchActiveBody": "Launch bonus · hasta el 31.12.2026: hasta 80% de pool en los primeros 3 pagos mensuales de cada cliente. Desde el mes 4, renovaciones L1 20% + L2 5%. La cuadrícula estándar desde el 01.01.2027 está en la página pública de partners.",
+    "launchEndedBody": "El launch bonus terminó el 31.12.2026. Las ventas nuevas usan la cuadrícula estándar (pool 50% en primer pago; renovaciones L1 20% + L2 5%)."
   },
   "referralPanel": {
     "title": "Programa de referencia",
@@ -194,7 +194,7 @@ export const cabinetEs: CabinetCopy = {
   },
   "commissionSchedule": {
     "title": "Modelo de comisión de socios",
-    "lead": "50% para una venta directa. Hasta un 80 % del total de recompensas para socios en toda la red. El 80% es el fondo agregado entre los niveles L1 a L5 calificados, no un pago a un solo socio. La participación retenida de AI Mark es el 20% del monto comisionable. Los totales del libro mayor anteriores son valores almacenados; Esta tarjeta no vuelve a calcular sus ganancias.",
+    "lead": "Launch bonus hasta 31.12.2026 en el primer pago del cliente: L1 50% … L5 3% (pool 80%). Desde el 2.º pago: L1 20% + L2 5%. Desde 01.01.2027, primer pago: L1 35% / L2 8% / L3 4% / L4 2% / L5 1% (pool 50%). Los totales del ledger son valores guardados; esta tarjeta no recalcula sus ingresos.",
     "levels": {
       "1": {
         "title": "Venta directa",
