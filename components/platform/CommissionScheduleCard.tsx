@@ -4,6 +4,7 @@ import { useCabinetCopy } from "@/components/platform/CabinetCopyProvider";
 import { cardClass } from "@/components/ui/classes";
 import {
   COMMISSION_LEVELS,
+  EXAMPLE_RENEWAL_USD,
   EXAMPLE_USD,
   LEVEL_RATE_LABELS,
   type CommissionLevel,
@@ -81,6 +82,23 @@ export function CommissionScheduleCard() {
           ))}
         </dl>
         <p className="mt-3 text-[11px] leading-relaxed text-muted">{c.exampleFootnote}</p>
+        <p className="mt-5 font-mono text-[10px] tracking-wider text-muted uppercase">
+          {"$1,000 · month 4+ renewal"}
+        </p>
+        <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+          <div className="flex items-baseline justify-between gap-3 text-xs">
+            <dt className="text-muted">{c.exampleRows.l1}</dt>
+            <dd className="font-mono text-warm">${EXAMPLE_RENEWAL_USD.l1.replace(/\.00$/, "")}</dd>
+          </div>
+          <div className="flex items-baseline justify-between gap-3 text-xs">
+            <dt className="text-muted">{c.exampleRows.l2}</dt>
+            <dd className="font-mono text-paper">${EXAMPLE_RENEWAL_USD.l2.replace(/\.00$/, "")}</dd>
+          </div>
+          <div className="flex items-baseline justify-between gap-3 text-xs">
+            <dt className="text-muted">{c.exampleRows.totalPool}</dt>
+            <dd className="font-mono text-paper">${EXAMPLE_RENEWAL_USD.pool.replace(/\.00$/, "")}</dd>
+          </div>
+        </dl>
       </div>
     </section>
   );

@@ -58,6 +58,16 @@ export const copyZh: PartnerPageCopy = {
     { label: "AI Mark 平台保留份额", value: "$200" },
   ],
   exampleFoot: "直推伙伴实际获得 $500，而非 $800。80% 是当 L1 至 L5 每一层均满足资格时的全网总奖金池上限。",
+
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "直接销售", body: "您亲自发掘并促成签约付款的企业客户。", rate: "50%" },
     { n: "L2", title: "第一级伙伴网络", body: "您直接引荐的第一级合作伙伴所促成的客户付款流水。", rate: "15%" },

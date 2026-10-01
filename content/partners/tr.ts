@@ -58,6 +58,16 @@ export const copyTr: PartnerPageCopy = {
     { label: "AI Mark tutulan payı", value: "$200" },
   ],
   exampleFoot: "Doğrudan ortak $500 alır, $800 değil. %80, her kademe nitelikli olduğunda L1–L5 genelindeki toplam orandır.",
+
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Doğrudan satış", body: "Bizzat tanıştırdığınız ve satışını gerçekleştirdiğiniz müşteri.", rate: "%50" },
     { n: "L2", title: "İlk ağ seviyesi", body: "Birinci kademe ortaklarınızın müşterilerinden gelen ödemeler.", rate: "%15" },

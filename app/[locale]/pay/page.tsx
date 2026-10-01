@@ -8,6 +8,7 @@ import {
   formatUsdAmount,
   payableSkuIdFromParam,
 } from "@/lib/crypto/catalog";
+import { cryptoPriceUsd, listPriceUsd } from "@/lib/pricing/crypto-checkout";
 import {
   NETWORK_LABELS,
   PAYMENT_ASSETS,
@@ -122,12 +123,24 @@ export default async function PayPage({ params, searchParams }: Props) {
           {ru ? "Опубликованные суммы" : "Published amounts"}
         </h2>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-          {PAYABLE_SKUS.map((sku) => (
-            <li key={sku.id} className={`px-4 py-3 ${cardClass}`}>
-              <p className="text-sm font-semibold text-paper">{sku.name}</p>
-              <p className="mt-1 font-mono text-sm text-mark">{formatUsdAmount(sku.amountUsd)} USD</p>
-            </li>
-          ))}
+          {PAYABLE_SKUS.map((sku) => {
+            const list = listPriceUsd(sku.amountUsd);
+            const crypto = cryptoPriceUsd(sku.amountUsd);
+            return (
+              <li key={sku.id} className={`px-4 py-3 ${cardClass}`}>
+                <p className="text-sm font-semibold text-paper">{sku.name}</p>
+                <p className="mt-1 text-xs text-muted">
+                  {ru ? "Карта (прайс)" : "Card (list)"}: {formatUsdAmount(list)}
+                </p>
+                <p className="mt-0.5 font-mono text-sm text-mark">
+                  {ru ? "USDT/USDC" : "USDT/USDC"}: {formatUsdAmount(crypto)}
+                  <span className="ml-1 font-sans text-[10px] font-normal text-muted">
+                    {ru ? "−8%" : "−8%"}
+                  </span>
+                </p>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

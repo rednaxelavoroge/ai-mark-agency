@@ -11,6 +11,7 @@ import { PARTNER_SIGNUP_HREF } from "@/lib/auth/redirects";
 import { digitalProductionPath } from "@/lib/digital-production";
 import { partnerProgramTerms } from "@/content/partner-program";
 import { partnerPageCopy } from "@/content/partners-copy";
+import { PARTNER_PUBLIC_RANKS_PUBLISHED } from "@/lib/partner/public-config";
 import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site";
 import { socialImages } from "@/lib/social";
 import { BackButton } from "@/components/BackButton";
@@ -79,6 +80,7 @@ export default async function PartnersPage({ params }: Props) {
             <h1 className="mt-4 max-w-2xl font-editorial text-4xl leading-[1.02] tracking-tight text-paper sm:text-5xl lg:text-6xl">{t.title}</h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
             <p className="mt-4 max-w-xl font-display text-lg font-semibold leading-snug text-paper sm:text-xl">{t.poolHeadline}</p>
+            <p className="mt-2 font-mono text-[10px] tracking-wide text-mark">{t.launchBonusBadge}</p>
             <ol className="mt-5 flex flex-wrap items-center gap-2">
               {partnersChrome.heroSteps.map((step, i) => (
                 <li key={step} className="flex items-center gap-2">
@@ -217,6 +219,16 @@ export default async function PartnersPage({ params }: Props) {
                 ))}
               </dl>
               <p className="mt-3 text-xs leading-relaxed text-paper/80">{t.exampleFoot}</p>
+              <p className="mt-6 font-display text-sm font-semibold text-paper">{t.renewalExampleTitle}</p>
+              <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+                {t.renewalExampleRows.map((row) => (
+                  <div key={row.label} className={`flex items-baseline justify-between gap-3 rounded-lg border px-3 py-2 ${row.accent ? "border-warm/40 bg-warm/5" : "border-line bg-ink-2"}`}>
+                    <dt className="text-[11px] text-muted">{row.label}</dt>
+                    <dd className={`font-mono text-sm ${row.accent ? "text-warm" : "text-paper"}`}>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 text-xs leading-relaxed text-paper/80">{t.renewalExampleFoot}</p>
               <details open className="group mt-4 rounded-xl border border-line bg-ink-2/40 p-4">
                 <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-mark">
                   <span>{partnersChrome.networkTerms}</span>
@@ -224,8 +236,10 @@ export default async function PartnersPage({ params }: Props) {
                 </summary>
                 <div className="mt-3 space-y-2 border-t border-line/50 pt-3 text-xs leading-relaxed text-muted">
                   <p>{terms.note}</p>
-                  <p>{terms.launch}</p>
+                  <p>{terms.launchBonus}</p>
+                  <p>{terms.standardFrom}</p>
                   <p>{terms.example}</p>
+                  <p>{terms.exampleRenewal}</p>
                   <p>{terms.lock}</p>
                   <p>{terms.payout}</p>
                   <p>{terms.country}</p>
@@ -236,14 +250,16 @@ export default async function PartnersPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-b border-line bg-ink-2/20">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-          <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{brief(t.statusLead)}</p></div>
-          <div className="am-step-grid mt-6 grid gap-3 grid-cols-2 lg:grid-cols-4">
-            {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex flex-col rounded-2xl border border-line bg-ink-2 p-5"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{brief(status.body)}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
+      {PARTNER_PUBLIC_RANKS_PUBLISHED ? (
+        <section className="border-b border-line bg-ink-2/20">
+          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+            <div data-reveal><p className="font-mono text-xs tracking-[0.2em] text-mark uppercase">{t.statusEyebrow}</p><h2 className="mt-3 max-w-3xl font-editorial text-3xl leading-tight tracking-tight text-paper sm:text-4xl">{t.statusTitle}</h2><p className="mt-4 max-w-3xl text-muted">{brief(t.statusLead)}</p></div>
+            <div className="am-step-grid mt-6 grid gap-3 grid-cols-2 lg:grid-cols-4">
+              {t.statuses.map((status, i) => <article key={status.title} data-reveal style={reveal(i * 90)} className="flex flex-col rounded-2xl border border-line bg-ink-2 p-5"><span className="inline-flex self-start rounded-full border border-line bg-ink-3 px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.14em] text-warm">{status.tag}</span><h3 className="mt-5 font-display text-lg font-semibold text-paper">{status.title}</h3><p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{brief(status.body)}</p><div className="mt-5 border-t border-line pt-4 font-mono text-[10px] text-mark">{t.statusNote}</div></article>)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="border-b border-line">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-8 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">

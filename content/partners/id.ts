@@ -58,6 +58,16 @@ export const copyId: PartnerPageCopy = {
     { label: "Bagian ditahan AI Mark", value: "$200" },
   ],
   exampleFoot: "Mitra langsung menerima $500, bukan $800. 80% adalah total akumulasi dari L1 hingga L5 saat semua level memenuhi kualifikasi.",
+
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Penjualan langsung", body: "Pelanggan yang Anda perkenalkan dan transaksikan secara langsung.", rate: "50%" },
     { n: "L2", title: "Jaringan tingkat pertama", body: "Penjualan dari pelanggan mitra tingkat pertama yang Anda sponsori.", rate: "15%" },

@@ -58,6 +58,16 @@ export const copyVi: PartnerPageCopy = {
     { label: "Phần giữ lại của AI Mark", value: "$200" },
   ],
   exampleFoot: "Đối tác trực tiếp nhận $500, không phải $800. 80% là tổng giá trị tối đa trên toàn bộ mạng lưới từ L1 đến L5 khi tất cả các cấp đều đủ tiêu chuẩn.",
+
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Bán hàng trực tiếp", body: "Khách hàng do chính bạn giới thiệu và trực tiếp hoàn tất thỏa thuận.", rate: "50%" },
     { n: "L2", title: "Mạng lưới cấp 1", body: "Doanh số thanh toán từ khách hàng của các đối tác cấp 1 do bạn bảo trợ.", rate: "15%" },

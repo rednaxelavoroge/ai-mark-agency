@@ -7,7 +7,7 @@ export const copyEn: PartnerPageCopy = {
   eyebrow: "AI MARK Partner Network",
   title: "Build the AI market in your country.",
   lead: "Sell real AI products and digital solutions to businesses in your market. AI MARK provides the technology, product delivery and partner infrastructure. You build the relationships and the sales.",
-  note: "50% for a direct sale · Up to 80% total partner rewards across the network · Free to join",
+  note: "Launch bonus until 31 Dec 2026 · Up to 80% on a client's first 3 months · Free to join",
   primary: "Become a Partner",
   secondary: "See how it works",
   marketEyebrow: "The market",
@@ -45,8 +45,10 @@ export const copyEn: PartnerPageCopy = {
   networkEyebrow: "Partner network",
   networkTitle: "Personal sales first. Network sales next.",
   networkLead: "The network is built around paid customer sales, not registrations. Five levels share the amount the customer actually paid. 80% is the aggregate partner pool across qualified levels — not a single-partner payout.",
-  poolHeadline: "50% for a direct sale. Up to 80% total partner rewards across the network.",
-  poolLead: "L1 is 50% of the commissionable amount. The remaining levels share 30%. Together that is an 80% network pool. AI Mark retained share is 20%.",
+  poolHeadline: "Launch bonus: up to 80% on months 1–3. Renewals from month 4: L1 20% + L2 5%.",
+  poolLead:
+    "Until 31.12.2026, a client's first three monthly payments use L1 50% / L2 15% / L3 7% / L4 5% / L5 3% (80% pool). From month 4, renewals pay L1 20% + L2 5%. From 01.01.2027, months 1–3 use the standard 50% pool (L1 35% / L2 10% / L3 5%).",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   exampleTitle: "On a $1,000 commissionable sale with a full network",
   exampleRows: [
     { label: "L1 direct partner", value: "$500", accent: true },
@@ -58,6 +60,14 @@ export const copyEn: PartnerPageCopy = {
     { label: "AI Mark retained share", value: "$200" },
   ],
   exampleFoot: "The direct partner receives $500, not $800. 80% is the total across L1–L5 when every level is qualified.",
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
   levels: [
     { n: "L1", title: "Direct sale", body: "The customer you personally introduce.", rate: "50%" },
     { n: "L2", title: "First network", body: "Paid customer sales from your first-level partners.", rate: "15%" },
@@ -66,7 +76,8 @@ export const copyEn: PartnerPageCopy = {
     { n: "L5", title: "Maximum depth", body: "The deepest level of the standard schedule.", rate: "3%" },
   ],
   commissionLabel: "Commission",
-  commissionNote: "L1 50% / L2 15% / L3 7% / L4 5% / L5 3% on the amount collected. Total network pool 80%.",
+  commissionNote:
+    "Months 1–3 (launch bonus until 31.12.2026): L1 50% / L2 15% / L3 7% / L4 5% / L5 3%. Month 4+ renewals: L1 20% + L2 5%. Standard from 01.01.2027 for months 1–3: L1 35% / L2 10% / L3 5%.",
   statusEyebrow: "Partner status",
   statusTitle: "Four ways to grow with AI MARK.",
   statusLead: "Status reflects commercial activity and relationship depth. It is a business status, not a paid rank.",
@@ -104,7 +115,10 @@ export const copyEn: PartnerPageCopy = {
     { q: "Do I need to buy a starter package to become a partner?", a: "No. The program is built around selling AI MARK products and services to real businesses, not buying a position in a network. Free to join." },
     { q: "Do I have to perform the technical delivery?", a: "No. The partner manages customer relationships, introduction and sales. AI MARK is responsible for product implementation, delivery and technical support." },
     { q: "Can I build a partner team?", a: "Yes. The standard model supports a multi-tier affiliate structure tied to customer revenue, up to 5 levels deep." },
-    { q: "Do subscription products generate recurring commissions?", a: "Yes. Every qualifying renewal payment follows the same schedule: L1 50%, L2 15%, L3 7%, L4 5%, L5 3%, with an 80% aggregate pool. The first 90 days do not change those rates." },
+    {
+      q: "Do subscription products generate recurring commissions?",
+      a: "Yes. Months 1–3 use the launch bonus grid (until 31 Dec 2026) or the standard initial grid from 1 Jan 2027. From month 4, renewals pay L1 20% + L2 5% only.",
+    },
     { q: "How do I become a Regional or Strategic Partner?", a: "Regional status is granted based on verified commercial volume and market leadership. Strategic and Country partnerships involve dedicated bilateral agreements." },
   ],
   ctaEyebrow: "Start",

@@ -58,6 +58,16 @@ export const copyPt: PartnerPageCopy = {
     { label: "Retenção da AI Mark", value: "$200" },
   ],
   exampleFoot: "O parceiro direto recebe $500, e não $800. 80% é o montante acumulado entre L1 e L5 quando todos os níveis estão qualificados.",
+
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "Venda direta", body: "O cliente apresentado e convertido diretamente por si.", rate: "50%" },
     { n: "L2", title: "Primeira rede", body: "Vendas pagas de clientes dos seus parceiros de primeiro nível.", rate: "15%" },

@@ -1,5 +1,6 @@
 import type { CabinetCopy } from "@/content/cabinet/types";
 import { PARTNER_STATUS_LABELS } from "@/lib/auth/roles";
+import { LAUNCH_BONUS_END_DATE } from "@/lib/partner/commission-model";
 import { site } from "@/lib/site";
 
 /**
@@ -102,9 +103,6 @@ export const UNREADABLE_LEDGER: PartnerLedgerStats = {
   currencies: null,
 };
 
-/** Launch window length. Display only — the ledger posts the amount. */
-export const LAUNCH_WINDOW_DAYS = 90;
-
 /** Hold after confirmation before an entry can be paid. Display only. */
 export const LOCK_HOLD_DAYS = 14;
 
@@ -114,24 +112,10 @@ export function referralUrlTo(code: string, path: string): string {
   return url.toString();
 }
 
-/**
- * Whether a sale paid at `now` would fall in this partner's launch-period flag.
- *
- * The boundary matches the ledger: paid_at < created_at + 90 days is launch.
- * Launch is a status flag only. It does not multiply commission rates.
- */
-export function launchWindow(
-  createdAt: string | null | undefined,
-  now: Date = new Date(),
-): { phase: "launch" | "base"; endsAt: string } | null {
-  if (!createdAt) return null;
-  const start = new Date(createdAt);
-  if (Number.isNaN(start.getTime())) return null;
-  const endsAt = new Date(start.getTime() + LAUNCH_WINDOW_DAYS * 24 * 60 * 60 * 1000);
-  return {
-    phase: now.getTime() < endsAt.getTime() ? "launch" : "base",
-    endsAt: endsAt.toISOString(),
-  };
+/** Whether the published launch-bonus grid is still active (through 31 Dec 2026). */
+export function launchBonusProgramActive(now: Date = new Date()): boolean {
+  const end = new Date(`${LAUNCH_BONUS_END_DATE}T23:59:59.999Z`);
+  return now.getTime() <= end.getTime();
 }
 
 /** Renders a stored money amount. Does not parse or recompute it. */

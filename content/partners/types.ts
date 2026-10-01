@@ -41,6 +41,10 @@ export type PartnerPageCopy = {
   exampleTitle: string;
   exampleRows: { label: string; value: string; accent?: boolean }[];
   exampleFoot: string;
+  renewalExampleTitle: string;
+  renewalExampleRows: { label: string; value: string; accent?: boolean }[];
+  renewalExampleFoot: string;
+  launchBonusBadge: string;
   levels: { n: string; title: string; body: string; rate: string }[];
   commissionLabel: string;
   commissionNote: string;

@@ -58,6 +58,16 @@ export const copyJa: PartnerPageCopy = {
     { label: "AI Mark 留保分", value: "$200" },
   ],
   exampleFoot: "直接販売を行ったパートナーの受取額は500ドルです（800ドルではありません）。80%は全階層が適格となった場合のネットワーク全体合計です。",
+
+  renewalExampleTitle: "Same $1,000 sale from month 4 onward (renewal)",
+  renewalExampleRows: [
+    { label: "L1 direct partner", value: "$200", accent: true },
+    { label: "L2", value: "$50" },
+    { label: "Partner pool (aggregate)", value: "$250" },
+    { label: "AI Mark retained share", value: "$750" },
+  ],
+  renewalExampleFoot: "Renewals do not repeat the full five-level launch bonus grid.",
+  launchBonusBadge: "Launch bonus · until 31.12.2026",
   levels: [
     { n: "L1", title: "直接販売", body: "あなたが直接開拓し、成約に至った顧客からの売上。", rate: "50%" },
     { n: "L2", title: "第1階層ネットワーク", body: "あなたの直下パートナーが獲得した顧客決済からの還元。", rate: "15%" },

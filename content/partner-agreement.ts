@@ -1,8 +1,8 @@
 import {
   AI_MARK_RETAINED_SHARE_LABEL,
   COMMISSION_LEVELS,
-  LAUNCH_WINDOW_DAYS,
-  LEVEL_RATE_LABELS,
+  LAUNCH_BONUS_END_DATE,
+  LEVEL_RATE_LABELS_LAUNCH_INITIAL,
   PARTNER_POOL_CAP_LABEL,
 } from "@/lib/partner/commission-model";
 import { LOCK_HOLD_DAYS } from "@/lib/partner/format";
@@ -19,7 +19,10 @@ export type AgreementDocument = {
 };
 
 const RATE_LINES = COMMISSION_LEVELS
-  .map((level) => `Level ${level} (L${level}): ${LEVEL_RATE_LABELS[level]}`)
+  .map(
+    (level) =>
+      `Level ${level} (L${level}): ${LEVEL_RATE_LABELS_LAUNCH_INITIAL[level]}`,
+  )
   .join("; ");
 
 function buildEn(): AgreementDocument {
@@ -36,19 +39,19 @@ function buildEn(): AgreementDocument {
         ],
       },
       {
-        title: "Commission model (v2)",
+        title: "Commission model (launch bonus)",
         paragraphs: [
-          `On each qualifying paid sale, commission is calculated from the amount collected (the sale amount). Published rates by network level: ${RATE_LINES}.`,
-          `Together, qualified levels form an ${PARTNER_POOL_CAP_LABEL} aggregate partner pool across the network, not a single payout to one partner. AI MARK retained share on the commissionable amount is ${AI_MARK_RETAINED_SHARE_LABEL}.`,
-          `Example on USD 1,000.00 with a full five-level network: L1 USD 500.00, L2 USD 150.00, L3 USD 70.00, L4 USD 50.00, L5 USD 30.00 (pool USD 800.00, retained USD 200.00).`,
-          `A ${LAUNCH_WINDOW_DAYS}-day launch window after partner registration is a status flag only. It does not multiply commission rates (multiplier 1.0).`,
+          `On each qualifying paid sale, commission is calculated from the amount collected (the sale amount). Launch bonus until ${LAUNCH_BONUS_END_DATE} on a client's first three monthly payments: ${RATE_LINES} (${PARTNER_POOL_CAP_LABEL} aggregate pool, not a single-partner payout).`,
+          `From the client's fourth monthly payment onward, renewals pay L1 20% + L2 5%. From 01.01.2027, months 1–3 use the standard grid L1 35% / L2 10% / L3 5% (50% pool); renewals unchanged.`,
+          `Example on USD 1,000.00 with a full five-level network in months 1–3: L1 USD 500.00, L2 USD 150.00, L3 USD 70.00, L4 USD 50.00, L5 USD 30.00 (pool USD 800.00). Renewal month example: L1 USD 200.00, L2 USD 50.00 (pool USD 250.00).`,
+          "There is no sign-up bonus. Commission is earned only on qualifying paid sales.",
         ],
       },
       {
         title: "First payment and renewals",
         paragraphs: [
           "Self-serve product subscriptions bill on published 30-day periods. The referral code and partner ID attached to a subscription are frozen from the first payment and are used for renewal commission even if the buyer’s attribution cookie has expired.",
-          "Each renewal that is recorded as a qualifying sale posts commission under the same v2 rules in force when the payment is confirmed.",
+          "Commission phase (months 1–3 vs month 4+) is determined from the client's payment index and the sale paid_at date, including the 01.01.2027 standard grid cutoff.",
         ],
       },
       {
@@ -99,19 +102,19 @@ function buildRu(): AgreementDocument {
         ],
       },
       {
-        title: "Модель комиссии (v2)",
+        title: "Модель комиссии (launch bonus)",
         paragraphs: [
-          `По каждой квалифицированной оплаченной продаже комиссия считается от собранной суммы. Ставки по уровням сети: ${RATE_LINES}.`,
-          `Сумма по квалифицированным уровням — ${PARTNER_POOL_CAP_LABEL} агрегированного партнёрского пула, а не выплата одному партнёру. Доля AI MARK от комиссионной базы — ${AI_MARK_RETAINED_SHARE_LABEL}.`,
-          `Пример на USD 1 000,00 при полной сети из пяти уровней: L1 USD 500,00, L2 USD 150,00, L3 USD 70,00, L4 USD 50,00, L5 USD 30,00 (пул USD 800,00, удержано USD 200,00).`,
-          `Окно запуска ${LAUNCH_WINDOW_DAYS} дней после регистрации партнёра — только статусный флаг. Оно не умножает ставки (множитель 1,0).`,
+          `По каждой квалифицированной оплаченной продаже комиссия считается от собранной суммы. Launch bonus до ${LAUNCH_BONUS_END_DATE} на первые три месяца оплат клиента: ${RATE_LINES} (${PARTNER_POOL_CAP_LABEL} пул, не выплата одному партнёру).`,
+          `С 4-го месяца продления: L1 20% + L2 5%. С 01.01.2027 месяцы 1–3: L1 35% / L2 10% / L3 5% (пул 50%); продления без изменений.`,
+          `Пример USD 1 000,00, месяцы 1–3: пул USD 800,00. Продление с 4-го месяца: L1 USD 200,00, L2 USD 50,00 (пул USD 250,00).`,
+          "Бонуса за регистрацию нет. Комиссия только с квалифицированных оплат.",
         ],
       },
       {
         title: "Первый платёж и продления",
         paragraphs: [
           "Самообслуживаемые подписки на продукты оплачиваются периодами по 30 дней. Реферальный код и Partner ID фиксируются с первого платежа и используются для комиссии при продлении, даже если cookie атрибуции истёк.",
-          "Каждое продление, записанное как квалифицированная продажа, начисляет комиссию по правилам v2, действующим на момент подтверждения оплаты.",
+          "Фаза сетки (месяцы 1–3 или 4+) определяется по индексу платежа клиента и дате paid_at, включая переход на стандартную сетку с 01.01.2027.",
         ],
       },
       {

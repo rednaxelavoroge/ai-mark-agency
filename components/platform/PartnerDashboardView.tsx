@@ -18,7 +18,7 @@ import {
   formatDate,
   formatDateTime,
   formatLedgerMoney,
-  launchWindow,
+  launchBonusProgramActive,
   partnerStatusLabelFromCopy,
   referralUrl,
   type PartnerLedgerStats,
@@ -147,7 +147,7 @@ export function PartnerDashboardView({
 
       <CommissionScheduleCard />
 
-      <LaunchCard createdAt={partner.created_at} />
+      <LaunchCard />
 
       <div className="grid gap-6 lg:grid-cols-5">
         <section
@@ -283,26 +283,18 @@ export function PartnerDashboardView({
   );
 }
 
-function LaunchCard({ createdAt }: { createdAt: string }) {
+function LaunchCard() {
   const t = useCabinetCopy();
   const d = t.dashboard;
-  const schedule = launchWindow(createdAt);
-  if (!schedule) {
-    return null;
-  }
-
-  const ends = formatDate(schedule.endsAt);
-  const launch = schedule.phase === "launch";
+  const active = launchBonusProgramActive();
 
   return (
     <section aria-labelledby="schedule-heading" className={`p-5 sm:p-6 ${cardClass}`}>
       <h2 id="schedule-heading" className="text-sm font-semibold tracking-tight">
-        {launch ? d.launchActiveTitle : d.launchEndedTitle}
+        {active ? d.launchActiveTitle : d.launchEndedTitle}
       </h2>
       <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
-        {formatCabinetString(launch ? d.launchActiveBody : d.launchEndedBody, {
-          date: ends,
-        })}
+        {active ? d.launchActiveBody : d.launchEndedBody}
       </p>
     </section>
   );
