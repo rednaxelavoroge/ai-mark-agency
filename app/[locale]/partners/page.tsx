@@ -16,6 +16,7 @@ import { absoluteUrl, isLocale, localePath, site, type Locale } from "@/lib/site
 import { socialImages } from "@/lib/social";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
+import { LaunchBonusTimerBanner } from "@/components/platform/LaunchBonusTimerBanner";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -81,6 +82,9 @@ export default async function PartnersPage({ params }: Props) {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{t.lead}</p>
             <p className="mt-4 max-w-xl font-display text-lg font-semibold leading-snug text-paper sm:text-xl">{t.poolHeadline}</p>
             <p className="mt-2 font-mono text-[10px] tracking-wide text-mark">{t.launchBonusBadge}</p>
+            <div className="mt-3">
+              <LaunchBonusTimerBanner locale={locale} variant="public" />
+            </div>
             <ol className="mt-5 flex flex-wrap items-center gap-2">
               {partnersChrome.heroSteps.map((step, i) => (
                 <li key={step} className="flex items-center gap-2">

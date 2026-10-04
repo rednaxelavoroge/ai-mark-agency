@@ -744,6 +744,97 @@ export async function getAdminPayoutInstructions(
   return { byPartner, unreadable: false };
 }
 
+export type AdminPayoutSheetItem = {
+  id: string;
+  partnerId: string;
+  level: number;
+  commissionType: string;
+  amount: string;
+  currency: string;
+  wallet: string | null;
+  walletDetails: string | null;
+  status: "payable" | "under_review" | "approved" | "rejected" | "paid";
+  flags: string[];
+  saleId: string;
+  createdAt: string;
+};
+
+export const getAdminPayoutSheet = cache(
+  async (): Promise<ReadableRows<AdminPayoutSheetItem>> => {
+    const auth = await getAuthContext();
+    if (!auth?.isAdmin) return { rows: null, unreadable: true };
+    const supabase = await createSupabaseServerClient();
+
+    const { data: entries, error: entriesError } = await supabase
+      .from("commission_entries")
+      .select("id, sale_id, beneficiary_partner_id, level, commission_type, amount, currency, status, created_at")
+      .order("created_at", { ascending: false })
+      .limit(LEDGER_LIMIT);
+
+    if (entriesError || !entries) {
+      console.error("[admin] payout sheet entries failed:", entriesError?.message);
+      return { rows: null, unreadable: true };
+    }
+
+    const reviewByEntry = new Map<string, { status: string; flags: string[] }>();
+    try {
+      const { data: reviews } = await supabase
+        .from("commission_fraud_reviews")
+        .select("commission_entry_id, status, flags");
+      if (reviews) {
+        for (const r of reviews) {
+          reviewByEntry.set(r.commission_entry_id, {
+            status: r.status,
+            flags: r.flags ?? [],
+          });
+        }
+      }
+    } catch {
+      // Table may not exist yet
+    }
+
+    const partnerIds = [...new Set(entries.map((e) => e.beneficiary_partner_id))];
+    const { byPartner } = await getAdminPayoutInstructions(partnerIds);
+
+    const rows: AdminPayoutSheetItem[] = entries.map((e) => {
+      const review = reviewByEntry.get(e.id);
+      const instruction = byPartner.get(e.beneficiary_partner_id) ?? {
+        recipient: null,
+        details: null,
+      };
+
+      let finalStatus: AdminPayoutSheetItem["status"] =
+        e.status === "paid" ? "paid" : "payable";
+
+      if (review?.status === "under_review") {
+        finalStatus = "under_review";
+      } else if (review?.status === "rejected") {
+        finalStatus = "rejected";
+      } else if (review?.status === "approved") {
+        finalStatus = e.status === "paid" ? "paid" : "payable";
+      }
+
+      return {
+        id: e.id,
+        partnerId: e.beneficiary_partner_id,
+        level: e.level,
+        commissionType: e.commission_type,
+        amount: asText(e.amount),
+        currency: e.currency,
+        wallet: instruction.recipient,
+        walletDetails: instruction.details,
+        status: finalStatus,
+        flags: review?.flags ?? [],
+        saleId: e.sale_id,
+        createdAt: e.created_at,
+      };
+    });
+
+    return { rows, unreadable: false };
+  },
+);
+
+
 /**
  * Requires a verified session. Sends anonymous visitors to the login page with
  * the requested path preserved.

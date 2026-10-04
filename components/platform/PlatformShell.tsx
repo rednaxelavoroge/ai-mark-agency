@@ -36,6 +36,7 @@ export function PlatformShell({
   shell = DEFAULT_SHELL,
   locale,
   languageLabel = "Language",
+  notificationsSlot,
   children,
 }: {
   nav: PlatformNavItem[];
@@ -47,6 +48,7 @@ export function PlatformShell({
   /** When set, the cabinet shows a language selector. */
   locale?: Locale;
   languageLabel?: string;
+  notificationsSlot?: ReactNode;
   children: ReactNode;
 }) {
   const labels = { ...DEFAULT_SHELL, ...shell, navLabel: navLabel || shell.navLabel };
@@ -65,6 +67,7 @@ export function PlatformShell({
             </Link>
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            {notificationsSlot}
             {locale ? <CabinetLanguageSelect locale={locale} label={languageLabel} /> : null}
             <ThemeToggle
               lightLabel={labels.themeLight}
@@ -93,12 +96,17 @@ export function PlatformShell({
           <PlatformNav items={nav} orientation="sidebar" label={labels.navLabel} />
 
           <div className="mt-8 border-t border-line pt-5">
-            <p className="text-[10px] tracking-[0.16em] text-muted uppercase">
-              {labels.signedIn}
-            </p>
-            <p className="mt-1.5 truncate text-xs text-paper" title={userEmail ?? undefined}>
-              {userEmail ?? "—"}
-            </p>
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="text-[10px] tracking-[0.16em] text-muted uppercase">
+                  {labels.signedIn}
+                </p>
+                <p className="mt-1 truncate text-xs text-paper" title={userEmail ?? undefined}>
+                  {userEmail ?? "—"}
+                </p>
+              </div>
+              {notificationsSlot}
+            </div>
             {locale ? (
               <div className="mt-3">
                 <CabinetLanguageSelect locale={locale} label={languageLabel} />
