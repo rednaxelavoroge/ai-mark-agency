@@ -372,6 +372,8 @@ export type Database = {
           currency: string;
           status: string;
           reverses_entry_id: string | null;
+          review_status?: string;
+          fraud_flags?: string[];
           created_at: string;
           updated_at: string;
           paid_at: string | null;
@@ -387,9 +389,13 @@ export type Database = {
           currency: string;
           status: string;
           reverses_entry_id?: string | null;
+          review_status?: string;
+          fraud_flags?: string[];
         };
         Update: {
           status?: string;
+          review_status?: string;
+          fraud_flags?: string[];
           paid_at?: string | null;
         };
         Relationships: [];
@@ -401,6 +407,7 @@ export type Database = {
           status: string;
           currency: string;
           amount: string;
+          tx_hash?: string | null;
           created_by: string;
           confirmed_by: string | null;
           created_at: string;
@@ -413,14 +420,117 @@ export type Database = {
           status?: string;
           currency: string;
           amount: string;
+          tx_hash?: string | null;
           created_by: string;
         };
         Update: {
           status?: string;
           amount?: string;
+          tx_hash?: string | null;
           confirmed_by?: string | null;
           confirmed_at?: string | null;
           paid_at?: string | null;
+        };
+        Relationships: [];
+      };
+      partner_notifications: {
+        Row: {
+          id: string;
+          partner_id: string;
+          user_id: string | null;
+          sale_id: string | null;
+          payment_ref: string | null;
+          product_ref: string | null;
+          amount: number | string;
+          currency: string;
+          level: number;
+          title: string;
+          message: string;
+          read_at: string | null;
+          email_sent_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          partner_id: string;
+          user_id?: string | null;
+          sale_id?: string | null;
+          payment_ref?: string | null;
+          product_ref?: string | null;
+          amount: number | string;
+          currency?: string;
+          level: number;
+          title: string;
+          message: string;
+          read_at?: string | null;
+          email_sent_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          read_at?: string | null;
+          email_sent_at?: string | null;
+        };
+        Relationships: [];
+      };
+      commission_fraud_reviews: {
+        Row: {
+          id: string;
+          commission_entry_id: string;
+          sale_id: string;
+          beneficiary_partner_id: string;
+          status: string;
+          flags: string[];
+          flag_details: Json;
+          reviewed_by: string | null;
+          reviewed_at: string | null;
+          review_notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          commission_entry_id: string;
+          sale_id: string;
+          beneficiary_partner_id: string;
+          status?: string;
+          flags?: string[];
+          flag_details?: Json;
+          reviewed_by?: string | null;
+          reviewed_at?: string | null;
+          review_notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          status?: string;
+          flags?: string[];
+          flag_details?: Json;
+          reviewed_by?: string | null;
+          reviewed_at?: string | null;
+          review_notes?: string | null;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      registration_device_logs: {
+        Row: {
+          id: string;
+          referral_code: string;
+          ip_hash: string;
+          device_fingerprint: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          referral_code: string;
+          ip_hash: string;
+          device_fingerprint?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          referral_code?: string;
+          ip_hash?: string;
+          device_fingerprint?: string | null;
         };
         Relationships: [];
       };

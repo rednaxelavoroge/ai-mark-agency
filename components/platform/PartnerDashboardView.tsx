@@ -30,6 +30,8 @@ import type {
   PartnerStatusHistoryRow,
   ProfileRow,
 } from "@/lib/supabase/database.types";
+import { LaunchBonusTimerBanner } from "@/components/platform/LaunchBonusTimerBanner";
+import type { PartnerNotificationItem } from "@/lib/partner/notifications";
 
 export type PartnerDashboardData = {
   partner: PartnerProfileRow;
@@ -41,6 +43,7 @@ export type PartnerDashboardData = {
   /** Phase 4C ledger. Empty is zero; unreadable is null. */
   ledger: PartnerLedgerStats;
   email: string | null;
+  notifications?: PartnerNotificationItem[];
 };
 
 /**
@@ -59,6 +62,7 @@ export function PartnerDashboardView({
   stats,
   ledger,
   email,
+  notifications = [],
 }: PartnerDashboardData) {
   const t = useCabinetCopy();
   const d = t.dashboard;
@@ -68,6 +72,8 @@ export function PartnerDashboardView({
 
   return (
     <div className="grid gap-7">
+      <LaunchBonusTimerBanner variant="cabinet" />
+
       <PageHeader
         eyebrow={t.pages.dashboard.eyebrow}
         title={formatCabinetString(d.welcomeTitle, { name: displayName })}
@@ -144,6 +150,41 @@ export function PartnerDashboardView({
           </ul>
         ) : null}
       </section>
+
+      {notifications && notifications.length > 0 ? (
+        <section aria-labelledby="notifications-heading" className={`p-5 sm:p-6 ${cardClass}`}>
+          <div className="flex items-center justify-between">
+            <h2 id="notifications-heading" className="text-sm font-semibold tracking-tight">
+              {profile?.language === "ru" ? "Лента оплат клиентов" : "Client Payments Feed"}
+            </h2>
+            <Link
+              href="/partner/commissions"
+              className="text-xs text-mark hover:underline"
+            >
+              {profile?.language === "ru" ? "Все комиссии →" : "All commissions →"}
+            </Link>
+          </div>
+          <div className="mt-4 grid gap-3">
+            {notifications.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line/60 bg-ink-3/30 p-3.5"
+              >
+                <div>
+                  <p className="text-xs font-semibold text-paper">{item.title}</p>
+                  <p className="mt-0.5 text-xs text-muted">{item.message}</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-mono text-xs font-semibold text-mark">
+                    {item.currency === "USD" || item.currency === "USDT" ? `$${item.amount}` : `${item.currency} ${item.amount}`}
+                  </p>
+                  <p className="text-[10px] text-muted">{formatDateTime(item.created_at)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <CommissionScheduleCard />
 
@@ -290,9 +331,12 @@ function LaunchCard() {
 
   return (
     <section aria-labelledby="schedule-heading" className={`p-5 sm:p-6 ${cardClass}`}>
-      <h2 id="schedule-heading" className="text-sm font-semibold tracking-tight">
-        {active ? d.launchActiveTitle : d.launchEndedTitle}
-      </h2>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 id="schedule-heading" className="text-sm font-semibold tracking-tight">
+          {active ? d.launchActiveTitle : d.launchEndedTitle}
+        </h2>
+        <LaunchBonusTimerBanner variant="cabinet" />
+      </div>
       <p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted">
         {active ? d.launchActiveBody : d.launchEndedBody}
       </p>

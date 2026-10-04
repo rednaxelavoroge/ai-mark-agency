@@ -8,6 +8,9 @@ import type { Metadata } from "next";
 import { PlatformShell } from "@/components/platform/PlatformShell";
 import { requirePartner } from "@/lib/auth/dal";
 
+import { getPartnerNotifications } from "@/lib/partner/notifications";
+import { PartnerNotificationsBadge } from "@/components/platform/PartnerNotificationsBadge";
+
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
@@ -18,7 +21,10 @@ export default async function PartnerPlatformLayout({
   children: React.ReactNode;
 }) {
   const { auth, partner } = await requirePartner("/partner/dashboard");
-  const { copy, locale } = await loadPartnerCabinet();
+  const [{ copy, locale }, { notifications, unreadCount }] = await Promise.all([
+    loadPartnerCabinet(),
+    getPartnerNotifications(partner.partner_id),
+  ]);
 
   return (
     <CabinetCopyProvider copy={copy}>
@@ -31,6 +37,13 @@ export default async function PartnerPlatformLayout({
         userEmail={auth.email}
         locale={locale}
         languageLabel={copy.dashboard.labelLanguage}
+        notificationsSlot={
+          <PartnerNotificationsBadge
+            notifications={notifications}
+            unreadCount={unreadCount}
+            locale={locale}
+          />
+        }
       >
         {children}
       </PlatformShell>

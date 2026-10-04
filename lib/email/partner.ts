@@ -104,22 +104,47 @@ export async function sendPartnerReferralEmail(input: {
   });
 }
 
+import { getCommissionEmailCopy } from "./partner-copy";
+
 export async function sendPartnerCommissionEmail(input: {
   to: string;
   locale: string;
   amount: string;
   currency: string;
   level: number;
+  product?: string;
 }): Promise<void> {
-  const s = strings(input.locale);
+  const c = getCommissionEmailCopy(input.locale);
   const { sendEmail } = await import("./send");
+  const productName = input.product || "AI MARK";
+  const formattedAmount = input.currency === "USD" || input.currency === "USDT" || input.currency === "USDC"
+    ? `$${input.amount}`
+    : `${input.currency} ${input.amount}`;
+
+  const bodyHtml = `
+    <p style="margin:0 0 16px;font-size:16px;font-weight:600;color:#f5f2e8;">${c.lead}</p>
+    <div style="background:#1a1a1e;border:1px solid #2e2e34;border-radius:8px;padding:16px;margin:0 0 20px;">
+      <p style="margin:0 0 8px;font-size:13px;color:#a0a0a5;">
+        ${c.productLabel}: <strong style="color:#f5f2e8;">${productName}</strong>
+      </p>
+      <p style="margin:0 0 8px;font-size:13px;color:#a0a0a5;">
+        ${c.levelLabel}: <strong style="color:#c8a96e;">L${input.level}</strong>
+      </p>
+      <p style="margin:0;font-size:15px;color:#a0a0a5;">
+        ${c.amountLabel}: <strong style="font-size:18px;color:#c8a96e;">${formattedAmount}</strong>
+      </p>
+    </div>
+    <p style="margin:0;">
+      <a href="${site.url}/partner/commissions" style="display:inline-block;background:#c8a96e;color:#0a0a0b;padding:10px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:13px;">
+        ${c.viewCabinet}
+      </a>
+    </p>
+  `;
+
   await sendEmail({
     to: input.to,
-    subject: s.commissionSubject,
-    html: emailShell(
-      `<p>${s.commissionBody(input.amount, input.currency, input.level)}</p>
-<p><a href="${site.url}/partner/commissions" style="color:#c8a96e;">View commissions</a></p>`,
-    ),
+    subject: `${c.subject} (${formattedAmount} · L${input.level})`,
+    html: emailShell(bodyHtml),
   });
 }
 

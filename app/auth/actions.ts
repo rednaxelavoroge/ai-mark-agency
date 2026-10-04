@@ -187,7 +187,22 @@ async function attributeNewPartner(user: {
   if (status === "attributed") {
     console.info("[auth] partner attributed to a referral link");
     const attribution = await readReferralAttribution();
-    if (attribution) void notifySponsorNewReferral(attribution.code);
+    if (attribution) {
+      void notifySponsorNewReferral(attribution.code);
+      try {
+        const { recordRegistrationDeviceLog } = await import("@/lib/partner/anti-fraud");
+        const headerList = await headers();
+        const rawIp = headerList.get("x-forwarded-for")?.split(",")[0]?.trim() || headerList.get("x-real-ip") || "127.0.0.1";
+        const userAgent = headerList.get("user-agent") || "";
+        void recordRegistrationDeviceLog({
+          referralCode: attribution.code,
+          ipHash: rawIp,
+          deviceFingerprint: userAgent.slice(0, 120),
+        });
+      } catch {
+        // non-blocking
+      }
+    }
   } else if (status !== "no_referral" && status !== "tracking_disabled") {
     // Everything else is a rejection worth seeing in the logs: an invalid or
     // suspended sponsor, self-referral, a duplicate edge, or a failed write.

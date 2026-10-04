@@ -77,11 +77,13 @@ export async function voidPartnerPayout(formData: FormData): Promise<void> {
   redirect("/admin/payouts?voided=1");
 }
 
-/** Confirms an open payout. The paid amount is the amount already on the payout. */
+/** Confirms an open payout and marks paid with on-chain tx hash. */
 export async function confirmPartnerPayout(formData: FormData): Promise<void> {
   const auth = await requireAdmin("/admin/payouts");
   const payoutId = readField(formData, "payout_id", 40);
+  const txHash = readField(formData, "tx_hash", 128);
   if (!/^[0-9a-f-]{36}$/i.test(payoutId)) fail("That payout id is not valid.");
+  if (!txHash) fail("Transaction hash (tx hash) is required to mark payout paid.");
 
   const admin = await adminClient();
   const result = await admin.rpc("confirm_payout", {
@@ -89,11 +91,52 @@ export async function confirmPartnerPayout(formData: FormData): Promise<void> {
     p_confirmed_by: auth.userId,
   });
   if (result.error) fail(result.error.message);
+
+  // Store tx_hash if migration column exists
+  try {
+    await admin
+      .from("payouts")
+      .update({ tx_hash: txHash })
+      .eq("id", payoutId);
+  } catch {
+    // Migration might be pending
+  }
+
   await notifyPayoutStatus(admin, payoutId, "paid");
   revalidatePath("/admin/payouts");
   revalidatePath("/partner/payouts");
   revalidatePath("/partner/commissions");
   redirect("/admin/payouts?confirmed=1");
+}
+
+/** Approves a commission that was flagged under review. */
+export async function approveCommissionAction(formData: FormData): Promise<void> {
+  const auth = await requireAdmin("/admin/payouts");
+  const commissionId = readField(formData, "commission_id", 40);
+  if (!/^[0-9a-f-]{36}$/i.test(commissionId)) fail("Invalid commission id.");
+
+  const { approveFraudReview } = await import("@/lib/partner/anti-fraud");
+  const res = await approveFraudReview(commissionId, auth.userId);
+  if (!res.ok) fail(res.error ?? "Could not approve commission.");
+
+  revalidatePath("/admin/payouts");
+  revalidatePath("/admin/commissions");
+  redirect("/admin/payouts?approved=1");
+}
+
+/** Rejects a commission that was flagged under review. */
+export async function rejectCommissionAction(formData: FormData): Promise<void> {
+  const auth = await requireAdmin("/admin/payouts");
+  const commissionId = readField(formData, "commission_id", 40);
+  if (!/^[0-9a-f-]{36}$/i.test(commissionId)) fail("Invalid commission id.");
+
+  const { rejectFraudReview } = await import("@/lib/partner/anti-fraud");
+  const res = await rejectFraudReview(commissionId, auth.userId);
+  if (!res.ok) fail(res.error ?? "Could not reject commission.");
+
+  revalidatePath("/admin/payouts");
+  revalidatePath("/admin/commissions");
+  redirect("/admin/payouts?rejected=1");
 }
 
 async function notifyPayoutStatus(
