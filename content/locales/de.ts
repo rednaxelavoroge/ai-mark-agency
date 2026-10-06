@@ -188,7 +188,7 @@ export const copyDe: Copy = {
         "value": "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",
         "who": "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
         "extra": "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
-        "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$89–449/mo across the three Showroom AI bundles."
+        "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$89–399/mo across the three Showroom AI bundles."
       }
     }
   },
@@ -249,7 +249,7 @@ export const copyDe: Copy = {
     "eyebrow": "Commercial model",
     "title": "Mehrere Wege der Zusammenarbeit. Retainer sind einer davon.",
     "lead": "Wählen Sie ein Produkt-SKU, einen Service-Sprint, eine betreute Abteilung oder eine individuelle Entwicklung. Die Preise unten sind Spannen, kein Ergebnisversprechen.",
-    "skuNote": "AI product subscriptions (roughly $89–449+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $89–399+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/Monat",
     "featured": "Beliebteste Wahl",
     "retainerCta": "Jetzt starten",

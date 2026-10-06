@@ -171,7 +171,7 @@ const showroomAiEn: ShowroomAiCopy = {
   ],
   plansTitle: "Showroom AI plans",
   plansSub:
-    "Monthly subscription in USD. Roles are sold on their own as well — the Business bundle costs less than the Seller and Marketer Lite roles bought apart.",
+    "Monthly subscription in USD. Roles are sold on their own as well — each bundle costs less than its roles bought apart.",
   plans: [
     {
       id: "start",
@@ -324,7 +324,7 @@ const showroomAiRu: ShowroomAiCopy = {
   ],
   plansTitle: "Тарифы Showroom AI",
   plansSub:
-    "Подписка в USD, ежемесячно. Роли продаются и по отдельности — набор Business дешевле, чем Seller и Marketer Lite по отдельности.",
+    "Подписка в USD, ежемесячно. Роли продаются и по отдельности — каждый бандл дешевле, чем его роли по отдельности.",
   plans: [
     {
       id: "start",

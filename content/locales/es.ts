@@ -249,7 +249,7 @@ export const copyEs: Copy = {
     "eyebrow": "Commercial model",
     "title": "Several ways to work together. Retainers are one of them.",
     "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
-    "skuNote": "AI product subscriptions (roughly $89–449+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $89–399+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/mes",
     "featured": "Más popular",
     "retainerCta": "Comenzar ahora",
@@ -257,7 +257,7 @@ export const copyEs: Copy = {
     "tiers": [
       {
         "name": "Productos de IA",
-        "price": "$89–449+",
+        "price": "$89–399+",
         "body": "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent como SKU — instalación y operación de su lado o con nosotros."
       },
       {

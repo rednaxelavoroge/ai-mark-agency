@@ -108,7 +108,7 @@ export const PAYABLE_SKUS: PayableSku[] = [
   {
     id: "showroom-pro",
     productRef: "showroom",
-    amountUsd: 449,
+    amountUsd: 399,
     name: "Showroom AI Pro",
     billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },

@@ -249,7 +249,7 @@ export const copyZh: Copy = {
     "eyebrow": "Commercial model",
     "title": "Several ways to work together. Retainers are one of them.",
     "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
-    "skuNote": "AI product subscriptions (roughly $89–449+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $89–399+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/月",
     "featured": "最多客户选择",
     "retainerCta": "立即开启合作",
