@@ -94,10 +94,10 @@ export interface AimeContent {
 }
 
 export const aimeRu: AimeContent = {
-  seoTitle: "AI Marketing Employee | Цикл маркетинга с вашим апрувом · AI MARK",
+  seoTitle: "Showroom AI · Маркетолог (AI Marketing Employee) | Стратегия, контент, апрув в Telegram, публикации · AI MARK",
   seoDescription:
-    "Маркетинговый цикл для бизнеса и агентств: исследование, стратегия, контент, ваше подтверждение в Telegram и публикация в Instagram, Facebook и Threads.",
-  badge: "Собственный AI-продукт · AI MARK",
+    "Роль Маркетолога в Showroom AI: исследование, стратегия, контент, ваше подтверждение в Telegram и публикация в Instagram, Facebook и Threads.",
+  badge: "Showroom AI · роль Маркетолога",
   titleA: "AI Marketing",
   titleB: "Employee",
   tagline: "Исследование → стратегия → контент → ваш апрув → публикация",
@@ -352,10 +352,10 @@ export const aimeRu: AimeContent = {
 };
 
 export const aimeEn: AimeContent = {
-  seoTitle: "AI Marketing Employee | Research to publish, with your approval · AI MARK",
+  seoTitle: "Showroom AI · Marketer (AI Marketing Employee) | Strategy, content, Telegram approval, publishing · AI MARK",
   seoDescription:
-    "A marketing cycle for businesses and agencies: research, strategy, content, your approval in Telegram, then publishing to Instagram, Facebook, and Threads.",
-  badge: "Proprietary AI Platform · AI MARK",
+    "The Marketer role inside Showroom AI: research, strategy, content, your approval in Telegram, then publishing to Instagram, Facebook and Threads.",
+  badge: "Showroom AI · Marketer role",
   titleA: "AI Marketing",
   titleB: "Employee",
   tagline: "Research → strategy → content → your approval → publication",

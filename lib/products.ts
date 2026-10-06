@@ -1,5 +1,5 @@
 import type { ProductId } from "@/content/packages";
-import { localePath, type Locale } from "@/lib/site";
+import { localePath, type Locale } from "./site.ts";
 
 export const PRODUCT_PATHS: Record<ProductId, `/${string}`> = {
   aime: "/ai-marketing-employee",

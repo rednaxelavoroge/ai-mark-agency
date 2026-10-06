@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BackButton } from "@/components/BackButton";
 import { ContactCta } from "@/components/ContactCta";
+import { ShowroomAiIncluded, ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
 import { getCopy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
 import { packages } from "@/content/packages";
@@ -175,6 +176,13 @@ export default async function PricingPage({ params }: Props) {
             );
           })}
         </div>
+      </div>
+
+      {/* Row 1b: Showroom AI — the product brand sold to customers.
+          Prices come from the published catalog, never from this file. */}
+      <div id="showroom-ai" className="mt-16 scroll-mt-24 border-t border-line pt-12">
+        <ShowroomAiPlans locale={locale} />
+        <ShowroomAiIncluded locale={locale} className="mt-8" />
       </div>
 
       {/* Row 2: Other Formats of Collaboration */}

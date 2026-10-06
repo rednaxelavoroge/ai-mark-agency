@@ -188,7 +188,7 @@ export const copyJa: Copy = {
         "value": "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",
         "who": "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
         "extra": "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
-        "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota."
+        "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$89–399/mo across the three Showroom AI bundles."
       }
     }
   },
@@ -249,7 +249,7 @@ export const copyJa: Copy = {
     "eyebrow": "Commercial model",
     "title": "協業の形はいくつかあります。リテイナーはその一つです。",
     "lead": "製品SKU、サービススプリント、継続する部門、または個別開発から選べます。以下の価格は幅であり、成果の約束ではありません。",
-    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $89–399+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/mo",
     "featured": "Most teams start here",
     "retainerCta": "Request this department",
@@ -257,7 +257,7 @@ export const copyJa: Copy = {
     "tiers": [
       {
         "name": "AI Products",
-        "price": "$149–349+",
+        "price": "$89–399+",
         "body": "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us."
       },
       {

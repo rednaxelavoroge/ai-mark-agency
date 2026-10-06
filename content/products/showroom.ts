@@ -52,38 +52,27 @@ export interface ShowroomContent {
   multitenantTitle: string;
   multitenantLead: string;
   multitenantExamples: { title: string; text: string }[];
-  pricingTitle: string;
-  pricingSub: string;
-  pricingDesc: string;
-  pricingPoints: string[];
-  pricingTiers: {
-    name: string;
-    price: string;
-    period: string;
-    desc: string;
-    features: string[];
-    /**
-     * The published payable SKU this tier maps to in `lib/crypto/catalog.ts`.
-     *
-     * Present only for tiers with a published monthly list price. The
-     * Enterprise tier is custom, so it keeps its contact call-to-action.
-     */
-    skuId?: string;
-  }[];
+  /**
+   * Pricing is not described here any more. Showroom AI bundles and the roles
+   * sold separately live in `lib/showroom-ai.ts` (structure, catalog SKUs) and
+   * `content/showroom-ai.ts` (RU/EN copy), and are rendered by
+   * `components/products/ShowroomAiPlans.tsx` so a list price has exactly one
+   * source: `PAYABLE_SKUS`.
+   */
   faqTitle: string;
   faqSub: string;
   faqs: { q: string; a: string }[];
 }
 
 export const showroomRu: ShowroomContent = {
-  seoTitle: "SHOWROOM AI — AI-продавец | Диалоги, подбор, расчёт и коммерческие предложения · AI MARK",
+  seoTitle: "Showroom AI — один продукт, три роли: Продавец, Маркетолог, Бизнес-ассистент · AI MARK",
   seoDescription:
-    "AI-продавец, который общается с клиентами, понимает их потребность, работает с каталогом и бизнес-правилами, рассчитывает предложение и готовит коммерческое предложение для отдела продаж. Мебель, авто, строительство, недвижимость, ритейл и B2B.",
-  badge: "Собственный AI-продукт · AI MARK",
+    "Showroom AI — продукт AI MARK с тремя ролями: AI-продавец отвечает и продаёт, AI-маркетолог ведёт стратегию, контент, подтверждение в Telegram и публикации в IG / FB / Threads, бизнес-ассистент разгружает входящие. Роли продаются и отдельно, бандлы дешевле.",
+  badge: "Продукт AI MARK · три роли",
   title: "SHOWROOM AI",
-  tagline: "AI-продавец",
+  tagline: "Не просто ответит, а продаст",
   subtitle:
-    "AI-продавец, который общается с клиентами, понимает их потребность, работает с каталогом и бизнес-правилами, рассчитывает предложение и готовит коммерческое предложение для отдела продаж. Закрывает значительную часть продажного workflow и передаёт подготовленную сделку команде.",
+    "Showroom AI продаётся как один продукт и состоит из трёх ролей. Продавец ведёт диалог, подбирает решение, считает по вашему каталогу и правилам и доводит дело до заказа или записи. Маркетолог ведёт стратегию, контент и публикации с подтверждением в Telegram. Бизнес-ассистент отвечает по базе знаний и передаёт тёплые обращения человеку. Каждую роль можно купить отдельно — бандлы дешевле.",
   ctaConsult: "Запросить конфигурацию",
   ctaExplore: "Как проходит сделка",
   heroMeta: [
@@ -247,61 +236,6 @@ export const showroomRu: ShowroomContent = {
       text: "Подключение к внутренним базам данных и закрытым CRM через защищённые API-ключи и выделенные шлюзы.",
     },
   ],
-  pricingTitle: "Тарифные планы SHOWROOM AI",
-  pricingSub: "Прозрачная стоимость аренды AI-движка для вашего бизнеса.",
-  pricingDesc:
-    "Self-serve — $0 за запуск платформы; опциональный DFY-сетап каталога и формул — около $300 разово. Далее фиксированная MRR по квоте расчётов. В каждый тариф входит движок и генератор PDF.",
-  pricingPoints: [
-    "Self-serve $0 или DFY-сетап ~$300 (по желанию)",
-    "Фиксированная ежемесячная подписка $199 / $299",
-    "Неограниченное число менеджеров в системе",
-    "Генерация брендированных PDF включена",
-    "Подключение к веб-сайту и мессенджерам",
-  ],
-  pricingTiers: [
-    {
-      name: "Standard",
-      price: "$199",
-      period: "/ месяц",
-      desc: "Для малого бизнеса и шоурумов: до 1 000 позиций в каталоге, стандартные формулы расчёта. Self-serve $0; DFY-сетап ~$300 при необходимости.",
-      skuId: "showroom-standard",
-      features: [
-        "До 1 000 SKU в каталоге",
-        "До 500 расчётов КП в месяц",
-        "Брендированный PDF-шаблон",
-        "Подключение виджета на сайте",
-        "Экспорт спецификаций",
-      ],
-    },
-    {
-      name: "Business",
-      price: "$299",
-      period: "/ месяц",
-      desc: "Для фабрик и дилеров: сложные параметрические зависимости, неограниченный каталог и CRM-синхронизация.",
-      skuId: "showroom-business",
-      features: [
-        "Неограниченный объём каталога",
-        "До 3 000 расчётов КП в месяц",
-        "Индивидуальные формулы любой сложности",
-        "Интеграция с Bitrix24 / 1C / Kommo",
-        "Интеграция с WhatsApp и Telegram",
-        "Приоритетная инженерная поддержка",
-      ],
-    },
-    {
-      name: "Enterprise",
-      price: "По запросу",
-      period: "",
-      desc: "Для крупных холдингов: выделенная инфраструктура, кастомные ERP-коннекторы и SLA.",
-      features: [
-        "Выделенный кластер вычислений",
-        "Неограниченное число расчётов",
-        "Глубокая интеграция с корпоративной ERP",
-        "Индивидуальный SLA по доступности",
-        "Выделенный архитектор внедрения",
-      ],
-    },
-  ],
   faqTitle: "Вопросы о SHOWROOM AI — AI-продавец",
   faqSub: "Всё о внедрении расчётного движка в коммерческие процессы компании.",
   faqs: [
@@ -325,14 +259,14 @@ export const showroomRu: ShowroomContent = {
 };
 
 export const showroomEn: ShowroomContent = {
-  seoTitle: "SHOWROOM AI / AI Sales Agent | Customer conversations, quoting & commercial proposals · AI MARK",
+  seoTitle: "Showroom AI — one product, three roles: Seller, Marketer, Business Assistant · AI MARK",
   seoDescription:
-    "An AI salesperson that talks to customers, understands their needs, works with your product catalog and business rules, calculates the right offer and prepares a commercial proposal for your sales team. Automotive, construction, real estate, furniture, retail, and B2B.",
-  badge: "Proprietary AI Platform · AI MARK",
+    "Showroom AI is an AI MARK product with three roles: the AI Seller answers and sells, the AI Marketer runs strategy, content, Telegram approval and publishing to IG / FB / Threads, and the Business Assistant clears the inbox. Roles are sold separately too; bundles cost less.",
+  badge: "AI MARK product · three roles",
   title: "SHOWROOM AI",
-  tagline: "AI Sales Agent",
+  tagline: "It doesn't just answer — it sells",
   subtitle:
-    "An AI salesperson that talks to customers, understands their needs, works with your product catalog and business rules, calculates the right offer and prepares a commercial proposal for your sales team. Handles a major part of the sales workflow and prepares the opportunity for your human sales team.",
+    "Showroom AI is sold as one product and is made of three roles. The Seller holds the conversation, matches the offer, prices it by your catalogue and rules, and drives it to an order or a booking. The Marketer runs strategy, content and publishing with approval in Telegram. The Business Assistant answers from your knowledge base and hands warm threads to a human. Every role is also sold separately — bundles cost less.",
   ctaConsult: "Request Configuration",
   ctaExplore: "How a deal moves",
   heroMeta: [
@@ -494,61 +428,6 @@ export const showroomEn: ShowroomContent = {
     {
       title: "Corporate Network Connectors",
       text: "Connect to private enterprise databases and internal CRM systems via authenticated API keys and dedicated gateways.",
-    },
-  ],
-  pricingTitle: "SHOWROOM AI Pricing Plans",
-  pricingSub: "Predictable software licensing for commercial calculation automation.",
-  pricingDesc:
-    "Self-serve launch at $0; optional done-for-you catalog and formula setup is ~$300 once. Then fixed MRR by calculation quota. All plans include the engine and PDF generation.",
-  pricingPoints: [
-    "Self-serve $0 or optional ~$300 DFY setup",
-    "Fixed monthly MRR at $199 / $299",
-    "Unlimited sales rep seats in the workspace",
-    "Automated branded PDF output included",
-    "Connects to website and messaging channels",
-  ],
-  pricingTiers: [
-    {
-      name: "Standard",
-      price: "$199",
-      period: "/ month",
-      desc: "For small businesses & showrooms: up to 1,000 SKUs, standard calculation formulas. Self-serve $0; optional ~$300 DFY setup.",
-      skuId: "showroom-standard",
-      features: [
-        "Up to 1,000 catalog SKUs",
-        "Up to 500 proposal calculations / month",
-        "Branded PDF proposal template",
-        "Website calculator widget",
-        "Specification CSV/PDF export",
-      ],
-    },
-    {
-      name: "Business",
-      price: "$299",
-      period: "/ month",
-      desc: "For manufacturers, dealerships & distributors: advanced formulas, unlimited catalogue, and CRM sync.",
-      skuId: "showroom-business",
-      features: [
-        "Unlimited catalog SKUs",
-        "Up to 3,000 proposal calculations / month",
-        "Custom multi-parameter pricing logic",
-        "Bitrix24, Kommo, ERP integration",
-        "WhatsApp and Telegram connectors",
-        "Priority engineering support",
-      ],
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      desc: "For large industrial holdings: dedicated cluster, custom ERP adapters, and strict uptime SLAs.",
-      features: [
-        "Dedicated compute infrastructure",
-        "Unlimited monthly calculations",
-        "Custom integration with SAP / 1C / Oracle",
-        "Custom availability & performance SLA",
-        "Dedicated deployment architect",
-      ],
     },
   ],
   faqTitle: "Frequently Asked Questions",

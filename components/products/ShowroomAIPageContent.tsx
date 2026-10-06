@@ -7,11 +7,14 @@ import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { getShowroomCopy } from "@/content/products/showroom";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
-import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
-import { FeatureList } from "@/components/products/FeatureList";
+import { getShowroomAiCopy } from "@/content/showroom-ai";
+import { ShowroomAiIncluded, ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
+import { ShowroomDemoChatButton } from "@/components/products/ShowroomDemoChat";
+import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
+import { ShowroomPoweredBy } from "@/components/products/ShowroomPoweredBy";
 
 export function ShowroomAIPageContent({
   locale,
@@ -79,10 +82,14 @@ export function ShowroomAIPageContent({
 
               {/* CTAs */}
               <div className="mt-8 flex flex-wrap items-center gap-3">
+                <ShowroomDemoChatButton
+                  locale={locale}
+                  className="inline-flex items-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light"
+                />
                 <button
                   type="button"
                   onClick={() => openLauncher()}
-                  className="inline-flex items-center rounded-full bg-mark px-6 py-3 text-sm font-semibold text-mark-ink shadow-md transition-all hover:bg-mark-light"
+                  className="inline-flex items-center rounded-full border border-mark/40 bg-mark/10 px-5 py-3 text-sm font-semibold text-mark transition-colors hover:bg-mark/20"
                 >
                   {c.ctaConsult} →
                 </button>
@@ -150,6 +157,15 @@ export function ShowroomAIPageContent({
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* SHOWROOM AI ROLES — the brand made explicit, with the Seller and the
+          Marketer as the two equal halves of one loop. This page is the Seller
+          role page; Marketer and Business Assistant keep their own URLs. */}
+      <section id="seller" className="scroll-mt-24 border-b border-line py-8 sm:py-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <ShowroomRoleLinkage locale={locale} current="seller" />
         </div>
       </section>
 
@@ -386,70 +402,19 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      {/* 6. PRICING TIERS */}
+      {/* 6. SHOWROOM AI PRICING — bundles, roles sold separately, setup, trial.
+          Every amount is resolved from `PAYABLE_SKUS` inside ShowroomAiPlans;
+          this page publishes no price literal. */}
       <section id="pricing" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {section("06", "Licence price", "Стоимость лицензии")}
-            </span>
-            <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
-              {c.pricingTitle}
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              {c.pricingSub}
-            </p>
-          </div>
-
-          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
-            {c.pricingTiers.map((tier) => (
-              <div
-                key={tier.name}
-                className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-4 shadow-sm"
-              >
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-paper">{tier.name}</h3>
-                  <div className="mt-3 flex items-baseline gap-1">
-                    <span className="font-display text-4xl font-bold text-mark">{tier.price}</span>
-                    <span className="font-mono text-xs text-muted">{tier.period}</span>
-                  </div>
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{tier.desc}</p>
-
-                  <FeatureList items={tier.features} locale={locale} />
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-line">
-                  <button
-                    type="button"
-                    onClick={() => openLauncher()}
-                    className="w-full rounded-full bg-mark px-5 py-3 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
-                  >
-                    {c.ctaConsult}
-                  </button>
-                  {/* Self-serve purchase of this exact tier, and only of a tier
-                      that has a published self-serve price. The Enterprise tier
-                      is custom (no sku id), so it renders nothing here and stays
-                      contact-only.
-                      The guard is at the call site on purpose: `BuyLink` without
-                      a sku is a legitimate family link (the /products hub and the
-                      home showcase use it that way), but on a *priced tier card*
-                      it would send the buyer to /pay with some other product
-                      preselected. A tier with no sku must not be payable. */}
-                  {tier.skuId ? (
-                    <BuyLink
-                      locale={locale}
-                      skuId={tier.skuId}
-                      label={
-                        locale === "ru"
-                          ? `Оплатить ${tier.price} в USDT / USDC`
-                          : `Pay ${tier.price} with USDT / USDC`
-                      }
-                      className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
-                    />
-                  ) : null}
-                </div>
-              </div>
-            ))}
+          <ShowroomAiPlans locale={locale} />
+          <ShowroomAiIncluded locale={locale} className="mt-8" />
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <ShowroomDemoChatButton
+              locale={locale}
+              className="inline-flex min-h-11 items-center rounded-full bg-mark px-6 text-sm font-semibold text-mark-ink shadow transition-all hover:bg-mark-light"
+            />
+            <span className="text-xs text-muted">{getShowroomAiCopy(locale).demoHint}</span>
           </div>
         </div>
       </section>
@@ -540,6 +505,9 @@ export function ShowroomAIPageContent({
           </div>
         </div>
       </section>
+
+      {/* Developer credit: Showroom AI is the product, AI MARK builds it. */}
+      <ShowroomPoweredBy locale={locale} />
     </article>
   );
 }

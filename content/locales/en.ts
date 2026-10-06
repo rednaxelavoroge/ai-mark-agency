@@ -148,7 +148,7 @@ export const copyEn: Copy = {
           extra:
             "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades. Deterministic pricing engine behind the dialogue.",
           price:
-            "Self-serve setup $0 or ~$300 done-for-you. Then ~$199 / $299/mo by quote quota.",
+            "Self-serve setup $0 or ~$300 done-for-you. Then ~$89–399/mo across the three Showroom AI bundles.",
         },
       },
     },
@@ -210,7 +210,7 @@ export const copyEn: Copy = {
       title: "Several ways to work together. Retainers are one of them.",
       lead: "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
       skuNote:
-        "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
+        "AI product subscriptions (roughly $89–399+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
       perMonth: "/mo",
       featured: "Most teams start here",
       retainerCta: "Request this department",
@@ -218,7 +218,7 @@ export const copyEn: Copy = {
       tiers: [
         {
           name: "AI Products",
-          price: "$149–349+",
+          price: "$89–399+",
           body: "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us.",
         },
         {
