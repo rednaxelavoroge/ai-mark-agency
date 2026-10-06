@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HeroSystem } from "@/components/HeroSystem";
 import { HomeRest } from "@/components/home/HomeRest";
+import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
 import { getCopy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
@@ -96,6 +97,14 @@ export default async function HomePage({ params }: Props) {
   return (
     <>
       <HeroSystem locale={locale} t={t} />
+      {/* The pair the product is built around: the marketer brings the
+          customers, the seller sells. Two equally weighted role cards plus the
+          smaller Business Assistant card, each linking to its role page. */}
+      <section id="roles" className="scroll-mt-24 border-b border-line py-10 sm:py-12">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <ShowroomRoleLinkage locale={locale} />
+        </div>
+      </section>
       <HomeRest locale={locale} t={t} hubModules={hubModules} featuredProducts={featuredProducts} />
     </>
   );

@@ -10,6 +10,7 @@ import {
   skuPrice,
 } from "@/lib/showroom-ai";
 import { CRYPTO_CHECKOUT_DISCOUNT_BPS, formatUsdPrice } from "@/lib/pricing/crypto-checkout";
+import { websitesPageUrl } from "@/lib/developer";
 import type { Locale } from "@/lib/site";
 
 /**
@@ -52,16 +53,22 @@ export function ShowroomAiPlans({
           const price = skuPrice(plan.skuId);
           const copy = c.plans.find((p) => p.id === plan.id);
           if (!price || !copy) return null;
+          // The bundles that pair the Seller with the Marketer are the product's
+          // actual pitch, so they carry the accent bar and the pair badge.
+          const paired = plan.roles.includes("marketer");
           return (
             <article
               key={plan.id}
               data-reveal
-              className={`flex flex-col justify-between rounded-2xl border p-5 sm:p-6 ${
-                plan.featured
-                  ? "relative border-mark bg-ink-2 shadow-lg shadow-mark/5"
+              className={`relative flex flex-col justify-between rounded-2xl border p-5 sm:p-6 ${
+                paired
+                  ? "border-mark/70 bg-ink-2 shadow-lg shadow-mark/10 ring-1 ring-mark/20"
                   : "border-line bg-ink-2"
               }`}
             >
+              {paired ? (
+                <span className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-mark" aria-hidden />
+              ) : null}
               <div>
                 <div className="flex items-baseline justify-between gap-3">
                   <h3 className="font-display text-xl font-semibold text-paper">{copy.name}</h3>
@@ -74,6 +81,11 @@ export function ShowroomAiPlans({
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-warm">
                   {copy.rolesLabel}
                 </p>
+                {paired ? (
+                  <p className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-mark/40 bg-mark/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wide text-mark">
+                    {c.pairPlanBadge}
+                  </p>
+                ) : null}
 
                 <div className="mt-4 flex items-baseline gap-1">
                   <span className="font-display text-4xl font-semibold tracking-tight text-paper">
@@ -112,6 +124,20 @@ export function ShowroomAiPlans({
           );
         })}
       </div>
+
+      {/* The developer side of the same team: AI MARK builds the site if the
+          customer has none. External, locale-aware URL from `lib/developer.ts`. */}
+      <p className="mt-5 text-xs text-muted">
+        <a
+          href={websitesPageUrl(locale)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-mark hover:underline"
+        >
+          {c.websiteCtaLabel} ↗
+        </a>{" "}
+        {c.websiteCtaHint}
+      </p>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
         <div className="rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">

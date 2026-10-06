@@ -14,6 +14,7 @@ import { brief } from "@/lib/brief";
 import { FeatureList } from "@/components/products/FeatureList";
 import { getAimeRetainers } from "@/content/products/aime-retainers";
 import { ShowroomRoleBanner } from "@/components/products/ShowroomRoleBanner";
+import { ShowroomPoweredBy } from "@/components/products/ShowroomPoweredBy";
 
 export function AIMEPageContent({
   locale,
@@ -622,6 +623,9 @@ export function AIMEPageContent({
           </div>
         </div>
       </section>
+
+      {/* Developer credit: this is the Marketer role of Showroom AI. */}
+      <ShowroomPoweredBy locale={locale} />
     </article>
   );
 }

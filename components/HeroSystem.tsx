@@ -97,16 +97,18 @@ export function HeroSystem({ locale, t }: HeroProps) {
               </Link>
             </div>
             {/*
-              Showroom AI demo on the first screen. The live widget is the same
-              one the contact launcher mounts (`ContactLauncher`), so this band
-              only dispatches the open-chat event with a Showroom opening line.
-              Amounts come from the constants, never from this file.
+              First screen is the Seller role: «не просто ответит, а продаст»,
+              with the live demo chat one tap away and the trial terms spelled
+              out. The live widget is the same one the contact launcher mounts
+              (`ContactLauncher`), so this band only dispatches the open-chat
+              event with a Showroom opening line. The trial length and the setup
+              fee are interpolated from the constants, never typed here.
             */}
             {/* Kept compact on phones so the demo-chat button stays inside the
                 first screen; the longer lead returns from `sm` up. */}
             <div className="mt-5 max-w-xl rounded-2xl border border-white/25 bg-[#193428]/85 p-4 sm:mt-6">
               <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--lime)]">
-                {showroom.brand} · {showroom.kicker}
+                {showroom.heroKicker}
               </p>
               <p className="mt-1.5 font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
                 {showroom.mantra}
@@ -120,11 +122,12 @@ export function HeroSystem({ locale, t }: HeroProps) {
                   className="inline-flex min-h-11 items-center rounded-full bg-[var(--lime)] px-5 text-sm font-semibold text-[#14291f] transition-opacity hover:opacity-90"
                 />
                 <span className="font-mono text-[11px] text-[#c5d0c4]">
-                  {SHOWROOM_AI_TRIAL_DAYS}
-                  {locale === "ru" ? " дней бесплатно" : " days free"} ·{" "}
-                  {locale === "ru" ? "сетап" : "setup"}{" "}
-                  {formatUsdPrice(SHOWROOM_AI_SETUP_FEE_USD)}
-                  {locale === "ru" ? " (по желанию)" : " (optional)"}
+                  {showroom.heroTrialNote.replace("{days}", String(SHOWROOM_AI_TRIAL_DAYS))}
+                  {" · "}
+                  {showroom.heroSetupNote.replace(
+                    "{fee}",
+                    formatUsdPrice(SHOWROOM_AI_SETUP_FEE_USD),
+                  )}
                 </span>
               </div>
             </div>

@@ -8,6 +8,7 @@ import { productsHubPath } from "@/lib/products";
 import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
 import { showroomRoleHref } from "@/lib/showroom-ai";
+import { developerHomeUrl } from "@/lib/developer";
 
 export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
   const year = new Date().getFullYear();
@@ -136,9 +137,14 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row text-xs text-muted">
           <p>
             © {year} AI MARK. {chrome.rights}{" "}
-            <span className="text-muted">
+            <a
+              href={developerHomeUrl(locale)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted transition-colors hover:text-paper"
+            >
               {showroom.brand} — {showroom.developerCredit}
-            </span>
+            </a>
           </p>
           <div className="flex items-center gap-4">
             <span>{chrome.taglineShort}</span>

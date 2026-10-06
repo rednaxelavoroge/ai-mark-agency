@@ -13,7 +13,8 @@ import { brief } from "@/lib/brief";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
 import { ShowroomAiIncluded, ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
 import { ShowroomDemoChatButton } from "@/components/products/ShowroomDemoChat";
-import { ShowroomRoles } from "@/components/products/ShowroomRoles";
+import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
+import { ShowroomPoweredBy } from "@/components/products/ShowroomPoweredBy";
 
 export function ShowroomAIPageContent({
   locale,
@@ -159,11 +160,12 @@ export function ShowroomAIPageContent({
         </div>
       </section>
 
-      {/* SHOWROOM AI ROLES — the brand made explicit. This page is the Seller
+      {/* SHOWROOM AI ROLES — the brand made explicit, with the Seller and the
+          Marketer as the two equal halves of one loop. This page is the Seller
           role page; Marketer and Business Assistant keep their own URLs. */}
       <section id="seller" className="scroll-mt-24 border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <ShowroomRoles locale={locale} current="seller" />
+          <ShowroomRoleLinkage locale={locale} current="seller" />
         </div>
       </section>
 
@@ -503,6 +505,9 @@ export function ShowroomAIPageContent({
           </div>
         </div>
       </section>
+
+      {/* Developer credit: Showroom AI is the product, AI MARK builds it. */}
+      <ShowroomPoweredBy locale={locale} />
     </article>
   );
 }

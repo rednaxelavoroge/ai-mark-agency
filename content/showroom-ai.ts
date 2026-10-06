@@ -11,7 +11,9 @@ import type { ShowroomPlanId, ShowroomRoleId } from "@/lib/showroom-ai";
  *
  * Amounts are deliberately absent: plan cards render the list and USDT/USDC
  * prices from `lib/showroom-ai.ts`, which reads the published catalog. The
- * setup fee and trial length come from constants there for the same reason.
+ * setup fee and trial length come from constants there for the same reason —
+ * `heroSetupNote` carries a `{fee}` placeholder that the component fills from
+ * `SHOWROOM_AI_SETUP_FEE_USD`.
  */
 
 export interface ShowroomAiRoleCopy {
@@ -19,7 +21,16 @@ export interface ShowroomAiRoleCopy {
   name: string;
   title: string;
   desc: string;
-  points: string[];
+  /**
+   * The full capability set of the role. For the Marketer this is the owner's
+   * complete list (research → strategy → content → design → approval →
+   * publishing → analytics), not a summary.
+   */
+  capabilities: string[];
+  /** One line naming the trades the role is configured for. Seller only. */
+  industries?: string;
+  /** One-line "several specialists in one" claim. Marketer only. */
+  combo?: string;
   cta: string;
 }
 
@@ -35,22 +46,33 @@ export interface ShowroomAiCopy {
   brand: string;
   /** Developer credit shown next to the product brand. */
   developerCredit: string;
+  /** Footer of every Showroom page. */
+  poweredBy: string;
   kicker: string;
   /** Main message: «не просто ответит, а продаст». */
   mantra: string;
   mantraLead: string;
-  heroBadge: string;
+  /* First screen: the Seller role */
+  heroKicker: string;
+  /** Contains `{days}`, replaced with the trial length constant. */
+  heroTrialNote: string;
+  /** Contains `{fee}`, replaced with the published setup fee. */
+  heroSetupNote: string;
+  /* Linkage block: two large cards, one small */
+  linkageTitle: string;
+  linkageSub: string;
   /* Roles inside the brand */
-  rolesTitle: string;
-  rolesSub: string;
   roles: ShowroomAiRoleCopy[];
   /* Bundles */
   plansTitle: string;
   plansSub: string;
   plans: ShowroomAiPlanCopy[];
   featuredLabel: string;
+  /** Chip on the Marketer card in the linkage block. */
+  pairBadge: string;
+  /** Emphasis chip on the bundles that pair the Seller with the Marketer. */
+  pairPlanBadge: string;
   perMonth: string;
-  listLabel: string;
   cryptoLabel: string;
   payCta: string;
   includedTitle: string;
@@ -68,6 +90,9 @@ export interface ShowroomAiCopy {
   setupPaidBody: string;
   trialTitle: string;
   trialBody: string;
+  /* No site yet — the developer builds one */
+  websiteCtaLabel: string;
+  websiteCtaHint: string;
   positioningTitle: string;
   positioningBody: string;
   positioningPoints: string[];
@@ -85,39 +110,50 @@ export interface ShowroomAiCopy {
 const showroomAiEn: ShowroomAiCopy = {
   brand: "Showroom AI",
   developerCredit: "by AI MARK",
+  poweredBy: "Powered by AI MARK",
   kicker: "One product. Three roles.",
   mantra: "It doesn't just answer — it sells.",
   mantraLead:
-    "Showroom AI talks to your customer, understands the need, prices it by your catalogue and rules, and moves the deal to an order or a booking — around the clock.",
-  heroBadge: "AI MARK product",
-  rolesTitle: "Three roles. One product.",
-  rolesSub:
-    "Showroom AI is sold as one brand. Each role also works on its own and can be bought that way.",
+    "Answers and sells around the clock: understands the need, matches the solution, prices it by your catalogue and rules, and moves the deal to an order or a booking.",
+  heroKicker: "Showroom AI · Seller",
+  heroTrialNote: "{days} days free",
+  heroSetupNote: "setup {fee} (optional)",
+  linkageTitle: "The pair: the marketer brings the customers — the seller sells",
+  linkageSub:
+    "Two roles running one loop. The Marketer fills the funnel with research, content and publishing; the Seller turns the conversations that arrive into orders. The Business Assistant joins as a third role, so routine questions never sit unanswered.",
   roles: [
     {
       id: "seller",
       name: "Seller",
       title: "AI Sales Agent",
-      desc: "Answers and sells: qualifies the need, matches the offer, calculates by your catalogue and rules, and hands your team a prepared deal.",
-      points: [
+      desc: "Answers and sells: qualifies the request, matches the offer, prices it by your catalogue and rules, and hands your team a prepared deal.",
+      capabilities: [
         "Replies and sells 24/7, not just an answering bot",
         "Up to 3 channels: site chat, Telegram, plus WhatsApp / Instagram on your own Meta Business",
         "Deterministic pricing from your catalogue — no invented numbers",
         "Manager handoff with the whole conversation",
       ],
-      cta: "Open the demo chat",
+      industries:
+        "Real estate, furniture and interiors, automotive, construction, retail, services, salons and other trades — the rules are configured per business.",
+      cta: "Seller role page",
     },
     {
       id: "marketer",
       name: "Marketer",
       title: "AI Marketing Employee",
-      desc: "Runs the marketing cycle: strategy, content, visual drafts, publishing to Instagram, Facebook and Threads, and analytics — up to your approval in Telegram.",
-      points: [
-        "Strategy, posts and visual drafts",
-        "Your approval in Telegram before anything goes live",
-        "Publishing workflow to IG / FB / Threads",
-        "Reels and analytics on the Pro scope",
+      desc: "Runs the marketing cycle end to end and publishes only after your approval in Telegram.",
+      capabilities: [
+        "Research of the niche, the business and the competitors",
+        "Target audience analysis",
+        "Strategy and targeting ideas",
+        "Content plan",
+        "Post texts",
+        "Reels and Stories",
+        "Graphic design",
+        "Approval with you in Telegram: approved — auto-published to Instagram; rejected — it takes your comment and makes a new version",
+        "Analysis of how the posts performed, feeding the next strategy",
       ],
+      combo: "Marketer, SMM specialist, designer and analyst in one.",
       cta: "Marketer role page",
     },
     {
@@ -125,11 +161,10 @@ const showroomAiEn: ShowroomAiCopy = {
       name: "Business Assistant",
       title: "AI Business Assistant",
       desc: "Answers routine questions from your knowledge base, qualifies inbound conversations, and passes a warm thread to a human.",
-      points: [
+      capabilities: [
         "Grounded in your knowledge base",
         "One inbox across messengers and site chat",
         "Qualification and human handoff",
-        "Works next to the Seller role",
       ],
       cta: "Assistant role page",
     },
@@ -176,8 +211,9 @@ const showroomAiEn: ShowroomAiCopy = {
     },
   ],
   featuredLabel: "Most teams start here",
+  pairBadge: "Seller + Marketer",
+  pairPlanBadge: "Seller and Marketer together",
   perMonth: "/mo",
-  listLabel: "Card",
   cryptoLabel: "USDT / USDC",
   payCta: "Pay with USDT / USDC",
   includedTitle: "Every plan includes",
@@ -205,6 +241,8 @@ const showroomAiEn: ShowroomAiCopy = {
   setupPaidBody: "Once, before launch: catalogue, rules, channels and a test run.",
   trialTitle: "Free trial",
   trialBody: "No card up front. We launch you inside 24 hours and you decide after the trial.",
+  websiteCtaLabel: "No website? We'll build one",
+  websiteCtaHint: "A site, a landing page or a store — turnkey, by the same team.",
   positioningTitle: "Why Showroom AI",
   positioningBody:
     "Agencies and integrators typically charge around $2,000 for implementation alone, and the marketing is not part of it. Showroom AI includes the marketing cycle with publishing, and our seller sells — it does not stop at answering.",
@@ -225,39 +263,50 @@ const showroomAiEn: ShowroomAiCopy = {
 const showroomAiRu: ShowroomAiCopy = {
   brand: "Showroom AI",
   developerCredit: "by AI MARK",
+  poweredBy: "Powered by AI MARK",
   kicker: "Один продукт. Три роли.",
   mantra: "Не просто ответит, а продаст.",
   mantraLead:
-    "Showroom AI ведёт диалог с клиентом, понимает задачу, считает по вашему каталогу и правилам и доводит дело до заказа или записи — круглосуточно.",
-  heroBadge: "Продукт AI MARK",
-  rolesTitle: "Три роли. Один продукт.",
-  rolesSub:
-    "Showroom AI продаётся как один продукт. Каждая роль работает и отдельно, и её можно купить отдельно.",
+    "Отвечает и продаёт круглосуточно: понимает задачу, подбирает решение, считает по вашему каталогу и правилам и доводит дело до заказа или записи.",
+  heroKicker: "Showroom AI · Продавец",
+  heroTrialNote: "{days} дней бесплатно",
+  heroSetupNote: "сетап {fee} (по желанию)",
+  linkageTitle: "Связка: маркетолог приводит клиентов — продавец продаёт",
+  linkageSub:
+    "Две роли работают как один цикл. Маркетолог наполняет воронку: исследование, контент, публикации. Продавец превращает пришедшие диалоги в заказы. Бизнес-ассистент подключается третьей ролью — типовые вопросы не остаются без ответа.",
   roles: [
     {
       id: "seller",
       name: "Продавец",
       title: "AI-продавец",
       desc: "Отвечает и продаёт: квалифицирует задачу, подбирает решение, считает по вашему каталогу и правилам и передаёт команде подготовленную сделку.",
-      points: [
+      capabilities: [
         "Отвечает и продаёт 24/7, а не просто бот-автоответчик",
         "До 3 каналов: чат на сайте, Telegram, плюс WhatsApp / Instagram через ваш собственный Meta Business",
         "Детерминированный расчёт по каталогу — без выдуманных цифр",
         "Передача менеджеру вместе со всем диалогом",
       ],
-      cta: "Открыть демо-чат",
+      industries:
+        "Недвижимость, мебель и интерьер, авто, стройка, ритейл, услуги, салоны и другие отрасли — правила настраиваются под ваш бизнес.",
+      cta: "Страница роли Продавца",
     },
     {
       id: "marketer",
       name: "Маркетолог",
       title: "AI-маркетолог",
-      desc: "Ведёт маркетинговый цикл: стратегия, контент, визуальные черновики, публикации в Instagram, Facebook и Threads, аналитика — с вашим подтверждением в Telegram.",
-      points: [
-        "Стратегия, посты и визуальные черновики",
-        "Подтверждение в Telegram до публикации",
-        "Публикация в IG / FB / Threads",
-        "Reels и аналитика в объёме Pro",
+      desc: "Ведёт маркетинговый цикл целиком и публикует только после вашего подтверждения в Telegram.",
+      capabilities: [
+        "Исследование ниши, бизнеса и конкурентов",
+        "Анализ целевой аудитории",
+        "Стратегия и идеи по таргетингу",
+        "Контент-план",
+        "Тексты постов",
+        "Reels и Stories",
+        "Графический дизайн",
+        "Согласование с вами в Telegram: одобрено — автопубликация в Instagram, отклонено — забирает комментарий и делает новую версию",
+        "Анализ результатов постов и улучшение следующей стратегии",
       ],
+      combo: "Маркетолог, SMM, дизайнер и аналитик в одном.",
       cta: "Страница роли Маркетолога",
     },
     {
@@ -265,11 +314,10 @@ const showroomAiRu: ShowroomAiCopy = {
       name: "Бизнес-ассистент",
       title: "AI-бизнес-ассистент",
       desc: "Отвечает на типовые вопросы по вашей базе знаний, квалифицирует обращения и передаёт тёплый диалог человеку.",
-      points: [
+      capabilities: [
         "Опирается на вашу базу знаний",
         "Единый инбокс: мессенджеры и чат на сайте",
         "Квалификация и передача человеку",
-        "Работает вместе с ролью Продавца",
       ],
       cta: "Страница роли Бизнес-ассистента",
     },
@@ -316,8 +364,9 @@ const showroomAiRu: ShowroomAiCopy = {
     },
   ],
   featuredLabel: "Чаще всего начинают здесь",
+  pairBadge: "Продавец + Маркетолог",
+  pairPlanBadge: "Продавец и Маркетолог вместе",
   perMonth: "/мес",
-  listLabel: "Карта",
   cryptoLabel: "USDT / USDC",
   payCta: "Оплатить в USDT / USDC",
   includedTitle: "Входит в каждый тариф",
@@ -345,6 +394,8 @@ const showroomAiRu: ShowroomAiCopy = {
   setupPaidBody: "Разово, до запуска: каталог, правила, каналы и тестовый прогон.",
   trialTitle: "Бесплатный триал",
   trialBody: "Без карты. Запускаем в течение 24 часов, решение — после триала.",
+  websiteCtaLabel: "Нет сайта? Сделаем под ключ",
+  websiteCtaHint: "Сайт, лендинг или магазин — под ключ, у той же команды.",
   positioningTitle: "Почему Showroom AI",
   positioningBody:
     "У агентств и интеграторов только внедрение обычно стоит около $2 000, и маркетинг в это не входит. В Showroom AI маркетинговый цикл с публикациями уже внутри, а продавец продаёт — а не останавливается на ответе.",
