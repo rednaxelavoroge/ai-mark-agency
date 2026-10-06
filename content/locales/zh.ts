@@ -188,7 +188,7 @@ export const copyZh: Copy = {
         "value": "SHOWROOM AI / AI Sales Agent配置展厅",
         "who": "制造业工厂、汽车销售、全屋定制及工程总包",
         "extra": "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。",
-        "price": "299 美元/月起"
+        "price": "89 美元/月起"
       }
     }
   },
@@ -249,7 +249,7 @@ export const copyZh: Copy = {
     "eyebrow": "Commercial model",
     "title": "Several ways to work together. Retainers are one of them.",
     "lead": "Pick a product SKU, a service sprint, a retained department, or a custom build. The prices below are bands, not a promise of outcome.",
-    "skuNote": "AI product subscriptions (roughly $149–349+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
+    "skuNote": "AI product subscriptions (roughly $89–449+/mo) are not the same thing as an AI Marketing Department retainer ($1,200–3,500+/mo).",
     "perMonth": "/月",
     "featured": "最多客户选择",
     "retainerCta": "立即开启合作",

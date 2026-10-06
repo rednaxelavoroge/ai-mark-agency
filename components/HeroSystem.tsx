@@ -6,6 +6,10 @@ import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 import type { Copy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
+import { getShowroomAiCopy } from "@/content/showroom-ai";
+import { ShowroomDemoChatButton } from "@/components/products/ShowroomDemoChat";
+import { SHOWROOM_AI_SETUP_FEE_USD, SHOWROOM_AI_TRIAL_DAYS } from "@/lib/showroom-ai";
+import { formatUsdPrice } from "@/lib/pricing/crypto-checkout";
 import { brief } from "@/lib/brief";
 
 function HeroCursor() {
@@ -52,6 +56,7 @@ interface HeroProps {
  */
 export function HeroSystem({ locale, t }: HeroProps) {
   const hero = getPublicChromeCopy(locale).heroExtra;
+  const showroom = getShowroomAiCopy(locale);
   const lede = hero.lede || brief(t.hero.lead);
   const primary = hero.primaryCta || t.hero.primaryCta;
   const secondary = hero.secondaryCta || t.hero.secondaryCta;
@@ -91,6 +96,39 @@ export function HeroSystem({ locale, t }: HeroProps) {
                 {secondary} →
               </Link>
             </div>
+            {/*
+              Showroom AI demo on the first screen. The live widget is the same
+              one the contact launcher mounts (`ContactLauncher`), so this band
+              only dispatches the open-chat event with a Showroom opening line.
+              Amounts come from the constants, never from this file.
+            */}
+            {/* Kept compact on phones so the demo-chat button stays inside the
+                first screen; the longer lead returns from `sm` up. */}
+            <div className="mt-5 max-w-xl rounded-2xl border border-white/25 bg-[#193428]/85 p-4 sm:mt-6">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--lime)]">
+                {showroom.brand} · {showroom.kicker}
+              </p>
+              <p className="mt-1.5 font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                {showroom.mantra}
+              </p>
+              <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-[#c5d0c4] sm:line-clamp-none">
+                {showroom.mantraLead}
+              </p>
+              <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2 sm:mt-3">
+                <ShowroomDemoChatButton
+                  locale={locale}
+                  className="inline-flex min-h-11 items-center rounded-full bg-[var(--lime)] px-5 text-sm font-semibold text-[#14291f] transition-opacity hover:opacity-90"
+                />
+                <span className="font-mono text-[11px] text-[#c5d0c4]">
+                  {SHOWROOM_AI_TRIAL_DAYS}
+                  {locale === "ru" ? " дней бесплатно" : " days free"} ·{" "}
+                  {locale === "ru" ? "сетап" : "setup"}{" "}
+                  {formatUsdPrice(SHOWROOM_AI_SETUP_FEE_USD)}
+                  {locale === "ru" ? " (по желанию)" : " (optional)"}
+                </span>
+              </div>
+            </div>
+
             <p className="mt-6 max-w-xl text-[13px] leading-relaxed text-[#c5d0c4]">{footnote}</p>
           </div>
 

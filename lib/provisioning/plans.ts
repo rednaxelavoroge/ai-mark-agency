@@ -11,6 +11,9 @@ const SKU_PRODUCT_PLAN: Readonly<
   "assistant-standard": { product: "assistant", plan: "standard" },
   "showroom-standard": { product: "showroom", plan: null },
   "showroom-business": { product: "showroom", plan: null },
+  "showroom-start": { product: "showroom", plan: null },
+  "showroom-growth": { product: "showroom", plan: null },
+  "showroom-pro": { product: "showroom", plan: null },
 });
 
 /**

@@ -89,10 +89,10 @@ export interface AibaContent {
 }
 
 export const aibaRu: AibaContent = {
-  seoTitle: "AI Business Assistant | Ответы, квалификация и передача человеку · AI MARK",
+  seoTitle: "Showroom AI · Бизнес-ассистент | Ответы, квалификация и передача человеку · AI MARK",
   seoDescription:
-    "Клиент пишет в WhatsApp, Telegram, Instagram Direct, Messenger или на сайте. AI отвечает по базе знаний, квалифицирует обращение и передаёт его человеку. Цену и коммерческое предложение готовит SHOWROOM AI.",
-  badge: "Собственный AI-продукт · AI MARK",
+    "Роль Бизнес-ассистента в Showroom AI: клиент пишет в WhatsApp, Telegram, Instagram Direct, Messenger или на сайте. AI отвечает по базе знаний, квалифицирует обращение и передаёт его человеку. Цену и коммерческое предложение готовит роль Продавца.",
+  badge: "Showroom AI · роль Бизнес-ассистента",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:
@@ -322,10 +322,10 @@ export const aibaRu: AibaContent = {
 };
 
 export const aibaEn: AibaContent = {
-  seoTitle: "AI Business Assistant | Answers, qualification, and human handoff · AI MARK",
+  seoTitle: "Showroom AI · Business Assistant | Answers, qualification, and human handoff · AI MARK",
   seoDescription:
-    "One assistant answers in WhatsApp, Telegram, Instagram Direct, Messenger, and on the website from your knowledge base, qualifies the request, and hands it to a person. Commercial proposals are SHOWROOM AI.",
-  badge: "Proprietary AI Platform · AI MARK",
+    "The Business Assistant role inside Showroom AI: it answers in WhatsApp, Telegram, Instagram Direct, Messenger, and on the website from your knowledge base, qualifies the request, and hands it to a person. Commercial proposals are the Seller role.",
+  badge: "Showroom AI · Business Assistant role",
   titleA: "AI Business",
   titleB: "Assistant",
   subtitle:

@@ -13,6 +13,7 @@ import { PanelDemo } from "@/components/products/PanelDemo";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
 import { FeatureList } from "@/components/products/FeatureList";
+import { ShowroomRoleBanner } from "@/components/products/ShowroomRoleBanner";
 
 export function AIBAPageContent({
   locale,
@@ -32,6 +33,8 @@ export function AIBAPageContent({
 
   return (
     <article className="min-h-screen bg-ink text-paper">
+      {/* This long-published URL is now the Business Assistant role page inside Showroom AI. */}
+      <ShowroomRoleBanner locale={locale} role="assistant" className="border-b border-line py-4" />
       {/* 1. HERO SECTION */}
       <section className="am-forest-hero relative overflow-hidden border-b border-line pb-16 pt-12 sm:pb-24 sm:pt-20">
         <div className="pointer-events-none absolute -top-40 right-10 h-[500px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(45,56,27,0.1),transparent_70%)]" />

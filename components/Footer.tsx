@@ -4,12 +4,18 @@ import { getPublicChromeCopy } from "@/content/sections";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
-import { productPagePath, productsHubPath } from "@/lib/products";
+import { productsHubPath } from "@/lib/products";
 import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
+import { getShowroomAiCopy } from "@/content/showroom-ai";
+import { showroomRoleHref } from "@/lib/showroom-ai";
 
 export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
   const year = new Date().getFullYear();
   const chrome = getPublicChromeCopy(locale).footer;
+  // Product links are the Showroom AI roles; AI MARK stays the developer.
+  const showroom = getShowroomAiCopy(locale);
+  const roleName = (id: "seller" | "marketer" | "assistant") =>
+    `${showroom.brand} · ${showroom.roles.find((role) => role.id === id)?.name ?? id}`;
 
   return (
     <footer className="border-t border-line bg-ink-2/60">
@@ -65,18 +71,18 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               <li>
-                <Link href={productPagePath(locale, "aime")} className="hover:text-paper transition-colors">
-                  AI Marketing Employee
+                <Link href={showroomRoleHref(locale, "seller")} className="hover:text-paper transition-colors">
+                  {roleName("seller")}
                 </Link>
               </li>
               <li>
-                <Link href={productPagePath(locale, "assistant")} className="hover:text-paper transition-colors">
-                  AI Business Assistant
+                <Link href={showroomRoleHref(locale, "marketer")} className="hover:text-paper transition-colors">
+                  {roleName("marketer")}
                 </Link>
               </li>
               <li>
-                <Link href={productPagePath(locale, "showroom")} className="hover:text-paper transition-colors">
-                  {chrome.showroomAi}
+                <Link href={showroomRoleHref(locale, "assistant")} className="hover:text-paper transition-colors">
+                  {roleName("assistant")}
                 </Link>
               </li>
               <li>
@@ -129,7 +135,10 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row text-xs text-muted">
           <p>
-            © {year} AI MARK. {chrome.rights}
+            © {year} AI MARK. {chrome.rights}{" "}
+            <span className="text-muted">
+              {showroom.brand} — {showroom.developerCredit}
+            </span>
           </p>
           <div className="flex items-center gap-4">
             <span>{chrome.taglineShort}</span>

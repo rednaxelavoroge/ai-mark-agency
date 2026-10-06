@@ -70,18 +70,46 @@ export const PAYABLE_SKUS: PayableSku[] = [
     name: "AI Business Assistant Standard",
     billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
+  // Legacy Showroom SKUs, kept payable so an already-published `/pay?sku=`
+  // link or an outstanding invoice still resolves. They are not part of the
+  // Showroom AI role catalogue below, and their list prices never change —
+  // an existing subscriber must not be re-priced by a catalog edit.
   {
     id: "showroom-standard",
     productRef: "showroom",
     amountUsd: 199,
-    name: "SHOWROOM AI Standard",
+    name: "SHOWROOM AI Standard (legacy)",
     billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
   {
     id: "showroom-business",
     productRef: "showroom",
     amountUsd: 299,
-    name: "SHOWROOM AI Business",
+    name: "SHOWROOM AI Business (legacy)",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
+  },
+  // Showroom AI bundles, 2026-10-06. The id is internal; the customer-facing
+  // tier name ("Business") is the display name, and the middle tier keeps the
+  // `growth` id used elsewhere in this repo for the second step of a ladder.
+  {
+    id: "showroom-start",
+    productRef: "showroom",
+    amountUsd: 89,
+    name: "Showroom AI Start",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
+  },
+  {
+    id: "showroom-growth",
+    productRef: "showroom",
+    amountUsd: 249,
+    name: "Showroom AI Business",
+    billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
+  },
+  {
+    id: "showroom-pro",
+    productRef: "showroom",
+    amountUsd: 449,
+    name: "Showroom AI Pro",
     billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },
 ];
