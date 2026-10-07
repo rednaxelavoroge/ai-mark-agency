@@ -31,7 +31,10 @@ type FeaturedProduct = {
 /**
  * Home follows the Manus sample section order: three entry points, three
  * product cards, team-vs-subscription, eight-stage path, contact, then
- * partner / investor / pricing cards. Long UI mocks stay on the subpages.
+ * investor / pricing cards. The partner program keeps its own page — its
+ * multi-level commission grid is not surfaced on the home page; the footer
+ * (and the site header) link to /partners instead. Long UI mocks stay on the
+ * subpages.
  */
 export function HomeRest({
   locale,
@@ -46,7 +49,7 @@ export function HomeRest({
 }) {
   const h = getPublicChromeCopy(locale).homeRest;
   const entries = h.entries;
-  const tailOrder = ["/partners", "/investors", "/pricing"];
+  const tailOrder = ["/investors", "/pricing"];
   const tail = tailOrder
     .map((href) => hubModules.find((m) => m.href === href))
     .filter((m): m is HubModule => Boolean(m));
@@ -220,7 +223,7 @@ export function HomeRest({
       </Section>
 
       <section className="border-t border-line">
-        <div className="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:px-6 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 py-10 sm:grid-cols-2 sm:px-6">
           {tail.map((card) => (
             <Link key={card.href} href={navHref(locale, card.href)} className="rounded-[24px] border border-line bg-ink-2 p-6">
               <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{card.tag}</p>
