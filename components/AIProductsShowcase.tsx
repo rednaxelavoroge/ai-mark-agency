@@ -46,7 +46,7 @@ export function AIProductsShowcase({ locale }: { locale: Locale }) {
         ? "Клиент пишет — AI отвечает по базе знаний, квалифицирует обращение и передаёт человеку. Цену и коммерческое предложение считает Showroom AI."
         : "The customer writes. AI answers from the knowledge base, qualifies the request, and hands it to a person. Showroom AI calculates the price and prepares the proposal.",
       channels: ["WhatsApp Cloud API", "Telegram", "Instagram Direct", "Messenger", "Webchat"],
-      pricing: locale === "ru" ? "Entry $149/мес · Standard $249/мес" : "Entry $149/mo · Standard $249/mo",
+      pricing: locale === "ru" ? "Entry $149/мес · Standard $199/мес" : "Entry $149/mo · Standard $199/mo",
       mock: "assistant" as ProductVariant,
       highlights: [
         locale === "ru" ? "Единый инбокс для всех 5 каналов" : "Unified shared inbox for all 5 channels",

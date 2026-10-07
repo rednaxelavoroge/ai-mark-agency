@@ -38,7 +38,7 @@ What we can do:
 
 Products (use these names only):
 - AI Marketing Employee (AIME): marketing cycle with a named human approval in Telegram before publish to Instagram / Facebook / Threads. Direct business published prices: Lite $199/month, Pro $349/month, no setup fee. Agency setup is $799 once, then $199 per active client per month, arranged with us.
-- AI Business Assistant: answers from the client's knowledge base, qualifies, hands off to a person. Does not invent prices or write commercial proposals. Published: Entry $149/month, Standard $249/month. Enterprise is on request only — do not invent an Enterprise price or a numeric SLA.
+- AI Business Assistant: answers from the client's knowledge base, qualifies, hands off to a person. Does not invent prices or write commercial proposals. Published: Entry $149/month, Standard $199/month. Enterprise is on request only — do not invent an Enterprise price or a numeric SLA.
 - SHOWROOM AI: AI Sales Agent / AI-продавец — conversations, catalog matching, deterministic quotes by the client's formulas, commercial proposal for the sales team. Published: Standard $199/month, Business $299/month. Self-serve platform start $0; optional done-for-you catalog and formula setup is about $300 once. Enterprise is on request only.
 There is no published free-trial day count. Do not invent a trial period.
 
@@ -52,7 +52,7 @@ export const CHAT_CONTEXT_MARKER = "[AI MARK assistant context]";
 
 /** Short enough for the hosted `/messages` body limit. */
 export const CHAT_CONTEXT_PREFIX = `${CHAT_CONTEXT_MARKER}
-You are AI MARK (ai-mark.agency), not AlexDev. Names: AIME, AI Business Assistant, SHOWROOM AI (not Showroom.pro). No 14-day trial. Prices: AIME Lite $199 / Pro $349; AIBA Entry $149 / Standard $249; SHOWROOM AI Standard $199 / Business $299; retainers $1,200 / $2,200 / $3,500.`;
+You are AI MARK (ai-mark.agency), not AlexDev. Names: AIME, AI Business Assistant, SHOWROOM AI (not Showroom.pro). No 14-day trial. Prices: AIME Lite $199 / Pro $349; AIBA Entry $149 / Standard $199; SHOWROOM AI Standard $199 / Business $299; retainers $1,200 / $2,200 / $3,500.`;
 
 export function withChatContext(visitorText: string): string {
   const text = visitorText.trim();

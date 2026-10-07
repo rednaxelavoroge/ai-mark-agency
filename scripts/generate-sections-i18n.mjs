@@ -481,7 +481,7 @@ const publicChromeEn = {
         href: "/products",
         kicker: "01 / AI products",
         title: "Put a ready AI tool to work.",
-        body: "AI Marketing Employee, AI Business Assistant and SHOWROOM AI each handle a different part of the work.",
+        body: "Showroom AI: Seller, Marketer, Business Assistant",
       },
       {
         href: "/digital-production",
@@ -676,7 +676,7 @@ const publicChromeRu = {
         href: "/products",
         kicker: "01 / AI-продукты",
         title: "Подключить готовый AI-инструмент.",
-        body: "AI Marketing Employee, AI Business Assistant и SHOWROOM AI решают разные задачи.",
+        body: "Showroom AI: Продавец, Маркетолог, Бизнес-ассистент",
       },
       {
         href: "/digital-production",

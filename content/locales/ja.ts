@@ -182,7 +182,7 @@ export const copyJa: Copy = {
         "value": "Sales AI inbox — WhatsApp, Instagram Direct, Messenger, website chat, Telegram. Knowledge base, replies, qualify, human handoff.",
         "who": "Teams that need a sales inbox, not a chatbot funnel builder.",
         "extra": "A person takes over when the conversation needs a human.",
-        "price": "Entry $149/mo · Standard $249/mo"
+        "price": "Entry $149/mo · Standard $199/mo"
       },
       "showroom": {
         "value": "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",

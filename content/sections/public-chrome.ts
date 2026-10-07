@@ -294,7 +294,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / AI products",
           "title": "Put a ready AI tool to work.",
-          "body": "AI Marketing Employee, AI Business Assistant and SHOWROOM AI each handle a different part of the work."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -452,7 +452,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Commercial Model",
           "title": "Pricing & Engagement Formats",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Transparent Tiers",
           "cta": "View All Pricing",
           "href": "/pricing",
@@ -937,7 +937,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 /Productos de IA",
           "title": "Ponga a trabajar una herramienta de IA lista.",
-          "body": "AI Marketing Employee, AI Business Assistant y SHOWROOM AI cubren partes distintas del trabajo."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -1095,7 +1095,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Modelo comercial",
           "title": "Formatos de precios y compromiso",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Niveles transparentes",
           "cta": "Ver todos los precios",
           "href": "/pricing",
@@ -1580,7 +1580,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 /produtos AI",
           "title": "Coloque uma ferramenta de IA pronta para funcionar.",
-          "body": "AI Marketing Employee, AI Business Assistant e SHOWROOM AI cobrem partes diferentes do trabalho."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -1738,7 +1738,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Modelo Comercial",
           "title": "Formatos de preços e engajamento",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Camadas Transparentes",
           "cta": "Ver todos os preços",
           "href": "/pricing",
@@ -2223,7 +2223,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / AI-продукты",
           "title": "Подключить готовый AI-инструмент.",
-          "body": "AI Marketing Employee, AI Business Assistant и SHOWROOM AI решают разные задачи."
+          "body": "Showroom AI: Продавец, Маркетолог, Бизнес-ассистент"
         },
         {
           "href": "/digital-production",
@@ -2381,7 +2381,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Тарифы и условия",
           "title": "Форматы работы и цены",
-          "desc": "Ретейнеры AI-маркетингового отдела от $1,200/мес, продуктовые подписки от $149/мес и заказной цифровой продакшн.",
+          "desc": "Ретейнеры AI-маркетингового отдела от $1,200/мес, продуктовые подписки от $89/мес и заказной цифровой продакшн.",
           "badge": "Прозрачные тарифы",
           "cta": "Все тарифы и условия",
           "href": "/pricing",
@@ -2866,7 +2866,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01/ منتجات الذكاء الاصطناعي",
           "title": "استخدم أداة الذكاء الاصطناعي الجاهزة للعمل.",
-          "body": "AI Marketing Employee وAI Business Assistant وSHOWROOM AI يغطي كلٌّ جزءاً مختلفاً من العمل."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -3024,7 +3024,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "النموذج التجاري",
           "title": "تنسيقات التسعير والمشاركة",
-          "desc": "عقود قسم التسويق من $1,200/شهر، اشتراكات SaaS من $149/شهر، وإنتاج مشاريع جاهز.",
+          "desc": "عقود قسم التسويق من $1,200/شهر، اشتراكات SaaS من $89/شهر، وإنتاج مشاريع جاهز.",
           "badge": "طبقات شفافة",
           "cta": "عرض جميع الأسعار",
           "href": "/pricing",
@@ -3509,7 +3509,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / 人工智能产品",
           "title": "让现成的人工智能工具发挥作用。",
-          "body": "AI Marketing Employee、AI Business Assistant 与 SHOWROOM AI 各负责工作中的不同环节。"
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -3667,7 +3667,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "商业模式",
           "title": "定价和参与格式",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "透明层",
           "cta": "查看所有定价",
           "href": "/pricing",
@@ -4152,7 +4152,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / produk AI",
           "title": "Gunakan alat AI yang sudah siap untuk bekerja.",
-          "body": "AI Marketing Employee, AI Business Assistant, dan SHOWROOM AI menangani bagian berbeda dari pekerjaan."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -4310,7 +4310,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Model Komersial",
           "title": "Format Harga & Keterlibatan",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Tingkatan Transparan",
           "cta": "Lihat Semua Harga",
           "href": "/pricing",
@@ -4795,7 +4795,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01/Sản phẩm trí tuệ nhân tạo",
           "title": "Đặt một công cụ AI sẵn sàng để hoạt động.",
-          "body": "AI Marketing Employee, AI Business Assistant và SHOWROOM AI đảm nhận các phần khác nhau của công việc."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -4953,7 +4953,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Mô hình thương mại",
           "title": "Định dạng giá cả và tương tác",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Cấp độ minh bạch",
           "cta": "Xem tất cả giá",
           "href": "/pricing",
@@ -5438,7 +5438,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / KI-Produkte",
           "title": "Setzen Sie ein fertiges KI-Tool ein.",
-          "body": "AI Marketing Employee, AI Business Assistant und SHOWROOM AI übernehmen jeweils einen anderen Teil der Arbeit."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -5596,7 +5596,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Kommerzielles Modell",
           "title": "Preise & Formate",
-          "desc": "Marketing-Retainer ab $1.200/Mo, SaaS ab $149/Mo und Venture-Produktion.",
+          "desc": "Marketing-Retainer ab $1.200/Mo, SaaS ab $89/Mo und Venture-Produktion.",
           "badge": "Transparente Stufen",
           "cta": "Alle Preise",
           "href": "/pricing",
@@ -6081,7 +6081,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / Produits IA",
           "title": "Mettez un outil d’IA prêt à fonctionner.",
-          "body": "AI Marketing Employee, AI Business Assistant et SHOWROOM AI couvrent des parties différentes du travail."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -6239,7 +6239,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Modèle commercial",
           "title": "Formats de tarification et d'engagement",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Niveaux transparents",
           "cta": "Voir tous les prix",
           "href": "/pricing",
@@ -6724,7 +6724,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / AI製品",
           "title": "すぐに使える AI ツールを稼働させます。",
-          "body": "AI Marketing Employee、AI Business Assistant、SHOWROOM AI が仕事の異なる部分を担います。"
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -6882,7 +6882,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "コマーシャルモデル",
           "title": "価格設定と契約形式",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "透明な層",
           "cta": "すべての価格を見る",
           "href": "/pricing",
@@ -7367,7 +7367,7 @@ export const publicChromeCopy = {
           "href": "/products",
           "kicker": "01 / AI ürünleri",
           "title": "Hazır bir yapay zeka aracını çalıştırın.",
-          "body": "AI Marketing Employee, AI Business Assistant ve SHOWROOM AI işin farklı bölümlerini üstlenir."
+          "body": "Showroom AI: Seller, Marketer, Business Assistant"
         },
         {
           "href": "/digital-production",
@@ -7525,7 +7525,7 @@ export const publicChromeCopy = {
           "num": "03",
           "tag": "Ticari Model",
           "title": "Fiyatlandırma ve Katılım Formatları",
-          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $149/mo, and turnkey venture production.",
+          "desc": "Marketing department retainers from $1,200/mo, SaaS subscriptions from $89/mo, and turnkey venture production.",
           "badge": "Şeffaf Katmanlar",
           "cta": "Tüm Fiyatları Görüntüle",
           "href": "/pricing",

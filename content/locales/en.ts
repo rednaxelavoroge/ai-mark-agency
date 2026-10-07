@@ -139,7 +139,7 @@ export const copyEn: Copy = {
             "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are SHOWROOM AI.",
           who: "Teams that need replies and qualification, not a quote engine.",
           extra: "A person takes over when the conversation needs a human.",
-          price: "Entry $149/mo · Standard $249/mo",
+          price: "Entry $149/mo · Standard $199/mo",
         },
         showroom: {
           value:

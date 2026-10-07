@@ -14,7 +14,6 @@ import { getShowroomAiCopy } from "@/content/showroom-ai";
 import { ShowroomAiIncluded, ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
 import { ShowroomDemoChatButton } from "@/components/products/ShowroomDemoChat";
 import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
-import { ShowroomPoweredBy } from "@/components/products/ShowroomPoweredBy";
 
 export function ShowroomAIPageContent({
   locale,
@@ -75,8 +74,8 @@ export function ShowroomAIPageContent({
                 </p>
                 <p className="px-3 pb-3 text-sm text-[#f4f6ee]">
                   {ru
-                    ? "Ассистент отвечает и квалифицирует. Showroom AI продаёт и готовит сделку."
-                    : "The assistant answers and qualifies. Showroom AI sells and prepares the deal."}
+                    ? "Бизнес-ассистент отвечает и квалифицирует, Продавец продаёт."
+                    : "Business Assistant answers and qualifies, the Seller sells."}
                 </p>
               </details>
 
@@ -505,9 +504,6 @@ export function ShowroomAIPageContent({
           </div>
         </div>
       </section>
-
-      {/* Developer credit: Showroom AI is the product, AI MARK builds it. */}
-      <ShowroomPoweredBy locale={locale} />
     </article>
   );
 }

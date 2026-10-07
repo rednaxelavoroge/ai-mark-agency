@@ -142,7 +142,6 @@ export function ShowroomAiPlans({
       <div className="mt-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
         <div className="rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">
           <h3 className="font-display text-base font-semibold text-paper">{c.separateTitle}</h3>
-          <p className="mt-1 text-xs text-muted">{c.separateSub}</p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {SHOWROOM_AI_SEPARATE_OFFERS.map((offer) => {
               const price = skuPrice(offer.skuId);
