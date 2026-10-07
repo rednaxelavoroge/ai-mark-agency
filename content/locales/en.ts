@@ -139,7 +139,7 @@ export const copyEn: Copy = {
             "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are SHOWROOM AI.",
           who: "Teams that need replies and qualification, not a quote engine.",
           extra: "A person takes over when the conversation needs a human.",
-          price: "Entry $149/mo · Standard $249/mo",
+          price: "Entry $149/mo · Standard $199/mo",
         },
         showroom: {
           value:
@@ -289,7 +289,7 @@ export const copyEn: Copy = {
       title: "An international partner network is how we scale presence.",
       lead: "We do not need a full office in every region to develop a market. Partners bring clients, represent the solutions, and build local presence.",
       model:
-        "International presence without building our own infrastructure in every country. Launch bonus until 31 Dec 2026: up to 80% on a client's first payment; renewals from the 2nd payment pay L1 20% + L2 5%. See /partners for the full schedule.",
+        "International presence without building our own infrastructure in every country. Current commission terms and payout details live on the partner page.",
       earn: "A partner can:",
       cta: "Talk partnership",
       types: [

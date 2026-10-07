@@ -66,7 +66,7 @@ export const PAYABLE_SKUS: PayableSku[] = [
   {
     id: "assistant-standard",
     productRef: "assistant",
-    amountUsd: 249,
+    amountUsd: 199,
     name: "AI Business Assistant Standard",
     billingPeriodDays: SUBSCRIPTION_PERIOD_DAYS,
   },

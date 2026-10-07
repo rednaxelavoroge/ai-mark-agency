@@ -22,7 +22,7 @@ const heroLedes = {
 const homeRestPatch = {
   de: {
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant und SHOWROOM AI übernehmen jeweils einen anderen Teil der Arbeit.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
     retainerTitle: "KI-Marketing und Wachstum",
     retainerBody:
       "Teamarbeit zu Strategie, Marketing, Vertrieb und Automatisierung. Der Umfang folgt der Aufgabe.",
@@ -38,7 +38,7 @@ const homeRestPatch = {
     retainerBody:
       "Trabajo en equipo en estrategia, marketing, ventas y automatización. El alcance sigue la tarea.",
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant y SHOWROOM AI cubren partes distintas del trabajo.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   pt: {
     ideaOrCapital: "Ideia ou capital",
@@ -48,7 +48,7 @@ const homeRestPatch = {
     retainerBody:
       "Trabalho em equipe em estratégia, marketing, vendas e automação. O escopo segue a tarefa.",
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant e SHOWROOM AI cobrem partes diferentes do trabalho.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   ar: {
     ideaOrCapital: "فكرة أو رأس مال",
@@ -57,14 +57,14 @@ const homeRestPatch = {
     retainerTitle: "تسويق ونمو بالذكاء الاصطناعي",
     retainerBody: "عمل جماعي في الاستراتيجية والتسويق والمبيعات والأتمتة. النطاق يتبع المهمة.",
     entries0Body:
-      "AI Marketing Employee وAI Business Assistant وSHOWROOM AI يغطي كلٌّ جزءاً مختلفاً من العمل.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   zh: {
     ideaOrCapital: "想法或资本",
     stagesLead: "从想法、在营业务或资本出发。研究与经济模型优先于任何规模承诺。",
     retainerTitle: "AI 营销与增长",
     retainerBody: "团队在战略、营销、销售与自动化上协作，范围随任务而定。",
-    entries0Body: "AI Marketing Employee、AI Business Assistant 与 SHOWROOM AI 各负责工作中的不同环节。",
+    entries0Body: "Showroom AI: Seller, Marketer, Business Assistant",
   },
   id: {
     ideaOrCapital: "Ide atau modal",
@@ -74,7 +74,7 @@ const homeRestPatch = {
     retainerBody:
       "Kerja tim pada strategi, pemasaran, penjualan, dan otomasi. Ruang lingkup mengikuti tugas.",
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant, dan SHOWROOM AI menangani bagian berbeda dari pekerjaan.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   vi: {
     ideaOrCapital: "Ý tưởng hoặc vốn",
@@ -84,7 +84,7 @@ const homeRestPatch = {
     retainerBody:
       "Làm việc nhóm về chiến lược, marketing, bán hàng và tự động hóa. Phạm vi theo nhiệm vụ.",
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant và SHOWROOM AI đảm nhận các phần khác nhau của công việc.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   fr: {
     ideaOrCapital: "Idée ou capital",
@@ -94,7 +94,7 @@ const homeRestPatch = {
     retainerBody:
       "Travail d'équipe sur la stratégie, le marketing, les ventes et l'automatisation. Le périmètre suit la tâche.",
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant et SHOWROOM AI couvrent des parties différentes du travail.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   ja: {
     ideaOrCapital: "アイデアまたは資本",
@@ -103,7 +103,7 @@ const homeRestPatch = {
     retainerTitle: "AIマーケティングとグロース",
     retainerBody: "戦略、マーケ、販売、自動化をチームで進めます。範囲はタスクに沿います。",
     entries0Body:
-      "AI Marketing Employee、AI Business Assistant、SHOWROOM AI が仕事の異なる部分を担います。",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
   tr: {
     ideaOrCapital: "Fikir veya sermaye",
@@ -113,7 +113,7 @@ const homeRestPatch = {
     retainerBody:
       "Strateji, pazarlama, satış ve otomasyonda ekip çalışması. Kapsam göreve göre şekillenir.",
     entries0Body:
-      "AI Marketing Employee, AI Business Assistant ve SHOWROOM AI işin farklı bölümlerini üstlenir.",
+      "Showroom AI: Seller, Marketer, Business Assistant",
   },
 };
 

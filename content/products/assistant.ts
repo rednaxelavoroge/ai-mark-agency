@@ -266,7 +266,7 @@ export const aibaRu: AibaContent = {
     {
       id: "standard",
       name: "Standard",
-      price: "$249",
+      price: "$199",
       period: "/ месяц",
       badge: "Рекомендуем",
       note: "Все 5 каналов + интеграция с CRM",
@@ -499,7 +499,7 @@ export const aibaEn: AibaContent = {
     {
       id: "standard",
       name: "Standard",
-      price: "$249",
+      price: "$199",
       period: "/ month",
       badge: "Recommended",
       note: "All 5 channels + direct CRM integration",

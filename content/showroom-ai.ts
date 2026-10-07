@@ -46,8 +46,6 @@ export interface ShowroomAiCopy {
   brand: string;
   /** Developer credit shown next to the product brand. */
   developerCredit: string;
-  /** Footer of every Showroom page. */
-  poweredBy: string;
   kicker: string;
   /** Main message: «не просто ответит, а продаст». */
   mantra: string;
@@ -79,7 +77,6 @@ export interface ShowroomAiCopy {
   includedPoints: string[];
   /* Roles bought on their own */
   separateTitle: string;
-  separateSub: string;
   separate: { id: string; label: string; sub: string }[];
   /* Setup, trial, positioning */
   setupTitle: string;
@@ -110,7 +107,6 @@ export interface ShowroomAiCopy {
 const showroomAiEn: ShowroomAiCopy = {
   brand: "Showroom AI",
   developerCredit: "by AI MARK",
-  poweredBy: "Powered by AI MARK",
   kicker: "One product. Three roles.",
   mantra: "It doesn't just answer — it sells.",
   mantraLead:
@@ -225,7 +221,6 @@ const showroomAiEn: ShowroomAiCopy = {
     "Launch inside 24 hours",
   ],
   separateTitle: "Or one role on its own",
-  separateSub: "Each role is sold separately. Prices are unchanged for the Marketer and Assistant roles.",
   separate: [
     { id: "seller", label: "Seller", sub: "The Seller role alone — up to 3 channels." },
     { id: "marketer-lite", label: "Marketer Lite", sub: "Strategy, posts, approval in Telegram." },
@@ -263,7 +258,6 @@ const showroomAiEn: ShowroomAiCopy = {
 const showroomAiRu: ShowroomAiCopy = {
   brand: "Showroom AI",
   developerCredit: "by AI MARK",
-  poweredBy: "Powered by AI MARK",
   kicker: "Один продукт. Три роли.",
   mantra: "Не просто ответит, а продаст.",
   mantraLead:
@@ -378,7 +372,6 @@ const showroomAiRu: ShowroomAiCopy = {
     "Запуск в течение 24 часов",
   ],
   separateTitle: "Или одна роль отдельно",
-  separateSub: "Каждую роль можно купить отдельно. Цены Маркетолога и Бизнес-ассистента не меняются.",
   separate: [
     { id: "seller", label: "Продавец", sub: "Только роль Продавца — до 3 каналов." },
     { id: "marketer-lite", label: "Маркетолог Lite", sub: "Стратегия, посты, подтверждение в Telegram." },

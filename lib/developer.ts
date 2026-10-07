@@ -4,9 +4,9 @@ import type { Locale } from "./site.ts";
  * AI MARK / AlexDev — the developer company behind Showroom AI.
  *
  * Showroom AI is the product brand customers buy; AI MARK builds it. Several
- * places credit the developer (the "Powered by AI MARK" footer line, the
- * "No website? We'll build one" line in the pricing section), so the outbound
- * URLs live here instead of being typed into components.
+ * places credit the developer (the "Showroom AI — by AI MARK" credit in the
+ * site footer, the "No website? We'll build one" line in the pricing section),
+ * so the outbound URLs live here instead of being typed into components.
  *
  * The developer site runs its own locale-prefixed URLs and does not cover every
  * locale this site ships. Only the locales it actually publishes are forwarded;

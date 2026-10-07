@@ -14,7 +14,6 @@ import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
 import { FeatureList } from "@/components/products/FeatureList";
 import { ShowroomRoleBanner } from "@/components/products/ShowroomRoleBanner";
-import { ShowroomPoweredBy } from "@/components/products/ShowroomPoweredBy";
 
 export function AIBAPageContent({
   locale,
@@ -543,9 +542,6 @@ export function AIBAPageContent({
           </div>
         </div>
       </section>
-
-      {/* Developer credit: this is the Business Assistant role of Showroom AI. */}
-      <ShowroomPoweredBy locale={locale} />
     </article>
   );
 }
