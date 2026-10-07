@@ -354,7 +354,7 @@ export async function publishDuePosts(): Promise<PublishSummary> {
       continue;
     }
     if (!post.image_url) {
-      await fail("no image generated for this post; see docs/marketer-setup.md (OPENAI_API_KEY)");
+      await fail("no image generated for this post; see docs/marketer-setup.md (OPENAI_API_KEY or OPENROUTER_API_KEY)");
       continue;
     }
 
