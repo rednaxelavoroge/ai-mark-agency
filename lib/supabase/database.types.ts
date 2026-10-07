@@ -646,6 +646,175 @@ export type Database = {
         };
         Relationships: [];
       };
+      marketer_profiles: {
+        Row: {
+          id: string;
+          subscription_id: string;
+          business_name: string;
+          business_description: string;
+          website: string | null;
+          niche: string | null;
+          status: string;
+          telegram_chat_id: string | null;
+          pending_comment_post_id: string | null;
+          instagram_business_account_id: string | null;
+          instagram_page_access_token: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          subscription_id: string;
+          business_name: string;
+          business_description?: string;
+          website?: string | null;
+          niche?: string | null;
+          status?: string;
+          telegram_chat_id?: string | null;
+          instagram_business_account_id?: string | null;
+          instagram_page_access_token?: string | null;
+        };
+        Update: {
+          business_name?: string;
+          business_description?: string;
+          website?: string | null;
+          niche?: string | null;
+          status?: string;
+          telegram_chat_id?: string | null;
+          pending_comment_post_id?: string | null;
+          instagram_business_account_id?: string | null;
+          instagram_page_access_token?: string | null;
+        };
+        Relationships: [];
+      };
+      marketer_strategy_versions: {
+        Row: {
+          id: string;
+          profile_id: string;
+          previous_version_id: string | null;
+          research: Json;
+          audience: Json;
+          strategy: Json;
+          content_plan: Json;
+          insight_summary: string | null;
+          based_on_insights: Json | null;
+          model: string | null;
+          created_at: string;
+        };
+        Insert: {
+          profile_id: string;
+          previous_version_id?: string | null;
+          research?: Json;
+          audience?: Json;
+          strategy?: Json;
+          content_plan?: Json;
+          insight_summary?: string | null;
+          based_on_insights?: Json | null;
+          model?: string | null;
+        };
+        Update: {
+          insight_summary?: string | null;
+          based_on_insights?: Json | null;
+        };
+        Relationships: [];
+      };
+      marketer_posts: {
+        Row: {
+          id: string;
+          profile_id: string;
+          strategy_version_id: string | null;
+          kind: string;
+          topic: string;
+          caption: string | null;
+          script: string | null;
+          image_prompt: string | null;
+          image_url: string | null;
+          image_status: string;
+          status: string;
+          version: number;
+          parent_post_id: string | null;
+          reviewer_comment: string | null;
+          telegram_chat_id: string | null;
+          telegram_message_id: string | null;
+          scheduled_at: string | null;
+          instagram_media_id: string | null;
+          published_at: string | null;
+          publish_error: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          profile_id: string;
+          strategy_version_id?: string | null;
+          kind?: string;
+          topic?: string;
+          caption?: string | null;
+          script?: string | null;
+          image_prompt?: string | null;
+          image_url?: string | null;
+          image_status?: string;
+          status?: string;
+          version?: number;
+          parent_post_id?: string | null;
+          reviewer_comment?: string | null;
+          telegram_chat_id?: string | null;
+          telegram_message_id?: string | null;
+          scheduled_at?: string | null;
+          instagram_media_id?: string | null;
+          published_at?: string | null;
+          publish_error?: string | null;
+        };
+        Update: {
+          caption?: string | null;
+          script?: string | null;
+          image_prompt?: string | null;
+          image_url?: string | null;
+          image_status?: string;
+          status?: string;
+          version?: number;
+          reviewer_comment?: string | null;
+          telegram_chat_id?: string | null;
+          telegram_message_id?: string | null;
+          scheduled_at?: string | null;
+          instagram_media_id?: string | null;
+          published_at?: string | null;
+          publish_error?: string | null;
+        };
+        Relationships: [];
+      };
+      marketer_post_insights: {
+        Row: {
+          id: string;
+          post_id: string;
+          impressions: number | null;
+          reach: number | null;
+          likes: number | null;
+          comments: number | null;
+          saves: number | null;
+          shares: number | null;
+          raw: Json;
+          fetched_at: string;
+        };
+        Insert: {
+          post_id: string;
+          impressions?: number | null;
+          reach?: number | null;
+          likes?: number | null;
+          comments?: number | null;
+          saves?: number | null;
+          shares?: number | null;
+          raw?: Json;
+        };
+        Update: {
+          impressions?: number | null;
+          reach?: number | null;
+          likes?: number | null;
+          comments?: number | null;
+          saves?: number | null;
+          shares?: number | null;
+          raw?: Json;
+        };
+        Relationships: [];
+      };
     };
     Views: { [_ in never]: never };
     Functions: {

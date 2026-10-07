@@ -7,6 +7,14 @@
     {
       "path": "/api/cron/subscription-provisioning",
       "schedule": "17 3 * * *"
+    },
+    {
+      "path": "/api/cron/marketer-publish",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/marketer-insights",
+      "schedule": "0 6 * * *"
     }
   ]
 }
