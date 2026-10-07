@@ -30,21 +30,33 @@ values ('<subscriptions.id>', 'Client name', 'What they sell, to whom', 'https:/
 `telegram_chat_id`, `instagram_business_account_id` and
 `instagram_page_access_token` are filled in steps 4-5 below.
 
-## 3. Content generation — Anthropic (+ optional OpenAI for images)
+## 3. Content generation — Anthropic (+ OpenAI or OpenRouter for images)
 
 - **Anthropic API key**: https://console.anthropic.com/settings/keys →
   "Create Key". Set `ANTHROPIC_API_KEY`. Powers capabilities 1-6 and 12
   (research, audience, strategy, content plan, post copy, reel/story
-  scripts, strategy improvement).
-- **OpenAI API key** (images, capability 7): https://platform.openai.com/api-keys
-  → "Create new secret key". Set `OPENAI_API_KEY`. Needs access to the
-  `gpt-image-1` model (or set `MARKETER_IMAGE_MODEL` to one you have).
+  scripts, strategy improvement). This path is Anthropic-only.
+- **Image provider** (capability 7) — one of:
+  - **OpenAI**: https://platform.openai.com/api-keys → "Create new secret
+    key". Set `OPENAI_API_KEY`. Needs access to `gpt-image-1`
+    (`MARKETER_IMAGE_MODEL` overrides the model).
+  - **OpenRouter**: https://openrouter.ai/keys → "Create key". Set
+    `OPENROUTER_API_KEY` and leave `OPENAI_API_KEY` unset. Calls go to
+    `https://openrouter.ai/api/v1/images` with `MARKETER_IMAGE_MODEL` (or
+    `MARKETER_OPENROUTER_MODEL`) as the model id — an OpenRouter slug like
+    `google/gemini-2.5-flash-image`, **not** an OpenAI id. Credit/image-model
+    availability is per OpenRouter account.
+
+  **If both keys are set, OpenAI wins** — adding an OpenRouter key never
+  silently reroutes a deployment that already works against OpenAI. The
+  resolution lives in `lib/marketer/openai-compatible.ts`; everything below
+  sees only "the configured provider".
 - **Supabase Storage bucket for generated images**: Supabase Dashboard →
   Storage → "New bucket" → name it exactly `marketer-media` → **Public**
   bucket (the Instagram Graph API fetches `image_url` directly, so it must
   be publicly reachable; no private bucket + signed URL today).
 
-Without `OPENAI_API_KEY`, posts still get a caption and go through Telegram
+Without either image key, posts still get a caption and go through Telegram
 approval — `marketer_posts.image_status` is `not_configured` and publishing
 later fails with a readable reason instead of posting a blank image.
 
