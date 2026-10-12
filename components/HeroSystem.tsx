@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { navHref, type Locale } from "@/lib/site";
 import type { Copy } from "@/content/copy";
@@ -11,6 +10,7 @@ import { ShowroomDemoChatButton } from "@/components/products/ShowroomDemoChat";
 import { SHOWROOM_AI_SETUP_FEE_USD, SHOWROOM_AI_TRIAL_DAYS } from "@/lib/showroom-ai";
 import { formatUsdPrice } from "@/lib/pricing/crypto-checkout";
 import { brief } from "@/lib/brief";
+import { HeroProductDemo } from "@/components/HeroProductDemo";
 
 function HeroCursor() {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ interface HeroProps {
 
 /**
  * Home hero matches the Manus sample: one lede, two actions, a still
- * illustration, and three pillars. The old stage explorer is not part of
+ * product animation (chat → booking → marketer tasks), and three pillars. The old stage explorer is not part of
  * that structure.
  */
 export function HeroSystem({ locale, t }: HeroProps) {
@@ -66,8 +66,6 @@ export function HeroSystem({ locale, t }: HeroProps) {
     hero.pillars.length > 0
       ? hero.pillars
       : t.pillars.items.slice(0, 3).map((item) => item.title);
-  const captionKicker = hero.captionKicker;
-  const caption = hero.caption;
 
   return (
     <section className="am-hero" data-motion>
@@ -135,22 +133,8 @@ export function HeroSystem({ locale, t }: HeroProps) {
             <p className="mt-6 max-w-xl text-[13px] leading-relaxed text-[#c5d0c4]">{footnote}</p>
           </div>
 
-          <div className="hero-art-wrap">
-            <div className="hero-art">
-              <Image
-                src="/brand/ai-mark-hero.webp"
-                alt={hero.heroAlt}
-                fill
-                priority
-                sizes="(max-width: 1080px) 100vw, 640px"
-                className="hero-art-img am-anim hero-breathe"
-              />
-            </div>
-            <div className="hero-ring am-anim" aria-hidden />
-            <div className="absolute bottom-4 left-4 right-[4.5rem] z-[3] rounded-2xl border border-white/30 bg-[#193428]/90 p-3 text-[13px] text-[#e7eee4] min-[761px]:right-4">
-              <p className="font-semibold text-[var(--lime)]">{captionKicker}</p>
-              <p className="mt-1 leading-snug">{caption}</p>
-            </div>
+          <div className="hero-demo-wrap relative z-[2] flex items-center py-2">
+            <HeroProductDemo locale={locale} />
           </div>
         </div>
 

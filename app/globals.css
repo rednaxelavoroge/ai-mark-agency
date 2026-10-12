@@ -1390,3 +1390,118 @@ details:not([open]) > :not(summary) {
     animation: none !important;
   }
 }
+
+/* ---- Home hero product animation (HeroProductDemo) ---- */
+.hd {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.hd-card {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  background: #fffefa;
+  color: #17261f;
+  padding: 14px;
+  box-shadow: var(--shadow-lg);
+}
+.hd-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ede3;
+}
+.hd-avatar {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #14291f;
+  color: #d4f27e;
+  font-size: 11px;
+  font-weight: 700;
+}
+.hd-title { font-weight: 700; }
+.hd-online { margin-inline-start: auto; color: #3f7a4f; font-size: 11px; white-space: nowrap; }
+.hd-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  min-height: 228px;
+}
+.hd-msg {
+  max-width: 86%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  margin: 0;
+}
+.hd-client { align-self: flex-end; background: #e9ede3; border-end-end-radius: 4px; }
+.hd-seller { align-self: flex-start; background: #14291f; color: #f3f6ee; border-end-start-radius: 4px; }
+.hd-msg, .hd-booked, .hd-tasks, .hd-tasks li {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.hd-on { opacity: 1 !important; transform: none !important; animation: hd-in 0.35s ease both; }
+@keyframes hd-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.hd-gone { display: none; }
+.hd-typing { display: inline-flex; gap: 4px; padding: 11px 14px; }
+.hd-typing.hd-gone { display: none; }
+.hd-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4f27e;
+  animation: hd-dot 1s ease-in-out infinite;
+}
+.hd-typing span:nth-child(2) { animation-delay: 0.15s; }
+.hd-typing span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes hd-dot { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+.hd-booked {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #d4f27e;
+  color: #14291f;
+}
+.hd-booked strong, .hd-booked small { display: block; }
+.hd-booked small { font-size: 12px; opacity: 0.8; }
+.hd-check, .hd-box {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #14291f;
+  color: #d4f27e;
+  font-size: 12px;
+  font-weight: 700;
+}
+.hd-tasks { background: #193428; color: #f3f6ee; }
+.hd-tasks-title { margin: 0 0 8px; color: #d4f27e; }
+.hd-tasks ul { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.hd-tasks li { display: flex; align-items: center; gap: 8px; }
+.hd-tasks .hd-box { border-radius: 6px; background: rgba(255, 255, 255, 0.12); }
+.hd-tasks li.hd-on .hd-box { background: #d4f27e; color: #14291f; }
+.hd-task { flex: 1; min-width: 0; }
+.hd-status { font-size: 11px; color: #c5d0c4; white-space: nowrap; }
+@media (max-width: 760px) {
+  .hd { font-size: 12.5px; }
+  .hd-chat { min-height: 214px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hd-msg, .hd-booked, .hd-tasks, .hd-tasks li { transition: none; }
+  .hd-typing span, .hd-on { animation: none; }
+}
