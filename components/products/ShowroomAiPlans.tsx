@@ -3,10 +3,8 @@ import { BuyLink } from "@/components/BuyLink";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
 import {
   SHOWROOM_AI_PLANS,
-  SHOWROOM_AI_SEPARATE_OFFERS,
   SHOWROOM_AI_SETUP_FEE_USD,
   SHOWROOM_AI_TRIAL_DAYS,
-  skuPayHref,
   skuPrice,
 } from "@/lib/showroom-ai";
 import { CRYPTO_CHECKOUT_DISCOUNT_BPS, formatUsdPrice } from "@/lib/pricing/crypto-checkout";
@@ -139,36 +137,7 @@ export function ShowroomAiPlans({
         {c.websiteCtaHint}
       </p>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-        <div className="rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">
-          <h3 className="font-display text-base font-semibold text-paper">{c.separateTitle}</h3>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-            {SHOWROOM_AI_SEPARATE_OFFERS.map((offer) => {
-              const price = skuPrice(offer.skuId);
-              const copy = c.separate.find((row) => row.id === offer.id);
-              if (!price || !copy) return null;
-              return (
-                <li
-                  key={offer.id}
-                  className="flex items-center justify-between gap-3 rounded-xl border border-line bg-ink-3/40 px-3 py-2.5"
-                >
-                  <span>
-                    <span className="block text-xs font-semibold text-paper">{copy.label}</span>
-                    <span className="mt-0.5 block text-[11px] text-muted">{copy.sub}</span>
-                  </span>
-                  <Link
-                    href={skuPayHref(locale, offer.skuId)}
-                    className="shrink-0 font-mono text-xs font-semibold text-mark hover:underline"
-                  >
-                    {formatUsdPrice(price.listUsd)}
-                    {c.perMonth}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
+      <div className="mt-6 grid gap-4">
         <div className="rounded-2xl border border-line bg-ink-2 p-5 sm:p-6">
           <h3 className="font-display text-base font-semibold text-paper">{c.setupTitle}</h3>
           <p className="mt-1 text-xs text-muted">{c.setupSub}</p>

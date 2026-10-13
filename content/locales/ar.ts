@@ -10,7 +10,7 @@ export const copyAr: Copy = {
       "تأسيس شركات",
       "تسويق بالذكاء الاصطناعي",
       "برمجة وتطوير",
-      "AIME",
+      "المسوّق",
       "SHOWROOM AI",
       "ai-mark.agency"
     ]
@@ -91,7 +91,7 @@ export const copyAr: Copy = {
       {
         "n": "04",
         "title": "المبيعات بالذكاء الاصطناعي",
-        "body": "من أول استفسار إلى التأهيل والعرض — AI Business Assistant وSHOWROOM AI."
+        "body": "من أول استفسار إلى التأهيل والعرض — مساعد الأعمال وSHOWROOM AI."
       },
       {
         "n": "05",
@@ -173,7 +173,7 @@ export const copyAr: Copy = {
     "hubLead": "أنظمة ذاتية القيادة مجهزة لتسريع عمليات البيع والتسويق لشركتك.",
     "items": {
       "aime": {
-        "value": "AIME — موظف التسويق بالذكاء الاصطناعي",
+        "value": "المسوّق — موظف التسويق بالذكاء الاصطناعي",
         "who": "العلامات التجارية، المتاجر الإلكترونية والوكالات",
         "extra": "تخطيط المحتوى وتوليد المنشورات والنشر التلقائي في Instagram و Facebook و Threads بموافقة عبر تليجرام.",
         "price": "يبدأ من 199$ / شهرياً"
@@ -185,7 +185,7 @@ export const copyAr: Copy = {
         "price": "يبدأ من 149$ / شهرياً"
       },
       "showroom": {
-        "value": "SHOWROOM AI / AI Sales Agent — حاسبة المواصفات وعروض الأسعار",
+        "value": "Showroom AI · البائع — حاسبة المواصفات وعروض الأسعار",
         "who": "المصانع، معارض السيارات، التصميم الداخلي ومصنعو الأثاث",
         "extra": "تحويل متطلبات العميل المعقدة إلى عروض أسعار ومواصفات هندسية بصيغة PDF في ثوانٍ معدودة.",
         "price": "يبدأ من 89$ / شهرياً"
@@ -263,12 +263,12 @@ export const copyAr: Copy = {
       {
         "name": "Growth",
         "price": "$2,200",
-        "body": "للشركات النامية: ربط AIME و AIBA وإدارة الحملات التسويقية النشطة."
+        "body": "للشركات النامية: ربط المسوّق و AIBA وإدارة الحملات التسويقية النشطة."
       },
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، SHOWROOM AI / AI Sales Agent ودعم فني مخصص 24/7."
+        "body": "حل شامل ومتكامل: أتمتة كاملة للقنوات، Showroom AI · البائع ودعم فني مخصص 24/7."
       },
       {
         "name": "Digital Production",
@@ -456,8 +456,8 @@ export const copyAr: Copy = {
   },
   "productPages": {
     "aime": {
-      "eyebrow": "AIME",
-      "title": "AI Marketing Employee",
+      "eyebrow": "المسوّق",
+      "title": "Showroom AI · المسوّق",
       "lead": "A marketing system, not a calendar. Research through optimization stays in one loop, with a human on publish.",
       "metaphor": "Marketing agents that draft the cycle. People still own the decision to go live.",
       "sections": [
@@ -487,7 +487,7 @@ export const copyAr: Copy = {
     },
     "assistant": {
       "eyebrow": "BA",
-      "title": "AI Business Assistant",
+      "title": "Showroom AI · مساعد الأعمال",
       "lead": "A sales inbox that answers, qualifies, and hands off. Not a funnel-builder with a chatbot skin.",
       "metaphor": "One inbox across the channels your buyers already use.",
       "sections": [
@@ -514,7 +514,7 @@ export const copyAr: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI / AI Sales Agent",
+      "title": "Showroom AI · البائع",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

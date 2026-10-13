@@ -1,18 +1,17 @@
 "use client";
 
+import { ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
+import { getPlainCopy } from "@/content/plain-copy";
 import { useState } from "react";
-import Link from "next/link";
-import { localePath, type Locale } from "@/lib/site";
+import type { Locale } from "@/lib/site";
 import { getAibaCopy } from "@/content/products/assistant";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
-import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ConstellationOverlays } from "@/components/ui/ProductConstellation";
 import { PanelDemo } from "@/components/products/PanelDemo";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
-import { FeatureList } from "@/components/products/FeatureList";
 import { ShowroomRoleBanner } from "@/components/products/ShowroomRoleBanner";
 
 export function AIBAPageContent({
@@ -386,83 +385,10 @@ export function AIBAPageContent({
       </section>
 
       {/* 7. PRICING & TURNKEY SETUP */}
-      <section id="pricing" className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
+      <section id="pricing" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {section("07", "Plans", "Тарифные планы")}
-            </span>
-            <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
-              {c.pricingTitle}
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              {c.pricingSub}
-            </p>
-          </div>
-
-          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
-            {c.plans.map((p) => (
-              <div
-                key={p.id}
-                className={`flex flex-col justify-between rounded-2xl border p-4 ${
-                  p.badge
-                    ? "border-mark/60 bg-ink-2 shadow-xl relative"
-                    : "border-line bg-ink-2"
-                }`}
-              >
-                {p.badge && (
-                  <span className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase">
-                    {p.badge}
-                  </span>
-                )}
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-paper">{p.name}</h3>
-                  <div className="mt-3 flex items-baseline gap-1">
-                    <span className="font-display text-4xl font-bold text-mark">{p.price}</span>
-                    <span className="font-mono text-xs text-muted">{p.period}</span>
-                  </div>
-                  <p className="mt-1 font-mono text-[10px] text-warm">{p.note}</p>
-
-                  <FeatureList items={p.features} locale={locale} />
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-line">
-                  <button
-                    type="button"
-                    onClick={() => openLauncher()}
-                    className={`w-full rounded-full px-5 py-3 text-xs font-semibold transition-all ${
-                      p.badge
-                        ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
-                        : "border border-line bg-ink-3/40 text-paper hover:bg-ink-3"
-                    }`}
-                  >
-                    {c.ctaConsult}
-                  </button>
-                  {/* Self-serve purchase of this exact tier, and only of a tier
-                      that has a published self-serve price. The Enterprise tier
-                      has no sku id, so it renders nothing here and stays
-                      contact-only.
-                      The guard is at the call site on purpose: `BuyLink` without
-                      a sku is a legitimate family link (the /products hub and the
-                      home showcase use it that way), but on a *priced tier card*
-                      it would send the buyer to /pay with some other product
-                      preselected. A tier with no sku must not be payable. */}
-                  {p.skuId ? (
-                    <BuyLink
-                      locale={locale}
-                      skuId={p.skuId}
-                      label={
-                        locale === "ru"
-                          ? `Оплатить ${p.price} в USDT / USDC`
-                          : `Pay ${p.price} with USDT / USDC`
-                      }
-                      className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
-                    />
-                  ) : null}
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="mb-6 max-w-3xl text-sm text-paper/90">{getPlainCopy(locale).products.roles.assistant.price}</p>
+          <ShowroomAiPlans locale={locale} />
         </div>
       </section>
 
@@ -526,8 +452,8 @@ export function AIBAPageContent({
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {isRu
-                ? "AI Business Assistant отвечает по базе знаний, квалифицирует и передаёт диалог человеку. Расчёт и коммерческое предложение — задача Showroom AI."
-                : "AI Business Assistant answers from the knowledge base, qualifies, and hands the conversation to a person. Calculation and the commercial proposal belong to Showroom AI."}
+                ? "Бизнес-ассистент отвечает на частые вопросы по вашей информации, выясняет, что нужно клиенту, и передаёт диалог человеку. Цену и заказ оформляет Продавец."
+                : "The Business Assistant answers common questions from your information, finds out what the customer needs and hands the chat to a person. The Seller handles prices and orders."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
