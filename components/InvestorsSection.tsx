@@ -29,13 +29,13 @@ export function InvestorsSection({ locale }: { locale: Locale }) {
 
   const fundamentals = isRu
     ? [
-        { title: "Технологическая база создана", desc: "Три готовых AI-продукта (AIME, AIBA, SHOWROOM AI — AI-продавец) уже функционируют коммерчески. Инвестиции привлекаются не в разработку с нуля, а в масштаб." },
-        { title: "Сквозная бизнес-модель", desc: "Диверсифицированная выручка: SaaS-подписки от $149–$349/мес, ретейнеры на AI-маркетинг от $1,200/мес и заказные цифровые внедрения." },
+        { title: "Технологическая база создана", desc: "Showroom AI с тремя ролями (Seller, Marketer, Business Assistant) уже работает коммерчески. Инвестиции привлекаются не в разработку с нуля, а в масштаб." },
+        { title: "Сквозная бизнес-модель", desc: "Диверсифицированная выручка: подписки Showroom AI $89–$399/мес, ретейнеры на AI-маркетинг от $1,200/мес и заказные цифровые внедрения." },
         { title: "Сетевой эффект дистрибуции", desc: "Масштабирование через сеть региональных, отраслевых и агентских партнёров обеспечивает международный охват без раздувания локальных офисов." },
       ]
     : [
-        { title: "Technology already in commercial use", desc: "Three proprietary products (AIME, AIBA, SHOWROOM AI / AI Sales Agent) are already used commercially. Capital, if taken, is for scale rather than building the stack from scratch." },
-        { title: "Diversified Revenue Mix", desc: "SaaS subscriptions from $149–$349/mo, marketing department retainers from $1,200/mo, and high-ticket digital production contracts." },
+        { title: "Technology already in commercial use", desc: "Showroom AI with three roles (Seller, Marketer, Business Assistant) is already used commercially. Capital, if taken, is for scale rather than building the stack from scratch." },
+        { title: "Diversified Revenue Mix", desc: "Showroom AI subscriptions $89–$399/mo, marketing department retainers from $1,200/mo, and high-ticket digital production contracts." },
         { title: "Capital-Efficient Distribution", desc: "Scaling through a global web of regional, industry, and agency partners delivers international reach without burdensome fixed overhead." },
       ];
 

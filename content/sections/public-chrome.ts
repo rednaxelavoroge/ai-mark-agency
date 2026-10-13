@@ -524,7 +524,7 @@ export const publicChromeCopy = {
       "messengerHint": "Chat with us",
       "emailLabel": "Email",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Type a message…"
     },
     "productPage": {
@@ -1166,8 +1166,8 @@ export const publicChromeCopy = {
       "aiHint": "Responde al instante, de día o de noche",
       "messengerHint": "Habla con nosotros",
       "emailLabel": "Correo Electrónico",
-      "emailHint": "hola@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Escribe un mensaje…"
     },
     "productPage": {
@@ -1809,8 +1809,8 @@ export const publicChromeCopy = {
       "aiHint": "Responde instantaneamente, dia ou noite",
       "messengerHint": "Converse connosco",
       "emailLabel": "'E-mail'",
-      "emailHint": "olá@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Digite uma mensagem…"
     },
     "productPage": {
@@ -2452,8 +2452,8 @@ export const publicChromeCopy = {
       "aiHint": "Отвечает мгновенно, круглосуточно",
       "messengerHint": "Написать в чат",
       "emailLabel": "Электронная почта",
-      "emailHint": "привет@ai-mark.agency",
-      "greeting": "Здравствуйте! Я Showroom AI · Business Assistant AI MARK. Расскажите, что нужно — маркетинг, продажи или продукт.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Здравствуйте! Я Business Assistant из Showroom AI. Расскажите, что нужно — маркетинг, продажи или продукт.",
       "placeholder": "Напишите сообщение…"
     },
     "productPage": {
@@ -3096,7 +3096,7 @@ export const publicChromeCopy = {
       "messengerHint": "الدردشة معنا",
       "emailLabel": "بريد إلكتروني",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "اكتب رسالة..."
     },
     "productPage": {
@@ -3738,8 +3738,8 @@ export const publicChromeCopy = {
       "aiHint": "无论白天还是晚上都能立即得到答复",
       "messengerHint": "与我们聊天",
       "emailLabel": "电子邮件",
-      "emailHint": "你好@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "输入消息..."
     },
     "productPage": {
@@ -4382,7 +4382,7 @@ export const publicChromeCopy = {
       "messengerHint": "Ngobrol dengan kami",
       "emailLabel": "E-mail",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Ketik pesan…"
     },
     "productPage": {
@@ -5024,8 +5024,8 @@ export const publicChromeCopy = {
       "aiHint": "Câu trả lời ngay lập tức, ngày hay đêm",
       "messengerHint": "Trò chuyện với chúng tôi",
       "emailLabel": "E-mail",
-      "emailHint": "xin chào@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Nhập tin nhắn…"
     },
     "productPage": {
@@ -5668,7 +5668,7 @@ export const publicChromeCopy = {
       "messengerHint": "Chat starten",
       "emailLabel": "E-Mail",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hallo! Ich bin der Showroom AI · Business Assistant von AI MARK. Marketing, Vertrieb oder Produkt — wobei brauchen Sie Hilfe?",
+      "greeting": "Hallo! Ich bin der Showroom AI Business Assistant. Marketing, Vertrieb oder Produkt — wobei brauchen Sie Hilfe?",
       "placeholder": "Nachricht eingeben…"
     },
     "productPage": {
@@ -6310,8 +6310,8 @@ export const publicChromeCopy = {
       "aiHint": "Répond instantanément, de jour comme de nuit",
       "messengerHint": "Discutez avec nous",
       "emailLabel": "E-mail",
-      "emailHint": "bonjour@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Tapez un message…"
     },
     "productPage": {
@@ -6954,7 +6954,7 @@ export const publicChromeCopy = {
       "messengerHint": "チャットしてみよう",
       "emailLabel": "電子メール",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "メッセージを入力してください…"
     },
     "productPage": {
@@ -7596,8 +7596,8 @@ export const publicChromeCopy = {
       "aiHint": "Gece gündüz anında yanıt verir",
       "messengerHint": "Bizimle sohbet edin",
       "emailLabel": "E-posta",
-      "emailHint": "merhaba@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "emailHint": "hello@ai-mark.agency",
+      "greeting": "Hi! I'm the Showroom AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Bir mesaj yazın…"
     },
     "productPage": {

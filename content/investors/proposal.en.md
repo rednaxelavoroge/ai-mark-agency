@@ -45,15 +45,19 @@ Once a concept is selected, execution begins:
 
 The company is already built on proprietary AI products and systems.
 
-### AI Marketing Employee
+### Showroom AI — one product, three roles
 
-An AI system for automating the marketing cycle.
+Showroom AI is our own AI product. It works in three roles: Seller, Marketer and Business Assistant.
+
+### Showroom AI · Marketer
+
+Automates the marketing cycle. Posts go out only after the owner approves them.
 
 **Research → Strategy → Content → Creative → Publishing → Analytics → Optimization**
 
-### AI Business Assistant
+### Showroom AI · Business Assistant
 
-An AI system for handling inbound inquiries, customer work, sales and the knowledge base.
+An AI role for handling inbound inquiries, customer work, sales and the knowledge base.
 
 It can connect to a range of communication channels, including:
 
@@ -63,9 +67,9 @@ It can connect to a range of communication channels, including:
 - Telegram
 - website chat
 
-### SHOWROOM AI / AI Sales Agent
+### Showroom AI · Seller
 
-An AI Sales Agent that talks to customers, understands needs, works with your catalog and business rules, calculates pricing, generates specifications and commercial proposals, and hands qualified opportunities to sales and CRM.
+An AI seller that talks to customers, understands needs, works with your catalog and business rules, calculates pricing, generates specifications and commercial proposals, and hands qualified opportunities to sales and CRM.
 
 **The solution is not limited to a single industry.**
 
@@ -166,15 +170,17 @@ Humans stay in the loop for key decisions:
 
 The company can generate revenue from several directions at once.
 
-### AI Products
+### Showroom AI subscriptions
 
-Ready-made AI products on subscription.
+Ready-made AI product on subscription. Current public prices:
 
-The current product model benchmark:
-
-**$149–349 / month**
-
-depending on the product and the level of usage.
+- **Start — $89 / month** (Seller)
+- **Business — $249 / month** (Seller + Marketer Lite)
+- **Pro — $399 / month** (Seller + Marketer Pro)
+- Marketer on its own: **Lite $199 / month**, **Pro $349 / month**
+- Business Assistant on its own: **Entry $149 / month**, **Standard $199 / month**
+- Optional one-time done-for-you setup: **$300**
+- **7-day free trial, no card required**
 
 ### Turnkey AI marketing
 
@@ -269,7 +275,7 @@ The internal AI infrastructure can include specialised areas:
 - Creative
 - Social Media
 - Lead & CRM
-- AI Business Assistant
+- Showroom AI (Seller, Marketer, Business Assistant)
 - Commercial Request Processing
 - Advertising
 - SEO

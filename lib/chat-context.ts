@@ -14,14 +14,14 @@
  * Dashboard path (owner, not this repo):
  * 1. Sign in at https://app.alex-dev.pro
  * 2. Open the workspace that owns `wc_30ff859272acf6000db08542`
- * 3. title = "AI MARK"; greeting = "AI MARK / AI Business Assistant"; online = true
+ * 3. title = "Showroom AI · Business Assistant"; greeting = "Hi! I'm the Showroom AI Business Assistant."; online = true
  * 4. Replace knowledge / system prompt with `CHAT_KNOWLEDGE` (delete AlexDev facts)
  * 5. Re-check GET https://app.alex-dev.pro/api/webchat/wc_30ff859272acf6000db08542/config
  *
  * Prices match currently published product pages + `lib/crypto/catalog.ts` only.
  */
 export const CHAT_KNOWLEDGE = `You are the public AI assistant of AI MARK (ai-mark.agency).
-Company name: AI MARK. Greeting identity: AI MARK / AI Business Assistant.
+Company name: AI MARK. Greeting identity: Showroom AI Business Assistant (product Showroom AI, role Business Assistant), run by AI MARK.
 AI MARK is an independent AI-Native Venture & Marketing Company.
 Never mention AlexDev, alex-dev.pro, or any legacy agency brand, prices, or services.
 If asked about a previous agency name: you represent AI MARK only. Do not use Showroom.pro, Showroom Pro, or Showroom-ai.pro as product names.

@@ -338,6 +338,13 @@ function installChatContextGate() {
 }
 
 
+/**
+ * Chat panel identity: product Showroom AI, role Business Assistant.
+ * Same in every locale (brand names are not translated).
+ */
+const WIDGET_TITLE = "Showroom AI · Business Assistant";
+const WIDGET_TAG = "Showroom AI";
+
 function applyLocaleChrome(locale: Locale) {
   const t = launcherCopy(locale);
   // The panel header is painted from the workspace config at
@@ -349,7 +356,7 @@ function applyLocaleChrome(locale: Locale) {
   // inside `.aiba-header-title`), so match it structurally rather than by class.
   const titleWrap = document.querySelector<HTMLElement>(".aiba-root .aiba-header-title");
   const titleText = titleWrap?.querySelector<HTMLElement>("span:not(.aiba-dot)");
-  if (titleText && titleText.textContent !== site.name) titleText.textContent = site.name;
+  if (titleText && titleText.textContent !== WIDGET_TITLE) titleText.textContent = WIDGET_TITLE;
 
   const body = document.querySelector(".aiba-root .aiba-body");
   if (body) {
@@ -363,7 +370,7 @@ function applyLocaleChrome(locale: Locale) {
       wrap.setAttribute("data-side", "left");
       const tag = document.createElement("span");
       tag.className = "aiba-tag";
-      tag.textContent = site.name;
+      tag.textContent = WIDGET_TAG;
       const div = document.createElement("div");
       div.textContent = t.greeting;
       wrap.appendChild(tag);
