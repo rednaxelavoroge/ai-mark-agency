@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/site";
 
 /**
- * Small-business home copy: hero, header menu and the "how to start" block.
+ * Home copy: hero, header menu and the "how to start" block.
  * Tokens {start} {business} {pro} {setup} {days} are filled from the plan
  * constants (see planTokens in content/plain-copy). All 12 locales; EN fallback.
  */
@@ -21,7 +21,7 @@ export interface HomePlain {
 }
 
 const en: HomePlain = {
-  eyebrow: "Showroom AI · for small business",
+  eyebrow: "Showroom AI · for business",
   title: "An AI seller and marketer for your business",
   lede: "Answers customers 24/7, takes orders and bookings, runs your social media — you only approve. From {start}/mo, {days} days free.",
   primaryCta: "Try {days} days free",
@@ -40,7 +40,7 @@ const en: HomePlain = {
 };
 
 const ru: HomePlain = {
-  eyebrow: "Showroom AI · для малого бизнеса",
+  eyebrow: "Showroom AI · для бизнеса",
   title: "AI-продавец и маркетолог для вашего бизнеса",
   lede: "Отвечает клиентам 24/7, оформляет заказы и записи, ведёт соцсети — вы только подтверждаете. От {start} в месяц, {days} дней бесплатно.",
   primaryCta: "Попробовать {days} дней бесплатно",
@@ -59,7 +59,7 @@ const ru: HomePlain = {
 };
 
 const es: HomePlain = {
-  eyebrow: "Showroom AI · para pequeños negocios",
+  eyebrow: "Showroom AI · para negocios",
   title: "Un vendedor y un marketer con IA para tu negocio",
   lede: "Responde a los clientes 24/7, toma pedidos y citas, lleva tus redes sociales — tú solo apruebas. Desde {start}/mes, {days} días gratis.",
   primaryCta: "Prueba {days} días gratis",
@@ -78,7 +78,7 @@ const es: HomePlain = {
 };
 
 const pt: HomePlain = {
-  eyebrow: "Showroom AI · para pequenos negócios",
+  eyebrow: "Showroom AI · para negócios",
   title: "Um vendedor e um marketer com IA para o seu negócio",
   lede: "Responde clientes 24/7, registra pedidos e agendamentos, cuida das suas redes sociais — você só aprova. A partir de {start}/mês, {days} dias grátis.",
   primaryCta: "Teste {days} dias grátis",
@@ -97,7 +97,7 @@ const pt: HomePlain = {
 };
 
 const de: HomePlain = {
-  eyebrow: "Showroom AI · für kleine Unternehmen",
+  eyebrow: "Showroom AI · für Unternehmen",
   title: "Ein KI-Verkäufer und -Marketer für Ihr Geschäft",
   lede: "Antwortet Kunden rund um die Uhr, nimmt Bestellungen und Termine an, betreut Ihre sozialen Medien — Sie geben nur frei. Ab {start}/Monat, {days} Tage kostenlos.",
   primaryCta: "{days} Tage kostenlos testen",
@@ -116,7 +116,7 @@ const de: HomePlain = {
 };
 
 const fr: HomePlain = {
-  eyebrow: "Showroom AI · pour les petites entreprises",
+  eyebrow: "Showroom AI · pour les entreprises",
   title: "Un vendeur et un marketeur IA pour votre entreprise",
   lede: "Répond aux clients 24/7, prend commandes et rendez-vous, gère vos réseaux sociaux — vous ne faites que valider. Dès {start}/mois, {days} jours gratuits.",
   primaryCta: "Essayer {days} jours gratuits",
@@ -135,7 +135,7 @@ const fr: HomePlain = {
 };
 
 const id: HomePlain = {
-  eyebrow: "Showroom AI · untuk usaha kecil",
+  eyebrow: "Showroom AI · untuk bisnis",
   title: "Penjual dan marketer AI untuk bisnis Anda",
   lede: "Menjawab pelanggan 24/7, mencatat pesanan dan janji temu, mengelola media sosial — Anda cukup menyetujui. Mulai {start}/bln, gratis {days} hari.",
   primaryCta: "Coba gratis {days} hari",
@@ -154,7 +154,7 @@ const id: HomePlain = {
 };
 
 const vi: HomePlain = {
-  eyebrow: "Showroom AI · cho doanh nghiệp nhỏ",
+  eyebrow: "Showroom AI · cho doanh nghiệp",
   title: "Nhân viên bán hàng và marketer AI cho doanh nghiệp của bạn",
   lede: "Trả lời khách 24/7, nhận đơn và lịch hẹn, quản lý mạng xã hội — bạn chỉ cần duyệt. Từ {start}/tháng, miễn phí {days} ngày.",
   primaryCta: "Dùng thử miễn phí {days} ngày",
@@ -173,7 +173,7 @@ const vi: HomePlain = {
 };
 
 const tr: HomePlain = {
-  eyebrow: "Showroom AI · küçük işletmeler için",
+  eyebrow: "Showroom AI · işletmeler için",
   title: "İşletmeniz için yapay zekâ satıcı ve pazarlamacı",
   lede: "Müşterilere 7/24 yanıt verir, sipariş ve randevu alır, sosyal medyanızı yönetir — siz yalnızca onaylarsınız. {start}/ay’dan başlayan fiyatlar, {days} gün ücretsiz.",
   primaryCta: "{days} gün ücretsiz deneyin",
@@ -192,7 +192,7 @@ const tr: HomePlain = {
 };
 
 const ar: HomePlain = {
-  eyebrow: "Showroom AI · للأعمال الصغيرة",
+  eyebrow: "Showroom AI · للأعمال",
   title: "بائع ومسوّق بالذكاء الاصطناعي لعملك",
   lede: "يرد على العملاء على مدار الساعة، ويسجل الطلبات والمواعيد، ويدير حساباتك على وسائل التواصل — وأنت توافق فقط. ابتداءً من {start} شهريًا، {days} أيام مجانًا.",
   primaryCta: "جرّب {days} أيام مجانًا",
@@ -211,7 +211,7 @@ const ar: HomePlain = {
 };
 
 const zh: HomePlain = {
-  eyebrow: "Showroom AI · 面向小微企业",
+  eyebrow: "Showroom AI · 面向企业",
   title: "为您的生意配备 AI 销售和营销",
   lede: "全天候回复顾客，登记订单和预约，运营社交媒体——您只需批准。{start}/月起，免费试用 {days} 天。",
   primaryCta: "免费试用 {days} 天",
@@ -230,7 +230,7 @@ const zh: HomePlain = {
 };
 
 const ja: HomePlain = {
-  eyebrow: "Showroom AI · 小規模ビジネス向け",
+  eyebrow: "Showroom AI · ビジネス向け",
   title: "あなたのお店に、AIの販売担当とマーケター",
   lede: "お客様に24時間返信し、注文や予約を受け付け、SNSを運用します — あなたは承認するだけ。月額 {start} から、{days}日間無料。",
   primaryCta: "{days}日間無料で試す",

@@ -3,7 +3,7 @@ import { skuPrice, SHOWROOM_AI_SETUP_FEE_USD, SHOWROOM_AI_TRIAL_DAYS } from "@/l
 import { formatUsdPrice } from "@/lib/pricing/crypto-checkout";
 
 /**
- * Plain-language public copy for small businesses (pricing + products).
+ * Plain-language public copy for businesses (pricing + products).
  * One price system only: Start / Business / Pro + optional setup, all
  * interpolated from lib/showroom-ai constants ({start} {business} {pro}
  * {setup} {days}). Every locale spelled out; unknown ones fall back to EN.
