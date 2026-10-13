@@ -322,7 +322,7 @@ export const aimeRu: AimeContent = {
   faqs: [
     {
       q: "Чем Маркетолог отличается от обычного SMM-менеджера?",
-      a: "AIME — это цифровой сотрудник с выделенной инфраструктурой: он не выгорает, не срывает дедлайны, работает 24/7 и следует строгому регламенту. Вы тратите не более 2 минут в день на согласование готовых макетов в Telegram.",
+      a: "Маркетолог — это цифровой сотрудник с выделенной инфраструктурой: он не выгорает, не срывает дедлайны, работает 24/7 и следует строгому регламенту. Вы тратите не более 2 минут в день на согласование готовых макетов в Telegram.",
     },
     {
       q: "Это не просто планировщик постов вроде Buffer или Hootsuite?",
@@ -377,7 +377,7 @@ export const aimeEn: AimeContent = {
   ],
   compareTitle: "Not an empty scheduler — a marketing cycle with approval",
   compareSub:
-    "AIME executes the full lifecycle: Research → Strategy → Content & Visuals → Telegram Review → Meta Graph Publishing.",
+    "The Marketer executes the full lifecycle: Research → Strategy → Content & Visuals → Telegram Review → Meta Graph Publishing.",
   compareColumns: [
     {
       id: "smm",

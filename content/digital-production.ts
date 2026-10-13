@@ -81,7 +81,7 @@ const en: DigitalProductionCopy = {
     title: "Not the product catalog.",
     catalogTitle: "Ready products",
     catalogBody:
-      "AIME, AI Business Assistant and SHOWROOM AI / AI Sales Agent — published SKUs you buy and run.",
+      "Showroom AI with Seller, Marketer and Business Assistant roles — ready plans you buy and run.",
     productionTitle: "Digital Production",
     productionBody:
       "A build for your process: from a landing to a platform, cabinet or custom AI system. Scoped after we see the task.",
@@ -171,7 +171,7 @@ const en: DigitalProductionCopy = {
   scenarios: {
     eyebrow: "When this is your path",
     title: "Four situations where a ready SKU is the wrong door.",
-    lead: "If AIME, AI Business Assistant or SHOWROOM AI already cover the job, start in the catalog.",
+    lead: "If Marketer, Showroom AI · Business Assistant or Showroom AI already cover the job, start in the catalog.",
     items: [
       {
         title: "Landing for an offer or ads",
@@ -187,17 +187,17 @@ const en: DigitalProductionCopy = {
       },
       {
         title: "Custom AI inside your process",
-        body: "The three ready products do not match the workflow. We build the AI piece into your process — or embed BA / SHOWROOM AI / AIME where they do fit.",
+        body: "The three ready products do not match the workflow. We build the AI piece into your process — or embed BA / Showroom AI / Marketer where they do fit.",
       },
     ],
   },
   embed: {
     eyebrow: "AI MARK products",
     title: "The three SKUs can sit inside a custom build — or stay out.",
-    lead: "Digital Production is not a bundle of AIME, AI Business Assistant and SHOWROOM AI. They can be embedded when the job matches. They can also be absent.",
-    aime: "AIME — marketing cycle up to your approval",
-    assistant: "AI Business Assistant — answers and qualification",
-    showroom: "SHOWROOM AI / AI Sales Agent — selection, calc, commercial proposal",
+    lead: "Digital Production is not a bundle of Marketer, Showroom AI · Business Assistant and Showroom AI. They can be embedded when the job matches. They can also be absent.",
+    aime: "Marketer — content and posts after your approval",
+    assistant: "Showroom AI · Business Assistant — answers and qualification",
+    showroom: "Showroom AI · Seller — selection, calc, commercial proposal",
     orCustom: "Or a pure custom system with none of the three.",
   },
   bottom: {
@@ -222,7 +222,7 @@ const ru: DigitalProductionCopy = {
     title: "Это не каталог готовых продуктов.",
     catalogTitle: "Готовые продукты",
     catalogBody:
-      "AIME, AI Business Assistant и SHOWROOM AI — AI-продавец: опубликованные SKU, которые можно купить и запустить.",
+      "Showroom AI с ролями Продавец, Маркетолог и Бизнес-ассистент — готовые тарифы, которые вы покупаете и запускаете.",
     productionTitle: "Цифровое производство",
     productionBody:
       "Сборка под ваш процесс: от лендинга до платформы, кабинета или custom AI-системы. Скоуп — после того, как увидим задачу.",
@@ -312,7 +312,7 @@ const ru: DigitalProductionCopy = {
   scenarios: {
     eyebrow: "Когда это ваш путь",
     title: "Четыре ситуации, в которых готовый SKU — не та дверь.",
-    lead: "Если задачу закрывают AIME, AI Business Assistant или SHOWROOM AI, начните с каталога.",
+    lead: "Если задачу закрывают Marketer, Showroom AI · Business Assistant или Showroom AI, начните с каталога.",
     items: [
       {
         title: "Лендинг под оффер или рекламу",
@@ -328,17 +328,17 @@ const ru: DigitalProductionCopy = {
       },
       {
         title: "Custom AI внутри вашего процесса",
-        body: "Три готовых продукта не совпадают с workflow. Собираем AI-часть в ваш процесс — или встраиваем BA / SHOWROOM AI / AIME там, где они садятся.",
+        body: "Три готовых продукта не совпадают с workflow. Собираем AI-часть в ваш процесс — или встраиваем BA / Showroom AI / Marketer там, где они садятся.",
       },
     ],
   },
   embed: {
     eyebrow: "Продукты AI MARK",
     title: "Три SKU можно встроить в кастомную сборку — или обойтись без них.",
-    lead: "Цифровое производство — не пакет из AIME, AI Business Assistant и SHOWROOM AI. Их встраиваем, если задача совпадает. Их может не быть совсем.",
-    aime: "AIME — маркетинговый цикл до вашего апрува",
-    assistant: "AI Business Assistant — ответы и квалификация",
-    showroom: "SHOWROOM AI — AI-продавец: подбор, расчёт, коммерческое предложение",
+    lead: "Цифровое производство — не пакет из Marketer, Showroom AI · Business Assistant и Showroom AI. Их встраиваем, если задача совпадает. Их может не быть совсем.",
+    aime: "Маркетолог — контент и посты после вашего подтверждения",
+    assistant: "Showroom AI · Business Assistant — ответы и квалификация",
+    showroom: "Showroom AI — AI-продавец: подбор, расчёт, коммерческое предложение",
     orCustom: "Или чистая custom-система без трёх продуктов.",
   },
   bottom: {

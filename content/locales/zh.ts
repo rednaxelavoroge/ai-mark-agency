@@ -11,7 +11,7 @@ export const copyZh: Copy = {
       "AI营销",
       "数字化开发",
       "营销",
-      "SHOWROOM AI",
+      "Showroom AI",
       "ai-mark.agency"
     ]
   },
@@ -91,7 +91,7 @@ export const copyZh: Copy = {
       {
         "n": "04",
         "title": "AI 销售",
-        "body": "从首次咨询到资格判断与方案 — 业务助理 与 SHOWROOM AI。"
+        "body": "从首次咨询到资格判断与方案 — 业务助理 与 Showroom AI。"
       },
       {
         "n": "05",
@@ -176,19 +176,19 @@ export const copyZh: Copy = {
         "value": "营销 — AI 营销数字员工",
         "who": "消费品牌、出海跨境电商与营销机构",
         "extra": "自主完成 Instagram、Facebook、Threads 内容策划、排版与发布，通过 Telegram 一键审核。",
-        "price": "199 美元/月起"
+        "price": "Business $249 · Pro $399"
       },
       "assistant": {
         "value": "业务助理 业务助手",
         "who": "房产顾问、高端服务业、B2B 外贸与企业客发",
         "extra": "7×24 全渠道在线（WhatsApp / Telegram / 网页），智能初筛潜客并自动归档至 CRM 系统。",
-        "price": "149 美元/月起"
+        "price": "可加入任意套餐，按需开通"
       },
       "showroom": {
         "value": "Showroom AI · 销售配置展厅",
         "who": "制造业工厂、汽车销售、全屋定制及工程总包",
         "extra": "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。",
-        "price": "89 美元/月起"
+        "price": "Start $89 · Business $249 · Pro $399 · 可选 $300 代配置"
       }
     }
   },
@@ -305,7 +305,7 @@ export const copyZh: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and SHOWROOM AI when the offer needs them",
+          "Inbox and Showroom AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -528,7 +528,7 @@ export const copyZh: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

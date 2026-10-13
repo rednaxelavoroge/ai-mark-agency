@@ -24,9 +24,9 @@ export const copyVi: PartnerPageCopy = {
   productTitle: "Bốn phương thức tạo giá trị thực tế cho khách hàng.",
   productLead: "Đối tác có thể kết nối chính xác vấn đề của doanh nghiệp với giải pháp phù hợp của AI MARK, thay vì cố gắng bán một công cụ duy nhất cho một nhóm đối tượng hẹp.",
   products: [
-    { name: "AI Marketing Employee", type: "ĐỊNH KỲ / SẢN PHẨM AI", body: "Hệ thống tiếp thị AI nguyên bản: nghiên cứu thị trường, chiến lược, sáng tạo nội dung, hình ảnh, phê duyệt, đăng tải tự động và tối ưu hóa liên tục.", revenue: "Doanh thu thuê bao", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "ĐỊNH KỲ / SẢN PHẨM AI", body: "Hộp thư bán hàng và chăm sóc khách hàng dựa trên cơ sở tri thức doanh nghiệp, sàng lọc khách hàng tiềm năng và chuyển giao linh hoạt cho nhân sự.", revenue: "Doanh thu thuê bao", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "ĐỊNH KỲ / SẢN PHẨM AI", body: "Nhân viên bán hàng AI hỗ trợ tư vấn, tra cứu danh mục, tính toán theo công thức giá, xuất thông số kỹ thuật và tạo báo giá thương mại chuyên nghiệp.", revenue: "Doanh thu thuê bao", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "ĐỊNH KỲ / SẢN PHẨM AI", body: "Hệ thống tiếp thị AI nguyên bản: nghiên cứu thị trường, chiến lược, sáng tạo nội dung, hình ảnh, phê duyệt, đăng tải tự động và tối ưu hóa liên tục.", revenue: "Doanh thu thuê bao", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "ĐỊNH KỲ / SẢN PHẨM AI", body: "Hộp thư bán hàng và chăm sóc khách hàng dựa trên cơ sở tri thức doanh nghiệp, sàng lọc khách hàng tiềm năng và chuyển giao linh hoạt cho nhân sự.", revenue: "Doanh thu thuê bao", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "ĐỊNH KỲ / SẢN PHẨM AI", body: "Nhân viên bán hàng AI hỗ trợ tư vấn, tra cứu danh mục, tính toán theo công thức giá, xuất thông số kỹ thuật và tạo báo giá thương mại chuyên nghiệp.", revenue: "Doanh thu thuê bao", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "DỰ ÁN / DỊCH VỤ B2B", body: "Website, cổng thông tin khách hàng, ứng dụng số, tích hợp API, tự động hóa và phát triển hệ thống AI theo yêu cầu cho các tổ chức quy mô lớn.", revenue: "Doanh thu dự án lớn", variant: "saas" },
   ],
   productCta: "Xem chi tiết sản phẩm",

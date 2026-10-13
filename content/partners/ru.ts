@@ -24,9 +24,9 @@ export const copyRu: PartnerPageCopy = {
   productTitle: "Четыре способа создать ценность для клиента.",
   productLead: "Партнёр связывает проблему конкретного бизнеса с подходящим решением AI MARK, а не пытается продать одну технологию всем подряд.",
   products: [
-    { name: "AI Marketing Employee", type: "RECURRING / AI-ПРОДУКТ", body: "AI-native маркетинг: исследование, стратегия, контент, креативы, согласование, публикация и оптимизация.", revenue: "Подписочный доход", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "RECURRING / AI-ПРОДУКТ", body: "Входящие продажи и поддержка на базе базы знаний бизнеса, квалификация лидов и бесшовная передача человеку при необходимости.", revenue: "Подписочный доход", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "RECURRING / AI-ПРОДУКТ", body: "AI-продавец для диалога с клиентом, подбора по каталогу, точного расчёта по формулам, спецификаций и КП для разных отраслей.", revenue: "Подписочный доход", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Маркетолог", type: "RECURRING / AI-ПРОДУКТ", body: "AI-native маркетинг: исследование, стратегия, контент, креативы, согласование, публикация и оптимизация.", revenue: "Подписочный доход", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Бизнес-ассистент", type: "RECURRING / AI-ПРОДУКТ", body: "Входящие продажи и поддержка на базе базы знаний бизнеса, квалификация лидов и бесшовная передача человеку при необходимости.", revenue: "Подписочный доход", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Продавец", type: "RECURRING / AI-ПРОДУКТ", body: "AI-продавец для диалога с клиентом, подбора по каталогу, точного расчёта по формулам, спецификаций и КП для разных отраслей.", revenue: "Подписочный доход", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROJECT / B2B-УСЛУГА", body: "Сайты, порталы, веб-сервисы, интеграции, автоматизация и заказные AI-системы для бизнеса, которому нужна масштабная цифровая инфраструктура.", revenue: "Проектный доход", variant: "saas" },
   ],
   productCta: "Подробнее о продукте",

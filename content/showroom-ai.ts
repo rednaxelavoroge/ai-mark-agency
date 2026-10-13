@@ -121,7 +121,7 @@ const showroomAiEn: ShowroomAiCopy = {
     {
       id: "seller",
       name: "Seller",
-      title: "AI Sales Agent",
+      title: "Seller",
       desc: "Answers and sells: qualifies the request, matches the offer, prices it by your catalogue and rules, and hands your team a prepared deal.",
       capabilities: [
         "Replies and sells 24/7, not just an answering bot",
@@ -136,7 +136,7 @@ const showroomAiEn: ShowroomAiCopy = {
     {
       id: "marketer",
       name: "Marketer",
-      title: "AI Marketing Employee",
+      title: "Showroom AI · Marketer",
       desc: "Runs the marketing cycle end to end and publishes only after your approval in Telegram.",
       capabilities: [
         "Research of the niche, the business and the competitors",
@@ -155,7 +155,7 @@ const showroomAiEn: ShowroomAiCopy = {
     {
       id: "assistant",
       name: "Business Assistant",
-      title: "AI Business Assistant",
+      title: "Showroom AI · Business Assistant",
       desc: "Answers routine questions from your knowledge base, qualifies inbound conversations, and passes a warm thread to a human.",
       capabilities: [
         "Grounded in your knowledge base",

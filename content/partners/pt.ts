@@ -24,9 +24,9 @@ export const copyPt: PartnerPageCopy = {
   productTitle: "Quatro formas de gerar valor real para o cliente.",
   productLead: "O parceiro identifica a dor concreta de uma empresa e direciona a solução certa da AI MARK, em vez de insistir num produto único para um nicho estreito.",
   products: [
-    { name: "AI Marketing Employee", type: "RECORRENTE / PRODUTO DE IA", body: "Marketing nativo com IA: pesquisa, estratégia, redação, produção criativa, aprovação, publicação e otimização.", revenue: "Receita por subscrição", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "RECORRENTE / PRODUTO DE IA", body: "Caixa de entrada para vendas e suporte com base de conhecimento empresarial, qualificação de leads e transição fluida para humanos.", revenue: "Receita por subscrição", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "RECORRENTE / PRODUTO DE IA", body: "Agente comercial de IA para atendimento, consulta de catálogo, cálculo por regras de preço, propostas e orçamentos.", revenue: "Receita por subscrição", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "RECORRENTE / PRODUTO DE IA", body: "Marketing nativo com IA: pesquisa, estratégia, redação, produção criativa, aprovação, publicação e otimização.", revenue: "Receita por subscrição", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "RECORRENTE / PRODUTO DE IA", body: "Caixa de entrada para vendas e suporte com base de conhecimento empresarial, qualificação de leads e transição fluida para humanos.", revenue: "Receita por subscrição", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "RECORRENTE / PRODUTO DE IA", body: "Agente comercial de IA para atendimento, consulta de catálogo, cálculo por regras de preço, propostas e orçamentos.", revenue: "Receita por subscrição", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROJETO / SERVIÇO B2B", body: "Websites, portais, aplicações, integrações, automação e sistemas sob medida de IA para empresas com necessidades robustas.", revenue: "Receita por projeto", variant: "saas" },
   ],
   productCta: "Explorar produto",

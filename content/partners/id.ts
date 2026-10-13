@@ -24,9 +24,9 @@ export const copyId: PartnerPageCopy = {
   productTitle: "Empat cara menciptakan nilai nyata bagi pelanggan.",
   productLead: "Mitra dapat mencocokkan masalah bisnis pelanggan dengan solusi AI MARK yang tepat, alih-alih memaksakan satu alat ke target pasar yang sempit.",
   products: [
-    { name: "AI Marketing Employee", type: "BERLANGGANAN / PRODUK AI", body: "Pemasaran AI-native: riset, strategi, konten, produksi kreatif, persetujuan, publikasi, dan optimasi berkelanjutan.", revenue: "Pendapatan langganan", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "BERLANGGANAN / PRODUK AI", body: "Kotak masuk penjualan dan dukungan berbasis basis pengetahuan bisnis, mengkualifikasi prospek, dan mengalihkan ke manusia bila perlu.", revenue: "Pendapatan langganan", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "BERLANGGANAN / PRODUK AI", body: "Agen penjualan AI untuk dialog konsultatif, pemilihan katalog, aturan harga, spesifikasi teknis, dan proposal komersial.", revenue: "Pendapatan langganan", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "BERLANGGANAN / PRODUK AI", body: "Pemasaran AI-native: riset, strategi, konten, produksi kreatif, persetujuan, publikasi, dan optimasi berkelanjutan.", revenue: "Pendapatan langganan", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "BERLANGGANAN / PRODUK AI", body: "Kotak masuk penjualan dan dukungan berbasis basis pengetahuan bisnis, mengkualifikasi prospek, dan mengalihkan ke manusia bila perlu.", revenue: "Pendapatan langganan", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "BERLANGGANAN / PRODUK AI", body: "Agen penjualan AI untuk dialog konsultatif, pemilihan katalog, aturan harga, spesifikasi teknis, dan proposal komersial.", revenue: "Pendapatan langganan", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROYEK / LAYANAN B2B", body: "Situs web, portal, platform aplikasi, integrasi, dan sistem AI khusus untuk bisnis dengan kebutuhan infrastruktur berskala besar.", revenue: "Pendapatan proyek", variant: "saas" },
   ],
   productCta: "Pelajari produk",

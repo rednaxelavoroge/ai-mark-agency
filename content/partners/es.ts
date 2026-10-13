@@ -24,9 +24,9 @@ export const copyEs: PartnerPageCopy = {
   productTitle: "Cuatro vías para generar valor al cliente.",
   productLead: "Un partner conecta el problema real de una empresa con la solución adecuada de AI MARK, en lugar de vender una sola herramienta a un nicho aislado.",
   products: [
-    { name: "AI Marketing Employee", type: "RECURRENTE / PRODUCTO IA", body: "Marketing nativo con IA: investigación, estrategia, contenido, piezas creativas, aprobación, publicación y optimización continua.", revenue: "Ingreso por suscripción", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "RECURRENTE / PRODUCTO IA", body: "Bandeja de ventas y soporte sobre la base de conocimiento del negocio, cualifica solicitudes y deriva a personas cuando es necesario.", revenue: "Ingreso por suscripción", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "RECURRENTE / PRODUCTO IA", body: "Agente comercial de IA para diálogo con clientes, selección de catálogo, reglas de precios, especificaciones y propuestas comerciales.", revenue: "Ingreso por suscripción", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "RECURRENTE / PRODUCTO IA", body: "Marketing nativo con IA: investigación, estrategia, contenido, piezas creativas, aprobación, publicación y optimización continua.", revenue: "Ingreso por suscripción", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "RECURRENTE / PRODUCTO IA", body: "Bandeja de ventas y soporte sobre la base de conocimiento del negocio, cualifica solicitudes y deriva a personas cuando es necesario.", revenue: "Ingreso por suscripción", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "RECURRENTE / PRODUCTO IA", body: "Agente comercial de IA para diálogo con clientes, selección de catálogo, reglas de precios, especificaciones y propuestas comerciales.", revenue: "Ingreso por suscripción", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROYECTO / SERVICIO B2B", body: "Sitios web, portales, plataformas, integraciones, automatización y sistemas de IA a medida para empresas que necesitan infraestructura sólida.", revenue: "Ingreso por proyecto", variant: "saas" },
   ],
   productCta: "Explorar producto",

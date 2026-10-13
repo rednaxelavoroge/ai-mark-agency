@@ -12,7 +12,7 @@ export const copyEn: Copy = {
         "AI marketing",
         "digital production",
         "Marketer",
-        "SHOWROOM AI",
+        "Showroom AI",
         "ai-mark.agency",
       ],
     },
@@ -68,7 +68,7 @@ export const copyEn: Copy = {
         {
           n: "04",
           title: "AI Sales",
-          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — Business Assistant and SHOWROOM AI.",
+          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — Business Assistant and Showroom AI.",
         },
         {
           n: "05",
@@ -132,14 +132,14 @@ export const copyEn: Copy = {
             "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
           who: "Brands that need a weekly marketing cycle, not a monthly pile of posts.",
           extra: "Human approval before publish. Optional auto-publish after several clean cycles.",
-          price: "Lite ~$199/mo · Pro ~$349/mo. Agency: setup + per-client MRR. License path for self-host.",
+          price: "Business $249 · Pro $399",
         },
         assistant: {
           value:
-            "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are SHOWROOM AI.",
+            "Answers, knowledge base, qualification, customer support, and human handoff. Pricing and the commercial proposal are Showroom AI.",
           who: "Teams that need replies and qualification, not a quote engine.",
           extra: "A person takes over when the conversation needs a human.",
-          price: "Entry $149/mo · Standard $199/mo",
+          price: "With any plan, on request",
         },
         showroom: {
           value:
@@ -148,7 +148,7 @@ export const copyEn: Copy = {
           extra:
             "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades. Deterministic pricing engine behind the dialogue.",
           price:
-            "Self-serve setup $0 or ~$300 done-for-you. Then ~$89–399/mo across the three Showroom AI bundles.",
+            "Start $89 · Business $249 · Pro $399 · setup $300 optional",
         },
       },
     },
@@ -267,7 +267,7 @@ export const copyEn: Copy = {
           summary: "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
           points: [
             "Instagram and Facebook as a paired Meta system",
-            "Inbox and SHOWROOM AI when the offer needs them",
+            "Inbox and Showroom AI when the offer needs them",
             "Human-in-the-loop on every publish",
             "Analytics feeding the next cycle",
           ],
@@ -420,7 +420,7 @@ export const copyEn: Copy = {
       assistant: {
         eyebrow: "BA",
         title: "Showroom AI · Business Assistant",
-        lead: "Answers and qualifies, then hands the conversation to a person. SHOWROOM AI is the one that sells and prepares the deal.",
+        lead: "Answers and qualifies, then hands the conversation to a person. Showroom AI is the one that sells and prepares the deal.",
         metaphor: "One inbox across the channels your buyers already use.",
         sections: [
           {
@@ -439,7 +439,7 @@ export const copyEn: Copy = {
         flow: ["Inbound", "Knowledge base", "Reply", "Qualify", "Human handoff"],
       },
       showroom: {
-        eyebrow: "AI Sales Agent",
+        eyebrow: "Seller",
         title: "Showroom AI · Seller",
         lead: "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals — with deterministic rules behind the quote. Not furniture-only, not support chat.",
         metaphor: "Dialogue + catalog + business rules → selection → calc → spec → commercial proposal / PDF.",
@@ -454,7 +454,7 @@ export const copyEn: Copy = {
           },
           {
             title: "Where it sits",
-            body: "After marketing or inbox qualification. SHOWROOM AI turns conversation and parameters into a verified commercial document.",
+            body: "After marketing or inbox qualification. Showroom AI turns conversation and parameters into a verified commercial document.",
           },
         ],
         flow: ["Catalog", "Business rules", "Client parameters", "Calculation", "Spec", "Quote / PDF"],
