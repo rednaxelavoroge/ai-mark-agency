@@ -8,9 +8,21 @@ import { ContactCta } from "@/components/ContactCta";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { navHref, type Locale } from "@/lib/site";
+import { getHomePlain } from "@/content/home-plain";
+import { fillPlanTokens, planTokens } from "@/content/plain-copy";
 
 export function Header({ locale, t }: { locale: Locale; t: Copy }) {
   const [open, setOpen] = useState(false);
+  // Customer menu only. Investors, partners, digital production and business
+  // creation live in the footer.
+  const home = getHomePlain(locale);
+  const navItems = [
+    { href: "/", label: home.nav.home },
+    { href: "/products", label: home.nav.showroom },
+    { href: "/pricing", label: home.nav.pricing },
+    { href: "/how-it-works", label: home.nav.how },
+    { href: "#contact", label: home.nav.contact },
+  ];
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef(0);
 
@@ -50,12 +62,12 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
         >
           <BrandLogo className="h-[18px] min-[400px]:h-6 sm:h-7" />
           <span className="mt-1 max-w-[7.25rem] text-[12px] font-semibold leading-tight tracking-[0.01em] text-muted sm:max-w-[9.5rem] sm:leading-none xl:max-w-none">
-            Venture and Marketing
+            {home.nav.tagline}
           </span>
         </Link>
 
         <nav className="ml-auto hidden min-w-0 items-center justify-end gap-x-3 text-[13px] font-medium text-muted min-[1280px]:flex xl:gap-x-4">
-          {t.nav.items.map((item) =>
+          {navItems.map((item) =>
             item.href === "#contact" ? (
               <ContactCta
                 key={item.href + item.label}
@@ -78,12 +90,15 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="ml-auto flex shrink-0 items-center gap-1 min-[1280px]:ml-3 sm:gap-2">
           <ThemeToggle lightLabel={t.nav.themeLight} darkLabel={t.nav.themeDark} />
           <LanguageSelector locale={locale} />
-          <ContactCta className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-mark text-sm font-semibold text-mark-ink sm:h-11 sm:w-auto sm:px-4">
-            <span className="max-sm:sr-only">{t.nav.cta}</span>
+          <Link
+            href={`${navHref(locale, "/")}#start`}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-mark text-sm font-semibold text-mark-ink sm:h-11 sm:w-auto sm:px-4"
+          >
+            <span className="max-sm:sr-only">{fillPlanTokens(home.primaryCta, planTokens())}</span>
             <span className="sm:hidden" aria-hidden>
               →
             </span>
-          </ContactCta>
+          </Link>
           <button
             type="button"
             className="grid h-9 w-9 place-items-center rounded-full border border-line text-paper min-[400px]:h-11 min-[400px]:w-11 min-[1280px]:hidden"
@@ -102,7 +117,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
       {open ? (
         <nav className="border-t border-line bg-ink px-4 py-3 min-[1280px]:hidden">
           <ul className="mx-auto grid w-full max-w-[1280px] gap-1 text-[15px]">
-            {t.nav.items.map((item) => (
+            {navItems.map((item) => (
               <li key={item.href + item.label}>
                 {item.href === "#contact" ? (
                   <ContactCta

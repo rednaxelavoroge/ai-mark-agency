@@ -4,6 +4,7 @@ import { getPublicChromeCopy } from "@/content/sections";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
+import { getPlainCopy } from "@/content/plain-copy";
 import { productsHubPath } from "@/lib/products";
 import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
@@ -25,11 +26,8 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
           <div>
             <Link href={navHref(locale, "/")} className="inline-flex max-w-full flex-col items-start">
               <BrandLogo className="h-8 sm:h-9" />
-              <span className="mt-2 text-[13px] font-semibold text-muted">{chrome.ventureTagline}</span>
+              <span className="mt-2 text-[13px] font-semibold text-muted">{getPlainCopy(locale).brandLine}</span>
             </Link>
-            <p className="mt-3 text-[13px] font-semibold tracking-widest text-mark uppercase">
-              {chrome.taglineUpper}
-            </p>
             <p className="mt-2 text-sm text-muted max-w-sm">{chrome.blurb}</p>
           </div>
 
@@ -107,11 +105,6 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
               <li>
                 <Link href={navHref(locale, "/investors")} className="hover:text-paper transition-colors">
                   {chrome.investors}
-                </Link>
-              </li>
-              <li>
-                <Link href={navHref(locale, "/pricing#why-now")} className="hover:text-paper transition-colors">
-                  {chrome.whyNow}
                 </Link>
               </li>
               <li>
