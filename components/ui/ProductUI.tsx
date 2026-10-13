@@ -1,5 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { LiveNumber, LiveType } from "./Live";
+import { getMockCopy, type MockCopy } from "@/content/mock-copy";
+import type { Locale } from "@/lib/site";
 
 /**
  * AI MARK proprietary product-UI mockups.
@@ -33,9 +35,11 @@ export function UIFrame({
   className = "",
   ratio = "aspect-[16/10]",
   peek = false,
+  exampleLabel = "Example",
 }: {
   children: ReactNode;
   url?: string;
+  exampleLabel?: string;
   className?: string;
   ratio?: string;
   /**
@@ -56,7 +60,7 @@ export function UIFrame({
           {url}
         </span>
         <span className="ml-auto font-mono text-[10px] tracking-wide text-muted uppercase">
-          Example
+          {exampleLabel}
         </span>
       </div>
       <div className={`relative isolate overflow-hidden ${ratio}`}>
@@ -196,7 +200,7 @@ function Spark({ points, className = "" }: { points: number[]; className?: strin
 
 /* ------------------------------------------------------------------ AIME */
 
-function AimeMock() {
+function AimeMock({ m }: { m: MockCopy["aime"] }) {
   const channels = ["Instagram", "Facebook", "Threads", "Telegram"];
   return (
     <div className="grid h-full grid-cols-[34%_66%] bg-ink-3/30 text-paper">
@@ -206,12 +210,12 @@ function AimeMock() {
             AM
           </span>
           <div className="leading-tight">
-            <p className="font-display text-[10px] font-semibold">AI Marketing Employee</p>
-            <p className="font-mono text-[8px] text-muted">research → publish loop</p>
+            <p className="font-display text-[10px] font-semibold">{m.title}</p>
+            <p className="font-mono text-[8px] text-muted">{m.sub}</p>
           </div>
         </div>
         <div className="space-y-1">
-          {["Research", "Content plan", "Drafts", "Approval", "Published", "Analytics"].map(
+          {m.steps.map(
             (s, i) => (
               <div
                 key={s}
@@ -237,9 +241,9 @@ function AimeMock() {
 
       <div className="flex flex-col gap-2.5 p-3">
         <div className="flex items-center justify-between">
-          <span className="font-display text-[11px] font-semibold">Content calendar · Meta</span>
+          <span className="font-display text-[11px] font-semibold">{m.calendar}</span>
           <span className="rounded-full border border-mark/20 bg-mark/5 px-2 py-0.5 font-mono text-[8px] text-mark">
-            awaiting approval
+            {m.awaiting}
           </span>
         </div>
 
@@ -261,7 +265,7 @@ function AimeMock() {
 
         <div className="grid grid-cols-[1.4fr_1fr] gap-2">
           <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
-            <p className="mb-1.5 font-mono text-[8px] text-muted">ENGAGEMENT · 30d</p>
+            <p className="mb-1.5 font-mono text-[8px] text-muted">{m.reach}</p>
             <div className="flex h-14 items-end justify-between gap-1">
               {[38, 52, 44, 68, 60, 82, 74, 91].map((h, i) => (
                 <Bar key={i} h={h} delay={i * 70} />
@@ -269,35 +273,27 @@ function AimeMock() {
             </div>
           </div>
           <div className="space-y-1">
-            <Line label="Drafts" value="In review" />
-            <Line
-              label="Approval"
-              value="Before publish"
-              tone="warm"
-            />
-            <Line
-              label="Next step"
-              value="Analytics"
-              tone="emerald"
-            />
+            <Line label={m.lines[0][0]} value={m.lines[0][1]} />
+            <Line label={m.lines[1][0]} value={m.lines[1][1]} tone="warm" />
+            <Line label={m.lines[2][0]} value={m.lines[2][1]} tone="emerald" />
           </div>
         </div>
 
         <div className="rounded-lg border border-line/70 bg-ink-2 p-2">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[8px] text-muted">TELEGRAM APPROVAL</span>
-            <span className="font-mono text-[8px] text-warm">human-in-the-loop</span>
+            <span className="font-mono text-[8px] text-muted">{m.tg}</span>
+            <span className="font-mono text-[8px] text-warm">{m.you}</span>
           </div>
           <p className="mt-1 text-[10px] leading-snug text-paper/85">
-            <LiveType text="Reels · «Kaçan für den Sommer» — Skript bereit." />
+            <LiveType text={m.draft} />
             <span className="caret ml-1 inline-block h-3 w-[2px] translate-y-0.5 bg-mark align-middle" />
           </p>
           <div className="mt-1.5 flex gap-1.5">
             <span className="rounded-full bg-mark px-2.5 py-0.5 font-mono text-[8px] font-semibold text-mark-ink">
-              APPROVE
+              {m.approve}
             </span>
             <span className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[8px] text-muted">
-              EDIT
+              {m.edit}
             </span>
           </div>
         </div>
@@ -308,18 +304,18 @@ function AimeMock() {
 
 /* ----------------------------------------------------------- ASSISTANT */
 
-function AssistantMock() {
+function AssistantMock({ m }: { m: MockCopy["assistant"] }) {
   const threads = [
-    { c: "WhatsApp", t: "Konfiguration & Lieferzeit?", a: 2 },
-    { c: "Instagram Direct", t: "Preis für die Serie?", a: 0 },
-    { c: "Telegram", t: "Rechnung für Bestellung #1042", a: 1 },
-    { c: "Webchat", t: "Größe der Standardoption?", a: 0 },
+    { c: "WhatsApp", t: m.threads[0], a: 2 },
+    { c: "Instagram Direct", t: m.threads[1], a: 0 },
+    { c: "Telegram", t: m.threads[2], a: 1 },
+    { c: "Webchat", t: m.threads[3], a: 0 },
   ];
   return (
     <div className="grid h-full grid-cols-[40%_60%] bg-ink-3/30 text-paper">
       <div className="flex flex-col border-r border-line/70">
         <div className="flex items-center justify-between border-b border-line/70 p-3">
-          <span className="font-display text-[11px] font-semibold">Unified inbox</span>
+          <span className="font-display text-[11px] font-semibold">{m.inbox}</span>
           <span className="flex items-center gap-1 font-mono text-[8px] text-mark">
             <Dot tone="emerald" /> AI 24/7
           </span>
@@ -345,31 +341,31 @@ function AssistantMock() {
           ))}
         </div>
         <div className="mt-auto border-t border-line/70 p-2.5">
-          <p className="font-mono text-[8px] text-muted">KNOWLEDGE BASE · RAG</p>
+          <p className="font-mono text-[8px] text-muted">{m.kb}</p>
           <div className="mt-1 space-y-1">
-            <Line label="Catalog" value="synced" />
-            <Line label="Pricing rules" value="live" tone="emerald" />
+            <Line label={m.lines[0][0]} value={m.lines[0][1]} />
+            <Line label={m.lines[1][0]} value={m.lines[1][1]} tone="emerald" />
           </div>
         </div>
       </div>
 
       <div className="flex flex-col">
         <div className="flex items-center justify-between border-b border-line/70 px-3 py-2.5">
-          <span className="font-mono text-[9px] text-muted">WhatsApp · Kunde 04</span>
+          <span className="font-mono text-[9px] text-muted">{m.chat}</span>
           <span className="rounded-full bg-warm/15 px-2 py-0.5 font-mono text-[8px] text-warm">
-            qualified lead
+            {m.tag}
           </span>
         </div>
         <div className="flex-1 space-y-2 p-3">
           <div className="max-w-[80%] rounded-xl rounded-tl-sm border border-line/70 bg-ink-2 px-3 py-2 text-[10px] text-paper/85">
-            Hallo! Interessiert an Konfiguration und Lieferzeit.
+            {m.msg1}
           </div>
           <div className="ml-auto max-w-[85%] rounded-xl rounded-tr-sm bg-mark/10 px-3 py-2 text-[10px] text-paper">
-            <LiveType text="Verfügbar: Standard & erweitert ab $1.200. Zusammenbau 5–7 Werktage." />
+            <LiveType text={m.msg2} />
             <span className="caret ml-1 inline-block h-3 w-[2px] translate-y-0.5 bg-mark align-middle" />
           </div>
           <div className="flex flex-wrap gap-1">
-            {["Budget erfasst", "Bedarf: config", "Score 82"].map((c) => (
+            {m.chips.map((c) => (
               <span
                 key={c}
                 className="rounded bg-ink-3 px-2 py-0.5 font-mono text-[8px] text-muted"
@@ -380,9 +376,9 @@ function AssistantMock() {
           </div>
         </div>
         <div className="flex items-center justify-between border-t border-line/70 px-3 py-2.5">
-          <span className="font-mono text-[8px] text-muted">handoff in 1 click</span>
+          <span className="font-mono text-[8px] text-muted">{m.handoff}</span>
           <span className="rounded-full bg-mark px-3 py-1 font-mono text-[8px] font-semibold text-mark-ink">
-            → Manager übernehmen
+            {m.take}
           </span>
         </div>
       </div>
@@ -392,22 +388,15 @@ function AssistantMock() {
 
 /* ------------------------------------------------------------ SHOWROOM */
 
-function ShowroomMock() {
-  const specs = [
-    ["Multi-tenant catalog", "isolated"],
-    ["Formula & rules engine", "deterministic"],
-    ["Parameter configurator", "active"],
-    ["Spec & price validation", "0 errors"],
-    ["PDF quote generator", "instant"],
-    ["CRM / manager handoff", "synced"],
-  ];
+function ShowroomMock({ m }: { m: MockCopy["showroom"] }) {
+  const specs = m.specs;
   return (
     <div className="grid h-full grid-cols-[56%_44%] bg-ink-3/30 text-paper">
       <div className="flex flex-col gap-2 border-r border-line/70 p-3">
         <div className="flex items-center justify-between">
-          <span className="font-display text-[11px] font-semibold">Showroom AI Core</span>
+          <span className="font-display text-[11px] font-semibold">{m.title}</span>
           <span className="flex items-center gap-1 font-mono text-[8px] text-mark">
-            <Dot tone="emerald" /> v2.4
+            <Dot tone="emerald" /> 24/7
           </span>
         </div>
         <div className="space-y-1">
@@ -426,7 +415,7 @@ function ShowroomMock() {
           ))}
         </div>
         <div className="mt-auto rounded-lg border border-line/70 bg-ink-2 p-2">
-          <p className="font-mono text-[8px] text-muted">CUSTOMER REQUEST → PDF</p>
+          <p className="font-mono text-[8px] text-muted">{m.flow}</p>
           <svg viewBox="0 0 240 34" className="mt-1 h-9 w-full">
             <path
               className="flow-line"
@@ -457,13 +446,13 @@ function ShowroomMock() {
 
       <div className="flex flex-col gap-2 p-3">
         <div className="rounded-lg border border-line/70 bg-ink-2 p-2.5">
-          <p className="font-mono text-[8px] text-muted">CONFIGURATION</p>
+          <p className="font-mono text-[8px] text-muted">{m.config}</p>
           <div className="mt-1.5 space-y-1.5">
             {[
-              ["Material", 0.7],
-              ["Dimensions", 0.45],
-              ["Finish", 0.85],
-              ["Extras", 0.3],
+              [m.params[0], 0.7],
+              [m.params[1], 0.45],
+              [m.params[2], 0.85],
+              [m.params[3], 0.3],
             ].map(([label, v], i) => (
               <div key={label as string}>
                 <div className="flex justify-between font-mono text-[8px] text-muted">
@@ -488,14 +477,14 @@ function ShowroomMock() {
 
         <div className="rounded-lg border border-line/70 bg-ink-2 p-2.5">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[8px] text-muted">COMMERCIAL OFFER</span>
-            <span className="font-mono text-[8px] text-warm">PDF</span>
+            <span className="font-mono text-[8px] text-muted">{m.offer}</span>
+            <span className="font-mono text-[8px] text-warm">✓</span>
           </div>
-          <p className="mt-1 font-display text-lg font-bold text-paper">Draft</p>
-          <p className="font-mono text-[8px] text-muted">incl. assembly · valid 14 days</p>
+          <p className="mt-1 font-display text-lg font-bold text-paper">{m.ready}</p>
+          <p className="font-mono text-[8px] text-muted">{m.note}</p>
           <div className="mt-2 space-y-1 border-t border-line/60 pt-2">
-            <Line label="Spec lines" value="24" />
-            <Line label="Margin" value="on target" tone="emerald" />
+            <Line label={m.lines[0][0]} value={m.lines[0][1]} />
+            <Line label={m.lines[1][0]} value={m.lines[1][1]} tone="emerald" />
           </div>
         </div>
       </div>
@@ -1069,10 +1058,7 @@ function AiEngineMock() {
   );
 }
 
-const MAP: Record<ProductVariant, () => ReactNode> = {
-  aime: AimeMock,
-  assistant: AssistantMock,
-  showroom: ShowroomMock,
+const MAP: Record<Exclude<ProductVariant, "aime" | "assistant" | "showroom">, () => ReactNode> = {
   saas: SaasMock,
   portal: PortalMock,
   ecommerce: EcommerceMock,
@@ -1094,16 +1080,32 @@ export function ProductUI({
   className = "",
   ratio,
   peek,
+  locale,
 }: {
   variant: ProductVariant;
   className?: string;
   ratio?: string;
   peek?: boolean;
+  /** Localizes the Showroom AI role mockups; other variants stay as they are. */
+  locale?: Locale;
 }) {
-  const Body = MAP[variant];
+  const m = getMockCopy(locale);
+  const body =
+    variant === "aime" ? (
+      <AimeMock m={m.aime} />
+    ) : variant === "assistant" ? (
+      <AssistantMock m={m.assistant} />
+    ) : variant === "showroom" ? (
+      <ShowroomMock m={m.showroom} />
+    ) : (
+      (() => {
+        const Body = MAP[variant];
+        return <Body />;
+      })()
+    );
   return (
-    <UIFrame url={URL_MAP[variant]} className={className} ratio={ratio} peek={peek}>
-      <Body />
+    <UIFrame url={URL_MAP[variant]} className={className} ratio={ratio} peek={peek} exampleLabel={m.example}>
+      {body}
     </UIFrame>
   );
 }
