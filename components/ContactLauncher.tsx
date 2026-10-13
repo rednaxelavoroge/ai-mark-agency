@@ -357,6 +357,8 @@ function applyLocaleChrome(locale: Locale) {
   const titleWrap = document.querySelector<HTMLElement>(".aiba-root .aiba-header-title");
   const titleText = titleWrap?.querySelector<HTMLElement>("span:not(.aiba-dot)");
   if (titleText && titleText.textContent !== WIDGET_TITLE) titleText.textContent = WIDGET_TITLE;
+  const panel = document.querySelector<HTMLElement>(".aiba-root .aiba-panel");
+  if (panel && panel.getAttribute("aria-label") !== WIDGET_TITLE) panel.setAttribute("aria-label", WIDGET_TITLE);
 
   const body = document.querySelector(".aiba-root .aiba-body");
   if (body) {
