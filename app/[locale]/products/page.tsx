@@ -128,7 +128,7 @@ export default async function ProductsHubPage({ params }: Props) {
                   data-reveal="scale"
                   style={{ "--reveal-delay": `${index * 110 + 90}ms` } as CSSProperties}
                 >
-                  <ProductUI variant={mock} ratio="aspect-[16/11]" peek />
+                  <ProductUI variant={mock} ratio="aspect-[16/11]" peek locale={locale} />
                 </div>
 
                 <h2 className="mt-5 font-display text-xl font-semibold text-paper">

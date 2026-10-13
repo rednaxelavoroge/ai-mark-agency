@@ -13,6 +13,7 @@ import { brief } from "@/lib/brief";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
 import { ShowroomAiIncluded, ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
 import { ShowroomDemoChatButton } from "@/components/products/ShowroomDemoChat";
+import { BookingScenario } from "@/components/BookingScenario";
 import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
 
 export function ShowroomAIPageContent({
@@ -169,6 +170,8 @@ export function ShowroomAIPageContent({
       </section>
 
       {/* 2. INDUSTRY CONFIGURATIONS */}
+      <BookingScenario locale={locale} />
+
       <section id="industries" className="border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="max-w-3xl">

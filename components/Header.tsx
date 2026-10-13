@@ -21,7 +21,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
     { href: "/products", label: home.nav.showroom },
     { href: "/pricing", label: home.nav.pricing },
     { href: "/how-it-works", label: home.nav.how },
-    { href: "#contact", label: home.nav.contact },
+    { href: "/contact", label: home.nav.contact },
   ];
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef(0);
