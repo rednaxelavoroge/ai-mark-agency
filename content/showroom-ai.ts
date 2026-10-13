@@ -126,7 +126,7 @@ const showroomAiEn: ShowroomAiCopy = {
       capabilities: [
         "Replies and sells 24/7, not just an answering bot",
         "Up to 3 channels: site chat, Telegram, plus WhatsApp / Instagram on your own Meta Business",
-        "Deterministic pricing from your catalogue — no invented numbers",
+        "Gives the exact price from your price list — no made-up numbers",
         "Manager handoff with the whole conversation",
       ],
       industries:
@@ -167,7 +167,7 @@ const showroomAiEn: ShowroomAiCopy = {
   ],
   plansTitle: "Showroom AI plans",
   plansSub:
-    "Monthly subscription in USD. Roles are sold on their own as well — each bundle costs less than its roles bought apart.",
+    "Monthly subscription in USD. 7 days free, no card.",
   plans: [
     {
       id: "start",
@@ -178,7 +178,7 @@ const showroomAiEn: ShowroomAiCopy = {
         "Seller 24/7 — answers and sells",
         "Site chat and Telegram, plus WhatsApp / Instagram on your own Meta Business",
         "Onboarding checklist for the Meta Business connection",
-        "Deterministic pricing from your catalogue and rules",
+        "Exact prices from your price list and rules",
       ],
     },
     {
@@ -190,7 +190,7 @@ const showroomAiEn: ShowroomAiCopy = {
         "Everything in Start",
         "Marketer Lite: strategy, posts, visual drafts",
         "Approval in Telegram before publishing",
-        "Cheaper than the two roles bought separately",
+        "Seller and Marketer together in one plan",
       ],
     },
     {
@@ -202,7 +202,7 @@ const showroomAiEn: ShowroomAiCopy = {
         "Everything in Business",
         "Marketer Pro: IG + FB + Threads, Reels, analytics",
         "Full publishing cycle",
-        "Cheaper than the two roles bought separately",
+        "Seller and Marketer together in one plan",
       ],
     },
   ],
@@ -216,7 +216,7 @@ const showroomAiEn: ShowroomAiCopy = {
   includedPoints: [
     "Live chat widget on your site and a Telegram channel",
     "WhatsApp / Instagram through your own Meta Business, with our onboarding checklist",
-    "Deterministic pricing from your catalogue and business rules",
+    "Exact prices from your price list and rules",
     "Human handoff with the full conversation",
     "Launch inside 24 hours",
   ],
@@ -243,7 +243,7 @@ const showroomAiEn: ShowroomAiCopy = {
     "Agencies and integrators typically charge around $2,000 for implementation alone, and the marketing is not part of it. Showroom AI includes the marketing cycle with publishing, and our seller sells — it does not stop at answering.",
   positioningPoints: [
     "Implementation starts far below an integrator's price",
-    "Marketing with publishing is part of the bundle",
+    "Marketing with publishing is included in the plan",
     "The Seller role sells, it does not only answer",
     "Free trial without a card, launched inside 24 hours",
   ],
@@ -277,7 +277,7 @@ const showroomAiRu: ShowroomAiCopy = {
       capabilities: [
         "Отвечает и продаёт 24/7, а не просто бот-автоответчик",
         "До 3 каналов: чат на сайте, Telegram, плюс WhatsApp / Instagram через ваш собственный Meta Business",
-        "Детерминированный расчёт по каталогу — без выдуманных цифр",
+        "Называет точную цену по вашему прайсу — без выдуманных цифр",
         "Передача менеджеру вместе со всем диалогом",
       ],
       industries:
@@ -318,7 +318,7 @@ const showroomAiRu: ShowroomAiCopy = {
   ],
   plansTitle: "Тарифы Showroom AI",
   plansSub:
-    "Подписка в USD, ежемесячно. Роли продаются и по отдельности — каждый бандл дешевле, чем его роли по отдельности.",
+    "Ежемесячная подписка в USD. 7 дней бесплатно, без карты.",
   plans: [
     {
       id: "start",
@@ -329,7 +329,7 @@ const showroomAiRu: ShowroomAiCopy = {
         "Продавец 24/7 — отвечает и продаёт",
         "Чат на сайте и Telegram, плюс WhatsApp / Instagram через ваш собственный Meta Business",
         "Чек-лист онбординга для подключения Meta Business",
-        "Детерминированный расчёт по вашему каталогу и правилам",
+        "Точные цены по вашему прайсу и правилам",
       ],
     },
     {
@@ -341,7 +341,7 @@ const showroomAiRu: ShowroomAiCopy = {
         "Всё из Start",
         "Маркетолог Lite: стратегия, посты, визуальные черновики",
         "Подтверждение в Telegram до публикации",
-        "Дешевле, чем обе роли по отдельности",
+        "Продавец и Маркетолог в одном тарифе",
       ],
     },
     {
@@ -353,7 +353,7 @@ const showroomAiRu: ShowroomAiCopy = {
         "Всё из Business",
         "Маркетолог Pro: IG + FB + Threads, Reels, аналитика",
         "Полный цикл публикаций",
-        "Дешевле, чем обе роли по отдельности",
+        "Продавец и Маркетолог в одном тарифе",
       ],
     },
   ],
@@ -367,7 +367,7 @@ const showroomAiRu: ShowroomAiCopy = {
   includedPoints: [
     "Виджет чата на сайте и канал в Telegram",
     "WhatsApp / Instagram через ваш собственный Meta Business — с нашим чек-листом онбординга",
-    "Детерминированный расчёт по каталогу и бизнес-правилам",
+    "Точные цены по вашему прайсу и правилам",
     "Передача менеджеру вместе с диалогом",
     "Запуск в течение 24 часов",
   ],
@@ -394,7 +394,7 @@ const showroomAiRu: ShowroomAiCopy = {
     "У агентств и интеграторов только внедрение обычно стоит около $2 000, и маркетинг в это не входит. В Showroom AI маркетинговый цикл с публикациями уже внутри, а продавец продаёт — а не останавливается на ответе.",
   positioningPoints: [
     "Внедрение кратно дешевле, чем у интегратора",
-    "Маркетинг с публикациями входит в бандл",
+    "Маркетинг с публикациями входит в тариф",
     "Роль Продавца продаёт, а не только отвечает",
     "Бесплатный триал без карты и запуск в течение суток",
   ],

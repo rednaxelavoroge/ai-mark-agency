@@ -6,8 +6,7 @@ import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
 import { getCopy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
-import { skuPrice } from "@/lib/showroom-ai";
-import { formatUsdPrice } from "@/lib/pricing/crypto-checkout";
+import { getPlainCopy, planTokens, fillPlanTokens } from "@/content/plain-copy";
 import { absoluteUrl, getSiteTagline, isLocale, site, type Locale } from "@/lib/site";
 import { productPagePath } from "@/lib/products";
 import type { ProductVariant } from "@/components/ui/ProductUI";
@@ -75,7 +74,8 @@ export default async function HomePage({ params }: Props) {
     showroom.roles.find((role) => role.id === id)?.name ?? id;
   // The Showroom card quotes the entry bundle (the Seller role) and resolves the
   // amount from the published catalog, like every other price on the site.
-  const entryPrice = skuPrice("showroom-start");
+  const plain = getPlainCopy(locale).products;
+  const tokens = planTokens();
 
   const hubModules = [...home.hubModules];
 
@@ -84,11 +84,8 @@ export default async function HomePage({ params }: Props) {
     variant: fp.id as ProductVariant,
     name: `${showroom.brand} · ${roleName(homeRole[fp.id] ?? "seller")}`,
     tag: fp.tag,
-    price:
-      fp.id === "showroom" && entryPrice
-        ? `${showroom.cardPricePrefix}${formatUsdPrice(entryPrice.listUsd)}${showroom.perMonth}`
-        : fp.price,
-    desc: fp.desc,
+    price: fillPlanTokens(plain.roles[homeRole[fp.id] ?? "seller"].price, tokens),
+    desc: plain.roles[homeRole[fp.id] ?? "seller"].value,
     highlights: [...fp.highlights],
     href: productPagePath(locale, fp.id),
     externalUrl: fp.id === "showroom" ? "https://showroom-ai.pro" : null,

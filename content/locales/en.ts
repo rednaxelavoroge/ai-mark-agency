@@ -11,7 +11,7 @@ export const copyEn: Copy = {
         "business creation",
         "AI marketing",
         "digital production",
-        "AIME",
+        "Marketer",
         "SHOWROOM AI",
         "ai-mark.agency",
       ],
@@ -68,7 +68,7 @@ export const copyEn: Copy = {
         {
           n: "04",
           title: "AI Sales",
-          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — AI Business Assistant and SHOWROOM AI.",
+          body: "From the first inquiry through qualification, solution matching, calculation, and a commercial proposal — Business Assistant and SHOWROOM AI.",
         },
         {
           n: "05",
@@ -125,7 +125,7 @@ export const copyEn: Copy = {
       hubCta: "All product pages",
       hubTitle: "Three products. Three jobs.",
       hubLead:
-        "AIME runs the marketing cycle up to your approval. AI Business Assistant answers and qualifies. SHOWROOM AI / AI Sales Agent matches, calculates, and prepares the commercial proposal.",
+        "Marketer runs the marketing cycle up to your approval. Business Assistant answers and qualifies. Showroom AI · Seller matches, calculates, and prepares the commercial proposal.",
       items: {
         aime: {
           value:
@@ -219,7 +219,7 @@ export const copyEn: Copy = {
         {
           name: "AI Products",
           price: "$89–399+",
-          body: "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us.",
+          body: "Marketer, Business Assistant, Showroom AI · Seller as product SKUs — install and operate on your side, or with us.",
         },
         {
           name: "AI Marketing Services",
@@ -388,8 +388,8 @@ export const copyEn: Copy = {
     },
     productPages: {
       aime: {
-        eyebrow: "AIME",
-        title: "AI Marketing Employee",
+        eyebrow: "Marketer",
+        title: "Showroom AI · Marketer",
         lead: "A marketing system, not a calendar. Research through optimization stays in one loop, with a human on publish.",
         metaphor: "Marketing agents that draft the cycle. People still own the decision to go live.",
         sections: [
@@ -419,7 +419,7 @@ export const copyEn: Copy = {
       },
       assistant: {
         eyebrow: "BA",
-        title: "AI Business Assistant",
+        title: "Showroom AI · Business Assistant",
         lead: "Answers and qualifies, then hands the conversation to a person. SHOWROOM AI is the one that sells and prepares the deal.",
         metaphor: "One inbox across the channels your buyers already use.",
         sections: [
@@ -440,7 +440,7 @@ export const copyEn: Copy = {
       },
       showroom: {
         eyebrow: "AI Sales Agent",
-        title: "SHOWROOM AI / AI Sales Agent",
+        title: "Showroom AI · Seller",
         lead: "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals — with deterministic rules behind the quote. Not furniture-only, not support chat.",
         metaphor: "Dialogue + catalog + business rules → selection → calc → spec → commercial proposal / PDF.",
         sections: [
