@@ -22,7 +22,7 @@ export const products: {
   id: ProductId;
   name: string;
 }[] = [
-  { id: "aime", name: "AI Marketing Employee (AIME)" },
-  { id: "assistant", name: "AI Business Assistant" },
-  { id: "showroom", name: "SHOWROOM AI / AI Sales Agent" },
+  { id: "aime", name: "Showroom AI · Marketer" },
+  { id: "assistant", name: "Showroom AI · Business Assistant" },
+  { id: "showroom", name: "Showroom AI · Seller" },
 ];

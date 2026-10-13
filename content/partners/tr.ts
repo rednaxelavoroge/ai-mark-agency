@@ -24,9 +24,9 @@ export const copyTr: PartnerPageCopy = {
   productTitle: "Müşteriye değer katmanın dört somut yolu.",
   productLead: "Bir ortak, tek bir aracı dar bir kitleye dayatmak yerine müşterinin iş sorununu doğru AI MARK çözümüyle buluşturur.",
   products: [
-    { name: "AI Marketing Employee", type: "DÜZENLİ / YAPAY ZEKÂ ÜRÜNÜ", body: "Yapay zekâ tabanlı pazarlama: araştırma, strateji, metin yazımı, görsel üretim, onay, yayınlama ve sürekli optimizasyon.", revenue: "Abonelik geliri", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "DÜZENLİ / YAPAY ZEKÂ ÜRÜNÜ", body: "İşletmenin bilgi tabanından çalışan, talepleri filtreleyen ve gerektiğinde insan ekibe aktaran satış ve destek gelen kutusu.", revenue: "Abonelik geliri", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "DÜZENLİ / YAPAY ZEKÂ ÜRÜNÜ", body: "Müşteri diyaloğu, katalog seçimi, fiyatlandırma kuralları, şartnameler ve ticari teklifler hazırlayan yapay zekâ satış temsilcisi.", revenue: "Abonelik geliri", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "DÜZENLİ / YAPAY ZEKÂ ÜRÜNÜ", body: "Yapay zekâ tabanlı pazarlama: araştırma, strateji, metin yazımı, görsel üretim, onay, yayınlama ve sürekli optimizasyon.", revenue: "Abonelik geliri", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "DÜZENLİ / YAPAY ZEKÂ ÜRÜNÜ", body: "İşletmenin bilgi tabanından çalışan, talepleri filtreleyen ve gerektiğinde insan ekibe aktaran satış ve destek gelen kutusu.", revenue: "Abonelik geliri", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "DÜZENLİ / YAPAY ZEKÂ ÜRÜNÜ", body: "Müşteri diyaloğu, katalog seçimi, fiyatlandırma kuralları, şartnameler ve ticari teklifler hazırlayan yapay zekâ satış temsilcisi.", revenue: "Abonelik geliri", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROJE / B2B HİZMET", body: "Geniş dijital altyapıya ihtiyaç duyan işletmeler için web siteleri, portallar, uygulamalar, entegrasyonlar ve özel yapay zekâ sistemleri.", revenue: "Proje geliri", variant: "saas" },
   ],
   productCta: "Ürünü incele",

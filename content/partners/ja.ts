@@ -24,9 +24,9 @@ export const copyJa: PartnerPageCopy = {
   productTitle: "顧客に価値をもたらす4つのソリューション。",
   productLead: "パートナーは、顧客が抱える具体的なビジネス課題に最適なAI MARKソリューションを結びつけて提案できます。",
   products: [
-    { name: "AI Marketing Employee", type: "継続サブスクリプション / AI製品", body: "AIネイティブ・マーケティング：リサーチ、戦略策定、コンテンツ作成、クリエイティブ制作、承認、公開、分析改善を完結。", revenue: "継続サブスク収益", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "継続サブスクリプション / AI製品", body: "企業のナレッジベースに基づく営業・問い合わせ受信トレイ。リードを的確に選別し、必要に応じて人間の担当者へシームレスに引継ぎ。", revenue: "継続サブスク収益", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "継続サブスクリプション / AI製品", body: "顧客との商談対話、カタログ選定、価格算出ルール、仕様書作成、見積提案書作成を自動化するAI営業エージェント。", revenue: "継続サブスク収益", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "継続サブスクリプション / AI製品", body: "AIネイティブ・マーケティング：リサーチ、戦略策定、コンテンツ作成、クリエイティブ制作、承認、公開、分析改善を完結。", revenue: "継続サブスク収益", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "継続サブスクリプション / AI製品", body: "企業のナレッジベースに基づく営業・問い合わせ受信トレイ。リードを的確に選別し、必要に応じて人間の担当者へシームレスに引継ぎ。", revenue: "継続サブスク収益", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "継続サブスクリプション / AI製品", body: "顧客との商談対話、カタログ選定、価格算出ルール、仕様書作成、見積提案書作成を自動化するAI営業エージェント。", revenue: "継続サブスク収益", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "個別受託 / B2Bサービス", body: "強固なデジタル基盤を必要とする企業向けのWebサイト、ポータル、アプリ、API連携、受託AIシステム開発。", revenue: "プロジェクト大型収益", variant: "saas" },
   ],
   productCta: "製品詳細を見る",

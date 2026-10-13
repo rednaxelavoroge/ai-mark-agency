@@ -148,7 +148,7 @@ export function AIMEPageContent({
               >
                 {col.featured && (
                   <span className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase">
-                    AI MARK Core
+                    Showroom AI
                   </span>
                 )}
                 <span className="font-mono text-xs text-warm font-semibold uppercase">

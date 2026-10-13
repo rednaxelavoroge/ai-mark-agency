@@ -24,9 +24,9 @@ export const copyZh: PartnerPageCopy = {
   productTitle: "四种为客户创造核心价值的途径。",
   productLead: "合作伙伴可以将企业的痛点精准匹配到 AI MARK 对应的解决方案，而不是单一产品走天下。",
   products: [
-    { name: "AI Marketing Employee", type: "持续订阅 / AI 核心产品", body: "原生 AI 营销全流程：市场调研、策略制定、爆款文案、视觉创意、人工审核、自动发布与数据追踪优化。", revenue: "持续订阅分成", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "持续订阅 / AI 核心产品", body: "基于企业私有知识库的智能客服与销售收件箱，精准筛选意向线索，必要时无缝转接人工坐席。", revenue: "持续订阅分成", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "持续订阅 / AI 核心产品", body: "智能销售专家：负责客户导购对话、目录筛选、算价公式、定制规格说明书与专业商务报价单生成。", revenue: "持续订阅分成", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "持续订阅 / AI 核心产品", body: "原生 AI 营销全流程：市场调研、策略制定、爆款文案、视觉创意、人工审核、自动发布与数据追踪优化。", revenue: "持续订阅分成", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "持续订阅 / AI 核心产品", body: "基于企业私有知识库的智能客服与销售收件箱，精准筛选意向线索，必要时无缝转接人工坐席。", revenue: "持续订阅分成", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "持续订阅 / AI 核心产品", body: "智能销售专家：负责客户导购对话、目录筛选、算价公式、定制规格说明书与专业商务报价单生成。", revenue: "持续订阅分成", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "定制项目 / B2B 服务", body: "高并发网站、客户门户平台、核心业务系统、跨平台集成与企业级定制 AI 引擎开发。", revenue: "大型项目分成", variant: "saas" },
   ],
   productCta: "了解产品详情",

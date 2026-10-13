@@ -11,7 +11,7 @@ export const copyVi: Copy = {
       "AI marketing",
       "digital production",
       "Marketer",
-      "SHOWROOM AI",
+      "Showroom AI",
       "ai-mark.agency"
     ]
   },
@@ -91,7 +91,7 @@ export const copyVi: Copy = {
       {
         "n": "04",
         "title": "Bán hàng AI",
-        "body": "Từ câu hỏi đầu tiên đến đánh giá và đề xuất — Trợ lý kinh doanh & SHOWROOM AI."
+        "body": "Từ câu hỏi đầu tiên đến đánh giá và đề xuất — Trợ lý kinh doanh & Showroom AI."
       },
       {
         "n": "05",
@@ -176,19 +176,19 @@ export const copyVi: Copy = {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
         "who": "Brands that need a weekly marketing cycle, not a monthly pile of posts.",
         "extra": "Human approval before publish. Optional auto-publish after several clean cycles.",
-        "price": "Lite ~$199/mo · Pro ~$349/mo. Agency: setup + per-client MRR. License path for self-host."
+        "price": "Business $249 · Pro $399"
       },
       "assistant": {
         "value": "Sales AI inbox — WhatsApp, Instagram Direct, Messenger, website chat, Telegram. Knowledge base, replies, qualify, human handoff.",
         "who": "Teams that need a sales inbox, not a chatbot funnel builder.",
         "extra": "A person takes over when the conversation needs a human.",
-        "price": "Entry $149/mo · Standard $199/mo"
+        "price": "Kèm mọi gói, theo yêu cầu"
       },
       "showroom": {
         "value": "Your AI salesperson for customer conversations, product selection, pricing and commercial proposals.",
         "who": "Teams selling configurable offers who need a spec and a quote, not a generic chatbot price.",
         "extra": "Verticals include construction, real estate, auto, furniture, retail, manufacturing, services, and similar configurable trades.",
-        "price": "Self-serve setup $0 or ~$300 done-for-you. Then ~$89–399/mo across the three Showroom AI bundles."
+        "price": "Start $89 · Business $249 · Pro $399 · thiết lập $300 tùy chọn"
       }
     }
   },
@@ -305,7 +305,7 @@ export const copyVi: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and SHOWROOM AI when the offer needs them",
+          "Inbox and Showroom AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -528,7 +528,7 @@ export const copyVi: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

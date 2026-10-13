@@ -479,11 +479,11 @@ export function ShowroomAIPageContent({
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
               {locale === "ru"
                 ? "Передайте диалоги, подбор и КП AI-продавцу"
-                : "Let your AI Sales Agent handle conversations, selection, and quotes"}
+                : "Let the Showroom AI Seller handle conversations, selection, and quotes"}
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {locale === "ru"
-                ? "Showroom AI ведёт разговор с клиентом, применяет ваши правила и детерминированный расчёт — и готовит сделку для отдела продаж."
+                ? "Showroom AI ведёт разговор с клиентом, применяет ваши правила и точный расчёт — и готовит сделку для отдела продаж."
                 : "Showroom AI talks to customers, applies your catalog and business rules with deterministic pricing — and prepares the opportunity for your sales team."}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">

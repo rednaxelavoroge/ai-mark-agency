@@ -11,7 +11,7 @@ export const copyAr: Copy = {
       "تسويق بالذكاء الاصطناعي",
       "برمجة وتطوير",
       "المسوّق",
-      "SHOWROOM AI",
+      "Showroom AI",
       "ai-mark.agency"
     ]
   },
@@ -91,7 +91,7 @@ export const copyAr: Copy = {
       {
         "n": "04",
         "title": "المبيعات بالذكاء الاصطناعي",
-        "body": "من أول استفسار إلى التأهيل والعرض — مساعد الأعمال وSHOWROOM AI."
+        "body": "من أول استفسار إلى التأهيل والعرض — مساعد الأعمال وShowroom AI."
       },
       {
         "n": "05",
@@ -176,19 +176,19 @@ export const copyAr: Copy = {
         "value": "المسوّق — موظف التسويق بالذكاء الاصطناعي",
         "who": "العلامات التجارية، المتاجر الإلكترونية والوكالات",
         "extra": "تخطيط المحتوى وتوليد المنشورات والنشر التلقائي في Instagram و Facebook و Threads بموافقة عبر تليجرام.",
-        "price": "يبدأ من 199$ / شهرياً"
+        "price": "Business $249 · Pro $399"
       },
       "assistant": {
         "value": "مساعد الأعمال الذكي (AIBA)",
         "who": "الشركات العقارية، قطاع الخدمات، التجارة والشركات B2B",
         "extra": "خدمة عملاء ومبيعات فورية 24/7 عبر واتساب وتليجرام والموقع الإلكتروني وتأهيل العملاء للـ CRM.",
-        "price": "يبدأ من 149$ / شهرياً"
+        "price": "مع أي باقة، عند الطلب"
       },
       "showroom": {
         "value": "Showroom AI · البائع — حاسبة المواصفات وعروض الأسعار",
         "who": "المصانع، معارض السيارات، التصميم الداخلي ومصنعو الأثاث",
         "extra": "تحويل متطلبات العميل المعقدة إلى عروض أسعار ومواصفات هندسية بصيغة PDF في ثوانٍ معدودة.",
-        "price": "يبدأ من 89$ / شهرياً"
+        "price": "Start $89 · Business $249 · Pro $399 · إعداد $300 اختياري"
       }
     }
   },
@@ -305,7 +305,7 @@ export const copyAr: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and SHOWROOM AI when the offer needs them",
+          "Inbox and Showroom AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -528,7 +528,7 @@ export const copyAr: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [
