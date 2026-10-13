@@ -33,7 +33,6 @@ const EN: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ month", note: "Start $89 · Business $249 · Pro $399. Optional setup $300 once. 7-day free trial, no card." },
     { label: "Marketer, separately", value: "$199–349", unit: "/ month", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ month", note: "Entry $149 · Standard $199" },
     {
       label: "AI Infrastructure",
       value: "Built",
@@ -62,7 +61,6 @@ const RU: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ месяц", note: "Start $89 · Business $249 · Pro $399. Настройка под ключ $300 разово (по желанию). 7 дней бесплатно, без карты." },
     { label: "Marketer отдельно", value: "$199–349", unit: "/ месяц", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ месяц", note: "Entry $149 · Standard $199" },
     {
       label: "AI-инфраструктура",
       value: "Создана",
@@ -91,7 +89,6 @@ const ES: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ mes", note: "Start $89 · Business $249 · Pro $399. Configuración opcional $300 única. 7 días gratis, sin tarjeta." },
     { label: "Marketer por separado", value: "$199–349", unit: "/ mes", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ mes", note: "Entry $149 · Standard $199" },
     { label: "Infraestructura IA", value: "Creada", unit: "", note: "Ya en uso comercial" },
   ],
   contentsLabel: "Contenido",
@@ -115,7 +112,6 @@ const PT: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ mês", note: "Start $89 · Business $249 · Pro $399. Configuração opcional $300 única. 7 dias grátis, sem cartão." },
     { label: "Marketer separado", value: "$199–349", unit: "/ mês", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ mês", note: "Entry $149 · Standard $199" },
     { label: "Infraestrutura IA", value: "Construída", unit: "", note: "Já em uso comercial" },
   ],
   contentsLabel: "Conteúdo",
@@ -139,7 +135,6 @@ const DE: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ Monat", note: "Start $89 · Business $249 · Pro $399. Optionale Einrichtung $300 einmalig. 7 Tage kostenlos, ohne Karte." },
     { label: "Marketer einzeln", value: "$199–349", unit: "/ Monat", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ Monat", note: "Entry $149 · Standard $199" },
     { label: "KI-Infrastruktur", value: "Einsatzbereit", unit: "", note: "Bereits kommerziell aktiv" },
   ],
   contentsLabel: "Inhalt",
@@ -163,7 +158,6 @@ const FR: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ mois", note: "Start $89 · Business $249 · Pro $399. Mise en place optionnelle $300 une fois. 7 jours gratuits, sans carte." },
     { label: "Marketer séparément", value: "$199–349", unit: "/ mois", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ mois", note: "Entry $149 · Standard $199" },
     { label: "Infrastructure IA", value: "Déployée", unit: "", note: "Déjà active commercialement" },
   ],
   contentsLabel: "Sommaire",
@@ -187,7 +181,6 @@ const ZH: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ 月", note: "Start $89 · Business $249 · Pro $399。可选一次性代配置 $300。免费试用 7 天，无需银行卡。" },
     { label: "单独购买 Marketer", value: "$199–349", unit: "/ 月", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ 月", note: "Entry $149 · Standard $199" },
     { label: "AI 基础设施", value: "已投产", unit: "", note: "已全面商业化运营" },
   ],
   contentsLabel: "目录",
@@ -211,7 +204,6 @@ const AR: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ شهر", note: "Start $89 · Business $249 · Pro $399. إعداد اختياري $300 لمرة واحدة. تجربة مجانية 7 أيام بدون بطاقة." },
     { label: "Marketer بشكل منفصل", value: "$199–349", unit: "/ شهر", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ شهر", note: "Entry $149 · Standard $199" },
     { label: "بنية الذكاء الاصطناعي", value: "جاهزة ومبنية", unit: "", note: "تعمل تجارياً بالفعل" },
   ],
   contentsLabel: "المحتويات",
@@ -235,7 +227,6 @@ const JA: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ 月", note: "Start $89 · Business $249 · Pro $399。任意の初期設定 $300（1回）。7日間無料、カード不要。" },
     { label: "Marketer 単体", value: "$199–349", unit: "/ 月", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ 月", note: "Entry $149 · Standard $199" },
     { label: "AIインフラ", value: "構築済", unit: "", note: "すでに商用稼働中" },
   ],
   contentsLabel: "目次",
@@ -259,7 +250,6 @@ const TR: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ ay", note: "Start $89 · Business $249 · Pro $399. İsteğe bağlı kurulum $300 tek sefer. 7 gün ücretsiz, kart gerekmez." },
     { label: "Marketer ayrı", value: "$199–349", unit: "/ ay", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ ay", note: "Entry $149 · Standard $199" },
     { label: "AI Altyapısı", value: "Hazır", unit: "", note: "Halihazırda ticari kullanımda" },
   ],
   contentsLabel: "İçindekiler",
@@ -283,7 +273,6 @@ const ID: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ bulan", note: "Start $89 · Business $249 · Pro $399. Penyiapan opsional $300 sekali. Uji coba gratis 7 hari, tanpa kartu." },
     { label: "Marketer terpisah", value: "$199–349", unit: "/ bulan", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ bulan", note: "Entry $149 · Standard $199" },
     { label: "Infrastruktur AI", value: "Tersedia", unit: "", note: "Sudah beroperasi komersial" },
   ],
   contentsLabel: "Daftar isi",
@@ -307,7 +296,6 @@ const VI: InvestorsPageCopy = {
   stats: [
     { label: "Showroom AI", value: "$89–399", unit: "/ tháng", note: "Start $89 · Business $249 · Pro $399. Thiết lập tùy chọn $300 một lần. Dùng thử miễn phí 7 ngày, không cần thẻ." },
     { label: "Marketer riêng", value: "$199–349", unit: "/ tháng", note: "Marketer Lite $199 · Marketer Pro $349" },
-    { label: "Business Assistant", value: "$149–199", unit: "/ tháng", note: "Entry $149 · Standard $199" },
     { label: "Hạ tầng AI", value: "Đã hoàn thiện", unit: "", note: "Đã vận hành thương mại" },
   ],
   contentsLabel: "Mục lục",

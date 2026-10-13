@@ -78,7 +78,7 @@ export default async function InvestorsPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid gap-4 sm:grid-cols-3">
         {t.stats.map((stat, index) => (
           <div
             key={stat.label}

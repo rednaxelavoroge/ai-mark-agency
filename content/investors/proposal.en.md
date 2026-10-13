@@ -178,7 +178,6 @@ Ready-made AI product on subscription. Current public prices:
 - **Business — $249 / month** (Seller + Marketer Lite)
 - **Pro — $399 / month** (Seller + Marketer Pro)
 - Marketer on its own: **Lite $199 / month**, **Pro $349 / month**
-- Business Assistant on its own: **Entry $149 / month**, **Standard $199 / month**
 - Optional one-time done-for-you setup: **$300**
 - **7-day free trial, no card required**
 
