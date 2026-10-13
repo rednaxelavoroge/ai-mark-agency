@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ContactCta } from "@/components/ContactCta";
 import { BuyLink } from "@/components/BuyLink";
+import { getPlainCopy, planTokens, fillPlanTokens } from "@/content/plain-copy";
 import { getCopy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
 import { products } from "@/content/packages";
@@ -12,16 +13,17 @@ import { productPagePath } from "@/lib/products";
 import { absoluteUrl, isLocale, site, type Locale } from "@/lib/site";
 import { BackButton } from "@/components/BackButton";
 
+const ROLE_OF = { showroom: "seller", aime: "marketer", assistant: "assistant" } as const;
+
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};
   const locale = raw as Locale;
-  const t = getCopy(locale);
   return {
-    title: { absolute: `${t.products.hubTitle} · ${site.name}` },
-    description: t.products.hubLead,
+    title: { absolute: `${getPlainCopy(locale).products.title} · Showroom AI · ${site.name}` },
+    description: getPlainCopy(locale).products.lead,
     alternates: {
       canonical: absoluteUrl(locale, "/products"),
       languages: {
@@ -44,6 +46,8 @@ export default async function ProductsHubPage({ params }: Props) {
   const locale = raw as Locale;
   const t = getCopy(locale);
   const pp = getPublicChromeCopy(locale).productPage;
+  const plain = getPlainCopy(locale).products;
+  const tokens = planTokens();
 
   return (
     <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
@@ -55,10 +59,10 @@ export default async function ProductsHubPage({ params }: Props) {
           {t.products.eyebrow}
         </p>
         <h1 className="mt-3 font-display text-4xl sm:text-5xl font-semibold text-paper">
-          {t.products.hubTitle}
+          {plain.title}
         </h1>
         <p className="mt-4 max-w-2xl text-base text-muted leading-relaxed">
-          {t.products.hubLead}
+          {plain.lead}
         </p>
       </div>
 
@@ -70,7 +74,7 @@ export default async function ProductsHubPage({ params }: Props) {
         <div className="flex flex-wrap items-center gap-x-3 gap-y-3">
           <span className="inline-flex items-center gap-2 rounded-full bg-mark px-4 py-2 font-mono text-[11px] font-semibold text-mark-ink">
             <span className="relative h-1.5 w-1.5 rounded-full bg-mark-ink text-mark-ink pulse-ring" />
-            AI MARK Core
+            {plain.band}
           </span>
           {(["aime", "assistant", "showroom"] as const).map((id, i) => (
             <span key={id} className="flex items-center gap-3">
@@ -89,17 +93,18 @@ export default async function ProductsHubPage({ params }: Props) {
               </svg>
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-ink-3/40 px-3.5 py-2 text-xs text-paper">
                 <span className="h-1.5 w-1.5 rounded-full bg-mark" />
-                {products.find((p) => p.id === id)?.name ?? id}
+                {plain.roles[ROLE_OF[id]].name}
               </span>
             </span>
           ))}
         </div>
-        <p className="mt-4 text-xs text-muted">{t.products.lead}</p>
+        <p className="mt-4 text-xs text-muted">{plain.lead}</p>
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-3">
         {products.map((product, index) => {
-          const item = t.products.items[product.id];
+          const role = plain.roles[ROLE_OF[product.id as keyof typeof ROLE_OF] ?? "seller"];
+          const item = { ...role, price: fillPlanTokens(role.price, tokens) };
           const page = t.productPages[product.id];
           const mock = PRODUCT_MOCK[product.id] ?? "saas";
 
@@ -127,7 +132,7 @@ export default async function ProductsHubPage({ params }: Props) {
                 </div>
 
                 <h2 className="mt-5 font-display text-xl font-semibold text-paper">
-                  {product.name}
+                  Showroom AI · {role.name}
                 </h2>
                 <p className="mt-2 text-xs leading-relaxed text-muted">{item.value}</p>
 

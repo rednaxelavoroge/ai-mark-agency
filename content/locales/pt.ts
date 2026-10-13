@@ -10,7 +10,7 @@ export const copyPt: Copy = {
       "criação de negócios",
       "marketing com IA",
       "produção digital",
-      "AIME",
+      "Marketer",
       "SHOWROOM AI",
       "ai-mark.agency"
     ]
@@ -91,7 +91,7 @@ export const copyPt: Copy = {
       {
         "n": "04",
         "title": "Vendas com IA",
-        "body": "Do primeiro contato à qualificação, encaixe de solução e proposta — AI Business Assistant e SHOWROOM AI."
+        "body": "Do primeiro contato à qualificação, encaixe de solução e proposta — Assistente de negócios e SHOWROOM AI."
       },
       {
         "n": "05",
@@ -173,13 +173,13 @@ export const copyPt: Copy = {
     "hubLead": "Sistemas autónomos listos para integrarse en su flujo de trabajo comercial.",
     "items": {
       "aime": {
-        "value": "AIME — Funcionário de marketing com IA",
+        "value": "Marketer — Funcionário de marketing com IA",
         "who": "Marcas, e-commerces e agências",
         "extra": "Planejamento, redação, design e postagem automática no Instagram, Facebook e Threads com aprovação no Telegram.",
         "price": "A partir de $199/mês"
       },
       "assistant": {
-        "value": "AI Business Assistant",
+        "value": "Assistente de negócios",
         "who": "Prestadores de serviços, imobiliárias, B2B e varejo",
         "extra": "Atendente omnicanal 24/7 no WhatsApp, Telegram e site com qualificação e envio de leads para CRM.",
         "price": "A partir de $149/mês"
@@ -263,12 +263,12 @@ export const copyPt: Copy = {
       {
         "name": "Growth",
         "price": "$2,200",
-        "body": "Para aceleração de vendas: AIME + AIBA integrados e gestão ativa de campanhas."
+        "body": "Para aceleração de vendas: Marketer + AIBA integrados e gestão ativa de campanhas."
       },
       {
         "name": "Scale",
         "price": "$3,500",
-        "body": "Ecossistema completo: atendimento multicanal, SHOWROOM AI / AI Sales Agent e suporte prioritário 24/7."
+        "body": "Ecossistema completo: atendimento multicanal, Showroom AI · Vendedor e suporte prioritário 24/7."
       },
       {
         "name": "Digital Production",
@@ -456,8 +456,8 @@ export const copyPt: Copy = {
   },
   "productPages": {
     "aime": {
-      "eyebrow": "AIME",
-      "title": "AI Marketing Employee",
+      "eyebrow": "Marketer",
+      "title": "Showroom AI · Marketer",
       "lead": "A marketing system, not a calendar. Research through optimization stays in one loop, with a human on publish.",
       "metaphor": "Marketing agents that draft the cycle. People still own the decision to go live.",
       "sections": [
@@ -487,7 +487,7 @@ export const copyPt: Copy = {
     },
     "assistant": {
       "eyebrow": "BA",
-      "title": "AI Business Assistant",
+      "title": "Showroom AI · Assistente de negócios",
       "lead": "A sales inbox that answers, qualifies, and hands off. Not a funnel-builder with a chatbot skin.",
       "metaphor": "One inbox across the channels your buyers already use.",
       "sections": [
@@ -514,7 +514,7 @@ export const copyPt: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI / AI Sales Agent",
+      "title": "Showroom AI · Vendedor",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

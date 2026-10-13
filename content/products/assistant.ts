@@ -93,11 +93,11 @@ export const aibaRu: AibaContent = {
   seoDescription:
     "Роль Бизнес-ассистента в Showroom AI: клиент пишет в WhatsApp, Telegram, Instagram Direct, Messenger или на сайте. AI отвечает по базе знаний, квалифицирует обращение и передаёт его человеку. Цену и коммерческое предложение готовит роль Продавца.",
   badge: "Showroom AI · роль Бизнес-ассистента",
-  titleA: "AI Business",
-  titleB: "Assistant",
+  titleA: "Showroom AI ·",
+  titleB: "Бизнес-ассистент",
   subtitle:
     "Клиент пишет. Ассистент отвечает по базе знаний, квалифицирует обращение и передаёт диалог человеку. Коммерческое предложение считает SHOWROOM AI.",
-  heroMeta: ["5 каналов в одном инбоксе", "Панель клиента", "Интеграция с CRM", "Entry $149 / мес"],
+  heroMeta: ["5 каналов в одном инбоксе", "Панель клиента", "Интеграция с CRM", "К любому тарифу по запросу"],
   ctaConsult: "Подключить ассистента",
   ctaPricing: "Тарифы подписки",
   heroScene: {
@@ -107,7 +107,7 @@ export const aibaRu: AibaContent = {
     customerMeta: "Клиент → WhatsApp",
     customer: "«Здравствуйте! Интересует конфигурация продукта и сколько времени займёт доставка?»",
     engineNote: "AI-движок: база знаний и квалификация",
-    aiLabel: "AI Business Assistant",
+    aiLabel: "Бизнес-ассистент",
     aiReply:
       "«Добрый день. Отвечу по базе знаний и зафиксирую, что вам нужно. Человек подключится, когда потребуется решение или коммерческое предложение.»",
     operatorMeta: "Менеджер → подключился · 11:42",
@@ -326,11 +326,11 @@ export const aibaEn: AibaContent = {
   seoDescription:
     "The Business Assistant role inside Showroom AI: it answers in WhatsApp, Telegram, Instagram Direct, Messenger, and on the website from your knowledge base, qualifies the request, and hands it to a person. Commercial proposals are the Seller role.",
   badge: "Showroom AI · Business Assistant role",
-  titleA: "AI Business",
-  titleB: "Assistant",
+  titleA: "Showroom AI ·",
+  titleB: "Business Assistant",
   subtitle:
     "The customer writes. The assistant answers from your knowledge base, qualifies the request, and hands the conversation to a person. It does not calculate a commercial proposal — that is SHOWROOM AI.",
-  heroMeta: ["5 channels in 1 inbox", "Customer workspace panel", "Direct CRM sync", "Entry $149 / mo"],
+  heroMeta: ["5 channels in 1 inbox", "Customer workspace panel", "Direct CRM sync", "Added to any plan on request"],
   ctaConsult: "Get Started",
   ctaPricing: "View Subscription Plans",
   heroScene: {
@@ -340,7 +340,7 @@ export const aibaEn: AibaContent = {
     customerMeta: "Customer → WhatsApp",
     customer: "«Hello! I'm interested in the commercial specs and delivery timeline for this model.»",
     engineNote: "AI Core: Knowledge base + qualification",
-    aiLabel: "AI Business Assistant",
+    aiLabel: "Business Assistant",
     aiReply:
       "«Hello. I can answer from the knowledge base and note what you need. A person will take the conversation when it needs a decision or a proposal.»",
     operatorMeta: "Nino (Manager) → Intercepted · 11:42",

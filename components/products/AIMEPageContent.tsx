@@ -1,18 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { localePath, type Locale } from "@/lib/site";
+import type { Locale } from "@/lib/site";
 import { getAimeCopy } from "@/content/products/aime";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
-import { BuyLink } from "@/components/BuyLink";
 import { InquiryLink, LeadInquiry } from "@/components/LeadInquiry";
 import { ProductConstellation } from "@/components/ui/ProductConstellation";
 import { BackButton } from "@/components/BackButton";
 import { brief } from "@/lib/brief";
-import { FeatureList } from "@/components/products/FeatureList";
-import { getAimeRetainers } from "@/content/products/aime-retainers";
+import { ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
 import { ShowroomRoleBanner } from "@/components/products/ShowroomRoleBanner";
 
 export function AIMEPageContent({
@@ -23,7 +20,6 @@ export function AIMEPageContent({
   contact: Copy["contact"];
 }) {
   const c = getAimeCopy(locale);
-  const retainers = getAimeRetainers(locale);
   const ru = locale === "ru";
   const section = (n: string, en: string, ruLabel: string) => `${n} // ${ru ? ruLabel : en}`;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -171,65 +167,6 @@ export function AIMEPageContent({
       </section>
 
       {/* 3. TWO USAGE TRACKS */}
-      <section className="border-b border-line bg-ink-3/20 py-8 sm:py-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="max-w-3xl">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {section("02", "How it is used", "Форматы использования")}
-            </span>
-            <h2 className="mt-2 font-display text-2xl sm:text-3xl font-semibold text-paper">
-              {c.tracksTitle}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted">
-              {c.tracksSub}
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            {c.tracks.map((t) => (
-              <div
-                key={t.id}
-                className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-6 sm:p-8 shadow-sm"
-              >
-                <div>
-                  <span className="rounded-full border border-mark/20 bg-mark/5 px-3 py-1 font-mono text-[10px] font-semibold text-mark uppercase">
-                    {t.badge}
-                  </span>
-                  <h3 className="mt-4 font-display text-2xl font-semibold text-paper">
-                    {t.name}
-                  </h3>
-                  <div className="mt-2 flex items-baseline gap-2">
-                    <span className="font-display text-xl font-bold text-mark">{t.pricePrimary}</span>
-                    <span className="font-mono text-xs text-muted">{t.priceSecondary}</span>
-                  </div>
-                  <p className="mt-4 text-xs leading-relaxed text-muted">
-                    {t.summary}
-                  </p>
-
-                  <ul className="mt-6 space-y-2.5 border-t border-line/60 pt-4 text-xs text-paper/90">
-                    {t.benefits.map((b, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-line">
-                  <button
-                    type="button"
-                    onClick={() => openLauncher()}
-                    className="w-full rounded-full bg-mark px-5 py-3 text-xs font-semibold text-mark-ink shadow hover:bg-mark-light transition-all"
-                  >
-                    {c.ctaConsult}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       </details>
       {/* 4. CLOSED-LOOP SMM WORKFLOW */}
@@ -347,202 +284,9 @@ export function AIMEPageContent({
 
       </details>
       {/* 6. PRICING SECTION */}
-      <section id="pricing" className="border-b border-line py-8 sm:py-10">
+      <section id="pricing" className="scroll-mt-24 border-b border-line py-8 sm:py-10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {section("06", "Subscription price", "Стоимость подписки")}
-            </span>
-            <h2 className="mt-2 font-display text-3xl font-semibold text-paper">
-              {c.pricingTitle}
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              {c.pricingSub}
-            </p>
-          </div>
-
-          {/* Pricing Grid */}
-          <div className="am-price-grid mt-8 grid gap-4 lg:grid-cols-3">
-            {/* Direct Plans */}
-            {c.plansDirect.map((p) => (
-              <div
-                key={p.id}
-                className={`flex flex-col justify-between rounded-2xl border p-4 ${
-                  p.featured
-                    ? "border-mark/60 bg-ink-2 shadow-xl relative"
-                    : "border-line bg-ink-2"
-                }`}
-              >
-                {p.featured && (
-                  <span className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase">
-                    {ru ? "Рекомендуем" : "Recommended"}
-                  </span>
-                )}
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-paper">{p.name}</h3>
-                  <div className="mt-3 flex items-baseline gap-1">
-                    <span className="font-display text-4xl font-bold text-mark">{p.price}</span>
-                    <span className="font-mono text-xs text-muted">{p.period}</span>
-                  </div>
-                  {p.note && <p className="mt-1 font-mono text-[10px] text-warm">{p.note}</p>}
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{brief(p.desc)}</p>
-
-                  <FeatureList items={p.features} locale={locale} />
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-line">
-                  <button
-                    type="button"
-                    onClick={() => openLauncher()}
-                    className={`w-full rounded-full px-5 py-3 text-xs font-semibold transition-all ${
-                      p.featured
-                        ? "bg-mark text-mark-ink shadow hover:bg-mark-light"
-                        : "border border-line bg-ink-3/40 text-paper hover:bg-ink-3"
-                    }`}
-                  >
-                    {c.ctaConsult}
-                  </button>
-                  {/* The published, self-serve way to buy this exact plan, and
-                      only a plan that has one. A plan with no listed sku id
-                      renders nothing here (the agency construct has no published
-                      self-serve SKU), so its card keeps the contact CTA above
-                      rather than inventing a price.
-                      The guard is at the call site on purpose: `BuyLink` without
-                      a sku is a legitimate family link (the /products hub and the
-                      home showcase use it that way), but on a *priced plan card*
-                      it would send the buyer to /pay with some other plan
-                      preselected. */}
-                  {p.skuId ? (
-                    <BuyLink
-                      locale={locale}
-                      skuId={p.skuId}
-                      label={
-                        locale === "ru"
-                          ? `Оплатить ${p.price} в USDT / USDC`
-                          : `Pay ${p.price} with USDT / USDC`
-                      }
-                      className="mt-2 block w-full rounded-full border border-mark/50 bg-mark/10 px-5 py-3 text-center text-xs font-semibold text-mark transition-all hover:bg-mark/20"
-                    />
-                  ) : null}
-                </div>
-              </div>
-            ))}
-
-            {/* Agency Plan */}
-            <div className="flex flex-col justify-between rounded-2xl border border-line bg-ink-2 p-4">
-              <div>
-                <span className="rounded bg-ink-3 px-2 py-0.5 font-mono text-[10px] text-warm uppercase">
-                  {ru ? "Агентский формат" : "Agency format"}
-                </span>
-                <h3 className="mt-2 font-display text-2xl font-semibold text-paper">
-                  {c.planAgency.name}
-                </h3>
-                <div className="mt-3 flex items-baseline gap-1">
-                  <span className="font-display text-4xl font-bold text-paper">
-                    {c.planAgency.price}
-                  </span>
-                  <span className="font-mono text-xs text-muted">{c.planAgency.period}</span>
-                </div>
-                <p className="mt-1 font-mono text-[10px] text-warm">{c.planAgency.note}</p>
-                <p className="mt-3 text-xs leading-relaxed text-muted">{brief(c.planAgency.desc)}</p>
-
-                <FeatureList items={c.planAgency.features} locale={locale} />
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-line">
-                <button
-                  type="button"
-                  onClick={() => openLauncher()}
-                  className="w-full rounded-full border border-line bg-ink-3/40 px-5 py-3 text-xs font-semibold text-paper hover:bg-ink-3 transition-all"
-                >
-                  {c.ctaConsult}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. TURNKEY MARKETING DEPARTMENT RETAINERS */}
-      <section id="retainers" className="scroll-mt-24 border-b border-line bg-ink-3/20 py-10 sm:py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="font-mono text-xs font-semibold text-warm uppercase tracking-widest">
-              {section("07", "Turnkey department", "Отдел маркетинга под ключ")}
-            </span>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-semibold text-paper">
-              {retainers.meta.title}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted max-w-2xl mx-auto">
-              {retainers.meta.subtitle}
-            </p>
-          </div>
-
-          {/* Retainers Grid */}
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {retainers.tiers.map((tier) => (
-              <div
-                key={tier.id}
-                className={`flex flex-col justify-between rounded-2xl border p-5 sm:p-6 transition-all ${
-                  tier.featured
-                    ? "relative border-mark/70 bg-ink-2 shadow-xl shadow-mark/5"
-                    : "border-line bg-ink-2 hover:border-line-strong"
-                }`}
-              >
-                {tier.featured && (
-                  <span className="absolute -top-3 right-6 rounded-full bg-mark px-3 py-0.5 font-mono text-[10px] font-semibold text-mark-ink uppercase tracking-wide">
-                    {retainers.featuredLabel}
-                  </span>
-                )}
-                <div>
-                  <h3 className="font-display text-2xl font-semibold text-paper">{tier.name}</h3>
-                  <div className="mt-3 flex items-baseline gap-1">
-                    <span className="font-display text-4xl font-bold text-paper tracking-tight">
-                      {tier.priceFormatted}
-                    </span>
-                    <span className="font-mono text-xs text-muted">{tier.period}</span>
-                  </div>
-                  <p className="mt-3 text-xs leading-relaxed text-muted min-h-[36px]">
-                    {tier.summary}
-                  </p>
-
-                  <ul className="mt-6 space-y-2.5 border-t border-line/60 pt-5 text-xs text-paper/90">
-                    {tier.points.map((pt, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-mark font-bold shrink-0">✓</span>
-                        <span className="leading-snug">{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-line space-y-2">
-                  <button
-                    type="button"
-                    onClick={() => openLauncher()}
-                    className={`w-full rounded-full py-3 text-center text-xs font-semibold transition-all ${
-                      tier.featured
-                        ? "bg-mark text-mark-ink hover:bg-mark-light shadow"
-                        : "border border-line bg-ink-3/40 text-paper hover:bg-ink-3"
-                    }`}
-                  >
-                    {tier.cta} →
-                  </button>
-                  <a
-                    href="#inquiry"
-                    className="block text-center text-[11px] text-muted hover:text-paper transition-colors py-1"
-                  >
-                    {retainers.meta.briefLink}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Footnote */}
-          <p className="mt-8 text-center font-mono text-xs text-muted">
-            {retainers.meta.footnote}
-          </p>
+          <ShowroomAiPlans locale={locale} />
         </div>
       </section>
 
@@ -602,7 +346,7 @@ export function AIMEPageContent({
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="rounded-2xl border border-mark/30 bg-mark/5 p-8 sm:p-12 text-center max-w-3xl mx-auto">
             <h3 className="font-display text-2xl sm:text-3xl font-semibold text-paper">
-              {ru ? "Готовы запустить AI Marketing Employee?" : "Ready to start AI Marketing Employee?"}
+              {ru ? "Готовы подключить Маркетолога?" : "Ready to start the Marketer?"}
             </h3>
             <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
               {ru

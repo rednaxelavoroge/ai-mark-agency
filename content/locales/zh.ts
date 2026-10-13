@@ -10,7 +10,7 @@ export const copyZh: Copy = {
       "商业孵化",
       "AI营销",
       "数字化开发",
-      "AIME",
+      "营销",
       "SHOWROOM AI",
       "ai-mark.agency"
     ]
@@ -91,7 +91,7 @@ export const copyZh: Copy = {
       {
         "n": "04",
         "title": "AI 销售",
-        "body": "从首次咨询到资格判断与方案 — AI Business Assistant 与 SHOWROOM AI。"
+        "body": "从首次咨询到资格判断与方案 — 业务助理 与 SHOWROOM AI。"
       },
       {
         "n": "05",
@@ -170,22 +170,22 @@ export const copyZh: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "营销, 业务助理, and Showroom AI · 销售. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
-        "value": "AIME — AI 营销数字员工",
+        "value": "营销 — AI 营销数字员工",
         "who": "消费品牌、出海跨境电商与营销机构",
         "extra": "自主完成 Instagram、Facebook、Threads 内容策划、排版与发布，通过 Telegram 一键审核。",
         "price": "199 美元/月起"
       },
       "assistant": {
-        "value": "AI Business Assistant 业务助手",
+        "value": "业务助理 业务助手",
         "who": "房产顾问、高端服务业、B2B 外贸与企业客发",
         "extra": "7×24 全渠道在线（WhatsApp / Telegram / 网页），智能初筛潜客并自动归档至 CRM 系统。",
         "price": "149 美元/月起"
       },
       "showroom": {
-        "value": "SHOWROOM AI / AI Sales Agent配置展厅",
+        "value": "Showroom AI · 销售配置展厅",
         "who": "制造业工厂、汽车销售、全屋定制及工程总包",
         "extra": "将复杂的客制化需求即时转化为精准工业级技术规格书与商业报价 PDF，耗时仅需数十秒。",
         "price": "89 美元/月起"
@@ -263,12 +263,12 @@ export const copyZh: Copy = {
       {
         "name": "Growth 成长版",
         "price": "$2,200",
-        "body": "适合加速销售扩张：组合部署 AIME 与 AIBA，并由专业团队持续调优营销。"
+        "body": "适合加速销售扩张：组合部署 营销 与 AIBA，并由专业团队持续调优营销。"
       },
       {
         "name": "Scale 规模版",
         "price": "$3,500",
-        "body": "企业级完整方案：全渠道自动化、SHOWROOM AI / AI Sales Agent 深度定制与 24/7 优先支持。"
+        "body": "企业级完整方案：全渠道自动化、Showroom AI · 销售 深度定制与 24/7 优先支持。"
       },
       {
         "name": "Digital Production",
@@ -456,8 +456,8 @@ export const copyZh: Copy = {
   },
   "productPages": {
     "aime": {
-      "eyebrow": "AIME",
-      "title": "AI Marketing Employee",
+      "eyebrow": "营销",
+      "title": "Showroom AI · 营销",
       "lead": "A marketing system, not a calendar. Research through optimization stays in one loop, with a human on publish.",
       "metaphor": "Marketing agents that draft the cycle. People still own the decision to go live.",
       "sections": [
@@ -487,7 +487,7 @@ export const copyZh: Copy = {
     },
     "assistant": {
       "eyebrow": "BA",
-      "title": "AI Business Assistant",
+      "title": "Showroom AI · 业务助理",
       "lead": "A sales inbox that answers, qualifies, and hands off. Not a funnel-builder with a chatbot skin.",
       "metaphor": "One inbox across the channels your buyers already use.",
       "sections": [
@@ -514,7 +514,7 @@ export const copyZh: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI / AI Sales Agent",
+      "title": "Showroom AI · 销售",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [

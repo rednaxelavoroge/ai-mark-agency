@@ -94,12 +94,12 @@ export interface AimeContent {
 }
 
 export const aimeRu: AimeContent = {
-  seoTitle: "Showroom AI · Маркетолог (AI Marketing Employee) | Стратегия, контент, апрув в Telegram, публикации · AI MARK",
+  seoTitle: "Showroom AI · Маркетолог | Стратегия, контент, апрув в Telegram, публикации · AI MARK",
   seoDescription:
     "Роль Маркетолога в Showroom AI: исследование, стратегия, контент, ваше подтверждение в Telegram и публикация в Instagram, Facebook и Threads.",
   badge: "Showroom AI · роль Маркетолога",
-  titleA: "AI Marketing",
-  titleB: "Employee",
+  titleA: "Showroom AI ·",
+  titleB: "Маркетолог",
   tagline: "Исследование → стратегия → контент → ваш апрув → публикация",
   subtitle:
     "Продуктовый цифровой AI-сотрудник: исследует нишу, конкурентов и аудиторию, составляет контент-планы, пишет посты, готовит визуалы, запрашивает аппрув в Telegram и автоматически публикует в ваши каналы Meta (Instagram, Facebook, Threads) — постоянно обучаясь на результатах.",
@@ -109,7 +109,7 @@ export const aimeRu: AimeContent = {
     "Цикл с апрувом перед публикацией",
     "Согласование через Telegram",
     "Meta Graph API (IG · FB · Threads)",
-    "Тарифы для бизнеса и агентств",
+    "В тарифах Business и Pro",
   ],
   platforms: [
     { type: "instagram", name: "Instagram", status: "ready", badge: null },
@@ -119,7 +119,7 @@ export const aimeRu: AimeContent = {
   ],
   compareTitle: "Не пустой планировщик — цикл маркетинга с вашим апрувом",
   compareSub:
-    "AIME берёт на себя всю цепочку: стратегия → контент-план → посты и визуалы → согласование в Telegram → публикация в Instagram, Facebook и Threads.",
+    "Маркетолог берёт на себя всю цепочку: стратегия → контент-план → посты и визуалы → согласование в Telegram → публикация в Instagram, Facebook и Threads.",
   compareColumns: [
     {
       id: "smm",
@@ -135,7 +135,7 @@ export const aimeRu: AimeContent = {
     },
     {
       id: "aime",
-      name: "AIME (AI MARK)",
+      name: "Маркетолог Showroom AI",
       tag: "Цифровой сотрудник",
       featured: true,
       desc: "Полный цикл: исследование рынка → контент-план → визуалы и Reels → апрув в Telegram → автопостинг по API → анализ охватов.",
@@ -256,8 +256,8 @@ export const aimeRu: AimeContent = {
   ],
   hardFloorTitle: "Железное правило Hard-Floor",
   hardFloorDesc:
-    "Цены, финансовые обещания, юридические условия и скидки защищены жёстким барьером безопасности. AIME никогда не опубликует финансовые или юридические заявления без прямого письменного подтверждения человеком.",
-  pricingTitle: "Тарифные планы AIME",
+    "Цены, финансовые обещания, юридические условия и скидки защищены жёстким барьером безопасности. Маркетолог никогда не опубликует финансовые или юридические заявления без прямого письменного подтверждения человеком.",
+  pricingTitle: "Тарифы с Маркетологом",
   pricingSub: "Прозрачные условия подписки. Без скрытых платежей.",
   plansDirect: [
     {
@@ -317,20 +317,20 @@ export const aimeRu: AimeContent = {
       "Поддержка масштабирования без раздувания штата",
     ],
   },
-  faqTitle: "Часто задаваемые вопросы об AIME",
+  faqTitle: "Частые вопросы о Маркетологе",
   faqSub: "Ответы на главные вопросы о подключении, безопасности и процессах.",
   faqs: [
     {
-      q: "Чем AIME отличается от обычного SMM-менеджера?",
+      q: "Чем Маркетолог отличается от обычного SMM-менеджера?",
       a: "AIME — это цифровой сотрудник с выделенной инфраструктурой: он не выгорает, не срывает дедлайны, работает 24/7 и следует строгому регламенту. Вы тратите не более 2 минут в день на согласование готовых макетов в Telegram.",
     },
     {
       q: "Это не просто планировщик постов вроде Buffer или Hootsuite?",
-      a: "Нет. Шедулер — это пустая очередь, в которую вы сами вручную пишете тексты и загружаете картинки. AIME сам анализирует рынок, формирует контент-план, генерирует посты, визуалы, сценарии Reels и публикует их после вашего одобрения.",
+      a: "Нет. Шедулер — это пустая очередь, в которую вы сами вручную пишете тексты и загружаете картинки. Маркетолог сам анализирует рынок, формирует контент-план, генерирует посты, визуалы, сценарии Reels и публикует их после вашего одобрения.",
     },
     {
-      q: "Нужна ли плата за подключение?",
-      a: "Для прямого бизнеса платы за подключение нет — вы оплачиваете только ежемесячную подписку ($199 или $349). Для агентств разовый сетап агентского контура составляет $799, далее $199/мес за клиента.",
+      q: "Нужно ли платить за подключение?",
+      a: "Нет, настроить можно самостоятельно бесплатно. Если хотите, чтобы всё настроила наша команда, — $300 разово. Маркетолог входит в тарифы Business ($249/мес) и Pro ($399/мес).",
     },
     {
       q: "Как устроено согласование через Telegram?",
@@ -341,7 +341,7 @@ export const aimeRu: AimeContent = {
       a: "Исключительно вам. Все доступы настраиваются через официальный Meta Graph API в вашем собственном Business Suite. Никаких передач личных паролей.",
     },
     {
-      q: "Куда AIME публикует?",
+      q: "Куда Маркетолог публикует?",
       a: "В Instagram, Facebook и Threads через официальный Meta Graph API. Черновик сначала приходит вам в Telegram на подтверждение.",
     },
     {
@@ -352,12 +352,12 @@ export const aimeRu: AimeContent = {
 };
 
 export const aimeEn: AimeContent = {
-  seoTitle: "Showroom AI · Marketer (AI Marketing Employee) | Strategy, content, Telegram approval, publishing · AI MARK",
+  seoTitle: "Showroom AI · Marketer | Strategy, content, Telegram approval, publishing · AI MARK",
   seoDescription:
     "The Marketer role inside Showroom AI: research, strategy, content, your approval in Telegram, then publishing to Instagram, Facebook and Threads.",
   badge: "Showroom AI · Marketer role",
-  titleA: "AI Marketing",
-  titleB: "Employee",
+  titleA: "Showroom AI ·",
+  titleB: "Marketer",
   tagline: "Research → strategy → content → your approval → publication",
   subtitle:
     "Proprietary digital employee: analyzes your market, rivals, and audience, formulates content strategies, writes copy, crafts visuals and Reels storyboards, requests Telegram approval, and publishes via Meta Graph API — continuously self-optimizing on performance.",
@@ -367,7 +367,7 @@ export const aimeEn: AimeContent = {
     "Marketing cycle with approval",
     "1-Click Telegram Approval",
     "Meta Graph API (IG · FB · Threads)",
-    "Direct Business & Agency Tiers",
+    "In the Business and Pro plans",
   ],
   platforms: [
     { type: "instagram", name: "Instagram", status: "ready", badge: null },
@@ -393,7 +393,7 @@ export const aimeEn: AimeContent = {
     },
     {
       id: "aime",
-      name: "AIME (AI MARK)",
+      name: "Showroom AI Marketer",
       tag: "Digital Employee",
       featured: true,
       desc: "Research → calendar → visuals and Reels scripts → your Telegram approval → publishing → analytics.",
@@ -514,8 +514,8 @@ export const aimeEn: AimeContent = {
   ],
   hardFloorTitle: "The Hard-Floor Principle",
   hardFloorDesc:
-    "Pricing, financial commitments, legal terms, and discount structures are protected by a strict Hard-Floor barrier. AIME will NEVER publish commercial or legal assertions without explicit human sign-off.",
-  pricingTitle: "AIME Pricing Plans",
+    "Pricing, financial commitments, legal terms, and discount structures are protected by a strict Hard-Floor barrier. The Marketer will NEVER publish commercial or legal assertions without explicit human sign-off.",
+  pricingTitle: "Plans with the Marketer",
   pricingSub: "Transparent, predictable pricing with no hidden charges.",
   plansDirect: [
     {
@@ -579,16 +579,16 @@ export const aimeEn: AimeContent = {
   faqSub: "Everything you need to know about deployment, security, and operations.",
   faqs: [
     {
-      q: "How does AIME differ from a traditional SMM manager?",
+      q: "How does the Marketer differ from a traditional SMM manager?",
       a: "AIME is a dedicated digital employee: no burnout, no missed deadlines, 24/7 reliability, and strict adherence to process. You only spend ~2 minutes daily approving ready drafts in Telegram.",
     },
     {
       q: "Is this just a scheduler like Buffer or Hootsuite?",
-      a: "No. Schedulers are empty queues that require you to write, design, and upload everything. AIME does the market research, editorial planning, copywriting, visual creation, Reels scripting, and publishes upon approval.",
+      a: "No. Schedulers are empty queues that require you to write, design, and upload everything. The Marketer does the market research, editorial planning, copywriting, visual creation, Reels scripting, and publishes upon approval.",
     },
     {
       q: "Is there an onboarding setup fee?",
-      a: "For direct businesses, there is zero setup fee — you only pay the monthly subscription ($199 or $349). For agencies, a one-time infrastructure setup fee of $799 applies, followed by $199/mo per client.",
+      a: "No — you can set it up yourself for free. If you want our team to do it, it is $300 once. The Marketer is included in the Business ($249/mo) and Pro ($399/mo) plans.",
     },
     {
       q: "How does Telegram approval work?",
@@ -599,7 +599,7 @@ export const aimeEn: AimeContent = {
       a: "The accounts stay yours. Everything connects via official Meta Graph APIs inside your own Business Suite. No personal passwords are shared.",
     },
     {
-      q: "Where does AIME publish?",
+      q: "Where does the Marketer publish?",
       a: "To Instagram, Facebook, and Threads through the official Meta Graph API. The draft comes to you in Telegram first, and goes live after you approve it.",
     },
     {

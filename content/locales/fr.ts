@@ -10,7 +10,7 @@ export const copyFr: Copy = {
       "business creation",
       "AI marketing",
       "digital production",
-      "AIME",
+      "Marketer",
       "SHOWROOM AI",
       "ai-mark.agency"
     ]
@@ -91,7 +91,7 @@ export const copyFr: Copy = {
       {
         "n": "04",
         "title": "Ventes IA",
-        "body": "De la première demande à la qualification, l'adéquation de l'offre et la proposition — AI Business Assistant et SHOWROOM AI."
+        "body": "De la première demande à la qualification, l'adéquation de l'offre et la proposition — Assistant d’entreprise et SHOWROOM AI."
       },
       {
         "n": "05",
@@ -170,7 +170,7 @@ export const copyFr: Copy = {
     "installCta": "Talk installation",
     "hubCta": "All product pages",
     "hubTitle": "AI products",
-    "hubLead": "AIME, AI Business Assistant, and SHOWROOM AI / AI Sales Agent. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
+    "hubLead": "Marketer, Assistant d’entreprise, and Showroom AI · Vendeur. We run them for clients and can install them on your accounts. Features below match what the products actually do.",
     "items": {
       "aime": {
         "value": "AI marketing system: research → strategy → content → creatives → approval → publish → analytics → optimize. Not a scheduler.",
@@ -258,7 +258,7 @@ export const copyFr: Copy = {
       {
         "name": "AI Products",
         "price": "$89–399+",
-        "body": "AIME, Business Assistant, SHOWROOM AI / AI Sales Agent as product SKUs — install and operate on your side, or with us."
+        "body": "Marketer, Business Assistant, Showroom AI · Vendeur as product SKUs — install and operate on your side, or with us."
       },
       {
         "name": "AI Marketing Services",
@@ -456,8 +456,8 @@ export const copyFr: Copy = {
   },
   "productPages": {
     "aime": {
-      "eyebrow": "AIME",
-      "title": "AI Marketing Employee",
+      "eyebrow": "Marketer",
+      "title": "Showroom AI · Marketer",
       "lead": "A marketing system, not a calendar. Research through optimization stays in one loop, with a human on publish.",
       "metaphor": "Marketing agents that draft the cycle. People still own the decision to go live.",
       "sections": [
@@ -487,7 +487,7 @@ export const copyFr: Copy = {
     },
     "assistant": {
       "eyebrow": "BA",
-      "title": "AI Business Assistant",
+      "title": "Showroom AI · Assistant d’entreprise",
       "lead": "A sales inbox that answers, qualifies, and hands off. Not a funnel-builder with a chatbot skin.",
       "metaphor": "One inbox across the channels your buyers already use.",
       "sections": [
@@ -514,7 +514,7 @@ export const copyFr: Copy = {
     },
     "showroom": {
       "eyebrow": "CPQ",
-      "title": "SHOWROOM AI / AI Sales Agent",
+      "title": "Showroom AI · Vendeur",
       "lead": "Complex commercial requests become a calculation, a spec, and a quote — according to your rules. Not furniture-only, not a chatbot that invents a price.",
       "metaphor": "Catalog + rules + the client’s parameters → calc → spec → commercial proposal / PDF.",
       "sections": [
