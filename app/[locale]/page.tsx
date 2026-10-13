@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HeroSystem } from "@/components/HeroSystem";
+import { BookingScenario } from "@/components/BookingScenario";
 import { HomeRest } from "@/components/home/HomeRest";
 import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
 import { getCopy } from "@/content/copy";
@@ -102,6 +103,7 @@ export default async function HomePage({ params }: Props) {
           <ShowroomRoleLinkage locale={locale} />
         </div>
       </section>
+      <BookingScenario locale={locale} />
       <HomeRest locale={locale} t={t} hubModules={hubModules} featuredProducts={featuredProducts} />
     </>
   );
