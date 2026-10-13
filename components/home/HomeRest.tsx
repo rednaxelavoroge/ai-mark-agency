@@ -29,7 +29,7 @@ type FeaturedProduct = {
 };
 
 /**
- * Home below the hero and the roles block, for a small business: how to start
+ * Home below the hero and the roles block: how to start
  * (three steps + the lead form), then the three plans. Business creation,
  * investors, digital production and the partner program are footer-only.
  * `hubModules` / `featuredProducts` stay in the props for the page call.

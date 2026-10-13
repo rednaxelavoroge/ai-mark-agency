@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { localePath, type Locale } from "@/lib/site";
-import { ProductConstellation } from "@/components/ui/ProductConstellation";
+import type { Locale } from "@/lib/site";
+import { SellerHeroDemo } from "@/components/SellerHeroDemo";
 import { getShowroomCopy } from "@/content/products/showroom";
 import type { Copy } from "@/content/copy";
 import { openLauncher } from "@/lib/contact";
@@ -127,34 +126,8 @@ export function ShowroomAIPageContent({
               </div>
             </div>
 
-            <div data-motion className="am-hero-visual am-page-visual overflow-hidden rounded-2xl border border-line bg-ink-2 p-4 shadow-xl space-y-3">
-              <ProductConstellation variant="showroom" cardKind="quote" locale={locale} />
-              <div className="flex items-center justify-between border-b border-line pb-3">
-                <span className="font-mono text-xs font-semibold text-paper uppercase">
-                  {c.heroSpec.title}
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] text-emerald-700">
-                  <span className="illu-pulse h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  {c.heroSpec.status}
-                </span>
-              </div>
-
-              <div className="space-y-2">
-                {c.heroSpec.rows.map((row) => (
-                  <div
-                    key={row.n}
-                    className="flex items-center justify-between rounded-lg border border-line/60 bg-ink-3/40 px-3 py-2 text-xs"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className="font-mono text-[10px] text-warm font-semibold">{row.n}</span>
-                      <span className="text-paper/90 text-[11px]">{row.label}</span>
-                    </div>
-                    <span className="rounded bg-ink-2 px-2 py-0.5 font-mono text-[10px] text-mark font-medium border border-line/50">
-                      {row.tag}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div data-motion className="am-hero-visual am-page-visual relative w-full min-w-0">
+              <SellerHeroDemo locale={locale} />
             </div>
           </div>
         </div>
