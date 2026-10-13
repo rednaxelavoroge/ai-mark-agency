@@ -11,7 +11,7 @@ export const copyPt: Copy = {
       "marketing com IA",
       "produção digital",
       "Marketer",
-      "SHOWROOM AI",
+      "Showroom AI",
       "ai-mark.agency"
     ]
   },
@@ -91,7 +91,7 @@ export const copyPt: Copy = {
       {
         "n": "04",
         "title": "Vendas com IA",
-        "body": "Do primeiro contato à qualificação, encaixe de solução e proposta — Assistente de negócios e SHOWROOM AI."
+        "body": "Do primeiro contato à qualificação, encaixe de solução e proposta — Assistente de negócios e Showroom AI."
       },
       {
         "n": "05",
@@ -176,19 +176,19 @@ export const copyPt: Copy = {
         "value": "Marketer — Funcionário de marketing com IA",
         "who": "Marcas, e-commerces e agências",
         "extra": "Planejamento, redação, design e postagem automática no Instagram, Facebook e Threads com aprovação no Telegram.",
-        "price": "A partir de $199/mês"
+        "price": "Business $249 · Pro $399"
       },
       "assistant": {
         "value": "Assistente de negócios",
         "who": "Prestadores de serviços, imobiliárias, B2B e varejo",
         "extra": "Atendente omnicanal 24/7 no WhatsApp, Telegram e site com qualificação e envio de leads para CRM.",
-        "price": "A partir de $149/mês"
+        "price": "Com qualquer plano, sob pedido"
       },
       "showroom": {
-        "value": "SHOWROOM AI",
+        "value": "Showroom AI",
         "who": "Indústrias, fabricantes, móveis planejados e projetos sob medida",
         "extra": "Gerador instantâneo de especificações técnicas e propostas comerciais em PDF com regras de negócio.",
-        "price": "A partir de $89/mês"
+        "price": "Start $89 · Business $249 · Pro $399 · configuração $300 opcional"
       }
     }
   },
@@ -305,7 +305,7 @@ export const copyPt: Copy = {
         "summary": "Full Meta (Instagram + Facebook), HITL, weekly research loop.",
         "points": [
           "Instagram and Facebook as a paired Meta system",
-          "Inbox and SHOWROOM AI when the offer needs them",
+          "Inbox and Showroom AI when the offer needs them",
           "Human-in-the-loop on every publish",
           "Analytics feeding the next cycle"
         ]
@@ -528,7 +528,7 @@ export const copyPt: Copy = {
         },
         {
           "title": "Where it sits",
-          "body": "After a qualified conversation. The inbox can collect intent; SHOWROOM AI turns conversation and parameters into a verified commercial document."
+          "body": "After a qualified conversation. The inbox can collect intent; Showroom AI turns conversation and parameters into a verified commercial document."
         }
       ],
       "flow": [

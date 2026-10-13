@@ -13,7 +13,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "AI Operating Model",
       "commercialModel": "Commercial Model",
       "aiProducts": "AI Products",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "All Products →",
       "venture": "Venture",
       "partnerNetwork": "Partners",
@@ -225,7 +225,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Industry Partners",
           "tag": "Verticals",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Domain-specific catalogs",
             "Vertical deployment",
@@ -236,7 +236,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Agency Partners",
           "tag": "Infrastructure",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Multi-client licensing",
             "Turnkey operations",
@@ -442,7 +442,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Ready Software",
           "title": "Proprietary AI Products",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 Core Products",
           "cta": "Explore Products",
           "href": "/products",
@@ -482,7 +482,7 @@ export const publicChromeCopy = {
       "featuredProducts": [
         {
           "id": "showroom",
-          "tag": "AI Sales Agent",
+          "tag": "Seller",
           "price": "from $199/mo",
           "desc": "Matches catalog items, computes dynamic formulas, and outputs finished commercial quotes.",
           "highlights": [
@@ -524,7 +524,7 @@ export const publicChromeCopy = {
       "messengerHint": "Chat with us",
       "emailLabel": "Email",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Type a message…"
     },
     "productPage": {
@@ -604,7 +604,7 @@ export const publicChromeCopy = {
       "products": [
         {
           "id": "showroom",
-          "tag": "AI Sales Agent",
+          "tag": "Seller",
           "price": "from $199/mo",
           "desc": "Matches catalog items, computes dynamic formulas, and outputs finished commercial quotes.",
           "highlights": [
@@ -868,7 +868,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Socio de la industria",
           "tag": "Mercados verticales",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Catálogos específicos del dominio",
             "Despliegue vertical",
@@ -879,7 +879,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Organismos asociados",
           "tag": "Infraestructura",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Licencias multicliente",
             "Operaciones llave en mano",
@@ -1085,7 +1085,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Software listo",
           "title": "Productos patentados de IA",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "Productos (core)",
           "cta": "EXPLORA NUESTROS PRODUCTOS",
           "href": "/products",
@@ -1167,7 +1167,7 @@ export const publicChromeCopy = {
       "messengerHint": "Habla con nosotros",
       "emailLabel": "Correo Electrónico",
       "emailHint": "hola@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Escribe un mensaje…"
     },
     "productPage": {
@@ -1511,7 +1511,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Parceiros da indústria;",
           "tag": "Verticais",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Catálogos específicos do domínio",
             "Implantação vertical",
@@ -1522,7 +1522,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "http: // heads. medagencies. org http: // www. hevra. org",
           "tag": "Infraestruturas",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Licenciamento multicliente",
             "Operações chave na mão",
@@ -1728,7 +1728,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Software pronto",
           "title": "Produtos patenteados de IA",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 Produtos Principais",
           "cta": "Conheça todos os produtos",
           "href": "/products",
@@ -1810,7 +1810,7 @@ export const publicChromeCopy = {
       "messengerHint": "Converse connosco",
       "emailLabel": "'E-mail'",
       "emailHint": "olá@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Digite uma mensagem…"
     },
     "productPage": {
@@ -2154,7 +2154,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Отраслевые партнеры",
           "tag": "Вертикали",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Каталоги для конкретных доменов",
             "Вертикальное развертывание",
@@ -2165,7 +2165,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Партнеры агентства",
           "tag": "Инфраструктура",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Мультиклиентское лицензирование",
             "Операции под ключ",
@@ -2371,7 +2371,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Готовые решения",
           "title": "Каталог AI-продуктов",
-          "desc": "SHOWROOM AI (AI-продавец по каталогам), AI Business Assistant (поддержка 24/7) и AIME (автономный AI-маркетолог).",
+          "desc": "Showroom AI · Продавец, Showroom AI · Business Assistant (поддержка 24/7) и Marketer (автономный AI-маркетолог).",
           "badge": "3 продукта · SaaS",
           "cta": "Смотреть продукты",
           "href": "/products",
@@ -2453,7 +2453,7 @@ export const publicChromeCopy = {
       "messengerHint": "Написать в чат",
       "emailLabel": "Электронная почта",
       "emailHint": "привет@ai-mark.agency",
-      "greeting": "Здравствуйте! Я AI Business Assistant AI MARK. Расскажите, что нужно — маркетинг, продажи или продукт.",
+      "greeting": "Здравствуйте! Я Showroom AI · Business Assistant AI MARK. Расскажите, что нужно — маркетинг, продажи или продукт.",
       "placeholder": "Напишите сообщение…"
     },
     "productPage": {
@@ -2797,7 +2797,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "شركاء الصناعة",
           "tag": "عمودي",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "كتالوجات خاصة بالمجال",
             "النشر العمودي",
@@ -2808,7 +2808,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "شركاء الوكالة",
           "tag": "بنية تحتية",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "ترخيص متعدد العملاء",
             "عمليات تسليم المفتاح",
@@ -3014,7 +3014,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "برامج جاهزة",
           "title": "منتجات الذكاء الاصطناعي الخاصة",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 منتجات أساسية",
           "cta": "اكتشف المنتجات",
           "href": "/products",
@@ -3096,7 +3096,7 @@ export const publicChromeCopy = {
       "messengerHint": "الدردشة معنا",
       "emailLabel": "بريد إلكتروني",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "اكتب رسالة..."
     },
     "productPage": {
@@ -3228,7 +3228,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "人工智能运营模式",
       "commercialModel": "商业模式",
       "aiProducts": "人工智能产品",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "所有产品 →",
       "venture": "创业",
       "partnerNetwork": "合作伙伴网络",
@@ -3440,7 +3440,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "行业合作伙伴",
           "tag": "垂直领域",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "特定领域的目录",
             "垂直部署",
@@ -3451,7 +3451,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "代理合作伙伴",
           "tag": "基础设施",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "多客户端许可",
             "交钥匙工程",
@@ -3657,7 +3657,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "准备好的软件",
           "title": "专有人工智能产品",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 核心产品",
           "cta": "探索产品",
           "href": "/products",
@@ -3739,7 +3739,7 @@ export const publicChromeCopy = {
       "messengerHint": "与我们聊天",
       "emailLabel": "电子邮件",
       "emailHint": "你好@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "输入消息..."
     },
     "productPage": {
@@ -3871,7 +3871,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "Model Operasi AI",
       "commercialModel": "Model Komersial",
       "aiProducts": "Produk AI",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "Semua Produk →",
       "venture": "Usaha",
       "partnerNetwork": "Jaringan Mitra",
@@ -4083,7 +4083,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Mitra Industri",
           "tag": "Vertikal",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Katalog khusus domain",
             "Penyebaran vertikal",
@@ -4094,7 +4094,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Mitra Agensi",
           "tag": "Infrastruktur",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Lisensi multi-klien",
             "Operasi penjaga penjara",
@@ -4300,7 +4300,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Perangkat Lunak Siap",
           "title": "Produk AI Kepemilikan",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 Produk Inti",
           "cta": "Jelajahi Produk",
           "href": "/products",
@@ -4382,7 +4382,7 @@ export const publicChromeCopy = {
       "messengerHint": "Ngobrol dengan kami",
       "emailLabel": "E-mail",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Ketik pesan…"
     },
     "productPage": {
@@ -4514,7 +4514,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "Mô hình vận hành AI",
       "commercialModel": "Mô hình thương mại",
       "aiProducts": "Sản phẩm trí tuệ nhân tạo",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "Tất cả sản phẩm →",
       "venture": "Liên doanh",
       "partnerNetwork": "Mạng lưới đối tác",
@@ -4726,7 +4726,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Đối tác trong ngành",
           "tag": "ngành dọc",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Danh mục dành riêng cho miền",
             "Triển khai theo chiều dọc",
@@ -4737,7 +4737,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Đối tác đại lý",
           "tag": "Cơ sở hạ tầng",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Cấp phép nhiều khách hàng",
             "Hoạt động chìa khóa trao tay",
@@ -4943,7 +4943,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Phần mềm sẵn sàng",
           "title": "Sản phẩm AI độc quyền",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 sản phẩm cốt lõi",
           "cta": "Khám phá sản phẩm",
           "href": "/products",
@@ -5025,7 +5025,7 @@ export const publicChromeCopy = {
       "messengerHint": "Trò chuyện với chúng tôi",
       "emailLabel": "E-mail",
       "emailHint": "xin chào@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Nhập tin nhắn…"
     },
     "productPage": {
@@ -5157,7 +5157,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "KI-Betriebsmodell",
       "commercialModel": "Kommerzielles Modell",
       "aiProducts": "KI-Produkte",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "Alle Produkte →",
       "venture": "Wagen",
       "partnerNetwork": "Partnernetzwerk",
@@ -5369,7 +5369,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Industriepartner",
           "tag": "Vertikale",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Domänenspezifische Kataloge",
             "Vertikaler Einsatz",
@@ -5380,7 +5380,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Agenturpartner",
           "tag": "Infrastruktur",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Mehrmandantenlizenzierung",
             "Schlüsselfertige Operationen",
@@ -5586,7 +5586,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Fertige Software",
           "title": "Eigene KI-Produkte",
-          "desc": "SHOWROOM AI, AI Business Assistant und AIME — drei kommerzielle Produkte.",
+          "desc": "Showroom AI, Showroom AI · Business Assistant und Marketer — drei kommerzielle Produkte.",
           "badge": "3 Kernprodukte",
           "cta": "Produkte ansehen",
           "href": "/products",
@@ -5668,7 +5668,7 @@ export const publicChromeCopy = {
       "messengerHint": "Chat starten",
       "emailLabel": "E-Mail",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hallo! Ich bin der AI Business Assistant von AI MARK. Marketing, Vertrieb oder Produkt — wobei brauchen Sie Hilfe?",
+      "greeting": "Hallo! Ich bin der Showroom AI · Business Assistant von AI MARK. Marketing, Vertrieb oder Produkt — wobei brauchen Sie Hilfe?",
       "placeholder": "Nachricht eingeben…"
     },
     "productPage": {
@@ -5800,7 +5800,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "Modèle opérationnel de l'IA",
       "commercialModel": "Modèle commercial",
       "aiProducts": "Produits d'IA",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "Tous les produits →",
       "venture": "Aventure",
       "partnerNetwork": "Réseau de partenaires",
@@ -6012,7 +6012,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Partenaires industriels",
           "tag": "Verticales",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Catalogues spécifiques au domaine",
             "Déploiement vertical",
@@ -6023,7 +6023,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Agences partenaires",
           "tag": "Infrastructure",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Licences multi-clients",
             "Opérations clé en main",
@@ -6229,7 +6229,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Logiciel prêt",
           "title": "Produits d'IA exclusifs",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 produits de base",
           "cta": "Explorer les produits",
           "href": "/products",
@@ -6311,7 +6311,7 @@ export const publicChromeCopy = {
       "messengerHint": "Discutez avec nous",
       "emailLabel": "E-mail",
       "emailHint": "bonjour@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Tapez un message…"
     },
     "productPage": {
@@ -6443,7 +6443,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "AI 運用モデル",
       "commercialModel": "コマーシャルモデル",
       "aiProducts": "AI製品",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "すべての製品 →",
       "venture": "ベンチャー",
       "partnerNetwork": "パートナーネットワーク",
@@ -6655,7 +6655,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "業界パートナー",
           "tag": "垂直方向",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "ドメイン固有のカタログ",
             "垂直展開",
@@ -6666,7 +6666,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "代理店パートナー",
           "tag": "インフラストラクチャー",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "マルチクライアントライセンス",
             "ターンキーオペレーション",
@@ -6872,7 +6872,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "すぐに使えるソフトウェア",
           "title": "独自のAI製品",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3つの主力製品",
           "cta": "製品を調べる",
           "href": "/products",
@@ -6954,7 +6954,7 @@ export const publicChromeCopy = {
       "messengerHint": "チャットしてみよう",
       "emailLabel": "電子メール",
       "emailHint": "hello@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "メッセージを入力してください…"
     },
     "productPage": {
@@ -7086,7 +7086,7 @@ export const publicChromeCopy = {
       "aiOperatingModel": "Yapay Zeka İşletim Modeli",
       "commercialModel": "Ticari Model",
       "aiProducts": "Yapay Zeka Ürünleri",
-      "showroomAi": "Showroom AI — AI Sales Agent",
+      "showroomAi": "Showroom AI",
       "allProducts": "Tüm Ürünler →",
       "venture": "Girişim",
       "partnerNetwork": "İş Ortağı Ağı",
@@ -7298,7 +7298,7 @@ export const publicChromeCopy = {
           "id": "industry",
           "title": "Endüstri Ortakları",
           "tag": "Dikeyler",
-          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding SHOWROOM AI / AI Sales Agent and sales tools into their industry networks.",
+          "desc": "Domain specialists (automotive, construction, retail, real estate) embedding Showroom AI and sales tools into their industry networks.",
           "roles": [
             "Alana özel kataloglar",
             "Dikey dağıtım",
@@ -7309,7 +7309,7 @@ export const publicChromeCopy = {
           "id": "agency",
           "title": "Ajans Ortakları",
           "tag": "Altyapı",
-          "desc": "Digital and marketing agencies licensing AIME and AI Business Assistant to scale client deliverables without headcount expansion.",
+          "desc": "Digital and marketing agencies licensing Marketer and Showroom AI · Business Assistant to scale client deliverables without headcount expansion.",
           "roles": [
             "Çok istemcili lisanslama",
             "Anahtar teslim operasyonlar",
@@ -7515,7 +7515,7 @@ export const publicChromeCopy = {
           "num": "02",
           "tag": "Hazır Yazılım",
           "title": "Tescilli Yapay Zeka Ürünleri",
-          "desc": "SHOWROOM AI (AI Sales Agent for catalogs), AI Business Assistant (24/7 webchat), and AIME (AI Marketing Employee).",
+          "desc": "Showroom AI with three roles: Seller, Marketer and Business Assistant.",
           "badge": "3 Temel Ürün",
           "cta": "Ürünleri Keşfedin",
           "href": "/products",
@@ -7597,7 +7597,7 @@ export const publicChromeCopy = {
       "messengerHint": "Bizimle sohbet edin",
       "emailLabel": "E-posta",
       "emailHint": "merhaba@ai-mark.agency",
-      "greeting": "Hi! I'm AI MARK's AI Business Assistant. Tell us what you need — marketing, sales, or a product.",
+      "greeting": "Hi! I'm AI MARK's Showroom AI · Business Assistant. Tell us what you need — marketing, sales, or a product.",
       "placeholder": "Bir mesaj yazın…"
     },
     "productPage": {

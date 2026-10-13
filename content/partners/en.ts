@@ -24,9 +24,9 @@ export const copyEn: PartnerPageCopy = {
   productTitle: "Four ways to create value for a customer.",
   productLead: "A partner can match the customer's business problem to the right AI MARK solution instead of selling one product to one niche.",
   products: [
-    { name: "AI Marketing Employee", type: "RECURRING / AI PRODUCT", body: "AI-native marketing: research, strategy, content, creative production, approval, publishing and optimization.", revenue: "Subscription opportunity", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "RECURRING / AI PRODUCT", body: "A sales and support inbox that works from a business knowledge base, qualifies requests and hands off to people when needed.", revenue: "Subscription opportunity", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "RECURRING / AI PRODUCT", body: "AI Sales Agent for customer conversations, catalog selection, pricing rules, specifications and commercial proposals across industries.", revenue: "Subscription opportunity", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "RECURRING / AI PRODUCT", body: "AI-native marketing: research, strategy, content, creative production, approval, publishing and optimization.", revenue: "Subscription opportunity", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "RECURRING / AI PRODUCT", body: "A sales and support inbox that works from a business knowledge base, qualifies requests and hands off to people when needed.", revenue: "Subscription opportunity", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "RECURRING / AI PRODUCT", body: "Seller for customer conversations, catalog selection, pricing rules, specifications and commercial proposals across industries.", revenue: "Subscription opportunity", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROJECT / B2B SERVICE", body: "Websites, portals, applications, integrations, automation and custom AI systems for businesses that need a larger digital build.", revenue: "Project opportunity", variant: "saas" },
   ],
   productCta: "Explore product",

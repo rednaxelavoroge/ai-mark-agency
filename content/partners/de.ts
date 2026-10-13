@@ -24,9 +24,9 @@ export const copyDe: PartnerPageCopy = {
   productTitle: "Vier Wege, echten Mehrwert für Kunden zu schaffen.",
   productLead: "Ein Partner verbindet das konkrete Geschäftsproblem eines Unternehmens mit der passenden Lösung von AI MARK, anstatt ein einzelnes Werkzeug isoliert anzubieten.",
   products: [
-    { name: "AI Marketing Employee", type: "WIEDERKEHREND / KI-PRODUKT", body: "KI-natives Marketing: Recherche, Strategie, Content, Kreativerstellung, Freigabeprozess, Veröffentlichung und kontinuierliche Optimierung.", revenue: "Abonnement-Umsatz", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "WIEDERKEHREND / KI-PRODUKT", body: "Postfach für Vertrieb und Support auf Basis der unternehmenseigenen Wissensdatenbank. Qualifiziert Anfragen und übergibt nahtlos an Mitarbeiter.", revenue: "Abonnement-Umsatz", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "WIEDERKEHREND / KI-PRODUKT", body: "KI-Vertriebsagent für Beratungsdialoge, Katalogauswahl, Preisberechnungsregeln, Spezifikationen und fertige Angebote über viele Branchen.", revenue: "Abonnement-Umsatz", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "WIEDERKEHREND / KI-PRODUKT", body: "KI-natives Marketing: Recherche, Strategie, Content, Kreativerstellung, Freigabeprozess, Veröffentlichung und kontinuierliche Optimierung.", revenue: "Abonnement-Umsatz", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "WIEDERKEHREND / KI-PRODUKT", body: "Postfach für Vertrieb und Support auf Basis der unternehmenseigenen Wissensdatenbank. Qualifiziert Anfragen und übergibt nahtlos an Mitarbeiter.", revenue: "Abonnement-Umsatz", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "WIEDERKEHREND / KI-PRODUKT", body: "KI-Vertriebsagent für Beratungsdialoge, Katalogauswahl, Preisberechnungsregeln, Spezifikationen und fertige Angebote über viele Branchen.", revenue: "Abonnement-Umsatz", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "PROJEKT / B2B-SERVICE", body: "Websites, Portale, Webanwendungen, Schnittstellen, Automatisierung und individuelle KI-Systeme für Unternehmen mit erhöhtem Infrastrukturbedarf.", revenue: "Projekt-Umsatz", variant: "saas" },
   ],
   productCta: "Produkt ansehen",

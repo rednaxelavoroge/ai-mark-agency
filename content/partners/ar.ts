@@ -24,9 +24,9 @@ export const copyAr: PartnerPageCopy = {
   productTitle: "أربع طرق لخلق قيمة حقيقية للعملاء.",
   productLead: "يستطيع الشريك مطابقة مشكلة العميل العملية مع حل AI MARK المناسب بدلاً من بيع أداة وحيدة لجمهور ضيق.",
   products: [
-    { name: "AI Marketing Employee", type: "اشتراك دوري / منتج ذكاء اصطناعي", body: "تسويق قائم على الذكاء الاصطناعي: أبحاث، واستراتيجية، ومحتوى، وتصميم إبداعي، وموافقة، ونشر، وتحسين مستمر.", revenue: "عوائد اشتراك مستمرة", variant: "aime", href: PRODUCT_PATHS.aime },
-    { name: "AI Business Assistant", type: "اشتراك دوري / منتج ذكاء اصطناعي", body: "صندوق بريد للمبيعات والدعم الفني يعمل انطلاقاً من قاعدة معرفة الشركة، ويؤهل الاستفسارات ويحولها بسلاسة للموظفين.", revenue: "عوائد اشتراك مستمرة", variant: "assistant", href: PRODUCT_PATHS.assistant },
-    { name: "SHOWROOM AI / AI Sales Agent", type: "اشتراك دوري / منتج ذكاء اصطناعي", body: "وكيل مبيعات ذكي لإجراء حوارات المبيعات، واختيار المنتجات من الكتالوج، وحساب الأسعار وفق القواعد وإعداد العروض التجارية.", revenue: "عوائد اشتراك مستمرة", variant: "showroom", href: PRODUCT_PATHS.showroom },
+    { name: "Showroom AI · Marketer", type: "اشتراك دوري / منتج ذكاء اصطناعي", body: "تسويق قائم على الذكاء الاصطناعي: أبحاث، واستراتيجية، ومحتوى، وتصميم إبداعي، وموافقة، ونشر، وتحسين مستمر.", revenue: "عوائد اشتراك مستمرة", variant: "aime", href: PRODUCT_PATHS.aime },
+    { name: "Showroom AI · Business Assistant", type: "اشتراك دوري / منتج ذكاء اصطناعي", body: "صندوق بريد للمبيعات والدعم الفني يعمل انطلاقاً من قاعدة معرفة الشركة، ويؤهل الاستفسارات ويحولها بسلاسة للموظفين.", revenue: "عوائد اشتراك مستمرة", variant: "assistant", href: PRODUCT_PATHS.assistant },
+    { name: "Showroom AI · Seller", type: "اشتراك دوري / منتج ذكاء اصطناعي", body: "وكيل مبيعات ذكي لإجراء حوارات المبيعات، واختيار المنتجات من الكتالوج، وحساب الأسعار وفق القواعد وإعداد العروض التجارية.", revenue: "عوائد اشتراك مستمرة", variant: "showroom", href: PRODUCT_PATHS.showroom },
     { name: "Digital Production & AI Engineering", type: "مشاريع مخصصة / خدمات B2B", body: "مواقع إلكترونية، وبوابات عملاء، وتطبيقات، وتكاملات، وأتمتة، وأنظمة ذكاء اصطناعي مخصصة للمؤسسات التي تتطلب بنية قوية.", revenue: "عوائد مشاريع كبرى", variant: "saas" },
   ],
   productCta: "استكشف المنتج",
