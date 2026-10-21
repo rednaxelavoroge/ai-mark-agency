@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/cron/marketer-publish",
-      "schedule": "0 * * * *"
+      "schedule": "0 5 * * *"
     },
     {
       "path": "/api/cron/marketer-insights",
