@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
-import { BrandLockup } from "@/components/BrandLockup";
+import { BrandLogo } from "@/components/BrandLogo";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
 import { getHomePlain } from "@/content/home-plain";
@@ -25,7 +25,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Link href={navHref(locale, "/")} className="inline-flex max-w-full flex-col items-start">
-              <BrandLockup variant="footer" line="footer" />
+              <BrandLogo className="h-8 sm:h-9" />
             </Link>
             <p className="mt-2 text-sm text-muted max-w-sm">{chrome.blurb}</p>
           </div>

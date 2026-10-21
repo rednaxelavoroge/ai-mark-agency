@@ -86,8 +86,8 @@
    Symbol + wordmark on a transparent plate; light theme paints the dark ink,
    dark theme the light ink. The caller sets only a HEIGHT; the lockup width
    follows the artwork's own aspect ratio, so it is never stretched.
-   Full (1844×327) and compact (1844×261) crops stay in sync with the PNGs in
-   public/brand/ and with width/height on <BrandLogo>'s <img>. */
+   Full lockup (1844×327) stays in sync with public/brand/ai-mark-logo-*.png and
+   with width/height on <BrandLogo>'s <img>. */
 .brand-plate {
   display: inline-flex;
   flex: 0 0 auto;
@@ -115,58 +115,7 @@
   display: block;
   height: 100%;
   width: auto;
-}
-.brand-logo--compact {
-  aspect-ratio: 1844 / 261;
-}
-.brand-logo--full {
   aspect-ratio: 1844 / 327;
-}
-
-/* Footer: compact mark + justified company line (components/BrandLockup.tsx). */
-.brand-lockup {
-  display: inline-grid;
-  width: max-content;
-  max-width: 100%;
-  grid-template-rows: auto auto;
-  justify-items: stretch;
-  align-content: start;
-  line-height: 0;
-}
-.brand-lockup__mark {
-  line-height: 0;
-}
-.brand-lockup__logo {
-  height: 1em;
-  width: auto;
-}
-.brand-lockup__line {
-  margin-top: 0.14em;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  line-height: 1.05;
-  white-space: nowrap;
-  text-align: justify;
-  text-align-last: justify;
-  color: var(--muted);
-  letter-spacing: 0.02em;
-}
-.brand-lockup--footer {
-  font-size: 32px;
-}
-.brand-lockup--footer .brand-lockup__line {
-  font-size: 0.22em;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  margin-top: 0.18em;
-}
-@media (min-width: 640px) {
-  .brand-lockup--footer {
-    font-size: 36px;
-  }
 }
 
 /* Editorial serif: used for large numerals and pull-statements */
