@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Copy } from "@/content/copy";
 import { getPublicChromeCopy } from "@/content/sections";
-import { BrandLogo } from "@/components/BrandLogo";
+import { BrandLockup } from "@/components/BrandLockup";
 import { ContactCta } from "@/components/ContactCta";
 import { navHref, type Locale } from "@/lib/site";
-import { getPlainCopy } from "@/content/plain-copy";
+import { getHomePlain } from "@/content/home-plain";
 import { productsHubPath } from "@/lib/products";
 import { DIGITAL_PRODUCTION_PATH } from "@/lib/digital-production";
 import { getShowroomAiCopy } from "@/content/showroom-ai";
@@ -25,8 +25,7 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
         <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Link href={navHref(locale, "/")} className="inline-flex max-w-full flex-col items-start">
-              <BrandLogo className="h-8 sm:h-9" />
-              <span className="mt-2 text-[13px] font-semibold text-muted">{getPlainCopy(locale).brandLine}</span>
+              <BrandLockup variant="footer" line="footer" />
             </Link>
             <p className="mt-2 text-sm text-muted max-w-sm">{chrome.blurb}</p>
           </div>
@@ -113,11 +112,10 @@ export function Footer({ locale, t }: { locale: Locale; t: Copy }) {
                 </ContactCta>
               </li>
               <li>
-                <Link href={navHref(locale, "/pay")} className="hover:text-paper transition-colors">
-                  {chrome.payCrypto}
+                <Link href={navHref(locale, "/pricing")} className="hover:text-paper transition-colors">
+                  {getHomePlain(locale).nav.pricing}
                 </Link>
               </li>
-              <li className="text-[13px]">{t.ui.cardsSoon}</li>
               <li>
                 <Link href={navHref(locale, "/privacy")} className="hover:text-paper transition-colors">
                   {t.footer.privacy}

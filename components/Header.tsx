@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Copy } from "@/content/copy";
-import { BrandLogo } from "@/components/BrandLogo";
+import { BrandLockup } from "@/components/BrandLockup";
 import { ContactCta } from "@/components/ContactCta";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
@@ -60,10 +60,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           href={navHref(locale, "/")}
           className="flex min-w-0 shrink-0 flex-col items-start py-2"
         >
-          <BrandLogo className="h-[18px] min-[400px]:h-6 sm:h-7" />
-          <span className="mt-1 max-w-[7.25rem] text-[12px] font-semibold leading-tight tracking-[0.01em] text-muted sm:max-w-[9.5rem] sm:leading-none xl:max-w-none">
-            {home.nav.tagline}
-          </span>
+          <BrandLockup variant="header" line="descriptor" />
         </Link>
 
         <nav className="ml-auto hidden min-w-0 items-center justify-end gap-x-3 text-[13px] font-medium text-muted min-[1280px]:flex xl:gap-x-4">

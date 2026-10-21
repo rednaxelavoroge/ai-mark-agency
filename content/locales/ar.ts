@@ -557,10 +557,6 @@ export const copyAr: Copy = {
       "Hosting may be provided by Vercel. Email delivery may be provided by a transactional email vendor. Those processors see only what is required to deliver the service."
     ]
   },
-  "ui": {
-    "cardOption": "بطاقة بنكية (Visa/Mastercard) — قريبًا",
-    "cardsSoon": "البطاقات — قريبًا"
-  },
   "pay": {
     "email": "البريد الإلكتروني",
     "emailHint": "مطلوب. الاشتراك والإيصال يستخدمان هذا العنوان.",
