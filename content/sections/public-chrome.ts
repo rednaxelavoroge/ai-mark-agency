@@ -15,7 +15,7 @@ export const publicChromeCopy = {
       "aiProducts": "AI Products",
       "showroomAi": "Showroom AI",
       "allProducts": "All Products →",
-      "venture": "Venture",
+      "venture": "Company",
       "partnerNetwork": "Partners",
       "investors": "Investors",
       "whyNow": "Why Now",

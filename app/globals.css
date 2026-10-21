@@ -116,9 +116,71 @@
   display: block;
   height: 100%;
   width: auto;
-  /* Compact crop only (descriptor band removed). The HTML subtitle under the
-     lockup is the readable "Venture and Marketing" line. */
+  /* Compact crop only (descriptor band removed). The HTML line under the
+     lockup is the readable "AI-NATIVE VENTURE & MARKETING" descriptor. */
   aspect-ratio: 1844 / 261;
+}
+
+/* Mark + justified descriptor/footer line (components/BrandLockup.tsx). */
+.brand-lockup {
+  display: inline-grid;
+  width: max-content;
+  max-width: 100%;
+  grid-template-rows: auto auto;
+  justify-items: stretch;
+  align-content: start;
+  line-height: 0;
+}
+.brand-lockup__mark {
+  line-height: 0;
+}
+.brand-lockup__logo {
+  height: 1em;
+  width: auto;
+}
+.brand-lockup__line {
+  margin-top: 0.14em;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.05;
+  white-space: nowrap;
+  text-align: justify;
+  text-align-last: justify;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.brand-lockup--header {
+  font-size: 18px;
+}
+.brand-lockup--header .brand-lockup__line {
+  font-size: 0.214em;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+}
+.brand-lockup--footer {
+  font-size: 32px;
+}
+.brand-lockup--footer .brand-lockup__line {
+  font-size: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-top: 0.18em;
+}
+@media (min-width: 400px) {
+  .brand-lockup--header {
+    font-size: 24px;
+  }
+}
+@media (min-width: 640px) {
+  .brand-lockup--header {
+    font-size: 28px;
+  }
+  .brand-lockup--footer {
+    font-size: 36px;
+  }
 }
 
 /* Editorial serif: used for large numerals and pull-statements */

@@ -2,9 +2,9 @@
  * AI MARK brand lockup — compact crop only.
  *
  * The full PNG bakes in a tagline that is unreadably small in the header and
- * collided with the nav at 1440px. The readable line "Venture and Marketing"
- * is set in HTML next to this mark (see Header and Footer), in English on
- * every locale. Both theme files are the approved artwork; nothing here
+ * collided with the nav at 1440px. The descriptor is set in HTML via
+ * BrandLockup (see Header and Footer), in English on every locale. Both theme
+ * files are the approved artwork; nothing here
  * redraws it.
  */
 export function BrandLogo({ className = "" }: { className?: string }) {

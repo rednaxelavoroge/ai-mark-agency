@@ -557,10 +557,6 @@ export const copyJa: Copy = {
       "Hosting may be provided by Vercel. Email delivery may be provided by a transactional email vendor. Those processors see only what is required to deliver the service."
     ]
   },
-  "ui": {
-    "cardOption": "銀行カード（Visa/Mastercard）— 近日対応",
-    "cardsSoon": "カード — 近日"
-  },
   "pay": {
     "email": "メール",
     "emailHint": "必須。サブスクリプションと領収にこのアドレスを使います。",

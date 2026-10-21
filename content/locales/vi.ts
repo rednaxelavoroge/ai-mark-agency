@@ -557,10 +557,6 @@ export const copyVi: Copy = {
       "Hosting may be provided by Vercel. Email delivery may be provided by a transactional email vendor. Those processors see only what is required to deliver the service."
     ]
   },
-  "ui": {
-    "cardOption": "Thẻ ngân hàng (Visa/Mastercard) — sắp ra mắt",
-    "cardsSoon": "Thẻ — sắp có"
-  },
   "pay": {
     "email": "Email",
     "emailHint": "Bắt buộc. Gói đăng ký và biên nhận dùng địa chỉ này.",

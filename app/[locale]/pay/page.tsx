@@ -67,7 +67,6 @@ export default async function PayPage({ params, searchParams }: Props) {
   const ru = locale === "ru";
   const payChrome = getPublicChromeCopy(locale).payPage;
   const copy = getCopy(locale);
-  const ui = copy.ui;
   const pay = copy.pay;
   const paramsIn = await searchParams;
   const error = first(paramsIn.error);
@@ -113,12 +112,6 @@ export default async function PayPage({ params, searchParams }: Props) {
       <div className="mt-6 flex flex-wrap gap-2">
         <span className="inline-flex min-h-11 items-center rounded-full bg-mark px-4 text-sm font-semibold text-mark-ink">
           USDT / USDC
-        </span>
-        <span
-          aria-disabled="true"
-          className="inline-flex min-h-11 cursor-not-allowed items-center rounded-full border border-line px-4 text-sm font-semibold text-muted opacity-70"
-        >
-          {ui.cardOption}
         </span>
       </div>
 

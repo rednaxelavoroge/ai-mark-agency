@@ -557,10 +557,6 @@ export const copyZh: Copy = {
       "Hosting may be provided by Vercel. Email delivery may be provided by a transactional email vendor. Those processors see only what is required to deliver the service."
     ]
   },
-  "ui": {
-    "cardOption": "银行卡（Visa/Mastercard）— 即将推出",
-    "cardsSoon": "银行卡 — 即将推出"
-  },
   "pay": {
     "email": "电子邮箱",
     "emailHint": "必填。订阅和收据使用这个地址。",
