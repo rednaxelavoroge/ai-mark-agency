@@ -86,9 +86,8 @@
    Symbol + wordmark on a transparent plate; light theme paints the dark ink,
    dark theme the light ink. The caller sets only a HEIGHT; the lockup width
    follows the artwork's own aspect ratio, so it is never stretched.
-   The two aspect ratios below track the two crops: the compact 1844x261 file
-   below 640px, the 1844x327 file at and above it. They must stay in sync with
-   the PNGs in public/brand/ and with the width/height on <BrandLogo>'s <img>. */
+   Full (1844×327) and compact (1844×261) crops stay in sync with the PNGs in
+   public/brand/ and with width/height on <BrandLogo>'s <img>. */
 .brand-plate {
   display: inline-flex;
   flex: 0 0 auto;
@@ -116,12 +115,15 @@
   display: block;
   height: 100%;
   width: auto;
-  /* Compact crop only (descriptor band removed). The HTML line under the
-     lockup is the readable "AI-NATIVE VENTURE & MARKETING" descriptor. */
+}
+.brand-logo--compact {
   aspect-ratio: 1844 / 261;
 }
+.brand-logo--full {
+  aspect-ratio: 1844 / 327;
+}
 
-/* Mark + justified descriptor/footer line (components/BrandLockup.tsx). */
+/* Footer: compact mark + justified company line (components/BrandLockup.tsx). */
 .brand-lockup {
   display: inline-grid;
   width: max-content;
@@ -152,14 +154,6 @@
   color: var(--muted);
   letter-spacing: 0.02em;
 }
-.brand-lockup--header {
-  font-size: 18px;
-}
-.brand-lockup--header .brand-lockup__line {
-  font-size: 0.214em;
-  font-weight: 500;
-  letter-spacing: 0.34em;
-}
 .brand-lockup--footer {
   font-size: 32px;
 }
@@ -169,15 +163,7 @@
   letter-spacing: 0.08em;
   margin-top: 0.18em;
 }
-@media (min-width: 400px) {
-  .brand-lockup--header {
-    font-size: 24px;
-  }
-}
 @media (min-width: 640px) {
-  .brand-lockup--header {
-    font-size: 28px;
-  }
   .brand-lockup--footer {
     font-size: 36px;
   }
