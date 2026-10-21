@@ -60,7 +60,7 @@ export function Header({ locale, t }: { locale: Locale; t: Copy }) {
           href={navHref(locale, "/")}
           className="flex min-w-0 shrink-0 flex-col items-start py-2"
         >
-          <BrandLogo crop="full" className="h-[22px] min-[400px]:h-7 sm:h-8" />
+          <BrandLogo className="h-[22px] min-[400px]:h-7 sm:h-8" />
         </Link>
 
         <nav className="ml-auto hidden min-w-0 items-center justify-end gap-x-3 text-[13px] font-medium text-muted min-[1280px]:flex xl:gap-x-4">

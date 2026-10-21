@@ -15,20 +15,17 @@ export function AuthCard({
   lead,
   children,
   footer,
-  ventureTagline = "Venture and Marketing",
 }: {
   eyebrow: string;
   title: string;
   lead: string;
   children: ReactNode;
   footer?: ReactNode;
-  ventureTagline?: string;
 }) {
   return (
     <div className="w-full max-w-md">
       <Link href="/" className="inline-flex max-w-full flex-col items-start">
         <BrandLogo className="h-7 sm:h-8" />
-        <span className="mt-1.5 text-[13px] font-semibold text-muted">{ventureTagline}</span>
       </Link>
 
       <p className={`mt-8 ${eyebrowClass}`}>{eyebrow}</p>

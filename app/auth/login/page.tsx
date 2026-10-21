@@ -47,7 +47,6 @@ export default async function LoginPage({
 
   return (
     <AuthCard
-      ventureTagline={copy.auth.ventureTagline}
       eyebrow={login.eyebrow}
       title={login.title}
       lead={login.lead}

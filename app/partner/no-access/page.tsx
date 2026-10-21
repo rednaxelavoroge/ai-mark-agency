@@ -23,7 +23,6 @@ export default async function PartnerNoAccessPage() {
     <CabinetCopyProvider copy={copy}>
       <div className="flex min-h-svh flex-col items-center justify-center px-4 py-12">
         <AuthCard
-          ventureTagline={copy.auth.ventureTagline}
           eyebrow={page.eyebrow}
           title={page.title}
           lead={page.lead}

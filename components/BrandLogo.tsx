@@ -1,52 +1,26 @@
 /**
- * AI MARK brand lockup — approved raster crops from ai-mark-logo-master.png.
- *
- *   crop="full"    — mark + AI MARK + AI-NATIVE VENTURE & MARKETING (1844×327)
- *   crop="compact" — wordmark band only (1844×261), for footer HTML subtitle
+ * AI MARK brand lockup — full approved raster (1844×327).
+ * Mark + AI MARK + AI-NATIVE VENTURE & MARKETING from ai-mark-logo-master.png.
  */
-type BrandLogoProps = {
-  className?: string;
-  crop?: "full" | "compact";
-};
-
-const FULL = { w: 1844, h: 327 } as const;
-const COMPACT = { w: 1844, h: 261 } as const;
-
-export function BrandLogo({ className = "", crop = "compact" }: BrandLogoProps) {
-  const dims = crop === "full" ? FULL : COMPACT;
-  const alt =
-    crop === "full"
-      ? "AI MARK — AI-NATIVE VENTURE & MARKETING"
-      : "AI MARK";
-
+export function BrandLogo({ className = "" }: { className?: string }) {
   return (
-    <span
-      className={`brand-plate ${crop === "full" ? "brand-plate--full" : "brand-plate--compact"} ${className}`}
-    >
+    <span className={`brand-plate ${className}`}>
       <picture className="brand-logo-light">
         <img
-          src={
-            crop === "full"
-              ? "/brand/ai-mark-logo-light.png"
-              : "/brand/ai-mark-logo-compact-light.png"
-          }
-          alt={alt}
-          width={dims.w}
-          height={dims.h}
-          className={`brand-logo ${crop === "full" ? "brand-logo--full" : "brand-logo--compact"}`}
+          src="/brand/ai-mark-logo-light.png"
+          alt="AI MARK — AI-NATIVE VENTURE & MARKETING"
+          width={1844}
+          height={327}
+          className="brand-logo"
         />
       </picture>
       <picture className="brand-logo-dark">
         <img
-          src={
-            crop === "full"
-              ? "/brand/ai-mark-logo-dark.png"
-              : "/brand/ai-mark-logo-compact-dark.png"
-          }
+          src="/brand/ai-mark-logo-dark.png"
           alt=""
-          width={dims.w}
-          height={dims.h}
-          className={`brand-logo ${crop === "full" ? "brand-logo--full" : "brand-logo--compact"}`}
+          width={1844}
+          height={327}
+          className="brand-logo"
           aria-hidden
         />
       </picture>

@@ -32,7 +32,6 @@ export default async function SignupPage({
 
   return (
     <AuthCard
-      ventureTagline={copy.auth.ventureTagline}
       eyebrow={signup.eyebrow}
       title={signup.title}
       lead={signup.lead}

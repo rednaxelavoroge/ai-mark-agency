@@ -52,7 +52,6 @@ export type PlatformShellCopy = {
   signOut: string;
   signedIn: string;
   backToSite: string;
-  ventureTagline: string;
   themeLight: string;
   themeDark: string;
   backAriaLabel: string;
@@ -64,7 +63,6 @@ export function shellCopyFromCabinet(copy: CabinetCopy): PlatformShellCopy {
     signOut: copy.shell.signOut,
     signedIn: copy.shell.signedIn,
     backToSite: copy.shell.backToSite,
-    ventureTagline: copy.shell.ventureTagline,
     themeLight: copy.shell.themeLight,
     themeDark: copy.shell.themeDark,
     backAriaLabel: copy.shell.backAriaLabel,
