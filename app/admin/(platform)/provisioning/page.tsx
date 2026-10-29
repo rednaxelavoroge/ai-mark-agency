@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Provisioning" };
 export default async function AdminProvisioningPage() {
   await requireAdmin("/admin/provisioning");
 
-  let rows: {
+  const rows: {
     id: string;
     email: string;
     sku: string;

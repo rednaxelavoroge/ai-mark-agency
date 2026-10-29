@@ -25,12 +25,15 @@ export function SellerHeroDemo({ locale }: { locale: Locale }) {
   const [step, setStep] = useState<number>(FINAL);
   const host = useRef<HTMLDivElement>(null);
   const planRef = useRef(plan);
-  planRef.current = plan;
+
+  useEffect(() => {
+    planRef.current = plan;
+  }, [plan]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStep(FINAL);
-      return;
+      const id = window.requestAnimationFrame(() => setStep(FINAL));
+      return () => window.cancelAnimationFrame(id);
     }
     let timer: ReturnType<typeof setTimeout> | undefined;
     let current: number = FINAL;
@@ -44,8 +47,8 @@ export function SellerHeroDemo({ locale }: { locale: Locale }) {
         run();
       }, TIMELINE[current]);
     };
-    setStep(FINAL);
     current = FINAL;
+    window.requestAnimationFrame(() => setStep(FINAL));
     run();
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
