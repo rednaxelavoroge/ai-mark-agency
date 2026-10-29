@@ -8,6 +8,10 @@ import { socialImages } from "@/lib/social";
 
 type Props = { params: Promise<{ locale: string }> };
 
+export function generateStaticParams() {
+  return site.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!isLocale(raw)) return {};

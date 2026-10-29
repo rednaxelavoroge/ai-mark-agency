@@ -534,7 +534,7 @@ const de: BrandStudioCopy = {
   seoDescription:
     "Von Ihrer Website zu einem Monat Posts, Karussells und KI-UGC-Videos. Menschliche Prüfung jeder Einheit. Pläne ab $590/Mo.",
   hero: {
-    label: "SERVICE · DONE FOR YOU",
+    label: "SERVICE · FULL-SERVICE",
     title: "AI Brand Studio",
     subtitle:
       "Von Ihrer Domain zu einem Monat fertigem Content und Ads. KI leistet die schwere Arbeit — ein Mensch prüft jedes Stück.",
@@ -646,7 +646,7 @@ const de: BrandStudioCopy = {
     ],
   },
   hub: {
-    tag: "Done for you",
+    tag: "Full-Service",
     teaser: "Posts, Karussells und KI-UGC zu Ihrem Produkt — menschliche Prüfung jeder Einheit.",
     cta: "AI Brand Studio",
   },
@@ -788,11 +788,11 @@ const fr: BrandStudioCopy = {
 
 const id: BrandStudioCopy = {
   ...en,
-  seoTitle: "AI Brand Studio — konten & video done-for-you · AI MARK",
+  seoTitle: "AI Brand Studio — konten & video siap pakai · AI MARK",
   seoDescription:
     "Dari website Anda ke sebulan posting, carousel, dan video UGC AI. Editor manusia di setiap materi. Paket dari $590/bulan.",
   hero: {
-    label: "LAYANAN · DONE FOR YOU",
+    label: "LAYANAN · SIAP PAKAI",
     title: "AI Brand Studio",
     subtitle:
       "Dari domain Anda ke sebulan konten dan iklan siap pakai. AI mengerjakan bagian berat; manusia memeriksa setiap materi.",
@@ -904,13 +904,13 @@ const id: BrandStudioCopy = {
     ],
   },
   hub: {
-    tag: "Done for you",
+    tag: "Siap pakai",
     teaser: "Post, carousel, dan UGC AI tentang produk Anda — review manusia setiap materi.",
     cta: "AI Brand Studio",
   },
   pricingTeaser: {
     title: "AI Brand Studio",
-    lead: "Konten & video done-for-you dari $590/bulan. Profil merek, posting, UGC AI, Meta Ads opsional.",
+    lead: "Konten dan video siap pakai dari $590/bulan. Profil merek, posting, UGC AI, Meta Ads opsional.",
     cta: "Lihat paket",
   },
 };

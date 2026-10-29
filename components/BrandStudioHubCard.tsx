@@ -25,7 +25,7 @@ export function BrandStudioHubCard({ locale }: { locale: Locale }) {
         <p className="mt-2 text-sm leading-relaxed text-muted">{t.hub.teaser}</p>
         <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-line/60 pt-4">
           <span className="font-mono text-[10px] font-semibold tracking-wider text-mark uppercase">
-            {t.hero.label.split("·")[0]?.trim()}
+            {t.hub.tag}
           </span>
           <Link
             href={brandStudioPath(locale)}
