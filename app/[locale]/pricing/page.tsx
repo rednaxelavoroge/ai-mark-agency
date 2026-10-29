@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BackButton } from "@/components/BackButton";
 import { ContactCta } from "@/components/ContactCta";
+import { BrandStudioPricingTeaser } from "@/components/BrandStudioPlans";
 import { ShowroomAiIncluded, ShowroomAiPlans } from "@/components/products/ShowroomAiPlans";
 import { getPlainCopy, planTokens, fillPlanTokens } from "@/content/plain-copy";
 import { getCopy } from "@/content/copy";
@@ -71,6 +72,10 @@ export default async function PricingPage({ params }: Props) {
       </div>
 
       <p className="mt-6 max-w-3xl text-sm text-paper/90">{plain.payNote}</p>
+
+      <div id="brand-studio" className="mt-12 scroll-mt-24">
+        <BrandStudioPricingTeaser locale={locale} />
+      </div>
 
       {/* Anything outside the three plans is quoted individually. */}
       <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-line bg-ink-2 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8" data-reveal>

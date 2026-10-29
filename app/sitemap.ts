@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { BRAND_STUDIO_PATH } from "@/lib/brand-studio";
 import { PRODUCT_PATHS } from "@/lib/products";
 import type { ProductId } from "@/content/packages";
 import { absoluteUrl, site } from "@/lib/site";
@@ -37,6 +38,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(locale, "/digital-production"),
       lastModified,
       alternates: getLanguageAlternates("/digital-production"),
+    });
+    entries.push({
+      url: absoluteUrl(locale, BRAND_STUDIO_PATH),
+      lastModified,
+      alternates: getLanguageAlternates(BRAND_STUDIO_PATH),
     });
     entries.push({
       url: absoluteUrl(locale, "/investors"),

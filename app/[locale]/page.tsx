@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HeroSystem } from "@/components/HeroSystem";
 import { BookingScenario } from "@/components/BookingScenario";
+import { BrandStudioHubCard } from "@/components/BrandStudioHubCard";
 import { HomeRest } from "@/components/home/HomeRest";
 import { ShowroomRoleLinkage } from "@/components/products/ShowroomRoleLinkage";
 import { getCopy } from "@/content/copy";
@@ -104,6 +105,11 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
       <BookingScenario locale={locale} />
+      <section id="services" className="scroll-mt-24 border-b border-line py-10 sm:py-12">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <BrandStudioHubCard locale={locale} />
+        </div>
+      </section>
       <HomeRest locale={locale} t={t} hubModules={hubModules} featuredProducts={featuredProducts} />
     </>
   );
